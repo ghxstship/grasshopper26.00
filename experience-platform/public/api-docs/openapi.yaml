@@ -1,0 +1,525 @@
+openapi: 3.0.3
+info:
+  title: Grasshopper API
+  description: |
+    White-label live entertainment experience platform API.
+    
+    ## Authentication
+    All authenticated endpoints require a valid JWT token in the Authorization header:
+    ```
+    Authorization: Bearer <token>
+    ```
+    
+    ## Rate Limiting
+    - Authenticated: 1000 requests per hour
+    - Unauthenticated: 100 requests per hour
+    
+    ## Webhooks
+    The API supports webhooks for real-time event notifications.
+    Configure webhook URLs in your brand settings.
+    
+  version: 1.0.0
+  contact:
+    name: API Support
+    email: api@grasshopper.com
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: https://api.grasshopper.com/v1
+    description: Production server
+  - url: https://staging-api.grasshopper.com/v1
+    description: Staging server
+  - url: http://localhost:3000/api/v1
+    description: Development server
+
+tags:
+  - name: Events
+    description: Event management operations
+  - name: Artists
+    description: Artist directory operations
+  - name: Tickets
+    description: Ticketing and orders
+  - name: Products
+    description: Merchandise and products
+  - name: Messages
+    description: User messaging
+  - name: Chat
+    description: Event chat rooms
+  - name: Search
+    description: Search operations
+  - name: Notifications
+    description: Push notifications
+  - name: Admin
+    description: Administrative operations
+
+paths:
+  /events:
+    get:
+      tags:
+        - Events
+      summary: List all events
+      description: Retrieve a paginated list of events with optional filtering
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 20
+            maximum: 100
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [upcoming, on_sale, sold_out, past]
+        - name: event_type
+          in: query
+          schema:
+            type: string
+        - name: search
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  events:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Event'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+    post:
+      tags:
+        - Events
+      summary: Create a new event
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventCreate'
+      responses:
+        '201':
+          description: Event created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+  /events/{eventId}:
+    get:
+      tags:
+        - Events
+      summary: Get event by ID
+      parameters:
+        - name: eventId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /messages:
+    get:
+      tags:
+        - Messages
+      summary: Get messages
+      description: Get all conversations or a specific conversation
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: userId
+          in: query
+          description: Get conversation with specific user
+          schema:
+            type: string
+            format: uuid
+        - name: action
+          in: query
+          description: Special action (e.g., unread-count)
+          schema:
+            type: string
+            enum: [unread-count]
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    properties:
+                      messages:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Message'
+                  - type: object
+                    properties:
+                      conversations:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Conversation'
+                  - type: object
+                    properties:
+                      count:
+                        type: integer
+    post:
+      tags:
+        - Messages
+      summary: Send a message
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - recipientId
+                - message
+              properties:
+                recipientId:
+                  type: string
+                  format: uuid
+                message:
+                  type: string
+                  maxLength: 1000
+                metadata:
+                  type: object
+      responses:
+        '201':
+          description: Message sent
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    $ref: '#/components/schemas/Message'
+
+  /chat/{roomId}:
+    get:
+      tags:
+        - Chat
+      summary: Get chat messages
+      parameters:
+        - name: roomId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 50
+        - name: before
+          in: query
+          schema:
+            type: string
+            format: date-time
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  messages:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ChatMessage'
+    post:
+      tags:
+        - Chat
+      summary: Send chat message
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: roomId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - message
+              properties:
+                message:
+                  type: string
+                  maxLength: 500
+                messageType:
+                  type: string
+                  enum: [text, image, system]
+                  default: text
+      responses:
+        '201':
+          description: Message sent
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    $ref: '#/components/schemas/ChatMessage'
+
+  /notifications/subscribe:
+    post:
+      tags:
+        - Notifications
+      summary: Subscribe to push notifications
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - subscription
+              properties:
+                subscription:
+                  type: object
+                  properties:
+                    endpoint:
+                      type: string
+                    keys:
+                      type: object
+                      properties:
+                        p256dh:
+                          type: string
+                        auth:
+                          type: string
+                userAgent:
+                  type: string
+      responses:
+        '200':
+          description: Subscription successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    Event:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        brand_id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        slug:
+          type: string
+        description:
+          type: string
+        event_type:
+          type: string
+        start_date:
+          type: string
+          format: date-time
+        end_date:
+          type: string
+          format: date-time
+        venue_name:
+          type: string
+        venue_address:
+          type: object
+        age_restriction:
+          type: string
+        capacity:
+          type: integer
+        status:
+          type: string
+          enum: [upcoming, on_sale, sold_out, past]
+        hero_image_url:
+          type: string
+        hero_video_url:
+          type: string
+        metadata:
+          type: object
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    EventCreate:
+      type: object
+      required:
+        - name
+        - slug
+        - start_date
+      properties:
+        name:
+          type: string
+        slug:
+          type: string
+        description:
+          type: string
+        event_type:
+          type: string
+        start_date:
+          type: string
+          format: date-time
+        end_date:
+          type: string
+          format: date-time
+        venue_name:
+          type: string
+        capacity:
+          type: integer
+
+    Message:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        sender_id:
+          type: string
+          format: uuid
+        recipient_id:
+          type: string
+          format: uuid
+        message:
+          type: string
+        read:
+          type: boolean
+        read_at:
+          type: string
+          format: date-time
+        metadata:
+          type: object
+        created_at:
+          type: string
+          format: date-time
+
+    Conversation:
+      type: object
+      properties:
+        partnerId:
+          type: string
+          format: uuid
+        partner:
+          type: object
+        lastMessage:
+          $ref: '#/components/schemas/Message'
+        unreadCount:
+          type: integer
+
+    ChatMessage:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        room_id:
+          type: string
+          format: uuid
+        user_id:
+          type: string
+          format: uuid
+        message:
+          type: string
+        message_type:
+          type: string
+          enum: [text, image, system]
+        metadata:
+          type: object
+        created_at:
+          type: string
+          format: date-time
+
+    Pagination:
+      type: object
+      properties:
+        page:
+          type: integer
+        limit:
+          type: integer
+        total:
+          type: integer
+        totalPages:
+          type: integer
+
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+        code:
+          type: string
+
+  responses:
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'

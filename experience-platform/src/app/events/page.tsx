@@ -2,6 +2,7 @@ import { createClient } from '@/lib/supabase/server'
 import { Button } from '@/components/ui/button'
 import { Calendar, MapPin, Ticket } from 'lucide-react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { format } from 'date-fns'
 
 export default async function EventsPage() {
@@ -61,10 +62,11 @@ export default async function EventsPage() {
                   <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg overflow-hidden hover:bg-white/10 transition-all hover:scale-105">
                     {event.hero_image_url && (
                       <div className="aspect-video bg-gradient-to-br from-purple-900 to-pink-900 relative overflow-hidden">
-                        <img
+                        <Image
                           src={event.hero_image_url}
                           alt={event.name}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                          fill
+                          className="object-cover group-hover:scale-110 transition-transform duration-300"
                         />
                         {event.status === 'sold_out' && (
                           <div className="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-semibold">

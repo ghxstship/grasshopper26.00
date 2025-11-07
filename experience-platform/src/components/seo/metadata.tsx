@@ -41,7 +41,7 @@ export function generateSEO({
         },
       ],
       locale: 'en_US',
-      type,
+      type: type === 'event' ? 'website' : type,
       ...(publishedTime && { publishedTime }),
       ...(modifiedTime && { modifiedTime }),
     },

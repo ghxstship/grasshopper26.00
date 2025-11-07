@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Search, Plus, Edit, Trash2, Music } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { toast } from 'sonner';
 
 interface Artist {
@@ -126,10 +127,11 @@ export default function AdminArtistsPage() {
                 <CardContent className="p-6">
                   <div className="aspect-square rounded-lg overflow-hidden mb-4 bg-gradient-to-br from-purple-900 to-pink-900">
                     {artist.profile_image_url ? (
-                      <img
+                      <Image
                         src={artist.profile_image_url}
                         alt={artist.name}
-                        className="w-full h-full object-cover"
+                        fill
+                        className="object-cover"
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center">

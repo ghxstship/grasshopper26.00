@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { DollarSign, ShoppingCart, Ticket, Calendar, TrendingUp, Users } from 'lucide-react';
@@ -27,11 +27,7 @@ export default function AnalyticsPage() {
   const [loading, setLoading] = useState(true);
   const [period, setPeriod] = useState('30d');
 
-  useEffect(() => {
-    fetchAnalytics();
-  }, [period]);
-
-  async function fetchAnalytics() {
+  const fetchAnalytics = useCallback(async () => {
     setLoading(true);
     try {
       const response = await fetch(`/api/admin/analytics?period=${period}`);
@@ -42,7 +38,11 @@ export default function AnalyticsPage() {
     } finally {
       setLoading(false);
     }
-  }
+  }, [period]);
+
+  useEffect(() => {
+    fetchAnalytics();
+  }, [fetchAnalytics]);
 
   if (loading || !data) {
     return (

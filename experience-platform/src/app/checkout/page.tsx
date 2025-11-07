@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { useCart } from '@/lib/store/cart-store';
 import { Button } from '@/components/ui/button';
@@ -130,27 +130,7 @@ export default function CheckoutPage() {
   const [clientSecret, setClientSecret] = useState('');
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    checkAuth();
-  }, []);
-
-  async function checkAuth() {
-    const { data: { user } } = await supabase.auth.getUser();
-    
-    if (!user) {
-      router.push('/login?redirect=/checkout');
-      return;
-    }
-
-    if (items.length === 0) {
-      router.push('/cart');
-      return;
-    }
-
-    await createPaymentIntent();
-  }
-
-  async function createPaymentIntent() {
+  const createPaymentIntent = useCallback(async () => {
     try {
       const response = await fetch('/api/checkout/create-session', {
         method: 'POST',
@@ -165,7 +145,27 @@ export default function CheckoutPage() {
     } finally {
       setLoading(false);
     }
-  }
+  }, [items]);
+
+  const checkAuth = useCallback(async () => {
+    const { data: { user } } = await supabase.auth.getUser();
+    
+    if (!user) {
+      router.push('/login?redirect=/checkout');
+      return;
+    }
+
+    if (items.length === 0) {
+      router.push('/cart');
+      return;
+    }
+
+    await createPaymentIntent();
+  }, [router, supabase, items, createPaymentIntent]);
+
+  useEffect(() => {
+    checkAuth();
+  }, [checkAuth]);
 
   if (loading) {
     return (

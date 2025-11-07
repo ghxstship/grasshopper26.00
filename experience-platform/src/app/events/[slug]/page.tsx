@@ -7,8 +7,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { TicketSelector } from '@/components/features/ticket-selector';
 
-export default async function EventDetailPage({ params }: { params: { slug: string } }) {
+export default async function EventDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const supabase = await createServerClient();
+  const { slug } = await params;
 
   const { data: event } = await supabase
     .from('events')
@@ -28,7 +29,7 @@ export default async function EventDetailPage({ params }: { params: { slug: stri
       event_stages (*),
       ticket_types (*)
     `)
-    .eq('slug', params.slug)
+    .eq('slug', slug)
     .single();
 
   if (!event) {

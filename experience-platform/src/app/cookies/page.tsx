@@ -87,12 +87,12 @@ export default function CookiesPage() {
 
             <h3 className="text-xl font-semibold mt-6 mb-3">Cookie Consent Banner</h3>
             <p>
-              When you first visit our site, you'll see a cookie consent banner where you can choose which types of cookies to accept. You can change your preferences at any time by clicking the "Cookie Settings" link in the footer.
+              When you first visit our site, you&apos;ll see a cookie consent banner where you can choose which types of cookies to accept. You can change your preferences at any time by clicking the &quot;Cookie Settings&quot; link in the footer.
             </p>
 
             <h3 className="text-xl font-semibold mt-6 mb-3">Browser Settings</h3>
             <p>
-              Most browsers allow you to refuse or accept cookies through their settings. Here's how:
+              Most browsers allow you to refuse or accept cookies through their settings. Here&apos;s how:
             </p>
             <ul className="list-disc pl-6 space-y-2">
               <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Chrome</a></li>
@@ -116,7 +116,7 @@ export default function CookiesPage() {
             </p>
             <ul className="list-disc pl-6 space-y-2">
               <li>You may need to log in each time you visit</li>
-              <li>Your preferences won't be saved</li>
+              <li>Your preferences won&apos;t be saved</li>
               <li>Some interactive features may not work</li>
               <li>Your shopping cart may not persist between visits</li>
             </ul>

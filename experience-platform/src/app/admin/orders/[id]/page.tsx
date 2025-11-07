@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -9,18 +9,15 @@ import { Badge } from '@/components/ui/badge';
 import { ArrowLeft, Mail, RefreshCw, DollarSign } from 'lucide-react';
 import { toast } from 'sonner';
 
-export default function AdminOrderDetailPage({ params }: { params: { id: string } }) {
+export default function AdminOrderDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const router = useRouter();
   const supabase = createClient();
   const [order, setOrder] = useState<any>(null);
+  const [orderId, setOrderId] = useState<string>('');
   const [loading, setLoading] = useState(true);
   const [processing, setProcessing] = useState(false);
 
-  useEffect(() => {
-    fetchOrder();
-  }, [params.id]);
-
-  async function fetchOrder() {
+  const fetchOrder = useCallback(async (id: string) => {
     try {
       const { data, error } = await supabase
         .from('orders')
@@ -34,7 +31,7 @@ export default function AdminOrderDetailPage({ params }: { params: { id: string 
             ticket_types (name, price)
           )
         `)
-        .eq('id', params.id)
+        .eq('id', id)
         .single();
 
       if (error) throw error;
@@ -45,7 +42,16 @@ export default function AdminOrderDetailPage({ params }: { params: { id: string 
     } finally {
       setLoading(false);
     }
-  }
+  }, [supabase]);
+
+  useEffect(() => {
+    async function initAndFetch() {
+      const resolvedParams = await params;
+      setOrderId(resolvedParams.id);
+      fetchOrder(resolvedParams.id);
+    }
+    initAndFetch();
+  }, [params, fetchOrder]);
 
   async function handleRefund() {
     if (!confirm('Are you sure you want to refund this order?')) return;
@@ -56,7 +62,7 @@ export default function AdminOrderDetailPage({ params }: { params: { id: string 
       const { error: orderError } = await supabase
         .from('orders')
         .update({ status: 'refunded' })
-        .eq('id', params.id);
+        .eq('id', orderId);
 
       if (orderError) throw orderError;
 
@@ -64,12 +70,12 @@ export default function AdminOrderDetailPage({ params }: { params: { id: string 
       const { error: ticketsError } = await supabase
         .from('tickets')
         .update({ status: 'cancelled' })
-        .eq('order_id', params.id);
+        .eq('order_id', orderId);
 
       if (ticketsError) throw ticketsError;
 
       toast.success('Order refunded successfully');
-      fetchOrder();
+      fetchOrder(orderId);
     } catch (error) {
       console.error('Error refunding order:', error);
       toast.error('Failed to refund order');
@@ -84,7 +90,7 @@ export default function AdminOrderDetailPage({ params }: { params: { id: string 
       const response = await fetch('/api/orders/resend-confirmation', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ orderId: params.id }),
+        body: JSON.stringify({ orderId }),
       });
 
       if (!response.ok) throw new Error('Failed to resend');

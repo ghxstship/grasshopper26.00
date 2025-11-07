@@ -19,7 +19,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-2xl font-semibold mb-4">1. Acceptance of Terms</h2>
             <p>
-              By accessing and using Grasshopper ("the Service"), you accept and agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use the Service.
+              By accessing and using Grasshopper (&quot;the Service&quot;), you accept and agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use the Service.
             </p>
           </section>
 
@@ -80,7 +80,7 @@ export default function TermsPage() {
               <li>Transmit harmful code or malware</li>
               <li>Harass, abuse, or harm others</li>
               <li>Impersonate any person or entity</li>
-              <li>Interfere with the Service's operation</li>
+              <li>Interfere with the Service&apos;s operation</li>
               <li>Use automated systems to access the Service</li>
             </ul>
           </section>

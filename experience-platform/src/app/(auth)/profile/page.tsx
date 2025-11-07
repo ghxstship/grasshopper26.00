@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 import { Button } from '@/components/ui/button';
@@ -21,11 +21,7 @@ export default function ProfilePage() {
   const [displayName, setDisplayName] = useState('');
   const [bio, setBio] = useState('');
 
-  useEffect(() => {
-    checkUser();
-  }, []);
-
-  async function checkUser() {
+  const checkUser = useCallback(async () => {
     const { data: { user } } = await supabase.auth.getUser();
     
     if (!user) {
@@ -49,7 +45,11 @@ export default function ProfilePage() {
     }
 
     setLoading(false);
-  }
+  }, [router, supabase]);
+
+  useEffect(() => {
+    checkUser();
+  }, [checkUser]);
 
   async function handleUpdateProfile(e: React.FormEvent) {
     e.preventDefault();

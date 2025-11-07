@@ -20,8 +20,8 @@ export async function sendOrderConfirmationEmail(data: OrderEmailData) {
     const { error } = await resend.emails.send({
       from: 'Grasshopper <orders@grasshopper.com>',
       to: data.to || data.customerEmail,
-      subject: `Order Confirmation - ${data.orderNumber}`,
-      html: template,
+      subject: template.subject,
+      html: template.html,
     });
 
     if (error) {
@@ -41,7 +41,8 @@ interface TicketTransferEmailData {
   recipientEmail: string;
   senderName: string;
   eventName: string;
-  ticketType: string;
+  ticketCount: number;
+  transferCode: string;
 }
 
 export async function sendTicketTransferEmail(data: TicketTransferEmailData) {

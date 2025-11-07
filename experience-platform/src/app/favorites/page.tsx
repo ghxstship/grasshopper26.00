@@ -6,6 +6,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Heart, Music, Calendar } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { toast } from 'sonner';
 
 interface FavoriteArtist {
@@ -108,10 +109,11 @@ export default function FavoritesPage() {
                   <Link href={`/artists/${favorite.artists.slug}`}>
                     <div className="aspect-square rounded-lg overflow-hidden mb-4 bg-gradient-to-br from-purple-900 to-pink-900">
                       {favorite.artists.profile_image_url ? (
-                        <img
+                        <Image
                           src={favorite.artists.profile_image_url}
                           alt={favorite.artists.name}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                          fill
+                          className="object-cover group-hover:scale-110 transition-transform duration-300"
                         />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center">

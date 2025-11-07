@@ -1,10 +1,10 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { useSearchParams, useRouter } from 'next/navigation';
+import { useEffect, useState, useCallback } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { CheckCircle, Loader2, Mail, Ticket } from 'lucide-react';
+import { CheckCircle, Mail, Ticket, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 import { useCart } from '@/lib/store/cart-store';
 
@@ -15,17 +15,7 @@ export default function CheckoutSuccessPage() {
   const [loading, setLoading] = useState(true);
   const [orderDetails, setOrderDetails] = useState<any>(null);
 
-  useEffect(() => {
-    const sessionId = searchParams.get('payment_intent');
-    
-    if (sessionId) {
-      confirmPayment(sessionId);
-    } else {
-      router.push('/cart');
-    }
-  }, [searchParams]);
-
-  async function confirmPayment(paymentIntentId: string) {
+  const confirmPayment = useCallback(async (paymentIntentId: string) => {
     try {
       const response = await fetch('/api/checkout/confirm', {
         method: 'POST',
@@ -44,7 +34,16 @@ export default function CheckoutSuccessPage() {
     } finally {
       setLoading(false);
     }
-  }
+  }, [clearCart]);
+
+  useEffect(() => {
+    const sessionId = searchParams.get('session_id');
+    if (sessionId) {
+      confirmPayment(sessionId);
+    } else {
+      router.push('/cart');
+    }
+  }, [searchParams, confirmPayment, router]);
 
   if (loading) {
     return (
@@ -92,7 +91,7 @@ export default function CheckoutSuccessPage() {
                 <div>
                   <p className="text-white font-medium">Confirmation Email Sent</p>
                   <p className="text-sm text-gray-400">
-                    We've sent a confirmation email with your order details and tickets.
+                    We&apos;ve sent a confirmation email with your order details and tickets.
                   </p>
                 </div>
               </div>

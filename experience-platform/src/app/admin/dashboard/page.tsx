@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -22,35 +22,7 @@ export default function AdminDashboard() {
     ticketsSold: 0,
   });
 
-  useEffect(() => {
-    checkAuth();
-  }, []);
-
-  async function checkAuth() {
-    const { data: { user } } = await supabase.auth.getUser();
-    
-    if (!user) {
-      router.push('/login');
-      return;
-    }
-
-    // Check if user is admin
-    const { data: adminData } = await supabase
-      .from('brand_admins')
-      .select('role')
-      .eq('user_id', user.id)
-      .single();
-
-    if (!adminData) {
-      router.push('/');
-      return;
-    }
-
-    await loadStats();
-    setLoading(false);
-  }
-
-  async function loadStats() {
+  const loadStats = useCallback(async () => {
     // Load events
     const { count: totalEvents } = await supabase
       .from('events')
@@ -88,7 +60,35 @@ export default function AdminDashboard() {
       totalRevenue,
       ticketsSold: ticketsSold || 0,
     });
-  }
+  }, [supabase]);
+
+  const checkAuth = useCallback(async () => {
+    const { data: { user } } = await supabase.auth.getUser();
+    
+    if (!user) {
+      router.push('/login');
+      return;
+    }
+
+    // Check if user is admin
+    const { data: adminData } = await supabase
+      .from('brand_admins')
+      .select('role')
+      .eq('user_id', user.id)
+      .single();
+
+    if (!adminData) {
+      router.push('/');
+      return;
+    }
+
+    await loadStats();
+    setLoading(false);
+  }, [router, supabase, loadStats]);
+
+  useEffect(() => {
+    checkAuth();
+  }, [checkAuth]);
 
   if (loading) {
     return (

@@ -6,8 +6,9 @@ import { Calendar, Music, ExternalLink, Heart } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-export default async function ArtistDetailPage({ params }: { params: { slug: string } }) {
+export default async function ArtistDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const supabase = await createServerClient();
+  const { slug } = await params;
 
   const { data: artist } = await supabase
     .from('artists')
@@ -27,7 +28,7 @@ export default async function ArtistDetailPage({ params }: { params: { slug: str
         )
       )
     `)
-    .eq('slug', params.slug)
+    .eq('slug', slug)
     .single();
 
   if (!artist) {

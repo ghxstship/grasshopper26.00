@@ -4,10 +4,12 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Calendar, MapPin, Download, Mail, CheckCircle } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { TicketDisplay } from '@/components/features/ticket-display';
 
-export default async function OrderDetailPage({ params }: { params: { id: string } }) {
+export default async function OrderDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const supabase = await createClient();
+  const { id } = await params;
 
   // Get current user
   const { data: { user } } = await supabase.auth.getUser();
@@ -45,7 +47,7 @@ export default async function OrderDetailPage({ params }: { params: { id: string
         )
       )
     `)
-    .eq('id', params.id)
+    .eq('id', id)
     .eq('user_id', user.id)
     .single();
 
@@ -116,11 +118,12 @@ export default async function OrderDetailPage({ params }: { params: { id: string
             <CardContent>
               <div className="flex gap-4">
                 {order.events.hero_image_url && (
-                  <div className="w-32 h-32 rounded-lg overflow-hidden flex-shrink-0">
-                    <img
+                  <div className="w-32 h-32 rounded-lg overflow-hidden flex-shrink-0 relative">
+                    <Image
                       src={order.events.hero_image_url}
                       alt={order.events.name}
-                      className="w-full h-full object-cover"
+                      fill
+                      className="object-cover"
                     />
                   </div>
                 )}
@@ -180,13 +183,19 @@ export default async function OrderDetailPage({ params }: { params: { id: string
                   key={ticket.id}
                   ticket={{
                     id: ticket.id,
-                    qrCode: ticket.qr_code,
-                    ticketType: ticket.ticket_types?.name || 'General Admission',
-                    eventName: order.events?.name || 'Event',
-                    eventDate: order.events?.start_date || new Date().toISOString(),
-                    venue: order.events?.venue_name || 'TBA',
-                    attendeeName: ticket.attendee_name || user.user_metadata?.name || 'Guest',
-                    status: ticket.status,
+                    qr_code: ticket.qr_code,
+                    ticket_types: {
+                      name: ticket.ticket_types?.name || 'General Admission',
+                      price: ticket.ticket_types?.price || '0',
+                    },
+                    orders: {
+                      events: {
+                        name: order.events?.name || 'Event',
+                        start_date: order.events?.start_date || new Date().toISOString(),
+                        venue_name: order.events?.venue_name || 'TBA',
+                        hero_image_url: order.events?.hero_image_url,
+                      },
+                    },
                   }}
                 />
               ))}

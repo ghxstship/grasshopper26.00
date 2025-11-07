@@ -3,6 +3,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Calendar, MapPin, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { redirect } from 'next/navigation';
 
 export default async function OrdersPage() {
@@ -77,11 +78,12 @@ export default async function OrdersPage() {
                     <CardContent className="p-6">
                       <div className="flex gap-4">
                         {order.events?.hero_image_url && (
-                          <div className="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0">
-                            <img
+                          <div className="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0 relative">
+                            <Image
                               src={order.events.hero_image_url}
                               alt={order.events.name}
-                              className="w-full h-full object-cover"
+                              fill
+                              className="object-cover"
                             />
                           </div>
                         )}

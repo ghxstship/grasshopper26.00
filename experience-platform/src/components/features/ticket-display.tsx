@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Download, Share2, Wallet } from 'lucide-react';
@@ -29,14 +29,18 @@ interface TicketDisplayProps {
 export function TicketDisplay({ ticket }: TicketDisplayProps) {
   const [qrCodeImage, setQrCodeImage] = useState<string>('');
 
-  useEffect(() => {
-    generateQR();
+  const generateQR = useCallback(async () => {
+    try {
+      const qr = await generateTicketQRCode(ticket.id);
+      setQrCodeImage(qr);
+    } catch (error) {
+      console.error('Error generating QR code:', error);
+    }
   }, [ticket.id]);
 
-  async function generateQR() {
-    const qr = await generateTicketQRCode(ticket.id);
-    setQrCodeImage(qr);
-  }
+  useEffect(() => {
+    generateQR();
+  }, [generateQR]);
 
   const handleDownload = () => {
     // TODO: Generate and download PDF
@@ -93,7 +97,13 @@ export function TicketDisplay({ ticket }: TicketDisplayProps) {
 
         {qrCodeImage && (
           <div className="flex justify-center bg-white p-4 rounded-lg">
-            <img src={qrCodeImage} alt="Ticket QR Code" className="w-48 h-48" />
+            <Image 
+              src={qrCodeImage} 
+              alt="Ticket QR Code"
+              width={200}
+              height={200}
+              className="w-full h-full"
+            />
           </div>
         )}
 

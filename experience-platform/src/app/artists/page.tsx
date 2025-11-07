@@ -2,6 +2,7 @@ import { createClient } from '@/lib/supabase/server'
 import { Button } from '@/components/ui/button'
 import { Music, ExternalLink } from 'lucide-react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default async function ArtistsPage() {
   const supabase = await createClient()
@@ -60,10 +61,11 @@ export default async function ArtistsPage() {
                   <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg overflow-hidden hover:bg-white/10 transition-all hover:scale-105">
                     <div className="aspect-square bg-gradient-to-br from-purple-900 to-pink-900 relative overflow-hidden">
                       {artist.profile_image_url ? (
-                        <img
+                        <Image
                           src={artist.profile_image_url}
                           alt={artist.name}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                          fill
+                          className="object-cover group-hover:scale-110 transition-transform duration-300"
                         />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center">
@@ -84,7 +86,7 @@ export default async function ArtistsPage() {
                       </h3>
                       {artist.genre_tags && artist.genre_tags.length > 0 && (
                         <div className="flex flex-wrap gap-1 mb-3">
-                          {artist.genre_tags.slice(0, 2).map((genre) => (
+                          {artist.genre_tags.slice(0, 2).map((genre: string) => (
                             <span
                               key={genre}
                               className="text-xs bg-purple-900/50 text-purple-300 px-2 py-1 rounded-full"

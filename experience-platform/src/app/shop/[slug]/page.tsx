@@ -7,8 +7,9 @@ import Image from 'next/image';
 import { ShoppingCart, Heart, Share2, Ruler } from 'lucide-react';
 import { AddToCartButton } from '@/components/features/add-to-cart-button';
 
-export default async function ProductDetailPage({ params }: { params: { slug: string } }) {
+export default async function ProductDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const supabase = await createClient();
+  const { slug } = await params;
 
   const { data: product, error } = await supabase
     .from('products')
@@ -16,7 +17,7 @@ export default async function ProductDetailPage({ params }: { params: { slug: st
       *,
       product_variants (*)
     `)
-    .eq('slug', params.slug)
+    .eq('slug', slug)
     .eq('status', 'active')
     .single();
 

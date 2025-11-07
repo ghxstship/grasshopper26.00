@@ -21,13 +21,13 @@ export async function generateTicketPDF(ticket: TicketData): Promise<Blob> {
   });
 
   // Set up colors
-  const primaryColor = [147, 51, 234]; // Purple
-  const secondaryColor = [236, 72, 153]; // Pink
-  const textColor = [255, 255, 255]; // White
-  const bgColor = [0, 0, 0]; // Black
+  const primaryColor: [number, number, number] = [147, 51, 234]; // Purple
+  const secondaryColor: [number, number, number] = [236, 72, 153]; // Pink
+  const textColor: [number, number, number] = [255, 255, 255]; // White
+  const bgColor: [number, number, number] = [0, 0, 0]; // Black
 
   // Background
-  doc.setFillColor(...bgColor);
+  doc.setFillColor(bgColor[0], bgColor[1], bgColor[2]);
   doc.rect(0, 0, 210, 297, 'F');
 
   // Header gradient effect (simulated with rectangles)
@@ -41,13 +41,13 @@ export async function generateTicketPDF(ticket: TicketData): Promise<Blob> {
   }
 
   // Logo/Brand
-  doc.setTextColor(...textColor);
+  doc.setTextColor(textColor[0], textColor[1], textColor[2]);
   doc.setFontSize(32);
   doc.setFont('helvetica', 'bold');
   doc.text('GRASSHOPPER', 105, 25, { align: 'center' });
 
   // Ticket Type Badge
-  doc.setFillColor(...primaryColor);
+  doc.setFillColor(primaryColor[0], primaryColor[1], primaryColor[2]);
   doc.roundedRect(15, 60, 180, 15, 3, 3, 'F');
   doc.setFontSize(14);
   doc.setFont('helvetica', 'bold');
@@ -161,13 +161,13 @@ export async function generateMultipleTicketsPDF(tickets: TicketData[]): Promise
     const ticket = tickets[i];
 
     // Set up colors
-    const primaryColor = [147, 51, 234];
-    const secondaryColor = [236, 72, 153];
-    const textColor = [255, 255, 255];
-    const bgColor = [0, 0, 0];
+    const primaryColor: [number, number, number] = [147, 51, 234];
+    const secondaryColor: [number, number, number] = [236, 72, 153];
+    const textColor: [number, number, number] = [255, 255, 255];
+    const bgColor: [number, number, number] = [0, 0, 0];
 
     // Background
-    doc.setFillColor(...bgColor);
+    doc.setFillColor(bgColor[0], bgColor[1], bgColor[2]);
     doc.rect(0, 0, 210, 297, 'F');
 
     // Header gradient
@@ -181,7 +181,7 @@ export async function generateMultipleTicketsPDF(tickets: TicketData[]): Promise
     }
 
     // Logo
-    doc.setTextColor(...textColor);
+    doc.setTextColor(textColor[0], textColor[1], textColor[2]);
     doc.setFontSize(32);
     doc.setFont('helvetica', 'bold');
     doc.text('GRASSHOPPER', 105, 25, { align: 'center' });
@@ -192,7 +192,7 @@ export async function generateMultipleTicketsPDF(tickets: TicketData[]): Promise
     doc.text(`Ticket ${i + 1} of ${tickets.length}`, 105, 35, { align: 'center' });
 
     // Ticket Type Badge
-    doc.setFillColor(...primaryColor);
+    doc.setFillColor(primaryColor[0], primaryColor[1], primaryColor[2]);
     doc.roundedRect(15, 60, 180, 15, 3, 3, 'F');
     doc.setFontSize(14);
     doc.setFont('helvetica', 'bold');
@@ -214,7 +214,7 @@ export async function generateMultipleTicketsPDF(tickets: TicketData[]): Promise
 
     doc.text('DATE & TIME', 25, 125);
     doc.setFont('helvetica', 'bold');
-    doc.setTextColor(...textColor);
+    doc.setTextColor(textColor[0], textColor[1], textColor[2]);
     const eventDate = new Date(ticket.eventDate);
     doc.text(
       eventDate.toLocaleDateString('en-US', {
@@ -231,7 +231,7 @@ export async function generateMultipleTicketsPDF(tickets: TicketData[]): Promise
     doc.setTextColor(200, 200, 200);
     doc.text('VENUE', 25, 155);
     doc.setFont('helvetica', 'bold');
-    doc.setTextColor(...textColor);
+    doc.setTextColor(textColor[0], textColor[1], textColor[2]);
     const venueLines = doc.splitTextToSize(ticket.venue, 160);
     doc.text(venueLines, 25, 163);
 
@@ -253,7 +253,7 @@ export async function generateMultipleTicketsPDF(tickets: TicketData[]): Promise
     doc.roundedRect(15, 270, 180, 15, 3, 3, 'F');
     doc.setFontSize(11);
     doc.setFont('helvetica', 'bold');
-    doc.setTextColor(...textColor);
+    doc.setTextColor(textColor[0], textColor[1], textColor[2]);
     doc.text(`ATTENDEE: ${ticket.attendeeName}`, 25, 279);
 
     // Footer

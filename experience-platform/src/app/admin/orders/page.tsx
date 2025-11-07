@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -29,11 +29,7 @@ export default function AdminOrdersPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
 
-  useEffect(() => {
-    fetchOrders();
-  }, [statusFilter]);
-
-  async function fetchOrders() {
+  const fetchOrders = useCallback(async () => {
     setLoading(true);
     try {
       let query = supabase
@@ -58,7 +54,11 @@ export default function AdminOrdersPage() {
     } finally {
       setLoading(false);
     }
-  }
+  }, [supabase, statusFilter]);
+
+  useEffect(() => {
+    fetchOrders();
+  }, [fetchOrders]);
 
   const filteredOrders = orders.filter(order => {
     const searchLower = searchTerm.toLowerCase();

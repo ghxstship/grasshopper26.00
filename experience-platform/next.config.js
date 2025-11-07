@@ -1,3 +1,5 @@
+const { withSentryConfig } = require('@sentry/nextjs');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -17,6 +19,19 @@ const nextConfig = {
       bodySizeLimit: '2mb',
     },
   },
+  // Sentry configuration
+  sentry: {
+    hideSourceMaps: true,
+    widenClientFileUpload: true,
+  },
 }
 
-module.exports = nextConfig
+// Sentry webpack plugin options
+const sentryWebpackPluginOptions = {
+  org: process.env.SENTRY_ORG,
+  project: process.env.SENTRY_PROJECT,
+  silent: true,
+  authToken: process.env.SENTRY_AUTH_TOKEN,
+};
+
+module.exports = withSentryConfig(nextConfig, sentryWebpackPluginOptions);

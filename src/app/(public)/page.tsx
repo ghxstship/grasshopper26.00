@@ -4,7 +4,7 @@ import Link from "next/link"
 
 export default function HomePage() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <>
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0" style={{ background: 'var(--gradient-hero)' }} />
@@ -76,47 +76,7 @@ export default function HomePage() {
           </Button>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="py-12 px-4" style={{ backgroundColor: 'var(--color-bg-primary)' }}>
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <h3 className="font-bold text-lg mb-4">GVTEWAY</h3>
-              <p className="text-sm" style={{ color: 'var(--color-text-tertiary)' }}>
-                World-class entertainment experiences
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Discover</h4>
-              <ul className="space-y-2 text-sm text-gray-400">
-                <li><Link href="/events" className="hover:text-white" style={{ color: 'var(--color-text-tertiary)' }}>Events</Link></li>
-                <li><Link href="/artists" className="hover:text-white" style={{ color: 'var(--color-text-tertiary)' }}>Artists</Link></li>
-                <li><Link href="/shop" className="hover:text-white" style={{ color: 'var(--color-text-tertiary)' }}>Shop</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Company</h4>
-              <ul className="space-y-2 text-sm text-gray-400">
-                <li><Link href="/about" className="hover:text-white" style={{ color: 'var(--color-text-tertiary)' }}>About</Link></li>
-                <li><Link href="/contact" className="hover:text-white" style={{ color: 'var(--color-text-tertiary)' }}>Contact</Link></li>
-                <li><Link href="/careers" className="hover:text-white" style={{ color: 'var(--color-text-tertiary)' }}>Careers</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Legal</h4>
-              <ul className="space-y-2 text-sm text-gray-400">
-                <li><Link href="/privacy" className="hover:text-white" style={{ color: 'var(--color-text-tertiary)' }}>Privacy</Link></li>
-                <li><Link href="/terms" className="hover:text-white" style={{ color: 'var(--color-text-tertiary)' }}>Terms</Link></li>
-              </ul>
-            </div>
-          </div>
-          <div className="pt-8 text-center text-sm" style={{ borderTop: '1px solid var(--color-border-default)', color: 'var(--color-text-tertiary)' }}>
-            <p>&copy; 2025 GVTEWAY. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
-    </div>
+    </>
   )
 }
 

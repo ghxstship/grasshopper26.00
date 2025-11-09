@@ -75,7 +75,7 @@ export default function RefundOrderPage({ params }: { params: Promise<{ id: stri
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-black via-purple-950 to-black flex items-center justify-center">
+      <div className="min-h-screen  flex items-center justify-center" style={{ background: 'var(--gradient-hero)' }}>
         <Loader2 className="h-12 w-12 animate-spin text-purple-500" />
       </div>
     );
@@ -83,7 +83,7 @@ export default function RefundOrderPage({ params }: { params: Promise<{ id: stri
 
   if (!order) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-black via-purple-950 to-black flex items-center justify-center">
+      <div className="min-h-screen  flex items-center justify-center" style={{ background: 'var(--gradient-hero)' }}>
         <p className="text-white">Order not found</p>
       </div>
     );
@@ -92,7 +92,7 @@ export default function RefundOrderPage({ params }: { params: Promise<{ id: stri
   const maxRefund = parseFloat(order.total_amount);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-purple-950 to-black py-12 px-4">
+    <div className="min-h-screen  py-12 px-4" style={{ background: 'var(--gradient-hero)' }}>
       <div className="max-w-2xl mx-auto">
         <div className="mb-8">
           <Link
@@ -102,7 +102,7 @@ export default function RefundOrderPage({ params }: { params: Promise<{ id: stri
             <ArrowLeft className="h-4 w-4" />
             Back to Order
           </Link>
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+          <h1 className="text-3xl font-bold  bg-clip-text text-transparent" style={{ backgroundImage: 'var(--gradient-brand-primary)' }}>
             Process Refund
           </h1>
         </div>

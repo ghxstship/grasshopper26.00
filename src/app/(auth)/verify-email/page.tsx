@@ -65,7 +65,7 @@ export default function VerifyEmailPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-purple-950 to-black flex items-center justify-center px-4">
+    <div className="min-h-screen  flex items-center justify-center px-4" style={{ background: 'var(--gradient-hero)' }}>
       <div className="max-w-md w-full bg-black/40 backdrop-blur-lg border-2 border-purple-500/20 rounded-lg p-8">
         {status === 'verifying' && (
           <div className="text-center">
@@ -82,7 +82,7 @@ export default function VerifyEmailPage() {
             <p className="text-gray-400 mb-6">{message}</p>
             <Button
               asChild
-              className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+              className="w-full " style={{ background: 'var(--gradient-brand-primary)' }}
             >
               <Link href="/login">Continue to Login</Link>
             </Button>
@@ -96,7 +96,7 @@ export default function VerifyEmailPage() {
             <p className="text-gray-400 mb-6">{message}</p>
             <Button
               onClick={() => setStatus('resend')}
-              className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+              className="w-full " style={{ background: 'var(--gradient-brand-primary)' }}
             >
               Resend Verification Email
             </Button>
@@ -126,7 +126,7 @@ export default function VerifyEmailPage() {
               </div>
               <Button
                 onClick={handleResendVerification}
-                className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+                className="w-full " style={{ background: 'var(--gradient-brand-primary)' }}
               >
                 Send Verification Email
               </Button>

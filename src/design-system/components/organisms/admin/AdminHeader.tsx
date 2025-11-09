@@ -2,7 +2,7 @@
 
 import { User } from '@supabase/supabase-js';
 import { Bell, Search, LogOut, User as UserIcon } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/design-system/components/atoms/button';
 import styles from './AdminHeader.module.css';
 import {
   DropdownMenu,
@@ -11,8 +11,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-import { Input } from '@/components/ui/input';
+} from '@/design-system/components/atoms/dropdown-menu';
+import { Input } from '@/design-system/components/atoms/input';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 

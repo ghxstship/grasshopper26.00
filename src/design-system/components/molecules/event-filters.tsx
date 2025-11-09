@@ -1,10 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+import { Button } from '@/design-system/components/atoms/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/card';
+import { Input } from '@/design-system/components/atoms/input';
+import { Label } from '@/design-system/components/atoms/label';
 import { Calendar, DollarSign, MapPin, Filter, X } from 'lucide-react';
 import styles from './event-filters.module.css';
 

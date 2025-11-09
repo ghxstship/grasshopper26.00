@@ -3,10 +3,14 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Pause, SkipForward, SkipBack, Volume2, VolumeX, ExternalLink } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Slider } from '@/components/ui/slider';
-import { Card } from '@/components/ui/card';
+import { Button } from '@/design-system/components/atoms/button';
+import { Slider } from '@/design-system/components/atoms/slider';
+import { Card } from '@/design-system/components/atoms/card';
 import Image from 'next/image';
+
+// Constants
+const DEFAULT_VOLUME = 0.7;
+const SECONDS_PER_MINUTE = 60;
 
 interface Track {
   id: string;
@@ -37,7 +41,7 @@ export function MusicPlayer({ tracks, artistName, autoPlay = false, className }:
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
-  const [volume, setVolume] = useState(0.7);
+  const [volume, setVolume] = useState(DEFAULT_VOLUME);
   const [isMuted, setIsMuted] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
@@ -114,8 +118,8 @@ export function MusicPlayer({ tracks, artistName, autoPlay = false, className }:
   };
 
   const formatTime = (seconds: number) => {
-    const mins = Math.floor(seconds / 60);
-    const secs = Math.floor(seconds % 60);
+    const mins = Math.floor(seconds / SECONDS_PER_MINUTE);
+    const secs = Math.floor(seconds % SECONDS_PER_MINUTE);
     return `${mins}:${secs.toString().padStart(2, '0')}`;
   };
 

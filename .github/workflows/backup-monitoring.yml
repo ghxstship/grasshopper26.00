@@ -1,0 +1,337 @@
+name: Backup Monitoring
+
+on:
+  schedule:
+    - cron: '0 */12 * * *'  # Run every 12 hours
+  workflow_dispatch: {}
+
+jobs:
+  monitor:
+    name: Monitor Backup Health
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          
+      - name: Install dependencies
+        run: |
+          npm install --no-save \
+            @supabase/supabase-js \
+            @aws-sdk/client-s3 \
+            @aws-sdk/client-cloudwatch
+          
+      - name: Run backup health check
+        id: health_check
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: us-east-1
+          S3_BUCKET: ${{ secrets.S3_BACKUP_BUCKET || 'gvteway-db-backups' }}
+        run: |
+          node << 'EOF'
+          const { S3Client, ListObjectsV2Command } = require('@aws-sdk/client-s3');
+          const { CloudWatchClient, PutMetricDataCommand } = require('@aws-sdk/client-cloudwatch');
+          
+          const s3Client = new S3Client({ region: process.env.AWS_REGION });
+          const cwClient = new CloudWatchClient({ region: process.env.AWS_REGION });
+          
+          async function checkBackupHealth() {
+            const results = {
+              lastBackupTime: null,
+              backupCount: 0,
+              totalSize: 0,
+              oldestBackup: null,
+              status: 'unknown',
+              message: ''
+            };
+            
+            try {
+              // List recent backups from S3
+              const command = new ListObjectsV2Command({
+                Bucket: process.env.S3_BUCKET,
+                Prefix: 'backups/',
+                MaxKeys: 1000
+              });
+              
+              const response = await s3Client.send(command);
+              
+              if (response.Contents && response.Contents.length > 0) {
+                results.backupCount = response.Contents.length;
+                
+                // Sort by last modified
+                const sorted = response.Contents.sort((a, b) => 
+                  (b.LastModified?.getTime() || 0) - (a.LastModified?.getTime() || 0)
+                );
+                
+                results.lastBackupTime = sorted[0].LastModified;
+                results.oldestBackup = sorted[sorted.length - 1].LastModified;
+                
+                // Calculate total size
+                results.totalSize = response.Contents.reduce((sum, obj) => 
+                  sum + (obj.Size || 0), 0
+                );
+                
+                // Determine health status
+                const hoursSinceLastBackup = results.lastBackupTime 
+                  ? (Date.now() - results.lastBackupTime.getTime()) / (1000 * 60 * 60)
+                  : Infinity;
+                
+                if (hoursSinceLastBackup < 6) {
+                  results.status = 'healthy';
+                  results.message = `✅ Backup system is healthy. Last backup: ${results.lastBackupTime.toISOString()}`;
+                } else if (hoursSinceLastBackup < 24) {
+                  results.status = 'warning';
+                  results.message = `⚠️ No backup in ${Math.round(hoursSinceLastBackup)} hours. Last backup: ${results.lastBackupTime.toISOString()}`;
+                } else {
+                  results.status = 'critical';
+                  results.message = `🚨 CRITICAL: No backup in ${Math.round(hoursSinceLastBackup)} hours! Last backup: ${results.lastBackupTime.toISOString()}`;
+                }
+              } else {
+                results.status = 'critical';
+                results.message = '🚨 CRITICAL: No backups found in S3 bucket!';
+              }
+              
+              // Send metrics to CloudWatch
+              await cwClient.send(new PutMetricDataCommand({
+                Namespace: 'GVTEWAY/Backups',
+                MetricData: [
+                  {
+                    MetricName: 'BackupCount',
+                    Value: results.backupCount,
+                    Unit: 'Count',
+                    Timestamp: new Date()
+                  },
+                  {
+                    MetricName: 'TotalBackupSize',
+                    Value: results.totalSize,
+                    Unit: 'Bytes',
+                    Timestamp: new Date()
+                  },
+                  {
+                    MetricName: 'HoursSinceLastBackup',
+                    Value: results.lastBackupTime 
+                      ? (Date.now() - results.lastBackupTime.getTime()) / (1000 * 60 * 60)
+                      : 999,
+                    Unit: 'None',
+                    Timestamp: new Date()
+                  }
+                ]
+              }));
+              
+              return results;
+            } catch (error) {
+              console.error('Error checking backup health:', error);
+              results.status = 'critical';
+              results.message = `🚨 Error checking backups: ${error.message}`;
+              return results;
+            }
+          }
+          
+          async function main() {
+            console.log('🔍 Checking backup health...\n');
+            
+            const health = await checkBackupHealth();
+            
+            console.log('📊 Backup Health Report:');
+            console.log(`   Status: ${health.status.toUpperCase()}`);
+            console.log(`   Last Backup: ${health.lastBackupTime?.toISOString() || 'Never'}`);
+            console.log(`   Total Backups: ${health.backupCount}`);
+            console.log(`   Total Size: ${(health.totalSize / 1024 / 1024 / 1024).toFixed(2)} GB`);
+            console.log(`   Oldest Backup: ${health.oldestBackup?.toISOString() || 'N/A'}`);
+            console.log(`\n${health.message}\n`);
+            
+            // Set outputs for GitHub Actions
+            const fs = require('fs');
+            const outputFile = process.env.GITHUB_OUTPUT;
+            if (outputFile) {
+              fs.appendFileSync(outputFile, `status=${health.status}\n`);
+              fs.appendFileSync(outputFile, `message=${health.message}\n`);
+              fs.appendFileSync(outputFile, `backup_count=${health.backupCount}\n`);
+              fs.appendFileSync(outputFile, `total_size_gb=${(health.totalSize / 1024 / 1024 / 1024).toFixed(2)}\n`);
+            }
+            
+            // Exit with error if critical
+            if (health.status === 'critical') {
+              process.exit(1);
+            }
+          }
+          
+          main().catch(error => {
+            console.error('Fatal error:', error);
+            process.exit(1);
+          });
+          EOF
+          
+      - name: Create summary
+        if: always()
+        run: |
+          echo "## 📊 Backup Health Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Status:** ${{ steps.health_check.outputs.status }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Total Backups:** ${{ steps.health_check.outputs.backup_count }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Total Size:** ${{ steps.health_check.outputs.total_size_gb }} GB" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "${{ steps.health_check.outputs.message }}" >> $GITHUB_STEP_SUMMARY
+          
+      - name: Notify on critical status
+        if: failure()
+        uses: 8398a7/action-slack@v3
+        with:
+          status: custom
+          custom_payload: |
+            {
+              "text": "🚨 Database Backup Health Check Failed",
+              "attachments": [{
+                "color": "danger",
+                "fields": [
+                  {
+                    "title": "Status",
+                    "value": "${{ steps.health_check.outputs.status }}",
+                    "short": true
+                  },
+                  {
+                    "title": "Backup Count",
+                    "value": "${{ steps.health_check.outputs.backup_count }}",
+                    "short": true
+                  },
+                  {
+                    "title": "Message",
+                    "value": "${{ steps.health_check.outputs.message }}",
+                    "short": false
+                  },
+                  {
+                    "title": "Workflow",
+                    "value": "${{ github.workflow }}",
+                    "short": true
+                  },
+                  {
+                    "title": "Run Number",
+                    "value": "${{ github.run_number }}",
+                    "short": true
+                  }
+                ],
+                "footer": "GVTEWAY Backup Monitoring",
+                "footer_icon": "https://github.com/favicon.ico",
+                "ts": ${{ github.event.head_commit.timestamp }}
+              }]
+            }
+          webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          
+      - name: Notify on warning status
+        if: steps.health_check.outputs.status == 'warning'
+        uses: 8398a7/action-slack@v3
+        with:
+          status: custom
+          custom_payload: |
+            {
+              "text": "⚠️ Database Backup Health Warning",
+              "attachments": [{
+                "color": "warning",
+                "fields": [
+                  {
+                    "title": "Status",
+                    "value": "${{ steps.health_check.outputs.status }}",
+                    "short": true
+                  },
+                  {
+                    "title": "Backup Count",
+                    "value": "${{ steps.health_check.outputs.backup_count }}",
+                    "short": true
+                  },
+                  {
+                    "title": "Message",
+                    "value": "${{ steps.health_check.outputs.message }}",
+                    "short": false
+                  }
+                ],
+                "footer": "GVTEWAY Backup Monitoring"
+              }]
+            }
+          webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          
+      - name: Notify on healthy status
+        if: success() && steps.health_check.outputs.status == 'healthy'
+        uses: 8398a7/action-slack@v3
+        with:
+          status: custom
+          custom_payload: |
+            {
+              "text": "✅ Database Backup Health Check Passed",
+              "attachments": [{
+                "color": "good",
+                "fields": [
+                  {
+                    "title": "Status",
+                    "value": "Healthy",
+                    "short": true
+                  },
+                  {
+                    "title": "Backup Count",
+                    "value": "${{ steps.health_check.outputs.backup_count }}",
+                    "short": true
+                  },
+                  {
+                    "title": "Total Size",
+                    "value": "${{ steps.health_check.outputs.total_size_gb }} GB",
+                    "short": true
+                  }
+                ],
+                "footer": "GVTEWAY Backup Monitoring"
+              }]
+            }
+          webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+  database_metrics:
+    name: Check Database Metrics
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Check database size and health
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: |
+          # Install PostgreSQL client
+          sudo apt-get update
+          sudo apt-get install -y postgresql-client
+          
+          # Query database metrics
+          echo "📊 Database Metrics:" > metrics.txt
+          echo "" >> metrics.txt
+          
+          # Database size
+          psql "$DATABASE_URL" -t -c "SELECT pg_size_pretty(pg_database_size('postgres')) as database_size;" >> metrics.txt
+          
+          # Table count
+          echo "Tables:" >> metrics.txt
+          psql "$DATABASE_URL" -t -c "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = 'public';" >> metrics.txt
+          
+          # Index count
+          echo "Indexes:" >> metrics.txt
+          psql "$DATABASE_URL" -t -c "SELECT COUNT(*) FROM pg_indexes WHERE schemaname = 'public';" >> metrics.txt
+          
+          # Connection count
+          echo "Active Connections:" >> metrics.txt
+          psql "$DATABASE_URL" -t -c "SELECT COUNT(*) FROM pg_stat_activity WHERE state = 'active';" >> metrics.txt
+          
+          cat metrics.txt
+          
+      - name: Upload metrics
+        uses: actions/upload-artifact@v4
+        with:
+          name: database-metrics-${{ github.run_number }}
+          path: metrics.txt
+          retention-days: 30

@@ -2,6 +2,7 @@ import { redirect } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
 import AdminSidebar from '@/components/admin/AdminSidebar';
 import AdminHeader from '@/components/admin/AdminHeader';
+import { AdminBreadcrumbs } from '@/components/admin/AdminBreadcrumbs';
 
 export default async function AdminLayout({
   children,
@@ -40,6 +41,7 @@ export default async function AdminLayout({
 
         {/* Page content */}
         <main className="flex-1 overflow-y-auto p-6">
+          <AdminBreadcrumbs />
           {children}
         </main>
       </div>

@@ -10,14 +10,26 @@ export default defineConfig({
     globals: true,
     coverage: {
       provider: 'v8',
-      reporter: ['text', 'json', 'html'],
+      reporter: ['text', 'json', 'html', 'lcov'],
       exclude: [
         'node_modules/',
         'tests/',
         '**/*.config.{js,ts}',
         '**/*.d.ts',
+        '**/types/**',
+        '**/*.stories.{ts,tsx}',
+        '**/mocks/**',
       ],
+      thresholds: {
+        lines: 80,
+        functions: 80,
+        branches: 75,
+        statements: 80,
+      },
+      include: ['src/**/*.{ts,tsx}'],
     },
+    testTimeout: 10000,
+    hookTimeout: 10000,
   },
   resolve: {
     alias: {

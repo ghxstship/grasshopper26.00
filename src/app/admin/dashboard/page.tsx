@@ -92,18 +92,18 @@ export default function AdminDashboard() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-purple-950 to-black">
+      <div className="min-h-screen flex items-center justify-center " style={{ background: 'var(--gradient-hero)' }}>
         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-purple-500"></div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-purple-950 to-black py-8 px-4">
+    <div className="min-h-screen  py-8 px-4" style={{ background: 'var(--gradient-hero)' }}>
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+            <h1 className="text-3xl font-bold  bg-clip-text text-transparent" style={{ backgroundImage: 'var(--gradient-brand-primary)' }}>
               Admin Dashboard
             </h1>
             <p className="text-gray-400 mt-1">Manage your events, artists, and sales</p>
@@ -214,7 +214,7 @@ export default function AdminDashboard() {
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <CardTitle>Event Management</CardTitle>
-                  <Button className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700">
+                  <Button className="" style={{ background: 'var(--gradient-brand-primary)' }}>
                     Create Event
                   </Button>
                 </div>
@@ -230,7 +230,7 @@ export default function AdminDashboard() {
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <CardTitle>Artist Management</CardTitle>
-                  <Button className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700">
+                  <Button className="" style={{ background: 'var(--gradient-brand-primary)' }}>
                     Add Artist
                   </Button>
                 </div>

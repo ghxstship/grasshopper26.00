@@ -6,9 +6,9 @@ import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ZoomIn, ZoomOut, Maximize2, MapPin, Navigation } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+import { Button } from '@/design-system/components/atoms/button';
+import { Card } from '@/design-system/components/atoms/card';
+import { Badge } from '@/design-system/components/atoms/badge';
 import { primitiveColors } from '@/design-system/tokens/primitives/colors';
 
 interface VenueMapPOI {

@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button"
+import { Button } from "@/design-system/components/atoms/button"
 import { ArrowRight, Calendar, Music, ShoppingBag, Ticket } from "lucide-react"
 import Link from "next/link"
 
@@ -14,7 +14,7 @@ export default function HomePage() {
           <h1 className="text-6xl md:text-8xl font-bold mb-6 bg-clip-text text-transparent" style={{ backgroundImage: 'var(--gradient-brand-primary)' }}>
             Experience Live
           </h1>
-          <p className="text-xl md:text-2xl text-secondary-foreground mb-8 max-w-2xl mx-auto">
+          <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto" style={{ color: 'var(--color-text-secondary)' }}>
             World-class festivals, concerts, and events. All in one place.
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
@@ -31,7 +31,7 @@ export default function HomePage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-4 bg-black/50">
+      <section className="py-20 px-4" style={{ backgroundColor: 'var(--color-bg-overlay)' }}>
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
             Everything You Need
@@ -63,12 +63,12 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-purple-900 to-pink-900">
+      <section className="py-20 px-4" style={{ background: 'var(--gradient-brand-dark)' }}>
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Ready to Experience the Best?
           </h2>
-          <p className="text-xl text-gray-200 mb-8">
+          <p className="mb-8" style={{ color: 'var(--color-text-secondary)' }}>
             Join thousands of fans and never miss a moment
           </p>
           <Button size="lg" variant="secondary" className="text-lg" asChild>
@@ -78,40 +78,40 @@ export default function HomePage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-black py-12 px-4">
+      <footer className="py-12 px-4" style={{ backgroundColor: 'var(--color-bg-primary)' }}>
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
               <h3 className="font-bold text-lg mb-4">GVTEWAY</h3>
-              <p className="text-gray-400 text-sm">
+              <p className="text-sm" style={{ color: 'var(--color-text-tertiary)' }}>
                 World-class entertainment experiences
               </p>
             </div>
             <div>
               <h4 className="font-semibold mb-4">Discover</h4>
               <ul className="space-y-2 text-sm text-gray-400">
-                <li><Link href="/events" className="hover:text-white">Events</Link></li>
-                <li><Link href="/artists" className="hover:text-white">Artists</Link></li>
-                <li><Link href="/shop" className="hover:text-white">Shop</Link></li>
+                <li><Link href="/events" className="hover:text-white" style={{ color: 'var(--color-text-tertiary)' }}>Events</Link></li>
+                <li><Link href="/artists" className="hover:text-white" style={{ color: 'var(--color-text-tertiary)' }}>Artists</Link></li>
+                <li><Link href="/shop" className="hover:text-white" style={{ color: 'var(--color-text-tertiary)' }}>Shop</Link></li>
               </ul>
             </div>
             <div>
               <h4 className="font-semibold mb-4">Company</h4>
               <ul className="space-y-2 text-sm text-gray-400">
-                <li><Link href="/about" className="hover:text-white">About</Link></li>
-                <li><Link href="/contact" className="hover:text-white">Contact</Link></li>
-                <li><Link href="/careers" className="hover:text-white">Careers</Link></li>
+                <li><Link href="/about" className="hover:text-white" style={{ color: 'var(--color-text-tertiary)' }}>About</Link></li>
+                <li><Link href="/contact" className="hover:text-white" style={{ color: 'var(--color-text-tertiary)' }}>Contact</Link></li>
+                <li><Link href="/careers" className="hover:text-white" style={{ color: 'var(--color-text-tertiary)' }}>Careers</Link></li>
               </ul>
             </div>
             <div>
               <h4 className="font-semibold mb-4">Legal</h4>
               <ul className="space-y-2 text-sm text-gray-400">
-                <li><Link href="/privacy" className="hover:text-white">Privacy</Link></li>
-                <li><Link href="/terms" className="hover:text-white">Terms</Link></li>
+                <li><Link href="/privacy" className="hover:text-white" style={{ color: 'var(--color-text-tertiary)' }}>Privacy</Link></li>
+                <li><Link href="/terms" className="hover:text-white" style={{ color: 'var(--color-text-tertiary)' }}>Terms</Link></li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-gray-800 pt-8 text-center text-sm text-gray-400">
+          <div className="pt-8 text-center text-sm" style={{ borderTop: '1px solid var(--color-border-default)', color: 'var(--color-text-tertiary)' }}>
             <p>&copy; 2025 GVTEWAY. All rights reserved.</p>
           </div>
         </div>
@@ -122,10 +122,16 @@ export default function HomePage() {
 
 function FeatureCard({ icon, title, description }: { icon: React.ReactNode; title: string; description: string }) {
   return (
-    <div className="p-6 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all">
-      <div className="text-purple-400 mb-4">{icon}</div>
+    <div 
+      className="p-6 rounded-lg backdrop-blur-sm border transition-all"
+      style={{
+        backgroundColor: 'rgba(255, 255, 255, 0.05)',
+        borderColor: 'rgba(255, 255, 255, 0.1)'
+      }}
+    >
+      <div className="mb-4" style={{ color: 'var(--color-primary)' }}>{icon}</div>
       <h3 className="text-xl font-semibold mb-2">{title}</h3>
-      <p className="text-gray-400">{description}</p>
+      <p style={{ color: 'var(--color-text-tertiary)' }}>{description}</p>
     </div>
   )
 }

@@ -9,7 +9,7 @@
 
 import fs from 'fs';
 import path from 'path';
-import { globSync } from 'glob';
+import glob from 'glob';
 
 interface ValidationError {
   file: string;
@@ -119,7 +119,7 @@ function validateDirectory(dirPath: string): ValidationError[] {
   let allFiles: string[] = [];
   
   patterns.forEach(pattern => {
-    const files = globSync(pattern, {
+    const files = glob.sync(pattern, {
       cwd: dirPath,
       ignore: EXCLUDED_PATTERNS,
       absolute: true,

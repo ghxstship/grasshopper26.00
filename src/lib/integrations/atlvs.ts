@@ -1,12 +1,20 @@
 /**
  * ATLVS (Dragonfly26.00) Integration
  * 
- * This module provides integration with the ATLVS production management platform
- * for syncing events, resources, and business operations.
+ * This module provides comprehensive integration with the ATLVS production management platform
+ * for syncing events, resources, business operations, and real-time updates.
+ * 
+ * Features:
+ * - Bidirectional event sync
+ * - Resource availability management
+ * - Ticket sales analytics
+ * - Webhook handling for real-time updates
+ * - Artist and venue data synchronization
  */
 
 const ATLVS_API_URL = process.env.ATLVS_API_URL || 'http://localhost:3000/api'
 const ATLVS_API_KEY = process.env.ATLVS_API_KEY || ''
+const ATLVS_WEBHOOK_SECRET = process.env.ATLVS_WEBHOOK_SECRET || ''
 
 interface ATLVSEvent {
   id: string
@@ -15,6 +23,7 @@ interface ATLVSEvent {
   endDate?: string
   venue?: string
   status: string
+  atlvsId?: string
 }
 
 interface ATLVSResource {
@@ -22,6 +31,24 @@ interface ATLVSResource {
   type: 'staff' | 'equipment' | 'venue'
   name: string
   availability: boolean
+  metadata?: Record<string, any>
+}
+
+interface ATLVSArtist {
+  id: string
+  name: string
+  genre?: string
+  contactInfo?: {
+    email?: string
+    phone?: string
+  }
+}
+
+interface ATLVSWebhookPayload {
+  event: 'event.updated' | 'event.cancelled' | 'resource.updated' | 'artist.updated'
+  data: any
+  timestamp: string
+  signature: string
 }
 
 /**
@@ -140,5 +167,165 @@ export async function getATLVSAnalytics(eventId: string) {
   } catch (error) {
     console.error('Failed to fetch ATLVS analytics:', error)
     return null
+  }
+}
+
+/**
+ * Sync event FROM ATLVS to Grasshopper (bidirectional sync)
+ */
+export async function syncEventFromATLVS(atlvsEventId: string) {
+  try {
+    const response = await fetch(
+      `${ATLVS_API_URL}/production/events/${atlvsEventId}`,
+      {
+        headers: {
+          'Authorization': `Bearer ${ATLVS_API_KEY}`,
+        },
+      }
+    )
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch ATLVS event: ${response.statusText}`)
+    }
+
+    return await response.json()
+  } catch (error) {
+    console.error('Failed to sync event from ATLVS:', error)
+    throw error
+  }
+}
+
+/**
+ * Sync artist data with ATLVS
+ */
+export async function syncArtistToATLVS(artist: {
+  id: string
+  name: string
+  genre?: string
+  email?: string
+  phone?: string
+}) {
+  try {
+    const response = await fetch(`${ATLVS_API_URL}/production/artists`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${ATLVS_API_KEY}`,
+      },
+      body: JSON.stringify({
+        grasshopperId: artist.id,
+        name: artist.name,
+        genre: artist.genre,
+        contactInfo: {
+          email: artist.email,
+          phone: artist.phone,
+        },
+      }),
+    })
+
+    if (!response.ok) {
+      throw new Error(`Failed to sync artist to ATLVS: ${response.statusText}`)
+    }
+
+    return await response.json()
+  } catch (error) {
+    console.error('Failed to sync artist to ATLVS:', error)
+    throw error
+  }
+}
+
+/**
+ * Verify ATLVS webhook signature
+ * Note: This function should only be called in server-side contexts (API routes, server components)
+ */
+export async function verifyATLVSWebhook(payload: string, signature: string): Promise<boolean> {
+  if (!ATLVS_WEBHOOK_SECRET) {
+    console.warn('ATLVS_WEBHOOK_SECRET not configured')
+    return false
+  }
+
+  try {
+    // Use Web Crypto API for edge runtime compatibility
+    const encoder = new TextEncoder()
+    const key = await crypto.subtle.importKey(
+      'raw',
+      encoder.encode(ATLVS_WEBHOOK_SECRET),
+      { name: 'HMAC', hash: 'SHA-256' },
+      false,
+      ['sign']
+    )
+    
+    const signatureBuffer = await crypto.subtle.sign(
+      'HMAC',
+      key,
+      encoder.encode(payload)
+    )
+    
+    const expectedSignature = Array.from(new Uint8Array(signatureBuffer))
+      .map(b => b.toString(16).padStart(2, '0'))
+      .join('')
+    
+    return expectedSignature === signature
+  } catch (error) {
+    console.error('Webhook verification failed:', error)
+    return false
+  }
+}
+
+/**
+ * Handle incoming ATLVS webhook
+ */
+export async function handleATLVSWebhook(payload: ATLVSWebhookPayload) {
+  switch (payload.event) {
+    case 'event.updated':
+      // Sync updated event data from ATLVS
+      return await syncEventFromATLVS(payload.data.id)
+    
+    case 'event.cancelled':
+      // Handle event cancellation
+      return { action: 'cancel_event', eventId: payload.data.id }
+    
+    case 'resource.updated':
+      // Update resource availability
+      return { action: 'update_resource', resourceId: payload.data.id }
+    
+    case 'artist.updated':
+      // Sync artist data
+      return { action: 'update_artist', artistId: payload.data.id }
+    
+    default:
+      console.warn('Unknown ATLVS webhook event:', payload.event)
+      return null
+  }
+}
+
+/**
+ * Get ATLVS connection status
+ */
+export async function getATLVSStatus(): Promise<{
+  connected: boolean
+  version?: string
+  lastSync?: string
+}> {
+  try {
+    const response = await fetch(`${ATLVS_API_URL}/health`, {
+      headers: {
+        'Authorization': `Bearer ${ATLVS_API_KEY}`,
+      },
+    })
+
+    if (!response.ok) {
+      return { connected: false }
+    }
+
+    const data = await response.json()
+    return {
+      connected: true,
+      version: data.version,
+      lastSync: data.lastSync,
+    }
+  } catch (error) {
+    console.error('Failed to check ATLVS status:', error)
+    return { connected: false }
   }
 }

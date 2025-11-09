@@ -10,8 +10,8 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from '@/components/ui/alert-dialog';
-import { Button } from '@/components/ui/button';
+} from '@/design-system/components/atoms/alert-dialog';
+import { Button } from '@/design-system/components/atoms/button';
 import { AlertTriangle, Trash2, CheckCircle, Info } from 'lucide-react';
 
 interface ConfirmationDialogProps {

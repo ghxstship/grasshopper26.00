@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/design-system/components/atoms/button';
+import { Card, CardContent } from '@/design-system/components/atoms/card';
 import { Minus, Plus, Ticket } from 'lucide-react';
 import { useCart } from '@/lib/store/cart-store';
 import { toast } from 'sonner';

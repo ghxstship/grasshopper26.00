@@ -106,7 +106,7 @@ function CheckoutForm() {
       <Button
         type="submit"
         disabled={!stripe || loading}
-        className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+        className="w-full " style={{ background: 'var(--gradient-brand-primary)' }}
       >
         {loading ? (
           <>
@@ -171,7 +171,7 @@ export default function CheckoutPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-purple-950 to-black">
+      <div className="min-h-screen flex items-center justify-center " style={{ background: 'var(--gradient-hero)' }}>
         <Loader2 className="h-12 w-12 animate-spin text-purple-500" />
       </div>
     );
@@ -179,16 +179,16 @@ export default function CheckoutPage() {
 
   if (!clientSecret) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-purple-950 to-black">
+      <div className="min-h-screen flex items-center justify-center " style={{ background: 'var(--gradient-hero)' }}>
         <p className="text-white">Failed to initialize checkout. Please try again.</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-purple-950 to-black py-12 px-4">
+    <div className="min-h-screen  py-12 px-4" style={{ background: 'var(--gradient-hero)' }}>
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-8">
+        <h1 className="text-3xl font-bold  mb-8 bg-clip-text text-transparent" style={{ backgroundImage: 'var(--gradient-brand-primary)' }}>
           Checkout
         </h1>
 

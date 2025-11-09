@@ -1,8 +1,8 @@
 openapi: 3.0.3
 info:
-  title: Grasshopper API
+  title: GVTEWAY API
   description: |
-    White-label live entertainment experience platform API.
+    GVTEWAY - White-label live entertainment experience platform API.
     
     ## Authentication
     All authenticated endpoints require a valid JWT token in the Authorization header:
@@ -13,23 +13,29 @@ info:
     ## Rate Limiting
     - Authenticated: 1000 requests per hour
     - Unauthenticated: 100 requests per hour
+    - Write operations: 100 requests per hour
+    - Read operations: 500 requests per hour
     
     ## Webhooks
     The API supports webhooks for real-time event notifications.
     Configure webhook URLs in your brand settings.
     
-  version: 1.0.0
+    ## Batch Operations
+    Bulk endpoints support batch operations for improved efficiency.
+    Maximum batch size: 100 items per request.
+    
+  version: 2.0.0
   contact:
     name: API Support
-    email: api@grasshopper.com
+    email: support@gvteway.com
   license:
-    name: MIT
-    url: https://opensource.org/licenses/MIT
+    name: Proprietary
+    url: https://gvteway.com/terms
 
 servers:
-  - url: https://api.grasshopper.com/v1
+  - url: https://gvteway.com/api/v1
     description: Production server
-  - url: https://staging-api.grasshopper.com/v1
+  - url: https://staging.gvteway.com/api/v1
     description: Staging server
   - url: http://localhost:3000/api/v1
     description: Development server
@@ -53,6 +59,20 @@ tags:
     description: Push notifications
   - name: Admin
     description: Administrative operations
+  - name: Auth
+    description: Authentication and user management
+  - name: Checkout
+    description: Checkout and payment operations
+  - name: Memberships
+    description: Membership tier management
+  - name: Orders
+    description: Order management
+  - name: Analytics
+    description: Analytics and reporting
+  - name: Webhooks
+    description: Webhook integrations
+  - name: Batch
+    description: Bulk operations
 
 paths:
   /events:
@@ -340,6 +360,391 @@ paths:
                   success:
                     type: boolean
 
+  /artists:
+    get:
+      tags:
+        - Artists
+      summary: List all artists
+      description: Retrieve a paginated list of artists
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 20
+            maximum: 100
+        - name: search
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  artists:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Artist'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+
+  /artists/{artistId}:
+    get:
+      tags:
+        - Artists
+      summary: Get artist by ID
+      parameters:
+        - name: artistId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Artist'
+
+  /orders/{orderId}:
+    get:
+      tags:
+        - Orders
+      summary: Get order details
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: orderId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+
+  /orders/{orderId}/refund:
+    post:
+      tags:
+        - Orders
+      summary: Refund an order
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: orderId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reason:
+                  type: string
+                amount:
+                  type: number
+      responses:
+        '200':
+          description: Refund processed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  refund:
+                    type: object
+
+  /memberships/tiers:
+    get:
+      tags:
+        - Memberships
+      summary: List membership tiers
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tiers:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/MembershipTier'
+
+  /memberships/subscribe:
+    post:
+      tags:
+        - Memberships
+      summary: Subscribe to membership tier
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - tierId
+              properties:
+                tierId:
+                  type: string
+                  format: uuid
+                paymentMethodId:
+                  type: string
+      responses:
+        '201':
+          description: Subscription created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  subscription:
+                    type: object
+
+  /memberships/current:
+    get:
+      tags:
+        - Memberships
+      summary: Get current user membership
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Membership'
+
+  /checkout/create-session:
+    post:
+      tags:
+        - Checkout
+      summary: Create checkout session
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - items
+              properties:
+                items:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      ticketTypeId:
+                        type: string
+                        format: uuid
+                      quantity:
+                        type: integer
+      responses:
+        '201':
+          description: Session created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sessionId:
+                    type: string
+                  url:
+                    type: string
+
+  /admin/analytics:
+    get:
+      tags:
+        - Admin
+        - Analytics
+      summary: Get analytics dashboard data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: startDate
+          in: query
+          schema:
+            type: string
+            format: date
+        - name: endDate
+          in: query
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  revenue:
+                    type: number
+                  ticketsSold:
+                    type: integer
+                  events:
+                    type: integer
+
+  /batch/events:
+    post:
+      tags:
+        - Batch
+        - Events
+      summary: Bulk create or update events
+      description: Create or update multiple events in a single request (max 100)
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - operations
+              properties:
+                operations:
+                  type: array
+                  maxItems: 100
+                  items:
+                    type: object
+                    required:
+                      - action
+                      - data
+                    properties:
+                      action:
+                        type: string
+                        enum: [create, update, delete]
+                      id:
+                        type: string
+                        format: uuid
+                        description: Required for update/delete operations
+                      data:
+                        $ref: '#/components/schemas/EventCreate'
+      responses:
+        '200':
+          description: Batch operation completed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        status:
+                          type: string
+                          enum: [success, error]
+                        error:
+                          type: string
+                  summary:
+                    type: object
+                    properties:
+                      total:
+                        type: integer
+                      successful:
+                        type: integer
+                      failed:
+                        type: integer
+
+  /batch/tickets:
+    post:
+      tags:
+        - Batch
+        - Tickets
+      summary: Bulk ticket operations
+      description: Process multiple ticket operations in a single request (max 100)
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - operations
+              properties:
+                operations:
+                  type: array
+                  maxItems: 100
+                  items:
+                    type: object
+                    required:
+                      - action
+                      - ticketId
+                    properties:
+                      action:
+                        type: string
+                        enum: [validate, invalidate, transfer]
+                      ticketId:
+                        type: string
+                        format: uuid
+                      transferTo:
+                        type: string
+                        format: uuid
+                        description: Required for transfer action
+      responses:
+        '200':
+          description: Batch operation completed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        ticketId:
+                          type: string
+                        status:
+                          type: string
+                          enum: [success, error]
+                        error:
+                          type: string
+
 components:
   securitySchemes:
     bearerAuth:
@@ -494,6 +899,96 @@ components:
         totalPages:
           type: integer
 
+    Artist:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        bio:
+          type: string
+        profile_image_url:
+          type: string
+        genres:
+          type: array
+          items:
+            type: string
+        social_links:
+          type: object
+        created_at:
+          type: string
+          format: date-time
+
+    Order:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        user_id:
+          type: string
+          format: uuid
+        total_amount:
+          type: number
+        status:
+          type: string
+          enum: [pending, completed, refunded, cancelled]
+        items:
+          type: array
+          items:
+            type: object
+        created_at:
+          type: string
+          format: date-time
+
+    MembershipTier:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        description:
+          type: string
+        price:
+          type: number
+        interval:
+          type: string
+          enum: [monthly, yearly]
+        benefits:
+          type: array
+          items:
+            type: string
+        credits_per_month:
+          type: integer
+
+    Membership:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        user_id:
+          type: string
+          format: uuid
+        tier_id:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum: [active, cancelled, expired]
+        current_period_start:
+          type: string
+          format: date-time
+        current_period_end:
+          type: string
+          format: date-time
+        credits_remaining:
+          type: integer
+
     Error:
       type: object
       properties:
@@ -503,6 +998,33 @@ components:
           type: string
         code:
           type: string
+
+    BatchOperationResult:
+      type: object
+      properties:
+        success:
+          type: boolean
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              status:
+                type: string
+                enum: [success, error]
+              error:
+                type: string
+        summary:
+          type: object
+          properties:
+            total:
+              type: integer
+            successful:
+              type: integer
+            failed:
+              type: integer
 
   responses:
     Unauthorized:
@@ -519,6 +1041,12 @@ components:
             $ref: '#/components/schemas/Error'
     NotFound:
       description: Not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request
       content:
         application/json:
           schema:

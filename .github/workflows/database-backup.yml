@@ -1,0 +1,119 @@
+name: Database Backup
+
+on:
+  schedule:
+    # Run every 6 hours at :00
+    - cron: '0 */6 * * *'
+  workflow_dispatch:  # Allow manual trigger
+    inputs:
+      upload_to_s3:
+        description: 'Upload backup to S3'
+        required: false
+        default: 'true'
+        type: boolean
+
+jobs:
+  backup:
+    name: Backup Supabase Database
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Setup PostgreSQL Client
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y postgresql-client
+          
+      - name: Verify PostgreSQL Client
+        run: pg_dump --version
+        
+      - name: Create backup directory
+        run: mkdir -p backups/supabase
+        
+      - name: Run backup script
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          S3_BUCKET: ${{ secrets.S3_BACKUP_BUCKET || 'gvteway-db-backups' }}
+          BACKUP_DIR: ./backups/supabase
+        run: |
+          chmod +x ./scripts/backup-database.sh
+          ./scripts/backup-database.sh
+          
+      - name: Upload backup artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: database-backup-${{ github.run_number }}
+          path: backups/supabase/**/*.gz
+          retention-days: 7
+          
+      - name: Upload backup logs
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: backup-logs-${{ github.run_number }}
+          path: backups/supabase/backup.log
+          retention-days: 30
+          
+      - name: Notify on failure
+        if: failure()
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          text: |
+            🚨 Database Backup Failed
+            
+            Workflow: ${{ github.workflow }}
+            Run: ${{ github.run_number }}
+            Time: ${{ github.event.head_commit.timestamp }}
+            
+            Please check the logs immediately.
+          webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          
+      - name: Notify on success
+        if: success()
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          text: |
+            ✅ Database Backup Completed
+            
+            Workflow: ${{ github.workflow }}
+            Run: ${{ github.run_number }}
+            Time: ${{ github.event.head_commit.timestamp }}
+          webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+  verify:
+    name: Verify Backup Integrity
+    needs: backup
+    runs-on: ubuntu-latest
+    if: success()
+    
+    steps:
+      - name: Download backup artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: database-backup-${{ github.run_number }}
+          path: backups/
+          
+      - name: Verify backup files
+        run: |
+          echo "Verifying backup integrity..."
+          for file in backups/**/*.gz; do
+            if [ -f "$file" ]; then
+              echo "Checking: $file"
+              gzip -t "$file"
+              size=$(du -h "$file" | cut -f1)
+              echo "✓ Valid backup file: $file (Size: $size)"
+            fi
+          done
+          
+      - name: Report verification results
+        run: |
+          echo "Backup verification completed successfully"
+          echo "All backup files are valid and not corrupted"

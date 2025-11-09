@@ -5,10 +5,8 @@
 
 import { render } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import '@testing-library/jest-dom';
-import { Button } from '@/components/ui/button';
-import { Dialog } from '@/components/ui/dialog';
-import { Input } from '@/components/ui/input';
+import { Button } from '@/design-system/components/atoms/button';
+import { Input } from '@/design-system/components/atoms/input';
 
 expect.extend(toHaveNoViolations);
 

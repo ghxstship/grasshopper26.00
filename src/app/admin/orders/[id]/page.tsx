@@ -105,7 +105,7 @@ export default function AdminOrderDetailPage({ params }: { params: Promise<{ id:
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-black via-purple-950 to-black flex items-center justify-center">
+      <div className="min-h-screen  flex items-center justify-center" style={{ background: 'var(--gradient-hero)' }}>
         <RefreshCw className="h-8 w-8 animate-spin text-purple-400" />
       </div>
     );
@@ -113,7 +113,7 @@ export default function AdminOrderDetailPage({ params }: { params: Promise<{ id:
 
   if (!order) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-black via-purple-950 to-black flex items-center justify-center">
+      <div className="min-h-screen  flex items-center justify-center" style={{ background: 'var(--gradient-hero)' }}>
         <p className="text-white">Order not found</p>
       </div>
     );
@@ -127,7 +127,7 @@ export default function AdminOrderDetailPage({ params }: { params: Promise<{ id:
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-purple-950 to-black py-12 px-4">
+    <div className="min-h-screen  py-12 px-4" style={{ background: 'var(--gradient-hero)' }}>
       <div className="max-w-4xl mx-auto">
         <Button
           onClick={() => router.back()}

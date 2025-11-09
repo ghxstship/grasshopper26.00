@@ -65,21 +65,21 @@ export default function SchedulePage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-purple-950 to-black">
+      <div className="min-h-screen flex items-center justify-center " style={{ background: 'var(--gradient-hero)' }}>
         <Loader2 className="h-12 w-12 animate-spin text-purple-500" />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-purple-950 to-black py-12 px-4">
+    <div className="min-h-screen  py-12 px-4" style={{ background: 'var(--gradient-hero)' }}>
       <div className="max-w-4xl mx-auto">
         <div className="flex items-center justify-between mb-8">
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+          <h1 className="text-3xl font-bold  bg-clip-text text-transparent" style={{ backgroundImage: 'var(--gradient-brand-primary)' }}>
             My Schedule
           </h1>
           <Link href="/events">
-            <Button className="bg-gradient-to-r from-purple-600 to-pink-600">
+            <Button className="" style={{ background: 'var(--gradient-brand-primary)' }}>
               <Plus className="mr-2 h-4 w-4" />
               Add Events
             </Button>
@@ -95,7 +95,7 @@ export default function SchedulePage() {
                 Start building your schedule by adding events
               </p>
               <Link href="/events">
-                <Button className="bg-gradient-to-r from-purple-600 to-pink-600">
+                <Button className="" style={{ background: 'var(--gradient-brand-primary)' }}>
                   Browse Events
                 </Button>
               </Link>

@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader } from '@/design-system/components/atoms/card';
+import { Button } from '@/design-system/components/atoms/button';
 import { Download, Share2, Wallet } from 'lucide-react';
 import Image from 'next/image';
 import { generateTicketQRCode } from '@/lib/tickets/qr-generator';

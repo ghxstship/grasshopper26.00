@@ -1,0 +1,83 @@
+name: Health Monitoring
+
+on:
+  schedule:
+    # Run every 5 minutes
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+jobs:
+  health-check:
+    name: Monitor Application Health
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Production Health
+        id: prod-health
+        run: |
+          RESPONSE=$(curl -s https://gvteway.com/api/health)
+          echo "response=$RESPONSE" >> $GITHUB_OUTPUT
+          
+          STATUS=$(echo $RESPONSE | jq -r .status)
+          echo "status=$STATUS" >> $GITHUB_OUTPUT
+          
+          if [ "$STATUS" != "healthy" ]; then
+            echo "❌ Production health check failed: $STATUS"
+            exit 1
+          else
+            echo "✅ Production is healthy"
+          fi
+      
+      - name: Check Staging Health
+        id: staging-health
+        continue-on-error: true
+        run: |
+          RESPONSE=$(curl -s https://staging.gvteway.com/api/health)
+          STATUS=$(echo $RESPONSE | jq -r .status)
+          
+          if [ "$STATUS" != "healthy" ]; then
+            echo "⚠️ Staging health check failed: $STATUS"
+          else
+            echo "✅ Staging is healthy"
+          fi
+      
+      - name: Alert on Production Failure
+        if: failure()
+        uses: slackapi/slack-github-action@v1
+        with:
+          webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          payload: |
+            {
+              "text": "🚨 CRITICAL: Production health check failed!",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*Production Health Check Failed*\n\nStatus: ${{ steps.prod-health.outputs.status }}\nImmediate investigation required!\n\n<https://gvteway.com/api/health|View Health Status>"
+                  }
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "Response:\n```${{ steps.prod-health.outputs.response }}```"
+                  }
+                }
+              ]
+            }
+      
+      - name: Create PagerDuty incident
+        if: failure()
+        run: |
+          echo "Would trigger PagerDuty incident here"
+          # curl -X POST https://events.pagerduty.com/v2/enqueue \
+          #   -H 'Content-Type: application/json' \
+          #   -d '{
+          #     "routing_key": "${{ secrets.PAGERDUTY_KEY }}",
+          #     "event_action": "trigger",
+          #     "payload": {
+          #       "summary": "Production health check failed",
+          #       "severity": "critical",
+          #       "source": "GitHub Actions"
+          #     }
+          #   }'

@@ -10,7 +10,10 @@ import {
   Ticket, 
   BarChart3, 
   Settings,
-  Package
+  Package,
+  Layers,
+  FileText,
+  Boxes
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -21,7 +24,10 @@ const navigation = [
   { name: 'Products', href: '/admin/products', icon: Package },
   { name: 'Orders', href: '/admin/orders', icon: ShoppingBag },
   { name: 'Tickets', href: '/admin/tickets', icon: Ticket },
+  { name: 'Inventory', href: '/admin/inventory', icon: Boxes },
   { name: 'Analytics', href: '/admin/analytics', icon: BarChart3 },
+  { name: 'Reports', href: '/admin/reports', icon: FileText },
+  { name: 'Bulk Operations', href: '/admin/bulk-operations', icon: Layers },
   { name: 'Settings', href: '/admin/settings', icon: Settings },
 ];
 

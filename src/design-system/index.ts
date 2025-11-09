@@ -18,5 +18,9 @@ export * from './components/organisms';
 // Export design tokens
 export * from './tokens';
 
-// Export utilities
-export * from './utils';
+// Export components and utils explicitly to avoid duplicates
+export * from './components';
+export { 
+  getResponsiveValue, 
+  useMediaQuery
+} from './utils';

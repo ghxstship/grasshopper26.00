@@ -20,20 +20,20 @@ export default function CartPage() {
 
   if (items.length === 0) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-black via-purple-950 to-black py-12 px-4">
+      <div className="min-h-screen py-12 px-4" style={{ background: 'var(--gradient-hero)' }}>
         <div className="max-w-4xl mx-auto">
           <div className="text-center py-20">
-            <ShoppingBag className="h-24 w-24 mx-auto text-gray-600 mb-6" />
-            <h1 className="text-3xl font-bold text-white mb-4">Your cart is empty</h1>
-            <p className="text-gray-400 mb-8">Add some tickets or merchandise to get started!</p>
+            <ShoppingBag className="h-24 w-24 mx-auto mb-6" style={{ color: 'var(--color-text-disabled)' }} />
+            <h1 className="text-3xl font-bold mb-4" style={{ color: 'var(--color-text-inverse)' }}>Your cart is empty</h1>
+            <p className="mb-8" style={{ color: 'var(--color-text-tertiary)' }}>Add some tickets or merchandise to get started!</p>
             <div className="flex gap-4 justify-center">
               <Link href="/events">
-                <Button className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700">
+                <Button style={{ background: 'var(--gradient-brand-primary)' }}>
                   Browse Events
                 </Button>
               </Link>
               <Link href="/shop">
-                <Button variant="outline" className="border-purple-500/30 hover:bg-purple-500/10">
+                <Button variant="outline" style={{ borderColor: 'rgba(147,51,234,0.3)' }}>
                   Browse Shop
                 </Button>
               </Link>
@@ -45,16 +45,16 @@ export default function CartPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-purple-950 to-black py-12 px-4">
+    <div className="min-h-screen py-12 px-4" style={{ background: 'var(--gradient-hero)' }}>
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center justify-between mb-8">
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+          <h1 className="text-3xl font-bold bg-clip-text text-transparent" style={{ backgroundImage: 'var(--gradient-brand-primary)' }}>
             Shopping Cart
           </h1>
           <Button
             variant="outline"
             onClick={clearCart}
-            className="border-red-500/30 hover:bg-red-500/10 text-red-400"
+            style={{ borderColor: 'rgba(239,68,68,0.3)', color: 'var(--color-error)' }}
           >
             Clear Cart
           </Button>
@@ -64,7 +64,7 @@ export default function CartPage() {
           {/* Cart Items */}
           <div className="lg:col-span-2 space-y-4">
             {items.map((item) => (
-              <Card key={item.id} className="bg-black/40 backdrop-blur-lg border-purple-500/20">
+              <Card key={item.id} className="backdrop-blur-lg" style={{ backgroundColor: 'rgba(0,0,0,0.4)', borderColor: 'rgba(147,51,234,0.2)' }}>
                 <CardContent className="p-6">
                   <div className="flex gap-4">
                     {/* Item Image */}
@@ -83,9 +83,9 @@ export default function CartPage() {
                     <div className="flex-1">
                       <div className="flex items-start justify-between mb-2">
                         <div>
-                          <h3 className="font-semibold text-white">{item.name}</h3>
+                          <h3 className="font-semibold" style={{ color: 'var(--color-text-inverse)' }}>{item.name}</h3>
                           {item.eventName && (
-                            <p className="text-sm text-gray-400">{item.eventName}</p>
+                            <p className="text-sm" style={{ color: 'var(--color-text-tertiary)' }}>{item.eventName}</p>
                           )}
                           {item.variant && (
                             <p className="text-sm text-gray-400">
@@ -98,7 +98,7 @@ export default function CartPage() {
                           variant="ghost"
                           size="sm"
                           onClick={() => removeItem(item.id)}
-                          className="text-red-400 hover:text-red-300 hover:bg-red-500/10"
+                          style={{ color: 'var(--color-error)' }}
                         >
                           <Trash2 className="h-4 w-4" />
                         </Button>
@@ -115,7 +115,7 @@ export default function CartPage() {
                           >
                             <Minus className="h-3 w-3" />
                           </Button>
-                          <span className="text-white w-8 text-center">{item.quantity}</span>
+                          <span className="w-8 text-center" style={{ color: 'var(--color-text-inverse)' }}>{item.quantity}</span>
                           <Button
                             variant="outline"
                             size="sm"
@@ -128,7 +128,7 @@ export default function CartPage() {
 
                         {/* Price */}
                         <div className="text-right">
-                          <p className="text-lg font-bold text-white">
+                          <p className="text-lg font-bold" style={{ color: 'var(--color-text-inverse)' }}>
                             ${(item.price * item.quantity).toFixed(2)}
                           </p>
                           {item.quantity > 1 && (
@@ -147,7 +147,7 @@ export default function CartPage() {
 
           {/* Order Summary */}
           <div className="lg:col-span-1">
-            <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20 sticky top-4">
+            <Card className="backdrop-blur-lg sticky top-4" style={{ backgroundColor: 'rgba(0,0,0,0.4)', borderColor: 'rgba(147,51,234,0.2)' }}>
               <CardHeader>
                 <CardTitle>Order Summary</CardTitle>
               </CardHeader>
@@ -161,8 +161,8 @@ export default function CartPage() {
                     <span>Service Fee</span>
                     <span>${(getTotal() * 0.05).toFixed(2)}</span>
                   </div>
-                  <div className="border-t border-purple-500/20 pt-2">
-                    <div className="flex justify-between text-lg font-bold text-white">
+                  <div className="pt-2" style={{ borderTop: '1px solid rgba(147,51,234,0.2)' }}>
+                    <div className="flex justify-between text-lg font-bold" style={{ color: 'var(--color-text-inverse)' }}>
                       <span>Total</span>
                       <span>${(getTotal() * 1.05).toFixed(2)}</span>
                     </div>
@@ -171,13 +171,14 @@ export default function CartPage() {
 
                 <Button
                   onClick={handleCheckout}
-                  className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+                  className="w-full"
+                  style={{ background: 'var(--gradient-brand-primary)' }}
                 >
                   Proceed to Checkout
                 </Button>
 
                 <Link href="/events">
-                  <Button variant="outline" className="w-full border-purple-500/30 hover:bg-purple-500/10">
+                  <Button variant="outline" className="w-full" style={{ borderColor: 'rgba(147,51,234,0.3)' }}>
                     Continue Shopping
                   </Button>
                 </Link>

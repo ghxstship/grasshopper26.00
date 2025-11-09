@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { Button } from '@/design-system/components/atoms/button';
 import { Input } from '@/design-system/components/atoms/input';
 import { Label } from '@/design-system/components/atoms/label';
-import { Textarea } from '@/components/ui/textarea';
+import { Textarea } from '@/design-system/components/atoms/textarea';
 import {
   Select,
   SelectContent,

@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { Check, X } from 'lucide-react'
 import { MembershipTier } from '@/types/membership'
-import { Button } from '@/components/ui/button'
+import { Button } from '@/design-system/components/atoms/button'
 import { cn } from '@/lib/utils'
 
 interface TierComparisonProps {

@@ -2,8 +2,8 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
-import { Input } from '@/components/ui/input';
-import { Card } from '@/components/ui/card';
+import { Input } from '@/design-system/components/atoms/input';
+import { Card } from '@/design-system/components/atoms/card';
 import { Search, Calendar, Music, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';

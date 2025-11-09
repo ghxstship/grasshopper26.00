@@ -66,17 +66,17 @@ export default function FavoritesPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-black via-purple-950 to-black flex items-center justify-center">
+      <div className="min-h-screen  flex items-center justify-center" style={{ background: 'var(--gradient-hero)' }}>
         <p className="text-white">Loading...</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-purple-950 to-black py-12 px-4">
+    <div className="min-h-screen  py-12 px-4" style={{ background: 'var(--gradient-hero)' }}>
       <div className="max-w-7xl mx-auto">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-2">
+          <h1 className="text-4xl font-bold  mb-2 bg-clip-text text-transparent" style={{ backgroundImage: 'var(--gradient-brand-primary)' }}>
             My Favorite Artists
           </h1>
           <p className="text-gray-400">
@@ -94,7 +94,7 @@ export default function FavoritesPage() {
               </p>
               <Button
                 asChild
-                className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+                className="" style={{ background: 'var(--gradient-brand-primary)' }}
               >
                 <Link href="/artists">Browse Artists</Link>
               </Button>
@@ -142,7 +142,7 @@ export default function FavoritesPage() {
                     <div className="flex gap-2">
                       <Button
                         asChild
-                        className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+                        className="flex-1 " style={{ background: 'var(--gradient-brand-primary)' }}
                       >
                         <Link href={`/artists/${favorite.artists.slug}`}>
                           <Calendar className="h-4 w-4 mr-2" />

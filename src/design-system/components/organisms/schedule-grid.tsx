@@ -4,9 +4,9 @@ import { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { format, parseISO, isSameDay, addMinutes } from 'date-fns';
 import { Calendar, Clock, Filter, Download, Star } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Card } from '@/components/ui/card';
+import { Button } from '@/design-system/components/atoms/button';
+import { Badge } from '@/design-system/components/atoms/badge';
+import { Card } from '@/design-system/components/atoms/card';
 import styles from './schedule-grid.module.css';
 import {
   Select,
@@ -14,7 +14,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select';
+} from '@/design-system/components/atoms/select';
 
 interface Artist {
   id: string;

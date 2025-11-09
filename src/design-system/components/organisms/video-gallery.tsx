@@ -3,9 +3,9 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, X, ExternalLink, Calendar, Eye } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent } from '@/components/ui/dialog';
-import { Badge } from '@/components/ui/badge';
+import { Button } from '@/design-system/components/atoms/button';
+import { Dialog, DialogContent } from '@/design-system/components/atoms/dialog';
+import { Badge } from '@/design-system/components/atoms/badge';
 import Image from 'next/image';
 import { formatDistanceToNow } from 'date-fns';
 

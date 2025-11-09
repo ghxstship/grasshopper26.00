@@ -7,7 +7,7 @@
 
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useState, useTransition } from 'react';
-import { SearchIcon } from '@/components/ui/icons/geometric-icons';
+import { SearchIcon } from '@/design-system/components/atoms/icons/geometric-icons';
 
 const CATEGORIES = [
   'Apparel',

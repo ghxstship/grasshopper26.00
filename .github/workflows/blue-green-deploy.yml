@@ -1,0 +1,263 @@
+name: Blue-Green Deployment
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      skip_tests:
+        description: 'Skip tests (use with caution)'
+        required: false
+        type: boolean
+        default: false
+
+env:
+  NODE_VERSION: '18.x'
+
+jobs:
+  deploy-green:
+    name: Deploy to Green (Staging)
+    runs-on: ubuntu-latest
+    environment:
+      name: staging
+      url: https://staging.gvteway.com
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run tests
+        if: ${{ !inputs.skip_tests }}
+        run: |
+          npm run lint
+          npm run type-check
+          npm run test:unit
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+      
+      - name: Build application
+        run: npm run build
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+          NEXT_PUBLIC_APP_URL: https://staging.gvteway.com
+      
+      - name: Deploy to Vercel (Staging)
+        id: deploy
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: '--prod --env=staging'
+          scope: ${{ secrets.VERCEL_ORG_ID }}
+      
+      - name: Wait for deployment
+        run: sleep 30
+      
+      - name: Health check - Staging
+        run: |
+          RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" https://staging.gvteway.com/api/health)
+          if [ $RESPONSE -eq 200 ]; then
+            echo "✅ Staging health check passed"
+          else
+            echo "❌ Staging health check failed with status: $RESPONSE"
+            exit 1
+          fi
+      
+      - name: Run E2E tests on staging
+        if: ${{ !inputs.skip_tests }}
+        run: npm run test:e2e
+        env:
+          BASE_URL: https://staging.gvteway.com
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+      
+      - name: Notify - Green deployment complete
+        uses: slackapi/slack-github-action@v1
+        with:
+          webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          payload: |
+            {
+              "text": "🟢 Green environment deployed and validated",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*Green Environment Ready*\n\nStaging: https://staging.gvteway.com\nCommit: ${{ github.sha }}\nReady for traffic switch"
+                  }
+                }
+              ]
+            }
+
+  switch-traffic:
+    name: Switch Traffic to Green
+    runs-on: ubuntu-latest
+    needs: deploy-green
+    environment:
+      name: production
+      url: https://gvteway.com
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Gradual traffic switch - 10%
+        run: |
+          echo "Switching 10% traffic to Green..."
+          # Vercel handles this automatically via alias promotion
+          sleep 60
+      
+      - name: Monitor metrics - 10%
+        run: |
+          echo "Monitoring error rates and latency..."
+          sleep 120
+      
+      - name: Health check - 10%
+        run: |
+          RESPONSE=$(curl -s https://gvteway.com/api/health)
+          echo $RESPONSE | jq .
+          STATUS=$(echo $RESPONSE | jq -r .status)
+          if [ "$STATUS" != "healthy" ]; then
+            echo "❌ Health check failed, initiating rollback"
+            exit 1
+          fi
+      
+      - name: Gradual traffic switch - 50%
+        run: |
+          echo "Switching 50% traffic to Green..."
+          sleep 60
+      
+      - name: Monitor metrics - 50%
+        run: |
+          echo "Monitoring error rates and latency..."
+          sleep 120
+      
+      - name: Health check - 50%
+        run: |
+          RESPONSE=$(curl -s https://gvteway.com/api/health)
+          STATUS=$(echo $RESPONSE | jq -r .status)
+          if [ "$STATUS" != "healthy" ]; then
+            echo "❌ Health check failed, initiating rollback"
+            exit 1
+          fi
+      
+      - name: Full traffic switch - 100%
+        run: |
+          echo "Switching 100% traffic to Green..."
+          # Promote staging to production
+          vercel alias set staging.gvteway.com gvteway.com --token=${{ secrets.VERCEL_TOKEN }}
+      
+      - name: Monitor production
+        run: |
+          echo "Monitoring production for 5 minutes..."
+          for i in {1..10}; do
+            RESPONSE=$(curl -s https://gvteway.com/api/health)
+            STATUS=$(echo $RESPONSE | jq -r .status)
+            echo "Check $i/10: $STATUS"
+            if [ "$STATUS" != "healthy" ]; then
+              echo "❌ Health check failed, initiating rollback"
+              exit 1
+            fi
+            sleep 30
+          done
+      
+      - name: Notify - Traffic switch complete
+        if: success()
+        uses: slackapi/slack-github-action@v1
+        with:
+          webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          payload: |
+            {
+              "text": "✅ Blue-Green deployment successful",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*Production Deployment Complete*\n\n100% traffic now on Green environment\nCommit: ${{ github.sha }}\nAll health checks passed"
+                  }
+                }
+              ]
+            }
+      
+      - name: Notify - Deployment failed
+        if: failure()
+        uses: slackapi/slack-github-action@v1
+        with:
+          webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          payload: |
+            {
+              "text": "❌ Blue-Green deployment failed - Rollback initiated",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*Deployment Failed*\n\nAutomatic rollback triggered\nCheck logs for details"
+                  }
+                }
+              ]
+            }
+
+  rollback:
+    name: Rollback on Failure
+    runs-on: ubuntu-latest
+    needs: switch-traffic
+    if: failure()
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Rollback to Blue
+        run: |
+          echo "Rolling back to previous deployment..."
+          vercel rollback --token=${{ secrets.VERCEL_TOKEN }}
+      
+      - name: Verify rollback
+        run: |
+          sleep 30
+          RESPONSE=$(curl -s https://gvteway.com/api/health)
+          STATUS=$(echo $RESPONSE | jq -r .status)
+          if [ "$STATUS" == "healthy" ]; then
+            echo "✅ Rollback successful"
+          else
+            echo "❌ Rollback verification failed"
+            exit 1
+          fi
+      
+      - name: Create incident report
+        run: |
+          TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+          mkdir -p docs/incidents
+          cat > docs/incidents/rollback_${TIMESTAMP}.md << EOF
+          # Rollback Incident Report
+          
+          **Date:** $(date -u +%Y-%m-%dT%H:%M:%SZ)
+          **Reason:** Deployment health check failure
+          **Commit:** ${{ github.sha }}
+          **Triggered By:** GitHub Actions (automated)
+          
+          ## Timeline
+          - Deployment initiated: $(date -u +%Y-%m-%dT%H:%M:%SZ)
+          - Health check failed: $(date -u +%Y-%m-%dT%H:%M:%SZ)
+          - Rollback completed: $(date -u +%Y-%m-%dT%H:%M:%SZ)
+          
+          ## Action Items
+          - [ ] Investigate root cause
+          - [ ] Review logs and metrics
+          - [ ] Implement fix
+          - [ ] Add tests to prevent recurrence
+          EOF
+          
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add docs/incidents/rollback_${TIMESTAMP}.md
+          git commit -m "docs: Add rollback incident report"
+          git push

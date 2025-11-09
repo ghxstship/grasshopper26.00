@@ -22,8 +22,17 @@ export default function CreateEventPage() {
     venue_name: '',
     venue_address: '',
     hero_image_url: '',
+    capacity: '',
+    age_restriction: '',
+    event_type: 'concert',
     status: 'upcoming',
   });
+  const [ticketTypes, setTicketTypes] = useState<Array<{
+    name: string;
+    description: string;
+    price: string;
+    quantity_available: string;
+  }>>([{ name: '', description: '', price: '', quantity_available: '' }]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -49,17 +58,41 @@ export default function CreateEventPage() {
         return;
       }
 
-      const { error } = await supabase
+      const { data: eventData, error: eventError } = await supabase
         .from('events')
         .insert({
           ...formData,
+          capacity: formData.capacity ? parseInt(formData.capacity) : null,
           brand_id: adminData.brand_id,
-        });
+        })
+        .select()
+        .single();
 
-      if (error) throw error;
+      if (eventError) throw eventError;
+
+      // Create ticket types
+      if (ticketTypes.length > 0 && ticketTypes[0].name) {
+        const ticketTypesData = ticketTypes
+          .filter(tt => tt.name && tt.price)
+          .map(tt => ({
+            event_id: eventData.id,
+            name: tt.name,
+            description: tt.description,
+            price: tt.price,
+            quantity_available: parseInt(tt.quantity_available) || 0,
+            quantity_sold: 0,
+            status: 'active',
+          }));
+
+        const { error: ticketError } = await supabase
+          .from('ticket_types')
+          .insert(ticketTypesData);
+
+        if (ticketError) throw ticketError;
+      }
 
       alert('Event created successfully!');
-      router.push('/admin/dashboard');
+      router.push('/admin/events');
     } catch (error: any) {
       console.error('Error creating event:', error);
       alert(error.message);
@@ -80,9 +113,9 @@ export default function CreateEventPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-purple-950 to-black py-12 px-4">
+    <div className="min-h-screen  py-12 px-4" style={{ background: 'var(--gradient-hero)' }}>
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-8">
+        <h1 className="text-3xl font-bold  mb-8 bg-clip-text text-transparent" style={{ backgroundImage: 'var(--gradient-brand-primary)' }}>
           Create New Event
         </h1>
 
@@ -192,13 +225,161 @@ export default function CreateEventPage() {
                     className="bg-black/50 border-purple-500/30"
                   />
                 </div>
+
+                <div>
+                  <Label htmlFor="capacity">Capacity</Label>
+                  <Input
+                    id="capacity"
+                    name="capacity"
+                    type="number"
+                    value={formData.capacity}
+                    onChange={handleChange}
+                    placeholder="1000"
+                    className="bg-black/50 border-purple-500/30"
+                  />
+                </div>
+
+                <div>
+                  <Label htmlFor="age_restriction">Age Restriction</Label>
+                  <Input
+                    id="age_restriction"
+                    name="age_restriction"
+                    value={formData.age_restriction}
+                    onChange={handleChange}
+                    placeholder="18+"
+                    className="bg-black/50 border-purple-500/30"
+                  />
+                </div>
+
+                <div>
+                  <Label htmlFor="event_type">Event Type</Label>
+                  <select
+                    id="event_type"
+                    name="event_type"
+                    value={formData.event_type}
+                    onChange={(e) => setFormData(prev => ({ ...prev, event_type: e.target.value }))}
+                    className="w-full px-3 py-2 bg-black/50 border border-purple-500/30 rounded-md text-white"
+                  >
+                    <option value="concert">Concert</option>
+                    <option value="festival">Festival</option>
+                    <option value="club_night">Club Night</option>
+                    <option value="conference">Conference</option>
+                    <option value="workshop">Workshop</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+
+                <div>
+                  <Label htmlFor="status">Status</Label>
+                  <select
+                    id="status"
+                    name="status"
+                    value={formData.status}
+                    onChange={(e) => setFormData(prev => ({ ...prev, status: e.target.value }))}
+                    className="w-full px-3 py-2 bg-black/50 border border-purple-500/30 rounded-md text-white"
+                  >
+                    <option value="draft">Draft</option>
+                    <option value="upcoming">Upcoming</option>
+                    <option value="live">Live</option>
+                    <option value="completed">Completed</option>
+                    <option value="cancelled">Cancelled</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="border-t border-purple-500/20 pt-6">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-lg font-semibold text-white">Ticket Types</h3>
+                  <Button
+                    type="button"
+                    onClick={() => setTicketTypes([...ticketTypes, { name: '', description: '', price: '', quantity_available: '' }])}
+                    variant="outline"
+                    className="border-purple-500/30"
+                  >
+                    Add Ticket Type
+                  </Button>
+                </div>
+                
+                <div className="space-y-4">
+                  {ticketTypes.map((ticket, index) => (
+                    <div key={index} className="p-4 bg-black/30 rounded-lg border border-purple-500/10">
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div>
+                          <Label>Ticket Name *</Label>
+                          <Input
+                            value={ticket.name}
+                            onChange={(e) => {
+                              const newTickets = [...ticketTypes];
+                              newTickets[index].name = e.target.value;
+                              setTicketTypes(newTickets);
+                            }}
+                            placeholder="General Admission"
+                            className="bg-black/50 border-purple-500/30"
+                          />
+                        </div>
+                        <div>
+                          <Label>Price *</Label>
+                          <Input
+                            type="number"
+                            step="0.01"
+                            value={ticket.price}
+                            onChange={(e) => {
+                              const newTickets = [...ticketTypes];
+                              newTickets[index].price = e.target.value;
+                              setTicketTypes(newTickets);
+                            }}
+                            placeholder="50.00"
+                            className="bg-black/50 border-purple-500/30"
+                          />
+                        </div>
+                        <div>
+                          <Label>Quantity Available *</Label>
+                          <Input
+                            type="number"
+                            value={ticket.quantity_available}
+                            onChange={(e) => {
+                              const newTickets = [...ticketTypes];
+                              newTickets[index].quantity_available = e.target.value;
+                              setTicketTypes(newTickets);
+                            }}
+                            placeholder="100"
+                            className="bg-black/50 border-purple-500/30"
+                          />
+                        </div>
+                        <div>
+                          <Label>Description</Label>
+                          <Input
+                            value={ticket.description}
+                            onChange={(e) => {
+                              const newTickets = [...ticketTypes];
+                              newTickets[index].description = e.target.value;
+                              setTicketTypes(newTickets);
+                            }}
+                            placeholder="Access to main floor"
+                            className="bg-black/50 border-purple-500/30"
+                          />
+                        </div>
+                      </div>
+                      {ticketTypes.length > 1 && (
+                        <Button
+                          type="button"
+                          onClick={() => setTicketTypes(ticketTypes.filter((_, i) => i !== index))}
+                          variant="outline"
+                          className="mt-2 border-red-500/30 text-red-400 hover:bg-red-500/10"
+                        >
+                          Remove
+                        </Button>
+                      )}
+                    </div>
+                  ))}
+                </div>
               </div>
 
               <div className="flex gap-4">
                 <Button
                   type="submit"
                   disabled={loading}
-                  className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+                  className="" style={{ background: 'var(--gradient-brand-primary)' }}
                 >
                   {loading ? (
                     <>

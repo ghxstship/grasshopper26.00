@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { Anton, Bebas_Neue, Share_Tech, Share_Tech_Mono } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
-import { Toaster } from "@/components/ui/sonner"
+import { Toaster } from "@/design-system/components/atoms/sonner"
 import { CookieConsent } from "@/components/privacy/cookie-consent"
 
 // GHXSTSHIP Typography System

@@ -39,7 +39,7 @@ export default function ForgotPasswordPage() {
 
   if (sent) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-black via-purple-950 to-black flex items-center justify-center px-4">
+      <div className="min-h-screen  flex items-center justify-center px-4" style={{ background: 'var(--gradient-hero)' }}>
         <div className="max-w-md w-full bg-black/40 backdrop-blur-lg border-2 border-purple-500/20 rounded-lg p-8 text-center">
           <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
           <h1 className="text-2xl font-bold text-white mb-2">Check Your Email</h1>
@@ -51,7 +51,7 @@ export default function ForgotPasswordPage() {
           </p>
           <Button
             asChild
-            className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+            className="w-full " style={{ background: 'var(--gradient-brand-primary)' }}
           >
             <Link href="/login">Back to Login</Link>
           </Button>
@@ -61,11 +61,11 @@ export default function ForgotPasswordPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-purple-950 to-black flex items-center justify-center px-4">
+    <div className="min-h-screen  flex items-center justify-center px-4" style={{ background: 'var(--gradient-hero)' }}>
       <div className="max-w-md w-full bg-black/40 backdrop-blur-lg border-2 border-purple-500/20 rounded-lg p-8">
         <div className="text-center mb-8">
           <Mail className="h-16 w-16 text-purple-500 mx-auto mb-4" />
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-2">
+          <h1 className="text-3xl font-bold  mb-2 bg-clip-text text-transparent" style={{ backgroundImage: 'var(--gradient-brand-primary)' }}>
             Forgot Password?
           </h1>
           <p className="text-gray-400">
@@ -98,7 +98,7 @@ export default function ForgotPasswordPage() {
           <Button
             type="submit"
             disabled={loading}
-            className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+            className="w-full " style={{ background: 'var(--gradient-brand-primary)' }}
           >
             {loading ? 'Sending...' : 'Send Reset Link'}
           </Button>

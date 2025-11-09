@@ -67,10 +67,53 @@ class Logger {
   }
 
   private async sendToExternalService(level: LogLevel, message: string, context?: LogContext): Promise<void> {
-    // TODO: Integrate with Sentry, CloudWatch, or other logging service
-    // Example: Sentry integration
+    // Send to Sentry for centralized log aggregation
+    const Sentry = await import('@sentry/nextjs');
+    
     if (level === LogLevel.ERROR || level === LogLevel.FATAL) {
-      // Sentry.captureException(new Error(message), { extra: context });
+      Sentry.captureException(new Error(message), {
+        level: level === LogLevel.FATAL ? 'fatal' : 'error',
+        extra: context,
+        tags: {
+          log_level: level,
+          request_id: context?.requestId,
+          user_id: context?.userId,
+        },
+      });
+    } else if (level === LogLevel.WARN) {
+      Sentry.captureMessage(message, {
+        level: 'warning',
+        extra: context,
+        tags: {
+          log_level: level,
+          request_id: context?.requestId,
+        },
+      });
+    }
+    
+    // Add breadcrumb for all log levels
+    Sentry.addBreadcrumb({
+      category: 'log',
+      message,
+      level: this.mapLogLevelToSentryLevel(level),
+      data: context,
+    });
+  }
+
+  private mapLogLevelToSentryLevel(level: LogLevel): 'debug' | 'info' | 'warning' | 'error' | 'fatal' {
+    switch (level) {
+      case LogLevel.DEBUG:
+        return 'debug';
+      case LogLevel.INFO:
+        return 'info';
+      case LogLevel.WARN:
+        return 'warning';
+      case LogLevel.ERROR:
+        return 'error';
+      case LogLevel.FATAL:
+        return 'fatal';
+      default:
+        return 'info';
     }
   }
 

@@ -99,11 +99,11 @@ export default function AdminOrdersPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-purple-950 to-black py-12 px-4">
+    <div className="min-h-screen  py-12 px-4" style={{ background: 'var(--gradient-hero)' }}>
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+            <h1 className="text-3xl font-bold  bg-clip-text text-transparent" style={{ backgroundImage: 'var(--gradient-brand-primary)' }}>
               Order Management
             </h1>
             <p className="text-gray-400 mt-2">View and manage all orders</p>
@@ -119,7 +119,7 @@ export default function AdminOrdersPage() {
             </Button>
             <Button
               onClick={exportOrders}
-              className="bg-gradient-to-r from-purple-600 to-pink-600"
+              className="" style={{ background: 'var(--gradient-brand-primary)' }}
             >
               <Download className="h-4 w-4 mr-2" />
               Export CSV

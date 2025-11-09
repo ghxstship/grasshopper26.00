@@ -8,7 +8,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table';
+} from '@/design-system/components/atoms/table';
 import { Badge } from '@/design-system/components/atoms/badge';
 import { Plus, Search, Filter, MoreHorizontal } from 'lucide-react';
 import Link from 'next/link';

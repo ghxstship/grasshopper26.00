@@ -125,14 +125,14 @@ export default function ManageTicketTypesPage({ params }: { params: Promise<{ id
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-black via-purple-950 to-black flex items-center justify-center">
+      <div className="min-h-screen  flex items-center justify-center" style={{ background: 'var(--gradient-hero)' }}>
         <Loader2 className="h-12 w-12 animate-spin text-purple-500" />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-purple-950 to-black py-12 px-4">
+    <div className="min-h-screen  py-12 px-4" style={{ background: 'var(--gradient-hero)' }}>
       <div className="max-w-6xl mx-auto">
         <div className="mb-8">
           <Link
@@ -143,7 +143,7 @@ export default function ManageTicketTypesPage({ params }: { params: Promise<{ id
             Back to Event
           </Link>
           <div className="flex items-center justify-between">
-            <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+            <h1 className="text-3xl font-bold  bg-clip-text text-transparent" style={{ backgroundImage: 'var(--gradient-brand-primary)' }}>
               Manage Ticket Types
             </h1>
             <Button
@@ -160,7 +160,7 @@ export default function ManageTicketTypesPage({ params }: { params: Promise<{ id
                   sale_end: '',
                 });
               }}
-              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+              className="" style={{ background: 'var(--gradient-brand-primary)' }}
             >
               <Plus className="h-4 w-4 mr-2" />
               Add Ticket Type
@@ -282,7 +282,7 @@ export default function ManageTicketTypesPage({ params }: { params: Promise<{ id
                 <div className="flex gap-4">
                   <Button
                     type="submit"
-                    className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+                    className="" style={{ background: 'var(--gradient-brand-primary)' }}
                   >
                     {editingId ? 'Update' : 'Create'} Ticket Type
                   </Button>
@@ -364,7 +364,7 @@ export default function ManageTicketTypesPage({ params }: { params: Promise<{ id
               <p className="text-gray-400 mb-4">No ticket types yet</p>
               <Button
                 onClick={() => setShowForm(true)}
-                className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+                className="" style={{ background: 'var(--gradient-brand-primary)' }}
               >
                 <Plus className="h-4 w-4 mr-2" />
                 Add Your First Ticket Type

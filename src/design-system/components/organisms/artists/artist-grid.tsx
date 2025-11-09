@@ -7,7 +7,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { HalftoneOverlay } from '@/components/ui/halftone-overlay';
+import { HalftoneOverlay } from '@/design-system/components/atoms/halftone-overlay';
 
 interface Artist {
   id: string;

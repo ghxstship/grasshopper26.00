@@ -49,7 +49,7 @@ export default function CheckoutSuccessPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-purple-950 to-black">
+      <div className="min-h-screen flex items-center justify-center " style={{ background: 'var(--gradient-hero)' }}>
         <div className="text-center">
           <Loader2 className="h-12 w-12 animate-spin text-purple-500 mx-auto mb-4" />
           <p className="text-white">Confirming your order...</p>
@@ -59,7 +59,7 @@ export default function CheckoutSuccessPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-purple-950 to-black py-12 px-4">
+    <div className="min-h-screen  py-12 px-4" style={{ background: 'var(--gradient-hero)' }}>
       <div className="max-w-2xl mx-auto">
         <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20">
           <CardHeader className="text-center">
@@ -177,7 +177,7 @@ export default function CheckoutSuccessPage() {
 
             <div className="flex gap-4">
               <Link href="/profile" className="flex-1">
-                <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700">
+                <Button className="w-full " style={{ background: 'var(--gradient-brand-primary)' }}>
                   View My Tickets
                 </Button>
               </Link>

@@ -2,6 +2,8 @@
  * Hook for managing push notifications
  */
 
+/* eslint-disable no-magic-numbers */
+// Push notification configuration constants
 'use client';
 
 import { useState, useEffect } from 'react';

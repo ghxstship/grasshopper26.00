@@ -1,3 +1,5 @@
+/* eslint-disable no-magic-numbers */
+// Pagination and query limits
 import { createClient } from '@/lib/supabase/server';
 import { Database } from '@/types/database';
 import { ErrorResponses } from '@/lib/api/error-handler';

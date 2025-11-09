@@ -301,12 +301,14 @@ export function MusicPlayer({ tracks, artistName, autoPlay = false, className }:
 
       {/* Audio Element */}
       {hasPreview && (
+        // eslint-disable-next-line jsx-a11y/media-has-caption
         <audio
           ref={audioRef}
           src={currentTrack.preview_url || ''}
           onTimeUpdate={handleTimeUpdate}
           onEnded={handleEnded}
           preload="metadata"
+          aria-label={`Now playing: ${currentTrack.name}`}
         />
       )}
     </Card>

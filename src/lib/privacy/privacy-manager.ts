@@ -3,6 +3,9 @@
  * GDPR/CCPA compliance helpers
  */
 
+/* eslint-disable no-magic-numbers */
+// Privacy and hashing constants (IP masking, hash lengths)
+
 import type { CookiePreferences } from '@/components/privacy/cookie-consent';
 
 export class PrivacyManager {

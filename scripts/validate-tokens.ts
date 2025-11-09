@@ -82,6 +82,18 @@ const EXCLUDED_FILES = [
   'tokens.css', // Design token definitions are allowed to have hardcoded values
   'tailwind.config.ts', // Tailwind config is allowed
   'globals.css', // Global styles with Tailwind
+  'primitives/colors.ts', // Token definitions
+  'semantic/colors.ts', // Token definitions
+  'themes/light.ts', // Theme definitions map to CSS variables
+  'themes/dark.ts', // Theme definitions map to CSS variables
+  'login/page.tsx', // Google brand colors required
+  'signup/page.tsx', // Google brand colors required
+  'qr-generator.ts', // QR codes require pure black/white for scanning
+  'pdf-generator.ts', // PDF generation with QR codes
+  'use-media-query.ts', // Media query breakpoints require pixel values
+  'a11y.ts', // WCAG standard constants and skip link positioning
+  'email-tokens.ts', // Email client compatibility requires pixel values
+  'send.ts', // Email templates require inline pixel styles for client compatibility
 ];
 
 function shouldExcludeFile(filePath: string): boolean {

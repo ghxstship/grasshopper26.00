@@ -1,6 +1,21 @@
 import { NextResponse } from 'next/server';
 import { ZodError } from 'zod';
 
+// HTTP Status Codes (standard constants)
+const HTTP_STATUS = {
+  OK: 200,
+  BAD_REQUEST: 400,
+  UNAUTHORIZED: 401,
+  PAYMENT_REQUIRED: 402,
+  FORBIDDEN: 403,
+  NOT_FOUND: 404,
+  CONFLICT: 409,
+  PAYLOAD_TOO_LARGE: 413,
+  TOO_MANY_REQUESTS: 429,
+  INTERNAL_SERVER_ERROR: 500,
+  SERVICE_UNAVAILABLE: 503,
+} as const;
+
 // Standard error response structure
 export interface ErrorResponse {
   error: {
@@ -87,7 +102,7 @@ export function handleAPIError(
           path,
         },
       },
-      { status: 400 }
+      { status: HTTP_STATUS.BAD_REQUEST }
     );
   }
 
@@ -124,7 +139,7 @@ export function handleAPIError(
           path,
         },
       },
-      { status: 500 }
+      { status: HTTP_STATUS.INTERNAL_SERVER_ERROR }
     );
   }
 
@@ -138,14 +153,14 @@ export function handleAPIError(
         path,
       },
     },
-    { status: 500 }
+    { status: HTTP_STATUS.INTERNAL_SERVER_ERROR }
   );
 }
 
 // Success response helper
 export function successResponse<T>(
   data: T,
-  status: number = 200,
+  status: number = HTTP_STATUS.OK,
   meta?: Record<string, any>
 ): NextResponse {
   return NextResponse.json(
@@ -185,37 +200,37 @@ export const ErrorResponses = {
     new APIError(
       ErrorCode.UNAUTHORIZED,
       'Authentication required',
-      401
+      HTTP_STATUS.UNAUTHORIZED
     ),
 
   forbidden: (message: string = 'Access denied') =>
-    new APIError(ErrorCode.FORBIDDEN, message, 403),
+    new APIError(ErrorCode.FORBIDDEN, message, HTTP_STATUS.FORBIDDEN),
 
   badRequest: (message: string, details?: any) =>
-    new APIError(ErrorCode.INVALID_INPUT, message, 400, details),
+    new APIError(ErrorCode.INVALID_INPUT, message, HTTP_STATUS.BAD_REQUEST, details),
 
   notFound: (resource: string = 'Resource') =>
     new APIError(
       ErrorCode.NOT_FOUND,
       `${resource} not found`,
-      404
+      HTTP_STATUS.NOT_FOUND
     ),
 
   alreadyExists: (resource: string) =>
     new APIError(
       ErrorCode.ALREADY_EXISTS,
       `${resource} already exists`,
-      409
+      HTTP_STATUS.CONFLICT
     ),
 
   conflict: (message: string) =>
-    new APIError(ErrorCode.CONFLICT, message, 409),
+    new APIError(ErrorCode.CONFLICT, message, HTTP_STATUS.CONFLICT),
 
   validationError: (message: string, details?: any) =>
     new APIError(
       ErrorCode.VALIDATION_ERROR,
       message,
-      400,
+      HTTP_STATUS.BAD_REQUEST,
       details
     ),
 
@@ -223,7 +238,7 @@ export const ErrorResponses = {
     new APIError(
       ErrorCode.INSUFFICIENT_INVENTORY,
       `Insufficient inventory. Only ${available} available.`,
-      400,
+      HTTP_STATUS.BAD_REQUEST,
       { available }
     ),
 
@@ -231,14 +246,14 @@ export const ErrorResponses = {
     new APIError(
       ErrorCode.EVENT_SOLD_OUT,
       'This event is sold out',
-      400
+      HTTP_STATUS.BAD_REQUEST
     ),
 
   ticketLimitExceeded: (limit: number) =>
     new APIError(
       ErrorCode.TICKET_LIMIT_EXCEEDED,
       `Maximum ${limit} tickets per order`,
-      400,
+      HTTP_STATUS.BAD_REQUEST,
       { limit }
     ),
 
@@ -246,7 +261,7 @@ export const ErrorResponses = {
     new APIError(
       ErrorCode.RATE_LIMIT_EXCEEDED,
       'Rate limit exceeded. Please try again later.',
-      429,
+      HTTP_STATUS.TOO_MANY_REQUESTS,
       { retryAfter }
     ),
 
@@ -254,7 +269,7 @@ export const ErrorResponses = {
     new APIError(
       ErrorCode.DATABASE_ERROR,
       message,
-      500,
+      HTTP_STATUS.INTERNAL_SERVER_ERROR,
       details
     ),
 
@@ -262,14 +277,14 @@ export const ErrorResponses = {
     new APIError(
       ErrorCode.PAYMENT_FAILED,
       message,
-      402
+      HTTP_STATUS.PAYMENT_REQUIRED
     ),
 
   fileTooLarge: (maxSize: number) =>
     new APIError(
       ErrorCode.FILE_TOO_LARGE,
       `File size exceeds maximum of ${maxSize} bytes`,
-      413,
+      HTTP_STATUS.PAYLOAD_TOO_LARGE,
       { maxSize }
     ),
 
@@ -277,7 +292,7 @@ export const ErrorResponses = {
     new APIError(
       ErrorCode.INVALID_FILE_TYPE,
       'Invalid file type',
-      400,
+      HTTP_STATUS.BAD_REQUEST,
       { allowedTypes }
     ),
 
@@ -285,7 +300,7 @@ export const ErrorResponses = {
     new APIError(
       ErrorCode.EXTERNAL_SERVICE_ERROR,
       `${service} service is unavailable`,
-      503
+      HTTP_STATUS.SERVICE_UNAVAILABLE
     ),
 };
 

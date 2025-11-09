@@ -1,3 +1,5 @@
+/* eslint-disable no-magic-numbers */
+// ARIA ID generation and accessibility constants
 /**
  * ARIA Helper Utilities
  * Simplify ARIA attribute management

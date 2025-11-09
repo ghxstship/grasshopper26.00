@@ -19,7 +19,22 @@ const config = {
     },
     extend: {
       colors: {
-        // Shadcn/UI compatibility layer
+        // GHXSTSHIP Monochromatic Color System
+        black: '#000000',
+        white: '#FFFFFF',
+        grey: {
+          100: '#F5F5F5',
+          200: '#E5E5E5',
+          300: '#D4D4D4',
+          400: '#A3A3A3',
+          500: '#737373',
+          600: '#525252',
+          700: '#404040',
+          800: '#262626',
+          900: '#171717',
+        },
+        
+        // Shadcn/UI compatibility layer (mapped to monochromatic)
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -54,45 +69,61 @@ const config = {
           foreground: "hsl(var(--card-foreground))",
         },
         
-        // Design System Token Bridge
-        // Maps semantic names to CSS variables
+        // Design System Token Bridge (monochromatic)
         brand: {
-          DEFAULT: 'var(--color-primary)',
-          hover: 'var(--color-primary-hover)',
-          active: 'var(--color-primary-active)',
-          subtle: 'var(--color-primary-subtle)',
-          disabled: 'var(--color-primary-disabled)',
+          DEFAULT: '#000000',
+          hover: '#262626',
+          active: '#404040',
+          subtle: '#737373',
+          disabled: '#A3A3A3',
         },
         'brand-accent': {
-          DEFAULT: 'var(--color-accent)',
-          hover: 'var(--color-accent-hover)',
-          active: 'var(--color-accent-active)',
-          subtle: 'var(--color-accent-subtle)',
+          DEFAULT: '#FFFFFF',
+          hover: '#F5F5F5',
+          active: '#E5E5E5',
+          subtle: '#D4D4D4',
         },
         success: {
-          DEFAULT: 'var(--color-success)',
-          bg: 'var(--color-success-bg)',
-          border: 'var(--color-success-border)',
-          text: 'var(--color-success-text)',
+          DEFAULT: '#404040',
+          bg: '#F5F5F5',
+          border: '#525252',
+          text: '#171717',
         },
         error: {
-          DEFAULT: 'var(--color-error)',
-          bg: 'var(--color-error-bg)',
-          border: 'var(--color-error-border)',
-          text: 'var(--color-error-text)',
+          DEFAULT: '#262626',
+          bg: '#E5E5E5',
+          border: '#404040',
+          text: '#000000',
         },
         warning: {
-          DEFAULT: 'var(--color-warning)',
-          bg: 'var(--color-warning-bg)',
-          border: 'var(--color-warning-border)',
-          text: 'var(--color-warning-text)',
+          DEFAULT: '#525252',
+          bg: '#F5F5F5',
+          border: '#737373',
+          text: '#171717',
         },
         info: {
-          DEFAULT: 'var(--color-info)',
-          bg: 'var(--color-info-bg)',
-          border: 'var(--color-info-border)',
-          text: 'var(--color-info-text)',
+          DEFAULT: '#737373',
+          bg: '#F5F5F5',
+          border: '#A3A3A3',
+          text: '#262626',
         },
+      },
+      fontFamily: {
+        anton: ['var(--font-anton)', 'Impact', 'Arial Black', 'sans-serif'],
+        bebas: ['var(--font-bebas)', 'Arial Narrow', 'Arial', 'sans-serif'],
+        share: ['var(--font-share)', 'Monaco', 'Consolas', 'monospace'],
+        'share-mono': ['var(--font-share-mono)', 'Courier New', 'monospace'],
+      },
+      fontSize: {
+        'hero': 'clamp(48px, 10vw, 120px)',
+        'h1': 'clamp(36px, 8vw, 80px)',
+        'h2': 'clamp(28px, 5vw, 56px)',
+        'h3': 'clamp(24px, 4vw, 40px)',
+        'h4': 'clamp(20px, 3vw, 32px)',
+        'h5': 'clamp(18px, 2.5vw, 24px)',
+        'h6': 'clamp(16px, 2vw, 20px)',
+        'body': 'clamp(15px, 1.5vw, 18px)',
+        'meta': 'clamp(11px, 1.2vw, 14px)',
       },
       spacing: {
         // Map to design token spacing
@@ -106,6 +137,9 @@ const config = {
         '2xl': "var(--radius-2xl)",
         full: "var(--radius-full)",
       },
+      borderWidth: {
+        '3': '3px',
+      },
       boxShadow: {
         sm: 'var(--shadow-sm)',
         DEFAULT: 'var(--shadow-base)',
@@ -114,6 +148,12 @@ const config = {
         xl: 'var(--shadow-xl)',
         '2xl': 'var(--shadow-2xl)',
         glow: 'var(--shadow-glow)',
+        'geometric': '8px 8px 0 0 rgba(0, 0, 0, 1)',
+        'geometric-white': '8px 8px 0 0 rgba(255, 255, 255, 1)',
+      },
+      backgroundImage: {
+        'halftone-pattern': 'radial-gradient(circle, black 20%, transparent 20%), radial-gradient(circle, black 20%, transparent 20%)',
+        'stripe-pattern': 'repeating-linear-gradient(45deg, black, black 2px, transparent 2px, transparent 10px)',
       },
       keyframes: {
         "accordion-down": {
@@ -124,10 +164,15 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        geometricReveal: {
+          '0%': { clipPath: 'polygon(0 0, 0 0, 0 100%, 0 100%)' },
+          '100%': { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        'geometric-reveal': 'geometricReveal 0.5s ease-out',
       },
     },
   },

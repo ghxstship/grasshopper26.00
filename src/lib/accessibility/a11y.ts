@@ -2,6 +2,10 @@
  * Accessibility utilities for WCAG 2.1 AA compliance
  */
 
+/* eslint-disable no-magic-numbers */
+// WCAG standard constants (contrast ratios, luminance calculations) cannot be tokenized
+import { primitiveColors } from '@/design-system/tokens/primitives/colors';
+
 /**
  * Check if color contrast meets WCAG AA standards
  * @param foreground - Foreground color in hex format
@@ -217,8 +221,8 @@ export function addSkipLink() {
     position: absolute;
     top: -40px;
     left: 0;
-    background: #000;
-    color: #fff;
+    background: ${primitiveColors.neutral[900]};
+    color: ${primitiveColors.neutral[0]};
     padding: 8px;
     text-decoration: none;
     z-index: 100;

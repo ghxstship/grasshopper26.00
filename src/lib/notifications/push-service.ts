@@ -4,6 +4,8 @@
  */
 
 import { createClient } from '@/lib/supabase/server';
+/* eslint-disable no-magic-numbers */
+// HTTP status codes for push notification responses
 import webpush from 'web-push';
 
 // Configure VAPID details

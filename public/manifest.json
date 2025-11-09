@@ -1,11 +1,11 @@
 {
-  "name": "Grasshopper - Live Entertainment Platform",
-  "short_name": "Grasshopper",
+  "name": "GVTEWAY - Live Entertainment Platform",
+  "short_name": "GVTEWAY",
   "description": "World-class live entertainment experience platform for festivals, concerts, and events",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#000000",
-  "theme_color": "#667eea",
+  "theme_color": "#000000",
   "orientation": "portrait-primary",
   "icons": [
     {

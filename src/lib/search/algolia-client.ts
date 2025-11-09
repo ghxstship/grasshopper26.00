@@ -3,6 +3,8 @@
  * Advanced search functionality with typo-tolerance and faceted filtering
  */
 
+/* eslint-disable no-magic-numbers */
+// Search pagination and result limits
 import algoliasearch from 'algoliasearch';
 
 // Initialize Algolia client

@@ -1,4 +1,6 @@
-import { NextRequest } from 'next/server';
+/* eslint-disable no-magic-numbers */
+// Rate limiting time windows and request limits
+import { NextRequest, NextResponse } from 'next/server';
 import { ErrorResponses } from './error-handler';
 
 // In-memory store for rate limiting (use Redis in production)

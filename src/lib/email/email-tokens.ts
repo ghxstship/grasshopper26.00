@@ -1,39 +1,42 @@
 /**
- * Email Template Design Tokens
- * Consistent styling for email templates
- * Note: Email clients have limited CSS support, so we use inline styles
+ * Email Design Tokens
+ * Consistent styling for all email templates
+ * Uses design system tokens for consistency
  */
+
+import { primitiveColors } from '@/design-system/tokens/primitives/colors';
+import { semanticColors } from '@/design-system/tokens/semantic/colors';
 
 export const emailTokens = {
   colors: {
     // Brand colors
-    brandPrimary: '#9333EA',
-    brandSecondary: '#EC4899',
+    brandPrimary: primitiveColors.brand[600],
+    brandSecondary: primitiveColors.accent[500],
     
     // Text colors
-    textPrimary: '#111827',
-    textSecondary: '#4B5563',
-    textTertiary: '#6B7280',
-    textInverse: '#FFFFFF',
+    textPrimary: primitiveColors.neutral[900],
+    textSecondary: primitiveColors.neutral[600],
+    textTertiary: primitiveColors.neutral[500],
+    textInverse: primitiveColors.neutral[0],
     
     // Background colors
-    bgPrimary: '#FFFFFF',
-    bgSecondary: '#F9FAFB',
-    bgTertiary: '#F3F4F6',
+    bgPrimary: primitiveColors.neutral[0],
+    bgSecondary: primitiveColors.neutral[50],
+    bgTertiary: primitiveColors.neutral[100],
     
     // Border colors
-    borderDefault: '#E5E7EB',
-    borderStrong: '#D1D5DB',
+    borderDefault: primitiveColors.neutral[200],
+    borderStrong: primitiveColors.neutral[300],
     
     // Status colors
-    success: '#22C55E',
-    error: '#EF4444',
-    warning: '#F59E0B',
-    info: '#3B82F6',
+    success: primitiveColors.success[500],
+    error: primitiveColors.error[500],
+    warning: primitiveColors.warning[500],
+    info: primitiveColors.info[500],
   },
   
   gradients: {
-    brandPrimary: 'linear-gradient(135deg, #9333EA 0%, #EC4899 100%)',
+    brandPrimary: semanticColors.gradients.brandPrimary,
   },
   
   spacing: {

@@ -20,7 +20,7 @@ export async function sendEmail({
   to,
   subject,
   html,
-  from = process.env.RESEND_FROM_EMAIL || 'noreply@grasshopper.com',
+  from = process.env.RESEND_FROM_EMAIL || 'noreply@gvteway.com',
   replyTo,
   cc,
   bcc,
@@ -75,7 +75,7 @@ export async function sendBatchEmails(
   try {
     const data = await resend.batch.send(
       emails.map((email) => ({
-        from: email.from || process.env.RESEND_FROM_EMAIL || 'noreply@grasshopper.com',
+        from: email.from || process.env.RESEND_FROM_EMAIL || 'noreply@gvteway.com',
         to: email.to,
         subject: email.subject,
         html: email.html,
@@ -105,7 +105,7 @@ export async function sendTemplateEmail({
 }) {
   try {
     const response = await resend.emails.send({
-      from: from || process.env.RESEND_FROM_EMAIL || 'noreply@grasshopper.com',
+      from: from || process.env.RESEND_FROM_EMAIL || 'noreply@gvteway.com',
       to,
       subject: data.subject || 'Notification',
       react: template as any, // For React Email templates

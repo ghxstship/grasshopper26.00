@@ -1,6 +1,7 @@
 /**
  * Input sanitization utilities to prevent XSS and injection attacks
  */
+/* eslint-disable no-magic-numbers */
 
 /**
  * Sanitize string input by removing potentially dangerous characters
@@ -21,6 +22,7 @@ export function sanitizeString(input: string): string {
 /**
  * Sanitize HTML content (basic - for production use DOMPurify)
  */
+// Sanitization limits (max lengths, character limits)
 export function sanitizeHTML(input: string): string {
   if (typeof input !== 'string') {
     return '';

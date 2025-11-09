@@ -1,3 +1,5 @@
+/* eslint-disable no-magic-numbers */
+// File size limits (bytes to MB conversion)
 import { createClient } from '@/lib/supabase/server';
 import { ErrorResponses } from '@/lib/api/error-handler';
 

@@ -84,14 +84,14 @@ const AMENITY_ICONS = {
 };
 
 const AMENITY_COLORS = {
-  food: '#f59e0b',
-  restroom: '#3b82f6',
-  medical: '#ef4444',
-  merchandise: '#8b5cf6',
-  wifi: '#10b981',
-  atm: '#06b6d4',
-  info: '#6366f1',
-  accessibility: '#14b8a6',
+  food: 'var(--color-warning)',
+  restroom: 'var(--color-info)',
+  medical: 'var(--color-error)',
+  merchandise: 'var(--color-primary)',
+  wifi: 'var(--color-success)',
+  atm: 'var(--color-info)',
+  info: 'var(--color-primary)',
+  accessibility: 'var(--color-success)',
 };
 
 // Default venue data (example festival layout)
@@ -109,7 +109,7 @@ const DEFAULT_VENUE: VenueData = {
       type: 'main',
       position: { x: 500, y: 150 },
       size: { width: 300, height: 150 },
-      color: '#667eea',
+      color: 'var(--color-primary)',
     },
     {
       id: 'secondary',
@@ -117,7 +117,7 @@ const DEFAULT_VENUE: VenueData = {
       type: 'secondary',
       position: { x: 200, y: 400 },
       size: { width: 200, height: 100 },
-      color: '#764ba2',
+      color: 'var(--color-primary-hover)',
     },
     {
       id: 'underground',
@@ -125,7 +125,7 @@ const DEFAULT_VENUE: VenueData = {
       type: 'underground',
       position: { x: 700, y: 450 },
       size: { width: 200, height: 100 },
-      color: '#f093fb',
+      color: 'var(--color-accent)',
     },
   ],
   amenities: [
@@ -285,7 +285,7 @@ export function VenueMap({ eventId, venueData = DEFAULT_VENUE, className }: Venu
                 y="0"
                 width={venueData.layout.width}
                 height={venueData.layout.height}
-                fill="#f9fafb"
+                fill="var(--color-bg-secondary)"
                 className="dark:fill-gray-800"
               />
 
@@ -300,7 +300,7 @@ export function VenueMap({ eventId, venueData = DEFAULT_VENUE, className }: Venu
                   <path
                     d="M 50 0 L 0 0 0 50"
                     fill="none"
-                    stroke="#e5e7eb"
+                    stroke="var(--color-border-default)"
                     strokeWidth="0.5"
                     className="dark:stroke-gray-700"
                   />
@@ -326,8 +326,8 @@ export function VenueMap({ eventId, venueData = DEFAULT_VENUE, className }: Venu
                     y={stage.position.y - stage.size.height / 2}
                     width={stage.size.width}
                     height={stage.size.height}
-                    fill={stage.color || '#667eea'}
-                    stroke={selectedItem === stage.id ? '#000' : '#fff'}
+                    fill={stage.color || 'var(--color-primary)'}
+                    stroke={selectedItem === stage.id ? 'var(--color-text-primary)' : 'var(--color-text-inverse)'}
                     strokeWidth={selectedItem === stage.id ? 4 : 2}
                     rx="8"
                   />
@@ -360,7 +360,7 @@ export function VenueMap({ eventId, venueData = DEFAULT_VENUE, className }: Venu
                         cy={amenity.position.y}
                         r="20"
                         fill={AMENITY_COLORS[amenity.type]}
-                        stroke={selectedItem === amenity.id ? '#000' : '#fff'}
+                        stroke={selectedItem === amenity.id ? 'var(--color-text-primary)' : 'var(--color-text-inverse)'}
                         strokeWidth={selectedItem === amenity.id ? 3 : 1}
                       />
                       <text
@@ -368,7 +368,7 @@ export function VenueMap({ eventId, venueData = DEFAULT_VENUE, className }: Venu
                         y={amenity.position.y + 35}
                         textAnchor="middle"
                         fontSize="12"
-                        fill="#374151"
+                        fill="var(--color-text-primary)"
                         className="dark:fill-gray-300"
                       >
                         {amenity.name}
@@ -390,8 +390,8 @@ export function VenueMap({ eventId, venueData = DEFAULT_VENUE, className }: Venu
                       y={entrance.position.y - 15}
                       width="50"
                       height="30"
-                      fill={entrance.type === 'vip' ? '#fbbf24' : '#10b981'}
-                      stroke={selectedItem === entrance.id ? '#000' : '#fff'}
+                      fill={entrance.type === 'vip' ? 'var(--color-warning)' : 'var(--color-success)'}
+                      stroke={selectedItem === entrance.id ? 'var(--color-text-primary)' : 'var(--color-text-inverse)'}
                       strokeWidth={selectedItem === entrance.id ? 3 : 1}
                       rx="4"
                     />
@@ -417,8 +417,8 @@ export function VenueMap({ eventId, venueData = DEFAULT_VENUE, className }: Venu
                       cx={exit.position.x}
                       cy={exit.position.y}
                       r="15"
-                      fill="#ef4444"
-                      stroke="#fff"
+                      fill="var(--color-error)"
+                      stroke="var(--color-text-inverse)"
                       strokeWidth="2"
                     />
                     <text
@@ -470,31 +470,31 @@ export function VenueMap({ eventId, venueData = DEFAULT_VENUE, className }: Venu
         <h3 className="font-semibold mb-3">Map Legend</h3>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           <div className="flex items-center gap-2">
-            <div className="w-4 h-4 bg-[#667eea] rounded" />
+            <div className="w-4 h-4 rounded" style={{ backgroundColor: 'var(--color-primary)' }} />
             <span className="text-sm">Stages</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-4 h-4 bg-[#f59e0b] rounded-full" />
+            <div className="w-4 h-4 rounded-full" style={{ backgroundColor: 'var(--color-warning)' }} />
             <span className="text-sm">Food</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-4 h-4 bg-[#3b82f6] rounded-full" />
+            <div className="w-4 h-4 rounded-full" style={{ backgroundColor: 'var(--color-info)' }} />
             <span className="text-sm">Restrooms</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-4 h-4 bg-[#ef4444] rounded-full" />
+            <div className="w-4 h-4 rounded-full" style={{ backgroundColor: 'var(--color-error)' }} />
             <span className="text-sm">Medical</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-4 h-4 bg-[#10b981] rounded" />
+            <div className="w-4 h-4 rounded" style={{ backgroundColor: 'var(--color-success)' }} />
             <span className="text-sm">Entrance</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-4 h-4 bg-[#fbbf24] rounded" />
+            <div className="w-4 h-4 rounded" style={{ backgroundColor: 'var(--color-warning)' }} />
             <span className="text-sm">VIP</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-4 h-4 bg-[#ef4444] rounded-full" />
+            <div className="w-4 h-4 rounded-full" style={{ backgroundColor: 'var(--color-error)' }} />
             <span className="text-sm">Emergency Exit</span>
           </div>
         </div>

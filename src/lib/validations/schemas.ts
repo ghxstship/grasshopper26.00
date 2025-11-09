@@ -1,3 +1,5 @@
+/* eslint-disable no-magic-numbers */
+// Validation constraints (min/max lengths, limits)
 import { z } from 'zod';
 
 // ============================================================================

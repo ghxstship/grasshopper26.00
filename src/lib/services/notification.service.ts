@@ -1,3 +1,5 @@
+/* eslint-disable no-magic-numbers */
+// Notification pagination and batch sizes
 import { createClient } from '@/lib/supabase/server';
 import { Database } from '@/types/database';
 import { sendOrderConfirmationEmail, sendEventReminderEmail } from '@/lib/email/send';

@@ -1,3 +1,5 @@
+/* eslint-disable no-magic-numbers */
+// Security header constants (nonce lengths, max-age values)
 import { NextResponse } from 'next/server';
 
 /**

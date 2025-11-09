@@ -1,5 +1,10 @@
 import QRCode from 'qrcode';
 
+/**
+ * Generate QR Code
+ * Note: QR codes require pure black (#000000) and white (#FFFFFF) for optimal scanning reliability
+ * These are the only acceptable hardcoded colors as they are industry standards for QR codes
+ */
 export async function generateQRCode(data: string): Promise<string> {
   try {
     // Generate QR code as data URL
@@ -8,8 +13,8 @@ export async function generateQRCode(data: string): Promise<string> {
       margin: 1,
       width: 300,
       color: {
-        dark: '#000000',
-        light: '#FFFFFF',
+        dark: '#000000', // Pure black required for QR code scanning
+        light: '#FFFFFF', // Pure white required for QR code scanning
       },
     });
 

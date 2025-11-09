@@ -1,3 +1,8 @@
+/**
+ * GHXSTSHIP Geometric Loading Components
+ * NO circular spinners - only geometric shapes
+ */
+
 import { cn } from '@/lib/utils';
 
 interface LoadingSpinnerProps {
@@ -5,22 +10,46 @@ interface LoadingSpinnerProps {
   className?: string;
 }
 
+/**
+ * Geometric loading spinner using rotating squares (GHXSTSHIP compliant)
+ */
 export function LoadingSpinner({ size = 'md', className }: LoadingSpinnerProps) {
   const sizeClasses = {
-    sm: 'h-4 w-4 border-2',
-    md: 'h-8 w-8 border-2',
-    lg: 'h-12 w-12 border-3',
-    xl: 'h-16 w-16 border-4',
+    sm: 'h-4 w-4',
+    md: 'h-8 w-8',
+    lg: 'h-12 w-12',
+    xl: 'h-16 w-16',
   };
 
   return (
-    <div
-      className={cn(
-        'animate-spin rounded-full border-gray-300 border-t-blue-600',
-        sizeClasses[size],
-        className
-      )}
-    />
+    <div className={cn('relative', sizeClasses[size], className)}>
+      {/* Outer square */}
+      <div className="absolute inset-0 border-3 border-black animate-spin" style={{ animationDuration: '1.5s' }} />
+      {/* Inner square */}
+      <div className="absolute inset-2 border-2 border-grey-600 animate-spin" style={{ animationDuration: '1s', animationDirection: 'reverse' }} />
+    </div>
+  );
+}
+
+/**
+ * Alternative geometric loader using triangles
+ */
+export function GeometricLoader({ size = 'md', className }: LoadingSpinnerProps) {
+  const sizeClasses = {
+    sm: 'h-4 w-4',
+    md: 'h-8 w-8',
+    lg: 'h-12 w-12',
+    xl: 'h-16 w-16',
+  };
+
+  return (
+    <div className={cn('relative', sizeClasses[size], className)}>
+      <div className="absolute inset-0 animate-pulse">
+        <svg viewBox="0 0 100 100" className="w-full h-full">
+          <polygon points="50,10 90,90 10,90" fill="none" stroke="currentColor" strokeWidth="3" />
+        </svg>
+      </div>
+    </div>
   );
 }
 
@@ -47,20 +76,23 @@ export function LoadingOverlay({ message = 'Loading...', fullScreen = false }: L
 
 interface SkeletonProps {
   className?: string;
-  variant?: 'text' | 'circular' | 'rectangular';
+  variant?: 'text' | 'square' | 'rectangular';
 }
 
+/**
+ * Geometric skeleton loader (GHXSTSHIP compliant - NO rounded corners)
+ */
 export function Skeleton({ className, variant = 'rectangular' }: SkeletonProps) {
   const variantClasses = {
     text: 'h-4 w-full',
-    circular: 'rounded-full',
-    rectangular: 'rounded-md',
+    square: '', // No rounding - hard edges only
+    rectangular: '', // No rounding - hard edges only
   };
 
   return (
     <div
       className={cn(
-        'animate-pulse bg-gray-200',
+        'animate-pulse bg-grey-200 border-2 border-grey-300',
         variantClasses[variant],
         className
       )}
@@ -68,6 +100,9 @@ export function Skeleton({ className, variant = 'rectangular' }: SkeletonProps) 
   );
 }
 
+/**
+ * Geometric table skeleton (GHXSTSHIP compliant)
+ */
 export function TableSkeleton({ rows = 5, columns = 4 }: { rows?: number; columns?: number }) {
   return (
     <div className="space-y-3">
@@ -82,9 +117,12 @@ export function TableSkeleton({ rows = 5, columns = 4 }: { rows?: number; column
   );
 }
 
+/**
+ * Geometric card skeleton (GHXSTSHIP compliant - hard edges, thick borders)
+ */
 export function CardSkeleton() {
   return (
-    <div className="rounded-lg border border-gray-200 p-6 space-y-4">
+    <div className="border-3 border-black p-6 space-y-4 shadow-geometric">
       <Skeleton className="h-6 w-3/4" />
       <Skeleton className="h-4 w-full" />
       <Skeleton className="h-4 w-5/6" />

@@ -1,6 +1,6 @@
 // Service Worker for PWA functionality
-const CACHE_NAME = 'grasshopper-v1';
-const RUNTIME_CACHE = 'grasshopper-runtime';
+const CACHE_NAME = 'gvteway-v1';
+const RUNTIME_CACHE = 'gvteway-runtime';
 
 // Assets to cache on install
 const PRECACHE_ASSETS = [
@@ -96,7 +96,7 @@ self.addEventListener('sync', (event) => {
 // Push notifications
 self.addEventListener('push', (event) => {
   const data = event.data ? event.data.json() : {};
-  const title = data.title || 'Grasshopper';
+  const title = data.title || 'GVTEWAY';
   const options = {
     body: data.body || 'New notification',
     icon: '/icons/icon-192x192.png',

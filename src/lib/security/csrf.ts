@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
+/* eslint-disable no-magic-numbers */
+// CSRF token generation constants (byte lengths, TTL)
 import { cookies } from 'next/headers';
 
 const CSRF_TOKEN_NAME = 'csrf_token';

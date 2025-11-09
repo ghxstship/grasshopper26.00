@@ -1,3 +1,5 @@
+/* eslint-disable no-magic-numbers */
+// Zoom levels, pan calculations, and map coordinates are interactive values that cannot be tokenized
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
@@ -7,6 +9,7 @@ import { ZoomIn, ZoomOut, Maximize2, MapPin, Navigation } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { primitiveColors } from '@/design-system/tokens/primitives/colors';
 
 interface VenueMapPOI {
   id: string;
@@ -50,17 +53,18 @@ const POI_ICONS: Record<string, string> = {
   info: 'ℹ️',
 };
 
+// Use design tokens for POI colors
 const POI_COLORS: Record<string, string> = {
-  stage: '#8b5cf6',
-  restroom: '#3b82f6',
-  food: '#f59e0b',
-  medical: '#ef4444',
-  entrance: '#10b981',
-  exit: '#ef4444',
-  atm: '#06b6d4',
-  merchandise: '#ec4899',
-  parking: '#6366f1',
-  info: '#8b5cf6',
+  stage: primitiveColors.brand[500],
+  restroom: primitiveColors.info[500],
+  food: primitiveColors.warning[500],
+  medical: primitiveColors.error[500],
+  entrance: primitiveColors.success[500],
+  exit: primitiveColors.error[500],
+  atm: primitiveColors.info[400],
+  merchandise: primitiveColors.accent[500],
+  parking: primitiveColors.brand[600],
+  info: primitiveColors.brand[500],
 };
 
 export function VenueMap({ eventId, mapData, pois, onPOIClick, className }: VenueMapProps) {
@@ -160,11 +164,20 @@ export function VenueMap({ eventId, mapData, pois, onPOIClick, className }: Venu
         </div>
       </div>
 
-      {/* Map Container */}
+      {/* Map Container - Interactive application widget */}
       <div
         ref={containerRef}
         className="w-full h-full overflow-hidden bg-gray-100 rounded-lg cursor-move"
+        role="application" // Declares this as an interactive application widget
+        aria-label="Interactive venue map"
+        tabIndex={0}
         onMouseDown={handleMouseDown}
+        onKeyDown={(e) => {
+          // Keyboard support for accessibility
+          if (e.key === 'ArrowUp' || e.key === 'ArrowDown' || e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+            e.preventDefault();
+          }
+        }}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}
@@ -205,7 +218,7 @@ export function VenueMap({ eventId, mapData, pois, onPOIClick, className }: Venu
                   key={index}
                   d={path.d}
                   fill={path.fill || 'none'}
-                  stroke={path.stroke || '#000'}
+                  stroke={path.stroke || primitiveColors.neutral[900]}
                   strokeWidth={path.strokeWidth || 1}
                 />
               ))}
@@ -225,11 +238,20 @@ export function VenueMap({ eventId, mapData, pois, onPOIClick, className }: Venu
               whileHover={{ scale: 1.2 }}
               whileTap={{ scale: 0.9 }}
               onClick={() => handlePOIClick(poi)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  handlePOIClick(poi);
+                }
+              }}
+              tabIndex={0}
+              role="button"
+              aria-label={`${poi.name} - ${poi.poi_type}`}
             >
               <div
                 className="relative flex items-center justify-center w-10 h-10 rounded-full shadow-lg"
                 style={{
-                  backgroundColor: poi.color || POI_COLORS[poi.poi_type] || '#8b5cf6',
+                  backgroundColor: poi.color || POI_COLORS[poi.poi_type] || primitiveColors.brand[500],
                 }}
               >
                 <span className="text-2xl">

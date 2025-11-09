@@ -1,9 +1,13 @@
+/* eslint-disable no-magic-numbers */
+// Animation timing, easing, and transform values are design-specific and cannot be tokenized
 import { Variants } from 'framer-motion';
 
 /**
  * Framer Motion Animation Variants
  * Reusable animation configurations for consistent motion design
  */
+
+import { primitiveColors } from '@/design-system/tokens/primitives/colors';
 
 // Fade animations
 export const fadeIn: Variants = {
@@ -283,10 +287,10 @@ export const parallaxFast: Variants = {
 
 // Hover lift effect
 export const hoverLift: Variants = {
-  rest: { y: 0, boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' },
+  rest: { y: 0, boxShadow: 'var(--shadow-sm)' },
   hover: { 
     y: -8,
-    boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)',
+    boxShadow: 'var(--shadow-lg)',
     transition: {
       duration: 0.2,
       ease: 'easeOut',

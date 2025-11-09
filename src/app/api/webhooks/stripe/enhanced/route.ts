@@ -5,6 +5,7 @@ import { createClient } from '@/lib/supabase/server';
 import { OrderService } from '@/lib/services/order.service';
 import { NotificationService } from '@/lib/services/notification.service';
 import { handleAPIError } from '@/lib/api/error-handler';
+import { sendOrderConfirmationEmail, sendTicketDeliveryEmail } from '@/lib/email/send';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2023-10-16',
@@ -102,7 +103,85 @@ async function handlePaymentSuccess(
     // Complete the order
     await orderService.completeOrder(order.id, paymentIntent.id);
 
-    // Send confirmation email
+    // Get user details
+    const { data: { user } } = await supabase.auth.admin.getUserById(order.user_id);
+    
+    if (!user?.email) {
+      console.error('User email not found for order:', order.id);
+      return;
+    }
+
+    // Get order details with event and ticket information
+    const { data: orderDetails } = await supabase
+      .from('orders')
+      .select(`
+        *,
+        events (
+          name,
+          start_date,
+          venue_name,
+          hero_image_url
+        ),
+        tickets (
+          id,
+          qr_code,
+          attendee_name,
+          ticket_types (
+            name,
+            price
+          )
+        )
+      `)
+      .eq('id', order.id)
+      .single();
+
+    if (!orderDetails) {
+      console.error('Order details not found:', order.id);
+      return;
+    }
+
+    const customerName = user.user_metadata?.name || user.email.split('@')[0];
+    const eventName = orderDetails.events?.name || 'Event';
+    const ticketCount = orderDetails.tickets?.length || 0;
+    const totalAmount = parseFloat(orderDetails.total_amount || '0');
+
+    // Send order confirmation email
+    try {
+      await sendOrderConfirmationEmail({
+        to: user.email,
+        customerName,
+        orderNumber: order.id.slice(0, 8).toUpperCase(),
+        eventName,
+        ticketCount,
+        totalAmount,
+      });
+      console.log(`Order confirmation email sent to ${user.email}`);
+    } catch (emailError) {
+      console.error('Failed to send order confirmation email:', emailError);
+      // Don't throw - continue with ticket delivery
+    }
+
+    // Send ticket delivery email with QR codes
+    if (orderDetails.tickets && orderDetails.tickets.length > 0) {
+      try {
+        await sendTicketDeliveryEmail({
+          to: user.email,
+          customerName,
+          eventName,
+          tickets: orderDetails.tickets.map((ticket: any) => ({
+            id: ticket.id,
+            qrCode: ticket.qr_code || `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${ticket.id}`,
+            attendeeName: ticket.attendee_name || customerName,
+          })),
+        });
+        console.log(`Ticket delivery email sent to ${user.email}`);
+      } catch (emailError) {
+        console.error('Failed to send ticket delivery email:', emailError);
+        // Don't throw - order is still complete
+      }
+    }
+
+    // Send in-app notification
     await notificationService.sendOrderConfirmation(order.id);
 
     console.log(`Payment succeeded for order ${order.id}`);

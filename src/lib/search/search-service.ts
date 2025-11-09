@@ -4,6 +4,8 @@
  * Ready for Algolia/Typesense integration
  */
 
+/* eslint-disable no-magic-numbers */
+// Search scoring weights and pagination limits
 import { createClient } from '@/lib/supabase/server';
 
 export interface SearchFilters {

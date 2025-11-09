@@ -175,9 +175,12 @@ export default async function OrderDetailPage({ params }: { params: Promise<{ id
                   variant="outline"
                   size="sm"
                   className="border-purple-500/30"
+                  asChild
                 >
-                  <Download className="h-4 w-4 mr-2" />
-                  Download All
+                  <a href={`/api/orders/${order.id}/download-tickets`} download>
+                    <Download className="h-4 w-4 mr-2" />
+                    Download All
+                  </a>
                 </Button>
               </CardTitle>
             </CardHeader>
@@ -242,16 +245,19 @@ export default async function OrderDetailPage({ params }: { params: Promise<{ id
             className="flex-1 border-purple-500/30"
             asChild
           >
-            <Link href={`mailto:support@grasshopper.com?subject=Order ${order.id.slice(0, 8)}`}>
+            <Link href={`mailto:support@gvteway.com?subject=Order ${order.id.slice(0, 8)}`}>
               <Mail className="h-4 w-4 mr-2" />
               Contact Support
             </Link>
           </Button>
           <Button
             className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+            asChild
           >
-            <Download className="h-4 w-4 mr-2" />
-            Download Receipt
+            <a href={`/api/orders/${order.id}/download-tickets`} download>
+              <Download className="h-4 w-4 mr-2" />
+              Download Tickets
+            </a>
           </Button>
         </div>
 
@@ -259,8 +265,8 @@ export default async function OrderDetailPage({ params }: { params: Promise<{ id
         <div className="mt-6 text-center text-sm text-gray-400">
           <p>
             Need help? Contact us at{' '}
-            <a href="mailto:support@grasshopper.com" className="text-purple-400 hover:text-purple-300">
-              support@grasshopper.com
+            <a href="mailto:support@gvteway.com" className="text-purple-400 hover:text-purple-300">
+              support@gvteway.com
             </a>
           </p>
         </div>

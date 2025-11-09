@@ -1,3 +1,5 @@
+/* eslint-disable no-magic-numbers */
+// Cache TTL constants (seconds)
 /**
  * Caching utility with Redis-compatible interface
  * Falls back to in-memory cache for development

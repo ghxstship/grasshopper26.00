@@ -57,12 +57,36 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // TODO: Send confirmation email
-    // await sendOrderConfirmationEmail(order, user);
+    // Fetch complete order details with event and ticket information
+    const { data: orderDetails } = await supabase
+      .from('orders')
+      .select(`
+        *,
+        events (
+          id,
+          name,
+          start_date,
+          end_date,
+          venue_name,
+          hero_image_url
+        ),
+        tickets (
+          id,
+          qr_code,
+          status,
+          attendee_name,
+          ticket_types (
+            name,
+            price
+          )
+        )
+      `)
+      .eq('id', order.id)
+      .single();
 
     return NextResponse.json({
       success: true,
-      order,
+      order: orderDetails || order,
     });
   } catch (error: any) {
     console.error('Confirmation error:', error);

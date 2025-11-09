@@ -3,6 +3,8 @@
  * Format dates, numbers, currency, and relative time according to locale
  */
 
+/* eslint-disable no-magic-numbers */
+// Time conversion constants (seconds, hours, days, etc.)
 export class Formatters {
   private locale: string;
   

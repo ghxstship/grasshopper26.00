@@ -1,0 +1,175 @@
+{
+  "common": {
+    "buttons": {
+      "save": "Save",
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "edit": "Edit",
+      "confirm": "Confirm",
+      "close": "Close",
+      "submit": "Submit",
+      "reset": "Reset",
+      "back": "Back",
+      "next": "Next",
+      "previous": "Previous",
+      "finish": "Finish",
+      "continue": "Continue",
+      "learnMore": "Learn More",
+      "viewAll": "View All",
+      "showMore": "Show More",
+      "showLess": "Show Less"
+    },
+    "labels": {
+      "search": "Search",
+      "filter": "Filter",
+      "sort": "Sort",
+      "email": "Email",
+      "password": "Password",
+      "username": "Username",
+      "name": "Name",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "phone": "Phone",
+      "address": "Address",
+      "city": "City",
+      "state": "State",
+      "zipCode": "ZIP Code",
+      "country": "Country"
+    },
+    "messages": {
+      "loading": "Loading...",
+      "error": "An error occurred",
+      "success": "Operation successful",
+      "noResults": "No results found",
+      "tryAgain": "Please try again",
+      "sessionExpired": "Your session has expired",
+      "unauthorized": "You are not authorized to perform this action",
+      "notFound": "The requested resource was not found",
+      "serverError": "Server error. Please try again later.",
+      "networkError": "Network error. Please check your connection."
+    },
+    "validation": {
+      "required": "This field is required",
+      "email": "Please enter a valid email address",
+      "minLength": "Must be at least {{min}} characters",
+      "maxLength": "Must be no more than {{max}} characters",
+      "minValue": "Must be at least {{min}}",
+      "maxValue": "Must be no more than {{max}}",
+      "pattern": "Invalid format",
+      "passwordMismatch": "Passwords do not match",
+      "invalidPhone": "Please enter a valid phone number",
+      "invalidUrl": "Please enter a valid URL"
+    },
+    "time": {
+      "justNow": "Just now",
+      "minutesAgo": "{{count}} minute ago",
+      "minutesAgo_plural": "{{count}} minutes ago",
+      "hoursAgo": "{{count}} hour ago",
+      "hoursAgo_plural": "{{count}} hours ago",
+      "daysAgo": "{{count}} day ago",
+      "daysAgo_plural": "{{count}} days ago",
+      "weeksAgo": "{{count}} week ago",
+      "weeksAgo_plural": "{{count}} weeks ago",
+      "monthsAgo": "{{count}} month ago",
+      "monthsAgo_plural": "{{count}} months ago",
+      "yearsAgo": "{{count}} year ago",
+      "yearsAgo_plural": "{{count}} years ago"
+    }
+  },
+  "navigation": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "events": "Events",
+    "tickets": "Tickets",
+    "favorites": "Favorites",
+    "cart": "Cart",
+    "checkout": "Checkout",
+    "profile": "Profile",
+    "settings": "Settings",
+    "help": "Help",
+    "logout": "Log Out",
+    "login": "Log In",
+    "signup": "Sign Up"
+  },
+  "events": {
+    "title": "Events",
+    "upcoming": "Upcoming Events",
+    "past": "Past Events",
+    "featured": "Featured Events",
+    "categories": "Categories",
+    "viewDetails": "View Details",
+    "buyTickets": "Buy Tickets",
+    "soldOut": "Sold Out",
+    "fewLeft": "Only {{count}} tickets left",
+    "startingAt": "Starting at {{price}}",
+    "free": "Free",
+    "date": "Date",
+    "time": "Time",
+    "venue": "Venue",
+    "location": "Location",
+    "description": "Description",
+    "lineup": "Lineup",
+    "schedule": "Schedule"
+  },
+  "tickets": {
+    "title": "My Tickets",
+    "active": "Active Tickets",
+    "used": "Used Tickets",
+    "expired": "Expired Tickets",
+    "download": "Download Ticket",
+    "transfer": "Transfer Ticket",
+    "cancel": "Cancel Ticket",
+    "ticketNumber": "Ticket #{{number}}",
+    "qrCode": "QR Code",
+    "showQR": "Show QR Code",
+    "admitOne": "Admit One",
+    "general": "General Admission",
+    "vip": "VIP",
+    "earlyBird": "Early Bird"
+  },
+  "privacy": {
+    "cookieConsent": {
+      "title": "Cookie Preferences",
+      "description": "We use cookies to enhance your experience, analyze site traffic, and personalize content. You can customize your preferences below.",
+      "acceptAll": "Accept All",
+      "rejectAll": "Reject All",
+      "savePreferences": "Save Preferences",
+      "showDetails": "Show Details",
+      "hideDetails": "Hide Details",
+      "necessary": {
+        "title": "Necessary Cookies",
+        "description": "Essential for the website to function. Cannot be disabled."
+      },
+      "analytics": {
+        "title": "Analytics Cookies",
+        "description": "Help us understand how visitors use our website."
+      },
+      "marketing": {
+        "title": "Marketing Cookies",
+        "description": "Used to deliver personalized advertisements."
+      },
+      "preferences": {
+        "title": "Preference Cookies",
+        "description": "Remember your settings and preferences."
+      }
+    },
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "cookiePolicy": "Cookie Policy",
+    "dataProtection": "Data Protection"
+  },
+  "accessibility": {
+    "skipToContent": "Skip to main content",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "openDialog": "Open dialog",
+    "closeDialog": "Close dialog",
+    "loading": "Loading",
+    "previousPage": "Previous page",
+    "nextPage": "Next page",
+    "pageOf": "Page {{current}} of {{total}}",
+    "sortBy": "Sort by",
+    "filterBy": "Filter by",
+    "clearFilters": "Clear all filters"
+  }
+}

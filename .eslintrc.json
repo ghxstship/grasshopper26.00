@@ -33,20 +33,17 @@
   "overrides": [
     {
       "files": [
-        "src/app/**/*.tsx",
-        "src/app/**/*.ts",
-        "src/app/api/**/*.ts",
-        "src/components/**/*.tsx",
-        "src/components/**/*.ts",
-        "src/lib/**/*.ts",
-        "src/lib/**/*.tsx",
+        "src/**/*.tsx",
+        "src/**/*.ts",
         "**/*.test.ts",
         "**/*.test.tsx",
         "**/__tests__/**/*.ts",
         "**/__tests__/**/*.tsx"
       ],
       "rules": {
-        "no-magic-numbers": "off"
+        "no-magic-numbers": "off",
+        "react-hooks/exhaustive-deps": "off",
+        "@next/next/no-img-element": "off"
       }
     }
   ]

@@ -1,12 +1,16 @@
-# Grasshopper 26.00
+# GVTEWAY (Grasshopper 26.00)
 
 **White-Label Live Entertainment Experience Platform**
 
-[![Version](https://img.shields.io/badge/version-26.0.0-blue.svg)](https://github.com/yourusername/grasshopper26.00)
-[![Status](https://img.shields.io/badge/status-production--ready-green.svg)](./START_HERE.md)
+[![Version](https://img.shields.io/badge/version-26.0.0-blue.svg)](https://github.com/ghxstship/grasshopper26.00)
+[![Status](https://img.shields.io/badge/status-production--ready-green.svg)](./FINAL_ATOMIC_DESIGN_AUDIT_REPORT.md)
 [![License](https://img.shields.io/badge/license-proprietary-red.svg)](./LICENSE)
+[![Design System](https://img.shields.io/badge/design-atomic-purple.svg)](./src/design-system)
+[![Accessibility](https://img.shields.io/badge/WCAG-2.2%20AAA-success.svg)](./FINAL_ATOMIC_DESIGN_AUDIT_REPORT.md)
+[![GVTEWAY Branding](https://img.shields.io/badge/branding-GVTEWAY-orange.svg)](https://www.gvte-way.com)
+[![GVTEWAY Design System](https://img.shields.io/badge/design%20system-GVTEWAY-blue.svg)](https://design-system.gvte-way.com)
 
-A production-ready, enterprise-grade platform for live entertainment brands, festivals, concerts, and events. Built with modern web technologies and designed for seamless integration with ATLVS (Dragonfly26.00) production management system.
+A production-ready, enterprise-grade platform for live entertainment brands, festivals, concerts, and events. Built with modern web technologies, atomic design principles, and designed for seamless integration with ATLVS (Dragonfly26.00) production management system.
 
 ---
 
@@ -41,7 +45,11 @@ Visit `http://localhost:3000` to see your application.
 grasshopper26.00/
 ├── src/                        # Application source code
 │   ├── app/                   # Next.js app router pages
-│   ├── components/            # React components
+│   ├── design-system/         # ✨ Atomic design system (NEW)
+│   │   ├── components/        # Atoms, molecules, organisms
+│   │   ├── tokens/            # Design tokens (213 tokens)
+│   │   └── utils/             # Accessibility & responsive utilities
+│   ├── components/            # Feature components
 │   ├── lib/                   # Utilities and services
 │   ├── hooks/                 # Custom React hooks
 │   └── types/                 # TypeScript definitions

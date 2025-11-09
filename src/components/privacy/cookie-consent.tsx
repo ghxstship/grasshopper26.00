@@ -6,7 +6,7 @@
  */
 
 import { useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/design-system/components/atoms/button';
 import { X } from 'lucide-react';
 
 export interface CookiePreferences {

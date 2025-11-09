@@ -3,9 +3,9 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/design-system/components/atoms/tabs';
+import { Button } from '@/design-system/components/atoms/button';
 import { Calendar, Users, Ticket, DollarSign, TrendingUp, Music, ShoppingBag, Settings } from 'lucide-react';
 import Link from 'next/link';
 

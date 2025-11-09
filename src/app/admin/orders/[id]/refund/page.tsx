@@ -2,8 +2,8 @@
 
 import { use, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/design-system/components/atoms/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/card';
 import { ArrowLeft, DollarSign, Loader2, AlertTriangle } from 'lucide-react';
 import Link from 'next/link';
 

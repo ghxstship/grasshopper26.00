@@ -3,9 +3,9 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
+import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/card';
+import { Button } from '@/design-system/components/atoms/button';
+import { Badge } from '@/design-system/components/atoms/badge';
 import { ArrowLeft, Mail, RefreshCw, DollarSign } from 'lucide-react';
 import { toast } from 'sonner';
 

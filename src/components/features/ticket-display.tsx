@@ -1,11 +1,12 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader } from '@/design-system/components/atoms/card';
+import { Button } from '@/design-system/components/atoms/button';
 import { Download, Share2, Wallet } from 'lucide-react';
 import Image from 'next/image';
 import { generateTicketQRCode } from '@/lib/tickets/qr-generator';
+import styles from './ticket-display.module.css';
 
 interface TicketDisplayProps {
   ticket: {
@@ -63,22 +64,22 @@ export function TicketDisplay({ ticket }: TicketDisplayProps) {
   };
 
   return (
-    <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20 overflow-hidden">
+    <Card className={styles.card}>
       {ticket.orders.events.hero_image_url && (
-        <div className="relative h-32 w-full">
+        <div className={styles.heroImage}>
           <Image
             src={ticket.orders.events.hero_image_url}
             alt={ticket.orders.events.name}
             fill
-            className="object-cover opacity-50"
+            className={styles.heroImageInner}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent" />
+          <div className={styles.heroGradient} />
         </div>
       )}
       
       <CardHeader>
-        <h3 className="text-xl font-bold text-white">{ticket.orders.events.name}</h3>
-        <p className="text-gray-400">
+        <h3 className={styles.title}>{ticket.orders.events.name}</h3>
+        <p className={styles.subtitle}>
           {new Date(ticket.orders.events.start_date).toLocaleDateString('en-US', {
             weekday: 'long',
             year: 'numeric',
@@ -86,57 +87,57 @@ export function TicketDisplay({ ticket }: TicketDisplayProps) {
             day: 'numeric',
           })}
         </p>
-        <p className="text-gray-400">{ticket.orders.events.venue_name}</p>
+        <p className={styles.subtitle}>{ticket.orders.events.venue_name}</p>
       </CardHeader>
 
-      <CardContent className="space-y-4">
-        <div className="bg-purple-500/10 border border-purple-500/20 rounded-lg p-4">
-          <p className="text-sm text-gray-400 mb-1">Ticket Type</p>
-          <p className="text-white font-semibold">{ticket.ticket_types.name}</p>
+      <CardContent className={styles.content}>
+        <div className={styles.ticketInfo}>
+          <p className={styles.ticketInfoLabel}>Ticket Type</p>
+          <p className={styles.ticketInfoValue}>{ticket.ticket_types.name}</p>
         </div>
 
         {qrCodeImage && (
-          <div className="flex justify-center bg-white p-4 rounded-lg">
+          <div className={styles.qrContainer}>
             <Image 
               src={qrCodeImage} 
               alt="Ticket QR Code"
               width={200}
               height={200}
-              className="w-full h-full"
+              className={styles.qrImage}
             />
           </div>
         )}
 
-        <div className="text-center text-sm text-gray-400">
+        <div className={styles.ticketId}>
           <p>Ticket ID: {ticket.id.slice(0, 8).toUpperCase()}</p>
         </div>
 
-        <div className="grid grid-cols-3 gap-2">
+        <div className={styles.actions}>
           <Button
             variant="outline"
             size="sm"
             onClick={handleDownload}
-            className="border-purple-500/30 hover:bg-purple-500/10"
+            className={styles.actionButton}
           >
-            <Download className="h-4 w-4 mr-1" />
+            <Download className={styles.actionIcon} />
             PDF
           </Button>
           <Button
             variant="outline"
             size="sm"
             onClick={handleShare}
-            className="border-purple-500/30 hover:bg-purple-500/10"
+            className={styles.actionButton}
           >
-            <Share2 className="h-4 w-4 mr-1" />
+            <Share2 className={styles.actionIcon} />
             Share
           </Button>
           <Button
             variant="outline"
             size="sm"
             onClick={handleAddToWallet}
-            className="border-purple-500/30 hover:bg-purple-500/10"
+            className={styles.actionButton}
           >
-            <Wallet className="h-4 w-4 mr-1" />
+            <Wallet className={styles.actionIcon} />
             Wallet
           </Button>
         </div>

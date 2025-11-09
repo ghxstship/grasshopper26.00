@@ -6,11 +6,11 @@ export const dynamic = 'force-dynamic';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase/client';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Checkbox } from '@/components/ui/checkbox';
+import { Button } from '@/design-system/components/atoms/button';
+import { Input } from '@/design-system/components/atoms/input';
+import { Label } from '@/design-system/components/atoms/label';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/design-system/components/atoms/card';
+import { Checkbox } from '@/design-system/components/atoms/checkbox';
 import { toast } from 'sonner';
 import { Loader2 } from 'lucide-react';
 

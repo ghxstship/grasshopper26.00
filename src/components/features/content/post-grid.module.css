@@ -1,0 +1,8 @@
+.postGrid { display: grid; grid-template-columns: 1fr; gap: var(--space-6); }
+@media (min-width: 768px) { .postGrid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .postGrid { grid-template-columns: repeat(3, 1fr); } }
+.postCard { border-radius: var(--radius-lg); border: var(--border-width-default) solid var(--color-border-default); background-color: var(--color-bg-primary); overflow: hidden; }
+.postImage { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.postContent { padding: var(--space-4); }
+.postTitle { font-size: var(--font-size-lg); font-weight: var(--font-weight-semibold); margin-block-end: var(--space-2); }
+.postExcerpt { font-size: var(--font-size-sm); color: var(--color-text-secondary); }

@@ -4,16 +4,17 @@ import { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { format, parseISO, isSameDay, addMinutes } from 'date-fns';
 import { Calendar, Clock, Filter, Download, Star } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Card } from '@/components/ui/card';
+import { Button } from '@/design-system/components/atoms/button';
+import { Badge } from '@/design-system/components/atoms/badge';
+import { Card } from '@/design-system/components/atoms/card';
+import styles from './schedule-grid.module.css';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select';
+} from '@/design-system/components/atoms/select';
 
 interface Artist {
   id: string;
@@ -173,15 +174,15 @@ export function ScheduleGrid({
   };
 
   return (
-    <div className={`space-y-4 ${className}`}>
+    <div className={`${styles.container} ${className || ''}`}>
       {/* Filters */}
-      <Card className="p-4">
-        <div className="flex flex-wrap gap-4 items-center">
+      <Card className={styles.filtersCard}>
+        <div className={styles.filters}>
           {/* Day Filter */}
-          <div className="flex items-center gap-2">
-            <Calendar className="h-4 w-4 text-gray-500" />
+          <div className={styles.filterGroup}>
+            <Calendar className={styles.filterIcon} />
             <Select value={selectedDay || 'all'} onValueChange={(v) => setSelectedDay(v === 'all' ? null : v)}>
-              <SelectTrigger className="w-[180px]">
+              <SelectTrigger className={styles.selectTrigger}>
                 <SelectValue placeholder="All Days" />
               </SelectTrigger>
               <SelectContent>
@@ -196,10 +197,10 @@ export function ScheduleGrid({
           </div>
 
           {/* Stage Filter */}
-          <div className="flex items-center gap-2">
-            <Filter className="h-4 w-4 text-gray-500" />
+          <div className={styles.filterGroup}>
+            <Filter className={styles.filterIcon} />
             <Select value={selectedStage} onValueChange={setSelectedStage}>
-              <SelectTrigger className="w-[180px]">
+              <SelectTrigger className={styles.selectTrigger}>
                 <SelectValue placeholder="All Stages" />
               </SelectTrigger>
               <SelectContent>
@@ -215,10 +216,10 @@ export function ScheduleGrid({
 
           {/* Genre Filter */}
           {genres.length > 0 && (
-            <div className="flex items-center gap-2">
-              <Filter className="h-4 w-4 text-gray-500" />
+            <div className={styles.filterGroup}>
+              <Filter className={styles.filterIcon} />
               <Select value={selectedGenre} onValueChange={setSelectedGenre}>
-                <SelectTrigger className="w-[180px]">
+                <SelectTrigger className={styles.selectTrigger}>
                   <SelectValue placeholder="All Genres" />
                 </SelectTrigger>
                 <SelectContent>
@@ -233,9 +234,9 @@ export function ScheduleGrid({
             </div>
           )}
 
-          <div className="ml-auto flex gap-2">
+          <div className={styles.actions}>
             <Button variant="outline" size="sm" onClick={handleExportToCalendar}>
-              <Download className="h-4 w-4 mr-2" />
+              <Download className={styles.actionIcon} />
               Export
             </Button>
           </div>
@@ -244,33 +245,33 @@ export function ScheduleGrid({
 
       {/* Grid View */}
       {viewMode === 'grid' && (
-        <div className="overflow-x-auto">
-          <div className="min-w-[800px]">
+        <div className={styles.gridWrapper}>
+          <div className={styles.gridContainer}>
             {/* Stage Headers */}
-            <div className="grid gap-2 mb-2" style={{ gridTemplateColumns: `120px repeat(${stages.length}, 1fr)` }}>
-              <div className="font-semibold text-sm text-gray-500">Time</div>
+            <div className={styles.gridHeader} style={{ gridTemplateColumns: `120px repeat(${stages.length}, 1fr)` }}>
+              <div className={styles.timeHeader}>Time</div>
               {stages.map((stage) => (
-                <div key={stage.id} className="font-semibold text-sm text-center p-2 bg-gray-100 rounded">
+                <div key={stage.id} className={styles.stageHeader}>
                   {stage.name}
                 </div>
               ))}
             </div>
 
             {/* Time Slots */}
-            <div className="space-y-1">
+            <div className={styles.timeSlots}>
               {timeSlots.map((slot, index) => (
                 <div
                   key={index}
-                  className="grid gap-2"
+                  className={styles.timeSlot}
                   style={{ gridTemplateColumns: `120px repeat(${stages.length}, 1fr)` }}
                 >
-                  <div className="text-sm text-gray-600 py-2">
+                  <div className={styles.timeLabel}>
                     {format(slot.time, 'h:mm a')}
                   </div>
                   {stages.map((stage) => {
                     const item = slot.items.find((i) => i.stage_id === stage.id);
                     return (
-                      <div key={stage.id} className="min-h-[60px]">
+                      <div key={stage.id} className={styles.slotCell}>
                         {item && (
                           <ScheduleCard
                             item={item}
@@ -291,7 +292,7 @@ export function ScheduleGrid({
 
       {/* List View */}
       {viewMode === 'list' && (
-        <div className="space-y-2">
+        <div className={styles.listView}>
           {filteredSchedule.map((item) => (
             <ScheduleCard
               key={item.id}
@@ -317,37 +318,37 @@ interface ScheduleCardProps {
 }
 
 function ScheduleCard({ item, isInPersonalSchedule, hasConflict, onAddToSchedule, showStage }: ScheduleCardProps) {
+  const cardClass = isInPersonalSchedule
+    ? hasConflict
+      ? styles.cardConflict
+      : styles.cardSelected
+    : styles.card;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ scale: 1.02 }}
-      className={`relative p-3 rounded-lg border-2 transition-colors ${
-        isInPersonalSchedule
-          ? hasConflict
-            ? 'bg-red-50 border-red-300'
-            : 'bg-purple-50 border-purple-300'
-          : 'bg-white border-gray-200 hover:border-gray-300'
-      }`}
+      className={cardClass}
     >
-      <div className="flex items-start justify-between gap-2">
-        <div className="flex-1 min-w-0">
-          <h4 className="font-semibold text-sm truncate">{item.artist.name}</h4>
-          <div className="flex items-center gap-2 mt-1 text-xs text-gray-600">
-            <Clock className="h-3 w-3" />
+      <div className={styles.cardContent}>
+        <div className={styles.cardBody}>
+          <h4 className={styles.cardTitle}>{item.artist.name}</h4>
+          <div className={styles.cardTime}>
+            <Clock className={styles.cardTimeIcon} />
             <span>
               {format(parseISO(item.start_time), 'h:mm a')} - {format(parseISO(item.end_time), 'h:mm a')}
             </span>
           </div>
           {showStage && (
-            <Badge variant="secondary" className="mt-1 text-xs">
+            <Badge variant="secondary" className={styles.stageBadge}>
               {item.stage.name}
             </Badge>
           )}
           {item.artist.genre_tags && item.artist.genre_tags.length > 0 && (
-            <div className="flex gap-1 mt-1">
+            <div className={styles.genreTags}>
               {item.artist.genre_tags.slice(0, 2).map((genre) => (
-                <Badge key={genre} variant="outline" className="text-xs">
+                <Badge key={genre} variant="outline" className={styles.genreTag}>
                   {genre}
                 </Badge>
               ))}
@@ -358,13 +359,13 @@ function ScheduleCard({ item, isInPersonalSchedule, hasConflict, onAddToSchedule
           size="sm"
           variant={isInPersonalSchedule ? 'default' : 'outline'}
           onClick={onAddToSchedule}
-          className="shrink-0"
+          className={styles.favoriteButton}
         >
-          <Star className={`h-3 w-3 ${isInPersonalSchedule ? 'fill-current' : ''}`} />
+          <Star className={`${styles.favoriteIcon} ${isInPersonalSchedule ? styles.favoriteIconFilled : ''}`} />
         </Button>
       </div>
       {hasConflict && (
-        <div className="mt-2 text-xs text-red-600 font-medium">
+        <div className={styles.conflictWarning}>
           ⚠️ Conflicts with another set in your schedule
         </div>
       )}

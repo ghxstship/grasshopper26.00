@@ -1,0 +1,4 @@
+.memberEvents { display: grid; gap: var(--space-4); }
+.eventCard { border-radius: var(--radius-lg); border: var(--border-width-default) solid var(--color-border-default); background-color: var(--color-bg-primary); padding: var(--space-4); transition: box-shadow var(--duration-fast) var(--easing-out); }
+.eventCard:hover { box-shadow: var(--shadow-md); }
+.eventBadge { display: inline-block; padding-inline: var(--space-2); padding-block: var(--space-1); border-radius: var(--radius-full); background-color: var(--color-primary); color: var(--color-text-inverse); font-size: var(--font-size-xs); font-weight: var(--font-weight-semibold); margin-block-end: var(--space-2); }

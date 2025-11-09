@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/design-system/components/atoms/button';
 import { useCart, CartItem } from '@/lib/store/cart-store';
 import { ShoppingCart, Check } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';

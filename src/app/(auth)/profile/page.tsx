@@ -5,12 +5,12 @@ import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 
 export const dynamic = 'force-dynamic';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Button } from '@/design-system/components/atoms/button';
+import { Input } from '@/design-system/components/atoms/input';
+import { Label } from '@/design-system/components/atoms/label';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/design-system/components/atoms/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/design-system/components/atoms/tabs';
+import { Avatar, AvatarFallback, AvatarImage } from '@/design-system/components/atoms/avatar';
 import { toast } from 'sonner';
 import { Loader2, User, Heart, Calendar, ShoppingBag } from 'lucide-react';
 

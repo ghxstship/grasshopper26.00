@@ -1,10 +1,11 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/design-system/components/atoms/button';
 import { Heart } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
+import styles from './favorite-button.module.css';
 
 interface FavoriteButtonProps {
   eventId?: string;
@@ -73,12 +74,10 @@ export function FavoriteButton({ eventId, artistId, size = 'default' }: Favorite
       size={size}
       onClick={toggleFavorite}
       disabled={loading}
-      className={`border-purple-500/30 ${
-        isFavorited ? 'bg-purple-500/20 hover:bg-purple-500/30' : 'hover:bg-purple-500/10'
-      }`}
+      className={isFavorited ? styles.buttonFavorited : styles.button}
     >
       <Heart
-        className={`h-4 w-4 ${isFavorited ? 'fill-pink-500 text-pink-500' : ''}`}
+        className={`${styles.icon} ${isFavorited ? styles.iconFavorited : ''}`}
       />
     </Button>
   );

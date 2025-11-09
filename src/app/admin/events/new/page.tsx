@@ -2,9 +2,9 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+import { Button } from '@/design-system/components/atoms/button';
+import { Input } from '@/design-system/components/atoms/input';
+import { Label } from '@/design-system/components/atoms/label';
 import { Textarea } from '@/components/ui/textarea';
 import {
   Select,
@@ -12,8 +12,8 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+} from '@/design-system/components/atoms/select';
+import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/card';
 import { ArrowLeft, Save } from 'lucide-react';
 import Link from 'next/link';
 import { useToast } from '@/hooks/use-toast';

@@ -8,7 +8,7 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase/server';
-import { HalftoneOverlay } from '@/components/ui/halftone-overlay';
+import { HalftoneOverlay } from '@/design-system/components/atoms/halftone-overlay';
 import { FollowArtistButton } from '@/components/features/artists/follow-artist-button';
 
 interface ArtistPageProps {

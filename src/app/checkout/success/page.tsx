@@ -4,8 +4,8 @@ export const dynamic = 'force-dynamic';
 
 import { useEffect, useState, useCallback } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/card';
+import { Button } from '@/design-system/components/atoms/button';
 import { CheckCircle, Mail, Ticket, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 import { useCart } from '@/lib/store/cart-store';

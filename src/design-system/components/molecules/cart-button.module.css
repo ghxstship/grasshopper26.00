@@ -1,0 +1,34 @@
+/**
+ * Cart Button Styles
+ * Uses design tokens exclusively
+ */
+
+.button {
+  position: relative;
+  border-color: color-mix(in srgb, var(--color-primary) 30%, transparent);
+}
+
+.button:hover {
+  background-color: color-mix(in srgb, var(--color-primary) 10%, transparent);
+}
+
+.icon {
+  height: var(--space-5);
+  width: var(--space-5);
+}
+
+.badge {
+  position: absolute;
+  inset-block-start: calc(var(--space-2) * -1);
+  inset-inline-end: calc(var(--space-2) * -1);
+  background: var(--gradient-brand-primary);
+  color: var(--color-text-inverse);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  border-radius: var(--radius-full);
+  height: var(--space-5);
+  width: var(--space-5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

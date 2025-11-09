@@ -1,0 +1,145 @@
+/**
+ * Search Bar Styles
+ * Uses design tokens exclusively
+ */
+
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 28rem;
+}
+
+.inputWrapper {
+  position: relative;
+}
+
+.searchIcon {
+  position: absolute;
+  inset-inline-start: var(--space-3);
+  inset-block-start: 50%;
+  transform: translateY(-50%);
+  height: var(--space-4);
+  width: var(--space-4);
+  color: var(--color-text-tertiary);
+}
+
+.input {
+  padding-inline-start: var(--space-10);
+  padding-inline-end: var(--space-10);
+  background-color: color-mix(in srgb, var(--color-bg-primary) 50%, transparent);
+  border-color: color-mix(in srgb, var(--color-primary) 30%, transparent);
+}
+
+.input:focus {
+  border-color: color-mix(in srgb, var(--color-primary) 50%, transparent);
+}
+
+.loader {
+  position: absolute;
+  inset-inline-end: var(--space-3);
+  inset-block-start: 50%;
+  transform: translateY(-50%);
+  height: var(--space-4);
+  width: var(--space-4);
+  color: var(--color-primary);
+  animation: spin var(--duration-slower) linear infinite;
+}
+
+@keyframes spin {
+  from { transform: translateY(-50%) rotate(0deg); }
+  to { transform: translateY(-50%) rotate(360deg); }
+}
+
+.resultsCard {
+  position: absolute;
+  inset-block-start: 100%;
+  margin-block-start: var(--space-2);
+  width: 100%;
+  background-color: color-mix(in srgb, var(--color-bg-primary) 95%, transparent);
+  backdrop-filter: blur(16px);
+  border-color: color-mix(in srgb, var(--color-primary) 20%, transparent);
+  max-height: 24rem;
+  overflow-y: auto;
+  z-index: var(--z-dropdown);
+}
+
+.resultsContent {
+  padding: var(--space-2);
+}
+
+.section {
+  margin-block-end: var(--space-4);
+}
+
+.section:last-child {
+  margin-block-end: 0;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding-inline: var(--space-2);
+  padding-block: var(--space-1);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-tertiary);
+}
+
+.sectionIcon {
+  height: var(--space-4);
+  width: var(--space-4);
+}
+
+.resultItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2);
+  border-radius: var(--radius-md);
+  transition: background-color var(--duration-fast) var(--easing-out);
+}
+
+.resultItem:hover {
+  background-color: color-mix(in srgb, var(--color-primary) 10%, transparent);
+}
+
+.resultImage {
+  position: relative;
+  width: var(--space-12);
+  height: var(--space-12);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.resultImageRound {
+  border-radius: var(--radius-full);
+}
+
+.resultContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.resultTitle {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-inverse);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.resultMeta {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.noResults {
+  padding: var(--space-4);
+  text-align: center;
+  color: var(--color-text-tertiary);
+}

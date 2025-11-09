@@ -7,11 +7,11 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { createClient } from '@/lib/supabase/client';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Card } from '@/components/ui/card';
-import { Avatar } from '@/components/ui/avatar';
-import { Badge } from '@/components/ui/badge';
+import { Button } from '@/design-system/components/atoms/button';
+import { Input } from '@/design-system/components/atoms/input';
+import { Card } from '@/design-system/components/atoms/card';
+import { Avatar } from '@/design-system/components/atoms/avatar';
+import { Badge } from '@/design-system/components/atoms/badge';
 import { Send, MoreVertical, Search } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { format } from 'date-fns';

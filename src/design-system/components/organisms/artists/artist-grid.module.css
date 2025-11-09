@@ -1,0 +1,5 @@
+.artistGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(var(--space-64), 1fr)); gap: var(--space-6); }
+.artistCard { border-radius: var(--radius-lg); border: var(--border-width-default) solid var(--color-border-default); background-color: var(--color-bg-primary); padding: var(--space-4); transition: transform var(--duration-fast) var(--easing-out); }
+.artistCard:hover { transform: translateY(calc(var(--space-1) * -1)); box-shadow: var(--shadow-lg); }
+.artistImage { width: 100%; aspect-ratio: 1; border-radius: var(--radius-full); object-fit: cover; margin-block-end: var(--space-3); }
+.artistName { font-size: var(--font-size-base); font-weight: var(--font-weight-semibold); text-align: center; }

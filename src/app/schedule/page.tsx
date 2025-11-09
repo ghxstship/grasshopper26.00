@@ -4,8 +4,8 @@ import { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
 
 export const dynamic = 'force-dynamic';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/design-system/components/atoms/card';
+import { Button } from '@/design-system/components/atoms/button';
 import { Calendar, Clock, MapPin, Plus, X, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';

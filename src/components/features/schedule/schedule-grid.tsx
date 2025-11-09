@@ -8,11 +8,11 @@
 
 import { useState, useEffect } from 'react';
 import { format, parseISO, isSameDay } from 'date-fns';
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { ScrollArea } from '@/components/ui/scroll-area';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Button } from '@/design-system/components/atoms/button';
+import { Card } from '@/design-system/components/atoms/card';
+import { Badge } from '@/design-system/components/atoms/badge';
+import { ScrollArea } from '@/design-system/components/atoms/scroll-area';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/design-system/components/atoms/tabs';
 import { Heart, Clock, MapPin, Calendar } from 'lucide-react';
 import { cn } from '@/lib/utils';
 

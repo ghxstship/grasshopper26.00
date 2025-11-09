@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Mail, ArrowLeft, CheckCircle } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/design-system/components/atoms/button';
 import Link from 'next/link';
 
 export default function ForgotPasswordPage() {

@@ -3,9 +3,9 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Pause, SkipForward, SkipBack, Volume2, VolumeX, ExternalLink } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/design-system/components/atoms/button';
 import { Slider } from '@/components/ui/slider';
-import { Card } from '@/components/ui/card';
+import { Card } from '@/design-system/components/atoms/card';
 import Image from 'next/image';
 
 interface Track {

@@ -3,8 +3,8 @@
 import { useEffect, useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Check, Loader2, CreditCard } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/design-system/components/atoms/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/card';
 
 function CheckoutContent() {
   const router = useRouter();

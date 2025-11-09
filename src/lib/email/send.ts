@@ -47,7 +47,7 @@ export async function sendTicketDeliveryEmail(data: {
       (ticket) => `
     <div style="border: 1px solid ${emailTokens.colors.borderDefault}; border-radius: ${emailTokens.borderRadius.md}; padding: ${emailTokens.spacing.md}; margin: ${emailTokens.spacing.md} 0;">
       <p><strong>Attendee:</strong> ${ticket.attendeeName}</p>
-      <img src="${ticket.qrCode}" alt="QR Code" style="width: 200px; height: 200px;" />
+      <img src="${ticket.qrCode}" alt="Ticket QR code for event admission" style="width: 200px; height: 200px;" />
       <p style="font-size: ${emailTokens.typography.fontSize.xs}; color: ${emailTokens.colors.textTertiary};">Ticket ID: ${ticket.id}</p>
     </div>
   `

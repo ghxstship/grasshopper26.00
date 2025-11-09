@@ -1,0 +1,31 @@
+/**
+ * Favorite Button Styles
+ * Uses design tokens exclusively
+ */
+
+.button {
+  border-color: color-mix(in srgb, var(--color-primary) 30%, transparent);
+}
+
+.button:hover {
+  background-color: color-mix(in srgb, var(--color-primary) 10%, transparent);
+}
+
+.buttonFavorited {
+  border-color: color-mix(in srgb, var(--color-primary) 30%, transparent);
+  background-color: color-mix(in srgb, var(--color-primary) 20%, transparent);
+}
+
+.buttonFavorited:hover {
+  background-color: color-mix(in srgb, var(--color-primary) 30%, transparent);
+}
+
+.icon {
+  height: var(--space-4);
+  width: var(--space-4);
+}
+
+.iconFavorited {
+  fill: var(--color-accent);
+  color: var(--color-accent);
+}

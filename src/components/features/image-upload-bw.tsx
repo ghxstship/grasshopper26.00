@@ -9,8 +9,8 @@ import { useState, useRef } from 'react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { convertToMonochrome, ConversionMode, CONVERSION_PRESETS } from '@/lib/imageProcessing/convert';
-import { LoadingSpinner } from '@/components/ui/loading';
-import { CheckIcon, CloseIcon } from '@/components/ui/icons/geometric-icons';
+import { LoadingSpinner } from '@/design-system/components/atoms/loading';
+import { CheckIcon, CloseIcon } from '@/design-system/components/atoms/icons/geometric-icons';
 
 interface ImageUploadBWProps {
   onUpload: (file: File, convertedDataUrl: string) => Promise<void>;

@@ -89,11 +89,17 @@ const EXCLUDED_FILES = [
   'login/page.tsx', // Google brand colors required
   'signup/page.tsx', // Google brand colors required
   'qr-generator.ts', // QR codes require pure black/white for scanning
+  'qr-codes.ts', // QR codes require pure black/white for scanning
   'pdf-generator.ts', // PDF generation with QR codes
   'use-media-query.ts', // Media query breakpoints require pixel values
   'a11y.ts', // WCAG standard constants and skip link positioning
   'email-tokens.ts', // Email client compatibility requires pixel values
   'send.ts', // Email templates require inline pixel styles for client compatibility
+  'templates.ts', // Email templates require inline pixel styles for client compatibility
+  'halftone.ts', // Image processing requires precise color values
+  'halftone-overlay.tsx', // Overlay component with customizable color parameters
+  'manifest.ts', // PWA manifest requires specific brand colors
+  'utility-classes.css', // Utility classes for responsive breakpoints
 ];
 
 function shouldExcludeFile(filePath: string): boolean {

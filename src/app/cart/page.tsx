@@ -3,8 +3,8 @@
 export const dynamic = 'force-dynamic';
 
 import { useCart } from '@/lib/store/cart-store';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/design-system/components/atoms/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/card';
 import { Trash2, Plus, Minus, ShoppingBag } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';

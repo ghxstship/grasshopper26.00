@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { Check, X } from 'lucide-react'
 import { MembershipTier } from '@/types/membership'
-import { Button } from '@/components/ui/button'
+import { Button } from '@/design-system/components/atoms/button'
 import { cn } from '@/lib/utils'
 
 interface TierComparisonProps {
@@ -174,7 +174,10 @@ export function TierComparison({
               </Button>
 
               {/* View Details Link */}
-              <button className="w-full mt-3 font-share-tech-mono text-xs uppercase tracking-wider hover:underline">
+              <button 
+                className="w-full mt-3 font-share-tech-mono text-xs uppercase tracking-wider hover:underline"
+                aria-label={`View all benefits for ${tier.display_name} tier`}
+              >
                 View All Benefits
               </button>
             </div>

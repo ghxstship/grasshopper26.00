@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/card';
+import { Button } from '@/design-system/components/atoms/button';
 import { Calendar, MapPin, Download, Mail, CheckCircle } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';

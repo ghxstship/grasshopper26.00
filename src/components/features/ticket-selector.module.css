@@ -1,0 +1,178 @@
+/**
+ * Ticket Selector Styles
+ * Uses design tokens exclusively
+ */
+
+.card {
+  background-color: color-mix(in srgb, var(--color-bg-primary) 40%, transparent);
+  backdrop-filter: blur(16px);
+  border-color: color-mix(in srgb, var(--color-primary) 20%, transparent);
+}
+
+.content {
+  padding: var(--space-6);
+}
+
+.header {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  margin-block-end: var(--space-6);
+  color: var(--color-text-inverse);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.headerIcon {
+  height: var(--space-6);
+  width: var(--space-6);
+}
+
+.ticketList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.ticketItem {
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  background-color: color-mix(in srgb, var(--color-primary) 20%, transparent);
+  border: var(--border-width-default) solid color-mix(in srgb, var(--color-primary) 20%, transparent);
+}
+
+.ticketHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-block-end: var(--space-2);
+}
+
+.ticketInfo {
+  flex: 1;
+}
+
+.ticketName {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-inverse);
+}
+
+.ticketDescription {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  margin-block-start: var(--space-1);
+}
+
+.ticketPriceContainer {
+  text-align: end;
+}
+
+.ticketPrice {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-xl);
+  color: var(--color-primary);
+}
+
+.perksList {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin-block-end: var(--space-3);
+}
+
+.perkItem {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+
+.perkBullet {
+  color: var(--color-primary);
+}
+
+.ticketFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-block-start: var(--space-4);
+}
+
+.availability {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+}
+
+.soldOut {
+  color: var(--color-error);
+  font-weight: var(--font-weight-semibold);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.quantityControl {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  background-color: color-mix(in srgb, var(--color-bg-primary) 50%, transparent);
+  border-radius: var(--radius-lg);
+  padding: var(--space-1);
+}
+
+.quantityButton {
+  height: var(--space-8);
+  width: var(--space-8);
+  padding: 0;
+}
+
+.quantityIcon {
+  height: var(--space-4);
+  width: var(--space-4);
+}
+
+.quantityDisplay {
+  width: var(--space-8);
+  text-align: center;
+  font-weight: var(--font-weight-semibold);
+}
+
+.addButton {
+  background: var(--gradient-brand-primary);
+}
+
+.addButton:hover {
+  opacity: var(--opacity-90);
+}
+
+.emptyState {
+  padding: var(--space-6);
+  color: var(--color-text-tertiary);
+}
+
+/* Legacy classes for backward compatibility */
+.ticketSelector { 
+  border-radius: var(--radius-lg); 
+  border: var(--border-width-default) solid var(--color-border-default); 
+  background-color: var(--color-bg-primary); 
+  padding: var(--space-6); 
+}
+
+.ticketOption { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  padding: var(--space-4); 
+  border-radius: var(--radius-md); 
+  border: var(--border-width-default) solid var(--color-border-default); 
+  margin-block-end: var(--space-3); 
+  transition: border-color var(--duration-fast) var(--easing-out); 
+}
+
+.ticketOption:hover { 
+  border-color: var(--color-primary); 
+}

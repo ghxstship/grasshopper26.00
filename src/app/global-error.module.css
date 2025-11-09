@@ -1,0 +1,5 @@
+.errorContainer { min-height: 100vh; background-color: var(--color-bg-primary); color: var(--color-text-inverse); display: flex; align-items: center; justify-content: center; padding: var(--space-4); }
+.errorCard { max-width: var(--space-96); width: 100%; border: var(--border-width-4) solid var(--color-text-inverse); padding: var(--space-8); }
+.errorTitle { font-size: var(--font-size-2xl); font-weight: var(--font-weight-bold); margin-block-end: var(--space-4); }
+.errorMessage { margin-block-end: var(--space-6); }
+.errorButton { width: 100%; }

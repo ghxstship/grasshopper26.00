@@ -1,11 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/design-system/components/atoms/button';
+import { Card, CardContent } from '@/design-system/components/atoms/card';
 import { Minus, Plus, Ticket } from 'lucide-react';
 import { useCart } from '@/lib/store/cart-store';
 import { toast } from 'sonner';
+import styles from './ticket-selector.module.css';
 
 interface TicketType {
   id: string;
@@ -88,23 +89,23 @@ export function TicketSelector({ ticketTypes, eventId, eventName, eventSlug }: T
 
   if (!ticketTypes || ticketTypes.length === 0) {
     return (
-      <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20">
-        <CardContent className="p-6">
-          <p className="text-gray-400">Tickets coming soon!</p>
+      <Card className={styles.card}>
+        <CardContent className={styles.content}>
+          <p className={styles.emptyState}>Tickets coming soon!</p>
         </CardContent>
       </Card>
     );
   }
 
   return (
-    <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20">
-      <CardContent className="p-6">
-        <h2 className="text-2xl font-bold mb-6 text-white flex items-center gap-2">
-          <Ticket className="h-6 w-6" />
+    <Card className={styles.card}>
+      <CardContent className={styles.content}>
+        <h2 className={styles.header}>
+          <Ticket className={styles.headerIcon} />
           Tickets
         </h2>
         
-        <div className="space-y-4">
+        <div className={styles.ticketList}>
           {ticketTypes.map((ticket) => {
             const available = ticket.quantity_available - ticket.quantity_sold;
             const isSoldOut = available <= 0;
@@ -113,69 +114,69 @@ export function TicketSelector({ ticketTypes, eventId, eventName, eventSlug }: T
             return (
               <div
                 key={ticket.id}
-                className="p-4 rounded-lg bg-purple-900/20 border border-purple-500/20"
+                className={styles.ticketItem}
               >
-                <div className="flex justify-between items-start mb-2">
-                  <div>
-                    <h3 className="font-bold text-white">{ticket.name}</h3>
+                <div className={styles.ticketHeader}>
+                  <div className={styles.ticketInfo}>
+                    <h3 className={styles.ticketName}>{ticket.name}</h3>
                     {ticket.description && (
-                      <p className="text-sm text-gray-400 mt-1">{ticket.description}</p>
+                      <p className={styles.ticketDescription}>{ticket.description}</p>
                     )}
                   </div>
-                  <div className="text-right">
-                    <p className="font-bold text-xl text-purple-400">
+                  <div className={styles.ticketPriceContainer}>
+                    <p className={styles.ticketPrice}>
                       ${ticket.price.toFixed(2)}
                     </p>
                   </div>
                 </div>
                 
                 {ticket.perks && ticket.perks.length > 0 && (
-                  <ul className="text-sm text-gray-400 space-y-1 mb-3">
+                  <ul className={styles.perksList}>
                     {ticket.perks.map((perk, i) => (
-                      <li key={i} className="flex items-start gap-2">
-                        <span className="text-purple-400">•</span>
+                      <li key={i} className={styles.perkItem}>
+                        <span className={styles.perkBullet}>•</span>
                         <span>{perk}</span>
                       </li>
                     ))}
                   </ul>
                 )}
                 
-                <div className="flex items-center justify-between mt-4">
-                  <span className="text-sm text-gray-400">
+                <div className={styles.ticketFooter}>
+                  <span className={styles.availability}>
                     {isSoldOut ? (
-                      <span className="text-red-400 font-semibold">Sold Out</span>
+                      <span className={styles.soldOut}>Sold Out</span>
                     ) : (
                       `${available} available`
                     )}
                   </span>
                   
                   {!isSoldOut && (
-                    <div className="flex items-center gap-3">
-                      <div className="flex items-center gap-2 bg-black/50 rounded-lg p-1">
+                    <div className={styles.controls}>
+                      <div className={styles.quantityControl}>
                         <Button
                           size="sm"
                           variant="ghost"
                           onClick={() => handleQuantityChange(ticket.id, -1)}
                           disabled={quantity === 0}
-                          className="h-8 w-8 p-0"
+                          className={styles.quantityButton}
                         >
-                          <Minus className="h-4 w-4" />
+                          <Minus className={styles.quantityIcon} />
                         </Button>
-                        <span className="w-8 text-center font-semibold">{quantity}</span>
+                        <span className={styles.quantityDisplay}>{quantity}</span>
                         <Button
                           size="sm"
                           variant="ghost"
                           onClick={() => handleQuantityChange(ticket.id, 1)}
-                          className="h-8 w-8 p-0"
+                          className={styles.quantityButton}
                         >
-                          <Plus className="h-4 w-4" />
+                          <Plus className={styles.quantityIcon} />
                         </Button>
                       </div>
                       <Button
                         size="sm"
                         onClick={() => handleAddToCart(ticket)}
                         disabled={quantity === 0}
-                        className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+                        className={styles.addButton}
                       >
                         Add to Cart
                       </Button>

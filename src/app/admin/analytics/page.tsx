@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useState, useCallback } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/card';
+import { Button } from '@/design-system/components/atoms/button';
 import { DollarSign, ShoppingCart, Ticket, Calendar, TrendingUp, Users } from 'lucide-react';
 
 interface AnalyticsData {

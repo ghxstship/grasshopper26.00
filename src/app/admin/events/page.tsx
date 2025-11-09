@@ -1,6 +1,6 @@
 import { createClient } from '@/lib/supabase/server';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+import { Button } from '@/design-system/components/atoms/button';
+import { Input } from '@/design-system/components/atoms/input';
 import {
   Table,
   TableBody,
@@ -9,7 +9,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { Badge } from '@/components/ui/badge';
+import { Badge } from '@/design-system/components/atoms/badge';
 import { Plus, Search, Filter, MoreHorizontal } from 'lucide-react';
 import Link from 'next/link';
 import {
@@ -17,7 +17,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+} from '@/design-system/components/atoms/dropdown-menu';
 
 export default async function EventsPage({
   searchParams,

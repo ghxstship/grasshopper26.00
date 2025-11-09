@@ -1,5 +1,6 @@
 /* Import Design System Tokens */
 @import '../design-system/tokens/tokens.css';
+@import '../design-system/tokens/utility-classes.css';
 
 @tailwind base;
 @tailwind components;
@@ -63,14 +64,15 @@
   }
   
   /* Ensure minimum touch targets for accessibility */
+  /* Touch targets for mobile accessibility */
   button, a, input, select, textarea {
-    min-height: 44px;
-    min-width: 44px;
+    min-height: var(--space-11);
+    min-width: var(--space-11);
   }
   
   /* Focus visible styles for accessibility */
   *:focus-visible {
-    outline: 2px solid var(--color-border-focus);
-    outline-offset: 2px;
+    outline: var(--border-width-2) solid var(--color-border-focus);
+    outline-offset: var(--space-0.5);
   }
 }

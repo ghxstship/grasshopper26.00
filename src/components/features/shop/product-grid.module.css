@@ -1,0 +1,6 @@
+.productGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(var(--space-64), 1fr)); gap: var(--space-6); }
+.productCard { border-radius: var(--radius-lg); border: var(--border-width-default) solid var(--color-border-default); background-color: var(--color-bg-primary); overflow: hidden; }
+.productImage { width: 100%; aspect-ratio: 1; object-fit: cover; }
+.productInfo { padding: var(--space-4); }
+.productName { font-size: var(--font-size-base); font-weight: var(--font-weight-semibold); margin-block-end: var(--space-1); }
+.productPrice { font-size: var(--font-size-lg); font-weight: var(--font-weight-bold); color: var(--color-primary); }

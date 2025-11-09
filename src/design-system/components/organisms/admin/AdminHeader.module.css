@@ -1,0 +1,137 @@
+/**
+ * Admin Header Styles
+ * Uses design tokens exclusively
+ */
+
+.header {
+  height: var(--space-16);
+  background-color: var(--color-bg-primary);
+  border-block-end: var(--border-width-default) solid var(--color-border-default);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: var(--space-6);
+}
+
+.searchContainer {
+  flex: 1;
+  max-width: 28rem;
+}
+
+.searchWrapper {
+  position: relative;
+}
+
+.searchIcon {
+  position: absolute;
+  inset-inline-start: var(--space-3);
+  inset-block-start: 50%;
+  transform: translateY(-50%);
+  height: var(--space-4);
+  width: var(--space-4);
+  color: var(--color-text-tertiary);
+}
+
+.searchInput {
+  padding-inline-start: var(--space-10);
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.notificationButton {
+  position: relative;
+}
+
+.notificationIcon {
+  height: var(--space-5);
+  width: var(--space-5);
+}
+
+.notificationBadge {
+  position: absolute;
+  inset-block-start: var(--space-1);
+  inset-inline-end: var(--space-1);
+  height: var(--space-2);
+  width: var(--space-2);
+  background-color: var(--color-error);
+  border-radius: var(--radius-full);
+}
+
+.userButton {
+  gap: var(--space-2);
+}
+
+.avatar {
+  height: var(--space-8);
+  width: var(--space-8);
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatarIcon {
+  height: var(--space-4);
+  width: var(--space-4);
+  color: var(--color-primary);
+}
+
+.userName {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.menuContent {
+  width: 14rem;
+}
+
+.menuLabel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.menuUserName {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.menuUserEmail {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.menuIcon {
+  margin-inline-end: var(--space-2);
+  height: var(--space-4);
+  width: var(--space-4);
+}
+
+.menuItemDanger {
+  color: var(--color-error-text);
+}
+
+/* Legacy classes for backward compatibility */
+.adminHeader { 
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  padding: var(--space-4); 
+  border-block-end: var(--border-width-default) solid var(--color-border-default); 
+  background-color: var(--color-bg-primary); 
+}
+
+.headerTitle { 
+  font-size: var(--font-size-xl); 
+  font-weight: var(--font-weight-bold); 
+}
+
+.headerActions { 
+  display: flex; 
+  gap: var(--space-2); 
+}

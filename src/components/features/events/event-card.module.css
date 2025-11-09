@@ -1,0 +1,7 @@
+.eventCard { border-radius: var(--radius-lg); border: var(--border-width-default) solid var(--color-border-default); background-color: var(--color-bg-primary); overflow: hidden; transition: box-shadow var(--duration-fast) var(--easing-out); }
+.eventCard:hover { box-shadow: var(--shadow-md); }
+.eventImage { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.eventContent { padding: var(--space-4); }
+.eventTitle { font-size: var(--font-size-lg); font-weight: var(--font-weight-semibold); margin-block-end: var(--space-2); }
+.eventDate { font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-block-end: var(--space-1); }
+.eventLocation { font-size: var(--font-size-sm); color: var(--color-text-tertiary); }

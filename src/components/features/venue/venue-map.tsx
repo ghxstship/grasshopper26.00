@@ -7,9 +7,9 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+import { Button } from '@/design-system/components/atoms/button';
+import { Card } from '@/design-system/components/atoms/card';
+import { Badge } from '@/design-system/components/atoms/badge';
 import {
   ZoomIn,
   ZoomOut,

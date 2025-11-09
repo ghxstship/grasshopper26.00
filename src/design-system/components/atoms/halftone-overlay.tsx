@@ -21,7 +21,7 @@ interface HalftoneOverlayProps {
  */
 export function HalftoneOverlay({
   preset = 'medium',
-  color = '#000000',
+  color = 'rgb(0, 0, 0)',
   opacity = 0.3,
   className,
   children,
@@ -53,7 +53,7 @@ interface StripeOverlayProps {
 
 export function StripeOverlay({
   angle = 45,
-  color = '#000000',
+  color = 'rgb(0, 0, 0)',
   opacity = 0.1,
   className,
   children,
@@ -97,7 +97,7 @@ interface GridOverlayProps {
 export function GridOverlay({
   spacing = 20,
   lineWidth = 1,
-  color = '#000000',
+  color = 'rgb(0, 0, 0)',
   opacity = 0.1,
   className,
   children,

@@ -2,7 +2,7 @@
 -- Parking, lockers, camping, merchandise, and other event add-ons
 
 CREATE TABLE ticket_addons (
-  id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   event_id uuid REFERENCES events(id) ON DELETE CASCADE,
   name text NOT NULL,
   description text,
@@ -23,7 +23,7 @@ CREATE TABLE ticket_addons (
 
 -- Order add-ons junction table
 CREATE TABLE order_addons (
-  id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   order_id uuid REFERENCES orders(id) ON DELETE CASCADE,
   addon_id uuid REFERENCES ticket_addons(id) ON DELETE CASCADE,
   quantity integer NOT NULL DEFAULT 1,

@@ -2,7 +2,7 @@
 
 -- Audit logs table
 CREATE TABLE audit_logs (
-  id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   table_name text NOT NULL,
   record_id uuid NOT NULL,
   action text NOT NULL, -- INSERT, UPDATE, DELETE

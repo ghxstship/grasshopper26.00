@@ -26,7 +26,7 @@ CREATE TYPE notification_channel AS ENUM (
 
 -- Notifications table
 CREATE TABLE notifications (
-  id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id uuid NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
   type notification_type NOT NULL,
   channel notification_channel NOT NULL DEFAULT 'in_app',
@@ -80,7 +80,7 @@ CREATE TABLE notification_preferences (
 
 -- Notification templates table
 CREATE TABLE notification_templates (
-  id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   type notification_type NOT NULL,
   channel notification_channel NOT NULL,
   subject_template text,

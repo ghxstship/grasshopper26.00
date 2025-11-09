@@ -78,7 +78,7 @@ CREATE INDEX IF NOT EXISTS idx_user_profiles_is_team ON user_profiles(is_team_me
 
 -- Resources table (defines all protected resources)
 CREATE TABLE IF NOT EXISTS rbac_resources (
-  id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   resource_name text UNIQUE NOT NULL,
   resource_type text NOT NULL,
   description text,
@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS rbac_resources (
 
 -- Permissions table (granular permission definitions)
 CREATE TABLE IF NOT EXISTS rbac_permissions (
-  id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   permission_name text UNIQUE NOT NULL,
   resource_id uuid REFERENCES rbac_resources(id) ON DELETE CASCADE,
   action permission_action NOT NULL,
@@ -102,7 +102,7 @@ CREATE TABLE IF NOT EXISTS rbac_permissions (
 
 -- Role permission mappings
 CREATE TABLE IF NOT EXISTS rbac_role_permissions (
-  id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   role_type text NOT NULL,
   role_name text NOT NULL,
   permission_id uuid REFERENCES rbac_permissions(id) ON DELETE CASCADE,
@@ -114,7 +114,7 @@ CREATE TABLE IF NOT EXISTS rbac_role_permissions (
 
 -- User-specific permission overrides
 CREATE TABLE IF NOT EXISTS rbac_user_permissions (
-  id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id uuid REFERENCES auth.users(id) ON DELETE CASCADE,
   permission_id uuid REFERENCES rbac_permissions(id) ON DELETE CASCADE,
   granted boolean NOT NULL,
@@ -130,7 +130,7 @@ CREATE TABLE IF NOT EXISTS rbac_user_permissions (
 
 -- Brand/Organization team assignments
 CREATE TABLE IF NOT EXISTS brand_team_assignments (
-  id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   brand_id uuid REFERENCES brands(id) ON DELETE CASCADE,
   user_id uuid REFERENCES auth.users(id) ON DELETE CASCADE,
   team_role team_role NOT NULL,
@@ -145,7 +145,7 @@ CREATE TABLE IF NOT EXISTS brand_team_assignments (
 
 -- Department structure
 CREATE TABLE IF NOT EXISTS departments (
-  id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   brand_id uuid REFERENCES brands(id) ON DELETE CASCADE,
   name text NOT NULL,
   slug text NOT NULL,
@@ -159,7 +159,7 @@ CREATE TABLE IF NOT EXISTS departments (
 
 -- Audit log for permission changes
 CREATE TABLE IF NOT EXISTS rbac_audit_log (
-  id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id uuid REFERENCES auth.users(id),
   action text NOT NULL,
   resource_type text NOT NULL,

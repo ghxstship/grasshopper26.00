@@ -17,7 +17,7 @@ CREATE TYPE loyalty_transaction_type AS ENUM (
 
 -- Loyalty transactions table
 CREATE TABLE loyalty_transactions (
-  id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id uuid NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
   type loyalty_transaction_type NOT NULL,
   points integer NOT NULL,
@@ -31,7 +31,7 @@ CREATE TABLE loyalty_transactions (
 
 -- Referral codes table
 CREATE TABLE referral_codes (
-  id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id uuid NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
   code text UNIQUE NOT NULL,
   uses integer DEFAULT 0,
@@ -45,7 +45,7 @@ CREATE TABLE referral_codes (
 
 -- Referral usage tracking
 CREATE TABLE referral_usage (
-  id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   referral_code_id uuid NOT NULL REFERENCES referral_codes(id) ON DELETE CASCADE,
   referrer_user_id uuid NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
   referred_user_id uuid NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
@@ -56,7 +56,7 @@ CREATE TABLE referral_usage (
 
 -- Loyalty rewards catalog
 CREATE TABLE loyalty_rewards (
-  id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   brand_id uuid REFERENCES brands(id) ON DELETE CASCADE,
   name text NOT NULL,
   description text,
@@ -76,7 +76,7 @@ CREATE TABLE loyalty_rewards (
 
 -- Loyalty reward redemptions
 CREATE TABLE loyalty_redemptions (
-  id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id uuid NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
   reward_id uuid NOT NULL REFERENCES loyalty_rewards(id),
   points_spent integer NOT NULL,

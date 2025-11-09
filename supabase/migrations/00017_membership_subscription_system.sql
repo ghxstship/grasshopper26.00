@@ -4,7 +4,7 @@
 
 -- Membership tiers configuration
 CREATE TABLE IF NOT EXISTS membership_tiers (
-  id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   tier_name text NOT NULL UNIQUE, -- community, basic, main, extra, business, first_class
   tier_slug text NOT NULL UNIQUE,
   display_name text NOT NULL,
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS membership_tiers (
 
 -- User memberships
 CREATE TABLE IF NOT EXISTS user_memberships (
-  id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id uuid REFERENCES auth.users(id) ON DELETE CASCADE,
   tier_id uuid REFERENCES membership_tiers(id),
   status text NOT NULL DEFAULT 'active', -- active, cancelled, expired, suspended
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS user_memberships (
 
 -- Membership benefits usage tracking
 CREATE TABLE IF NOT EXISTS membership_benefit_usage (
-  id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   membership_id uuid REFERENCES user_memberships(id) ON DELETE CASCADE,
   benefit_type text NOT NULL, -- ticket_credit, vip_upgrade, early_access, etc.
   event_id uuid REFERENCES events(id),
@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS membership_benefit_usage (
 
 -- Membership tier transitions (upgrade/downgrade history)
 CREATE TABLE IF NOT EXISTS membership_transitions (
-  id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id uuid REFERENCES auth.users(id) ON DELETE CASCADE,
   from_tier_id uuid REFERENCES membership_tiers(id),
   to_tier_id uuid REFERENCES membership_tiers(id),
@@ -88,7 +88,7 @@ CREATE TABLE IF NOT EXISTS membership_transitions (
 
 -- Business team management
 CREATE TABLE IF NOT EXISTS business_team_members (
-  id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   business_membership_id uuid REFERENCES user_memberships(id) ON DELETE CASCADE,
   member_user_id uuid REFERENCES auth.users(id) ON DELETE CASCADE,
   role text DEFAULT 'member', -- admin, manager, member
@@ -105,7 +105,7 @@ CREATE TABLE IF NOT EXISTS business_team_members (
 
 -- Ticket credits ledger
 CREATE TABLE IF NOT EXISTS ticket_credits_ledger (
-  id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   membership_id uuid REFERENCES user_memberships(id) ON DELETE CASCADE,
   transaction_type text NOT NULL, -- allocation, redemption, expiration, bonus
   credits_change integer NOT NULL, -- positive for credits added, negative for used
@@ -118,7 +118,7 @@ CREATE TABLE IF NOT EXISTS ticket_credits_ledger (
 
 -- VIP upgrade vouchers
 CREATE TABLE IF NOT EXISTS vip_upgrade_vouchers (
-  id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   membership_id uuid REFERENCES user_memberships(id) ON DELETE CASCADE,
   voucher_code text UNIQUE NOT NULL,
   status text DEFAULT 'available', -- available, redeemed, expired
@@ -130,7 +130,7 @@ CREATE TABLE IF NOT EXISTS vip_upgrade_vouchers (
 
 -- Member-only events
 CREATE TABLE IF NOT EXISTS member_events (
-  id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   event_id uuid REFERENCES events(id) ON DELETE CASCADE,
   min_tier_level integer NOT NULL, -- minimum tier level required
   max_capacity integer,
@@ -144,7 +144,7 @@ CREATE TABLE IF NOT EXISTS member_events (
 
 -- Member event registrations
 CREATE TABLE IF NOT EXISTS member_event_registrations (
-  id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   member_event_id uuid REFERENCES member_events(id) ON DELETE CASCADE,
   user_id uuid REFERENCES auth.users(id) ON DELETE CASCADE,
   membership_id uuid REFERENCES user_memberships(id),
@@ -159,7 +159,7 @@ CREATE TABLE IF NOT EXISTS member_event_registrations (
 
 -- Referral program tracking
 CREATE TABLE IF NOT EXISTS membership_referrals (
-  id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   referrer_user_id uuid REFERENCES auth.users(id),
   referrer_membership_id uuid REFERENCES user_memberships(id),
   referred_user_id uuid REFERENCES auth.users(id),

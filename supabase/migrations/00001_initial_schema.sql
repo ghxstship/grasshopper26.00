@@ -1,9 +1,10 @@
 -- Enable UUID extension
 create extension if not exists "uuid-ossp";
+create extension if not exists "pgcrypto";
 
 -- Brands table (multi-tenancy support)
 create table brands (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   name text not null,
   slug text unique not null,
   domain text unique,
@@ -32,7 +33,7 @@ create table brand_admins (
 
 -- Events table
 create table events (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   brand_id uuid references brands(id),
   name text not null,
   slug text unique not null,
@@ -55,7 +56,7 @@ create table events (
 
 -- Event stages
 create table event_stages (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   event_id uuid references events(id) on delete cascade,
   name text not null,
   description text,
@@ -66,7 +67,7 @@ create table event_stages (
 
 -- Artists table
 create table artists (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   name text not null,
   slug text unique not null,
   bio text,
@@ -83,7 +84,7 @@ create table artists (
 
 -- Event schedule/set times
 create table event_schedule (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   event_id uuid references events(id) on delete cascade,
   stage_id uuid references event_stages(id),
   artist_id uuid references artists(id),
@@ -104,7 +105,7 @@ create table event_artists (
 
 -- Ticket types
 create table ticket_types (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   event_id uuid references events(id) on delete cascade,
   name text not null,
   description text,
@@ -121,7 +122,7 @@ create table ticket_types (
 
 -- Orders
 create table orders (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   user_id uuid references auth.users(id),
   event_id uuid references events(id),
   stripe_payment_intent_id text unique,
@@ -137,7 +138,7 @@ create table orders (
 
 -- Tickets (individual tickets from orders)
 create table tickets (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   order_id uuid references orders(id),
   ticket_type_id uuid references ticket_types(id),
   attendee_name text,
@@ -151,7 +152,7 @@ create table tickets (
 
 -- Products (merchandise)
 create table products (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   brand_id uuid references brands(id),
   event_id uuid references events(id),
   name text not null,
@@ -168,7 +169,7 @@ create table products (
 
 -- Product variants
 create table product_variants (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   product_id uuid references products(id) on delete cascade,
   name text,
   sku text unique,
@@ -181,7 +182,7 @@ create table product_variants (
 
 -- Content posts (blog/news)
 create table content_posts (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   brand_id uuid references brands(id),
   title text not null,
   slug text unique not null,
@@ -202,7 +203,7 @@ create table content_posts (
 
 -- Media gallery
 create table media_gallery (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   title text not null,
   description text,
   media_type text not null, -- photo, video, album
@@ -239,7 +240,7 @@ create table user_favorite_artists (
 
 -- User event schedules
 create table user_event_schedules (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   user_id uuid references auth.users(id) on delete cascade,
   event_id uuid references events(id) on delete cascade,
   schedule_items jsonb,
@@ -250,7 +251,7 @@ create table user_event_schedules (
 
 -- Brand integrations
 create table brand_integrations (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   brand_id uuid references brands(id) on delete cascade,
   integration_type text not null,
   config jsonb not null,

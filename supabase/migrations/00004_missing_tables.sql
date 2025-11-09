@@ -21,7 +21,7 @@ ALTER TABLE brand_integrations ADD COLUMN IF NOT EXISTS error_message text;
 
 -- User connections (friend system)
 create table if not exists user_connections (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   user_id uuid references auth.users(id) on delete cascade,
   connected_user_id uuid references auth.users(id) on delete cascade,
   status text not null default 'pending', -- pending, accepted, blocked
@@ -33,7 +33,7 @@ create table if not exists user_connections (
 
 -- User messages (direct messaging)
 create table if not exists user_messages (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   sender_id uuid references auth.users(id) on delete cascade,
   recipient_id uuid references auth.users(id) on delete cascade,
   message text not null,
@@ -46,7 +46,7 @@ create table if not exists user_messages (
 
 -- Event chat rooms (community chat)
 create table if not exists event_chat_rooms (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   event_id uuid references events(id) on delete cascade,
   name text not null,
   description text,
@@ -60,7 +60,7 @@ create table if not exists event_chat_rooms (
 
 -- Event chat messages
 create table if not exists event_chat_messages (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   room_id uuid references event_chat_rooms(id) on delete cascade,
   user_id uuid references auth.users(id) on delete cascade,
   message text not null,
@@ -71,7 +71,7 @@ create table if not exists event_chat_messages (
 
 -- User-generated content (photos, reviews)
 create table if not exists user_content (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   user_id uuid references auth.users(id) on delete cascade,
   event_id uuid references events(id),
   artist_id uuid references artists(id),
@@ -88,7 +88,7 @@ create table if not exists user_content (
 
 -- Push notification subscriptions
 create table if not exists push_subscriptions (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   user_id uuid references auth.users(id) on delete cascade,
   endpoint text not null,
   keys jsonb not null, -- {p256dh, auth}
@@ -99,7 +99,7 @@ create table if not exists push_subscriptions (
 
 -- Email queue (for Resend)
 create table if not exists email_queue (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   to_email text not null,
   from_email text not null,
   subject text not null,

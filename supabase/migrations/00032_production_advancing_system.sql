@@ -7,7 +7,7 @@
 
 -- Catalog categories (top level organization)
 create table if not exists catalog_categories (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   name text not null,
   slug text unique not null,
   icon text, -- geometric icon identifier
@@ -20,7 +20,7 @@ create table if not exists catalog_categories (
 
 -- Catalog items (individual products/services)
 create table if not exists catalog_items (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   category_id uuid references catalog_categories(id),
   name text not null,
   slug text unique not null,
@@ -58,7 +58,7 @@ create table if not exists catalog_items (
 
 -- Item modifiers/add-ons
 create table if not exists catalog_item_modifiers (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   item_id uuid references catalog_items(id) on delete cascade,
   name text not null,
   description text,
@@ -72,7 +72,7 @@ create table if not exists catalog_item_modifiers (
 
 -- Modifier options (for radio/select modifiers)
 create table if not exists catalog_modifier_options (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   modifier_id uuid references catalog_item_modifiers(id) on delete cascade,
   option_name text not null,
   option_value text not null,
@@ -87,7 +87,7 @@ create table if not exists catalog_modifier_options (
 
 -- Production advance requests (the "order")
 create table if not exists production_advances (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   
   -- Request information
   advance_number text unique not null,
@@ -140,7 +140,7 @@ create table if not exists production_advances (
 
 -- Individual line items in an advance (cart items)
 create table if not exists production_advance_items (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   advance_id uuid references production_advances(id) on delete cascade,
   
   -- Catalog reference
@@ -181,7 +181,7 @@ create table if not exists production_advance_items (
 
 -- Physical unit tracking (for equipment inventory)
 create table if not exists physical_units (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   catalog_item_id uuid references catalog_items(id),
   
   -- Unit identification
@@ -207,7 +207,7 @@ create table if not exists physical_units (
 
 -- Unit assignments to advance items
 create table if not exists advance_item_unit_assignments (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   advance_item_id uuid references production_advance_items(id) on delete cascade,
   physical_unit_id uuid references physical_units(id),
   
@@ -230,7 +230,7 @@ create table if not exists advance_item_unit_assignments (
 
 -- Advance status history (audit trail)
 create table if not exists production_advance_status_history (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   advance_id uuid references production_advances(id) on delete cascade,
   
   from_status text,
@@ -245,7 +245,7 @@ create table if not exists production_advance_status_history (
 
 -- Advance comments/communication thread
 create table if not exists production_advance_comments (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   advance_id uuid references production_advances(id) on delete cascade,
   
   user_id uuid references auth.users(id),
@@ -260,7 +260,7 @@ create table if not exists production_advance_comments (
 
 -- Recurring advance templates
 create table if not exists advance_templates (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   
   created_by uuid references auth.users(id),
   template_name text not null,

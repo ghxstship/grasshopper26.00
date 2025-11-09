@@ -2,7 +2,7 @@
 -- Interactive venue layouts with stage positions and points of interest
 
 CREATE TABLE venue_maps (
-  id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   event_id uuid REFERENCES events(id) ON DELETE CASCADE,
   name text NOT NULL,
   map_type text NOT NULL, -- svg, image, interactive
@@ -16,7 +16,7 @@ CREATE TABLE venue_maps (
 
 -- Map points of interest (stages, facilities, vendors, etc.)
 CREATE TABLE venue_map_pois (
-  id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   venue_map_id uuid REFERENCES venue_maps(id) ON DELETE CASCADE,
   poi_type text NOT NULL, -- stage, restroom, food, medical, entrance, exit, atm, merchandise
   name text NOT NULL,

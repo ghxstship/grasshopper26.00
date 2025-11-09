@@ -7,7 +7,7 @@
 
 -- Table to store MFA factors for users
 create table if not exists user_mfa_factors (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   user_id uuid references auth.users(id) on delete cascade not null,
   factor_type text not null check (factor_type in ('totp', 'sms')),
   secret text, -- Encrypted TOTP secret
@@ -40,7 +40,7 @@ create policy "Users can manage their own MFA factors"
 
 -- Table to track login attempts
 create table if not exists login_attempts (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   user_id uuid references auth.users(id) on delete cascade,
   email text not null,
   ip_address inet,
@@ -58,7 +58,7 @@ create index idx_login_attempts_attempted_at on login_attempts(attempted_at);
 
 -- Table to track account lockouts
 create table if not exists account_lockouts (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   user_id uuid references auth.users(id) on delete cascade not null unique,
   email text not null,
   locked_at timestamptz default now(),
@@ -122,7 +122,7 @@ create policy "Admins can manage lockouts"
 
 -- Permissions table for fine-grained access control
 create table if not exists permissions (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   name text unique not null,
   description text,
   resource text not null, -- events, products, orders, etc.

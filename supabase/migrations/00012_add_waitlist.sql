@@ -11,7 +11,7 @@ CREATE TYPE waitlist_status AS ENUM (
 
 -- Event waitlist table
 CREATE TABLE event_waitlist (
-  id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   event_id uuid NOT NULL REFERENCES events(id) ON DELETE CASCADE,
   ticket_type_id uuid REFERENCES ticket_types(id) ON DELETE CASCADE,
   user_id uuid NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,

@@ -34,7 +34,7 @@ CREATE TYPE event_access_level AS ENUM (
 
 -- Event role definitions (what each role can do)
 CREATE TABLE IF NOT EXISTS event_role_definitions (
-  id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   role_type event_role_type NOT NULL UNIQUE,
   display_name text NOT NULL,
   description text,
@@ -84,7 +84,7 @@ CREATE INDEX IF NOT EXISTS idx_event_team_access_dates ON event_team_assignments
 
 -- Track permission usage for analytics
 CREATE TABLE IF NOT EXISTS event_role_permission_usage (
-  id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   assignment_id uuid REFERENCES event_team_assignments(id) ON DELETE CASCADE,
   permission_key text NOT NULL,
   action_type text NOT NULL, -- viewed, created, updated, deleted, exported

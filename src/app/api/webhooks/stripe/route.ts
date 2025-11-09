@@ -90,7 +90,6 @@ export async function POST(req: Request) {
             if (userData?.user?.email) {
               await sendOrderConfirmationEmail({
                 to: userData.user.email,
-                customerEmail: userData.user.email,
                 customerName: userData.user.user_metadata?.name || 'Customer',
                 orderNumber: order.id.slice(0, 8).toUpperCase(),
                 eventName: 'Event', // TODO: Get actual event name from order

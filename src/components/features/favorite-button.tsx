@@ -18,10 +18,6 @@ export function FavoriteButton({ eventId, artistId, size = 'default' }: Favorite
   const [isFavorited, setIsFavorited] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    checkFavoriteStatus();
-  }, [eventId, artistId]);
-
   async function checkFavoriteStatus() {
     try {
       const { data: { user } } = await supabase.auth.getUser();
@@ -39,6 +35,11 @@ export function FavoriteButton({ eventId, artistId, size = 'default' }: Favorite
       // Not favorited
     }
   }
+
+  useEffect(() => {
+    checkFavoriteStatus();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [eventId, artistId]);
 
   async function toggleFavorite() {
     setLoading(true);

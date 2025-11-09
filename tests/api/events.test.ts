@@ -18,7 +18,7 @@ describe('Events API', () => {
       };
 
       const req = new NextRequest('http://localhost:3000/api/v1/events/event-123');
-      const params = { id: 'event-123' };
+      const params = Promise.resolve({ id: 'event-123' });
 
       const response = await GET(req, { params });
       const data = await response.json();
@@ -29,7 +29,7 @@ describe('Events API', () => {
 
     it('should return 404 for non-existent event', async () => {
       const req = new NextRequest('http://localhost:3000/api/v1/events/invalid-id');
-      const params = { id: 'invalid-id' };
+      const params = Promise.resolve({ id: 'invalid-id' });
 
       const response = await GET(req, { params });
 
@@ -38,7 +38,7 @@ describe('Events API', () => {
 
     it('should handle rate limiting', async () => {
       const req = new NextRequest('http://localhost:3000/api/v1/events/event-123');
-      const params = { id: 'event-123' };
+      const params = Promise.resolve({ id: 'event-123' });
 
       // Simulate rate limit exceeded
       const response = await GET(req, { params });
@@ -53,7 +53,7 @@ describe('Events API', () => {
         method: 'PATCH',
         body: JSON.stringify({ name: 'Updated Event' }),
       });
-      const params = { id: 'event-123' };
+      const params = Promise.resolve({ id: 'event-123' });
 
       const response = await PATCH(req, { params });
       const data = await response.json();
@@ -68,7 +68,7 @@ describe('Events API', () => {
         method: 'PATCH',
         body: JSON.stringify({ name: 'Updated Event' }),
       });
-      const params = { id: 'event-123' };
+      const params = Promise.resolve({ id: 'event-123' });
 
       const response = await PATCH(req, { params });
 
@@ -81,7 +81,7 @@ describe('Events API', () => {
       const req = new NextRequest('http://localhost:3000/api/v1/events/event-123', {
         method: 'DELETE',
       });
-      const params = { id: 'event-123' };
+      const params = Promise.resolve({ id: 'event-123' });
 
       const response = await DELETE(req, { params });
       const data = await response.json();

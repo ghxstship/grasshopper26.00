@@ -452,7 +452,7 @@ export function VenueMap({ eventId, venueData = DEFAULT_VENUE, className }: Venu
               <Badge variant="outline" className="mt-1">
                 {selectedInfo.type}
               </Badge>
-              {selectedInfo.type === 'amenity' && selectedInfo.data.description && (
+              {selectedInfo.type === 'amenity' && 'description' in selectedInfo.data && selectedInfo.data.description && (
                 <p className="text-sm text-muted-foreground mt-2">
                   {selectedInfo.data.description}
                 </p>

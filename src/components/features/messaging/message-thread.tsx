@@ -99,6 +99,7 @@ export function MessageThread({
     return () => {
       supabase.removeChannel(channel);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [supabase, currentUserId, otherUserId]);
 
   useEffect(() => {

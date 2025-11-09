@@ -50,18 +50,19 @@ export function MusicPlayer({ tracks, artistName, autoPlay = false, className }:
     }
   }, [volume, isMuted]);
 
-  useEffect(() => {
-    if (autoPlay && hasPreview) {
-      handlePlay();
-    }
-  }, [autoPlay, hasPreview]);
-
   const handlePlay = () => {
     if (audioRef.current && hasPreview) {
       audioRef.current.play();
       setIsPlaying(true);
     }
   };
+
+  useEffect(() => {
+    if (autoPlay && hasPreview) {
+      handlePlay();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [autoPlay, hasPreview]);
 
   const handlePause = () => {
     if (audioRef.current) {
@@ -302,7 +303,7 @@ export function MusicPlayer({ tracks, artistName, autoPlay = false, className }:
       {hasPreview && (
         <audio
           ref={audioRef}
-          src={currentTrack.preview_url}
+          src={currentTrack.preview_url || ''}
           onTimeUpdate={handleTimeUpdate}
           onEnded={handleEnded}
           preload="metadata"

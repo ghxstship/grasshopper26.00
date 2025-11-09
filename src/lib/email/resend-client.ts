@@ -1,10 +1,17 @@
 import { Resend } from 'resend';
 
-if (!process.env.RESEND_API_KEY) {
-  throw new Error('RESEND_API_KEY is not defined in environment variables');
-}
+// Initialize Resend client with API key (will be undefined during build, which is fine)
+const apiKey = process.env.RESEND_API_KEY || 'dummy-key-for-build';
+export const resend = new Resend(apiKey);
 
-export const resend = new Resend(process.env.RESEND_API_KEY);
+// Check if Resend is properly configured at runtime
+function checkResendConfig() {
+  if (!process.env.RESEND_API_KEY) {
+    console.warn('RESEND_API_KEY is not configured - email functionality will not work');
+    return false;
+  }
+  return true;
+}
 
 /**
  * Send a transactional email using Resend
@@ -31,6 +38,10 @@ export async function sendEmail({
     content: Buffer | string;
   }>;
 }) {
+  if (!checkResendConfig()) {
+    return { success: false, error: 'Resend not configured' };
+  }
+  
   try {
     const data = await resend.emails.send({
       from,

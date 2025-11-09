@@ -163,18 +163,25 @@ export async function sendEventNotification(
 ) {
   const supabase = await createClient();
 
+  // Get all completed orders for this event
+  const { data: orders } = await supabase
+    .from('orders')
+    .select('id')
+    .eq('event_id', eventId)
+    .eq('status', 'completed');
+
+  if (!orders || orders.length === 0) {
+    return { success: false, sent: 0 };
+  }
+
+  const orderIds = orders.map(o => o.id);
+
   // Get all users with tickets for this event
   const { data: tickets } = await supabase
     .from('tickets')
     .select('user_id')
     .eq('status', 'active')
-    .in('order_id', 
-      supabase
-        .from('orders')
-        .select('id')
-        .eq('event_id', eventId)
-        .eq('status', 'completed')
-    );
+    .in('order_id', orderIds);
 
   if (!tickets || tickets.length === 0) {
     return { success: false, sent: 0 };

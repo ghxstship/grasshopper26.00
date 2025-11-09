@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
+
+export const dynamic = 'force-dynamic';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Calendar, Clock, MapPin, Plus, X, Loader2 } from 'lucide-react';
@@ -26,10 +28,6 @@ export default function SchedulePage() {
   const [schedule, setSchedule] = useState<ScheduleEvent[]>([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    fetchSchedule();
-  }, []);
-
   async function fetchSchedule() {
     try {
       const { data: { user } } = await supabase.auth.getUser();
@@ -48,6 +46,11 @@ export default function SchedulePage() {
       setLoading(false);
     }
   }
+
+  useEffect(() => {
+    fetchSchedule();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   async function removeFromSchedule(scheduleId: string) {
     const { error } = await supabase

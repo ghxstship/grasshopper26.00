@@ -8,7 +8,7 @@ import { ChatService } from '@/lib/services/chat.service';
  */
 export async function GET(
   req: NextRequest,
-  { params }: { params: { roomId: string } }
+  { params }: { params: Promise<{ roomId: string }> }
 ) {
   try {
     const supabase = await createClient();
@@ -17,8 +17,9 @@ export async function GET(
     const searchParams = req.nextUrl.searchParams;
     const limit = parseInt(searchParams.get('limit') || '50');
     const before = searchParams.get('before') || undefined;
-
-    const messages = await service.getMessages(params.roomId, limit, before);
+    
+    const { roomId } = await params;
+    const messages = await service.getMessages(roomId, limit, before);
 
     return NextResponse.json({ messages });
   } catch (error) {
@@ -36,7 +37,7 @@ export async function GET(
  */
 export async function POST(
   req: NextRequest,
-  { params }: { params: { roomId: string } }
+  { params }: { params: Promise<{ roomId: string }> }
 ) {
   try {
     const supabase = await createClient();
@@ -59,10 +60,11 @@ export async function POST(
       );
     }
 
+    const { roomId } = await params;
     const service = new ChatService(supabase);
 
     // Verify room exists and is active
-    const room = await service.getRoom(params.roomId);
+    const room = await service.getRoom(roomId);
     if (!room) {
       return NextResponse.json(
         { error: 'Chat room not found' },
@@ -78,7 +80,7 @@ export async function POST(
     }
 
     const chatMessage = await service.sendMessage(
-      params.roomId,
+      roomId,
       user.id,
       message.trim(),
       messageType || 'text'

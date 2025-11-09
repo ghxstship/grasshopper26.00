@@ -6,8 +6,9 @@
 import { createClient } from '@/lib/supabase/server';
 import { Database } from '@/types/database';
 
-type ChatRoom = Database['public']['Tables']['event_chat_rooms']['Row'];
-type ChatMessage = Database['public']['Tables']['event_chat_messages']['Row'];
+// Fallback types for chat tables (may not exist in current database schema)
+type ChatRoom = any;
+type ChatMessage = any;
 
 export class ChatService {
   private supabase: Awaited<ReturnType<typeof createClient>>;

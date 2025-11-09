@@ -54,11 +54,6 @@ export function ScheduleGrid({ eventId, className }: ScheduleGridProps) {
     new Set(schedule.map((item) => item.stage_name))
   );
 
-  useEffect(() => {
-    loadSchedule();
-    loadMySchedule();
-  }, [eventId]);
-
   const loadSchedule = async () => {
     try {
       const res = await fetch(`/api/v1/events/${eventId}/schedule`);
@@ -86,6 +81,12 @@ export function ScheduleGrid({ eventId, className }: ScheduleGridProps) {
       console.error('Failed to load my schedule:', error);
     }
   };
+
+  useEffect(() => {
+    loadSchedule();
+    loadMySchedule();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [eventId]);
 
   const toggleMySchedule = async (itemId: string) => {
     const newSchedule = new Set(mySchedule);

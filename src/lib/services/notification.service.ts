@@ -127,7 +127,7 @@ export class NotificationService {
 
     // Send email
     await sendOrderConfirmationEmail({
-      customerEmail: userData.user.email,
+      to: userData.user.email,
       customerName: userData.user.user_metadata?.name || 'Customer',
       orderNumber: order.id.slice(0, 8).toUpperCase(),
       eventName: order.events?.name || 'Event',
@@ -177,7 +177,7 @@ export class NotificationService {
       if (userData?.user?.email) {
         try {
           await sendEventReminderEmail({
-            customerEmail: userData.user.email,
+            to: userData.user.email,
             customerName: userData.user.user_metadata?.name || 'Customer',
             eventName: event.name,
             eventDate: new Date(event.start_date).toLocaleDateString('en-US', {

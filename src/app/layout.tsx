@@ -7,6 +7,10 @@ import { CookieConsent } from "@/components/privacy/cookie-consent"
 
 const inter = Inter({ subsets: ["latin"] })
 
+// Force all pages to be dynamic by default (no static generation)
+export const dynamic = 'force-dynamic';
+export const dynamicParams = true;
+
 export const metadata: Metadata = {
   title: "Grasshopper - Experience Live",
   description: "World-class festivals, concerts, and events. All in one place.",

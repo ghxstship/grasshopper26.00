@@ -134,9 +134,11 @@ class SecretsManager {
   private static instance: SecretsManager;
   private secretCache: Map<string, string> = new Map();
   private validationErrors: string[] = [];
+  private validated: boolean = false;
 
   private constructor() {
-    this.validateSecrets();
+    // Don't validate on construction - validate lazily when needed
+    // This prevents build-time failures when secrets aren't available
   }
 
   static getInstance(): SecretsManager {
@@ -144,6 +146,16 @@ class SecretsManager {
       SecretsManager.instance = new SecretsManager();
     }
     return SecretsManager.instance;
+  }
+
+  /**
+   * Ensure secrets are validated before use
+   */
+  private ensureValidated(): void {
+    if (!this.validated) {
+      this.validateSecrets();
+      this.validated = true;
+    }
   }
 
   /**
@@ -182,13 +194,18 @@ class SecretsManager {
     if (errors.length > 0) {
       logger.error('Secret validation failed', undefined, { errors: errors.join(', ') });
       
-      // In production, fail fast on missing secrets
-      if (process.env.NODE_ENV === 'production') {
+      // Only fail fast in production runtime (not during build)
+      // During build, VERCEL_ENV will be set but secrets may not be available yet
+      const isProductionRuntime = process.env.NODE_ENV === 'production' && 
+                                   process.env.VERCEL_ENV && 
+                                   typeof process.env.VERCEL !== 'undefined';
+      
+      if (isProductionRuntime) {
         throw new Error(
           `Secret validation failed:\n${errors.join('\n')}`
         );
       } else {
-        logger.warn('Running with invalid secrets (development mode)');
+        logger.warn('Running with invalid secrets (development/build mode)');
       }
     } else {
       logger.info('All secrets validated successfully');
@@ -199,6 +216,8 @@ class SecretsManager {
    * Get a secret value with audit logging
    */
   getSecret(key: string, logAccess = true): string {
+    this.ensureValidated();
+    
     const value = this.secretCache.get(key) || process.env[key];
 
     if (!value) {
@@ -231,6 +250,7 @@ class SecretsManager {
    * Get validation errors
    */
   getValidationErrors(): string[] {
+    this.ensureValidated();
     return [...this.validationErrors];
   }
 
@@ -238,6 +258,7 @@ class SecretsManager {
    * Check if secrets are valid
    */
   isValid(): boolean {
+    this.ensureValidated();
     return this.validationErrors.length === 0;
   }
 
@@ -247,7 +268,9 @@ class SecretsManager {
   refresh(): void {
     this.secretCache.clear();
     this.validationErrors = [];
+    this.validated = false;
     this.validateSecrets();
+    this.validated = true;
     logger.info('Secrets refreshed');
   }
 
@@ -261,6 +284,7 @@ class SecretsManager {
     present: boolean;
     description?: string;
   }> {
+    this.ensureValidated();
     return Object.entries(SECRET_REGISTRY).map(([_, config]) => ({
       key: config.key,
       required: config.required,
@@ -279,26 +303,28 @@ class SecretsManager {
   }
 }
 
-// Export singleton instance
-export const secretsManager = SecretsManager.getInstance();
+// Lazy singleton getter to avoid instantiation at module load time
+export function getSecretsManager(): SecretsManager {
+  return SecretsManager.getInstance();
+}
 
 // Convenience functions
 export function getSecret(key: string): string {
-  return secretsManager.getSecret(key);
+  return getSecretsManager().getSecret(key);
 }
 
 export function hasSecret(key: string): boolean {
-  return secretsManager.hasSecret(key);
+  return getSecretsManager().hasSecret(key);
 }
 
 export function validateSecrets(): boolean {
-  return secretsManager.isValid();
+  return getSecretsManager().isValid();
 }
 
 export function getSecretMetadata() {
-  return secretsManager.getSecretMetadata();
+  return getSecretsManager().getSecretMetadata();
 }
 
 export function maskSecret(value: string): string {
-  return secretsManager.maskSecret(value);
+  return getSecretsManager().maskSecret(value);
 }

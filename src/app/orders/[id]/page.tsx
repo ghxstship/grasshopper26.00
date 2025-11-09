@@ -7,6 +7,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { TicketDisplay } from '@/components/features/ticket-display';
 
+export const dynamic = 'force-dynamic';
+
+import { useEffect, useState } from 'react';
+
 export default async function OrderDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const supabase = await createClient();
   const { id } = await params;

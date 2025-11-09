@@ -82,7 +82,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
-              <h3 className="font-bold text-lg mb-4">Grasshopper</h3>
+              <h3 className="font-bold text-lg mb-4">GVTEWAY</h3>
               <p className="text-gray-400 text-sm">
                 World-class entertainment experiences
               </p>
@@ -112,7 +112,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className="border-t border-gray-800 pt-8 text-center text-sm text-gray-400">
-            <p>&copy; 2025 Grasshopper. All rights reserved.</p>
+            <p>&copy; 2025 GVTEWAY. All rights reserved.</p>
           </div>
         </div>
       </footer>

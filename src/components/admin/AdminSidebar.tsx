@@ -32,7 +32,7 @@ export default function AdminSidebar() {
     <div className="w-64 bg-white border-r border-gray-200 flex flex-col">
       {/* Logo */}
       <div className="h-16 flex items-center px-6 border-b border-gray-200">
-        <h1 className="text-xl font-bold text-gray-900">Grasshopper Admin</h1>
+        <h1 className="text-xl font-bold text-gray-900">GVTEWAY Admin</h1>
       </div>
 
       {/* Navigation */}
@@ -65,7 +65,7 @@ export default function AdminSidebar() {
       {/* Footer */}
       <div className="p-4 border-t border-gray-200">
         <p className="text-xs text-gray-500 text-center">
-          Grasshopper 26.00
+          GVTEWAY 26.00
         </p>
       </div>
     </div>

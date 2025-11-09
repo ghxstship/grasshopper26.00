@@ -8,7 +8,7 @@ import { CookieConsent } from "@/components/privacy/cookie-consent"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Grasshopper - Experience Live",
+  title: "GVTEWAY - Experience Live",
   description: "World-class festivals, concerts, and events. All in one place.",
 }
 

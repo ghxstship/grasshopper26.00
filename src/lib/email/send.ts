@@ -75,8 +75,8 @@ export async function sendTicketDeliveryEmail(data: {
           <p style="margin-top: 30px;">See you at the event!</p>
           
           <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #e5e7eb; font-size: 12px; color: #6b7280;">
-            <p>Questions? Contact us at support@grasshopper.com</p>
-            <p>&copy; ${new Date().getFullYear()} Grasshopper. All rights reserved.</p>
+            <p>Questions? Contact us at support@gvteway.com</p>
+            <p>&copy; ${new Date().getFullYear()} GVTEWAY. All rights reserved.</p>
           </div>
         </div>
       </body>
@@ -155,7 +155,7 @@ export async function sendPasswordResetEmail(data: {
           <p>This link will expire in 1 hour.</p>
 
           <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #e5e7eb; font-size: 12px; color: #6b7280;">
-            <p>&copy; ${new Date().getFullYear()} Grasshopper. All rights reserved.</p>
+            <p>&copy; ${new Date().getFullYear()} GVTEWAY. All rights reserved.</p>
           </div>
         </div>
       </body>
@@ -200,7 +200,7 @@ export async function sendNewsletterConfirmationEmail(data: {
           <p>Stay tuned for updates!</p>
 
           <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #e5e7eb; font-size: 12px; color: #6b7280;">
-            <p>&copy; ${new Date().getFullYear()} Grasshopper. All rights reserved.</p>
+            <p>&copy; ${new Date().getFullYear()} GVTEWAY. All rights reserved.</p>
           </div>
         </div>
       </body>
@@ -245,7 +245,7 @@ export async function sendWaitlistNotificationEmail(data: {
           <a href="${process.env.NEXT_PUBLIC_APP_URL}/events" style="display: inline-block; background: #667eea; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; margin: 20px 0;">Get Tickets Now</a>
 
           <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #e5e7eb; font-size: 12px; color: #6b7280;">
-            <p>&copy; ${new Date().getFullYear()} Grasshopper. All rights reserved.</p>
+            <p>&copy; ${new Date().getFullYear()} GVTEWAY. All rights reserved.</p>
           </div>
         </div>
       </body>

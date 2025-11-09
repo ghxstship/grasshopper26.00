@@ -1,4 +1,5 @@
-# GVTEWAY (Grasshopper 26.00)
+# GVTEWAY Platform (Grasshopper 26.00)
+**Version:** 26.0.0 | **Status:** Production Ready | **Build:** Passing
 
 **White-Label Live Entertainment Experience Platform**
 

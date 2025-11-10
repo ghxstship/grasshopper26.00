@@ -77,7 +77,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
       {/* Navigation */}
       <Navigation
         logo={logo}
-        items={navItems}
+        items={navItems || []}
         actions={navActions}
         onNavigate={onNavigate}
       />

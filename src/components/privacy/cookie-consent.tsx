@@ -76,27 +76,27 @@ export function CookieConsent() {
   
   return (
     <div 
-      className="fixed inset-x-0 bottom-0 z-[var(--z-notification)] p-4 md:p-6"
+      className="fixed inset-x-0 bottom-0 z-50 p-4 md:p-6"
       role="dialog"
       aria-label="Cookie consent"
       aria-describedby="cookie-description"
     >
-      <div className="mx-auto max-w-4xl rounded-lg bg-[var(--color-bg-raised)] border border-[var(--color-border-default)] shadow-[var(--shadow-xl)] backdrop-blur-sm">
+      <div className="mx-auto max-w-4xl bg-grey-900 border-3 border-white shadow-geometric-white">
         <div className="p-6">
           <div className="flex items-start justify-between mb-4">
-            <h2 className="text-xl font-semibold text-[var(--color-text-primary)]">
+            <h2 className="font-bebas text-h3 uppercase text-white">
               Cookie Preferences
             </h2>
             <button
               onClick={() => setIsVisible(false)}
               aria-label="Close cookie banner"
-              className="text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
+              className="text-grey-300 hover:text-white transition-colors"
             >
               <X className="h-5 w-5" />
             </button>
           </div>
           
-          <p id="cookie-description" className="text-[var(--color-text-secondary)] mb-4">
+          <p id="cookie-description" className="font-share text-body text-grey-300 mb-4">
             We use cookies to enhance your experience, analyze site traffic, and 
             personalize content. You can customize your preferences below.
           </p>
@@ -144,6 +144,7 @@ export function CookieConsent() {
             <Button 
               onClick={handleAcceptAll}
               size="lg"
+              className="font-bebas text-lg uppercase border-3 border-white bg-white text-black hover:bg-grey-100"
             >
               Accept All
             </Button>
@@ -152,6 +153,7 @@ export function CookieConsent() {
               onClick={handleRejectAll}
               variant="outline"
               size="lg"
+              className="font-bebas text-lg uppercase border-3 border-white bg-transparent text-white hover:bg-grey-800"
             >
               Reject All
             </Button>
@@ -160,6 +162,7 @@ export function CookieConsent() {
               onClick={() => setShowDetails(!showDetails)}
               variant="ghost"
               size="lg"
+              className="font-bebas text-lg uppercase text-grey-300 hover:text-white"
             >
               {showDetails ? 'Hide' : 'Show'} Details
             </Button>
@@ -169,23 +172,24 @@ export function CookieConsent() {
                 onClick={handleAcceptSelected}
                 variant="secondary"
                 size="lg"
+                className="font-bebas text-lg uppercase border-3 border-grey-500 bg-grey-700 text-white hover:bg-grey-600"
               >
                 Save Preferences
               </Button>
             )}
           </div>
           
-          <p className="mt-4 text-sm text-[var(--color-text-tertiary)]">
+          <p className="mt-4 font-share text-meta text-grey-400">
             <a 
               href="/privacy" 
-              className="underline hover:text-[var(--color-text-secondary)]"
+              className="underline hover:text-grey-200"
             >
               Privacy Policy
             </a>
             {' • '}
             <a 
               href="/cookies" 
-              className="underline hover:text-[var(--color-text-secondary)]"
+              className="underline hover:text-grey-200"
             >
               Cookie Policy
             </a>
@@ -212,25 +216,25 @@ function CookieCategory({
   onChange 
 }: CookieCategoryProps) {
   return (
-    <label className="flex items-start gap-3 p-4 rounded-md bg-[var(--color-bg-secondary)] cursor-pointer hover:bg-[var(--color-bg-tertiary)] transition-colors">
+    <label className="flex items-start gap-3 p-4 border-3 border-grey-700 bg-grey-800 cursor-pointer hover:bg-grey-700 transition-colors">
       <input
         type="checkbox"
         checked={checked}
         disabled={disabled}
         onChange={(e) => onChange(e.target.checked)}
-        className="mt-1 h-4 w-4 rounded border-[var(--color-border-default)] text-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-border-focus)] focus:ring-offset-2"
+        className="mt-1 h-5 w-5 border-3 border-white bg-transparent checked:bg-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-grey-800"
         aria-label={`${title} ${disabled ? '(required)' : ''}`}
       />
       <div className="flex-1">
-        <div className="font-medium text-[var(--color-text-primary)]">
+        <div className="font-bebas text-lg uppercase text-white">
           {title}
           {disabled && (
-            <span className="ml-2 text-xs text-[var(--color-text-tertiary)]">
+            <span className="ml-2 font-share text-meta normal-case text-grey-400">
               (Required)
             </span>
           )}
         </div>
-        <p className="text-sm text-[var(--color-text-secondary)] mt-1">
+        <p className="font-share text-meta text-grey-300 mt-1">
           {description}
         </p>
       </div>

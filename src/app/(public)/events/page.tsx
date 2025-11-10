@@ -291,38 +291,38 @@ function EventsPageContent() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center " style={{ background: 'var(--gradient-hero)' }}>
-        <Loader2 className="h-12 w-12 animate-spin text-purple-500" />
+      <div className="min-h-screen flex items-center justify-center bg-white">
+        <Loader2 className="h-12 w-12 animate-spin text-black" />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen  py-12 px-4" style={{ background: 'var(--gradient-hero)' }}>
+    <div className="min-h-screen bg-white py-12 px-4 border-b-3 border-black">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Discover Events
+        <div className="mb-8 border-b-3 border-black pb-8">
+          <h1 className="font-anton text-hero uppercase text-black mb-4">
+            DISCOVER EVENTS
           </h1>
-          <p className="text-gray-400 text-lg">
+          <p className="font-share text-body text-grey-600">
             Find your next unforgettable experience
           </p>
         </div>
 
         {/* Search and Filters */}
-        <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20 mb-8">
+        <Card className="bg-grey-100 border-3 border-black mb-8">
           <CardContent className="p-6">
             <div className="flex flex-col md:flex-row gap-4">
               {/* Search */}
               <div className="flex-1 relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-grey-600" />
                 <Input
                   type="text"
                   placeholder="Search events, venues..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-10 bg-black/30 border-purple-500/30 text-white"
+                  className="pl-10 bg-white border-3 border-black font-share text-base"
                 />
               </div>
 
@@ -330,7 +330,6 @@ function EventsPageContent() {
               <Button
                 onClick={() => setShowFilters(!showFilters)}
                 variant="outline"
-                className="border-purple-500/30"
               >
                 <SlidersHorizontal className="h-4 w-4 mr-2" />
                 Filters
@@ -339,16 +338,16 @@ function EventsPageContent() {
 
             {/* Expanded Filters */}
             {showFilters && (
-              <div className="mt-6 pt-6 border-t border-purple-500/20">
+              <div className="mt-6 pt-6 border-t-3 border-black">
                 <div className="grid md:grid-cols-3 gap-4">
                   {/* Sort By */}
                   <div>
-                    <label htmlFor="sort-by" className="text-sm text-gray-400 mb-2 block">Sort By</label>
+                    <label htmlFor="sort-by" className="font-bebas text-base uppercase text-black mb-2 block">Sort By</label>
                     <select
                       id="sort-by"
                       value={sortBy}
                       onChange={(e) => setSortBy(e.target.value as SortOption)}
-                      className="w-full bg-black/30 border border-purple-500/30 rounded-md px-3 py-2 text-white"
+                      className="w-full bg-white border-3 border-black px-3 py-2 font-share text-base text-black"
                     >
                       <option value="date-asc">Date (Earliest First)</option>
                       <option value="date-desc">Date (Latest First)</option>
@@ -361,12 +360,12 @@ function EventsPageContent() {
 
                   {/* Status Filter */}
                   <div>
-                    <label htmlFor="status-filter" className="text-sm text-gray-400 mb-2 block">Status</label>
+                    <label htmlFor="status-filter" className="font-bebas text-base uppercase text-black mb-2 block">Status</label>
                     <select
                       id="status-filter"
                       value={statusFilter}
                       onChange={(e) => setStatusFilter(e.target.value as StatusFilter)}
-                      className="w-full bg-black/30 border border-purple-500/30 rounded-md px-3 py-2 text-white"
+                      className="w-full bg-white border-3 border-black px-3 py-2 font-share text-base text-black"
                     >
                       <option value="all">All Events</option>
                       <option value="upcoming">Upcoming</option>
@@ -380,7 +379,7 @@ function EventsPageContent() {
                     <Button
                       onClick={clearFilters}
                       variant="outline"
-                      className="w-full border-purple-500/30"
+                      className="w-full"
                     >
                       <X className="h-4 w-4 mr-2" />
                       Clear Filters
@@ -393,20 +392,20 @@ function EventsPageContent() {
         </Card>
 
         {/* Results Count */}
-        <div className="mb-6 text-gray-400">
+        <div className="mb-6 font-share text-base text-grey-600">
           Showing {filteredEvents.length} of {events.length} events
         </div>
 
         {/* Events Grid */}
         {filteredEvents.length === 0 ? (
-          <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20">
+          <Card className="bg-white border-3 border-black">
             <CardContent className="py-12 text-center">
-              <Calendar className="h-16 w-16 mx-auto text-gray-600 mb-4" />
-              <h3 className="text-xl font-semibold text-white mb-2">No events found</h3>
-              <p className="text-gray-400 mb-6">
+              <Calendar className="h-16 w-16 mx-auto text-grey-400 mb-4" />
+              <h3 className="font-bebas text-h3 uppercase text-black mb-2">No events found</h3>
+              <p className="font-share text-body text-grey-600 mb-6">
                 Try adjusting your search or filters
               </p>
-              <Button onClick={clearFilters} className="" style={{ background: 'var(--gradient-brand-primary)' }}>
+              <Button onClick={clearFilters}>
                 Clear Filters
               </Button>
             </CardContent>
@@ -421,7 +420,7 @@ function EventsPageContent() {
               return (
                 <Card
                   key={event.id}
-                  className="bg-black/40 backdrop-blur-lg border-purple-500/20 overflow-hidden hover:border-purple-500/40 transition-all group"
+                  className="bg-white border-3 border-black overflow-hidden hover:shadow-geometric transition-all group"
                 >
                   <div className="relative">
                     {/* Event Image */}
@@ -435,7 +434,7 @@ function EventsPageContent() {
                             className="object-cover group-hover:scale-110 transition-transform duration-300"
                           />
                         ) : (
-                          <div className="w-full h-full " style={{ background: 'var(--gradient-brand-dark)' }} />
+                          <div className="w-full h-full bg-grey-200" />
                         )}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                       </div>
@@ -447,11 +446,11 @@ function EventsPageContent() {
                         onClick={() => toggleFavorite(event.id)}
                         size="icon"
                         variant="outline"
-                        className="bg-black/50 backdrop-blur-lg border-white/20 hover:bg-black/70"
+                        className="bg-white border-3 border-black hover:bg-grey-100"
                       >
                         <Heart
                           className={`h-4 w-4 ${
-                            isFavorited ? 'fill-red-500 text-red-500' : 'text-white'
+                            isFavorited ? 'fill-black text-black' : 'text-black'
                           }`}
                         />
                       </Button>
@@ -459,24 +458,24 @@ function EventsPageContent() {
                         onClick={() => addToCalendar(event)}
                         size="icon"
                         variant="outline"
-                        className="bg-black/50 backdrop-blur-lg border-white/20 hover:bg-black/70"
+                        className="bg-white border-3 border-black hover:bg-grey-100"
                       >
-                        <CalendarPlus className="h-4 w-4 text-white" />
+                        <CalendarPlus className="h-4 w-4 text-black" />
                       </Button>
                       <Button
                         onClick={() => shareEvent(event)}
                         size="icon"
                         variant="outline"
-                        className="bg-black/50 backdrop-blur-lg border-white/20 hover:bg-black/70"
+                        className="bg-white border-3 border-black hover:bg-grey-100"
                       >
-                        <Share2 className="h-4 w-4 text-white" />
+                        <Share2 className="h-4 w-4 text-black" />
                       </Button>
                     </div>
 
                     {/* Status Badge */}
                     {soldOut && (
                       <div className="absolute top-2 left-2">
-                        <span className="px-3 py-1 bg-red-500 text-white text-xs font-bold rounded-full">
+                        <span className="px-3 py-1 bg-black text-white font-bebas text-sm uppercase border-3 border-white">
                           SOLD OUT
                         </span>
                       </div>
@@ -485,12 +484,12 @@ function EventsPageContent() {
 
                   <CardContent className="p-6">
                     <Link href={`/events/${event.slug}`}>
-                      <h3 className="text-xl font-bold text-white mb-2 hover:text-purple-400 transition-colors">
+                      <h3 className="font-bebas text-h4 uppercase text-black mb-2 hover:text-grey-700 transition-colors">
                         {event.name}
                       </h3>
                     </Link>
 
-                    <div className="space-y-2 text-sm text-gray-400 mb-4">
+                    <div className="space-y-2 font-share text-meta text-grey-600 mb-4">
                       <div className="flex items-center gap-2">
                         <Calendar className="h-4 w-4" />
                         <span>{format(new Date(event.start_date), 'PPP')}</span>
@@ -501,18 +500,17 @@ function EventsPageContent() {
                       </div>
                     </div>
 
-                    <div className="flex items-center justify-between pt-4 border-t border-purple-500/20">
+                    <div className="flex items-center justify-between pt-4 border-t-3 border-black">
                       {minPrice !== null ? (
-                        <span className="text-lg font-bold text-purple-400">
+                        <span className="font-bebas text-xl uppercase text-black">
                           From ${minPrice.toFixed(2)}
                         </span>
                       ) : (
-                        <span className="text-sm text-gray-500">No tickets available</span>
+                        <span className="font-share text-meta text-grey-500">No tickets available</span>
                       )}
                       <Button
                         asChild
                         size="sm"
-                        className="" style={{ background: 'var(--gradient-brand-primary)' }}
                         disabled={soldOut}
                       >
                         <Link href={`/events/${event.slug}`}>

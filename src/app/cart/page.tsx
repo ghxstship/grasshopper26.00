@@ -1,8 +1,8 @@
 'use client';
 
 import { SplitLayout } from '@/design-system/components/templates/SplitLayout/SplitLayout';
-import { Header } from '@/design-system/components/organisms/Header/Header';
-import { Footer } from '@/design-system/components/organisms/Footer/Footer';
+import { SiteHeader } from '@/design-system/components/organisms/layout/site-header';
+import { SiteFooter } from '@/design-system/components/organisms/layout/site-footer';
 import { Typography } from '@/design-system/components/atoms/Typography/Typography';
 import { Button } from '@/design-system/components/atoms/Button/Button';
 import { ShoppingCart } from 'lucide-react';
@@ -15,7 +15,7 @@ export default function CartPage() {
 
   return (
     <SplitLayout
-      header={<Header />}
+      header={<SiteHeader />}
       left={
         <div className={styles.cartContent}>
           <Typography variant="h2" as="h1">
@@ -69,7 +69,7 @@ export default function CartPage() {
           </Link>
         </div>
       }
-      footer={<Footer />}
+      footer={<SiteFooter />}
       ratio="60-40"
       stickySide="right"
     />

@@ -1,1 +1,1 @@
-export { Header as default } from '../Header/Header';
+export { SiteHeader as default } from '../layout/site-header';

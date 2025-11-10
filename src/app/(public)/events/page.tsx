@@ -3,8 +3,8 @@
 import { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { GridLayout } from '@/design-system/components/templates/GridLayout/GridLayout';
-import { Header } from '@/design-system/components/organisms/Header/Header';
-import { Footer } from '@/design-system/components/organisms/Footer/Footer';
+import { SiteHeader } from '@/design-system/components/organisms/layout/site-header';
+import { SiteFooter } from '@/design-system/components/organisms/layout/site-footer';
 import { EventCard } from '@/design-system/components/organisms/EventCard/EventCard';
 import { Input } from '@/design-system/components/atoms/Input/Input';
 import { Typography } from '@/design-system/components/atoms/Typography/Typography';
@@ -28,7 +28,7 @@ function EventsPageContent() {
 
   return (
     <GridLayout
-      header={<Header />}
+      header={<SiteHeader />}
       title="Discover Events"
       description="Find your next unforgettable experience"
       search={
@@ -40,7 +40,7 @@ function EventsPageContent() {
         />
       }
       columns={3}
-      footer={<Footer />}
+      footer={<SiteFooter />}
     >
       {loading ? (
         Array.from({ length: 6 }).map((_, i) => (

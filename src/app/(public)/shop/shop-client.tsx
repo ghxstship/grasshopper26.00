@@ -7,8 +7,8 @@
 
 import { useState } from 'react';
 import { GridLayout } from '@/design-system/components/templates/GridLayout/GridLayout';
-import { Header } from '@/design-system/components/organisms/Header/Header';
-import { Footer } from '@/design-system/components/organisms/Footer/Footer';
+import { SiteHeader } from '@/design-system/components/organisms/layout/site-header';
+import { SiteFooter } from '@/design-system/components/organisms/layout/site-footer';
 import { Input } from '@/design-system/components/atoms/Input/Input';
 import { Typography } from '@/design-system/components/atoms/Typography/Typography';
 import { Package } from 'lucide-react';
@@ -56,7 +56,7 @@ export function ShopBrowseClient({ initialProducts, initialSearch }: ShopBrowseC
 
   return (
     <GridLayout
-      header={<Header />}
+      header={<SiteHeader />}
       title="Shop"
       description="Official GVTEWAY merchandise. Limited edition items, event exclusives, and more."
       search={
@@ -68,7 +68,7 @@ export function ShopBrowseClient({ initialProducts, initialSearch }: ShopBrowseC
         />
       }
       columns={4}
-      footer={<Footer />}
+      footer={<SiteFooter />}
     >
       {filteredProducts.length > 0 ? (
         filteredProducts.map(product => (

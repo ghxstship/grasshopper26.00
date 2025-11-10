@@ -1,8 +1,8 @@
 'use client';
 
 import { EventLayout } from '@/design-system/components/templates/EventLayout/EventLayout';
-import { Header } from '@/design-system/components/organisms/Header/Header';
-import { Footer } from '@/design-system/components/organisms/Footer/Footer';
+import { SiteHeader } from '@/design-system/components/organisms/layout/site-header';
+import { SiteFooter } from '@/design-system/components/organisms/layout/site-footer';
 import { Typography } from '@/design-system/components/atoms/Typography/Typography';
 import { Button } from '@/design-system/components/atoms/Button/Button';
 import { Calendar, MapPin, Clock } from 'lucide-react';
@@ -20,7 +20,7 @@ export function EventDetailClient({ event }: EventDetailClientProps) {
 
   return (
     <EventLayout
-      header={<Header />}
+      header={<SiteHeader />}
       hero={
         <div className={styles.hero}>
           {event.hero_image_url && (
@@ -104,7 +104,7 @@ export function EventDetailClient({ event }: EventDetailClientProps) {
           </Button>
         </div>
       }
-      footer={<Footer />}
+      footer={<SiteFooter />}
     />
   );
 }

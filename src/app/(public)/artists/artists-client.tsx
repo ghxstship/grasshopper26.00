@@ -3,8 +3,8 @@
 import { useState, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { GridLayout } from '@/design-system/components/templates/GridLayout/GridLayout';
-import { Header } from '@/design-system/components/organisms/Header/Header';
-import { Footer } from '@/design-system/components/organisms/Footer/Footer';
+import { SiteHeader } from '@/design-system/components/organisms/layout/site-header';
+import { SiteFooter } from '@/design-system/components/organisms/layout/site-footer';
 import { ArtistCard } from '@/design-system/components/organisms/ArtistCard/ArtistCard';
 import { Input } from '@/design-system/components/atoms/Input/Input';
 import { Typography } from '@/design-system/components/atoms/Typography/Typography';
@@ -72,7 +72,7 @@ export function ArtistsBrowseClient({ initialArtists, initialSearch }: ArtistsBr
 
   return (
     <div className={styles.container}>
-      <Header logoText="GVTEWAY" />
+      <SiteHeader />
       
       <main className={styles.main}>
         <div className={styles.header}>
@@ -99,7 +99,7 @@ export function ArtistsBrowseClient({ initialArtists, initialSearch }: ArtistsBr
         />
       </main>
 
-      <Footer />
+      <SiteFooter />
     </div>
   );
 }

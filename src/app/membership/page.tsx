@@ -1,8 +1,8 @@
 'use client';
 
 import { MembershipLayout } from '@/design-system/components/templates/MembershipLayout/MembershipLayout';
-import { Header } from '@/design-system/components/organisms/Header/Header';
-import { Footer } from '@/design-system/components/organisms/Footer/Footer';
+import { SiteHeader } from '@/design-system/components/organisms/layout/site-header';
+import { SiteFooter } from '@/design-system/components/organisms/layout/site-footer';
 import { Typography } from '@/design-system/components/atoms/Typography/Typography';
 import { useMembershipTiers } from '@/hooks/useMembershipTiers';
 import { MembershipTierCard } from '@/design-system/components/organisms/MembershipTierCard/MembershipTierCard';
@@ -13,7 +13,7 @@ export default function MembershipPage() {
 
   return (
     <MembershipLayout
-      header={<Header />}
+      header={<SiteHeader />}
       hero={
         <div className={styles.hero}>
           <Typography variant="hero" as="h1">
@@ -37,7 +37,7 @@ export default function MembershipPage() {
           )}
         </div>
       }
-      footer={<Footer />}
+      footer={<SiteFooter />}
     />
   );
 }

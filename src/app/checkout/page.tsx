@@ -56,7 +56,7 @@ function CheckoutForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20">
+      <Card className="bg-white border-3 border-black">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <CreditCard className="h-5 w-5" />
@@ -72,7 +72,6 @@ function CheckoutForm() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="bg-black/50 border-purple-500/30"
               placeholder="your@email.com"
             />
           </div>
@@ -84,14 +83,13 @@ function CheckoutForm() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
-              className="bg-black/50 border-purple-500/30"
               placeholder="John Doe"
             />
           </div>
         </CardContent>
       </Card>
 
-      <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20">
+      <Card className="bg-white border-3 border-black">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Lock className="h-5 w-5" />
@@ -106,7 +104,7 @@ function CheckoutForm() {
       <Button
         type="submit"
         disabled={!stripe || loading}
-        className="w-full " style={{ background: 'var(--gradient-brand-primary)' }}
+        className="w-full"
       >
         {loading ? (
           <>
@@ -118,7 +116,7 @@ function CheckoutForm() {
         )}
       </Button>
 
-      <p className="text-xs text-gray-400 text-center">
+      <p className="font-share text-meta text-grey-600 text-center">
         Your payment information is secure and encrypted. We never store your card details.
       </p>
     </form>
@@ -171,24 +169,24 @@ export default function CheckoutPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center " style={{ background: 'var(--gradient-hero)' }}>
-        <Loader2 className="h-12 w-12 animate-spin text-purple-500" />
+      <div className="min-h-screen flex items-center justify-center bg-white">
+        <Loader2 className="h-12 w-12 animate-spin text-black" />
       </div>
     );
   }
 
   if (!clientSecret) {
     return (
-      <div className="min-h-screen flex items-center justify-center " style={{ background: 'var(--gradient-hero)' }}>
-        <p className="text-white">Failed to initialize checkout. Please try again.</p>
+      <div className="min-h-screen flex items-center justify-center bg-white">
+        <p className="font-share text-body text-black">Failed to initialize checkout. Please try again.</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen  py-12 px-4" style={{ background: 'var(--gradient-hero)' }}>
+    <div className="min-h-screen py-12 px-4 bg-white border-b-3 border-black">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold  mb-8 bg-clip-text text-transparent" style={{ backgroundImage: 'var(--gradient-brand-primary)' }}>
+        <h1 className="font-anton text-hero uppercase text-black mb-8 pb-8 border-b-3 border-black">
           Checkout
         </h1>
 
@@ -200,34 +198,34 @@ export default function CheckoutPage() {
           </div>
 
           <div className="lg:col-span-1">
-            <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20 sticky top-4">
+            <Card className="bg-grey-100 border-3 border-black sticky top-4">
               <CardHeader>
                 <CardTitle>Order Summary</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-2">
                   {items.map((item) => (
-                    <div key={item.id} className="flex justify-between text-sm">
-                      <span className="text-gray-400">
+                    <div key={item.id} className="flex justify-between font-share text-meta">
+                      <span className="text-grey-600">
                         {item.name} x{item.quantity}
                       </span>
-                      <span className="text-white">
+                      <span className="text-black">
                         ${(item.price * item.quantity).toFixed(2)}
                       </span>
                     </div>
                   ))}
                 </div>
 
-                <div className="border-t border-purple-500/20 pt-4 space-y-2">
-                  <div className="flex justify-between text-gray-400">
+                <div className="border-t-3 border-black pt-4 space-y-2">
+                  <div className="flex justify-between font-share text-base text-grey-600">
                     <span>Subtotal</span>
                     <span>${getTotal().toFixed(2)}</span>
                   </div>
-                  <div className="flex justify-between text-gray-400">
+                  <div className="flex justify-between font-share text-base text-grey-600">
                     <span>Service Fee</span>
                     <span>${(getTotal() * 0.05).toFixed(2)}</span>
                   </div>
-                  <div className="flex justify-between text-lg font-bold text-white">
+                  <div className="flex justify-between font-bebas text-xl uppercase text-black">
                     <span>Total</span>
                     <span>${(getTotal() * 1.05).toFixed(2)}</span>
                   </div>

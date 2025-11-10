@@ -31,7 +31,7 @@ export function QuickStats({ membership, recentBenefits }: QuickStatsProps) {
       label: 'Vouchers Redeemed',
       value: vouchersUsed,
       icon: Gift,
-      color: 'bg-pink-100 text-pink-600',
+      color: 'bg-grey-100 text-black',
     },
     {
       label: 'Member Since',

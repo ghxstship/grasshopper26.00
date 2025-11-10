@@ -134,7 +134,7 @@
   width: var(--space-1);
   height: var(--space-1);
   background-color: var(--color-text-inverse);
-  border-radius: var(--radius-full);
+  /* GHXSTSHIP: No rounded corners */
 }
 
 .actions {
@@ -200,7 +200,7 @@
 .badgeCircle {
   width: var(--space-12);
   height: var(--space-12);
-  border-radius: var(--radius-full);
+  /* GHXSTSHIP: No rounded corners */
   border: var(--border-width-3) solid var(--color-text-inverse);
 }
 
@@ -361,9 +361,9 @@
 }
 
 .rounded {
-  border-radius: var(--radius-md);
+  /* GHXSTSHIP: No rounded corners */
 }
 
 .shadow {
-  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 8px 8px 0 #000000;
 }

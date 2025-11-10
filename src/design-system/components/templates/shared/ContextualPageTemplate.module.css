@@ -19,7 +19,7 @@
   block-size: var(--spacing-xl);
   border: 3px solid var(--color-border);
   border-block-start-color: var(--color-primary);
-  border-radius: 50%;
+  /* GHXSTSHIP: No rounded corners */
   animation: spin 1s linear infinite;
 }
 
@@ -93,7 +93,7 @@
   padding-inline: var(--spacing-md);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-semibold);
-  border-radius: var(--radius-full);
+  /* GHXSTSHIP: No rounded corners */
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-wide);
 }
@@ -133,7 +133,7 @@
   padding-inline: var(--spacing-lg);
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-medium);
-  border-radius: var(--radius-md);
+  /* GHXSTSHIP: No rounded corners */
   cursor: pointer;
   transition: all var(--transition-fast);
   border: none;
@@ -166,7 +166,7 @@
   margin-block-end: var(--spacing-xl);
   padding: var(--spacing-lg);
   background: var(--color-surface);
-  border-radius: var(--radius-lg);
+  /* GHXSTSHIP: No rounded corners */
   border: 1px solid var(--color-border);
 }
 
@@ -238,7 +238,7 @@
   padding-inline: var(--spacing-sm);
   font-size: var(--font-size-xs);
   background: var(--color-surface);
-  border-radius: var(--radius-full);
+  /* GHXSTSHIP: No rounded corners */
 }
 
 /* Main Content Area */
@@ -353,7 +353,7 @@
 .sidebar {
   padding: var(--spacing-lg);
   background: var(--color-surface);
-  border-radius: var(--radius-lg);
+  /* GHXSTSHIP: No rounded corners */
   border: 1px solid var(--color-border);
   align-self: flex-start;
   position: sticky;

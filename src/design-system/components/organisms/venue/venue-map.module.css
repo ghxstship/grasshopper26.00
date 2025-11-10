@@ -60,7 +60,7 @@
 .legendColorCircle {
   width: var(--space-4);
   height: var(--space-4);
-  border-radius: var(--radius-full);
+  /* GHXSTSHIP: No rounded corners */
 }
 
 .legendLabel {
@@ -163,11 +163,11 @@
 }
 
 .rounded {
-  border-radius: var(--radius-md);
+  /* GHXSTSHIP: No rounded corners */
 }
 
 .shadow {
-  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 8px 8px 0 #000000;
 }
 
 .marginTop1 {

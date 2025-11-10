@@ -192,13 +192,13 @@ async function generateCredentialNumber(
  */
 function getDefaultBadgeColor(credentialType: string): string {
   const colors: Record<string, string> = {
-    aaa: 'red',
-    aa: 'yellow',
-    production: 'blue',
-    staff: 'green',
-    vendor: 'orange',
-    media: 'purple',
+    aaa: 'black',
+    aa: 'grey-900',
+    production: 'grey-700',
+    staff: 'grey-500',
+    vendor: 'grey-300',
+    media: 'white',
     guest: 'white',
   };
-  return colors[credentialType] || 'gray';
+  return colors[credentialType] || 'grey-500';
 }

@@ -19,7 +19,7 @@
   inline-size: var(--space-12);
   block-size: var(--space-12);
   border-block-end: 2px solid var(--color-black);
-  border-radius: 50%;
+  border-radius: 0;
   margin-inline: auto;
   margin-block-end: var(--space-4);
   animation: spin 1s linear infinite;
@@ -404,5 +404,5 @@
 }
 
 .shadow {
-  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 8px 8px 0 #000000;
 }

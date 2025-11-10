@@ -7,7 +7,7 @@
 .card {
   background: var(--color-surface-primary);
   border: 1px solid var(--color-border-subtle);
-  border-radius: var(--radius-lg);
+  /* GHXSTSHIP: No rounded corners */
   padding-block: var(--spacing-lg);
   padding-inline: var(--spacing-lg);
   transition: all var(--transition-normal);
@@ -75,7 +75,7 @@
   padding-inline: var(--spacing-sm);
   background: var(--color-primary-100);
   color: var(--color-primary-700);
-  border-radius: var(--radius-full);
+  /* GHXSTSHIP: No rounded corners */
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-wide);
 }
@@ -130,7 +130,7 @@
   font-weight: var(--font-weight-semibold);
   padding-block: var(--spacing-xs);
   padding-inline: var(--spacing-sm);
-  border-radius: var(--radius-md);
+  /* GHXSTSHIP: No rounded corners */
 }
 
 .trendIcon {

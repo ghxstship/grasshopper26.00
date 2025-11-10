@@ -191,7 +191,7 @@
 }
 
 .cardOrange {
-  background-color: var(--color-orange-50);
+  background-color: var(--color-grey-100);
   border: 3px solid var(--color-black);
   padding: var(--space-4);
 }
@@ -226,7 +226,7 @@
   font-family: var(--font-share);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-semibold);
-  color: var(--color-orange-900);
+  color: var(--color-black);
 }
 
 .cardText {
@@ -422,5 +422,5 @@
 }
 
 .shadow {
-  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 8px 8px 0 #000000;
 }

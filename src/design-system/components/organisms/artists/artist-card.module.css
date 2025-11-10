@@ -2,7 +2,7 @@
 
 .card {
   display: block;
-  border-radius: var(--radius-lg);
+  /* GHXSTSHIP: No rounded corners */
   overflow: hidden;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -62,6 +62,6 @@
   font-weight: var(--font-weight-medium);
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
+  /* GHXSTSHIP: No rounded corners */
   color: var(--color-text-secondary);
 }

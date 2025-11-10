@@ -7,50 +7,50 @@
 @tailwind utilities;
 
 @layer base {
-  /* Tailwind compatibility layer - maps design tokens to Tailwind's HSL format */
+  /* GHXSTSHIP Tailwind compatibility layer - MONOCHROMATIC ONLY */
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 271 91% 65%;  /* Brand purple */
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 330 81% 60%;  /* Accent pink */
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 271 91% 65%;
-    --radius: 0.5rem;
+    --background: 0 0% 100%; /* White */
+    --foreground: 0 0% 0%; /* Black */
+    --card: 0 0% 100%; /* White */
+    --card-foreground: 0 0% 0%; /* Black */
+    --popover: 0 0% 100%; /* White */
+    --popover-foreground: 0 0% 0%; /* Black */
+    --primary: 0 0% 0%; /* Black - NO PURPLE */
+    --primary-foreground: 0 0% 100%; /* White */
+    --secondary: 0 0% 29.4%; /* Grey-600 */
+    --secondary-foreground: 0 0% 0%; /* Black */
+    --muted: 0 0% 96.1%; /* Grey-100 */
+    --muted-foreground: 0 0% 42%; /* Grey-500 */
+    --accent: 0 0% 100%; /* White - NO PINK */
+    --accent-foreground: 0 0% 0%; /* Black */
+    --destructive: 0 0% 0%; /* Black */
+    --destructive-foreground: 0 0% 100%; /* White */
+    --border: 0 0% 90%; /* Grey-200 */
+    --input: 0 0% 90%; /* Grey-200 */
+    --ring: 0 0% 0%; /* Black - NO PURPLE */
+    --radius: 0; /* NO ROUNDED CORNERS */
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 271 91% 65%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 330 81% 60%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 271 91% 65%;
+    --background: 0 0% 0%; /* Black */
+    --foreground: 0 0% 100%; /* White */
+    --card: 0 0% 12%; /* Grey-900 */
+    --card-foreground: 0 0% 100%; /* White */
+    --popover: 0 0% 12%; /* Grey-900 */
+    --popover-foreground: 0 0% 100%; /* White */
+    --primary: 0 0% 100%; /* White */
+    --primary-foreground: 0 0% 0%; /* Black */
+    --secondary: 0 0% 17.5%; /* Grey-800 */
+    --secondary-foreground: 0 0% 100%; /* White */
+    --muted: 0 0% 17.5%; /* Grey-800 */
+    --muted-foreground: 0 0% 65.1%; /* Grey-400 */
+    --accent: 0 0% 0%; /* Black */
+    --accent-foreground: 0 0% 100%; /* White */
+    --destructive: 0 0% 100%; /* White */
+    --destructive-foreground: 0 0% 0%; /* Black */
+    --border: 0 0% 17.5%; /* Grey-800 */
+    --input: 0 0% 17.5%; /* Grey-800 */
+    --ring: 0 0% 100%; /* White */
   }
 }
 

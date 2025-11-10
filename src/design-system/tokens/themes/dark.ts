@@ -80,18 +80,18 @@ export const darkTheme = {
     },
   },
   
-  // Adjusted shadows for dark mode
+  // Adjusted shadows for dark mode (GHXSTSHIP: Hard geometric only)
   shadows: {
     ...lightTheme.shadows,
-    xs: '0 1px 2px 0 rgba(0, 0, 0, 0.3)',
-    sm: '0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px -1px rgba(0, 0, 0, 0.4)',
-    base: '0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.4)',
-    md: '0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.4)',
-    lg: '0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.4)',
-    xl: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
-    '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
-    glow: '0 0 20px rgba(168, 85, 247, 0.4)',
-    glowStrong: '0 0 40px rgba(168, 85, 247, 0.6)',
+    xs: '2px 2px 0 #FFFFFF',
+    sm: '3px 3px 0 #FFFFFF',
+    base: '4px 4px 0 #FFFFFF',
+    md: '6px 6px 0 #FFFFFF',
+    lg: '8px 8px 0 #FFFFFF',
+    xl: '12px 12px 0 #FFFFFF',
+    '2xl': '16px 16px 0 #FFFFFF',
+    glow: 'none',
+    glowStrong: 'none',
   },
 } as const;
 

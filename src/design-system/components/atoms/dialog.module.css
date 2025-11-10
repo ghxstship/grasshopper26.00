@@ -5,6 +5,27 @@
   flex-direction: column;
 }
 
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.content {
+  position: fixed;
+  inset-inline-start: 50%;
+  inset-block-start: 50%;
+  z-index: 50;
+  inline-size: 100%;
+  max-inline-size: 32rem;
+  transform: translate(-50%, -50%);
+  border: var(--border-width-3) solid var(--color-border-strong);
+  background-color: var(--color-bg-primary);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-xl);
+}
+
 .row {
   display: flex;
   align-items: center;
@@ -143,9 +164,9 @@
 }
 
 .rounded {
-  border-radius: var(--radius-md);
+  /* GHXSTSHIP: No rounded corners */
 }
 
 .shadow {
-  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 8px 8px 0 #000000;
 }

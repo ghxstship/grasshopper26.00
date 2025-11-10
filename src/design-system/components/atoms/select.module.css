@@ -63,10 +63,10 @@
   max-height: 24rem;
   min-width: 8rem;
   overflow: hidden;
-  border: 3px solid var(--color-border-strong);
   background-color: var(--color-bg-primary);
+  border: var(--border-width-3) solid var(--color-border-strong);
   color: var(--color-text-primary);
-  box-shadow: var(--shadow-geometric);
+  box-shadow: var(--shadow-md);
 }
 
 .content[data-state="open"] {
@@ -118,22 +118,24 @@
   position: relative;
   display: flex;
   width: 100%;
-  cursor: default;
+  cursor: pointer;
   user-select: none;
   align-items: center;
   padding-block: var(--space-2);
   padding-inline-start: var(--space-8);
   padding-inline-end: var(--space-2);
-  font-family: var(--font-share);
+  font-family: var(--font-body);
   font-size: var(--font-size-base);
   outline: none;
-  transition: background-color var(--duration-fast) var(--easing-out),
-              color var(--duration-fast) var(--easing-out);
+  transition: all var(--duration-fast) var(--easing-out);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
 }
 
+.item:hover,
 .item:focus {
-  background-color: var(--color-bg-secondary);
-  color: var(--color-text-primary);
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
 }
 
 .item[data-disabled] {

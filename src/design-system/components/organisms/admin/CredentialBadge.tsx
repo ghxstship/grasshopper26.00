@@ -51,12 +51,13 @@ export function CredentialBadge({ credential }: CredentialBadgeProps) {
   }, [credential.qr_code_data]);
 
   const getBadgeColor = (color: string) => {
+    // GHXSTSHIP: Monochromatic only - all colors map to black/white/grey
     const colors: Record<string, string> = {
-      red: 'var(--color-red-500)',
-      yellow: 'var(--color-yellow-500)',
-      blue: 'var(--color-blue-500)',
-      green: 'var(--color-green-500)',
-      orange: 'var(--color-orange-500)',
+      red: 'var(--color-black)',
+      yellow: 'var(--color-grey-500)',
+      blue: 'var(--color-grey-700)',
+      green: 'var(--color-black)',
+      orange: 'var(--color-grey-600)',
       purple: 'var(--color-black)',
       white: 'var(--color-white)',
       gray: 'var(--color-grey-500)',

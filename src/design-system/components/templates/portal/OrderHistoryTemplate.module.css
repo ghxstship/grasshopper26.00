@@ -13,7 +13,7 @@
   margin-block-end: var(--spacing-2xl);
   padding-block: var(--spacing-2xl);
   padding-inline: var(--spacing-xl);
-  border-radius: var(--radius-lg);
+  /* GHXSTSHIP: No rounded corners */
   text-align: center;
 }
 
@@ -81,7 +81,7 @@
   padding-inline: var(--spacing-xs);
   font-size: var(--font-size-xs);
   background: var(--color-surface);
-  border-radius: var(--radius-full);
+  /* GHXSTSHIP: No rounded corners */
 }
 
 .additionalFilters {
@@ -134,7 +134,7 @@
     var(--color-border) 100%
   );
   background-size: 200% 100%;
-  border-radius: var(--radius-sm);
+  /* GHXSTSHIP: No rounded corners */
   animation: shimmer 1.5s infinite;
 }
 
@@ -148,7 +148,7 @@
     var(--color-border) 100%
   );
   background-size: 200% 100%;
-  border-radius: var(--radius-sm);
+  /* GHXSTSHIP: No rounded corners */
   animation: shimmer 1.5s infinite;
 }
 
@@ -168,7 +168,7 @@
     var(--color-border) 100%
   );
   background-size: 200% 100%;
-  border-radius: var(--radius-sm);
+  /* GHXSTSHIP: No rounded corners */
   animation: shimmer 1.5s infinite;
 }
 

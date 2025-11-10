@@ -64,7 +64,7 @@
   font-weight: var(--font-weight-medium);
   color: var(--color-text-secondary);
   text-decoration: none;
-  border-radius: var(--radius-md);
+  /* GHXSTSHIP: No rounded corners */
   transition: background var(--transition-fast), color var(--transition-fast);
 }
 
@@ -171,7 +171,7 @@
   padding-inline: var(--spacing-xs);
   font-size: var(--font-size-xs);
   background: var(--color-surface);
-  border-radius: var(--radius-full);
+  /* GHXSTSHIP: No rounded corners */
 }
 
 .tabContent {

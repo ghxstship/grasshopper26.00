@@ -13,34 +13,35 @@ export const lightTheme = {
   typography,
   
   shadows: {
-    xs: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
-    sm: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1)',
-    base: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
-    md: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)',
-    lg: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
-    xl: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-    '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-    inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.05)',
-    glow: '0 0 20px rgba(147, 51, 234, 0.3)',
-    glowStrong: '0 0 40px rgba(147, 51, 234, 0.5)',
+    xs: '2px 2px 0 #000000',
+    sm: '3px 3px 0 #000000',
+    base: '4px 4px 0 #000000',
+    md: '6px 6px 0 #000000',
+    lg: '8px 8px 0 #000000',
+    xl: '12px 12px 0 #000000',
+    '2xl': '16px 16px 0 #000000',
+    inner: 'inset 3px 3px 0 #000000',
+    glow: 'none',
+    glowStrong: 'none',
   },
   
   borderRadius: {
     none: '0',
-    sm: '0.125rem',    // 2px
-    base: '0.25rem',   // 4px
-    md: '0.375rem',    // 6px
-    lg: '0.5rem',      // 8px
-    xl: '0.75rem',     // 12px
-    '2xl': '1rem',     // 16px
-    '3xl': '1.5rem',   // 24px
-    full: '9999px',
+    sm: '0',
+    base: '0',
+    md: '0',
+    lg: '0',
+    xl: '0',
+    '2xl': '0',
+    '3xl': '0',
+    full: '0',
   },
   
   borderWidth: {
     0: '0',
-    default: '1px',
+    default: '3px',
     2: '2px',
+    3: '3px',
     4: '4px',
     8: '8px',
   },

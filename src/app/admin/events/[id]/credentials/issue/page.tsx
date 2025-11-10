@@ -26,12 +26,12 @@ import Link from 'next/link';
 import { toast } from 'sonner';
 
 const CREDENTIAL_TYPES = [
-  { value: 'aaa', label: 'AAA (All-Access)', color: 'red', badge: '🔴', description: 'Highest level all-access credential' },
-  { value: 'aa', label: 'AA (Artist Access)', color: 'yellow', badge: '🟡', description: 'Elevated access for supporting artists' },
-  { value: 'production', label: 'Production Crew', color: 'blue', badge: '🔵', description: 'Technical crew access' },
-  { value: 'staff', label: 'Event Staff', color: 'green', badge: '🟢', description: 'Operations staff access' },
-  { value: 'vendor', label: 'Vendor', color: 'orange', badge: '🟠', description: 'Service provider access' },
-  { value: 'media', label: 'Media/Press', color: 'purple', badge: '🟣', description: 'Press and media access' },
+  { value: 'aaa', label: 'AAA (All-Access)', color: 'black', badge: '⬛', description: 'Highest level all-access credential' },
+  { value: 'aa', label: 'AA (Artist Access)', color: 'grey-900', badge: '◼️', description: 'Elevated access for supporting artists' },
+  { value: 'production', label: 'Production Crew', color: 'grey-700', badge: '▪️', description: 'Technical crew access' },
+  { value: 'staff', label: 'Event Staff', color: 'grey-500', badge: '▫️', description: 'Operations staff access' },
+  { value: 'vendor', label: 'Vendor', color: 'grey-300', badge: '◻️', description: 'Service provider access' },
+  { value: 'media', label: 'Media/Press', color: 'white', badge: '⬜', description: 'Press and media access' },
   { value: 'guest', label: 'Guest', color: 'white', badge: '⚪', description: 'General guest access' },
 ];
 

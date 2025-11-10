@@ -100,11 +100,11 @@
 }
 
 .rounded {
-  border-radius: var(--radius-md);
+  /* GHXSTSHIP: No rounded corners */
 }
 
 .shadow {
-  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 8px 8px 0 #000000;
 }
 
 /* Badge Base Styles */
@@ -170,7 +170,7 @@
 .legendRole {
   background-color: var(--color-black);
   color: var(--color-white);
-  border-color: var(--color-yellow-500);
+  border-color: var(--color-black);
 }
 
 .superAdminRole {
@@ -180,15 +180,15 @@
 }
 
 .adminRole {
-  background-color: var(--color-orange-100);
-  color: var(--color-orange-800);
-  border-color: var(--color-orange-200);
+  background-color: var(--color-grey-100);
+  color: var(--color-black);
+  border-color: var(--color-black);
 }
 
 .leadRole {
-  background-color: var(--color-indigo-100);
-  color: var(--color-indigo-800);
-  border-color: var(--color-indigo-200);
+  background-color: var(--color-grey-200);
+  color: var(--color-black);
+  border-color: var(--color-black);
 }
 
 .teamRole {
@@ -198,21 +198,21 @@
 }
 
 .collaboratorRole {
-  background-color: var(--color-teal-100);
-  color: var(--color-teal-800);
-  border-color: var(--color-teal-200);
+  background-color: var(--color-grey-100);
+  color: var(--color-black);
+  border-color: var(--color-grey-300);
 }
 
 .partnerRole {
-  background-color: var(--color-cyan-100);
-  color: var(--color-cyan-800);
-  border-color: var(--color-cyan-200);
+  background-color: var(--color-grey-200);
+  color: var(--color-black);
+  border-color: var(--color-grey-400);
 }
 
 .ambassadorRole {
-  background-color: var(--color-pink-100);
-  color: var(--color-pink-800);
-  border-color: var(--color-pink-200);
+  background-color: var(--color-grey-100);
+  color: var(--color-black);
+  border-color: var(--color-black);
 }
 
 /* Event Role Colors */
@@ -229,21 +229,21 @@
 }
 
 .vendorRole {
-  background-color: var(--color-amber-100);
-  color: var(--color-amber-800);
-  border-color: var(--color-amber-200);
+  background-color: var(--color-grey-100);
+  color: var(--color-black);
+  border-color: var(--color-grey-300);
 }
 
 .talentRole {
-  background-color: var(--color-pink-100);
-  color: var(--color-pink-800);
-  border-color: var(--color-pink-200);
+  background-color: var(--color-grey-200);
+  color: var(--color-black);
+  border-color: var(--color-black);
 }
 
 .agentRole {
-  background-color: var(--color-indigo-100);
-  color: var(--color-indigo-800);
-  border-color: var(--color-indigo-200);
+  background-color: var(--color-grey-100);
+  color: var(--color-black);
+  border-color: var(--color-grey-300);
 }
 
 .sponsorRole {
@@ -259,13 +259,13 @@
 }
 
 .investorRole {
-  background-color: var(--color-emerald-100);
-  color: var(--color-emerald-800);
-  border-color: var(--color-emerald-200);
+  background-color: var(--color-grey-200);
+  color: var(--color-black);
+  border-color: var(--color-black);
 }
 
 .stakeholderRole {
-  background-color: var(--color-slate-100);
-  color: var(--color-slate-800);
-  border-color: var(--color-slate-200);
+  background-color: var(--color-grey-100);
+  color: var(--color-black);
+  border-color: var(--color-grey-300);
 }

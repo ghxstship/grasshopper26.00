@@ -3,6 +3,7 @@
 import { PortalDashboardTemplate } from '@/design-system/components/templates';
 import { Calendar, Users, Ticket } from 'lucide-react';
 import { EventCard } from '@/design-system/components/organisms/events/event-card';
+import styles from './home.module.css';
 
 export function HomeClient({ featuredEvents, upcomingEvents }: { featuredEvents: any[]; upcomingEvents: any[] }) {
   return (
@@ -19,7 +20,7 @@ export function HomeClient({ featuredEvents, upcomingEvents }: { featuredEvents:
           id: 'featured',
           title: 'Featured Events',
           content: (
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem' }}>
+            <div className={styles.featuredEventsGrid}>
               {featuredEvents.map(event => <EventCard key={event.id} event={event} />)}
             </div>
           ),
@@ -28,7 +29,7 @@ export function HomeClient({ featuredEvents, upcomingEvents }: { featuredEvents:
           id: 'upcoming',
           title: 'Upcoming Events',
           content: (
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1rem' }}>
+            <div className={styles.upcomingEventsGrid}>
               {upcomingEvents.map(event => <EventCard key={event.id} event={event} />)}
             </div>
           ),

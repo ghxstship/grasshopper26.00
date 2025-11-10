@@ -57,12 +57,12 @@ interface Credential {
 }
 
 const CREDENTIAL_TYPES: Record<string, { label: string; badge: string; color: string }> = {
-  aaa: { label: 'AAA (All-Access)', badge: '🔴', color: 'red' },
-  aa: { label: 'AA (Artist Access)', badge: '🟡', color: 'yellow' },
-  production: { label: 'Production Crew', badge: '🔵', color: 'blue' },
-  staff: { label: 'Event Staff', badge: '🟢', color: 'green' },
-  vendor: { label: 'Vendor', badge: '🟠', color: 'orange' },
-  media: { label: 'Media/Press', badge: '🟣', color: 'purple' },
+  aaa: { label: 'AAA (All-Access)', badge: '⬛', color: 'black' },
+  aa: { label: 'AA (Artist Access)', badge: '◼️', color: 'grey-900' },
+  production: { label: 'Production Crew', badge: '▪️', color: 'grey-700' },
+  staff: { label: 'Event Staff', badge: '▫️', color: 'grey-500' },
+  vendor: { label: 'Vendor', badge: '◻️', color: 'grey-300' },
+  media: { label: 'Media/Press', badge: '⬜', color: 'white' },
   guest: { label: 'Guest', badge: '⚪', color: 'white' },
 };
 

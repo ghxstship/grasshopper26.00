@@ -104,12 +104,12 @@ export const semanticColors = {
     success: primitiveColors.success[500],
   },
   
-  // Gradient definitions
+  // Gradient definitions (GHXSTSHIP: Monochromatic only)
   gradients: {
-    brandPrimary: `linear-gradient(135deg, ${primitiveColors.brand[600]} 0%, ${primitiveColors.accent[500]} 100%)`,
-    brandSubtle: `linear-gradient(135deg, ${primitiveColors.brand[50]} 0%, ${primitiveColors.accent[50]} 100%)`,
-    brandDark: `linear-gradient(135deg, ${primitiveColors.brand[900]} 0%, ${primitiveColors.accent[900]} 100%)`,
-    heroBackground: `linear-gradient(to bottom right, ${primitiveColors.brand[900]}, ${primitiveColors.neutral[950]}, ${primitiveColors.info[900]})`,
+    brandPrimary: `linear-gradient(135deg, ${primitiveColors.neutral[900]} 0%, ${primitiveColors.neutral[800]} 100%)`,
+    brandSubtle: `linear-gradient(135deg, ${primitiveColors.neutral[50]} 0%, ${primitiveColors.neutral[0]} 100%)`,
+    brandDark: `linear-gradient(135deg, ${primitiveColors.neutral[950]} 0%, ${primitiveColors.neutral[900]} 100%)`,
+    heroBackground: `linear-gradient(to bottom right, ${primitiveColors.neutral[900]}, ${primitiveColors.neutral[950]}, ${primitiveColors.neutral[900]})`,
   },
 } as const;
 

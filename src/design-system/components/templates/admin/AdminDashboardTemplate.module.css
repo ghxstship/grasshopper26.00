@@ -59,7 +59,7 @@
   color: var(--color-background);
   background: var(--gradient-brand-primary);
   border: none;
-  border-radius: var(--radius-md);
+  /* GHXSTSHIP: No rounded corners */
   text-decoration: none;
   cursor: pointer;
   transition: opacity var(--transition-fast);
@@ -181,7 +181,7 @@
   flex-shrink: 0;
   padding: var(--spacing-sm);
   background: var(--color-surface);
-  border-radius: var(--radius-md);
+  /* GHXSTSHIP: No rounded corners */
   color: var(--color-primary);
 }
 

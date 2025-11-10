@@ -1,7 +1,7 @@
 .artistGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(var(--space-64), 1fr)); gap: var(--space-6); }
 .artistCard { border: 3px solid var(--color-black); border: var(--border-width-default) solid var(--color-black); background-color: var(--color-white); padding: var(--space-4); transition: transform var(--duration-fast) var(--easing-out); }
 .artistCard:hover { transform: translateY(calc(var(--space-1) * -1)); box-shadow: var(--shadow-lg); }
-.artistImage { width: 100%; aspect-ratio: 1; border-radius: var(--radius-full); object-fit: cover; margin-block-end: var(--space-3); }
+.artistImage { width: 100%; aspect-ratio: 1; /* GHXSTSHIP: No rounded corners */ object-fit: cover; margin-block-end: var(--space-3); }
 .artistName { font-size: var(--font-size-base); font-weight: var(--font-weight-semibold); text-align: center; }
 
 
@@ -99,9 +99,9 @@
 }
 
 .rounded {
-  border-radius: var(--radius-md);
+  /* GHXSTSHIP: No rounded corners */
 }
 
 .shadow {
-  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 8px 8px 0 #000000;
 }

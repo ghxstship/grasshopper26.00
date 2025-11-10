@@ -1,23 +1,31 @@
-/* Checkbox Component Styles */
+/* Checkbox Component Styles - GHXSTSHIP */
 
 .checkbox {
-  height: var(--space-4);
-  width: var(--space-4);
+  height: calc(var(--space-4) + var(--space-2));
+  width: calc(var(--space-4) + var(--space-2));
   flex-shrink: 0;
-  border: 1px solid var(--color-primary);
+  border: var(--border-width-3) solid var(--color-border-strong);
+  background-color: var(--color-bg-primary);
   outline: none;
-  transition: background-color var(--duration-fast) var(--easing-out),
-              color var(--duration-fast) var(--easing-out);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--easing-out);
+  box-shadow: var(--shadow-xs);
+}
+
+.checkbox:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: var(--shadow-sm);
 }
 
 .checkbox:focus-visible {
-  box-shadow: 0 0 0 2px var(--color-border-focus),
-              0 0 0 4px var(--color-bg-primary);
+  outline: var(--border-width-3) solid var(--color-border-focus);
+  outline-offset: var(--space-1);
 }
 
 .checkbox:disabled {
   cursor: not-allowed;
   opacity: 0.5;
+  background-color: var(--color-bg-secondary);
 }
 
 .checkbox[data-state="checked"] {

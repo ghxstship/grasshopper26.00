@@ -118,7 +118,7 @@
 }
 
 .iconBgEvents {
-  background-color: rgba(var(--color-pink-500), 0.2);
+  background-color: var(--color-grey-200);
 }
 
 .iconBgAverage {
@@ -126,7 +126,7 @@
 }
 
 .iconBgPending {
-  background-color: rgba(var(--color-orange-500), 0.2);
+  background-color: var(--color-grey-200);
 }
 
 .icon {
@@ -139,11 +139,11 @@
 }
 
 .iconPink {
-  color: var(--color-pink-400);
+  color: var(--color-grey-700);
 }
 
 .iconOrange {
-  color: var(--color-orange-400);
+  color: var(--color-grey-600);
 }
 
 .chartContainer {
@@ -312,5 +312,5 @@
 }
 
 .shadow {
-  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 8px 8px 0 #000000;
 }

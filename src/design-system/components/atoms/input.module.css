@@ -1,22 +1,36 @@
-/* Input Component Styles */
+/* Input Component Styles - GHXSTSHIP */
 
 .input {
   display: flex;
   height: calc(var(--space-8) + var(--space-4) - var(--space-1));
   width: 100%;
-  border: 3px solid var(--color-border-strong);
+  border: var(--border-width-3) solid var(--color-border-strong);
   background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
   padding-inline: var(--space-4);
   padding-block: var(--space-2);
-  font-family: var(--font-share);
+  font-family: var(--font-body);
   font-size: var(--font-size-base);
-  color: var(--color-text-primary);
+  transition: all var(--duration-fast) var(--easing-out);
+  box-shadow: var(--shadow-xs);
+}
+
+.input:focus {
   outline: none;
-  transition: box-shadow var(--duration-fast) var(--easing-out);
+  border-color: var(--color-border-focus);
+  box-shadow: var(--shadow-sm);
+  transform: translate(-1px, -1px);
+}
+
+.input:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  background-color: var(--color-bg-secondary);
 }
 
 .input::placeholder {
   color: var(--color-text-tertiary);
+  font-family: var(--font-body);
 }
 
 .input:focus-visible {

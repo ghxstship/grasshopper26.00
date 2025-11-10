@@ -4,9 +4,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-width: 2px;
+  border-width: var(--border-width-3);
   border-style: solid;
-  font-family: var(--font-bebas-neue);
+  font-family: var(--font-heading);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   transition: all var(--duration-fast) var(--easing-out);

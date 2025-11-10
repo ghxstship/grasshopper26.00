@@ -47,39 +47,39 @@
      Purpose-driven colors for components
      ======================================== */
   
-  /* Interactive - Primary */
-  --color-primary: #9333EA;
-  --color-primary-hover: #7E22CE;
-  --color-primary-active: #6B21A8;
+  /* Interactive - Primary (GHXSTSHIP: Black/White only) */
+  --color-primary: #000000;
+  --color-primary-hover: #1F1F1F;
+  --color-primary-active: #000000;
   --color-primary-disabled: #D1D5DB;
-  --color-primary-subtle: #FAF5FF;
+  --color-primary-subtle: #F5F5F5;
   
-  /* Interactive - Secondary */
+  /* Interactive - Secondary (GHXSTSHIP: Grey scale) */
   --color-secondary: #4B5563;
   --color-secondary-hover: #374151;
   --color-secondary-active: #1F2937;
   --color-secondary-subtle: #F9FAFB;
   
-  /* Interactive - Accent */
-  --color-accent: #EC4899;
-  --color-accent-hover: #DB2777;
-  --color-accent-active: #BE185D;
-  --color-accent-subtle: #FDF2F8;
+  /* Interactive - Accent (GHXSTSHIP: White on black) */
+  --color-accent: #FFFFFF;
+  --color-accent-hover: #F5F5F5;
+  --color-accent-active: #E5E5E5;
+  --color-accent-subtle: #1F1F1F;
   
-  /* Text Colors */
-  --color-text-primary: #111827;
+  /* Text Colors (GHXSTSHIP: Monochromatic only) */
+  --color-text-primary: #000000;
   --color-text-secondary: #4B5563;
   --color-text-tertiary: #6B7280;
   --color-text-disabled: #9CA3AF;
   --color-text-inverse: #FFFFFF;
-  --color-text-brand: #9333EA;
-  --color-text-accent: #EC4899;
-  --color-text-success: #15803D;
-  --color-text-error: #B91C1C;
-  --color-text-warning: #B45309;
-  --color-text-info: #1D4ED8;
+  --color-text-brand: #000000;
+  --color-text-accent: #FFFFFF;
+  --color-text-success: #000000;
+  --color-text-error: #000000;
+  --color-text-warning: #000000;
+  --color-text-info: #000000;
   
-  /* Surface Colors */
+  /* Surface Colors (GHXSTSHIP: Monochromatic only) */
   --color-bg-primary: #FFFFFF;
   --color-bg-secondary: #F9FAFB;
   --color-bg-tertiary: #F3F4F6;
@@ -87,59 +87,59 @@
   --color-bg-overlay: rgba(0, 0, 0, 0.5);
   --color-bg-overlay-light: rgba(0, 0, 0, 0.3);
   --color-bg-overlay-strong: rgba(0, 0, 0, 0.7);
-  --color-bg-brand: #FAF5FF;
-  --color-bg-accent: #FDF2F8;
+  --color-bg-brand: #F5F5F5;
+  --color-bg-accent: #1F1F1F;
   
-  /* Border Colors */
+  /* Border Colors (GHXSTSHIP: Monochromatic only) */
   --color-border-default: #E5E7EB;
-  --color-border-strong: #D1D5DB;
+  --color-border-strong: #000000;
   --color-border-subtle: #F3F4F6;
-  --color-border-brand: #A855F7;
-  --color-border-accent: #EC4899;
-  --color-border-focus: #9333EA;
-  --color-border-error: #EF4444;
-  --color-border-success: #22C55E;
+  --color-border-brand: #000000;
+  --color-border-accent: #FFFFFF;
+  --color-border-focus: #000000;
+  --color-border-error: #000000;
+  --color-border-success: #000000;
   
-  /* Status Colors */
-  --color-success: #22C55E;
-  --color-success-bg: #F0FDF4;
-  --color-success-bg-strong: #DCFCE7;
-  --color-success-border: #86EFAC;
-  --color-success-text: #15803D;
+  /* Status Colors (GHXSTSHIP: Monochromatic only - use icons/text to differentiate) */
+  --color-success: #000000;
+  --color-success-bg: #F5F5F5;
+  --color-success-bg-strong: #E5E5E5;
+  --color-success-border: #000000;
+  --color-success-text: #000000;
   
-  --color-error: #EF4444;
-  --color-error-bg: #FEF2F2;
-  --color-error-bg-strong: #FEE2E2;
-  --color-error-border: #FCA5A5;
-  --color-error-text: #B91C1C;
+  --color-error: #000000;
+  --color-error-bg: #F5F5F5;
+  --color-error-bg-strong: #E5E5E5;
+  --color-error-border: #000000;
+  --color-error-text: #000000;
   
-  --color-warning: #F59E0B;
-  --color-warning-bg: #FFFBEB;
-  --color-warning-bg-strong: #FEF3C7;
-  --color-warning-border: #FCD34D;
-  --color-warning-text: #B45309;
+  --color-warning: #000000;
+  --color-warning-bg: #F5F5F5;
+  --color-warning-bg-strong: #E5E5E5;
+  --color-warning-border: #000000;
+  --color-warning-text: #000000;
   
-  --color-info: #3B82F6;
-  --color-info-bg: #EFF6FF;
-  --color-info-bg-strong: #DBEAFE;
-  --color-info-border: #93C5FD;
-  --color-info-text: #1D4ED8;
+  --color-info: #000000;
+  --color-info-bg: #F5F5F5;
+  --color-info-bg-strong: #E5E5E5;
+  --color-info-border: #000000;
+  --color-info-text: #000000;
   
-  /* Gradients */
-  --gradient-brand-primary: linear-gradient(135deg, #9333EA 0%, #EC4899 100%);
-  --gradient-brand-subtle: linear-gradient(135deg, #FAF5FF 0%, #FDF2F8 100%);
-  --gradient-brand-dark: linear-gradient(135deg, #581C87 0%, #831843 100%);
-  --gradient-hero: linear-gradient(to bottom right, #581C87, #030712, #1E3A8A);
+  /* Gradients (GHXSTSHIP: Monochromatic only - NO gradients, use halftone patterns instead) */
+  --gradient-brand-primary: linear-gradient(135deg, #000000 0%, #1F1F1F 100%);
+  --gradient-brand-subtle: linear-gradient(135deg, #F5F5F5 0%, #FFFFFF 100%);
+  --gradient-brand-dark: linear-gradient(135deg, #000000 0%, #1F1F1F 100%);
+  --gradient-hero: linear-gradient(to bottom right, #000000, #1F1F1F, #000000);
 
   /* ========================================
      TYPOGRAPHY TOKENS
      ======================================== */
   
-  /* Font Families */
-  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
-  --font-serif: var(--font-merriweather), Georgia, serif;
-  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
-  --font-display: var(--font-display), system-ui, sans-serif;
+  /* Font Families (GHXSTSHIP: ANTON, BEBAS NEUE, SHARE TECH, SHARE TECH MONO) */
+  --font-hero: var(--font-anton), sans-serif;
+  --font-heading: var(--font-bebas), sans-serif;
+  --font-body: var(--font-share), sans-serif;
+  --font-mono: var(--font-share-mono), monospace;
   
   /* Font Sizes */
   --font-size-xs: 0.75rem;
@@ -184,38 +184,44 @@
   --letter-spacing-widest: 0.1em;
 
   /* ========================================
-     SHADOW TOKENS
+     SHADOW TOKENS (GHXSTSHIP: Hard geometric shadows only, NO soft shadows)
      ======================================== */
-  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
-  --shadow-base: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-  --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.05);
-  --shadow-glow: 0 0 20px rgba(147, 51, 234, 0.3);
-  --shadow-glow-strong: 0 0 40px rgba(147, 51, 234, 0.5);
+  --shadow-xs: 2px 2px 0 #000000;
+  --shadow-sm: 3px 3px 0 #000000;
+  --shadow-base: 4px 4px 0 #000000;
+  --shadow-md: 6px 6px 0 #000000;
+  --shadow-lg: 8px 8px 0 #000000;
+  --shadow-xl: 12px 12px 0 #000000;
+  --shadow-2xl: 16px 16px 0 #000000;
+  --shadow-inner: inset 3px 3px 0 #000000;
+  --shadow-glow: none; /* NO glows in GHXSTSHIP */
+  --shadow-glow-strong: none; /* NO glows in GHXSTSHIP */
+  
+  /* White shadows for dark backgrounds */
+  --shadow-white-sm: 3px 3px 0 #FFFFFF;
+  --shadow-white-md: 6px 6px 0 #FFFFFF;
+  --shadow-white-lg: 8px 8px 0 #FFFFFF;
 
   /* ========================================
-     BORDER RADIUS TOKENS
+     BORDER RADIUS TOKENS (GHXSTSHIP: NO rounded corners - hard edges only)
      ======================================== */
   --radius-none: 0;
-  --radius-sm: 0.125rem;
-  --radius-base: 0.25rem;
-  --radius-md: 0.375rem;
-  --radius-lg: 0.5rem;
-  --radius-xl: 0.75rem;
-  --radius-2xl: 1rem;
-  --radius-3xl: 1.5rem;
-  --radius-full: 9999px;
+  --radius-sm: 0;
+  --radius-base: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+  --radius-2xl: 0;
+  --radius-3xl: 0;
+  --radius-full: 0; /* NO circles in GHXSTSHIP - use squares */
 
   /* ========================================
-     BORDER WIDTH TOKENS
+     BORDER WIDTH TOKENS (GHXSTSHIP: 3px borders everywhere)
      ======================================== */
   --border-width-0: 0;
-  --border-width-default: 1px;
+  --border-width-default: 3px; /* GHXSTSHIP standard */
   --border-width-2: 2px;
+  --border-width-3: 3px; /* GHXSTSHIP standard */
   --border-width-4: 4px;
   --border-width-8: 8px;
 
@@ -272,20 +278,20 @@
    ======================================== */
 .dark,
 [data-theme="dark"] {
-  /* Text Colors - Dark Mode */
+  /* Text Colors - Dark Mode (GHXSTSHIP: Monochromatic only) */
   --color-text-primary: #F9FAFB;
   --color-text-secondary: #D1D5DB;
   --color-text-tertiary: #9CA3AF;
   --color-text-disabled: #4B5563;
   --color-text-inverse: #111827;
-  --color-text-brand: #C084FC;
-  --color-text-accent: #F472B6;
-  --color-text-success: #4ADE80;
-  --color-text-error: #F87171;
-  --color-text-warning: #FBBF24;
-  --color-text-info: #60A5FA;
+  --color-text-brand: #FFFFFF;
+  --color-text-accent: #F9FAFB;
+  --color-text-success: #FFFFFF;
+  --color-text-error: #FFFFFF;
+  --color-text-warning: #FFFFFF;
+  --color-text-info: #FFFFFF;
   
-  /* Surface Colors - Dark Mode */
+  /* Surface Colors - Dark Mode (GHXSTSHIP: Monochromatic only) */
   --color-bg-primary: #111827;
   --color-bg-secondary: #1F2937;
   --color-bg-tertiary: #374151;
@@ -293,42 +299,42 @@
   --color-bg-overlay: rgba(0, 0, 0, 0.7);
   --color-bg-overlay-light: rgba(0, 0, 0, 0.5);
   --color-bg-overlay-strong: rgba(0, 0, 0, 0.9);
-  --color-bg-brand: #3B0764;
-  --color-bg-accent: #500724;
+  --color-bg-brand: #1F2937;
+  --color-bg-accent: #111827;
   
-  /* Border Colors - Dark Mode */
+  /* Border Colors - Dark Mode (GHXSTSHIP: Monochromatic only) */
   --color-border-default: #374151;
-  --color-border-strong: #4B5563;
+  --color-border-strong: #FFFFFF;
   --color-border-subtle: #1F2937;
-  --color-border-focus: #C084FC;
+  --color-border-focus: #FFFFFF;
   
-  /* Interactive - Dark Mode */
-  --color-primary: #A855F7;
-  --color-primary-hover: #C084FC;
-  --color-primary-active: #D8B4FE;
+  /* Interactive - Dark Mode (GHXSTSHIP: Monochromatic only) */
+  --color-primary: #FFFFFF;
+  --color-primary-hover: #F9FAFB;
+  --color-primary-active: #F3F4F6;
   --color-primary-disabled: #374151;
-  --color-primary-subtle: #3B0764;
+  --color-primary-subtle: #1F2937;
   
   --color-secondary: #9CA3AF;
   --color-secondary-hover: #D1D5DB;
   --color-secondary-active: #E5E7EB;
   --color-secondary-subtle: #111827;
   
-  --color-accent: #F472B6;
-  --color-accent-hover: #F9A8D4;
-  --color-accent-active: #FBCFE8;
-  --color-accent-subtle: #500724;
+  --color-accent: #F9FAFB;
+  --color-accent-hover: #F3F4F6;
+  --color-accent-active: #E5E7EB;
+  --color-accent-subtle: #111827;
   
-  /* Shadows - Dark Mode (stronger) */
-  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
-  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px -1px rgba(0, 0, 0, 0.4);
-  --shadow-base: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.4);
-  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
-  --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-  --shadow-glow: 0 0 20px rgba(168, 85, 247, 0.4);
-  --shadow-glow-strong: 0 0 40px rgba(168, 85, 247, 0.6);
+  /* Shadows - Dark Mode (GHXSTSHIP: Hard geometric only) */
+  --shadow-xs: 2px 2px 0 #FFFFFF;
+  --shadow-sm: 3px 3px 0 #FFFFFF;
+  --shadow-base: 4px 4px 0 #FFFFFF;
+  --shadow-md: 6px 6px 0 #FFFFFF;
+  --shadow-lg: 8px 8px 0 #FFFFFF;
+  --shadow-xl: 12px 12px 0 #FFFFFF;
+  --shadow-2xl: 16px 16px 0 #FFFFFF;
+  --shadow-glow: none;
+  --shadow-glow-strong: none;
 }
 
 /* ========================================

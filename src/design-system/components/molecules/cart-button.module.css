@@ -25,7 +25,7 @@
   color: var(--color-text-inverse);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-bold);
-  border-radius: var(--radius-full);
+  /* GHXSTSHIP: No rounded corners */
   height: var(--space-5);
   width: var(--space-5);
   display: flex;
@@ -128,9 +128,9 @@
 }
 
 .rounded {
-  border-radius: var(--radius-md);
+  /* GHXSTSHIP: No rounded corners */
 }
 
 .shadow {
-  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 8px 8px 0 #000000;
 }

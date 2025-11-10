@@ -1,23 +1,25 @@
-/* Button Component Styles */
+/* Button Component Styles - GHXSTSHIP */
 
 .button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   white-space: nowrap;
-  font-family: var(--font-bebas);
+  font-family: var(--font-heading);
   text-transform: uppercase;
   font-size: var(--font-size-base);
-  border-width: 3px;
+  letter-spacing: var(--letter-spacing-wide);
+  border-width: var(--border-width-3);
   border-style: solid;
-  transition: background-color var(--duration-fast) var(--easing-out),
-              color var(--duration-fast) var(--easing-out);
+  transition: all var(--duration-fast) var(--easing-out);
   outline: none;
+  cursor: pointer;
+  position: relative;
 }
 
 .button:focus-visible {
-  box-shadow: 0 0 0 2px var(--color-border-strong),
-              0 0 0 4px var(--color-bg-primary);
+  outline: var(--border-width-3) solid var(--color-border-focus);
+  outline-offset: var(--space-1);
 }
 
 .button:disabled {
@@ -25,15 +27,25 @@
   opacity: 0.5;
 }
 
-/* Variants */
+/* Variants - GHXSTSHIP: Color inversion on hover */
 .default {
-  background-color: var(--color-bg-inverse);
+  background-color: var(--color-primary);
   color: var(--color-text-inverse);
   border-color: var(--color-border-strong);
+  box-shadow: var(--shadow-sm);
 }
 
 .default:hover:not(:disabled) {
-  background-color: var(--color-neutral-900);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  border-color: var(--color-border-strong);
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-md);
+}
+
+.default:active:not(:disabled) {
+  transform: translate(0, 0);
+  box-shadow: var(--shadow-xs);
 }
 
 .destructive {
@@ -50,10 +62,19 @@
   border-color: var(--color-border-strong);
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
+  box-shadow: var(--shadow-sm);
 }
 
 .outline:hover:not(:disabled) {
-  background-color: var(--color-bg-secondary);
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-md);
+}
+
+.outline:active:not(:disabled) {
+  transform: translate(0, 0);
+  box-shadow: var(--shadow-xs);
 }
 
 .secondary {

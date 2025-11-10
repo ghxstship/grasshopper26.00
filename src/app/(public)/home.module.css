@@ -1,0 +1,30 @@
+/* Home Page Styles - GVTEWAY Design System Compliant */
+
+/* Featured Events - 3 columns */
+.featuredEventsGrid {
+  display: grid;
+  gap: var(--spacing-lg);
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+}
+
+/* Upcoming Events - 4 columns */
+.upcomingEventsGrid {
+  display: grid;
+  gap: var(--spacing-lg);
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .featuredEventsGrid,
+  .upcomingEventsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .featuredEventsGrid,
+  .upcomingEventsGrid {
+    grid-template-columns: 1fr;
+  }
+}

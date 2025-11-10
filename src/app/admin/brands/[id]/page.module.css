@@ -185,7 +185,7 @@
 
 .spinner {
   animation: spin 1s linear infinite;
-  border-radius: 9999px;
+  border-radius: 0;
   block-size: 3rem;
   inline-size: 3rem;
   border-width: 2px;
@@ -317,5 +317,5 @@
 }
 
 .shadow {
-  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 8px 8px 0 #000000;
 }

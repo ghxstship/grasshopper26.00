@@ -5,7 +5,7 @@ export type { AlertProps as AlertCardProps } from './Alert/Alert';
 export * from './ArtistCard/ArtistCard';
 export { Avatar as AvatarCard } from './Avatar/Avatar';
 export type { AvatarProps as AvatarCardProps } from './Avatar/Avatar';
-export * from './Breadcrumb/Breadcrumb';
+export * from './Breadcrumb';
 export { Chip as ChipButton } from './Chip/Chip';
 export type { ChipProps as ChipButtonProps } from './Chip/Chip';
 export * from './CountdownTimer/CountdownTimer';

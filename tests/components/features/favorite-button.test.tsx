@@ -5,7 +5,7 @@
 
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { FavoriteButton } from '@/components/features/favorite-button';
+import { FavoriteButton } from '@/design-system/components/atoms/FavoriteButton/FavoriteButton';
 
 // Mock favorites store
 vi.mock('@/lib/stores/favorites-store', () => ({

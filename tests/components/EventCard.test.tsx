@@ -5,7 +5,7 @@
 
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { EventCard } from '@/components/features/events/EventCard';
+import { EventCard } from '@/design-system/components/molecules/EventCard/EventCard';
 
 describe('EventCard Component', () => {
   const mockEvent = {

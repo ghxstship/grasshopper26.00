@@ -5,7 +5,7 @@
 
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import { TicketSelector } from '@/components/features/checkout/TicketSelector';
+import { TicketSelector } from '@/design-system/components/organisms/TicketSelector/TicketSelector';
 
 describe('TicketSelector Component', () => {
   const mockTicketTypes = [

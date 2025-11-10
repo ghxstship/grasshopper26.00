@@ -5,7 +5,7 @@
 
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { MembershipCard } from '@/components/features/memberships/MembershipCard';
+import { MembershipCard } from '@/design-system/components/organisms/MembershipCard/MembershipCard';
 
 describe('MembershipCard Component', () => {
   const mockTier = {

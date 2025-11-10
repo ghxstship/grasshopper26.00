@@ -1,8 +1,9 @@
 import { redirect } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
-import AdminSidebar from '@/components/admin/AdminSidebar';
-import AdminHeader from '@/components/admin/AdminHeader';
-import { AdminBreadcrumbs } from '@/components/admin/AdminBreadcrumbs';
+import AdminSidebar from '@/design-system/components/organisms/admin/AdminSidebar';
+import AdminHeader from '@/design-system/components/organisms/admin/AdminHeader';
+import { AdminBreadcrumbs } from '@/design-system/components/organisms/admin/AdminBreadcrumbs';
+import styles from './layout.module.css';
 
 export default async function AdminLayout({
   children,
@@ -30,17 +31,17 @@ export default async function AdminLayout({
   }
 
   return (
-    <div className="flex h-screen bg-gray-50">
+    <div className={styles.container}>
       {/* Sidebar */}
       <AdminSidebar />
 
       {/* Main content */}
-      <div className="flex-1 flex flex-col overflow-hidden">
+      <div className={styles.mainContent}>
         {/* Header */}
         <AdminHeader user={user} />
 
         {/* Page content */}
-        <main className="flex-1 overflow-y-auto p-6">
+        <main className={styles.pageContent}>
           <AdminBreadcrumbs />
           {children}
         </main>

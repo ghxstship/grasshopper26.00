@@ -1,3 +1,0 @@
-.scrollReveal { opacity: 0; transform: translateY(var(--space-8)); transition: opacity var(--duration-normal) var(--easing-out), transform var(--duration-normal) var(--easing-out); }
-.scrollReveal[data-visible="true"] { opacity: 1; transform: translateY(0); }
-@media (prefers-reduced-motion: reduce) { .scrollReveal { opacity: 1; transform: none; transition: none; } }

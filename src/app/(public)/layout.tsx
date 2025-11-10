@@ -3,8 +3,9 @@
  * Wraps all public-facing pages with header and footer
  */
 
-import { SiteHeader } from '@/components/layout/site-header';
-import { SiteFooter } from '@/components/layout/site-footer';
+import { SiteHeader } from '@/design-system/components/organisms/layout/site-header';
+import { SiteFooter } from '@/design-system/components/organisms/layout/site-footer';
+import styles from './layout.module.css';
 
 export default function PublicLayout({
   children,
@@ -12,9 +13,9 @@ export default function PublicLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className={styles.layout}>
       <SiteHeader />
-      <main className="flex-1">{children}</main>
+      <main className={styles.main}>{children}</main>
       <SiteFooter />
     </div>
   );

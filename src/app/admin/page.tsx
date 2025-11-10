@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/supabase/server';
 import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/card';
+import styles from './page.module.css';
 import { 
   Calendar, 
   Users, 
@@ -69,37 +70,35 @@ export default async function AdminDashboard() {
   ];
 
   return (
-    <div className="space-y-6">
+    <div className={styles.section}>
       {/* Page header */}
       <div>
-        <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
-        <p className="text-gray-500 mt-1">Welcome back! Here&apos;s what&apos;s happening today.</p>
+        <h1 className={styles.title}>Dashboard</h1>
+        <p className={styles.subtitle}>Welcome back! Here&apos;s what&apos;s happening today.</p>
       </div>
 
       {/* Stats grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className={styles.grid}>
         {stats.map((stat) => (
           <Card key={stat.name}>
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium text-gray-600">
+            <CardHeader className={styles.row}>
+              <CardTitle className={styles.statTitle}>
                 {stat.name}
               </CardTitle>
-              <stat.icon className="h-4 w-4 text-gray-400" />
+              <stat.icon className={styles.statIcon} />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{stat.value}</div>
-              <div className="flex items-center mt-1">
+              <div className={styles.statValue}>{stat.value}</div>
+              <div className={styles.statChange}>
                 {stat.changeType === 'positive' ? (
-                  <TrendingUp className="h-4 w-4 text-green-500 mr-1" />
+                  <TrendingUp className={`${styles.changeIcon} ${styles.changeIconPositive}`} />
                 ) : (
-                  <TrendingDown className="h-4 w-4 text-red-500 mr-1" />
+                  <TrendingDown className={`${styles.changeIcon} ${styles.changeIconNegative}`} />
                 )}
-                <span className={`text-sm ${
-                  stat.changeType === 'positive' ? 'text-green-600' : 'text-red-600'
-                }`}>
+                <span className={stat.changeType === 'positive' ? styles.changeTextPositive : styles.changeTextNegative}>
                   {stat.change}
                 </span>
-                <span className="text-sm text-gray-500 ml-1">from last month</span>
+                <span className={styles.changeLabel}>from last month</span>
               </div>
             </CardContent>
           </Card>
@@ -112,31 +111,31 @@ export default async function AdminDashboard() {
           <CardTitle>Recent Orders</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="space-y-4">
+          <div className={styles.orderList}>
             {recentOrders && recentOrders.length > 0 ? (
               recentOrders.map((order: any) => (
                 <div
                   key={order.id}
-                  className="flex items-center justify-between py-3 border-b last:border-0"
+                  className={styles.orderItem}
                 >
                   <div>
-                    <p className="font-medium">
+                    <p className={styles.orderUser}>
                       {order.user_profiles?.display_name || 'Guest'}
                     </p>
-                    <p className="text-sm text-gray-500">
+                    <p className={styles.orderDate}>
                       {new Date(order.created_at).toLocaleDateString()}
                     </p>
                   </div>
-                  <div className="text-right">
-                    <p className="font-medium">
+                  <div className={styles.orderDetails}>
+                    <p className={styles.orderAmount}>
                       ${parseFloat(order.total_amount).toFixed(2)}
                     </p>
-                    <span className={`text-xs px-2 py-1 rounded-full ${
+                    <span className={`${styles.statusBadge} ${
                       order.status === 'completed'
-                        ? 'bg-green-100 text-green-700'
+                        ? styles.statusCompleted
                         : order.status === 'pending'
-                        ? 'bg-yellow-100 text-yellow-700'
-                        : 'bg-gray-100 text-gray-700'
+                        ? styles.statusPending
+                        : styles.statusDefault
                     }`}>
                       {order.status}
                     </span>
@@ -144,7 +143,7 @@ export default async function AdminDashboard() {
                 </div>
               ))
             ) : (
-              <p className="text-center text-gray-500 py-8">No recent orders</p>
+              <p className={styles.emptyState}>No recent orders</p>
             )}
           </div>
         </CardContent>

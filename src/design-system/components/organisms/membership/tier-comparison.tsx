@@ -5,6 +5,7 @@ import { Check, X } from 'lucide-react'
 import { MembershipTier } from '@/types/membership'
 import { Button } from '@/design-system/components/atoms/button'
 import { cn } from '@/lib/utils'
+import styles from './tier-comparison.module.css'
 
 interface TierComparisonProps {
   tiers: MembershipTier[]
@@ -27,16 +28,14 @@ export function TierComparison({
   const extraTier = sortedTiers.find((t) => t.tier_slug === 'extra')
 
   return (
-    <div className="w-full">
+    <div className={styles.container}>
       {/* Billing Cycle Toggle */}
-      <div className="flex items-center justify-center gap-4 mb-12">
+      <div className={styles.billingToggle}>
         <button
           onClick={() => setBillingCycle('monthly')}
           className={cn(
-            'font-share-tech-mono text-sm uppercase tracking-wider px-6 py-3 border-2 border-black transition-colors',
-            billingCycle === 'monthly'
-              ? 'bg-black text-white'
-              : 'bg-white text-black hover:bg-grey-100'
+            styles.billingButton,
+            billingCycle === 'monthly' && styles.billingButtonActive
           )}
         >
           Monthly
@@ -44,21 +43,19 @@ export function TierComparison({
         <button
           onClick={() => setBillingCycle('annual')}
           className={cn(
-            'font-share-tech-mono text-sm uppercase tracking-wider px-6 py-3 border-2 border-black transition-colors relative',
-            billingCycle === 'annual'
-              ? 'bg-black text-white'
-              : 'bg-white text-black hover:bg-grey-100'
+            styles.billingButton,
+            billingCycle === 'annual' && styles.billingButtonActive
           )}
         >
           Annual
-          <span className="absolute -top-2 -right-2 bg-black text-white px-2 py-1 text-xs font-bebas-neue">
+          <span className={styles.saveBadge}>
             SAVE 20%
           </span>
         </button>
       </div>
 
       {/* Tier Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
+      <div className={styles.tierGrid}>
         {sortedTiers.map((tier) => {
           const isCurrentTier = tier.id === currentTierId
           const isPopular = tier.id === mainTier?.id
@@ -70,35 +67,34 @@ export function TierComparison({
             <div
               key={tier.id}
               className={cn(
-                'relative border-3 border-black p-6 transition-all',
-                isCurrentTier && 'bg-black text-white',
-                !isCurrentTier && 'bg-white text-black hover:shadow-geometric'
+                styles.tierCard,
+                isCurrentTier && styles.tierCardCurrent
               )}
             >
               {/* Badge */}
               {(isPopular || isBestValue) && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-black text-white px-4 py-1 font-bebas-neue text-sm tracking-wide">
+                <div className={styles.popularBadge}>
                   {isPopular && 'MOST POPULAR'}
                   {isBestValue && 'BEST VALUE'}
                 </div>
               )}
 
               {/* Tier Icon */}
-              <div className="flex justify-center mb-4">
+              <div className={styles.tierIcon}>
                 <TierBadge icon={tier.badge_icon} color={tier.badge_color} />
               </div>
 
               {/* Tier Name */}
-              <h3 className="font-bebas-neue text-3xl text-center uppercase tracking-wide mb-2">
+              <h3 className={styles.tierName}>
                 {tier.display_name}
               </h3>
 
               {/* Price */}
-              <div className="text-center mb-6">
-                <div className="font-anton text-5xl">
+              <div className={styles.priceContainer}>
+                <div className={styles.price}>
                   ${price === 0 ? '0' : price?.toFixed(0)}
                 </div>
-                <div className="font-share-tech-mono text-xs uppercase tracking-wider mt-1">
+                <div className={styles.pricePeriod}>
                   {price === 0
                     ? 'Free Forever'
                     : billingCycle === 'annual'
@@ -106,14 +102,14 @@ export function TierComparison({
                       : '/Month'}
                 </div>
                 {billingCycle === 'monthly' && price && price > 0 && (
-                  <div className="font-share-tech text-xs mt-1 opacity-70">
+                  <div className={styles.priceAnnual}>
                     ${(price * 12).toFixed(0)}/year billed monthly
                   </div>
                 )}
               </div>
 
               {/* Key Benefits */}
-              <div className="space-y-3 mb-6">
+              <div className={styles.benefits}>
                 {tier.limits.credits_per_quarter && (
                   <BenefitItem
                     text={`${tier.limits.credits_per_quarter} ticket${tier.limits.credits_per_quarter > 1 ? 's' : ''}/quarter`}
@@ -159,12 +155,7 @@ export function TierComparison({
               <Button
                 onClick={() => onSelectTier(tier, billingCycle)}
                 disabled={isCurrentTier}
-                className={cn(
-                  'w-full font-bebas-neue text-lg tracking-wide',
-                  isCurrentTier
-                    ? 'bg-grey-400 text-grey-600 cursor-not-allowed'
-                    : 'bg-black text-white hover:bg-grey-900'
-                )}
+                className={styles.ctaButton}
               >
                 {isCurrentTier
                   ? 'CURRENT TIER'
@@ -175,7 +166,7 @@ export function TierComparison({
 
               {/* View Details Link */}
               <button 
-                className="w-full mt-3 font-share-tech-mono text-xs uppercase tracking-wider hover:underline"
+                className={styles.viewDetailsButton}
                 aria-label={`View all benefits for ${tier.display_name} tier`}
               >
                 View All Benefits
@@ -186,23 +177,23 @@ export function TierComparison({
       </div>
 
       {/* Detailed Comparison Table */}
-      <div className="mt-16">
-        <h2 className="font-bebas-neue text-4xl text-center uppercase tracking-wide mb-8">
+      <div className={styles.comparisonSection}>
+        <h2 className={styles.comparisonTitle}>
           Compare All Benefits
         </h2>
-        <div className="overflow-x-auto">
-          <table className="w-full border-3 border-black">
+        <div className={styles.comparisonTableWrapper}>
+          <table className={styles.comparisonTable}>
             <thead>
-              <tr className="border-b-2 border-black">
-                <th className="p-4 text-left font-bebas-neue text-xl uppercase bg-grey-100">
+              <tr className={styles.tableHeader}>
+                <th className={styles.tableHeaderCell}>
                   Benefit
                 </th>
                 {sortedTiers.map((tier) => (
                   <th
                     key={tier.id}
                     className={cn(
-                      'p-4 text-center font-bebas-neue text-xl uppercase border-l-2 border-black',
-                      tier.id === currentTierId && 'bg-black text-white'
+                      styles.tableHeaderCellTier,
+                      tier.id === currentTierId && styles.tableHeaderCellCurrent
                     )}
                   >
                     {tier.display_name}
@@ -286,59 +277,45 @@ function TierBadge({ icon, color }: { icon: string; color: string }) {
   const iconMap: Record<string, React.ReactNode> = {
     circle: (
       <div
-        className="w-12 h-12 rounded-full border-3 border-black"
+        className={styles.badgeCircle}
         style={{ backgroundColor: color }}
       />
     ),
     square: (
       <div
-        className="w-12 h-12 border-3 border-black"
+        className={styles.badgeSquare}
         style={{ backgroundColor: color }}
       />
     ),
     triangle: (
-      <div className="relative w-12 h-12">
+      <div className={styles.badgeTriangle}>
         <div
-          className="absolute inset-0"
-          style={{
-            clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)',
-            backgroundColor: color,
-            border: '3px solid black',
-          }}
+          className={styles.badgeTriangleInner}
+          style={{ backgroundColor: color }}
         />
       </div>
     ),
     star: (
-      <div className="relative w-12 h-12">
+      <div className={styles.badgeStar}>
         <div
-          className="absolute inset-0"
-          style={{
-            clipPath:
-              'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)',
-            backgroundColor: color,
-            border: '3px solid black',
-          }}
+          className={styles.badgeStarInner}
+          style={{ backgroundColor: color }}
         />
       </div>
     ),
     briefcase: (
       <div
-        className="w-12 h-10 border-3 border-black relative"
+        className={styles.badgeBriefcase}
         style={{ backgroundColor: color }}
       >
-        <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-6 h-2 bg-black" />
+        <div className={styles.badgeBriefcaseHandle} />
       </div>
     ),
     crown: (
-      <div className="relative w-12 h-12">
+      <div className={styles.badgeCrown}>
         <div
-          className="absolute inset-0"
-          style={{
-            clipPath:
-              'polygon(0% 100%, 0% 40%, 25% 60%, 50% 0%, 75% 60%, 100% 40%, 100% 100%)',
-            backgroundColor: color,
-            border: '3px solid black',
-          }}
+          className={styles.badgeCrownInner}
+          style={{ backgroundColor: color }}
         />
       </div>
     ),
@@ -355,14 +332,14 @@ function BenefitItem({
   isCurrentTier: boolean
 }) {
   return (
-    <div className="flex items-start gap-2">
+    <div className={styles.benefit}>
       <Check
         className={cn(
-          'w-4 h-4 mt-0.5 flex-shrink-0',
-          isCurrentTier ? 'text-white' : 'text-black'
+          styles.benefitIcon,
+          isCurrentTier ? styles.benefitIconCurrent : styles.benefitIconDefault
         )}
       />
-      <span className="font-share-tech text-sm">{text}</span>
+      <span className={styles.benefitText}>{text}</span>
     </div>
   )
 }
@@ -377,14 +354,14 @@ function BenefitRow({
   currentTierIndex: number
 }) {
   return (
-    <tr className="border-t border-grey-200">
-      <td className="p-4 font-share-tech text-sm bg-grey-50">{label}</td>
+    <tr className={styles.tableRow}>
+      <td className={styles.tableCell}>{label}</td>
       {values.map((value, index) => (
         <td
           key={index}
           className={cn(
-            'p-4 text-center font-share-tech-mono text-sm border-l border-grey-200',
-            index === currentTierIndex && 'bg-black text-white'
+            styles.tableCellValue,
+            index === currentTierIndex && styles.tableCellCurrent
           )}
         >
           {value}

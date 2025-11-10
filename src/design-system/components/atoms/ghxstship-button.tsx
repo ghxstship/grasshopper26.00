@@ -2,21 +2,22 @@ import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
+import styles from "./ghxstship-button.module.css"
 
 const buttonVariants = cva(
-  "font-bebas text-h5 uppercase px-8 py-4 min-h-[48px] border-3 transition-all duration-300 hover:scale-105 active:scale-98 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100",
+  styles.button,
   {
     variants: {
       variant: {
-        outlined: "border-black bg-transparent text-black hover:bg-black hover:text-white",
-        filled: "border-black bg-black text-white hover:bg-white hover:text-black hover:border-black",
-        "outlined-white": "border-white bg-transparent text-white hover:bg-white hover:text-black",
-        "filled-white": "border-white bg-white text-black hover:bg-black hover:text-white hover:border-white",
+        outlined: styles.outlined,
+        filled: styles.filled,
+        "outlined-white": styles.outlinedWhite,
+        "filled-white": styles.filledWhite,
       },
       size: {
-        default: "px-8 py-4 text-h5",
-        sm: "px-6 py-3 text-h6",
-        lg: "px-10 py-5 text-h4",
+        sm: styles.sm,
+        default: "",
+        lg: styles.lg,
       },
     },
     defaultVariants: {
@@ -44,7 +45,7 @@ const GhxstshipButton = React.forwardRef<HTMLButtonElement, GhxstshipButtonProps
       >
         {children}
         {showArrow && (
-          <span className="inline-block transition-transform group-hover:translate-x-1">
+          <span className={styles.arrow}>
             →
           </span>
         )}

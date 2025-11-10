@@ -10,9 +10,13 @@ import {
   Ticket, 
   BarChart3, 
   Settings,
-  Package
+  Package,
+  Layers,
+  FileText,
+  Boxes
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import styles from './AdminSidebar.module.css';
 
 const navigation = [
   { name: 'Dashboard', href: '/admin', icon: LayoutDashboard },
@@ -21,7 +25,10 @@ const navigation = [
   { name: 'Products', href: '/admin/products', icon: Package },
   { name: 'Orders', href: '/admin/orders', icon: ShoppingBag },
   { name: 'Tickets', href: '/admin/tickets', icon: Ticket },
+  { name: 'Inventory', href: '/admin/inventory', icon: Boxes },
   { name: 'Analytics', href: '/admin/analytics', icon: BarChart3 },
+  { name: 'Reports', href: '/admin/reports', icon: FileText },
+  { name: 'Bulk Operations', href: '/admin/bulk-operations', icon: Layers },
   { name: 'Settings', href: '/admin/settings', icon: Settings },
 ];
 
@@ -29,14 +36,14 @@ export default function AdminSidebar() {
   const pathname = usePathname();
 
   return (
-    <div className="w-64 bg-white border-r border-gray-200 flex flex-col">
+    <div className={styles.sidebar}>
       {/* Logo */}
-      <div className="h-16 flex items-center px-6 border-b border-gray-200">
-        <h1 className="text-xl font-bold text-gray-900">GVTEWAY Admin</h1>
+      <div className={styles.header}>
+        <h1 className={styles.logo}>GVTEWAY Admin</h1>
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 px-4 py-6 space-y-1 overflow-y-auto">
+      <nav className={styles.nav}>
         {navigation.map((item) => {
           const isActive = pathname === item.href || 
             (item.href !== '/admin' && pathname?.startsWith(item.href));
@@ -46,15 +53,13 @@ export default function AdminSidebar() {
               key={item.name}
               href={item.href}
               className={cn(
-                'flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-colors',
-                isActive
-                  ? 'bg-blue-50 text-blue-700'
-                  : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                styles.navLink,
+                isActive && styles.navLinkActive
               )}
             >
               <item.icon className={cn(
-                'mr-3 h-5 w-5',
-                isActive ? 'text-blue-700' : 'text-gray-400'
+                styles.navIcon,
+                isActive && styles.navIconActive
               )} />
               {item.name}
             </Link>
@@ -63,8 +68,8 @@ export default function AdminSidebar() {
       </nav>
 
       {/* Footer */}
-      <div className="p-4 border-t border-gray-200">
-        <p className="text-xs text-gray-500 text-center">
+      <div className={styles.footer}>
+        <p className={styles.footerText}>
           GVTEWAY 26.00
         </p>
       </div>

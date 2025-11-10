@@ -7,6 +7,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import styles from './product-grid.module.css';
 
 interface ProductVariant {
   id: string;
@@ -31,7 +32,7 @@ interface ProductGridProps {
 
 export function ProductGrid({ products }: ProductGridProps) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+    <div className={styles.grid}>
       {products.map((product) => {
         const minPrice = product.product_variants && product.product_variants.length > 0
           ? Math.min(...product.product_variants.map(v => v.price))
@@ -47,9 +48,9 @@ export function ProductGrid({ products }: ProductGridProps) {
             href={`/shop/${product.slug}`}
             className="group"
           >
-            <article className="border-3 border-black bg-white hover:bg-black hover:text-white transition-colors shadow-geometric">
+            <article className={styles.card}>
               {/* Product Image */}
-              <div className="aspect-square relative overflow-hidden border-b-3 border-black">
+              <div className={styles.card}>
                 {product.images && product.images.length > 0 ? (
                   <Image
                     src={product.images[0]}
@@ -58,8 +59,8 @@ export function ProductGrid({ products }: ProductGridProps) {
                     className="object-cover"
                   />
                 ) : (
-                  <div className="w-full h-full bg-grey-200 flex items-center justify-center">
-                    <span className="font-anton text-h1 uppercase text-grey-400">
+                  <div className={styles.row}>
+                    <span className={styles.text}>
                       {product.name.charAt(0)}
                     </span>
                   </div>
@@ -67,8 +68,8 @@ export function ProductGrid({ products }: ProductGridProps) {
 
                 {/* Out of Stock Badge */}
                 {!inStock && (
-                  <div className="absolute top-4 right-4 bg-black text-white px-3 py-1 border-2 border-white">
-                    <span className="font-bebas text-body uppercase">
+                  <div className={styles.card}>
+                    <span className={styles.container}>
                       SOLD OUT
                     </span>
                   </div>
@@ -76,22 +77,22 @@ export function ProductGrid({ products }: ProductGridProps) {
               </div>
 
               {/* Product Info */}
-              <div className="p-4">
-                <p className="font-share-mono text-meta mb-2 text-grey-600 group-hover:text-grey-400">
+              <div className={styles.card}>
+                <p className={styles.text}>
                   {product.category.toUpperCase()}
                 </p>
 
-                <h3 className="font-bebas text-h4 uppercase mb-2 group-hover:text-white">
+                <h3 className={styles.container}>
                   {product.name}
                 </h3>
 
                 {product.description && (
-                  <p className="font-share text-body line-clamp-2 text-grey-700 group-hover:text-grey-300 mb-3">
+                  <p className={styles.text}>
                     {product.description}
                   </p>
                 )}
 
-                <p className="font-bebas text-h5 uppercase">
+                <p className={styles.container}>
                   ${(minPrice / 100).toFixed(2)}
                   {product.product_variants && product.product_variants.length > 1 && '+'}
                 </p>

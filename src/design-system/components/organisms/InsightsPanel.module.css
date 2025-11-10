@@ -1,0 +1,356 @@
+/**
+ * Insights Panel Styles
+ * GHXSTSHIP Contemporary Minimal Pop Art aesthetic
+ * Zero-tolerance design system compliance
+ */
+
+.container {
+  background: var(--color-surface-primary);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  padding-block: var(--spacing-lg);
+  padding-inline: var(--spacing-lg);
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  margin-block-end: var(--spacing-lg);
+  padding-block-end: var(--spacing-md);
+  border-block-end: 2px solid var(--color-border-subtle);
+}
+
+.title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0;
+  line-height: var(--line-height-tight);
+}
+
+.count {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  padding-block: var(--spacing-xs);
+  padding-inline: var(--spacing-sm);
+  background: var(--color-background-secondary);
+  border-radius: var(--radius-full);
+}
+
+/* Insights List */
+.insightsList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.insightCard {
+  padding-block: var(--spacing-md);
+  padding-inline: var(--spacing-md);
+  background: var(--color-background-primary);
+  border: 2px solid var(--color-border-subtle);
+  border-inline-start-width: 4px;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-normal);
+}
+
+.insightCard:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+
+.acknowledged {
+  opacity: 0.7;
+  border-style: dashed;
+}
+
+/* Severity Variants */
+.severity-critical {
+  border-inline-start-color: var(--color-error-500);
+  background: var(--color-error-50);
+}
+
+.severity-warning {
+  border-inline-start-color: var(--color-warning-500);
+  background: var(--color-warning-50);
+}
+
+.severity-info {
+  border-inline-start-color: var(--color-info-500);
+  background: var(--color-info-50);
+}
+
+.severity-positive {
+  border-inline-start-color: var(--color-success-500);
+  background: var(--color-success-50);
+}
+
+/* Insight Header */
+.insightHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  margin-block-end: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.insightMeta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.insightType {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-text-secondary);
+}
+
+.insightSeverity {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  padding-block: var(--spacing-xs);
+  padding-inline: var(--spacing-sm);
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.severity-critical .insightSeverity {
+  background: var(--color-error-100);
+  color: var(--color-error-700);
+}
+
+.severity-warning .insightSeverity {
+  background: var(--color-warning-100);
+  color: var(--color-warning-700);
+}
+
+.severity-info .insightSeverity {
+  background: var(--color-info-100);
+  color: var(--color-info-700);
+}
+
+.severity-positive .insightSeverity {
+  background: var(--color-success-100);
+  color: var(--color-success-700);
+}
+
+.confidence {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  font-style: italic;
+}
+
+/* Insight Content */
+.insightTitle {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin: 0;
+  margin-block-end: var(--spacing-sm);
+  line-height: var(--line-height-tight);
+}
+
+.insightDescription {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+  margin-block-end: var(--spacing-md);
+}
+
+/* Recommendations */
+.recommendations {
+  margin-block-end: var(--spacing-md);
+}
+
+.expandButton {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-primary-600);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.expandButton:hover {
+  color: var(--color-primary-700);
+  text-decoration: underline;
+}
+
+.recommendationsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-block-start: var(--spacing-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.recommendation {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+  padding-inline-start: var(--spacing-md);
+  position: relative;
+  line-height: var(--line-height-relaxed);
+}
+
+.recommendation::before {
+  content: '→';
+  position: absolute;
+  inset-inline-start: 0;
+  color: var(--color-primary-500);
+  font-weight: var(--font-weight-bold);
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.acknowledgeButton {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  padding-block: var(--spacing-xs);
+  padding-inline: var(--spacing-md);
+  background: var(--color-primary-500);
+  color: var(--color-white);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.acknowledgeButton:hover {
+  background: var(--color-primary-600);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.acknowledgedLabel {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-success-600);
+}
+
+/* Footer */
+.footer {
+  margin-block-start: var(--spacing-md);
+  padding-block-start: var(--spacing-md);
+  border-block-start: 1px solid var(--color-border-subtle);
+  text-align: center;
+}
+
+.moreInsights {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* Empty State */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+  padding-block: var(--spacing-2xl);
+  padding-inline: var(--spacing-xl);
+  text-align: center;
+}
+
+.emptyIcon {
+  font-size: var(--font-size-4xl);
+  opacity: 0.5;
+}
+
+.emptyText {
+  font-size: var(--font-size-md);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  .container {
+    background: var(--color-surface-secondary);
+  }
+
+  .insightCard {
+    background: var(--color-surface-primary);
+  }
+
+  .severity-critical {
+    background: var(--color-error-950);
+  }
+
+  .severity-warning {
+    background: var(--color-warning-950);
+  }
+
+  .severity-info {
+    background: var(--color-info-950);
+  }
+
+  .severity-positive {
+    background: var(--color-success-950);
+  }
+
+  .severity-critical .insightSeverity {
+    background: var(--color-error-900);
+    color: var(--color-error-200);
+  }
+
+  .severity-warning .insightSeverity {
+    background: var(--color-warning-900);
+    color: var(--color-warning-200);
+  }
+
+  .severity-info .insightSeverity {
+    background: var(--color-info-900);
+    color: var(--color-info-200);
+  }
+
+  .severity-positive .insightSeverity {
+    background: var(--color-success-900);
+    color: var(--color-success-200);
+  }
+
+  .acknowledgedLabel {
+    color: var(--color-success-400);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding-block: var(--spacing-md);
+    padding-inline: var(--spacing-md);
+  }
+
+  .insightHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .insightCard:hover,
+  .acknowledgeButton:hover {
+    transform: none;
+  }
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { GeometricIcon } from '../atoms/GeometricIcon';
+import styles from './CartItem.module.css';
 
 export interface CartItemData {
   id: string;
@@ -53,33 +54,33 @@ export const CartItem: React.FC<CartItemProps> = ({
             className="object-cover grayscale"
           />
         ) : (
-          <div className="flex h-full items-center justify-center">
-            <GeometricIcon name="package" size="md" className="text-grey-400" />
+          <div className={styles.row}>
+            <GeometricIcon name="package" size="md" className={styles.text} />
           </div>
         )}
       </div>
 
       {/* Details */}
-      <div className="flex flex-1 flex-col justify-center">
-        <h4 className="font-bebas-neue text-base uppercase leading-tight">
+      <div className={styles.section}>
+        <h4 className={styles.container}>
           {item.name}
         </h4>
 
         {item.make && item.model && (
-          <p className="mt-0.5 font-share-tech-mono text-xs text-grey-600">
+          <p className={styles.text}>
             {item.make} {item.model}
           </p>
         )}
 
-        <div className="mt-1 flex items-center gap-2">
-          <span className="font-share-tech-mono text-xs text-grey-700">
+        <div className={styles.row}>
+          <span className={styles.text}>
             Qty: {item.quantity}
           </span>
 
           {item.modifiers && item.modifiers.length > 0 && (
             <>
-              <span className="text-grey-400">•</span>
-              <span className="font-share-tech-mono text-xs text-grey-600">
+              <span className={styles.text}>•</span>
+              <span className={styles.text}>
                 {item.modifiers.map((m) => m.name).join(', ')}
               </span>
             </>
@@ -87,19 +88,19 @@ export const CartItem: React.FC<CartItemProps> = ({
         </div>
 
         {item.notes && (
-          <p className="mt-1 font-share-tech text-xs italic text-grey-600">
+          <p className={styles.text}>
             {item.notes}
           </p>
         )}
       </div>
 
       {/* Actions */}
-      <div className="flex shrink-0 items-center gap-2">
+      <div className={styles.row}>
         {onEdit && (
           <button
             type="button"
             onClick={onEdit}
-            className="flex h-8 w-8 items-center justify-center border-2 border-black bg-white transition-colors hover:bg-black hover:text-white"
+            className={styles.iconLarge}
             aria-label="Edit item"
           >
             <GeometricIcon name="edit" size="sm" />
@@ -110,7 +111,7 @@ export const CartItem: React.FC<CartItemProps> = ({
           <button
             type="button"
             onClick={onRemove}
-            className="flex h-8 w-8 items-center justify-center border-2 border-black bg-white transition-colors hover:bg-black hover:text-white"
+            className={styles.iconLarge}
             aria-label="Remove item"
           >
             <GeometricIcon name="trash" size="sm" />

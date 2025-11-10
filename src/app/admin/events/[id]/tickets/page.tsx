@@ -1,16 +1,20 @@
 'use client';
 
 import { use, useEffect, useState, useCallback } from 'react';
-import { useRouter } from 'next/navigation';
+import { ContextualPageTemplate } from '@/design-system/components/templates';
 import { Button } from '@/design-system/components/atoms/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/card';
-import { ArrowLeft, Plus, Edit, Trash2, Loader2 } from 'lucide-react';
-import Link from 'next/link';
+import { Input } from '@/design-system/components/atoms/input';
+import { Label } from '@/design-system/components/atoms/label';
+import { Badge } from '@/design-system/components/atoms/badge';
+import { Plus, Edit, Trash2, Ticket } from 'lucide-react';
+import { toast } from 'sonner';
+import styles from './tickets-content.module.css';
 
 export default function ManageTicketTypesPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
-  const router = useRouter();
   const [loading, setLoading] = useState(true);
+  const [event, setEvent] = useState<any>(null);
   const [ticketTypes, setTicketTypes] = useState<any[]>([]);
   const [showForm, setShowForm] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
@@ -24,21 +28,26 @@ export default function ManageTicketTypesPage({ params }: { params: Promise<{ id
     sale_end: '',
   });
 
-  const fetchTicketTypes = useCallback(async () => {
+  const fetchData = useCallback(async () => {
     try {
+      const eventRes = await fetch(`/api/admin/events/${id}`);
+      const eventData = await eventRes.json();
+      setEvent(eventData.event);
+
       const response = await fetch(`/api/admin/events/${id}/ticket-types`);
       const data = await response.json();
       setTicketTypes(data.ticketTypes || []);
     } catch (error) {
-      console.error('Failed to fetch ticket types:', error);
+      console.error('Failed to fetch data:', error);
+      toast.error('Failed to load ticket types');
     } finally {
       setLoading(false);
     }
   }, [id]);
 
   useEffect(() => {
-    fetchTicketTypes();
-  }, [fetchTicketTypes]);
+    fetchData();
+  }, [fetchData]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -76,13 +85,14 @@ export default function ManageTicketTypesPage({ params }: { params: Promise<{ id
           sale_start: '',
           sale_end: '',
         });
-        fetchTicketTypes();
+        fetchData();
+        toast.success(editingId ? 'Ticket type updated' : 'Ticket type created');
       } else {
-        alert(data.error || 'Failed to save ticket type');
+        toast.error(data.error || 'Failed to save ticket type');
       }
     } catch (error) {
       console.error('Save error:', error);
-      alert('Failed to save ticket type');
+      toast.error('Failed to save ticket type');
     }
   };
 
@@ -101,9 +111,7 @@ export default function ManageTicketTypesPage({ params }: { params: Promise<{ id
   };
 
   const handleDelete = async (ticketTypeId: string) => {
-    if (!confirm('Are you sure you want to delete this ticket type?')) {
-      return;
-    }
+    if (!confirm('Are you sure you want to delete this ticket type?')) return;
 
     try {
       const response = await fetch(`/api/admin/ticket-types/${ticketTypeId}`, {
@@ -113,266 +121,188 @@ export default function ManageTicketTypesPage({ params }: { params: Promise<{ id
       const data = await response.json();
 
       if (data.success) {
-        fetchTicketTypes();
+        fetchData();
+        toast.success('Ticket type deleted');
       } else {
-        alert(data.error || 'Failed to delete ticket type');
+        toast.error(data.error || 'Failed to delete ticket type');
       }
     } catch (error) {
       console.error('Delete error:', error);
-      alert('Failed to delete ticket type');
+      toast.error('Failed to delete ticket type');
     }
   };
 
-  if (loading) {
-    return (
-      <div className="min-h-screen  flex items-center justify-center" style={{ background: 'var(--gradient-hero)' }}>
-        <Loader2 className="h-12 w-12 animate-spin text-purple-500" />
-      </div>
-    );
-  }
-
   return (
-    <div className="min-h-screen  py-12 px-4" style={{ background: 'var(--gradient-hero)' }}>
-      <div className="max-w-6xl mx-auto">
-        <div className="mb-8">
-          <Link
-            href={`/admin/events/${id}`}
-            className="text-purple-400 hover:text-purple-300 mb-4 inline-flex items-center gap-2"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Back to Event
-          </Link>
-          <div className="flex items-center justify-between">
-            <h1 className="text-3xl font-bold  bg-clip-text text-transparent" style={{ backgroundImage: 'var(--gradient-brand-primary)' }}>
-              Manage Ticket Types
-            </h1>
-            <Button
-              onClick={() => {
-                setShowForm(true);
-                setEditingId(null);
-                setFormData({
-                  name: '',
-                  description: '',
-                  price: '',
-                  quantity: '',
-                  max_per_order: '10',
-                  sale_start: '',
-                  sale_end: '',
-                });
-              }}
-              className="" style={{ background: 'var(--gradient-brand-primary)' }}
-            >
-              <Plus className="h-4 w-4 mr-2" />
-              Add Ticket Type
-            </Button>
-          </div>
-        </div>
-
-        {showForm && (
-          <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20 mb-6">
-            <CardHeader>
-              <CardTitle>{editingId ? 'Edit' : 'Add'} Ticket Type</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
-                      Ticket Name *
-                    </label>
-                    <input
-                      id="name"
-                      type="text"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      required
-                      placeholder="e.g., General Admission, VIP"
-                      className="w-full px-4 py-3 bg-black/60 border border-purple-500/30 rounded-lg text-white focus:outline-none focus:border-purple-500"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="price" className="block text-sm font-medium text-gray-300 mb-2">
-                      Price *
-                    </label>
-                    <input
-                      id="price"
-                      type="number"
-                      step="0.01"
-                      min="0"
-                      value={formData.price}
-                      onChange={(e) => setFormData({ ...formData, price: e.target.value })}
-                      required
-                      placeholder="0.00"
-                      className="w-full px-4 py-3 bg-black/60 border border-purple-500/30 rounded-lg text-white focus:outline-none focus:border-purple-500"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="quantity" className="block text-sm font-medium text-gray-300 mb-2">
-                      Quantity Available *
-                    </label>
-                    <input
-                      id="quantity"
-                      type="number"
-                      min="1"
-                      value={formData.quantity}
-                      onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
-                      required
-                      placeholder="100"
-                      className="w-full px-4 py-3 bg-black/60 border border-purple-500/30 rounded-lg text-white focus:outline-none focus:border-purple-500"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="max_per_order" className="block text-sm font-medium text-gray-300 mb-2">
-                      Max Per Order
-                    </label>
-                    <input
-                      id="max_per_order"
-                      type="number"
-                      min="1"
-                      value={formData.max_per_order}
-                      onChange={(e) => setFormData({ ...formData, max_per_order: e.target.value })}
-                      className="w-full px-4 py-3 bg-black/60 border border-purple-500/30 rounded-lg text-white focus:outline-none focus:border-purple-500"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="sale_start" className="block text-sm font-medium text-gray-300 mb-2">
-                      Sale Start Date
-                    </label>
-                    <input
-                      id="sale_start"
-                      type="datetime-local"
-                      value={formData.sale_start}
-                      onChange={(e) => setFormData({ ...formData, sale_start: e.target.value })}
-                      className="w-full px-4 py-3 bg-black/60 border border-purple-500/30 rounded-lg text-white focus:outline-none focus:border-purple-500"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="sale_end" className="block text-sm font-medium text-gray-300 mb-2">
-                      Sale End Date
-                    </label>
-                    <input
-                      id="sale_end"
-                      type="datetime-local"
-                      value={formData.sale_end}
-                      onChange={(e) => setFormData({ ...formData, sale_end: e.target.value })}
-                      className="w-full px-4 py-3 bg-black/60 border border-purple-500/30 rounded-lg text-white focus:outline-none focus:border-purple-500"
-                    />
-                  </div>
+    <ContextualPageTemplate
+      breadcrumbs={[
+        { label: 'Events', href: '/admin/events' },
+        { label: event?.name || 'Event', href: `/admin/events/${id}` },
+        { label: 'Tickets', href: `/admin/events/${id}/tickets` }
+      ]}
+      title="Ticket Types"
+      subtitle={event?.name ? `${event.name} - Manage ticket types and pricing` : 'Manage ticket types and pricing'}
+      primaryAction={{
+        label: showForm ? 'Cancel' : 'Add Ticket Type',
+        onClick: () => {
+          setShowForm(!showForm);
+          if (showForm) {
+            setEditingId(null);
+            setFormData({
+              name: '',
+              description: '',
+              price: '',
+              quantity: '',
+              max_per_order: '10',
+              sale_start: '',
+              sale_end: '',
+            });
+          }
+        },
+        icon: <Plus />
+      }}
+      loading={loading}
+    >
+      {showForm && (
+        <Card className={styles.formCard}>
+          <CardHeader>
+            <CardTitle>{editingId ? 'Edit Ticket Type' : 'Create Ticket Type'}</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleSubmit} className={styles.form}>
+              <div className={styles.formGrid}>
+                <div className={styles.formField}>
+                  <Label htmlFor="name">Ticket Name</Label>
+                  <Input
+                    id="name"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    required
+                  />
                 </div>
-
-                <div>
-                  <label htmlFor="description" className="block text-sm font-medium text-gray-300 mb-2">
-                    Description
-                  </label>
-                  <textarea
+                <div className={styles.formField}>
+                  <Label htmlFor="price">Price ($)</Label>
+                  <Input
+                    id="price"
+                    type="number"
+                    step="0.01"
+                    value={formData.price}
+                    onChange={(e) => setFormData({ ...formData, price: e.target.value })}
+                    required
+                  />
+                </div>
+                <div className={styles.formField}>
+                  <Label htmlFor="quantity">Quantity</Label>
+                  <Input
+                    id="quantity"
+                    type="number"
+                    value={formData.quantity}
+                    onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
+                    required
+                  />
+                </div>
+                <div className={styles.formField}>
+                  <Label htmlFor="max_per_order">Max Per Order</Label>
+                  <Input
+                    id="max_per_order"
+                    type="number"
+                    value={formData.max_per_order}
+                    onChange={(e) => setFormData({ ...formData, max_per_order: e.target.value })}
+                    required
+                  />
+                </div>
+                <div className={styles.formField}>
+                  <Label htmlFor="sale_start">Sale Start</Label>
+                  <Input
+                    id="sale_start"
+                    type="datetime-local"
+                    value={formData.sale_start}
+                    onChange={(e) => setFormData({ ...formData, sale_start: e.target.value })}
+                  />
+                </div>
+                <div className={styles.formField}>
+                  <Label htmlFor="sale_end">Sale End</Label>
+                  <Input
+                    id="sale_end"
+                    type="datetime-local"
+                    value={formData.sale_end}
+                    onChange={(e) => setFormData({ ...formData, sale_end: e.target.value })}
+                  />
+                </div>
+                <div className={styles.formFieldFull}>
+                  <Label htmlFor="description">Description</Label>
+                  <Input
                     id="description"
                     value={formData.description}
                     onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                    rows={3}
-                    placeholder="Describe what's included with this ticket..."
-                    className="w-full px-4 py-3 bg-black/60 border border-purple-500/30 rounded-lg text-white focus:outline-none focus:border-purple-500"
                   />
                 </div>
+              </div>
+              <div className={styles.formActions}>
+                <Button type="submit">{editingId ? 'Update' : 'Create'} Ticket Type</Button>
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => {
+                    setShowForm(false);
+                    setEditingId(null);
+                  }}
+                >
+                  Cancel
+                </Button>
+              </div>
+            </form>
+          </CardContent>
+        </Card>
+      )}
 
-                <div className="flex gap-4">
-                  <Button
-                    type="submit"
-                    className="" style={{ background: 'var(--gradient-brand-primary)' }}
-                  >
-                    {editingId ? 'Update' : 'Create'} Ticket Type
-                  </Button>
-                  <Button
-                    type="button"
-                    variant="outline"
-                    onClick={() => {
-                      setShowForm(false);
-                      setEditingId(null);
-                    }}
-                    className="border-purple-500/30 hover:bg-purple-500/10"
-                  >
-                    Cancel
-                  </Button>
+      <div className={styles.ticketsList}>
+        {ticketTypes.map((ticketType) => (
+          <Card key={ticketType.id} className={styles.ticketCard}>
+            <CardHeader>
+              <div className={styles.ticketHeader}>
+                <div className={styles.ticketTitleRow}>
+                  <Ticket className={styles.iconInline} />
+                  <CardTitle>{ticketType.name}</CardTitle>
                 </div>
-              </form>
-            </CardContent>
-          </Card>
-        )}
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {ticketTypes.map((ticketType) => (
-            <Card key={ticketType.id} className="bg-black/40 backdrop-blur-lg border-purple-500/20">
-              <CardHeader>
-                <CardTitle className="flex items-center justify-between">
-                  <span>{ticketType.name}</span>
-                  <span className="text-purple-400 font-bold">${parseFloat(ticketType.price).toFixed(2)}</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                {ticketType.description && (
-                  <p className="text-gray-400 text-sm mb-4">{ticketType.description}</p>
-                )}
-                <div className="space-y-2 text-sm mb-4">
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Available:</span>
-                    <span className="text-white font-semibold">{ticketType.quantity}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Max per order:</span>
-                    <span className="text-white">{ticketType.max_per_order || 'Unlimited'}</span>
-                  </div>
-                  {ticketType.sale_start && (
-                    <div className="flex justify-between">
-                      <span className="text-gray-400">Sale starts:</span>
-                      <span className="text-white text-xs">
-                        {new Date(ticketType.sale_start).toLocaleDateString()}
-                      </span>
-                    </div>
-                  )}
-                </div>
-                <div className="flex gap-2">
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    onClick={() => handleEdit(ticketType)}
-                    className="flex-1 border-purple-500/30 hover:bg-purple-500/10"
-                  >
-                    <Edit className="h-4 w-4 mr-1" />
+                <div className={styles.ticketActions}>
+                  <Button variant="outline" size="sm" onClick={() => handleEdit(ticketType)}>
+                    <Edit className={styles.iconSmall} />
                     Edit
                   </Button>
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    onClick={() => handleDelete(ticketType.id)}
-                    className="border-red-500/30 hover:bg-red-500/10 text-red-400"
-                  >
-                    <Trash2 className="h-4 w-4" />
+                  <Button variant="outline" size="sm" onClick={() => handleDelete(ticketType.id)}>
+                    <Trash2 className={styles.iconSmall} />
                   </Button>
                 </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {ticketTypes.length === 0 && !showForm && (
-          <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20">
-            <CardContent className="p-12 text-center">
-              <p className="text-gray-400 mb-4">No ticket types yet</p>
-              <Button
-                onClick={() => setShowForm(true)}
-                className="" style={{ background: 'var(--gradient-brand-primary)' }}
-              >
-                <Plus className="h-4 w-4 mr-2" />
-                Add Your First Ticket Type
-              </Button>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <div className={styles.ticketDetails}>
+                <div className={styles.ticketDetail}>
+                  <span className={styles.label}>Price:</span>
+                  <span className={styles.value}>${ticketType.price.toFixed(2)}</span>
+                </div>
+                <div className={styles.ticketDetail}>
+                  <span className={styles.label}>Quantity:</span>
+                  <span className={styles.value}>{ticketType.quantity}</span>
+                </div>
+                <div className={styles.ticketDetail}>
+                  <span className={styles.label}>Sold:</span>
+                  <span className={styles.value}>{ticketType.sold || 0}</span>
+                </div>
+                <div className={styles.ticketDetail}>
+                  <span className={styles.label}>Available:</span>
+                  <Badge variant={ticketType.quantity - (ticketType.sold || 0) > 0 ? 'default' : 'destructive'}>
+                    {ticketType.quantity - (ticketType.sold || 0)}
+                  </Badge>
+                </div>
+              </div>
+              {ticketType.description && (
+                <p className={styles.ticketDescription}>{ticketType.description}</p>
+              )}
             </CardContent>
           </Card>
-        )}
+        ))}
       </div>
-    </div>
+    </ContextualPageTemplate>
   );
 }

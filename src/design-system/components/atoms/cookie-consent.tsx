@@ -7,6 +7,14 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import styles from './cookie-consent.module.css';
+
+export interface CookiePreferences {
+  necessary: boolean;
+  analytics: boolean;
+  marketing: boolean;
+  preferences: boolean;
+}
 
 export function CookieConsent() {
   const [showBanner, setShowBanner] = useState(false);
@@ -32,15 +40,15 @@ export function CookieConsent() {
   if (!showBanner) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 border-t-3 border-black bg-white shadow-geometric-white">
-      <div className="container mx-auto px-4 py-6">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+    <div className={styles.card}>
+      <div className={styles.container}>
+        <div className={styles.row}>
           {/* Message */}
-          <div className="flex-1">
-            <p className="font-bebas text-h6 uppercase mb-2">
+          <div className={styles.container}>
+            <p className={styles.text}>
               WE USE COOKIES
             </p>
-            <p className="font-share text-body text-grey-700">
+            <p className={styles.text}>
               We use essential cookies to make our site work. With your consent, we may also use non-essential cookies to improve user experience and analyze website traffic. 
               {' '}
               <Link href="/legal/privacy" className="underline hover:no-underline">
@@ -50,16 +58,16 @@ export function CookieConsent() {
           </div>
 
           {/* Actions */}
-          <div className="flex gap-3">
+          <div className={styles.card}>
             <button
               onClick={declineCookies}
-              className="px-6 py-3 border-3 border-black bg-white text-black hover:bg-grey-100 font-bebas text-body uppercase transition-colors"
+              className={styles.card}
             >
               DECLINE
             </button>
             <button
               onClick={acceptCookies}
-              className="px-6 py-3 border-3 border-black bg-black text-white hover:bg-grey-900 font-bebas text-body uppercase transition-colors"
+              className={styles.card}
             >
               ACCEPT
             </button>

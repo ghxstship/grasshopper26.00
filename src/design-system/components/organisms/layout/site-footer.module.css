@@ -1,0 +1,343 @@
+/* Site Footer - GHXSTSHIP Design System Compliant */
+
+.footer {
+  border-block-start: 3px solid var(--color-black);
+  background-color: var(--color-white);
+}
+
+.content {
+  max-inline-size: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+  padding-block: var(--space-12);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/* Brand Column */
+.brandColumn {
+  grid-column: span 1;
+}
+
+@media (min-width: 1024px) {
+  .brandColumn {
+    grid-column: span 1;
+  }
+}
+
+.brandLink {
+  display: inline-block;
+}
+
+.brandText {
+  font-family: var(--font-anton);
+  font-size: var(--font-size-4xl);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  font-weight: var(--font-weight-black);
+  color: var(--color-black);
+}
+
+.brandDescription {
+  margin-block-start: var(--space-4);
+  font-family: var(--font-share);
+  font-size: var(--font-size-sm);
+  color: var(--color-grey-600);
+  line-height: var(--line-height-normal);
+}
+
+.socialLinks {
+  margin-block-start: var(--space-6);
+  display: flex;
+  gap: var(--space-4);
+}
+
+.socialLink {
+  color: var(--color-black);
+  transition: color var(--duration-fast) var(--easing-out);
+}
+
+.socialLink:hover {
+  color: var(--color-grey-600);
+}
+
+.socialIcon {
+  block-size: var(--space-5);
+  inline-size: var(--space-5);
+}
+
+/* Footer Columns */
+.columnTitle {
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-xl);
+  text-transform: uppercase;
+  margin-block-end: var(--space-4);
+  color: var(--color-black);
+  font-weight: var(--font-weight-normal);
+}
+
+.linkList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.linkItem {
+  font-family: var(--font-share);
+  font-size: var(--font-size-sm);
+  color: var(--color-grey-600);
+  transition: color var(--duration-fast) var(--easing-out);
+}
+
+.linkItem:hover {
+  color: var(--color-black);
+}
+
+/* Newsletter Section */
+.newsletter {
+  margin-block-start: var(--space-12);
+  border-block-start: 3px solid var(--color-black);
+  padding-block-start: var(--space-8);
+}
+
+.newsletterContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .newsletterContent {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0;
+  }
+}
+
+.newsletterText {
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .newsletterText {
+    text-align: start;
+  }
+}
+
+.newsletterTitle {
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-2xl);
+  text-transform: uppercase;
+  margin-block-end: var(--space-2);
+  color: var(--color-black);
+  font-weight: var(--font-weight-normal);
+}
+
+.newsletterDescription {
+  font-family: var(--font-share);
+  font-size: var(--font-size-sm);
+  color: var(--color-grey-600);
+}
+
+.newsletterForm {
+  display: flex;
+  inline-size: 100%;
+  max-inline-size: 28rem;
+}
+
+.newsletterInput {
+  flex: 1;
+  border: 3px solid var(--color-black);
+  padding-inline: var(--space-4);
+  padding-block: var(--space-3);
+  font-family: var(--font-share);
+  font-size: var(--font-size-sm);
+  color: var(--color-black);
+  background-color: var(--color-white);
+}
+
+.newsletterInput:focus {
+  outline: 2px solid var(--color-black);
+  outline-offset: 2px;
+}
+
+.newsletterButton {
+  border: 3px solid var(--color-black);
+  border-inline-start: 0;
+  background-color: var(--color-black);
+  padding-inline: var(--space-6);
+  padding-block: var(--space-3);
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-lg);
+  text-transform: uppercase;
+  color: var(--color-white);
+  transition: background-color var(--duration-fast) var(--easing-out);
+  cursor: pointer;
+}
+
+.newsletterButton:hover {
+  background-color: var(--color-grey-800);
+}
+
+.newsletterIcon {
+  block-size: var(--space-5);
+  inline-size: var(--space-5);
+}
+
+/* Bottom Bar */
+.bottomBar {
+  border-block-start: 3px solid var(--color-black);
+  background-color: var(--color-grey-50);
+}
+
+.bottomContent {
+  max-inline-size: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+  padding-block: var(--space-6);
+}
+
+.bottomFlex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .bottomFlex {
+    flex-direction: row;
+    gap: 0;
+    text-align: start;
+  }
+}
+
+.bottomText {
+  font-family: var(--font-share);
+  font-size: var(--font-size-sm);
+  color: var(--color-grey-600);
+}
+
+
+.bgBlack {
+  background-color: var(--color-black);
+}
+
+.bgWhite {
+  background-color: var(--color-white);
+}
+
+.borderBlack {
+  border-color: var(--color-black);
+}
+
+.emptyIcon {
+  inline-size: var(--space-16);
+  block-size: var(--space-16);
+  margin-inline: auto;
+  color: var(--color-grey-600);
+  margin-block-end: var(--space-4);
+}
+
+.textGrey600 {
+  color: var(--color-grey-600);
+}
+
+.textGrey700 {
+  color: var(--color-grey-700);
+}
+
+.textBlack {
+  color: var(--color-black);
+}
+
+.textWhite {
+  color: var(--color-white);
+}
+
+.flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flexBetween {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.gap2 {
+  gap: var(--space-2);
+}
+
+.gap4 {
+  gap: var(--space-4);
+}
+
+
+.fullWidth {
+  inline-size: 100%;
+}
+
+.fullHeight {
+  block-size: 100%;
+}
+
+.marginBottom {
+  margin-block-end: var(--space-4);
+}
+
+.marginTop {
+  margin-block-start: var(--space-4);
+}
+
+.textSmall {
+  font-size: var(--font-size-sm);
+}
+
+.textLarge {
+  font-size: var(--font-size-lg);
+}
+
+.fontBold {
+  font-weight: var(--font-weight-semibold);
+}
+
+.fontMedium {
+  font-weight: var(--font-weight-medium);
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.rounded {
+  border-radius: var(--radius-md);
+}
+
+.shadow {
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.1);
+}

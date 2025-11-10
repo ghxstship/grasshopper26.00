@@ -1,6 +1,0 @@
-.benefitsList { display: flex; flex-direction: column; gap: var(--space-3); }
-.benefitItem { display: flex; align-items: flex-start; gap: var(--space-3); padding: var(--space-3); border-radius: var(--radius-md); background-color: var(--color-bg-secondary); }
-.benefitIcon { width: var(--space-6); height: var(--space-6); color: var(--color-primary); flex-shrink: 0; }
-.benefitContent { flex: 1; }
-.benefitTitle { font-size: var(--font-size-base); font-weight: var(--font-weight-semibold); margin-block-end: var(--space-1); }
-.benefitDescription { font-size: var(--font-size-sm); color: var(--color-text-secondary); }

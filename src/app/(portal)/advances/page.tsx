@@ -8,6 +8,7 @@ import { StatusBadge, AdvanceStatus } from '@/design-system/components/atoms/Sta
 import { ProductionAdvance } from '@/lib/types/production-advances';
 import { cn } from '@/lib/utils';
 import { Plus } from 'lucide-react';
+import styles from './page.module.css';
 
 type FilterStatus = 'all' | AdvanceStatus;
 
@@ -67,14 +68,14 @@ export default function MyAdvancesPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className={styles.container}>
       {/* Header */}
-      <div className="border-b-3 border-black bg-white">
-        <div className="container mx-auto px-4 py-8">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              <h1 className="font-anton text-4xl uppercase">MY ADVANCES</h1>
-              <p className="mt-2 font-share-tech text-grey-700">
+      <div className={styles.headerSection}>
+        <div className={styles.headerContainer}>
+          <div className={styles.headerRow}>
+            <div className={styles.headerInfo}>
+              <h1 className={styles.pageTitle}>MY ADVANCES</h1>
+              <p className={styles.pageSubtitle}>
                 Manage your production advance requests
               </p>
             </div>
@@ -82,9 +83,9 @@ export default function MyAdvancesPage() {
             <button
               type="button"
               onClick={() => router.push('/advances/catalog')}
-              className="flex items-center justify-center gap-2 border-3 border-black bg-black px-6 py-4 font-bebas-neue uppercase text-white transition-colors hover:bg-white hover:text-black"
+              className={styles.newButton}
             >
-              <Plus className="h-5 w-5" />
+              <Plus className={styles.icon} />
               NEW ADVANCE
             </button>
           </div>
@@ -92,19 +93,19 @@ export default function MyAdvancesPage() {
       </div>
 
       {/* Filter Tabs */}
-      <div className="border-b-2 border-grey-200 bg-grey-50">
-        <div className="container mx-auto px-4">
-          <div className="flex gap-2 overflow-x-auto py-4">
+      <div className={styles.filterSection}>
+        <div className={styles.content}>
+          <div className={styles.filterTabs}>
             {filterTabs.map((tab) => (
               <button
                 key={tab.key}
                 type="button"
                 onClick={() => setFilter(tab.key)}
                 className={cn(
-                  'shrink-0 border-3 px-4 py-2 font-bebas-neue text-sm uppercase transition-colors',
+                  styles.filterButton,
                   filter === tab.key
-                    ? 'border-black bg-black text-white'
-                    : 'border-black bg-white text-black hover:bg-grey-100'
+                    ? styles.filterButtonActive
+                    : styles.filterButtonInactive
                 )}
               >
                 {tab.label}
@@ -115,44 +116,44 @@ export default function MyAdvancesPage() {
       </div>
 
       {/* Advances List */}
-      <div className="container mx-auto px-4 py-8">
+      <div className={styles.mainContainer}>
         {loading ? (
-          <div className="flex items-center justify-center py-20">
-            <div className="h-12 w-12 animate-spin border-4 border-black border-t-transparent" />
+          <div className={styles.loadingContainer}>
+            <div className={styles.spinner} />
           </div>
         ) : advances.length === 0 ? (
-          <div className="flex flex-col items-center justify-center border-3 border-grey-300 bg-grey-50 py-20 text-center">
-            <GeometricIcon name="clipboard" size="xl" className="mb-4 text-grey-400" />
-            <p className="mb-2 font-share-tech text-grey-700">
+          <div className={styles.emptyState}>
+            <GeometricIcon name="clipboard" size="xl" className={styles.emptyIcon} />
+            <p className={styles.emptyTitle}>
               {filter === 'all' ? 'No advances found' : `No ${filter} advances`}
             </p>
-            <p className="mb-6 font-share-tech-mono text-sm text-grey-600">
+            <p className={styles.emptySubtitle}>
               Create your first production advance request
             </p>
             <button
               type="button"
               onClick={() => router.push('/advances/catalog')}
-              className="border-3 border-black bg-white px-6 py-3 font-bebas-neue uppercase transition-colors hover:bg-black hover:text-white"
+              className={styles.emptyButton}
             >
               CREATE ADVANCE
             </button>
           </div>
         ) : (
-          <div className="grid gap-6">
+          <div className={styles.grid}>
             {advances.map((advance) => (
               <Link
                 key={advance.id}
                 href={`/advances/${advance.id}`}
-                className="block border-3 border-black bg-white transition-all hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
+                className={styles.advanceCard}
               >
-                <div className="p-6">
+                <div className={styles.card}>
                   {/* Header */}
-                  <div className="flex flex-col gap-4 border-b-2 border-grey-200 pb-4 sm:flex-row sm:items-start sm:justify-between">
-                    <div className="flex-1">
-                      <h3 className="font-bebas-neue text-2xl uppercase">
+                  <div className={styles.cardHeader}>
+                    <div className={styles.cardHeaderInfo}>
+                      <h3 className={styles.cardTitle}>
                         {advance.event_name}
                       </h3>
-                      <p className="mt-1 font-share-tech-mono text-sm text-grey-600">
+                      <p className={styles.cardMeta}>
                         {advance.advance_number} · {advance.company_name}
                       </p>
                     </div>
@@ -160,54 +161,54 @@ export default function MyAdvancesPage() {
                   </div>
 
                   {/* Details Grid */}
-                  <div className="mt-4 grid gap-4 sm:grid-cols-3">
-                    <div>
-                      <p className="font-share-tech-mono text-xs uppercase text-grey-600">
+                  <div className={styles.detailsGrid}>
+                    <div className={styles.detailItem}>
+                      <p className={styles.detailLabel}>
                         Service Period
                       </p>
-                      <p className="mt-1 font-share-tech text-sm">
+                      <p className={styles.detailValue}>
                         {formatDate(advance.service_start_date)} -{' '}
                         {formatDate(advance.service_end_date)}
                       </p>
-                      <p className="mt-0.5 font-share-tech-mono text-xs text-grey-600">
+                      <p className={styles.detailHint}>
                         {advance.duration_days} days
                       </p>
                     </div>
 
-                    <div>
-                      <p className="font-share-tech-mono text-xs uppercase text-grey-600">
+                    <div className={styles.detailItem}>
+                      <p className={styles.detailLabel}>
                         Items Requested
                       </p>
-                      <p className="mt-1 font-bebas-neue text-xl">
+                      <p className={styles.detailValueLarge}>
                         {advance.total_items}
                       </p>
                     </div>
 
-                    <div>
-                      <p className="font-share-tech-mono text-xs uppercase text-grey-600">
+                    <div className={styles.detailItem}>
+                      <p className={styles.detailLabel}>
                         {advance.status === 'draft' ? 'Created' : 'Submitted'}
                       </p>
-                      <p className="mt-1 font-share-tech text-sm">
+                      <p className={styles.detailValue}>
                         {formatDateTime(advance.submitted_at || advance.created_at)}
                       </p>
                     </div>
                   </div>
 
                   {/* Actions */}
-                  <div className="mt-4 flex flex-wrap gap-2 border-t-2 border-grey-200 pt-4">
-                    <span className="flex items-center gap-2 font-bebas-neue text-sm uppercase text-grey-700">
+                  <div className={styles.cardActions}>
+                    <span className={styles.viewLink}>
                       VIEW DETAILS
                       <GeometricIcon name="arrow-right" size="sm" />
                     </span>
 
                     {advance.status === 'draft' && (
-                      <span className="ml-auto border-2 border-black bg-black px-3 py-1 font-bebas-neue text-xs uppercase text-white">
+                      <span className={styles.draftBadge}>
                         DRAFT
                       </span>
                     )}
 
                     {advance.status === 'approved' && (
-                      <span className="ml-auto border-2 border-black bg-white px-3 py-1 font-bebas-neue text-xs uppercase text-black">
+                      <span className={styles.readyBadge}>
                         READY FOR FULFILLMENT
                       </span>
                     )}

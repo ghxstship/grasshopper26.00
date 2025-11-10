@@ -1,0 +1,487 @@
+/* Event Detail Page - Design System Compliant Styles */
+
+.container {
+  min-height: 100vh;
+  background-color: var(--color-white);
+}
+
+/* Loading & Error States */
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.loadingContainer {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loadingSpinner {
+  height: var(--space-12);
+  width: var(--space-12);
+  animation: spin 1s linear infinite;
+  color: var(--color-black);
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.errorContainer {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.errorTitle {
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-h2);
+  text-transform: uppercase;
+  color: var(--color-black);
+  margin-block-end: var(--space-4);
+  font-weight: var(--font-weight-normal);
+}
+
+/* Hero Section */
+.heroSection {
+  position: relative;
+  height: 24rem;
+  overflow: hidden;
+  border-block-end: 3px solid var(--color-black);
+}
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.heroImagePlaceholder {
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-grey-200);
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+}
+
+.heroActions {
+  position: absolute;
+  inset-block-start: var(--space-4);
+  inset-inline-end: var(--space-4);
+  display: flex;
+  gap: var(--space-2);
+}
+
+.actionButton {
+  background-color: var(--color-white);
+  border: 3px solid var(--color-black);
+}
+
+.actionButton:hover {
+  background-color: var(--color-grey-100);
+}
+
+.heartIcon {
+  height: var(--space-5);
+  width: var(--space-5);
+  color: var(--color-black);
+}
+
+.heartIconFilled {
+  height: var(--space-5);
+  width: var(--space-5);
+  color: var(--color-black);
+  fill: var(--color-black);
+}
+
+.shareIcon {
+  height: var(--space-5);
+  width: var(--space-5);
+  color: var(--color-black);
+}
+
+.heroContent {
+  position: absolute;
+  inset-block-end: 0;
+  inset-inline-start: 0;
+  inset-inline-end: 0;
+  padding: var(--space-8);
+}
+
+.content {
+  max-width: 1280px;
+  margin-inline: auto;
+}
+
+.heroTitle {
+  font-family: var(--font-anton);
+  font-size: var(--font-size-hero);
+  text-transform: uppercase;
+  color: var(--color-white);
+  margin-block-end: var(--space-4);
+  font-weight: var(--font-weight-bold);
+}
+
+.heroMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  font-family: var(--font-share);
+  font-size: var(--font-size-base);
+  color: var(--color-white);
+}
+
+.icon {
+  height: var(--space-5);
+  width: var(--space-5);
+  flex-shrink: 0;
+}
+
+/* Main Content */
+.mainContent {
+  max-width: 1536px;
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+  padding-block: var(--space-12);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-8);
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+/* Cards */
+.card {
+  padding: var(--space-6);
+}
+
+.cardBg {
+  background-color: var(--color-white);
+  border: 3px solid var(--color-black);
+}
+
+.cardBgGrey {
+  background-color: var(--color-grey-100);
+  border: 3px solid var(--color-black);
+}
+
+.cardTitle {
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-h2);
+  text-transform: uppercase;
+  color: var(--color-black);
+  margin-block-end: var(--space-4);
+  font-weight: var(--font-weight-normal);
+}
+
+.cardText {
+  white-space: pre-wrap;
+  font-family: var(--font-share);
+  font-size: var(--font-size-body);
+  color: var(--color-grey-700);
+  line-height: var(--line-height-normal);
+}
+
+/* Venue Section */
+.venueName {
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-xl);
+  text-transform: uppercase;
+  color: var(--color-black);
+  font-weight: var(--font-weight-normal);
+}
+
+.venueAddress {
+  font-family: var(--font-share);
+  font-size: var(--font-size-base);
+  color: var(--color-grey-600);
+}
+
+.venueCapacity {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-share);
+  font-size: var(--font-size-base);
+  color: var(--color-grey-700);
+}
+
+.venueRestriction {
+  font-family: var(--font-share);
+  font-size: var(--font-size-meta);
+  margin-block-start: var(--space-2);
+  color: var(--color-grey-700);
+}
+
+/* Artists Section */
+.artistCard {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+}
+
+.artistImage {
+  width: 5rem;
+  height: 5rem;
+  border: 3px solid var(--color-black);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.artistName {
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-lg);
+  text-transform: uppercase;
+  color: var(--color-black);
+  font-weight: var(--font-weight-normal);
+}
+
+.artistBio {
+  font-family: var(--font-share);
+  font-size: var(--font-size-meta);
+  color: var(--color-grey-600);
+}
+
+/* Tickets Sidebar */
+.sidebar {
+  grid-column: span 1;
+}
+
+@media (min-width: 1024px) {
+  .sidebar {
+    grid-column: span 1;
+  }
+}
+
+.stickyContainer {
+  position: sticky;
+  inset-block-start: var(--space-4);
+}
+
+.emptyTickets {
+  text-align: center;
+  padding-block: var(--space-8);
+  font-family: var(--font-share);
+  font-size: var(--font-size-base);
+  color: var(--color-grey-600);
+}
+
+.ticketCard {
+  padding: var(--space-4);
+  border: 3px solid var(--color-black);
+  background-color: var(--color-white);
+}
+
+.ticketHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-block-end: var(--space-2);
+}
+
+.ticketName {
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-lg);
+  text-transform: uppercase;
+  color: var(--color-black);
+  font-weight: var(--font-weight-normal);
+}
+
+.ticketDescription {
+  font-family: var(--font-share);
+  font-size: var(--font-size-meta);
+  margin-block-start: var(--space-1);
+  color: var(--color-grey-600);
+}
+
+.ticketPrice {
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-xl);
+  text-transform: uppercase;
+  color: var(--color-black);
+  font-weight: var(--font-weight-normal);
+}
+
+.ticketAvailable {
+  font-family: var(--font-share);
+  font-size: var(--font-size-meta);
+  margin-block-end: var(--space-3);
+  color: var(--color-grey-500);
+}
+
+.quantityControls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.quantityDisplay {
+  width: 2rem;
+  text-align: center;
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-base);
+  color: var(--color-black);
+  font-weight: var(--font-weight-normal);
+}
+
+.soldOut {
+  font-family: var(--font-share);
+  font-size: var(--font-size-meta);
+  color: var(--color-grey-700);
+}
+
+/* Cart Summary */
+.cartSummary {
+  margin-block-start: var(--space-6);
+  padding-block-start: var(--space-6);
+  border-block-start: 3px solid var(--color-black);
+}
+
+.cartTotal {
+  display: flex;
+  justify-content: space-between;
+  margin-block-end: var(--space-4);
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-lg);
+  text-transform: uppercase;
+  color: var(--color-black);
+  font-weight: var(--font-weight-normal);
+}
+
+.cartButton {
+  width: 100%;
+}
+
+.cartIcon {
+  height: var(--space-5);
+  width: var(--space-5);
+  margin-inline-end: var(--space-2);
+}
+
+
+.bgBlack {
+  background-color: var(--color-black);
+}
+
+.bgWhite {
+  background-color: var(--color-white);
+}
+
+.borderBlack {
+  border-color: var(--color-black);
+}
+
+.emptyIcon {
+  inline-size: var(--space-16);
+  block-size: var(--space-16);
+  margin-inline: auto;
+  color: var(--color-grey-600);
+  margin-block-end: var(--space-4);
+}
+
+.textGrey600 {
+  color: var(--color-grey-600);
+}
+
+.textGrey700 {
+  color: var(--color-grey-700);
+}
+
+.textBlack {
+  color: var(--color-black);
+}
+
+.textWhite {
+  color: var(--color-white);
+}
+
+.flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flexBetween {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.gap2 {
+  gap: var(--space-2);
+}
+
+.gap4 {
+  gap: var(--space-4);
+}
+
+
+.fullWidth {
+  inline-size: 100%;
+}
+
+.fullHeight {
+  block-size: 100%;
+}
+
+.marginBottom {
+  margin-block-end: var(--space-4);
+}
+
+.marginTop {
+  margin-block-start: var(--space-4);
+}
+
+.textSmall {
+  font-size: var(--font-size-sm);
+}
+
+.textLarge {
+  font-size: var(--font-size-lg);
+}
+
+.fontBold {
+  font-weight: var(--font-weight-semibold);
+}
+
+.fontMedium {
+  font-weight: var(--font-weight-medium);
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.rounded {
+  border-radius: var(--radius-md);
+}
+
+.shadow {
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.1);
+}

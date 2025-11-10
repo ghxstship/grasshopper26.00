@@ -15,6 +15,7 @@ import { toast } from 'sonner';
 import { Loader2, User, Heart, Calendar, ShoppingBag, Settings, Bell } from 'lucide-react';
 import { Checkbox } from '@/design-system/components/atoms/checkbox';
 import Link from 'next/link';
+import styles from '../auth.module.css';
 
 export default function ProfilePage() {
   const router = useRouter();
@@ -105,99 +106,96 @@ export default function ProfilePage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center " style={{ background: 'var(--gradient-hero)' }}>
-        <Loader2 className="h-8 w-8 animate-spin text-purple-400" />
+      <div className={styles.container}>
+        <Loader2 className={styles.loadingIcon} />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen  py-12 px-4" style={{ background: 'var(--gradient-hero)' }}>
-      <div className="max-w-4xl mx-auto">
-        <div className="flex items-center justify-between mb-8">
-          <h1 className="text-3xl font-bold  bg-clip-text text-transparent" style={{ backgroundImage: 'var(--gradient-brand-primary)' }}>
+    <div className={styles.pageContainer}>
+      <div className={styles.maxWidth}>
+        <div className={styles.pageHeader}>
+          <h1 className={styles.pageTitle}>
             My Profile
           </h1>
           <Button
             variant="outline"
             onClick={handleSignOut}
-            className="border-purple-500/30 hover:bg-purple-500/10"
           >
             Sign Out
           </Button>
         </div>
 
-        <Tabs defaultValue="profile" className="space-y-6">
-          <TabsList className="bg-black/40 border border-purple-500/20">
-            <TabsTrigger value="profile" className="data-[state=active]:bg-purple-600">
-              <User className="mr-2 h-4 w-4" />
+        <Tabs defaultValue="profile" className={styles.section}>
+          <TabsList className={styles.tabsList}>
+            <TabsTrigger value="profile">
+              <User className={styles.icon} />
               Profile
             </TabsTrigger>
-            <TabsTrigger value="favorites" className="data-[state=active]:bg-purple-600">
-              <Heart className="mr-2 h-4 w-4" />
+            <TabsTrigger value="favorites">
+              <Heart className={styles.icon} />
               Favorites
             </TabsTrigger>
-            <TabsTrigger value="events" className="data-[state=active]:bg-purple-600">
-              <Calendar className="mr-2 h-4 w-4" />
+            <TabsTrigger value="events">
+              <Calendar className={styles.icon} />
               My Events
             </TabsTrigger>
-            <TabsTrigger value="orders" className="data-[state=active]:bg-purple-600">
-              <ShoppingBag className="mr-2 h-4 w-4" />
+            <TabsTrigger value="orders">
+              <ShoppingBag className={styles.icon} />
               Orders
             </TabsTrigger>
-            <TabsTrigger value="settings" className="data-[state=active]:bg-purple-600">
-              <Settings className="mr-2 h-4 w-4" />
+            <TabsTrigger value="settings">
+              <Settings className={styles.icon} />
               Settings
             </TabsTrigger>
           </TabsList>
 
           <TabsContent value="profile">
-            <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20">
+            <Card className={styles.card}>
               <CardHeader>
-                <CardTitle>Profile Information</CardTitle>
-                <CardDescription>Update your account details</CardDescription>
+                <CardTitle className={styles.subtitle}>Profile Information</CardTitle>
+                <CardDescription className={styles.description}>Update your account details</CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="flex items-center gap-6 mb-6">
-                  <Avatar className="h-20 w-20">
+                <div className={styles.row}>
+                  <Avatar className={styles.avatar}>
                     <AvatarImage src={profile?.avatar_url} />
-                    <AvatarFallback className="bg-purple-600 text-white text-2xl">
+                    <AvatarFallback className={styles.avatarFallback}>
                       {displayName?.charAt(0) || user?.email?.charAt(0) || 'U'}
                     </AvatarFallback>
                   </Avatar>
                   <div>
-                    <p className="text-sm text-gray-400">Email</p>
-                    <p className="font-medium">{user?.email}</p>
+                    <p className={styles.label}>Email</p>
+                    <p className={styles.value}>{user?.email}</p>
                   </div>
                 </div>
 
-                <form onSubmit={handleUpdateProfile} className="space-y-4">
-                  <div className="space-y-2">
+                <form onSubmit={handleUpdateProfile} className={styles.section}>
+                  <div className={styles.section}>
                     <Label htmlFor="displayName">Display Name</Label>
                     <Input
                       id="displayName"
                       value={displayName}
                       onChange={(e) => setDisplayName(e.target.value)}
-                      className="bg-black/50 border-purple-500/30"
                     />
                   </div>
-                  <div className="space-y-2">
+                  <div className={styles.section}>
                     <Label htmlFor="bio">Bio</Label>
                     <textarea
                       id="bio"
                       value={bio}
                       onChange={(e) => setBio(e.target.value)}
                       rows={4}
-                      className="flex w-full rounded-md border border-purple-500/30 bg-black/50 px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                      className={styles.textarea}
                       placeholder="Tell us about yourself..."
                     />
                   </div>
                   <Button
                     type="submit"
-                    className="" style={{ background: 'var(--gradient-brand-primary)' }}
                     disabled={loading}
                   >
-                    {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                    {loading && <Loader2 className={styles.icon} />}
                     Save Changes
                   </Button>
                 </form>
@@ -206,40 +204,37 @@ export default function ProfilePage() {
           </TabsContent>
 
           <TabsContent value="favorites">
-            <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20">
+            <Card className={styles.card}>
               <CardHeader>
-                <CardTitle>Favorite Artists</CardTitle>
-                <CardDescription>Artists you follow</CardDescription>
+                <CardTitle className={styles.subtitle}>Favorite Artists</CardTitle>
+                <CardDescription className={styles.description}>Artists you follow</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-400">No favorite artists yet. Start exploring!</p>
+                <p className={styles.description}>No favorite artists yet. Start exploring!</p>
               </CardContent>
             </Card>
           </TabsContent>
 
           <TabsContent value="events">
-            <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20">
+            <Card className={styles.card}>
               <CardHeader>
-                <CardTitle>My Events</CardTitle>
-                <CardDescription>Events you&apos;re attending</CardDescription>
+                <CardTitle className={styles.subtitle}>My Events</CardTitle>
+                <CardDescription className={styles.description}>Events you&apos;re attending</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-400">No upcoming events. Browse events to get tickets!</p>
+                <p className={styles.description}>No upcoming events. Browse events to get tickets!</p>
               </CardContent>
             </Card>
           </TabsContent>
 
           <TabsContent value="orders">
-            <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20">
+            <Card className={styles.card}>
               <CardHeader>
-                <CardTitle>Order History</CardTitle>
-                <CardDescription>Your ticket and merchandise orders</CardDescription>
+                <CardTitle className={styles.subtitle}>Order History</CardTitle>
+                <CardDescription className={styles.description}>Your ticket and merchandise orders</CardDescription>
               </CardHeader>
               <CardContent>
-                <Button
-                  asChild
-                  className="" style={{ background: 'var(--gradient-brand-primary)' }}
-                >
+                <Button asChild>
                   <Link href="/orders">View All Orders</Link>
                 </Button>
               </CardContent>
@@ -247,20 +242,20 @@ export default function ProfilePage() {
           </TabsContent>
 
           <TabsContent value="settings">
-            <div className="space-y-6">
-              <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20">
+            <div className={styles.section}>
+              <Card className={styles.card}>
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Bell className="h-5 w-5" />
+                  <CardTitle className={`${styles.subtitle} ${styles.row}`}>
+                    <Bell className={styles.icon} />
                     Notification Preferences
                   </CardTitle>
-                  <CardDescription>Manage how you receive updates</CardDescription>
+                  <CardDescription className={styles.description}>Manage how you receive updates</CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="flex items-center justify-between">
+                <CardContent className={styles.section}>
+                  <div className={styles.header}>
                     <div>
-                      <p className="font-medium text-white">Marketing Emails</p>
-                      <p className="text-sm text-gray-400">
+                      <p className={styles.label}>Marketing Emails</p>
+                      <p className={styles.description}>
                         Receive updates about new events and promotions
                       </p>
                     </div>
@@ -271,10 +266,10 @@ export default function ProfilePage() {
                       }
                     />
                   </div>
-                  <div className="flex items-center justify-between">
+                  <div className={styles.header}>
                     <div>
-                      <p className="font-medium text-white">Event Updates</p>
-                      <p className="text-sm text-gray-400">
+                      <p className={styles.label}>Event Updates</p>
+                      <p className={styles.description}>
                         Get notified about events you&apos;re interested in
                       </p>
                     </div>
@@ -285,10 +280,10 @@ export default function ProfilePage() {
                       }
                     />
                   </div>
-                  <div className="flex items-center justify-between">
+                  <div className={styles.header}>
                     <div>
-                      <p className="font-medium text-white">Order Confirmations</p>
-                      <p className="text-sm text-gray-400">
+                      <p className={styles.label}>Order Confirmations</p>
+                      <p className={styles.description}>
                         Receive receipts and ticket delivery emails
                       </p>
                     </div>
@@ -301,25 +296,23 @@ export default function ProfilePage() {
                   </div>
                   <Button
                     onClick={handleUpdateProfile}
-                    className="" style={{ background: 'var(--gradient-brand-primary)' }}
                     disabled={loading}
                   >
-                    {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                    {loading && <Loader2 className={styles.icon} />}
                     Save Preferences
                   </Button>
                 </CardContent>
               </Card>
 
-              <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20">
+              <Card className={styles.card}>
                 <CardHeader>
-                  <CardTitle>Password & Security</CardTitle>
-                  <CardDescription>Manage your account security</CardDescription>
+                  <CardTitle className={styles.subtitle}>Password & Security</CardTitle>
+                  <CardDescription className={styles.description}>Manage your account security</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <Button
                     asChild
                     variant="outline"
-                    className="border-purple-500/30 hover:bg-purple-500/10"
                   >
                     <Link href="/forgot-password">Change Password</Link>
                   </Button>

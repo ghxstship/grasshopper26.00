@@ -10,6 +10,7 @@ import { Button } from '@/design-system/components/atoms/button';
 import { Card } from '@/design-system/components/atoms/card';
 import { Badge } from '@/design-system/components/atoms/badge';
 import { primitiveColors } from '@/design-system/tokens/primitives/colors';
+import styles from './venue-map.module.css';
 
 interface VenueMapPOI {
   id: string;
@@ -120,45 +121,45 @@ export function VenueMap({ eventId, mapData, pois, onPOIClick, className }: Venu
   };
 
   return (
-    <div className={`relative w-full h-full ${className}`}>
+    <div className={`${styles.container} ${className || ''}`}>
       {/* Controls */}
-      <div className="absolute top-4 right-4 z-10 flex flex-col gap-2">
+      <div className={styles.controls}>
         <Button
           size="icon"
           variant="secondary"
           onClick={handleZoomIn}
           disabled={zoom >= maxZoom}
-          className="bg-white/90 backdrop-blur-sm"
+          className={styles.controlButton}
         >
-          <ZoomIn className="h-4 w-4" />
+          <ZoomIn className={styles.controlIcon} />
         </Button>
         <Button
           size="icon"
           variant="secondary"
           onClick={handleZoomOut}
           disabled={zoom <= minZoom}
-          className="bg-white/90 backdrop-blur-sm"
+          className={styles.controlButton}
         >
-          <ZoomOut className="h-4 w-4" />
+          <ZoomOut className={styles.controlIcon} />
         </Button>
         <Button
           size="icon"
           variant="secondary"
           onClick={handleReset}
-          className="bg-white/90 backdrop-blur-sm"
+          className={styles.controlButton}
         >
-          <Maximize2 className="h-4 w-4" />
+          <Maximize2 className={styles.controlIcon} />
         </Button>
       </div>
 
       {/* Legend */}
-      <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur-sm rounded-lg p-4 max-w-xs">
-        <h3 className="font-semibold mb-2 text-sm">Map Legend</h3>
-        <div className="grid grid-cols-2 gap-2 text-xs">
+      <div className={styles.legend}>
+        <h3 className={styles.legendTitle}>Map Legend</h3>
+        <div className={styles.legendGrid}>
           {Object.entries(POI_ICONS).map(([type, icon]) => (
-            <div key={type} className="flex items-center gap-2">
-              <span className="text-lg">{icon}</span>
-              <span className="capitalize">{type}</span>
+            <div key={type} className={styles.legendItem}>
+              <span className={styles.legendIcon}>{icon}</span>
+              <span className={styles.legendLabel}>{type}</span>
             </div>
           ))}
         </div>
@@ -167,7 +168,7 @@ export function VenueMap({ eventId, mapData, pois, onPOIClick, className }: Venu
       {/* Map Container - Interactive application widget */}
       <div
         ref={containerRef}
-        className="w-full h-full overflow-hidden bg-gray-100 rounded-lg cursor-move"
+        className={styles.mapContainer}
         role="application" // Declares this as an interactive application widget
         aria-label="Interactive venue map"
         tabIndex={0}
@@ -184,7 +185,7 @@ export function VenueMap({ eventId, mapData, pois, onPOIClick, className }: Venu
         onWheel={handleWheel}
       >
         <motion.div
-          className="relative w-full h-full"
+          className={styles.mapContent}
           style={{
             transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})`,
             transformOrigin: 'center center',
@@ -193,7 +194,7 @@ export function VenueMap({ eventId, mapData, pois, onPOIClick, className }: Venu
         >
           {/* Background Image */}
           {mapData.background_image_url && (
-            <div className="absolute inset-0 w-full h-full">
+            <div className={styles.backgroundImage}>
               <Image
                 src={mapData.background_image_url}
                 alt={mapData.name}
@@ -208,7 +209,7 @@ export function VenueMap({ eventId, mapData, pois, onPOIClick, className }: Venu
           {/* SVG Map Layer */}
           {mapData.map_type === 'svg' && mapData.map_data && (
             <svg
-              className="absolute inset-0 w-full h-full"
+              className={styles.svgLayer}
               viewBox={`0 0 ${mapData.dimensions?.width || 1000} ${mapData.dimensions?.height || 1000}`}
               preserveAspectRatio="xMidYMid meet"
             >
@@ -229,7 +230,7 @@ export function VenueMap({ eventId, mapData, pois, onPOIClick, className }: Venu
           {pois.map((poi) => (
             <motion.div
               key={poi.id}
-              className="absolute cursor-pointer"
+              className={styles.poiMarker}
               style={{
                 left: `${poi.coordinates.x}%`,
                 top: `${poi.coordinates.y}%`,
@@ -249,17 +250,17 @@ export function VenueMap({ eventId, mapData, pois, onPOIClick, className }: Venu
               aria-label={`${poi.name} - ${poi.poi_type}`}
             >
               <div
-                className="relative flex items-center justify-center w-10 h-10 rounded-full shadow-lg"
+                className={styles.poiIcon}
                 style={{
                   backgroundColor: poi.color || POI_COLORS[poi.poi_type] || primitiveColors.brand[500],
                 }}
               >
-                <span className="text-2xl">
+                <span className={styles.poiIconEmoji}>
                   {POI_ICONS[poi.poi_type] || '📍'}
                 </span>
                 {selectedPOI?.id === poi.id && (
                   <motion.div
-                    className="absolute inset-0 rounded-full border-4 border-white"
+                    className={styles.poiHighlight}
                     initial={{ scale: 0 }}
                     animate={{ scale: 1.2 }}
                     transition={{ duration: 0.2 }}
@@ -275,30 +276,30 @@ export function VenueMap({ eventId, mapData, pois, onPOIClick, className }: Venu
       <AnimatePresence>
         {selectedPOI && (
           <motion.div
-            className="absolute bottom-4 left-4 right-4 z-20"
+            className={styles.detailsPanel}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
           >
-            <Card className="p-4 bg-white/95 backdrop-blur-sm">
-              <div className="flex items-start justify-between">
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-2xl">
+            <Card className={styles.detailsCard}>
+              <div className={styles.detailsContent}>
+                <div className={styles.detailsMain}>
+                  <div className={styles.detailsHeader}>
+                    <span className={styles.detailsIcon}>
                       {POI_ICONS[selectedPOI.poi_type] || '📍'}
                     </span>
-                    <h3 className="font-semibold text-lg">{selectedPOI.name}</h3>
-                    <Badge variant="secondary" className="capitalize">
+                    <h3 className={styles.detailsTitle}>{selectedPOI.name}</h3>
+                    <Badge variant="secondary" className={styles.detailsBadge}>
                       {selectedPOI.poi_type}
                     </Badge>
                   </div>
                   {selectedPOI.description && (
-                    <p className="text-sm text-gray-600 mb-2">
+                    <p className={styles.detailsDescription}>
                       {selectedPOI.description}
                     </p>
                   )}
                   {selectedPOI.capacity && (
-                    <p className="text-xs text-gray-500">
+                    <p className={styles.detailsCapacity}>
                       Capacity: {selectedPOI.capacity}
                     </p>
                   )}

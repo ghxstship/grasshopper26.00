@@ -1,86 +1,30 @@
-/**
- * Product Detail Page
- * Displays individual product information with variants and purchase options
- */
-
 import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
-import { ProductDetailView } from '@/components/features/shop/product-detail-view';
+import { notFound } from 'next/navigation';
+import { ProductDetailClient } from './product-detail-client';
 
-interface ProductDetailPageProps {
-  params: Promise<{
-    slug: string;
-  }>;
-}
-
-export async function generateMetadata({ params }: ProductDetailPageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const supabase = await createClient();
-
-  const { data: product } = await supabase
-    .from('products')
-    .select('name, description, images')
-    .eq('slug', slug)
-    .eq('status', 'active')
-    .single();
-
-  if (!product) {
-    return {
-      title: 'Product Not Found | GVTEWAY',
-    };
-  }
-
+  const { data: product } = await supabase.from('products').select('name, description').eq('slug', slug).single();
+  
   return {
-    title: `${product.name} | GVTEWAY Shop`,
-    description: product.description || `Shop ${product.name} at GVTEWAY`,
-    openGraph: {
-      title: product.name,
-      description: product.description || undefined,
-      images: product.images?.[0] ? [product.images[0]] : [],
-    },
+    title: product ? `${product.name} | GVTEWAY Shop` : 'Product | GVTEWAY',
+    description: product?.description || 'Product details',
   };
 }
 
-export default async function ProductDetailPage({ params }: ProductDetailPageProps) {
+export default async function ProductDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const supabase = await createClient();
-
-  // Fetch product with variants
-  const { data: product, error } = await supabase
+  
+  const { data: product } = await supabase
     .from('products')
-    .select(`
-      *,
-      product_variants (*),
-      events (
-        name,
-        slug,
-        start_date
-      )
-    `)
+    .select('*, product_variants(*)')
     .eq('slug', slug)
-    .eq('status', 'active')
     .single();
 
-  if (error || !product) {
-    notFound();
-  }
+  if (!product) notFound();
 
-  // Fetch related products from same category
-  const { data: relatedProducts } = await supabase
-    .from('products')
-    .select('id, name, slug, base_price, images, category')
-    .eq('category', product.category)
-    .eq('status', 'active')
-    .neq('id', product.id)
-    .limit(4);
-
-  return (
-    <main className="min-h-screen bg-white">
-      <ProductDetailView 
-        product={product} 
-        relatedProducts={relatedProducts || []} 
-      />
-    </main>
-  );
+  return <ProductDetailClient product={product} />;
 }

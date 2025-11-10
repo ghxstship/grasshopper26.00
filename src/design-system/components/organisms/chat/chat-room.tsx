@@ -16,6 +16,7 @@ import { Send, Users, Settings } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { format } from 'date-fns';
 import Image from 'next/image';
+import styles from './chat-room.module.css';
 
 interface ChatRoomProps {
   roomId: string;
@@ -146,33 +147,33 @@ export function ChatRoom({ roomId, roomName, className }: ChatRoomProps) {
 
   if (loading) {
     return (
-      <Card className="flex items-center justify-center h-[600px]">
-        <p className="text-muted-foreground">Loading chat...</p>
+      <Card className={styles.loadingContainer}>
+        <p className={styles.loadingText}>Loading chat...</p>
       </Card>
     );
   }
 
   return (
-    <Card className={cn('flex flex-col h-[600px]', className)}>
+    <Card className={cn(styles.chatRoom, className)}>
       {/* Header */}
-      <div className="flex items-center justify-between p-4 border-b">
+      <div className={styles.header}>
         <div>
-          <h3 className="font-semibold">{roomName || 'Chat Room'}</h3>
-          <div className="flex items-center gap-2 text-xs text-muted-foreground">
-            <Users className="h-3 w-3" />
+          <h3 className={styles.headerTitle}>{roomName || 'Chat Room'}</h3>
+          <div className={styles.headerMeta}>
+            <Users className={styles.headerIcon} />
             <span>{participantCount} participants</span>
           </div>
         </div>
         <Button variant="ghost" size="icon">
-          <Settings className="h-4 w-4" />
+          <Settings className={styles.icon} />
         </Button>
       </div>
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+      <div className={styles.messagesContainer}>
         {messages.length === 0 ? (
-          <div className="flex items-center justify-center h-full">
-            <p className="text-muted-foreground">No messages yet. Be the first to say something!</p>
+          <div className={styles.emptyState}>
+            <p className={styles.emptyText}>No messages yet. Be the first to say something!</p>
           </div>
         ) : (
           messages.map((msg) => {
@@ -181,8 +182,8 @@ export function ChatRoom({ roomId, roomName, className }: ChatRoomProps) {
 
             if (isSystemMessage) {
               return (
-                <div key={msg.id} className="flex justify-center">
-                  <Badge variant="secondary" className="text-xs">
+                <div key={msg.id} className={styles.systemMessage}>
+                  <Badge variant="secondary" className={styles.systemBadge}>
                     {msg.message}
                   </Badge>
                 </div>
@@ -193,42 +194,42 @@ export function ChatRoom({ roomId, roomName, className }: ChatRoomProps) {
               <div
                 key={msg.id}
                 className={cn(
-                  'flex gap-2',
-                  isOwnMessage && 'flex-row-reverse'
+                  styles.messageWrapper,
+                  isOwnMessage && styles.messageWrapperOwn
                 )}
               >
-                <Avatar className="h-8 w-8">
+                <Avatar className={styles.avatar}>
                   {getUserAvatar(msg) && (
                     <Image 
                       src={getUserAvatar(msg)!} 
                       alt={getUserName(msg)} 
                       width={32}
                       height={32}
-                      className="rounded-full"
+                      className=""
                     />
                   )}
                 </Avatar>
                 <div
                   className={cn(
-                    'max-w-[70%] space-y-1',
-                    isOwnMessage && 'items-end'
+                    styles.messageContent,
+                    isOwnMessage && styles.messageContentOwn
                   )}
                 >
-                  <div className="flex items-center gap-2 px-1">
-                    <p className="text-xs font-medium">{getUserName(msg)}</p>
-                    <p className="text-xs text-muted-foreground">
+                  <div className={styles.messageMeta}>
+                    <p className={styles.messageAuthor}>{getUserName(msg)}</p>
+                    <p className={styles.messageTime}>
                       {format(new Date(msg.created_at), 'h:mm a')}
                     </p>
                   </div>
                   <div
                     className={cn(
-                      'rounded-lg px-4 py-2',
+                      styles.messageBubble,
                       isOwnMessage
-                        ? 'bg-primary text-primary-foreground'
-                        : 'bg-muted'
+                        ? styles.messageBubbleOwn
+                        : styles.messageBubbleOther
                     )}
                   >
-                    <p className="text-sm whitespace-pre-wrap break-words">
+                    <p className={styles.messageText}>
                       {msg.message}
                     </p>
                   </div>
@@ -241,15 +242,15 @@ export function ChatRoom({ roomId, roomName, className }: ChatRoomProps) {
       </div>
 
       {/* Input */}
-      <div className="p-4 border-t">
-        <div className="flex gap-2">
+      <div className={styles.inputContainer}>
+        <div className={styles.inputWrapper}>
           <Input
             value={newMessage}
             onChange={(e) => setNewMessage(e.target.value)}
             onKeyPress={handleKeyPress}
             placeholder="Send a message..."
             disabled={sending}
-            className="flex-1"
+            className={styles.input}
             maxLength={500}
           />
           <Button
@@ -257,10 +258,10 @@ export function ChatRoom({ roomId, roomName, className }: ChatRoomProps) {
             disabled={!newMessage.trim() || sending}
             size="icon"
           >
-            <Send className="h-4 w-4" />
+            <Send className={styles.icon} />
           </Button>
         </div>
-        <p className="text-xs text-muted-foreground mt-2">
+        <p className={styles.inputMeta}>
           Press Enter to send • {newMessage.length}/500
         </p>
       </div>

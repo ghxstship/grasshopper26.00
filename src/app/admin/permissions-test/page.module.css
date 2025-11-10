@@ -1,0 +1,69 @@
+/* Permissions Test Page - Design System Compliant */
+
+.container {
+  padding: var(--space-6);
+  max-inline-size: 1200px;
+  margin-inline: auto;
+}
+
+.title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-block-end: var(--space-6);
+}
+
+.section {
+  margin-block-end: var(--space-8);
+}
+
+.sectionTitle {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-block-end: var(--space-4);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-4);
+}
+
+.card {
+  padding: var(--space-4);
+  border: 2px solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg-primary);
+}
+
+.cardTitle {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  margin-block-end: var(--space-2);
+}
+
+.cardContent {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.statusSuccess {
+  color: var(--color-success);
+}
+
+.statusError {
+  color: var(--color-error);
+}
+
+.statusWarning {
+  color: var(--color-warning);
+}
+
+.code {
+  font-family: monospace;
+  background-color: var(--color-grey-100);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+}

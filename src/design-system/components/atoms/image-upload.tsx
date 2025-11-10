@@ -6,6 +6,7 @@ import { useState, useRef } from 'react';
 import { Button } from './button';
 import { Upload, X, Loader2 } from 'lucide-react';
 import Image from 'next/image';
+import styles from './image-upload.module.css';
 
 interface ImageUploadProps {
   onUpload: (url: string) => void;
@@ -81,7 +82,7 @@ export function ImageUpload({ onUpload, currentImage, bucket = 'event-images' }:
       />
 
       {preview ? (
-        <div className="relative w-full h-64 rounded-lg overflow-hidden border border-purple-500/20">
+        <div className={styles.card}>
           <Image
             src={preview}
             alt="Upload preview"
@@ -93,26 +94,26 @@ export function ImageUpload({ onUpload, currentImage, bucket = 'event-images' }:
             variant="destructive"
             size="sm"
             onClick={handleRemove}
-            className="absolute top-2 right-2"
+            className={styles.card}
           >
-            <X className="h-4 w-4" />
+            <X className={styles.icon} />
           </Button>
         </div>
       ) : (
         <div
           onClick={() => fileInputRef.current?.click()}
-          className="w-full h-64 border-2 border-dashed border-purple-500/30 rounded-lg flex flex-col items-center justify-center cursor-pointer hover:border-purple-500/50 transition-colors"
+          className={styles.row}
         >
           {uploading ? (
             <>
-              <Loader2 className="h-12 w-12 text-purple-400 animate-spin mb-4" />
-              <p className="text-gray-400">Uploading...</p>
+              <Loader2 className={styles.spinner} />
+              <p className={styles.text}>Uploading...</p>
             </>
           ) : (
             <>
-              <Upload className="h-12 w-12 text-purple-400 mb-4" />
-              <p className="text-gray-400 mb-2">Click to upload image</p>
-              <p className="text-sm text-gray-500">PNG, JPG, GIF up to 5MB</p>
+              <Upload className={styles.iconLarge} />
+              <p className={styles.text}>Click to upload image</p>
+              <p className={styles.text}>PNG, JPG, GIF up to 5MB</p>
             </>
           )}
         </div>

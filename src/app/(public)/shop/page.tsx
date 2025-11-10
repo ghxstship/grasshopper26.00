@@ -5,8 +5,7 @@
 
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
-import { ProductGrid } from '@/components/features/shop/product-grid';
-import { ShopFilters } from '@/components/features/shop/shop-filters';
+import { ShopBrowseClient } from './shop-client';
 
 export const metadata: Metadata = {
   title: 'Shop | GVTEWAY',
@@ -51,45 +50,5 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
     console.error('Failed to fetch products:', error);
   }
 
-  return (
-    <main className="min-h-screen bg-white">
-      {/* Header */}
-      <section className="border-b-3 border-black py-12 md:py-20">
-        <div className="container mx-auto px-4">
-          <h1 className="font-anton text-hero uppercase mb-4">
-            SHOP
-          </h1>
-          <p className="font-share text-body max-w-2xl">
-            Official GVTEWAY merchandise. Limited edition items, event exclusives, 
-            and more. All designs feature our signature monochromatic aesthetic.
-          </p>
-        </div>
-      </section>
-
-      {/* Filters */}
-      <section className="border-b-3 border-black py-8">
-        <div className="container mx-auto px-4">
-          <ShopFilters />
-        </div>
-      </section>
-
-      {/* Product Grid */}
-      <section className="py-12">
-        <div className="container mx-auto px-4">
-          {products && products.length > 0 ? (
-            <ProductGrid products={products} />
-          ) : (
-            <div className="text-center py-20">
-              <p className="font-bebas text-h3 uppercase mb-4">
-                NO PRODUCTS FOUND
-              </p>
-              <p className="font-share text-body text-grey-600">
-                Try adjusting your search or filters
-              </p>
-            </div>
-          )}
-        </div>
-      </section>
-    </main>
-  );
+  return <ShopBrowseClient initialProducts={products || []} initialSearch={search} />;
 }

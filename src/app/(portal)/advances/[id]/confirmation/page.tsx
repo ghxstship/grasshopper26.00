@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { GeometricIcon } from '@/design-system/components/atoms/GeometricIcon';
 import { ProductionAdvance } from '@/lib/types/production-advances';
 import { Check } from 'lucide-react';
+import styles from './page.module.css';
 
 export default function AdvanceConfirmationPage() {
   const router = useRouter();
@@ -35,21 +36,21 @@ export default function AdvanceConfirmationPage() {
 
   if (loading) {
     return (
-      <div className="flex min-h-screen items-center justify-center">
-        <div className="h-12 w-12 animate-spin border-4 border-black border-t-transparent" />
+      <div className={styles.row}>
+        <div className={styles.spinner} />
       </div>
     );
   }
 
   if (!advance) {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center">
-        <GeometricIcon name="alert" size="xl" className="mb-4 text-grey-400" />
-        <p className="font-share-tech text-grey-700">Advance not found</p>
+      <div className={styles.row}>
+        <GeometricIcon name="alert" size="xl" className={styles.errorIcon} />
+        <p className={styles.errorText}>Advance not found</p>
         <button
           type="button"
           onClick={() => router.push('/advances')}
-          className="mt-4 border-3 border-black bg-white px-6 py-3 font-bebas-neue uppercase transition-colors hover:bg-black hover:text-white"
+          className={styles.errorButton}
         >
           BACK TO MY ADVANCES
         </button>
@@ -58,67 +59,67 @@ export default function AdvanceConfirmationPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
-      <div className="container mx-auto px-4 py-16">
-        <div className="mx-auto max-w-2xl text-center">
+    <div className={styles.container}>
+      <div className={styles.content}>
+        <div className={styles.centerBox}>
           {/* Success Animation */}
-          <div className="mb-8 flex justify-center">
-            <div className="flex h-24 w-24 items-center justify-center border-3 border-black bg-black">
-              <Check className="h-12 w-12 text-white" />
+          <div className={styles.successIcon}>
+            <div className={styles.successCircle}>
+              <Check className={styles.checkIcon} />
             </div>
           </div>
 
           {/* Confirmation Message */}
-          <h1 className="font-anton text-4xl uppercase">ADVANCE SUBMITTED</h1>
-          <p className="mt-4 font-share-tech text-lg text-grey-700">
+          <h1 className={styles.heading}>ADVANCE SUBMITTED</h1>
+          <p className={styles.description}>
             Your production advance request has been successfully submitted and is now under review.
           </p>
 
           {/* Advance Number */}
-          <div className="mt-8 border-3 border-black bg-grey-50 p-8">
-            <p className="font-share-tech-mono text-xs uppercase text-grey-600">
+          <div className={styles.advanceBox}>
+            <p className={styles.advanceLabel}>
               ADVANCE NUMBER
             </p>
-            <p className="mt-2 font-bebas-neue text-3xl uppercase">
+            <p className={styles.advanceNumber}>
               {advance.advance_number}
             </p>
           </div>
 
           {/* What&apos;s Next */}
-          <div className="mt-8 border-3 border-black bg-white p-8 text-left">
-            <h2 className="mb-6 font-bebas-neue text-2xl uppercase">WHAT&apos;S NEXT?</h2>
-            <div className="space-y-6">
-              <div className="flex gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center border-3 border-black bg-black font-bebas-neue text-lg text-white">
+          <div className={styles.nextBox}>
+            <h2 className={styles.nextTitle}>WHAT&apos;S NEXT?</h2>
+            <div className={styles.section}>
+              <div className={styles.step}>
+                <div className={styles.stepNumber}>
                   1
                 </div>
-                <div>
-                  <h3 className="font-bebas-neue text-lg uppercase">REVIEW</h3>
-                  <p className="mt-1 font-share-tech text-sm text-grey-700">
+                <div className={styles.stepContent}>
+                  <h3 className={styles.stepTitle}>REVIEW</h3>
+                  <p className={styles.stepText}>
                     Our team will review your request within 24 hours
                   </p>
                 </div>
               </div>
 
-              <div className="flex gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center border-3 border-black bg-black font-bebas-neue text-lg text-white">
+              <div className={styles.step}>
+                <div className={styles.stepNumber}>
                   2
                 </div>
-                <div>
-                  <h3 className="font-bebas-neue text-lg uppercase">NOTIFICATION</h3>
-                  <p className="mt-1 font-share-tech text-sm text-grey-700">
+                <div className={styles.stepContent}>
+                  <h3 className={styles.stepTitle}>NOTIFICATION</h3>
+                  <p className={styles.stepText}>
                     You&apos;ll receive email notifications on approval status
                   </p>
                 </div>
               </div>
 
-              <div className="flex gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center border-3 border-black bg-black font-bebas-neue text-lg text-white">
+              <div className={styles.step}>
+                <div className={styles.stepNumber}>
                   3
                 </div>
-                <div>
-                  <h3 className="font-bebas-neue text-lg uppercase">TRACKING</h3>
-                  <p className="mt-1 font-share-tech text-sm text-grey-700">
+                <div className={styles.stepContent}>
+                  <h3 className={styles.stepTitle}>TRACKING</h3>
+                  <p className={styles.stepText}>
                     Track your advance in the &quot;My Advances&quot; section
                   </p>
                 </div>
@@ -127,23 +128,23 @@ export default function AdvanceConfirmationPage() {
           </div>
 
           {/* Actions */}
-          <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+          <div className={styles.actions}>
             <Link
               href={`/advances/${advance.id}`}
-              className="flex flex-1 items-center justify-center gap-2 border-3 border-black bg-white px-6 py-4 font-bebas-neue uppercase transition-colors hover:bg-grey-100"
+              className={styles.actionButton}
             >
               VIEW ADVANCE
             </Link>
             <Link
               href="/advances/catalog"
-              className="flex flex-1 items-center justify-center gap-2 border-3 border-black bg-black px-6 py-4 font-bebas-neue uppercase text-white transition-colors hover:bg-white hover:text-black"
+              className={styles.actionButtonSecondary}
             >
               CREATE ANOTHER ADVANCE
             </Link>
           </div>
 
           {/* Email Notice */}
-          <p className="mt-8 font-share-tech-mono text-xs text-grey-600">
+          <p className={styles.emailNotice}>
             A confirmation email has been sent to {advance.point_of_contact_email}
           </p>
         </div>

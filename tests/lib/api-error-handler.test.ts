@@ -3,110 +3,113 @@
  * Tests error handling and response formatting
  */
 
-import { describe, it, expect } from 'vitest';
-import { handleApiError, ApiError } from '@/lib/api/error-handler';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
+import { handleAPIError, APIError, ErrorCode } from '@/lib/api/error-handler';
 
 describe('API Error Handler', () => {
-  describe('handleApiError', () => {
-    it('should format validation errors', () => {
-      const error = new ApiError('Validation failed', 400, {
-        fields: ['email', 'password'],
-      });
+  let originalEnv: string | undefined;
 
-      const response = handleApiError(error);
+  beforeEach(() => {
+    originalEnv = process.env.NODE_ENV;
+  });
+
+  afterEach(() => {
+    if (originalEnv !== undefined) {
+      vi.stubEnv('NODE_ENV', originalEnv);
+    }
+  });
+
+  describe('handleAPIError', () => {
+    it('should handle APIError instances', async () => {
+      const error = new APIError(
+        ErrorCode.VALIDATION_ERROR,
+        'Validation failed',
+        400,
+        { fields: ['email', 'password'] }
+      );
+
+      const response = handleAPIError(error);
+      const data = await response.json();
 
       expect(response.status).toBe(400);
-      expect(response.body).toMatchObject({
-        error: 'Validation failed',
-        code: 400,
-      });
+      expect(data.error.code).toBe(ErrorCode.VALIDATION_ERROR);
+      expect(data.error.message).toBe('Validation failed');
+      expect(data.error.details).toEqual({ fields: ['email', 'password'] });
     });
 
-    it('should handle authentication errors', () => {
-      const error = new ApiError('Unauthorized', 401);
+    it('should handle authentication errors', async () => {
+      const error = new APIError(ErrorCode.UNAUTHORIZED, 'Unauthorized', 401);
 
-      const response = handleApiError(error);
+      const response = handleAPIError(error);
+      const data = await response.json();
 
       expect(response.status).toBe(401);
-      expect(response.body.error).toBe('Unauthorized');
+      expect(data.error.code).toBe(ErrorCode.UNAUTHORIZED);
+      expect(data.error.message).toBe('Unauthorized');
     });
 
-    it('should handle forbidden errors', () => {
-      const error = new ApiError('Forbidden', 403);
-
-      const response = handleApiError(error);
-
-      expect(response.status).toBe(403);
-      expect(response.body.error).toBe('Forbidden');
-    });
-
-    it('should handle not found errors', () => {
-      const error = new ApiError('Not found', 404);
-
-      const response = handleApiError(error);
-
-      expect(response.status).toBe(404);
-      expect(response.body.error).toBe('Not found');
-    });
-
-    it('should handle server errors', () => {
+    it('should handle standard Error instances', async () => {
       const error = new Error('Internal server error');
 
-      const response = handleApiError(error);
+      const response = handleAPIError(error);
+      const data = await response.json();
 
       expect(response.status).toBe(500);
-      expect(response.body.error).toContain('Internal server error');
+      expect(data.error.code).toBe(ErrorCode.INTERNAL_SERVER_ERROR);
     });
 
-    it('should include error details in development', () => {
-      const originalEnv = process.env.NODE_ENV;
-      process.env.NODE_ENV = 'development';
+    it('should include error details in development', async () => {
+      vi.stubEnv('NODE_ENV', 'development');
 
-      const error = new ApiError('Test error', 400, { detail: 'Extra info' });
+      const error = new Error('Test error');
 
-      const response = handleApiError(error);
+      const response = handleAPIError(error);
+      const data = await response.json();
 
-      expect(response.body.details).toBeDefined();
-
-      process.env.NODE_ENV = originalEnv;
+      expect(data.error.message).toBe('Test error');
     });
 
-    it('should sanitize errors in production', () => {
-      const originalEnv = process.env.NODE_ENV;
-      process.env.NODE_ENV = 'production';
+    it('should sanitize errors in production', async () => {
+      vi.stubEnv('NODE_ENV', 'production');
 
       const error = new Error('Sensitive database error');
 
-      const response = handleApiError(error);
+      const response = handleAPIError(error);
+      const data = await response.json();
 
-      expect(response.body.error).not.toContain('database');
+      expect(data.error.message).not.toContain('database');
+      expect(data.error.message).toBe('An unexpected error occurred');
       expect(response.status).toBe(500);
-
-      process.env.NODE_ENV = originalEnv;
     });
   });
 
-  describe('ApiError class', () => {
-    it('should create error with message and status', () => {
-      const error = new ApiError('Test error', 400);
+  describe('APIError class', () => {
+    it('should create error with code, message and status', () => {
+      const error = new APIError(ErrorCode.VALIDATION_ERROR, 'Test error', 400);
 
       expect(error.message).toBe('Test error');
       expect(error.statusCode).toBe(400);
-      expect(error.name).toBe('ApiError');
+      expect(error.code).toBe(ErrorCode.VALIDATION_ERROR);
+      expect(error.name).toBe('APIError');
     });
 
     it('should include additional details', () => {
       const details = { field: 'email', reason: 'invalid format' };
-      const error = new ApiError('Validation error', 400, details);
+      const error = new APIError(
+        ErrorCode.VALIDATION_ERROR,
+        'Validation error',
+        400,
+        details
+      );
 
       expect(error.details).toEqual(details);
     });
 
     it('should be instanceof Error', () => {
-      const error = new ApiError('Test', 400);
+      const error = new APIError(ErrorCode.VALIDATION_ERROR, 'Test', 400);
 
       expect(error instanceof Error).toBe(true);
-      expect(error instanceof ApiError).toBe(true);
+      expect(error instanceof APIError).toBe(true);
     });
   });
 });

@@ -123,10 +123,11 @@ export class ScreenReaderAnnouncer {
     this.liveRegion.setAttribute('role', 'status');
     this.liveRegion.setAttribute('aria-live', 'polite');
     this.liveRegion.setAttribute('aria-atomic', 'true');
+    // Screen reader only styles - using standard accessibility pattern
     this.liveRegion.style.position = 'absolute';
-    this.liveRegion.style.left = '-10000px';
-    this.liveRegion.style.width = '1px';
-    this.liveRegion.style.height = '1px';
+    this.liveRegion.style.left = '-10000px'; // Off-screen positioning
+    this.liveRegion.style.width = '1px'; // eslint-disable-line no-restricted-syntax -- Accessibility pattern requires specific pixel values for screen reader compatibility
+    this.liveRegion.style.height = '1px'; // eslint-disable-line no-restricted-syntax -- Accessibility pattern requires specific pixel values for screen reader compatibility
     this.liveRegion.style.overflow = 'hidden';
     document.body.appendChild(this.liveRegion);
   }

@@ -8,6 +8,7 @@ import { Button } from '@/design-system/components/atoms/button';
 import { Loader2, ArrowLeft, Download, Calendar, MapPin, DollarSign, User, Mail } from 'lucide-react';
 import { format } from 'date-fns';
 import Link from 'next/link';
+import styles from './page.module.css';
 
 interface OrderDetails {
   id: string;
@@ -106,30 +107,30 @@ export default function OrderDetailsPage() {
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'completed':
-        return 'text-green-400 bg-green-500/10 border-green-500/30';
+        return 'text-black bg-grey-100/10 border-black/30';
       case 'pending':
-        return 'text-yellow-400 bg-yellow-500/10 border-yellow-500/30';
+        return 'text-black bg-grey-100/10 border-yellow-500/30';
       case 'cancelled':
       case 'refunded':
-        return 'text-red-400 bg-red-500/10 border-red-500/30';
+        return 'text-black bg-grey-100/10 border-black/30';
       default:
-        return 'text-gray-400 bg-gray-500/10 border-gray-500/30';
+        return 'text-grey-600 bg-grey-100/10 border-gray-500/30';
     }
   };
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center " style={{ background: 'var(--gradient-hero)' }}>
-        <Loader2 className="h-12 w-12 animate-spin text-purple-500" />
+      <div className={`${styles.row} ${styles.heroGradient}`}>
+        <Loader2 className={styles.spinner} />
       </div>
     );
   }
 
   if (!order) {
     return (
-      <div className="min-h-screen flex items-center justify-center " style={{ background: 'var(--gradient-hero)' }}>
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-white mb-4">Order Not Found</h1>
+      <div className={`${styles.row} ${styles.heroGradient}`}>
+        <div >
+          <h1 className={styles.title}>Order Not Found</h1>
           <Button asChild>
             <Link href="/orders">Back to Orders</Link>
           </Button>
@@ -141,68 +142,68 @@ export default function OrderDetailsPage() {
   const event = order.tickets[0]?.ticket_type[0]?.event[0];
 
   return (
-    <div className="min-h-screen  py-12 px-4" style={{ background: 'var(--gradient-hero)' }}>
-      <div className="max-w-4xl mx-auto">
+    <div className={`${styles.container} ${styles.heroGradient}`}>
+      <div className={styles.content}>
         <Button
           asChild
           variant="ghost"
-          className="mb-6 text-gray-400 hover:text-white"
+          className={styles.text}
         >
           <Link href="/orders">
-            <ArrowLeft className="h-4 w-4 mr-2" />
+            <ArrowLeft className={styles.icon} />
             Back to Orders
           </Link>
         </Button>
 
-        <div className="mb-6">
-          <div className="flex items-center justify-between mb-2">
-            <h1 className="text-3xl font-bold text-white">
+        <div className={styles.section}>
+          <div className={styles.row}>
+            <h1 className={styles.title}>
               Order #{order.id.slice(0, 8).toUpperCase()}
             </h1>
             <span
-              className={`px-4 py-2 rounded-full text-sm font-medium border ${getStatusColor(
+              className={`${styles.statusBadge} ${getStatusColor(
                 order.status
               )}`}
             >
               {order.status.charAt(0).toUpperCase() + order.status.slice(1)}
             </span>
           </div>
-          <p className="text-gray-400">
+          <p >
             Placed on {format(new Date(order.created_at), 'PPP')}
           </p>
         </div>
 
-        <div className="grid gap-6">
+        <div className={styles.grid}>
           {/* Event Details */}
           {event && (
-            <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20">
+            <Card >
               <CardHeader>
-                <CardTitle className="text-white">Event Details</CardTitle>
+                <CardTitle >Event Details</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className={styles.section}>
                 <div>
-                  <h3 className="text-2xl font-bold text-white mb-2">{event.name}</h3>
-                  <p className="text-gray-400">{event.description}</p>
+                  <h3 className={styles.title}>{event.name}</h3>
+                  <p >{event.description}</p>
                 </div>
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div className="flex items-start gap-3">
-                    <Calendar className="h-5 w-5 text-purple-400 mt-0.5" />
+                <div className={styles.grid}>
+                  <div className={styles.card}>
+                    <Calendar className={styles.icon} />
                     <div>
-                      <p className="text-sm text-gray-400">Date & Time</p>
-                      <p className="text-white">
+                      <p className={styles.subtitle}>Date & Time</p>
+                      <p >
                         {format(new Date(event.start_date), 'PPP')}
                       </p>
-                      <p className="text-sm text-gray-400">
+                      <p className={styles.subtitle}>
                         {format(new Date(event.start_date), 'p')}
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <MapPin className="h-5 w-5 text-purple-400 mt-0.5" />
+                  <div className={styles.card}>
+                    <MapPin className={styles.icon} />
                     <div>
-                      <p className="text-sm text-gray-400">Venue</p>
-                      <p className="text-white">{event.venue_name}</p>
-                      <p className="text-sm text-gray-400">{event.venue_address}</p>
+                      <p className={styles.subtitle}>Venue</p>
+                      <p >{event.venue_name}</p>
+                      <p className={styles.subtitle}>{event.venue_address}</p>
                     </div>
                   </div>
                 </div>
@@ -211,31 +212,31 @@ export default function OrderDetailsPage() {
           )}
 
           {/* Tickets */}
-          <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20">
+          <Card >
             <CardHeader>
-              <CardTitle className="text-white">Tickets ({order.tickets.length})</CardTitle>
+              <CardTitle >Tickets ({order.tickets.length})</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="space-y-3">
+              <div className={styles.section}>
                 {order.tickets.map((ticket) => {
                   const ticketType = ticket.ticket_type[0];
                   return (
                     <div
                       key={ticket.id}
-                      className="flex items-center justify-between p-4 bg-black/30 rounded-lg border border-purple-500/10"
+                      className={styles.row}
                     >
                       <div>
-                        <p className="text-white font-medium">{ticketType?.name || 'Ticket'}</p>
-                        <p className="text-sm text-gray-400">
+                        <p className={styles.text}>{ticketType?.name || 'Ticket'}</p>
+                        <p className={styles.subtitle}>
                           Ticket ID: {ticket.id.slice(0, 8).toUpperCase()}
                         </p>
                       </div>
-                      <div className="text-right">
-                        <p className="text-white font-medium">
+                      <div >
+                        <p className={styles.text}>
                           ${parseFloat(ticketType?.price || '0').toFixed(2)}
                         </p>
                         <span
-                          className={`inline-block px-2 py-1 rounded text-xs mt-1 ${getStatusColor(
+                          className={`${styles.ticketStatusBadge} ${getStatusColor(
                             ticket.status
                           )}`}
                         >
@@ -250,39 +251,39 @@ export default function OrderDetailsPage() {
           </Card>
 
           {/* Order Summary */}
-          <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20">
+          <Card >
             <CardHeader>
-              <CardTitle className="text-white">Order Summary</CardTitle>
+              <CardTitle >Order Summary</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="space-y-2">
-                <div className="flex justify-between text-gray-400">
+            <CardContent className={styles.section}>
+              <div className={styles.section}>
+                <div className={styles.text}>
                   <span>Subtotal</span>
                   <span>${(parseFloat(order.total_amount) / 1.05).toFixed(2)}</span>
                 </div>
-                <div className="flex justify-between text-gray-400">
+                <div className={styles.text}>
                   <span>Service Fee (5%)</span>
                   <span>${(parseFloat(order.total_amount) * 0.05 / 1.05).toFixed(2)}</span>
                 </div>
-                <div className="border-t border-purple-500/20 pt-2">
-                  <div className="flex justify-between text-white text-lg font-bold">
+                <div className={styles.card}>
+                  <div className={styles.text}>
                     <span>Total</span>
                     <span>${parseFloat(order.total_amount).toFixed(2)}</span>
                   </div>
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-purple-500/20 space-y-2 text-sm">
-                <div className="flex items-center gap-2 text-gray-400">
-                  <User className="h-4 w-4" />
+              <div className={styles.section}>
+                <div className={styles.row}>
+                  <User className={styles.icon} />
                   <span>Customer ID: {order.user_id.slice(0, 8)}</span>
                 </div>
-                <div className="flex items-center gap-2 text-gray-400">
-                  <Mail className="h-4 w-4" />
+                <div className={styles.row}>
+                  <Mail className={styles.icon} />
                   <span>{userEmail}</span>
                 </div>
-                <div className="flex items-center gap-2 text-gray-400">
-                  <DollarSign className="h-4 w-4" />
+                <div className={styles.row}>
+                  <DollarSign className={styles.icon} />
                   <span>Payment ID: {order.stripe_payment_intent_id?.slice(0, 20)}...</span>
                 </div>
               </div>
@@ -291,14 +292,14 @@ export default function OrderDetailsPage() {
 
           {/* Actions */}
           {order.status === 'completed' && (
-            <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20">
-              <CardContent className="py-6">
+            <Card >
+              <CardContent >
                 <Button
                   asChild
-                  className="w-full " style={{ background: 'var(--gradient-brand-primary)' }}
+                  className={`${styles.fullWidth} ${styles.brandGradient}`}
                 >
                   <Link href={`/orders/${order.id}/tickets`}>
-                    <Download className="h-4 w-4 mr-2" />
+                    <Download className={styles.icon} />
                     Download Tickets
                   </Link>
                 </Button>

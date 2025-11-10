@@ -1,269 +1,31 @@
 'use client';
 
-import { useEffect, useState, useCallback } from 'react';
-import { useRouter } from 'next/navigation';
-import { createClient } from '@/lib/supabase/client';
-import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/design-system/components/atoms/tabs';
-import { Button } from '@/design-system/components/atoms/button';
-import { Calendar, Users, Ticket, DollarSign, TrendingUp, Music, ShoppingBag, Settings } from 'lucide-react';
-import Link from 'next/link';
+import { AdminDashboardTemplate } from '@/design-system/components/templates';
+import { Users, Ticket, DollarSign, TrendingUp, Calendar, Package } from 'lucide-react';
+import { useAdminDashboard } from '@/hooks/useAdminDashboard';
 
-export default function AdminDashboard() {
-  const router = useRouter();
-  const supabase = createClient();
-  const [loading, setLoading] = useState(true);
-  const [stats, setStats] = useState({
-    totalEvents: 0,
-    upcomingEvents: 0,
-    totalArtists: 0,
-    totalOrders: 0,
-    totalRevenue: 0,
-    ticketsSold: 0,
-  });
-
-  const loadStats = useCallback(async () => {
-    // Load events
-    const { count: totalEvents } = await supabase
-      .from('events')
-      .select('*', { count: 'exact', head: true });
-
-    const { count: upcomingEvents } = await supabase
-      .from('events')
-      .select('*', { count: 'exact', head: true })
-      .gte('start_date', new Date().toISOString());
-
-    // Load artists
-    const { count: totalArtists } = await supabase
-      .from('artists')
-      .select('*', { count: 'exact', head: true });
-
-    // Load orders
-    const { data: orders, count: totalOrders } = await supabase
-      .from('orders')
-      .select('total_amount', { count: 'exact' })
-      .eq('status', 'completed');
-
-    const totalRevenue = orders?.reduce((sum, order) => sum + parseFloat(order.total_amount), 0) || 0;
-
-    // Load tickets
-    const { count: ticketsSold } = await supabase
-      .from('tickets')
-      .select('*', { count: 'exact', head: true })
-      .eq('status', 'active');
-
-    setStats({
-      totalEvents: totalEvents || 0,
-      upcomingEvents: upcomingEvents || 0,
-      totalArtists: totalArtists || 0,
-      totalOrders: totalOrders || 0,
-      totalRevenue,
-      ticketsSold: ticketsSold || 0,
-    });
-  }, [supabase]);
-
-  const checkAuth = useCallback(async () => {
-    const { data: { user } } = await supabase.auth.getUser();
-    
-    if (!user) {
-      router.push('/login');
-      return;
-    }
-
-    // Check if user is admin
-    const { data: adminData } = await supabase
-      .from('brand_admins')
-      .select('role')
-      .eq('user_id', user.id)
-      .single();
-
-    if (!adminData) {
-      router.push('/');
-      return;
-    }
-
-    await loadStats();
-    setLoading(false);
-  }, [router, supabase, loadStats]);
-
-  useEffect(() => {
-    checkAuth();
-  }, [checkAuth]);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center " style={{ background: 'var(--gradient-hero)' }}>
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-purple-500"></div>
-      </div>
-    );
-  }
+export default function AdminDashboardPage() {
+  const { stats, loading } = useAdminDashboard();
 
   return (
-    <div className="min-h-screen  py-8 px-4" style={{ background: 'var(--gradient-hero)' }}>
-      <div className="max-w-7xl mx-auto">
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <h1 className="text-3xl font-bold  bg-clip-text text-transparent" style={{ backgroundImage: 'var(--gradient-brand-primary)' }}>
-              Admin Dashboard
-            </h1>
-            <p className="text-gray-400 mt-1">Manage your events, artists, and sales</p>
-          </div>
-          <Link href="/">
-            <Button variant="outline" className="border-purple-500/30 hover:bg-purple-500/10">
-              View Site
-            </Button>
-          </Link>
-        </div>
-
-        {/* Stats Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-          <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20">
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium text-gray-400">Total Events</CardTitle>
-              <Calendar className="h-4 w-4 text-purple-400" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold text-white">{stats.totalEvents}</div>
-              <p className="text-xs text-gray-400 mt-1">
-                {stats.upcomingEvents} upcoming
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20">
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium text-gray-400">Total Artists</CardTitle>
-              <Music className="h-4 w-4 text-purple-400" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold text-white">{stats.totalArtists}</div>
-              <p className="text-xs text-gray-400 mt-1">In directory</p>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20">
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium text-gray-400">Tickets Sold</CardTitle>
-              <Ticket className="h-4 w-4 text-purple-400" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold text-white">{stats.ticketsSold}</div>
-              <p className="text-xs text-gray-400 mt-1">Active tickets</p>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20">
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium text-gray-400">Total Revenue</CardTitle>
-              <DollarSign className="h-4 w-4 text-green-400" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold text-white">
-                ${stats.totalRevenue.toLocaleString('en-US', { minimumFractionDigits: 2 })}
-              </div>
-              <p className="text-xs text-gray-400 mt-1">From {stats.totalOrders} orders</p>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20">
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium text-gray-400">Conversion Rate</CardTitle>
-              <TrendingUp className="h-4 w-4 text-green-400" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold text-white">--</div>
-              <p className="text-xs text-gray-400 mt-1">Coming soon</p>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20">
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium text-gray-400">Active Users</CardTitle>
-              <Users className="h-4 w-4 text-purple-400" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold text-white">--</div>
-              <p className="text-xs text-gray-400 mt-1">Coming soon</p>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Management Tabs */}
-        <Tabs defaultValue="events" className="space-y-6">
-          <TabsList className="bg-black/40 border border-purple-500/20">
-            <TabsTrigger value="events" className="data-[state=active]:bg-purple-600">
-              <Calendar className="mr-2 h-4 w-4" />
-              Events
-            </TabsTrigger>
-            <TabsTrigger value="artists" className="data-[state=active]:bg-purple-600">
-              <Music className="mr-2 h-4 w-4" />
-              Artists
-            </TabsTrigger>
-            <TabsTrigger value="orders" className="data-[state=active]:bg-purple-600">
-              <ShoppingBag className="mr-2 h-4 w-4" />
-              Orders
-            </TabsTrigger>
-            <TabsTrigger value="settings" className="data-[state=active]:bg-purple-600">
-              <Settings className="mr-2 h-4 w-4" />
-              Settings
-            </TabsTrigger>
-          </TabsList>
-
-          <TabsContent value="events">
-            <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20">
-              <CardHeader>
-                <div className="flex items-center justify-between">
-                  <CardTitle>Event Management</CardTitle>
-                  <Button className="" style={{ background: 'var(--gradient-brand-primary)' }}>
-                    Create Event
-                  </Button>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-400">Event management interface coming soon...</p>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          <TabsContent value="artists">
-            <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20">
-              <CardHeader>
-                <div className="flex items-center justify-between">
-                  <CardTitle>Artist Management</CardTitle>
-                  <Button className="" style={{ background: 'var(--gradient-brand-primary)' }}>
-                    Add Artist
-                  </Button>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-400">Artist management interface coming soon...</p>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          <TabsContent value="orders">
-            <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20">
-              <CardHeader>
-                <CardTitle>Order Management</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-400">Order management interface coming soon...</p>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          <TabsContent value="settings">
-            <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20">
-              <CardHeader>
-                <CardTitle>Platform Settings</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-400">Settings interface coming soon...</p>
-              </CardContent>
-            </Card>
-          </TabsContent>
-        </Tabs>
-      </div>
-    </div>
+    <AdminDashboardTemplate
+      title="Admin Dashboard"
+      subtitle="Overview of platform metrics and activity"
+      loading={loading}
+      stats={[
+        { label: 'Total Users', value: stats.total_users, icon: <Users />, trend: { value: 12, direction: 'up', label: '+12%' } },
+        { label: 'Active Members', value: stats.active_members, icon: <TrendingUp />, trend: { value: 8, direction: 'up', label: '+8%' } },
+        { label: 'Tickets Sold', value: stats.tickets_sold, icon: <Ticket />, trend: { value: 15, direction: 'up', label: '+15%' } },
+        { label: 'Revenue', value: `$${stats.revenue.toLocaleString()}`, icon: <DollarSign />, trend: { value: 22, direction: 'up', label: '+22%' } },
+      ]}
+      quickActions={[
+        { label: 'Create Event', icon: <Calendar />, href: '/admin/events/create' },
+        { label: 'Manage Inventory', icon: <Package />, href: '/admin/inventory' },
+      ]}
+      tabs={[
+        { key: 'overview', label: 'Overview', content: <div>Overview content</div> },
+        { key: 'recent', label: 'Recent Activity', content: <div>Recent activity</div> },
+      ]}
+    />
   );
 }

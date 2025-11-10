@@ -1,5 +1,7 @@
 'use client';
 
+import styles from './page.module.css';
+
 import { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { requireAdmin } from '@/lib/api/middleware';
@@ -159,35 +161,35 @@ export default function DynamicPricingPage() {
 
   if (!eventId) {
     return (
-      <div className="p-8">
-        <p className="text-red-600">No event selected</p>
+      <div className={styles.card}>
+        <p className={styles.emptyState}>No event selected</p>
       </div>
     );
   }
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto"></div>
-          <p className="mt-4 text-gray-600">Loading configuration...</p>
+      <div className={styles.row}>
+        <div className={styles.loadingContainer}>
+          <div className={styles.spinner}></div>
+          <p className={styles.loadingText}>Loading configuration...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="p-8 max-w-6xl mx-auto">
+    <div className={styles.container}>
       {/* Header */}
-      <div className="flex justify-between items-center mb-8">
+      <div className={styles.headerRow}>
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Dynamic Pricing</h1>
-          <p className="text-gray-600 mt-1">Configure automatic price adjustments based on demand and time</p>
+          <h1 className={styles.title}>Dynamic Pricing</h1>
+          <p className={styles.subtitle}>Configure automatic price adjustments based on demand and time</p>
         </div>
         <button
           onClick={handleSave}
           disabled={saving}
-          className="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 disabled:opacity-50 transition-colors"
+          className={styles.button}
         >
           {saving ? 'Saving...' : 'Save Configuration'}
         </button>
@@ -195,29 +197,29 @@ export default function DynamicPricingPage() {
 
       {/* Messages */}
       {message && (
-        <div className={`mb-6 p-4 rounded-lg ${
-          message.type === 'success' ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'
+        <div className={`${styles.message} ${
+          message.type === 'success' ? styles.messageSuccess : styles.messageError
         }`}>
           {message.text}
         </div>
       )}
 
       {/* Enable Toggle */}
-      <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-        <div className="flex items-center justify-between">
-          <div>
-            <h2 className="text-lg font-semibold text-gray-900">Enable Dynamic Pricing</h2>
-            <p className="text-sm text-gray-600 mt-1">Automatically adjust prices based on demand and time</p>
+      <div className={styles.card}>
+        <div className={styles.header}>
+          <div className={styles.headerText}>
+            <h2 className={styles.headerTitle}>Enable Dynamic Pricing</h2>
+            <p className={styles.headerSubtitle}>Automatically adjust prices based on demand and time</p>
           </div>
           <button
             onClick={() => setConfig({ ...config, enabled: !config.enabled })}
-            className={`relative inline-flex h-8 w-14 items-center rounded-full transition-colors ${
-              config.enabled ? 'bg-green-600' : 'bg-gray-300'
+            className={`${styles.toggle} ${
+              config.enabled ? styles.toggleEnabled : styles.toggleDisabled
             }`}
           >
             <span
-              className={`inline-block h-6 w-6 transform rounded-full bg-white transition-transform ${
-                config.enabled ? 'translate-x-7' : 'translate-x-1'
+              className={`${styles.toggleThumb} ${
+                config.enabled ? styles.toggleThumbEnabled : styles.toggleThumbDisabled
               }`}
             />
           </button>
@@ -225,55 +227,61 @@ export default function DynamicPricingPage() {
       </div>
 
       {/* Strategy Selection */}
-      <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-        <h2 className="text-lg font-semibold text-gray-900 mb-4">Pricing Strategy</h2>
+      <div className={styles.card}>
+        <h2 className={styles.headerTitle}>Pricing Strategy</h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className={styles.grid}>
           <button
             onClick={() => setConfig({ ...config, pricing_strategy: 'demand_based' })}
-            className={`p-4 border-2 rounded-lg text-left transition-colors ${
-              config.pricing_strategy === 'demand_based'
-                ? 'border-purple-600 bg-purple-50'
-                : 'border-gray-200 hover:border-gray-300'
+            className={`${styles.strategyButton} ${
+              config.pricing_strategy === 'demand_based' ? styles.strategyButtonActive : ''
             }`}
           >
-            <h3 className="font-semibold text-gray-900 mb-1">Demand Based</h3>
-            <p className="text-sm text-gray-600">Price increases as capacity fills</p>
+            <h3 className={`${styles.strategyTitle} ${
+              config.pricing_strategy === 'demand_based' ? styles.strategyTitleActive : ''
+            }`}>Demand Based</h3>
+            <p className={`${styles.strategySubtitle} ${
+              config.pricing_strategy === 'demand_based' ? styles.strategySubtitleActive : ''
+            }`}>Price increases as capacity fills</p>
           </button>
 
           <button
             onClick={() => setConfig({ ...config, pricing_strategy: 'time_based' })}
-            className={`p-4 border-2 rounded-lg text-left transition-colors ${
-              config.pricing_strategy === 'time_based'
-                ? 'border-purple-600 bg-purple-50'
-                : 'border-gray-200 hover:border-gray-300'
+            className={`${styles.strategyButton} ${
+              config.pricing_strategy === 'time_based' ? styles.strategyButtonActive : ''
             }`}
           >
-            <h3 className="font-semibold text-gray-900 mb-1">Time Based</h3>
-            <p className="text-sm text-gray-600">Price increases as event approaches</p>
+            <h3 className={`${styles.strategyTitle} ${
+              config.pricing_strategy === 'time_based' ? styles.strategyTitleActive : ''
+            }`}>Time Based</h3>
+            <p className={`${styles.strategySubtitle} ${
+              config.pricing_strategy === 'time_based' ? styles.strategySubtitleActive : ''
+            }`}>Price increases as event approaches</p>
           </button>
 
           <button
             onClick={() => setConfig({ ...config, pricing_strategy: 'hybrid' })}
-            className={`p-4 border-2 rounded-lg text-left transition-colors ${
-              config.pricing_strategy === 'hybrid'
-                ? 'border-purple-600 bg-purple-50'
-                : 'border-gray-200 hover:border-gray-300'
+            className={`${styles.strategyButton} ${
+              config.pricing_strategy === 'hybrid' ? styles.strategyButtonActive : ''
             }`}
           >
-            <h3 className="font-semibold text-gray-900 mb-1">Hybrid</h3>
-            <p className="text-sm text-gray-600">Combines demand and time factors</p>
+            <h3 className={`${styles.strategyTitle} ${
+              config.pricing_strategy === 'hybrid' ? styles.strategyTitleActive : ''
+            }`}>Hybrid</h3>
+            <p className={`${styles.strategySubtitle} ${
+              config.pricing_strategy === 'hybrid' ? styles.strategySubtitleActive : ''
+            }`}>Combines demand and time factors</p>
           </button>
         </div>
       </div>
 
       {/* Price Bounds */}
-      <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-        <h2 className="text-lg font-semibold text-gray-900 mb-4">Price Bounds</h2>
+      <div className={styles.card}>
+        <h2 className={styles.headerTitle}>Price Bounds</h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className={styles.grid}>
           <div>
-            <label htmlFor="min-price" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="min-price" className={styles.label}>
               Minimum Price ($)
             </label>
             <input
@@ -283,12 +291,12 @@ export default function DynamicPricingPage() {
               onChange={(e) => setConfig({ ...config, min_price: parseFloat(e.target.value) })}
               min="0"
               step="0.01"
-              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500"
+              className={styles.input}
             />
           </div>
 
           <div>
-            <label htmlFor="max-price" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="max-price" className={styles.label}>
               Maximum Price ($)
             </label>
             <input
@@ -298,40 +306,40 @@ export default function DynamicPricingPage() {
               onChange={(e) => setConfig({ ...config, max_price: parseFloat(e.target.value) })}
               min="0"
               step="0.01"
-              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500"
+              className={styles.input}
             />
           </div>
         </div>
       </div>
 
       {/* Pricing Tiers */}
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <div className="flex justify-between items-center mb-4">
-          <h2 className="text-lg font-semibold text-gray-900">Pricing Tiers</h2>
+      <div className={styles.card}>
+        <div className={styles.headerRow}>
+          <h2 className={styles.headerTitle}>Pricing Tiers</h2>
           <button
             onClick={addTier}
-            className="px-4 py-2 bg-purple-600 text-white text-sm rounded-lg hover:bg-purple-700 transition-colors"
+            className={styles.button}
           >
             + Add Tier
           </button>
         </div>
 
-        <div className="space-y-4">
+        <div className={styles.section}>
           {config.tiers.map((tier, index) => (
-            <div key={tier.id} className="border border-gray-200 rounded-lg p-4">
-              <div className="flex justify-between items-start mb-4">
-                <h3 className="font-semibold text-gray-900">Tier {index + 1}</h3>
+            <div key={tier.id} className={styles.tierCard}>
+              <div className={styles.tierHeader}>
+                <h3 className={styles.tierTitle}>Tier {index + 1}</h3>
                 <button
                   onClick={() => removeTier(tier.id)}
-                  className="text-red-600 hover:text-red-700 text-sm"
+                  className={styles.tierRemove}
                 >
                   Remove
                 </button>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <div className={styles.grid}>
                 <div>
-                  <label htmlFor={`tier-name-${tier.id}`} className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor={`tier-name-${tier.id}`} className={styles.label}>
                     Name
                   </label>
                   <input
@@ -339,12 +347,12 @@ export default function DynamicPricingPage() {
                     type="text"
                     value={tier.name}
                     onChange={(e) => updateTier(tier.id, { name: e.target.value })}
-                    className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500"
+                    className={styles.tierInput}
                   />
                 </div>
 
                 <div>
-                  <label htmlFor={`tier-price-${tier.id}`} className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor={`tier-price-${tier.id}`} className={styles.label}>
                     Price ($)
                   </label>
                   <input
@@ -354,12 +362,12 @@ export default function DynamicPricingPage() {
                     onChange={(e) => updateTier(tier.id, { base_price: parseFloat(e.target.value) })}
                     min="0"
                     step="0.01"
-                    className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500"
+                    className={styles.tierInput}
                   />
                 </div>
 
                 <div>
-                  <label htmlFor={`tier-capacity-${tier.id}`} className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor={`tier-capacity-${tier.id}`} className={styles.label}>
                     Capacity % Threshold
                   </label>
                   <input
@@ -369,12 +377,12 @@ export default function DynamicPricingPage() {
                     onChange={(e) => updateTier(tier.id, { capacity_threshold: parseInt(e.target.value) })}
                     min="0"
                     max="100"
-                    className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500"
+                    className={styles.tierInput}
                   />
                 </div>
 
                 <div>
-                  <label htmlFor={`tier-days-${tier.id}`} className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor={`tier-days-${tier.id}`} className={styles.label}>
                     Days Before Event
                   </label>
                   <input
@@ -383,7 +391,7 @@ export default function DynamicPricingPage() {
                     value={tier.time_threshold_days}
                     onChange={(e) => updateTier(tier.id, { time_threshold_days: parseInt(e.target.value) })}
                     min="0"
-                    className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500"
+                    className={styles.tierInput}
                   />
                 </div>
               </div>
@@ -391,18 +399,18 @@ export default function DynamicPricingPage() {
           ))}
 
           {config.tiers.length === 0 && (
-            <div className="text-center py-8 text-gray-500">
+            <div className={styles.emptyState}>
               <p>No pricing tiers configured</p>
-              <p className="text-sm">Click &quot;Add Tier&quot; to create your first pricing tier</p>
+              <p className={styles.emptyStateText}>Click &quot;Add Tier&quot; to create your first pricing tier</p>
             </div>
           )}
         </div>
       </div>
 
       {/* Preview */}
-      <div className="mt-6 bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg p-6">
-        <h3 className="font-semibold text-gray-900 mb-4">How It Works</h3>
-        <ul className="space-y-2 text-sm text-gray-700">
+      <div className={styles.infoCard}>
+        <h3 className={styles.infoTitle}>How It Works</h3>
+        <ul className={styles.infoList}>
           <li>• Prices automatically adjust based on your selected strategy</li>
           <li>• Tiers activate when capacity or time thresholds are met</li>
           <li>• Prices will never go below minimum or above maximum bounds</li>

@@ -7,6 +7,7 @@
 
 import { useState, useTransition } from 'react';
 import { createClient } from '@/lib/supabase/client';
+import styles from './follow-artist-button.module.css';
 
 interface FollowArtistButtonProps {
   artistId: string;
@@ -60,14 +61,7 @@ export function FollowArtistButton({
     <button
       onClick={handleToggleFollow}
       disabled={isPending}
-      className={`
-        px-6 py-3 border-3 border-black font-bebas text-h6 uppercase
-        transition-colors disabled:opacity-50 disabled:cursor-not-allowed
-        ${isFollowing
-          ? 'bg-black text-white hover:bg-white hover:text-black'
-          : 'bg-white text-black hover:bg-black hover:text-white'
-        }
-      `}
+      className={`${styles.button} ${isFollowing ? styles.buttonFollowing : styles.buttonNotFollowing}`}
     >
       {isPending ? 'UPDATING...' : isFollowing ? 'FOLLOWING' : 'FOLLOW'}
     </button>

@@ -10,6 +10,7 @@ import { format } from 'date-fns';
 import Link from 'next/link';
 import { useCart } from '@/lib/store/cart-store';
 import { toast } from 'sonner';
+import styles from './page.module.css';
 
 interface TicketType {
   id: string;
@@ -204,17 +205,17 @@ export default function EventDetailPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-white">
-        <Loader2 className="h-12 w-12 animate-spin text-black" />
+      <div className={styles.loadingContainer}>
+        <Loader2 className={styles.loadingSpinner} />
       </div>
     );
   }
 
   if (!event) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-white">
-        <div className="text-center">
-          <h1 className="font-bebas text-h2 uppercase text-black mb-4">Event Not Found</h1>
+      <div className={styles.errorContainer}>
+        <div>
+          <h1 className={styles.errorTitle}>Event Not Found</h1>
           <Button asChild>
             <Link href="/events">Browse Events</Link>
           </Button>
@@ -230,55 +231,55 @@ export default function EventDetailPage() {
   }, 0);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className={styles.container}>
       {/* Hero Section */}
-      <div className="relative h-96 overflow-hidden border-b-3 border-black">
+      <div className={styles.heroSection}>
         {event.hero_image_url ? (
           <img
             src={event.hero_image_url}
             alt={event.name}
-            className="w-full h-full object-cover"
+            className={styles.heroImage}
           />
         ) : (
-          <div className="w-full h-full bg-grey-200" />
+          <div className={styles.heroImagePlaceholder} />
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+        <div className={styles.heroOverlay} />
         
         {/* Action Buttons */}
-        <div className="absolute top-4 right-4 flex gap-2">
+        <div className={styles.heroActions}>
           <Button
             onClick={toggleFavorite}
             variant="outline"
             size="icon"
-            className="bg-white border-3 border-black hover:bg-grey-100"
+            className={styles.actionButton}
           >
-            <Heart className={`h-5 w-5 ${isFavorite ? 'fill-black text-black' : 'text-black'}`} />
+            <Heart className={isFavorite ? styles.heartIconFilled : styles.heartIcon} />
           </Button>
           <Button
             onClick={handleShare}
             variant="outline"
             size="icon"
-            className="bg-white border-3 border-black hover:bg-grey-100"
+            className={styles.actionButton}
           >
-            <Share2 className="h-5 w-5 text-black" />
+            <Share2 className={styles.shareIcon} />
           </Button>
         </div>
 
         {/* Event Title */}
-        <div className="absolute bottom-0 left-0 right-0 p-8">
-          <div className="max-w-6xl mx-auto">
-            <h1 className="font-anton text-hero uppercase text-white mb-4">{event.name}</h1>
-            <div className="flex flex-wrap gap-4 font-share text-base text-white">
-              <div className="flex items-center gap-2">
-                <Calendar className="h-5 w-5" />
+        <div className={styles.heroContent}>
+          <div className={styles.content}>
+            <h1 className={styles.heroTitle}>{event.name}</h1>
+            <div className={styles.heroMeta}>
+              <div className={styles.row}>
+                <Calendar className={styles.icon} />
                 <span>{format(new Date(event.start_date), 'PPP')}</span>
               </div>
-              <div className="flex items-center gap-2">
-                <Clock className="h-5 w-5" />
+              <div className={styles.row}>
+                <Clock className={styles.icon} />
                 <span>{format(new Date(event.start_date), 'p')}</span>
               </div>
-              <div className="flex items-center gap-2">
-                <MapPin className="h-5 w-5" />
+              <div className={styles.row}>
+                <MapPin className={styles.icon} />
                 <span>{event.venue_name}</span>
               </div>
             </div>
@@ -287,33 +288,33 @@ export default function EventDetailPage() {
       </div>
 
       {/* Content */}
-      <div className="max-w-6xl mx-auto px-4 py-12">
-        <div className="grid lg:grid-cols-3 gap-8">
+      <div className={styles.mainContent}>
+        <div className={styles.grid}>
           {/* Main Content */}
-          <div className="lg:col-span-2 space-y-8">
+          <div className={styles.section}>
             {/* Description */}
-            <Card className="bg-white border-3 border-black">
-              <CardContent className="p-6">
-                <h2 className="font-bebas text-h2 uppercase text-black mb-4">About This Event</h2>
-                <p className="whitespace-pre-wrap font-share text-body text-grey-700">{event.description}</p>
+            <Card className={styles.cardBg}>
+              <CardContent className={styles.card}>
+                <h2 className={styles.cardTitle}>About This Event</h2>
+                <p className={styles.cardText}>{event.description}</p>
               </CardContent>
             </Card>
 
             {/* Venue Details */}
-            <Card className="bg-white border-3 border-black">
-              <CardContent className="p-6">
-                <h2 className="font-bebas text-h2 uppercase text-black mb-4">Venue</h2>
-                <div className="space-y-2">
-                  <p className="font-bebas text-xl uppercase text-black">{event.venue_name}</p>
-                  <p className="font-share text-base text-grey-600">{event.venue_address}</p>
+            <Card className={styles.cardBg}>
+              <CardContent className={styles.card}>
+                <h2 className={styles.cardTitle}>Venue</h2>
+                <div className={styles.section}>
+                  <p className={styles.venueName}>{event.venue_name}</p>
+                  <p className={styles.venueAddress}>{event.venue_address}</p>
                   {event.capacity && (
-                    <div className="flex items-center gap-2 mt-4 font-share text-base text-grey-600">
-                      <Users className="h-5 w-5" />
+                    <div className={styles.venueCapacity}>
+                      <Users className={styles.icon} />
                       <span>Capacity: {event.capacity}</span>
                     </div>
                   )}
                   {event.age_restriction && (
-                    <p className="font-share text-meta mt-2 text-grey-700">
+                    <p className={styles.venueRestriction}>
                       Age Restriction: {event.age_restriction}
                     </p>
                   )}
@@ -323,22 +324,22 @@ export default function EventDetailPage() {
 
             {/* Artists */}
             {event.artists && event.artists.length > 0 && (
-              <Card className="bg-white border-3 border-black">
-                <CardContent className="p-6">
-                  <h2 className="font-bebas text-h2 uppercase text-black mb-4">Lineup</h2>
-                  <div className="space-y-4">
+              <Card className={styles.cardBg}>
+                <CardContent className={styles.card}>
+                  <h2 className={styles.cardTitle}>Lineup</h2>
+                  <div className={styles.section}>
                     {event.artists.map((artist) => (
-                      <div key={artist.id} className="flex gap-4">
+                      <div key={artist.id} className={styles.artistCard}>
                         {artist.image_url && (
                           <img
                             src={artist.image_url}
                             alt={artist.name}
-                            className="w-20 h-20 border-3 border-black object-cover"
+                            className={styles.artistImage}
                           />
                         )}
                         <div>
-                          <h3 className="font-bebas text-lg uppercase text-black">{artist.name}</h3>
-                          <p className="font-share text-meta text-grey-600">{artist.bio}</p>
+                          <h3 className={styles.artistName}>{artist.name}</h3>
+                          <p className={styles.artistBio}>{artist.bio}</p>
                         </div>
                       </div>
                     ))}
@@ -349,18 +350,18 @@ export default function EventDetailPage() {
           </div>
 
           {/* Sidebar - Tickets */}
-          <div className="lg:col-span-1">
-            <div className="sticky top-4">
-              <Card className="bg-grey-100 border-3 border-black">
-                <CardContent className="p-6">
-                  <h2 className="font-bebas text-h2 uppercase text-black mb-6">Tickets</h2>
+          <div className={styles.sidebar}>
+            <div className={styles.stickyContainer}>
+              <Card className={styles.cardBgGrey}>
+                <CardContent className={styles.card}>
+                  <h2 className={styles.cardTitle}>Tickets</h2>
                   
                   {event.ticket_types.length === 0 ? (
-                    <p className="text-center py-8 font-share text-base text-grey-600">
+                    <p className={styles.emptyTickets}>
                       No tickets available at this time
                     </p>
                   ) : (
-                    <div className="space-y-4">
+                    <div className={styles.section}>
                       {event.ticket_types.map((ticketType) => {
                         const available = ticketType.quantity_available - ticketType.quantity_sold;
                         const isAvailable = available > 0 && ticketType.status === 'active';
@@ -368,28 +369,28 @@ export default function EventDetailPage() {
                         return (
                           <div
                             key={ticketType.id}
-                            className="p-4 border-3 border-black bg-white"
+                            className={styles.ticketCard}
                           >
-                            <div className="flex justify-between items-start mb-2">
+                            <div className={styles.ticketHeader}>
                               <div>
-                                <h3 className="font-bebas text-lg uppercase text-black">{ticketType.name}</h3>
+                                <h3 className={styles.ticketName}>{ticketType.name}</h3>
                                 {ticketType.description && (
-                                  <p className="font-share text-meta mt-1 text-grey-600">
+                                  <p className={styles.ticketDescription}>
                                     {ticketType.description}
                                   </p>
                                 )}
                               </div>
-                              <p className="font-bebas text-xl uppercase text-black">
+                              <p className={styles.ticketPrice}>
                                 ${parseFloat(ticketType.price).toFixed(2)}
                               </p>
                             </div>
                             
-                            <p className="font-share text-meta mb-3 text-grey-500">
+                            <p className={styles.ticketAvailable}>
                               {available} available
                             </p>
 
                             {isAvailable ? (
-                              <div className="flex items-center gap-2">
+                              <div className={styles.quantityControls}>
                                 <Button
                                   onClick={() =>
                                     handleQuantityChange(
@@ -403,7 +404,7 @@ export default function EventDetailPage() {
                                 >
                                   -
                                 </Button>
-                                <span className="w-8 text-center font-bebas text-base text-black">
+                                <span className={styles.quantityDisplay}>
                                   {selectedTickets[ticketType.id] || 0}
                                 </span>
                                 <Button
@@ -423,7 +424,7 @@ export default function EventDetailPage() {
                                 </Button>
                               </div>
                             ) : (
-                              <p className="font-share text-meta text-grey-700">Sold Out</p>
+                              <p className={styles.soldOut}>Sold Out</p>
                             )}
                           </div>
                         );
@@ -432,16 +433,16 @@ export default function EventDetailPage() {
                   )}
 
                   {totalSelected > 0 && (
-                    <div className="mt-6 pt-6 border-t-3 border-black">
-                      <div className="flex justify-between mb-4 font-bebas text-lg uppercase text-black">
+                    <div className={styles.cartSummary}>
+                      <div className={styles.cartTotal}>
                         <span>Total ({totalSelected} tickets)</span>
                         <span>${totalPrice.toFixed(2)}</span>
                       </div>
                       <Button
                         onClick={handleAddToCart}
-                        className="w-full"
+                        className={styles.cartButton}
                       >
-                        <ShoppingCart className="h-4 w-4 mr-2" />
+                        <ShoppingCart className={styles.cartIcon} />
                         Add to Cart
                       </Button>
                     </div>

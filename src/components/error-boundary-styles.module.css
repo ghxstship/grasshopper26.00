@@ -1,6 +1,0 @@
-.errorWrapper { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: color-mix(in srgb, var(--gradient-brand-subtle) 5%, transparent); padding: var(--space-4); }
-.errorCard { max-width: var(--space-160); width: 100%; background-color: color-mix(in srgb, var(--color-bg-primary) 40%, transparent); backdrop-filter: blur(16px); border: var(--border-width-default) solid color-mix(in srgb, var(--color-primary) 20%, transparent); }
-.errorIcon { height: var(--space-8); width: var(--space-8); color: var(--color-status-error-default); }
-.errorTitle { font-size: var(--font-size-2xl); font-weight: var(--font-weight-bold); margin-block-end: var(--space-4); }
-.errorDescription { color: var(--color-text-secondary); margin-block-end: var(--space-6); }
-.errorActions { display: flex; gap: var(--space-3); }

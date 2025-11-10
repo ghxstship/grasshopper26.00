@@ -2,6 +2,7 @@
 
 import { Button } from './button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import styles from './pagination.module.css';
 
 interface PaginationProps {
   currentPage: number;
@@ -25,15 +26,14 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
   }
 
   return (
-    <div className="flex items-center justify-center gap-2">
+    <div className={styles.row}>
       <Button
         variant="outline"
         size="sm"
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className="border-purple-500/30 hover:bg-purple-500/10"
       >
-        <ChevronLeft className="h-4 w-4" />
+        <ChevronLeft className={styles.icon} />
       </Button>
 
       {startPage > 1 && (
@@ -42,11 +42,10 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
             variant="outline"
             size="sm"
             onClick={() => onPageChange(1)}
-            className="border-purple-500/30 hover:bg-purple-500/10"
           >
             1
           </Button>
-          {startPage > 2 && <span className="text-gray-400">...</span>}
+          {startPage > 2 && <span className={styles.text}>...</span>}
         </>
       )}
 
@@ -56,11 +55,6 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
           variant={page === currentPage ? 'default' : 'outline'}
           size="sm"
           onClick={() => onPageChange(page)}
-          className={
-            page === currentPage
-              ? 'bg-gradient-to-r from-purple-600 to-pink-600'
-              : 'border-purple-500/30 hover:bg-purple-500/10'
-          }
         >
           {page}
         </Button>
@@ -68,12 +62,11 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
 
       {endPage < totalPages && (
         <>
-          {endPage < totalPages - 1 && <span className="text-gray-400">...</span>}
+          {endPage < totalPages - 1 && <span className={styles.text}>...</span>}
           <Button
             variant="outline"
             size="sm"
             onClick={() => onPageChange(totalPages)}
-            className="border-purple-500/30 hover:bg-purple-500/10"
           >
             {totalPages}
           </Button>
@@ -85,9 +78,8 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
         size="sm"
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="border-purple-500/30 hover:bg-purple-500/10"
       >
-        <ChevronRight className="h-4 w-4" />
+        <ChevronRight className={styles.icon} />
       </Button>
     </div>
   );

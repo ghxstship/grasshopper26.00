@@ -13,6 +13,7 @@ import {
 } from '@/design-system/components/atoms/alert-dialog';
 import { Button } from '@/design-system/components/atoms/button';
 import { AlertTriangle, Trash2, CheckCircle, Info } from 'lucide-react';
+import styles from './confirmation-dialog.module.css';
 
 interface ConfirmationDialogProps {
   open: boolean;
@@ -52,11 +53,11 @@ export function ConfirmationDialog({
   const getIcon = () => {
     switch (variant) {
       case 'destructive':
-        return <AlertTriangle className="h-6 w-6 text-red-600" />;
+        return <AlertTriangle className={styles.icon} />;
       case 'warning':
-        return <AlertTriangle className="h-6 w-6 text-yellow-600" />;
+        return <AlertTriangle className={styles.icon} />;
       default:
-        return <Info className="h-6 w-6 text-blue-600" />;
+        return <Info className={styles.icon} />;
     }
   };
 
@@ -75,7 +76,7 @@ export function ConfirmationDialog({
     <AlertDialog open={open} onOpenChange={onOpenChange}>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <div className="flex items-center gap-3 mb-2">
+          <div className={styles.row}>
             {getIcon()}
             <AlertDialogTitle>{title}</AlertDialogTitle>
           </div>
@@ -86,7 +87,7 @@ export function ConfirmationDialog({
           <AlertDialogAction
             onClick={handleConfirm}
             disabled={loading}
-            className={getButtonVariant() === 'destructive' ? 'bg-red-600 hover:bg-red-700' : ''}
+            className={getButtonVariant() === 'destructive' ? 'bg-grey-100 hover:bg-grey-100' : ''}
           >
             {loading ? 'Processing...' : confirmLabel}
           </AlertDialogAction>

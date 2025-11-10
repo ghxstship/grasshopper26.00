@@ -4,7 +4,11 @@ import { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { CheckCircle, XCircle, Loader2, Mail } from 'lucide-react';
 import { Button } from '@/design-system/components/atoms/button';
+import { Card, CardContent } from '@/design-system/components/atoms/card';
+import { Input } from '@/design-system/components/atoms/input';
+import { Label } from '@/design-system/components/atoms/label';
 import Link from 'next/link';
+import styles from '../auth.module.css';
 
 export default function VerifyEmailPage() {
   const router = useRouter();
@@ -65,82 +69,81 @@ export default function VerifyEmailPage() {
   };
 
   return (
-    <div className="min-h-screen  flex items-center justify-center px-4" style={{ background: 'var(--gradient-hero)' }}>
-      <div className="max-w-md w-full bg-black/40 backdrop-blur-lg border-2 border-purple-500/20 rounded-lg p-8">
-        {status === 'verifying' && (
-          <div className="text-center">
-            <Loader2 className="h-16 w-16 animate-spin text-purple-500 mx-auto mb-4" />
-            <h1 className="text-2xl font-bold text-white mb-2">Verifying Email</h1>
-            <p className="text-gray-400">{message || 'Please wait...'}</p>
-          </div>
-        )}
-
-        {status === 'success' && (
-          <div className="text-center">
-            <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
-            <h1 className="text-2xl font-bold text-white mb-2">Email Verified!</h1>
-            <p className="text-gray-400 mb-6">{message}</p>
-            <Button
-              asChild
-              className="w-full " style={{ background: 'var(--gradient-brand-primary)' }}
-            >
-              <Link href="/login">Continue to Login</Link>
-            </Button>
-          </div>
-        )}
-
-        {status === 'error' && (
-          <div className="text-center">
-            <XCircle className="h-16 w-16 text-red-500 mx-auto mb-4" />
-            <h1 className="text-2xl font-bold text-white mb-2">Verification Failed</h1>
-            <p className="text-gray-400 mb-6">{message}</p>
-            <Button
-              onClick={() => setStatus('resend')}
-              className="w-full " style={{ background: 'var(--gradient-brand-primary)' }}
-            >
-              Resend Verification Email
-            </Button>
-          </div>
-        )}
-
-        {status === 'resend' && (
-          <div>
-            <div className="text-center mb-6">
-              <Mail className="h-16 w-16 text-purple-500 mx-auto mb-4" />
-              <h1 className="text-2xl font-bold text-white mb-2">Resend Verification</h1>
-              <p className="text-gray-400">{message}</p>
+    <div className={styles.container}>
+      <Card className={styles.card}>
+        <CardContent className={styles.section}>
+          {status === 'verifying' && (
+            <div className={styles.textCenter}>
+              <Loader2 className={styles.loadingIcon} />
+              <h1 className={styles.subtitle}>Verifying Email</h1>
+              <p className={styles.description}>{message || 'Please wait...'}</p>
             </div>
-            <div className="space-y-4">
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-                  Email Address
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="your@email.com"
-                  className="w-full px-4 py-3 bg-black/60 border border-purple-500/30 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-purple-500"
-                />
-              </div>
-              <Button
-                onClick={handleResendVerification}
-                className="w-full " style={{ background: 'var(--gradient-brand-primary)' }}
-              >
-                Send Verification Email
-              </Button>
+          )}
+
+          {status === 'success' && (
+            <div className={styles.textCenter}>
+              <CheckCircle className={styles.successIcon} />
+              <h1 className={styles.subtitle}>Email Verified!</h1>
+              <p className={styles.bodyText}>{message}</p>
               <Button
                 asChild
-                variant="outline"
-                className="w-full border-purple-500/30 hover:bg-purple-500/10"
+                className={styles.fullWidth}
               >
-                <Link href="/login">Back to Login</Link>
+                <Link href="/login">Continue to Login</Link>
               </Button>
             </div>
-          </div>
-        )}
-      </div>
+          )}
+
+          {status === 'error' && (
+            <div className={styles.textCenter}>
+              <XCircle className={styles.loadingIcon} />
+              <h1 className={styles.subtitle}>Verification Failed</h1>
+              <p className={styles.bodyText}>{message}</p>
+              <Button
+                onClick={() => setStatus('resend')}
+                className={styles.fullWidth}
+              >
+                Resend Verification Email
+              </Button>
+            </div>
+          )}
+
+          {status === 'resend' && (
+            <div>
+              <div className={`${styles.textCenter} ${styles.section}`}>
+                <Mail className={styles.loadingIcon} />
+                <h1 className={styles.subtitle}>Resend Verification</h1>
+                <p className={styles.description}>{message}</p>
+              </div>
+              <div className={styles.section}>
+                <div className={styles.section}>
+                  <Label htmlFor="email">Email Address</Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="your@email.com"
+                  />
+                </div>
+                <Button
+                  onClick={handleResendVerification}
+                  className={styles.fullWidth}
+                >
+                  Send Verification Email
+                </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  className={styles.fullWidth}
+                >
+                  <Link href="/login">Back to Login</Link>
+                </Button>
+              </div>
+            </div>
+          )}
+        </CardContent>
+      </Card>
     </div>
   );
 }

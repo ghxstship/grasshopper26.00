@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { GeometricIcon } from '../atoms/GeometricIcon';
+import styles from './CatalogItemCard.module.css';
 
 export interface CatalogItem {
   id: string;
@@ -54,31 +55,31 @@ export const CatalogItemCard: React.FC<CatalogItemCardProps> = ({
       )}
     >
       {/* Image */}
-      <div className="relative aspect-[4/3] w-full overflow-hidden bg-grey-100">
+      <div className={styles.fullWidth}>
         {item.image_url ? (
           <Image
             src={item.image_url}
             alt={item.name}
             fill
-            className="object-cover grayscale transition-transform duration-300 group-hover:scale-110"
+            className={styles.container}
           />
         ) : (
-          <div className="flex h-full items-center justify-center">
-            <GeometricIcon name="package" size="xl" className="text-grey-400" />
+          <div className={styles.row}>
+            <GeometricIcon name="package" size="xl" className={styles.text} />
           </div>
         )}
 
         {/* Availability Badge */}
-        <div className="absolute right-4 top-4">
+        <div className={styles.card}>
           {isAvailable ? (
-            <div className="border-2 border-white bg-black px-3 py-1">
-              <span className="font-share-tech-mono text-[10px] uppercase text-white">
+            <div className={styles.card}>
+              <span className={styles.container}>
                 {item.available_quantity} AVAILABLE
               </span>
             </div>
           ) : (
-            <div className="border-2 border-black bg-grey-400 px-3 py-1">
-              <span className="font-share-tech-mono text-[10px] uppercase text-black">
+            <div className={styles.card}>
+              <span className={styles.container}>
                 UNAVAILABLE
               </span>
             </div>
@@ -87,28 +88,28 @@ export const CatalogItemCard: React.FC<CatalogItemCardProps> = ({
       </div>
 
       {/* Content */}
-      <div className="flex flex-1 flex-col p-6">
-        <h3 className="font-bebas-neue text-xl uppercase leading-tight">
+      <div className={styles.section}>
+        <h3 className={styles.container}>
           {item.name}
         </h3>
 
         {item.make && item.model && (
-          <p className="mt-1 font-share-tech-mono text-xs text-grey-600">
+          <p className={styles.text}>
             {item.make} {item.model}
           </p>
         )}
 
-        <p className="mt-2 line-clamp-2 font-share-tech text-sm text-grey-700">
+        <p className={styles.text}>
           {item.description}
         </p>
 
         {/* Tags */}
         {item.tags && item.tags.length > 0 && (
-          <div className="mt-4 flex flex-wrap gap-2">
+          <div className={styles.container}>
             {item.tags.slice(0, 3).map((tag) => (
               <span
                 key={tag}
-                className="border-2 border-black px-2 py-1 font-share-tech-mono text-[10px] uppercase"
+                className={styles.card}
               >
                 {tag}
               </span>

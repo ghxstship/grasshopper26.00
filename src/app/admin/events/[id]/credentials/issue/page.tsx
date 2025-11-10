@@ -5,6 +5,7 @@
 
 'use client';
 
+import styles from './page.module.css';
 import { use, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
@@ -119,68 +120,68 @@ export default function IssueCredentialPage({ params }: { params: Promise<{ id: 
   };
 
   return (
-    <div className="container mx-auto py-8 px-4 max-w-4xl">
+    <div className={styles.container}>
       {/* Header */}
-      <div className="flex items-center gap-4 mb-8">
+      <div className={styles.row}>
         <Link href={`/admin/events/${id}/credentials`}>
           <Button variant="ghost" size="sm">
-            <ArrowLeft className="h-4 w-4 mr-2" />
+            <ArrowLeft className={styles.icon} />
             Back
           </Button>
         </Link>
         <div>
-          <h1 className="text-3xl font-bold">Issue Credential</h1>
-          <p className="text-muted-foreground">Create and assign a new event credential</p>
+          <h1 className={styles.title}>Issue Credential</h1>
+          <p >Create and assign a new event credential</p>
         </div>
       </div>
 
       {/* Progress Steps */}
-      <div className="flex items-center justify-center mb-8">
-        <div className="flex items-center gap-4">
-          <div className={`flex items-center gap-2 ${step >= 1 ? 'text-primary' : 'text-muted-foreground'}`}>
-            <div className={`w-8 h-8 rounded-full flex items-center justify-center ${step >= 1 ? 'bg-primary text-primary-foreground' : 'bg-muted'}`}>
-              {step > 1 ? <Check className="h-4 w-4" /> : '1'}
+      <div className={styles.row}>
+        <div className={styles.row}>
+          <div className={`${styles.stepContainer} ${step >= 1 ? styles.stepActive : styles.stepInactive}`}>
+            <div className={`${styles.stepCircle} ${step >= 1 ? styles.stepCircleActive : styles.stepCircleInactive}`}>
+              {step > 1 ? <Check className={styles.icon} /> : '1'}
             </div>
-            <span className="text-sm font-medium">Select Type</span>
+            <span className={styles.label}>Select Type</span>
           </div>
-          <ArrowRight className="h-4 w-4 text-muted-foreground" />
-          <div className={`flex items-center gap-2 ${step >= 2 ? 'text-primary' : 'text-muted-foreground'}`}>
-            <div className={`w-8 h-8 rounded-full flex items-center justify-center ${step >= 2 ? 'bg-primary text-primary-foreground' : 'bg-muted'}`}>
-              {step > 2 ? <Check className="h-4 w-4" /> : '2'}
+          <ArrowRight className={styles.icon} />
+          <div className={`${styles.stepContainer} ${step >= 2 ? styles.stepActive : styles.stepInactive}`}>
+            <div className={`${styles.stepCircle} ${step >= 2 ? styles.stepCircleActive : styles.stepCircleInactive}`}>
+              {step > 2 ? <Check className={styles.icon} /> : '2'}
             </div>
-            <span className="text-sm font-medium">Holder Info</span>
+            <span className={styles.label}>Holder Info</span>
           </div>
-          <ArrowRight className="h-4 w-4 text-muted-foreground" />
-          <div className={`flex items-center gap-2 ${step >= 3 ? 'text-primary' : 'text-muted-foreground'}`}>
-            <div className={`w-8 h-8 rounded-full flex items-center justify-center ${step >= 3 ? 'bg-primary text-primary-foreground' : 'bg-muted'}`}>
+          <ArrowRight className={styles.icon} />
+          <div className={`${styles.stepContainer} ${step >= 3 ? styles.stepActive : styles.stepInactive}`}>
+            <div className={`${styles.stepCircle} ${step >= 3 ? styles.stepCircleActive : styles.stepCircleInactive}`}>
               3
             </div>
-            <span className="text-sm font-medium">Review</span>
+            <span className={styles.label}>Review</span>
           </div>
         </div>
       </div>
 
       {/* Step 1: Select Credential Type */}
       {step === 1 && (
-        <div className="space-y-4">
+        <div className={styles.section}>
           <Card>
             <CardHeader>
               <CardTitle>Select Credential Type</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className={styles.grid}>
                 {CREDENTIAL_TYPES.map((type) => (
                   <Card
                     key={type.value}
-                    className="cursor-pointer hover:border-primary transition-colors"
+                    className={styles.card}
                     onClick={() => handleTypeSelect(type.value)}
                   >
-                    <CardContent className="pt-6">
-                      <div className="flex items-start gap-4">
-                        <span className="text-4xl">{type.badge}</span>
-                        <div className="flex-1">
-                          <h3 className="font-semibold mb-1">{type.label}</h3>
-                          <p className="text-sm text-muted-foreground">{type.description}</p>
+                    <CardContent >
+                      <div className={styles.card}>
+                        <span >{type.badge}</span>
+                        <div >
+                          <h3 className={styles.cardTitle}>{type.label}</h3>
+                          <p className={styles.cardText}>{type.description}</p>
                         </div>
                       </div>
                     </CardContent>
@@ -198,9 +199,9 @@ export default function IssueCredentialPage({ params }: { params: Promise<{ id: 
           <CardHeader>
             <CardTitle>Credential Holder Information</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-6">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
+          <CardContent className={styles.section}>
+            <div className={styles.grid}>
+              <div className={styles.section}>
                 <Label htmlFor="holder_name">Full Name *</Label>
                 <Input
                   id="holder_name"
@@ -211,7 +212,7 @@ export default function IssueCredentialPage({ params }: { params: Promise<{ id: 
                 />
               </div>
 
-              <div className="space-y-2">
+              <div className={styles.section}>
                 <Label htmlFor="holder_company">Company/Organization</Label>
                 <Input
                   id="holder_company"
@@ -222,8 +223,8 @@ export default function IssueCredentialPage({ params }: { params: Promise<{ id: 
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
+            <div className={styles.grid}>
+              <div className={styles.section}>
                 <Label htmlFor="holder_role">Role/Position</Label>
                 <Input
                   id="holder_role"
@@ -233,7 +234,7 @@ export default function IssueCredentialPage({ params }: { params: Promise<{ id: 
                 />
               </div>
 
-              <div className="space-y-2">
+              <div className={styles.section}>
                 <Label htmlFor="holder_email">Email</Label>
                 <Input
                   id="holder_email"
@@ -245,8 +246,8 @@ export default function IssueCredentialPage({ params }: { params: Promise<{ id: 
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
+            <div className={styles.grid}>
+              <div className={styles.section}>
                 <Label htmlFor="holder_phone">Phone</Label>
                 <Input
                   id="holder_phone"
@@ -258,8 +259,8 @@ export default function IssueCredentialPage({ params }: { params: Promise<{ id: 
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
+            <div className={styles.grid}>
+              <div className={styles.section}>
                 <Label htmlFor="valid_from">Valid From *</Label>
                 <Input
                   id="valid_from"
@@ -270,7 +271,7 @@ export default function IssueCredentialPage({ params }: { params: Promise<{ id: 
                 />
               </div>
 
-              <div className="space-y-2">
+              <div className={styles.section}>
                 <Label htmlFor="valid_until">Valid Until</Label>
                 <Input
                   id="valid_until"
@@ -281,7 +282,7 @@ export default function IssueCredentialPage({ params }: { params: Promise<{ id: 
               </div>
             </div>
 
-            <div className="space-y-2">
+            <div className={styles.section}>
               <Label htmlFor="notes">Notes</Label>
               <Textarea
                 id="notes"
@@ -292,14 +293,14 @@ export default function IssueCredentialPage({ params }: { params: Promise<{ id: 
               />
             </div>
 
-            <div className="flex gap-2">
+            <div className={styles.row}>
               <Button variant="outline" onClick={() => setStep(1)}>
-                <ArrowLeft className="h-4 w-4 mr-2" />
+                <ArrowLeft className={styles.icon} />
                 Back
               </Button>
               <Button onClick={() => setStep(3)} disabled={!formData.holder_name}>
                 Next
-                <ArrowRight className="h-4 w-4 ml-2" />
+                <ArrowRight className={styles.icon} />
               </Button>
             </div>
           </CardContent>
@@ -312,44 +313,44 @@ export default function IssueCredentialPage({ params }: { params: Promise<{ id: 
           <CardHeader>
             <CardTitle>Review Credential</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-6">
-            <div className="space-y-4">
-              <div className="flex items-center gap-4 p-4 bg-accent rounded-lg">
-                <span className="text-4xl">
+          <CardContent className={styles.section}>
+            <div className={styles.section}>
+              <div className={styles.row}>
+                <span >
                   {CREDENTIAL_TYPES.find(t => t.value === formData.credential_type)?.badge}
                 </span>
                 <div>
-                  <h3 className="font-semibold text-lg">{formData.holder_name}</h3>
-                  <p className="text-sm text-muted-foreground">
+                  <h3 className={styles.text}>{formData.holder_name}</h3>
+                  <p className={styles.text}>
                     {CREDENTIAL_TYPES.find(t => t.value === formData.credential_type)?.label}
                   </p>
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4 text-sm">
+              <div className={styles.grid}>
                 <div>
-                  <p className="text-muted-foreground">Company</p>
-                  <p className="font-medium">{formData.holder_company || 'N/A'}</p>
+                  <p >Company</p>
+                  <p >{formData.holder_company || 'N/A'}</p>
                 </div>
                 <div>
-                  <p className="text-muted-foreground">Role</p>
-                  <p className="font-medium">{formData.holder_role || 'N/A'}</p>
+                  <p >Role</p>
+                  <p >{formData.holder_role || 'N/A'}</p>
                 </div>
                 <div>
-                  <p className="text-muted-foreground">Email</p>
-                  <p className="font-medium">{formData.holder_email || 'N/A'}</p>
+                  <p >Email</p>
+                  <p >{formData.holder_email || 'N/A'}</p>
                 </div>
                 <div>
-                  <p className="text-muted-foreground">Phone</p>
-                  <p className="font-medium">{formData.holder_phone || 'N/A'}</p>
+                  <p >Phone</p>
+                  <p >{formData.holder_phone || 'N/A'}</p>
                 </div>
                 <div>
-                  <p className="text-muted-foreground">Valid From</p>
-                  <p className="font-medium">{new Date(formData.valid_from).toLocaleDateString()}</p>
+                  <p >Valid From</p>
+                  <p >{new Date(formData.valid_from).toLocaleDateString()}</p>
                 </div>
                 <div>
-                  <p className="text-muted-foreground">Valid Until</p>
-                  <p className="font-medium">
+                  <p >Valid Until</p>
+                  <p >
                     {formData.valid_until ? new Date(formData.valid_until).toLocaleDateString() : 'Ongoing'}
                   </p>
                 </div>
@@ -357,19 +358,19 @@ export default function IssueCredentialPage({ params }: { params: Promise<{ id: 
 
               {formData.notes && (
                 <div>
-                  <p className="text-muted-foreground text-sm mb-1">Notes</p>
-                  <p className="text-sm">{formData.notes}</p>
+                  <p className={styles.text}>Notes</p>
+                  <p >{formData.notes}</p>
                 </div>
               )}
             </div>
 
-            <div className="flex gap-2">
+            <div className={styles.row}>
               <Button variant="outline" onClick={() => setStep(2)}>
-                <ArrowLeft className="h-4 w-4 mr-2" />
+                <ArrowLeft className={styles.icon} />
                 Back
               </Button>
               <Button onClick={handleSubmit} disabled={loading}>
-                <Shield className="h-4 w-4 mr-2" />
+                <Shield className={styles.icon} />
                 {loading ? 'Issuing...' : 'Issue Credential'}
               </Button>
             </div>

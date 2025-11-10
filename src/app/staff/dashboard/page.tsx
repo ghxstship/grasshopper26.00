@@ -5,6 +5,7 @@ import { createClient } from '@/lib/supabase/client';
 import { EventStaffGate } from '@/lib/rbac';
 import { useAuth } from '@/hooks/use-auth';
 import Link from 'next/link';
+import styles from './page.module.css';
 
 interface EventAssignment {
   id: string;
@@ -130,10 +131,10 @@ export default function StaffDashboardPage() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto"></div>
-          <p className="mt-4 text-gray-600">Loading dashboard...</p>
+      <div className={styles.row}>
+        <div className={styles.section}>
+          <div className={styles.spinner}></div>
+          <p className={styles.subtitle}>Loading dashboard...</p>
         </div>
       </div>
     );
@@ -141,11 +142,11 @@ export default function StaffDashboardPage() {
 
   if (assignments.length === 0) {
     return (
-      <div className="flex items-center justify-center min-h-screen p-4">
-        <div className="text-center max-w-md">
-          <div className="text-6xl mb-4">📋</div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">No Event Assignments</h2>
-          <p className="text-sm text-gray-600">You don&apos;t have any upcoming event assignments. Contact your event manager for access.</p>
+      <div className={styles.row}>
+        <div className={styles.emptyState}>
+          <div className={styles.emoji}>📋</div>
+          <h2 className={styles.title}>No Event Assignments</h2>
+          <p className={styles.subtitle}>You don&apos;t have any upcoming event assignments. Contact your event manager for access.</p>
         </div>
       </div>
     );
@@ -155,21 +156,21 @@ export default function StaffDashboardPage() {
   const currentEvent = currentAssignment?.event;
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className={styles.container}>
       {/* Mobile-optimized header */}
-      <div className="bg-white border-b border-gray-200 sticky top-0 z-10">
-        <div className="p-4">
-          <h1 className="text-xl font-bold text-gray-900">Event Staff Dashboard</h1>
-          <p className="text-sm text-gray-600">Welcome, {user?.email}</p>
+      <div className={styles.stickyHeader}>
+        <div className={styles.section}>
+          <h1 className={styles.pageTitle}>Event Staff Dashboard</h1>
+          <p className={styles.subtitle}>Welcome, {user?.email}</p>
         </div>
 
         {/* Event selector */}
         {assignments.length > 1 && (
-          <div className="px-4 pb-4">
+          <div className={styles.selectorContainer}>
             <select
               value={selectedEvent || ''}
               onChange={(e) => setSelectedEvent(e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
+              className={styles.select}
             >
               {assignments.map(assignment => (
                 <option key={assignment.id} value={assignment.event_id}>
@@ -182,147 +183,143 @@ export default function StaffDashboardPage() {
       </div>
 
       {/* Main content */}
-      <div className="p-4 space-y-4">
+      <div className={styles.section}>
         {/* Event info card */}
         {currentEvent && (
-          <div className="bg-white rounded-lg shadow-md p-4">
-            <h2 className="text-lg font-semibold text-gray-900 mb-2">{currentEvent.title}</h2>
-            <div className="space-y-1 text-sm text-gray-600">
-              <p>📍 {currentEvent.venue_name}</p>
-              <p>📅 {new Date(currentEvent.start_date).toLocaleDateString()}</p>
-              <p>👥 Capacity: {currentEvent.capacity?.toLocaleString()}</p>
+          <div className={styles.card}>
+            <h2 className={styles.cardTitle}>{currentEvent.title}</h2>
+            <div className={styles.section}>
+              <p className={styles.infoText}>📍 {currentEvent.venue_name}</p>
+              <p className={styles.infoText}>📅 {new Date(currentEvent.start_date).toLocaleDateString()}</p>
+              <p className={styles.infoText}>👥 Capacity: {currentEvent.capacity?.toLocaleString()}</p>
             </div>
           </div>
         )}
 
         {/* Real-time capacity stats */}
         {stats && (
-          <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg shadow-md p-4">
-            <div className="flex justify-between items-center mb-3">
-              <h3 className="font-semibold text-gray-900">Live Capacity</h3>
+          <div className={styles.statsCard}>
+            <div className={styles.header}>
+              <h3 className={styles.cardTitle}>Live Capacity</h3>
               <button
                 onClick={refreshStats}
-                className="text-sm text-green-600 hover:text-green-700 font-medium"
+                className={styles.refreshButton}
               >
                 🔄 Refresh
               </button>
             </div>
 
             {/* Progress bar */}
-            <div className="mb-3">
-              <div className="flex justify-between text-sm mb-1">
-                <span className="text-gray-700">Checked In</span>
-                <span className="font-semibold text-gray-900">
+            <div className={styles.progressSection}>
+              <div className={styles.progressHeader}>
+                <span className={styles.progressLabel}>Checked In</span>
+                <span className={styles.progressValue}>
                   {stats.checkedIn} / {stats.totalCapacity}
                 </span>
               </div>
-              <div className="w-full bg-gray-200 rounded-full h-3">
+              <div className={styles.progressBarBg}>
                 <div
-                  className={`h-3 rounded-full transition-all ${
-                    stats.percentFull >= 90 ? 'bg-red-600' :
-                    stats.percentFull >= 75 ? 'bg-yellow-600' :
-                    'bg-green-600'
-                  }`}
-                  style={{ width: `${Math.min(stats.percentFull, 100)}%` }}
+                  className={styles.progressBarFill}
+                  style={{ width: `${Math.min(stats.percentFull, 100)}%` }} // Dynamic width required
                 />
               </div>
-              <p className="text-xs text-gray-600 mt-1">
+              <p className={styles.progressPercent}>
                 {stats.percentFull.toFixed(1)}% full
               </p>
             </div>
 
             {/* Stats grid */}
-            <div className="grid grid-cols-2 gap-3">
-              <div className="bg-white rounded-lg p-3 text-center">
-                <p className="text-2xl font-bold text-green-600">{stats.checkedIn}</p>
-                <p className="text-xs text-gray-600">Checked In</p>
+            <div className={styles.grid}>
+              <div className={styles.statBox}>
+                <p className={styles.statValue}>{stats.checkedIn}</p>
+                <p className={styles.statLabel}>Checked In</p>
               </div>
-              <div className="bg-white rounded-lg p-3 text-center">
-                <p className="text-2xl font-bold text-blue-600">{stats.remaining}</p>
-                <p className="text-xs text-gray-600">Remaining</p>
+              <div className={styles.statBox}>
+                <p className={styles.statValue}>{stats.remaining}</p>
+                <p className={styles.statLabel}>Remaining</p>
               </div>
             </div>
 
             {/* Capacity warning */}
             {stats.percentFull >= 90 && (
-              <div className="mt-3 bg-red-50 border border-red-200 rounded-lg p-3">
-                <p className="text-sm text-red-800 font-medium">⚠️ Near Capacity</p>
-                <p className="text-xs text-red-700">Prepare for capacity management protocols</p>
+              <div className={styles.warningBox}>
+                <p className={styles.warningTitle}>⚠️ Near Capacity</p>
+                <p className={styles.warningText}>Prepare for capacity management protocols</p>
               </div>
             )}
           </div>
         )}
 
         {/* Quick actions */}
-        <div className="bg-white rounded-lg shadow-md p-4">
-          <h3 className="font-semibold text-gray-900 mb-3">Quick Actions</h3>
-          <div className="grid grid-cols-2 gap-3">
+        <div className={styles.card}>
+          <h3 className={styles.cardTitle}>Quick Actions</h3>
+          <div className={styles.grid}>
             <Link
               href={`/staff/scanner?eventId=${selectedEvent}`}
-              className="flex flex-col items-center justify-center p-4 bg-green-50 border-2 border-green-200 rounded-lg hover:bg-green-100 transition-colors"
+              className={styles.actionButton}
             >
-              <span className="text-3xl mb-2">📱</span>
-              <span className="text-sm font-medium text-green-900">Scan Tickets</span>
+              <span className={styles.actionIcon}>📱</span>
+              <span className={styles.actionLabel}>Scan Tickets</span>
             </Link>
 
             <button
               onClick={refreshStats}
-              className="flex flex-col items-center justify-center p-4 bg-blue-50 border-2 border-blue-200 rounded-lg hover:bg-blue-100 transition-colors"
+              className={styles.actionButton}
             >
-              <span className="text-3xl mb-2">📊</span>
-              <span className="text-sm font-medium text-blue-900">View Stats</span>
+              <span className={styles.actionIcon}>📊</span>
+              <span className={styles.actionLabel}>View Stats</span>
             </button>
 
             <Link
               href={`/staff/issues?eventId=${selectedEvent}`}
-              className="flex flex-col items-center justify-center p-4 bg-yellow-50 border-2 border-yellow-200 rounded-lg hover:bg-yellow-100 transition-colors"
+              className={styles.actionButton}
             >
-              <span className="text-3xl mb-2">⚠️</span>
-              <span className="text-sm font-medium text-yellow-900">Report Issue</span>
+              <span className={styles.actionIcon}>⚠️</span>
+              <span className={styles.actionLabel}>Report Issue</span>
             </Link>
 
             <Link
               href={`/staff/notes?eventId=${selectedEvent}`}
-              className="flex flex-col items-center justify-center p-4 bg-purple-50 border-2 border-purple-200 rounded-lg hover:bg-purple-100 transition-colors"
+              className={styles.actionButton}
             >
-              <span className="text-3xl mb-2">📝</span>
-              <span className="text-sm font-medium text-purple-900">Quick Notes</span>
+              <span className={styles.actionIcon}>📝</span>
+              <span className={styles.actionLabel}>Quick Notes</span>
             </Link>
           </div>
         </div>
 
         {/* Recent activity */}
-        <div className="bg-white rounded-lg shadow-md p-4">
-          <h3 className="font-semibold text-gray-900 mb-3">Recent Activity</h3>
-          <div className="space-y-2">
-            <div className="flex items-center gap-3 p-2 bg-gray-50 rounded">
-              <span className="text-green-600">✓</span>
-              <div className="flex-1">
-                <p className="text-sm font-medium text-gray-900">Ticket scanned</p>
-                <p className="text-xs text-gray-600">2 minutes ago</p>
+        <div className={styles.card}>
+          <h3 className={styles.cardTitle}>Recent Activity</h3>
+          <div className={styles.section}>
+            <div className={styles.activityItem}>
+              <span className={styles.activityIcon}>✓</span>
+              <div className={styles.activityContent}>
+                <p className={styles.activityTitle}>Ticket scanned</p>
+                <p className={styles.activityTime}>2 minutes ago</p>
               </div>
             </div>
-            <div className="flex items-center gap-3 p-2 bg-gray-50 rounded">
-              <span className="text-blue-600">ℹ️</span>
-              <div className="flex-1">
-                <p className="text-sm font-medium text-gray-900">Shift started</p>
-                <p className="text-xs text-gray-600">1 hour ago</p>
+            <div className={styles.activityItem}>
+              <span className={styles.activityIcon}>ℹ️</span>
+              <div className={styles.activityContent}>
+                <p className={styles.activityTitle}>Shift started</p>
+                <p className={styles.activityTime}>1 hour ago</p>
               </div>
             </div>
           </div>
         </div>
 
         {/* Help & Support */}
-        <div className="bg-white rounded-lg shadow-md p-4">
-          <h3 className="font-semibold text-gray-900 mb-3">Need Help?</h3>
-          <div className="space-y-2 text-sm">
-            <button className="w-full text-left p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+        <div className={styles.card}>
+          <h3 className={styles.cardTitle}>Need Help?</h3>
+          <div className={styles.section}>
+            <button className={styles.helpButton}>
               📞 Contact Event Manager
             </button>
-            <button className="w-full text-left p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+            <button className={styles.helpButton}>
               📖 View Staff Guide
             </button>
-            <button className="w-full text-left p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+            <button className={styles.helpButton}>
               🆘 Emergency Protocols
             </button>
           </div>
@@ -330,7 +327,7 @@ export default function StaffDashboardPage() {
       </div>
 
       {/* Bottom padding for mobile */}
-      <div className="h-20" />
+      <div className={styles.bottomPadding} />
     </div>
   );
 }

@@ -8,6 +8,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { HalftoneOverlay } from '@/design-system/components/atoms/halftone-overlay';
+import styles from './artist-grid.module.css';
 
 interface Artist {
   id: string;
@@ -25,16 +26,16 @@ interface ArtistGridProps {
 
 export function ArtistGrid({ artists }: ArtistGridProps) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+    <div className={styles.grid}>
       {artists.map((artist) => (
         <Link
           key={artist.id}
           href={`/artists/${artist.slug}`}
           className="group"
         >
-          <article className="border-3 border-black bg-white hover:bg-black hover:text-white transition-colors shadow-geometric">
+          <article className={styles.card}>
             {/* Artist Image */}
-            <div className="aspect-square relative overflow-hidden border-b-3 border-black">
+            <div className={styles.card}>
               {artist.profile_image_url ? (
                 <HalftoneOverlay preset="medium" opacity={0.3}>
                   <Image
@@ -45,8 +46,8 @@ export function ArtistGrid({ artists }: ArtistGridProps) {
                   />
                 </HalftoneOverlay>
               ) : (
-                <div className="w-full h-full bg-grey-200 flex items-center justify-center">
-                  <span className="font-anton text-h1 uppercase text-grey-400">
+                <div className={styles.row}>
+                  <span className={styles.text}>
                     {artist.name.charAt(0)}
                   </span>
                 </div>
@@ -54,8 +55,8 @@ export function ArtistGrid({ artists }: ArtistGridProps) {
               
               {/* Verified Badge */}
               {artist.verified && (
-                <div className="absolute top-4 right-4 bg-black text-white px-3 py-1 border-2 border-white">
-                  <span className="font-bebas text-body uppercase">
+                <div className={styles.card}>
+                  <span className={styles.container}>
                     VERIFIED
                   </span>
                 </div>
@@ -63,18 +64,18 @@ export function ArtistGrid({ artists }: ArtistGridProps) {
             </div>
 
             {/* Artist Info */}
-            <div className="p-4">
-              <h3 className="font-bebas text-h4 uppercase mb-2 group-hover:text-white">
+            <div className={styles.card}>
+              <h3 className={styles.container}>
                 {artist.name}
               </h3>
               
               {/* Genre Tags */}
               {artist.genre_tags && artist.genre_tags.length > 0 && (
-                <div className="flex flex-wrap gap-2 mb-3">
+                <div className={styles.container}>
                   {artist.genre_tags.slice(0, 3).map((genre) => (
                     <span
                       key={genre}
-                      className="font-share-mono text-meta px-2 py-1 border-2 border-black group-hover:border-white"
+                      className={styles.card}
                     >
                       {genre}
                     </span>
@@ -84,7 +85,7 @@ export function ArtistGrid({ artists }: ArtistGridProps) {
 
               {/* Bio Preview */}
               {artist.bio && (
-                <p className="font-share text-body line-clamp-2 text-grey-700 group-hover:text-grey-300">
+                <p className={styles.text}>
                   {artist.bio}
                 </p>
               )}

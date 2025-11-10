@@ -1,0 +1,38 @@
+/* Checkbox Component Styles */
+
+.checkbox {
+  height: var(--space-4);
+  width: var(--space-4);
+  flex-shrink: 0;
+  border: 1px solid var(--color-primary);
+  outline: none;
+  transition: background-color var(--duration-fast) var(--easing-out),
+              color var(--duration-fast) var(--easing-out);
+}
+
+.checkbox:focus-visible {
+  box-shadow: 0 0 0 2px var(--color-border-focus),
+              0 0 0 4px var(--color-bg-primary);
+}
+
+.checkbox:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.checkbox[data-state="checked"] {
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
+.indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: currentColor;
+}
+
+.icon {
+  height: var(--space-4);
+  width: var(--space-4);
+}

@@ -1,0 +1,258 @@
+/* Checkout Flow Template Styles */
+
+.container {
+  min-block-size: 100vh;
+  padding-block: var(--spacing-xl);
+  padding-inline: var(--spacing-md);
+  max-inline-size: 90rem;
+  margin-inline: auto;
+}
+
+/* Progress Indicator */
+.progressContainer {
+  margin-block-end: var(--spacing-2xl);
+  padding-block: var(--spacing-xl);
+  padding-inline: var(--spacing-lg);
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+}
+
+.progressSteps {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+}
+
+.progressStep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex: 1;
+  position: relative;
+}
+
+.progressStepIndicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 2.5rem;
+  block-size: 2.5rem;
+  border-radius: var(--radius-full);
+  background: var(--color-background);
+  border: 2px solid var(--color-border);
+  color: var(--color-text-tertiary);
+  font-weight: var(--font-weight-semibold);
+  transition: all var(--transition-normal);
+  z-index: 1;
+}
+
+.progressStepActive .progressStepIndicator {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-background);
+}
+
+.progressStepCompleted .progressStepIndicator {
+  background: var(--color-success);
+  border-color: var(--color-success);
+  color: var(--color-background);
+}
+
+.progressStepNumber {
+  font-size: var(--font-size-sm);
+}
+
+.progressStepCheck {
+  inline-size: var(--icon-size-md);
+  block-size: var(--icon-size-md);
+}
+
+.progressStepLabel {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  text-align: center;
+  max-inline-size: 8rem;
+}
+
+.progressStepActive .progressStepLabel {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.progressStepLine {
+  position: absolute;
+  inset-block-start: 1.25rem;
+  inset-inline-start: 50%;
+  inline-size: 100%;
+  block-size: 2px;
+  background: var(--color-border);
+  transition: background var(--transition-normal);
+}
+
+.progressStepLineCompleted {
+  background: var(--color-success);
+}
+
+.progressStep:last-child .progressStepLine {
+  display: none;
+}
+
+/* Main Content */
+.mainContent {
+  display: grid;
+  grid-template-columns: 1fr 24rem;
+  gap: var(--spacing-xl);
+  align-items: flex-start;
+}
+
+/* Content Area */
+.contentArea {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.contentCard {
+  border: 1px solid var(--color-border);
+}
+
+.contentCardContent {
+  padding: var(--spacing-2xl);
+}
+
+/* Navigation */
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding-block: var(--spacing-lg);
+}
+
+.navigationLeft {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: center;
+}
+
+.navigationRight {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: center;
+}
+
+.backButton {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+}
+
+.cancelButton {
+  color: var(--color-text-secondary);
+}
+
+.nextButton {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+  min-inline-size: 10rem;
+  justify-content: center;
+}
+
+.buttonIcon {
+  inline-size: var(--icon-size-sm);
+  block-size: var(--icon-size-sm);
+}
+
+/* Sidebar */
+.sidebar {
+  display: block;
+}
+
+.sidebarSticky {
+  position: sticky;
+  inset-block-start: var(--spacing-xl);
+}
+
+.summaryCard {
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.summaryCardContent {
+  padding: var(--spacing-xl);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .mainContent {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    order: -1;
+  }
+
+  .sidebarSticky {
+    position: static;
+  }
+
+  .sidebarHiddenMobile {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-inline: var(--spacing-sm);
+  }
+
+  .progressContainer {
+    padding-inline: var(--spacing-md);
+  }
+
+  .progressSteps {
+    gap: var(--spacing-xs);
+  }
+
+  .progressStepLabel {
+    font-size: var(--font-size-xs);
+    max-inline-size: 6rem;
+  }
+
+  .progressStepIndicator {
+    inline-size: 2rem;
+    block-size: 2rem;
+  }
+
+  .progressStepLine {
+    inset-block-start: 1rem;
+  }
+
+  .contentCardContent {
+    padding: var(--spacing-lg);
+  }
+
+  .navigation {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .navigationLeft,
+  .navigationRight {
+    inline-size: 100%;
+    justify-content: center;
+  }
+
+  .navigationRight {
+    order: -1;
+  }
+
+  .nextButton {
+    inline-size: 100%;
+  }
+}

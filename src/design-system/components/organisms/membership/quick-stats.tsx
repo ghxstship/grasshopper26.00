@@ -1,6 +1,7 @@
 'use client';
 
 import { Ticket, Calendar, TrendingUp, Gift } from 'lucide-react';
+import styles from './quick-stats.module.css';
 
 interface QuickStatsProps {
   membership: any;
@@ -18,13 +19,13 @@ export function QuickStats({ membership, recentBenefits }: QuickStatsProps) {
       label: 'Events Attended',
       value: eventsAttended,
       icon: Calendar,
-      color: 'bg-purple-100 text-purple-600',
+      color: 'bg-black text-black',
     },
     {
       label: 'Credits Used',
       value: creditsUsed,
       icon: Ticket,
-      color: 'bg-blue-100 text-blue-600',
+      color: 'bg-grey-100 text-black',
     },
     {
       label: 'Vouchers Redeemed',
@@ -36,27 +37,27 @@ export function QuickStats({ membership, recentBenefits }: QuickStatsProps) {
       label: 'Member Since',
       value: membership ? new Date(membership.start_date).getFullYear() : '-',
       icon: TrendingUp,
-      color: 'bg-green-100 text-green-600',
+      color: 'bg-grey-100 text-black',
     },
   ];
 
   return (
-    <div className="border-3 border-black bg-white p-6">
-      <h3 className="font-bebas-neue text-2xl uppercase tracking-wide mb-6 border-b-2 border-black pb-2">
+    <div className={styles.card}>
+      <h3 className={styles.card}>
         Quick Stats
       </h3>
-      <div className="grid grid-cols-2 gap-4">
+      <div className={styles.grid}>
         {stats.map((stat) => {
           const Icon = stat.icon;
           return (
-            <div key={stat.label} className="border-2 border-black p-4">
-              <div className={`inline-flex p-2 rounded ${stat.color} mb-2`}>
-                <Icon className="h-5 w-5" />
+            <div key={stat.label} className={styles.card}>
+              <div className={`${styles.iconContainer} ${stat.color}`}>
+                <Icon className={styles.icon} />
               </div>
-              <p className="font-share-tech-mono text-3xl font-bold mb-1">
+              <p className={styles.text}>
                 {stat.value}
               </p>
-              <p className="font-share-tech text-sm text-grey-600 uppercase tracking-wide">
+              <p className={styles.text}>
                 {stat.label}
               </p>
             </div>

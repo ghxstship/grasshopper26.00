@@ -1,5 +1,5 @@
 import React from 'react';
-import { cn } from '@/lib/utils';
+import styles from './StatusBadge.module.css';
 
 export type AdvanceStatus = 
   | 'draft' 
@@ -22,53 +22,53 @@ interface StatusBadgeProps {
   className?: string;
 }
 
-const statusConfig: Record<string, { label: string; styles: string }> = {
+const statusConfig: Record<string, { label: string; className: string }> = {
   draft: {
     label: 'DRAFT',
-    styles: 'bg-grey-300 text-black border-grey-600',
+    className: styles.draft,
   },
   submitted: {
     label: 'SUBMITTED',
-    styles: 'bg-grey-800 text-white border-black',
+    className: styles.submitted,
   },
   under_review: {
     label: 'UNDER REVIEW',
-    styles: 'bg-grey-800 text-white border-black',
+    className: styles.underReview,
   },
   approved: {
     label: 'APPROVED',
-    styles: 'bg-black text-white border-black',
+    className: styles.approved,
   },
   rejected: {
     label: 'REJECTED',
-    styles: 'bg-white text-black border-black',
+    className: styles.rejected,
   },
   fulfilled: {
     label: 'FULFILLED',
-    styles: 'bg-grey-900 text-white border-grey-900',
+    className: styles.fulfilled,
   },
   cancelled: {
     label: 'CANCELLED',
-    styles: 'bg-grey-400 text-black border-black',
+    className: styles.cancelled,
   },
   pending: {
     label: 'PENDING',
-    styles: 'bg-grey-300 text-black border-grey-600',
+    className: styles.pending,
   },
   assigned: {
     label: 'ASSIGNED',
-    styles: 'bg-grey-800 text-white border-black',
+    className: styles.assigned,
   },
   unavailable: {
     label: 'UNAVAILABLE',
-    styles: 'bg-grey-400 text-black border-black',
+    className: styles.unavailable,
   },
 };
 
 const sizeClasses = {
-  sm: 'px-2 py-1 text-[10px]',
-  md: 'px-3 py-2 text-xs',
-  lg: 'px-4 py-3 text-sm',
+  sm: styles.badgeSm,
+  md: styles.badgeMd,
+  lg: styles.badgeLg,
 };
 
 export const StatusBadge: React.FC<StatusBadgeProps> = ({ 
@@ -80,14 +80,7 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({
 
   return (
     <span
-      className={cn(
-        'inline-flex items-center justify-center',
-        'border-2 font-bebas-neue uppercase tracking-wide',
-        'transition-all duration-200',
-        config.styles,
-        sizeClasses[size],
-        className
-      )}
+      className={`${styles.badge} ${config.className} ${sizeClasses[size]} ${className || ''}`}
     >
       {config.label}
     </span>

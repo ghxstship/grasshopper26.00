@@ -9,6 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/compon
 import { ArrowLeft, Save, Plus, X } from 'lucide-react';
 import Link from 'next/link';
 import { useToast } from '@/hooks/use-toast';
+import styles from './page.module.css';
 
 export default function NewProductPage() {
   const router = useRouter();
@@ -116,27 +117,27 @@ export default function NewProductPage() {
   };
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center gap-4">
+    <div className={styles.section}>
+      <div className={styles.row}>
         <Link href="/admin/products">
           <Button variant="ghost" size="icon">
-            <ArrowLeft className="h-4 w-4" />
+            <ArrowLeft className={styles.icon} />
           </Button>
         </Link>
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Create Product</h1>
-          <p className="text-gray-500 mt-1">Add a new product to your store</p>
+          <h1 className={styles.title}>Create Product</h1>
+          <p className={styles.text}>Add a new product to your store</p>
         </div>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className={styles.section}>
         <Card>
           <CardHeader>
             <CardTitle>Basic Information</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
+          <CardContent className={styles.section}>
+            <div className={styles.grid}>
+              <div className={styles.section}>
                 <Label htmlFor="name">Product Name *</Label>
                 <Input
                   id="name"
@@ -146,7 +147,7 @@ export default function NewProductPage() {
                   required
                 />
               </div>
-              <div className="space-y-2">
+              <div className={styles.section}>
                 <Label htmlFor="slug">URL Slug *</Label>
                 <Input
                   id="slug"
@@ -158,7 +159,7 @@ export default function NewProductPage() {
               </div>
             </div>
 
-            <div className="space-y-2">
+            <div className={styles.section}>
               <Label htmlFor="description">Description</Label>
               <textarea
                 id="description"
@@ -166,18 +167,18 @@ export default function NewProductPage() {
                 onChange={(e) => handleChange('description', e.target.value)}
                 placeholder="Describe your product..."
                 rows={4}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                className={styles.card}
               />
             </div>
 
-            <div className="grid grid-cols-3 gap-4">
-              <div className="space-y-2">
+            <div className={styles.grid}>
+              <div className={styles.section}>
                 <Label htmlFor="category">Category *</Label>
                 <select
                   id="category"
                   value={formData.category}
                   onChange={(e) => handleChange('category', e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                  className={styles.card}
                 >
                   <option value="apparel">Apparel</option>
                   <option value="accessories">Accessories</option>
@@ -186,7 +187,7 @@ export default function NewProductPage() {
                   <option value="other">Other</option>
                 </select>
               </div>
-              <div className="space-y-2">
+              <div className={styles.section}>
                 <Label htmlFor="basePrice">Base Price ($) *</Label>
                 <Input
                   id="basePrice"
@@ -198,13 +199,13 @@ export default function NewProductPage() {
                   required
                 />
               </div>
-              <div className="space-y-2">
+              <div className={styles.section}>
                 <Label htmlFor="status">Status *</Label>
                 <select
                   id="status"
                   value={formData.status}
                   onChange={(e) => handleChange('status', e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                  className={styles.card}
                 >
                   <option value="draft">Draft</option>
                   <option value="active">Active</option>
@@ -217,22 +218,22 @@ export default function NewProductPage() {
 
         <Card>
           <CardHeader>
-            <div className="flex items-center justify-between">
+            <div className={styles.header}>
               <CardTitle>Product Images</CardTitle>
               <Button type="button" onClick={addImage} size="sm" variant="outline">
-                <Plus className="h-4 w-4 mr-2" />
+                <Plus className={styles.icon} />
                 Add Image
               </Button>
             </div>
           </CardHeader>
-          <CardContent className="space-y-3">
+          <CardContent className={styles.section}>
             {images.map((image, index) => (
-              <div key={index} className="flex gap-2">
+              <div key={index} className={styles.row}>
                 <Input
                   value={image}
                   onChange={(e) => updateImage(index, e.target.value)}
                   placeholder="https://example.com/image.jpg"
-                  className="flex-1"
+                  
                 />
                 {images.length > 1 && (
                   <Button
@@ -241,7 +242,7 @@ export default function NewProductPage() {
                     size="icon"
                     variant="outline"
                   >
-                    <X className="h-4 w-4" />
+                    <X className={styles.icon} />
                   </Button>
                 )}
               </div>
@@ -251,30 +252,30 @@ export default function NewProductPage() {
 
         <Card>
           <CardHeader>
-            <div className="flex items-center justify-between">
+            <div className={styles.header}>
               <CardTitle>Product Variants (Optional)</CardTitle>
               <Button type="button" onClick={addVariant} size="sm" variant="outline">
-                <Plus className="h-4 w-4 mr-2" />
+                <Plus className={styles.icon} />
                 Add Variant
               </Button>
             </div>
           </CardHeader>
-          <CardContent className="space-y-4">
+          <CardContent className={styles.section}>
             {variants.map((variant, index) => (
-              <div key={index} className="p-4 border rounded-lg space-y-3">
-                <div className="flex justify-between items-center">
-                  <h4 className="font-medium">Variant {index + 1}</h4>
+              <div key={index} className={styles.section}>
+                <div className={styles.row}>
+                  <h4 >Variant {index + 1}</h4>
                   <Button
                     type="button"
                     onClick={() => removeVariant(index)}
                     size="sm"
                     variant="ghost"
                   >
-                    <X className="h-4 w-4" />
+                    <X className={styles.icon} />
                   </Button>
                 </div>
-                <div className="grid grid-cols-4 gap-3">
-                  <div className="space-y-2">
+                <div className={styles.grid}>
+                  <div className={styles.section}>
                     <Label>Name</Label>
                     <Input
                       value={variant.name}
@@ -282,7 +283,7 @@ export default function NewProductPage() {
                       placeholder="Small"
                     />
                   </div>
-                  <div className="space-y-2">
+                  <div className={styles.section}>
                     <Label>SKU</Label>
                     <Input
                       value={variant.sku}
@@ -290,7 +291,7 @@ export default function NewProductPage() {
                       placeholder="TSH-SM-001"
                     />
                   </div>
-                  <div className="space-y-2">
+                  <div className={styles.section}>
                     <Label>Price ($)</Label>
                     <Input
                       type="number"
@@ -300,7 +301,7 @@ export default function NewProductPage() {
                       placeholder="29.99"
                     />
                   </div>
-                  <div className="space-y-2">
+                  <div className={styles.section}>
                     <Label>Stock</Label>
                     <Input
                       type="number"
@@ -313,21 +314,21 @@ export default function NewProductPage() {
               </div>
             ))}
             {variants.length === 0 && (
-              <p className="text-sm text-gray-500 text-center py-4">
+              <p className={styles.emptyState}>
                 No variants added. Click &quot;Add Variant&quot; to create size, color, or other variations.
               </p>
             )}
           </CardContent>
         </Card>
 
-        <div className="flex justify-end gap-4">
+        <div className={styles.card}>
           <Link href="/admin/products">
             <Button type="button" variant="outline">
               Cancel
             </Button>
           </Link>
           <Button type="submit" disabled={loading}>
-            <Save className="h-4 w-4 mr-2" />
+            <Save className={styles.icon} />
             {loading ? 'Creating...' : 'Create Product'}
           </Button>
         </div>

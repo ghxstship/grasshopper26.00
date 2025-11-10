@@ -1,0 +1,39 @@
+/* Card Component Styles */
+
+.card {
+  border: 3px solid var(--color-border-strong);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--space-1) + var(--space-1) / 2);
+  padding: var(--space-6);
+}
+
+.title {
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-3xl);
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.description {
+  font-family: var(--font-share);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.content {
+  padding: var(--space-6);
+  padding-block-start: 0;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  padding: var(--space-6);
+  padding-block-start: 0;
+}

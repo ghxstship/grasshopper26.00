@@ -2,9 +2,12 @@
 
 import { useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Lock, CheckCircle } from 'lucide-react';
-import { Button } from '@/design-system/components/atoms/button';
-import Link from 'next/link';
+import { createClient } from '@/lib/supabase/client';
+import { AuthCardTemplate } from '@/design-system/components/templates';
+import { Input } from '@/design-system/components/atoms/input';
+import { Label } from '@/design-system/components/atoms/label';
+import { toast } from 'sonner';
+import styles from '../auth.module.css';
 
 export default function ResetPasswordPage() {
   const router = useRouter();
@@ -57,85 +60,52 @@ export default function ResetPasswordPage() {
 
   if (success) {
     return (
-      <div className="min-h-screen  flex items-center justify-center px-4" style={{ background: 'var(--gradient-hero)' }}>
-        <div className="max-w-md w-full bg-black/40 backdrop-blur-lg border-2 border-purple-500/20 rounded-lg p-8 text-center">
-          <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
-          <h1 className="text-2xl font-bold text-white mb-2">Password Reset!</h1>
-          <p className="text-gray-400 mb-6">
-            Your password has been successfully reset. Redirecting to login...
-          </p>
-        </div>
-      </div>
+      <AuthCardTemplate
+        title="Password Reset!"
+        description="Your password has been successfully reset. Redirecting to login..."
+      >
+        <div />
+      </AuthCardTemplate>
     );
   }
 
   return (
-    <div className="min-h-screen  flex items-center justify-center px-4" style={{ background: 'var(--gradient-hero)' }}>
-      <div className="max-w-md w-full bg-black/40 backdrop-blur-lg border-2 border-purple-500/20 rounded-lg p-8">
-        <div className="text-center mb-8">
-          <Lock className="h-16 w-16 text-purple-500 mx-auto mb-4" />
-          <h1 className="text-3xl font-bold  mb-2 bg-clip-text text-transparent" style={{ backgroundImage: 'var(--gradient-brand-primary)' }}>
-            Reset Password
-          </h1>
-          <p className="text-gray-400">
-            Enter your new password below
-          </p>
-        </div>
-
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-300 mb-2">
-              New Password
-            </label>
-            <input
-              id="password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              placeholder="Enter new password"
-              className="w-full px-4 py-3 bg-black/60 border border-purple-500/30 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-purple-500"
-            />
-          </div>
-
-          <div>
-            <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-300 mb-2">
-              Confirm Password
-            </label>
-            <input
-              id="confirmPassword"
-              type="password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              required
-              placeholder="Confirm new password"
-              className="w-full px-4 py-3 bg-black/60 border border-purple-500/30 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-purple-500"
-            />
-          </div>
-
-          {error && (
-            <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-3">
-              <p className="text-red-400 text-sm">{error}</p>
-            </div>
-          )}
-
-          <Button
-            type="submit"
-            disabled={loading}
-            className="w-full " style={{ background: 'var(--gradient-brand-primary)' }}
-          >
-            {loading ? 'Resetting...' : 'Reset Password'}
-          </Button>
-
-          <Button
-            asChild
-            variant="ghost"
-            className="w-full text-gray-400 hover:text-white"
-          >
-            <Link href="/login">Back to Login</Link>
-          </Button>
-        </form>
+    <AuthCardTemplate
+      title="Reset Password"
+      description="Enter your new password below"
+      onSubmit={handleSubmit}
+      submitLabel={loading ? 'Resetting...' : 'Reset Password'}
+      submitLoading={loading}
+      footerText="Remember your password?"
+      footerLink={{ text: 'Back to Login', href: '/login' }}
+    >
+      <div className={styles.formField}>
+        <Label htmlFor="password">New Password</Label>
+        <Input
+          id="password"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+          placeholder="Enter new password"
+        />
       </div>
-    </div>
+      <div className={styles.formField}>
+        <Label htmlFor="confirmPassword">Confirm Password</Label>
+        <Input
+          id="confirmPassword"
+          type="password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          required
+          placeholder="Confirm new password"
+        />
+      </div>
+      {error && (
+        <div className={styles.errorBox}>
+          <p className={styles.errorText}>{error}</p>
+        </div>
+      )}
+    </AuthCardTemplate>
   );
 }

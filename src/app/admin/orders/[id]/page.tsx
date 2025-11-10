@@ -2,12 +2,14 @@
 
 import { useEffect, useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
+import { ContextualPageTemplate } from '@/design-system/components/templates';
 import { createClient } from '@/lib/supabase/client';
 import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/card';
 import { Button } from '@/design-system/components/atoms/button';
 import { Badge } from '@/design-system/components/atoms/badge';
-import { ArrowLeft, Mail, RefreshCw, DollarSign } from 'lucide-react';
+import { Mail, RefreshCw, DollarSign, Package } from 'lucide-react';
 import { toast } from 'sonner';
+import styles from './order-detail-content.module.css';
 
 export default function AdminOrderDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const router = useRouter();
@@ -58,217 +60,172 @@ export default function AdminOrderDetailPage({ params }: { params: Promise<{ id:
 
     setProcessing(true);
     try {
-      // Update order status
-      const { error: orderError } = await supabase
-        .from('orders')
-        .update({ status: 'refunded' })
-        .eq('id', orderId);
+      const response = await fetch(`/api/admin/orders/${orderId}/refund`, {
+        method: 'POST',
+      });
 
-      if (orderError) throw orderError;
-
-      // Cancel tickets
-      const { error: ticketsError } = await supabase
-        .from('tickets')
-        .update({ status: 'cancelled' })
-        .eq('order_id', orderId);
-
-      if (ticketsError) throw ticketsError;
-
-      toast.success('Order refunded successfully');
-      fetchOrder(orderId);
+      if (response.ok) {
+        toast.success('Order refunded successfully');
+        fetchOrder(orderId);
+      } else {
+        toast.error('Failed to refund order');
+      }
     } catch (error) {
-      console.error('Error refunding order:', error);
       toast.error('Failed to refund order');
     } finally {
       setProcessing(false);
     }
   }
 
-  async function resendConfirmation() {
+  async function handleResendTickets() {
     setProcessing(true);
     try {
-      const response = await fetch('/api/orders/resend-confirmation', {
+      const response = await fetch(`/api/admin/orders/${orderId}/resend-tickets`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ orderId }),
       });
 
-      if (!response.ok) throw new Error('Failed to resend');
-
-      toast.success('Confirmation email sent');
+      if (response.ok) {
+        toast.success('Tickets resent successfully');
+      } else {
+        toast.error('Failed to resend tickets');
+      }
     } catch (error) {
-      toast.error('Failed to send email');
+      toast.error('Failed to resend tickets');
     } finally {
       setProcessing(false);
     }
   }
 
-  if (loading) {
-    return (
-      <div className="min-h-screen  flex items-center justify-center" style={{ background: 'var(--gradient-hero)' }}>
-        <RefreshCw className="h-8 w-8 animate-spin text-purple-400" />
-      </div>
-    );
-  }
-
-  if (!order) {
-    return (
-      <div className="min-h-screen  flex items-center justify-center" style={{ background: 'var(--gradient-hero)' }}>
-        <p className="text-white">Order not found</p>
-      </div>
-    );
-  }
-
-  const statusColors: Record<string, string> = {
-    completed: 'bg-green-500/20 text-green-400 border-green-500/30',
-    pending: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30',
-    cancelled: 'bg-red-500/20 text-red-400 border-red-500/30',
-    refunded: 'bg-gray-500/20 text-gray-400 border-gray-500/30',
+  const getStatusBadge = (status: string) => {
+    const variants = {
+      completed: 'default' as const,
+      pending: 'secondary' as const,
+      cancelled: 'destructive' as const,
+      refunded: 'secondary' as const,
+    };
+    return variants[status as keyof typeof variants] || 'secondary';
   };
 
+  if (!order) {
+    return null;
+  }
+
+  const event = order.events;
+  const totalAmount = order.total_amount || 0;
+
   return (
-    <div className="min-h-screen  py-12 px-4" style={{ background: 'var(--gradient-hero)' }}>
-      <div className="max-w-4xl mx-auto">
-        <Button
-          onClick={() => router.back()}
-          variant="ghost"
-          className="mb-6"
-        >
-          <ArrowLeft className="h-4 w-4 mr-2" />
-          Back to Orders
-        </Button>
-
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <h1 className="text-3xl font-bold text-white">
-              Order #{order.id.slice(0, 8).toUpperCase()}
-            </h1>
-            <p className="text-gray-400 mt-1">
-              {new Date(order.created_at).toLocaleString()}
-            </p>
-          </div>
-          <Badge className={statusColors[order.status]}>
-            {order.status}
-          </Badge>
-        </div>
-
-        <div className="grid gap-6">
-          <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20">
-            <CardHeader>
-              <CardTitle>Order Information</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <p className="text-sm text-gray-400">Order ID</p>
-                  <p className="text-white font-mono">{order.id}</p>
+    <ContextualPageTemplate
+      breadcrumbs={[
+        { label: 'Orders', href: '/admin/orders' },
+        { label: `Order #${order.order_number}`, href: `/admin/orders/${orderId}` }
+      ]}
+      title={`Order #${order.order_number}`}
+      subtitle={`${order.customer_name} • ${order.customer_email}`}
+      statusBadge={{
+        label: order.status,
+        variant: getStatusBadge(order.status) === 'default' ? 'success' : 
+                getStatusBadge(order.status) === 'destructive' ? 'error' : 'info'
+      }}
+      secondaryActions={[
+        {
+          label: 'Resend Tickets',
+          onClick: handleResendTickets,
+          icon: <Mail />
+        },
+        {
+          label: 'Refresh',
+          onClick: () => fetchOrder(orderId),
+          icon: <RefreshCw />
+        }
+      ]}
+      primaryAction={
+        order.status === 'completed' ? {
+          label: 'Refund Order',
+          onClick: handleRefund,
+          icon: <DollarSign />
+        } : undefined
+      }
+      metadata={[
+        { icon: <Package />, label: 'Tickets', value: order.tickets?.length.toString() || '0' },
+        { icon: <DollarSign />, label: 'Total', value: `$${totalAmount.toFixed(2)}` },
+        { label: 'Order Date', value: new Date(order.created_at).toLocaleDateString() }
+      ]}
+      loading={loading}
+    >
+      <div className={styles.contentGrid}>
+        <Card>
+          <CardHeader>
+            <CardTitle>Event Details</CardTitle>
+          </CardHeader>
+          <CardContent>
+            {event && (
+              <div className={styles.eventDetails}>
+                <div className={styles.detailRow}>
+                  <span className={styles.label}>Event:</span>
+                  <span className={styles.value}>{event.name}</span>
                 </div>
-                <div>
-                  <p className="text-sm text-gray-400">User ID</p>
-                  <p className="text-white font-mono">{order.user_id}</p>
+                <div className={styles.detailRow}>
+                  <span className={styles.label}>Venue:</span>
+                  <span className={styles.value}>{event.venue_name}</span>
                 </div>
-                <div>
-                  <p className="text-sm text-gray-400">Total Amount</p>
-                  <p className="text-2xl font-bold text-purple-400">
-                    ${order.total_amount.toFixed(2)}
-                  </p>
-                </div>
-                <div>
-                  <p className="text-sm text-gray-400">Payment Intent</p>
-                  <p className="text-white font-mono text-sm">
-                    {order.stripe_payment_intent_id || 'N/A'}
-                  </p>
+                <div className={styles.detailRow}>
+                  <span className={styles.label}>Date:</span>
+                  <span className={styles.value}>
+                    {new Date(event.start_date).toLocaleString()}
+                  </span>
                 </div>
               </div>
-            </CardContent>
-          </Card>
+            )}
+          </CardContent>
+        </Card>
 
-          {order.events && (
-            <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20">
-              <CardHeader>
-                <CardTitle>Event Details</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <h3 className="text-xl font-bold text-white mb-2">
-                  {order.events.name}
-                </h3>
-                <div className="space-y-1 text-gray-400">
-                  <p>Date: {new Date(order.events.start_date).toLocaleDateString()}</p>
-                  <p>Venue: {order.events.venue_name}</p>
-                </div>
-              </CardContent>
-            </Card>
-          )}
-
-          <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20">
-            <CardHeader>
-              <CardTitle>Tickets ({order.tickets?.length || 0})</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-3">
-                {order.tickets?.map((ticket: any) => (
-                  <div
-                    key={ticket.id}
-                    className="p-4 rounded-lg bg-purple-900/20 border border-purple-500/20"
-                  >
-                    <div className="flex justify-between items-center">
-                      <div>
-                        <p className="font-medium text-white">
-                          {ticket.ticket_types?.name || 'Ticket'}
-                        </p>
-                        <p className="text-sm text-gray-400">
-                          ID: {ticket.id.slice(0, 8)}
-                        </p>
-                      </div>
-                      <div className="text-right">
-                        <Badge
-                          className={
-                            ticket.status === 'active'
-                              ? 'bg-green-500/20 text-green-400'
-                              : 'bg-gray-500/20 text-gray-400'
-                          }
-                        >
-                          {ticket.status}
-                        </Badge>
-                        <p className="text-sm text-gray-400 mt-1">
-                          ${ticket.ticket_types?.price || 0}
-                        </p>
-                      </div>
-                    </div>
+        <Card>
+          <CardHeader>
+            <CardTitle>Tickets ({order.tickets?.length || 0})</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className={styles.ticketsList}>
+              {order.tickets?.map((ticket: any) => (
+                <div key={ticket.id} className={styles.ticketItem}>
+                  <div className={styles.ticketInfo}>
+                    <span className={styles.ticketType}>
+                      {ticket.ticket_types?.name || 'General Admission'}
+                    </span>
+                    <Badge variant={ticket.status === 'valid' ? 'default' : 'secondary'}>
+                      {ticket.status}
+                    </Badge>
                   </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
+                  <span className={styles.ticketPrice}>
+                    ${ticket.ticket_types?.price?.toFixed(2) || '0.00'}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
 
-          <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20">
-            <CardHeader>
-              <CardTitle>Actions</CardTitle>
-            </CardHeader>
-            <CardContent className="flex gap-4">
-              <Button
-                onClick={resendConfirmation}
-                disabled={processing}
-                variant="outline"
-                className="border-purple-500/30"
-              >
-                <Mail className="h-4 w-4 mr-2" />
-                Resend Confirmation
-              </Button>
-              {order.status === 'completed' && (
-                <Button
-                  onClick={handleRefund}
-                  disabled={processing}
-                  variant="destructive"
-                >
-                  <DollarSign className="h-4 w-4 mr-2" />
-                  Issue Refund
-                </Button>
-              )}
-            </CardContent>
-          </Card>
-        </div>
+        <Card>
+          <CardHeader>
+            <CardTitle>Payment Information</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className={styles.paymentDetails}>
+              <div className={styles.detailRow}>
+                <span className={styles.label}>Payment Method:</span>
+                <span className={styles.value}>{order.payment_method || 'Card'}</span>
+              </div>
+              <div className={styles.detailRow}>
+                <span className={styles.label}>Transaction ID:</span>
+                <span className={styles.value}>{order.stripe_payment_intent_id || 'N/A'}</span>
+              </div>
+              <div className={styles.detailRow}>
+                <span className={styles.label}>Amount:</span>
+                <span className={styles.valueHighlight}>${totalAmount.toFixed(2)}</span>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
       </div>
-    </div>
+    </ContextualPageTemplate>
   );
 }

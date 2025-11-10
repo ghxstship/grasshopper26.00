@@ -8,6 +8,7 @@ import { Dialog, DialogContent } from '@/design-system/components/atoms/dialog';
 import { Badge } from '@/design-system/components/atoms/badge';
 import Image from 'next/image';
 import { formatDistanceToNow } from 'date-fns';
+import styles from './video-gallery.module.css';
 
 interface Video {
   id: string;
@@ -48,10 +49,10 @@ export function VideoGallery({
     setTimeout(() => setSelectedVideo(null), 300);
   };
 
-  const gridCols = {
-    2: 'grid-cols-1 md:grid-cols-2',
-    3: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3',
-    4: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4',
+  const gridColsClass = {
+    2: styles.gridCols2,
+    3: styles.gridCols3,
+    4: styles.gridCols4,
   };
 
   const formatViews = (views: string) => {
@@ -62,31 +63,31 @@ export function VideoGallery({
   };
 
   return (
-    <div className={className}>
-      {title && <h2 className="text-2xl font-bold mb-6">{title}</h2>}
+    <div className={`${styles.gallery} ${className || ''}`}>
+      {title && <h2 className={styles.title}>{title}</h2>}
 
-      <div className={`grid ${gridCols[columns]} gap-6`}>
+      <div className={`${styles.grid} ${gridColsClass[columns]}`}>
         {videos.map((video, index) => (
           <motion.div
             key={video.id}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
-            className="group cursor-pointer"
+            className={styles.videoCard}
             onClick={() => handleVideoClick(video)}
           >
-            <div className="relative aspect-video rounded-lg overflow-hidden bg-muted">
+            <div className={styles.videoThumbnail}>
               <Image
                 src={video.thumbnail}
                 alt={video.title}
                 fill
-                className="object-cover transition-transform group-hover:scale-105"
+                className={styles.thumbnailImage}
               />
               
               {/* Play Button Overlay */}
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                <div className="bg-primary rounded-full p-4">
-                  <Play className="h-8 w-8 text-primary-foreground fill-current" />
+              <div className={styles.playOverlay}>
+                <div className={styles.playButton}>
+                  <Play className={styles.playIcon} />
                 </div>
               </div>
 
@@ -94,31 +95,31 @@ export function VideoGallery({
               {video.duration && (
                 <Badge
                   variant="secondary"
-                  className="absolute bottom-2 right-2 bg-black/80 text-white"
+                  className={styles.durationBadge}
                 >
                   {video.duration}
                 </Badge>
               )}
             </div>
 
-            <div className="mt-3 space-y-1">
-              <h3 className="font-semibold line-clamp-2 group-hover:text-primary transition-colors">
+            <div className={styles.videoInfo}>
+              <h3 className={styles.videoTitle}>
                 {video.title}
               </h3>
               
               {showChannel && (
-                <p className="text-sm text-muted-foreground">{video.channelTitle}</p>
+                <p className={styles.channelName}>{video.channelTitle}</p>
               )}
 
-              <div className="flex items-center gap-3 text-xs text-muted-foreground">
+              <div className={styles.videoMeta}>
                 {video.viewCount && (
-                  <span className="flex items-center gap-1">
-                    <Eye className="h-3 w-3" />
+                  <span className={styles.metaItem}>
+                    <Eye className={styles.metaIcon} />
                     {formatViews(video.viewCount)} views
                   </span>
                 )}
-                <span className="flex items-center gap-1">
-                  <Calendar className="h-3 w-3" />
+                <span className={styles.metaItem}>
+                  <Calendar className={styles.metaIcon} />
                   {formatDistanceToNow(new Date(video.publishedAt), { addSuffix: true })}
                 </span>
               </div>
@@ -129,7 +130,7 @@ export function VideoGallery({
 
       {/* Video Player Modal */}
       <Dialog open={isPlayerOpen} onOpenChange={setIsPlayerOpen}>
-        <DialogContent className="max-w-5xl p-0">
+        <DialogContent className={styles.modalContent}>
           <AnimatePresence>
             {selectedVideo && (
               <motion.div
@@ -137,29 +138,29 @@ export function VideoGallery({
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
               >
-                <div className="relative aspect-video bg-black">
+                <div className={styles.videoPlayer}>
                   <iframe
                     src={`https://www.youtube.com/embed/${selectedVideo.id}?autoplay=1`}
                     title={selectedVideo.title}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
-                    className="w-full h-full"
+                    className={styles.iframe}
                   />
                 </div>
 
-                <div className="p-6 space-y-4">
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="flex-1">
-                      <h2 className="text-xl font-bold mb-2">{selectedVideo.title}</h2>
+                <div className={styles.modalInfo}>
+                  <div className={styles.modalHeader}>
+                    <div className={styles.modalDetails}>
+                      <h2 className={styles.modalTitle}>{selectedVideo.title}</h2>
                       {showChannel && (
-                        <p className="text-sm text-muted-foreground mb-3">
+                        <p className={styles.modalChannel}>
                           {selectedVideo.channelTitle}
                         </p>
                       )}
-                      <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                      <div className={styles.modalMeta}>
                         {selectedVideo.viewCount && (
-                          <span className="flex items-center gap-1">
-                            <Eye className="h-4 w-4" />
+                          <span className={styles.metaItem}>
+                            <Eye className={styles.modalMetaIcon} />
                             {formatViews(selectedVideo.viewCount)} views
                           </span>
                         )}
@@ -182,14 +183,14 @@ export function VideoGallery({
                         rel="noopener noreferrer"
                         title="Watch on YouTube"
                       >
-                        <ExternalLink className="h-4 w-4" />
+                        <ExternalLink className={styles.icon} />
                       </a>
                     </Button>
                   </div>
 
                   {selectedVideo.description && (
-                    <div className="border-t pt-4">
-                      <p className="text-sm text-muted-foreground whitespace-pre-wrap line-clamp-3">
+                    <div className={styles.descriptionSection}>
+                      <p className={styles.description}>
                         {selectedVideo.description}
                       </p>
                     </div>

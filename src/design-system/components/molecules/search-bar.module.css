@@ -20,18 +20,18 @@
   transform: translateY(-50%);
   height: var(--space-4);
   width: var(--space-4);
-  color: var(--color-text-tertiary);
+  color: var(--color-grey-600);
 }
 
 .input {
   padding-inline-start: var(--space-10);
   padding-inline-end: var(--space-10);
-  background-color: color-mix(in srgb, var(--color-bg-primary) 50%, transparent);
-  border-color: color-mix(in srgb, var(--color-primary) 30%, transparent);
+  background-color: color-mix(in srgb, var(--color-white) 50%, transparent);
+  border-color: color-mix(in srgb, var(--color-black) 30%, transparent);
 }
 
 .input:focus {
-  border-color: color-mix(in srgb, var(--color-primary) 50%, transparent);
+  border-color: color-mix(in srgb, var(--color-black) 50%, transparent);
 }
 
 .loader {
@@ -41,7 +41,7 @@
   transform: translateY(-50%);
   height: var(--space-4);
   width: var(--space-4);
-  color: var(--color-primary);
+  color: var(--color-black);
   animation: spin var(--duration-slower) linear infinite;
 }
 
@@ -55,9 +55,9 @@
   inset-block-start: 100%;
   margin-block-start: var(--space-2);
   width: 100%;
-  background-color: color-mix(in srgb, var(--color-bg-primary) 95%, transparent);
+  background-color: color-mix(in srgb, var(--color-white) 95%, transparent);
   backdrop-filter: blur(16px);
-  border-color: color-mix(in srgb, var(--color-primary) 20%, transparent);
+  border-color: color-mix(in srgb, var(--color-black) 20%, transparent);
   max-height: 24rem;
   overflow-y: auto;
   z-index: var(--z-dropdown);
@@ -83,7 +83,7 @@
   padding-block: var(--space-1);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-semibold);
-  color: var(--color-text-tertiary);
+  color: var(--color-grey-600);
 }
 
 .sectionIcon {
@@ -96,19 +96,19 @@
   align-items: center;
   gap: var(--space-3);
   padding: var(--space-2);
-  border-radius: var(--radius-md);
+  border: 3px solid var(--color-black);
   transition: background-color var(--duration-fast) var(--easing-out);
 }
 
 .resultItem:hover {
-  background-color: color-mix(in srgb, var(--color-primary) 10%, transparent);
+  background-color: color-mix(in srgb, var(--color-black) 10%, transparent);
 }
 
 .resultImage {
   position: relative;
   width: var(--space-12);
   height: var(--space-12);
-  border-radius: var(--radius-md);
+  border: 3px solid var(--color-black);
   overflow: hidden;
   flex-shrink: 0;
 }
@@ -132,7 +132,7 @@
 
 .resultMeta {
   font-size: var(--font-size-sm);
-  color: var(--color-text-tertiary);
+  color: var(--color-grey-600);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -141,5 +141,107 @@
 .noResults {
   padding: var(--space-4);
   text-align: center;
-  color: var(--color-text-tertiary);
+  color: var(--color-grey-600);
+}
+
+
+.bgBlack {
+  background-color: var(--color-black);
+}
+
+.bgWhite {
+  background-color: var(--color-white);
+}
+
+.borderBlack {
+  border-color: var(--color-black);
+}
+
+.emptyIcon {
+  inline-size: var(--space-16);
+  block-size: var(--space-16);
+  margin-inline: auto;
+  color: var(--color-grey-600);
+  margin-block-end: var(--space-4);
+}
+
+.textGrey600 {
+  color: var(--color-grey-600);
+}
+
+.textGrey700 {
+  color: var(--color-grey-700);
+}
+
+.textBlack {
+  color: var(--color-black);
+}
+
+.textWhite {
+  color: var(--color-white);
+}
+
+.flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flexBetween {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.gap2 {
+  gap: var(--space-2);
+}
+
+.gap4 {
+  gap: var(--space-4);
+}
+
+
+.fullWidth {
+  inline-size: 100%;
+}
+
+.fullHeight {
+  block-size: 100%;
+}
+
+.marginBottom {
+  margin-block-end: var(--space-4);
+}
+
+.marginTop {
+  margin-block-start: var(--space-4);
+}
+
+.textSmall {
+  font-size: var(--font-size-sm);
+}
+
+.textLarge {
+  font-size: var(--font-size-lg);
+}
+
+.fontBold {
+  font-weight: var(--font-weight-semibold);
+}
+
+.fontMedium {
+  font-weight: var(--font-weight-medium);
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.rounded {
+  border-radius: var(--radius-md);
+}
+
+.shadow {
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.1);
 }

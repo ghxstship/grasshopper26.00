@@ -1,6 +1,7 @@
 import { LucideIcon } from 'lucide-react';
 import { Button } from '@/design-system/components/atoms/button';
 import { cn } from '@/lib/utils';
+import styles from './empty-state.module.css';
 
 interface EmptyStateProps {
   icon: LucideIcon;
@@ -22,11 +23,11 @@ export function EmptyState({
 }: EmptyStateProps) {
   return (
     <div className={cn('flex flex-col items-center justify-center py-12 px-4', className)}>
-      <div className="h-16 w-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
-        <Icon className="h-8 w-8 text-gray-400" />
+      <div className={styles.iconLarge}>
+        <Icon className={styles.iconLarge} />
       </div>
-      <h3 className="text-lg font-semibold text-gray-900 mb-2">{title}</h3>
-      <p className="text-sm text-gray-500 text-center max-w-sm mb-6">{description}</p>
+      <h3 className={styles.text}>{title}</h3>
+      <p className={styles.text}>{description}</p>
       {action && (
         <Button onClick={action.onClick}>
           {action.label}
@@ -43,12 +44,12 @@ interface EmptySearchResultsProps {
 
 export function EmptySearchResults({ searchTerm, onClear }: EmptySearchResultsProps) {
   return (
-    <div className="flex flex-col items-center justify-center py-12 px-4">
-      <div className="text-center">
-        <p className="text-lg font-medium text-gray-900 mb-2">
+    <div className={styles.row}>
+      <div className={styles.container}>
+        <p className={styles.text}>
           No results found for &quot;{searchTerm}&quot;
         </p>
-        <p className="text-sm text-gray-500 mb-4">
+        <p className={styles.text}>
           Try adjusting your search or filters
         </p>
         <Button onClick={onClear} variant="outline">
@@ -67,9 +68,9 @@ export function EmptyList({
   description: string; 
 }) {
   return (
-    <div className="text-center py-12 px-4">
-      <p className="text-lg font-medium text-gray-900 mb-2">{title}</p>
-      <p className="text-sm text-gray-500">{description}</p>
+    <div className={styles.emptyState}>
+      <p className={styles.text}>{title}</p>
+      <p className={styles.text}>{description}</p>
     </div>
   );
 }

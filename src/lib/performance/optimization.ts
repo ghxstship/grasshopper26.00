@@ -104,7 +104,7 @@ export class LazyImageLoader {
           });
         },
         {
-          rootMargin: '50px',
+          rootMargin: '50px', // eslint-disable-line no-restricted-syntax -- IntersectionObserver API requires pixel values
         }
       );
     }

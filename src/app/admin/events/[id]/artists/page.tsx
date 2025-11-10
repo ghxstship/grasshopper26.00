@@ -6,23 +6,15 @@
 'use client';
 
 import { use, useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { ContextualPageTemplate } from '@/design-system/components/templates';
 import { Button } from '@/design-system/components/atoms/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/card';
 import { Input } from '@/design-system/components/atoms/input';
 import { Badge } from '@/design-system/components/atoms/badge';
-import { 
-  ArrowLeft, 
-  Plus, 
-  Trash2, 
-  Music,
-  Search,
-  Loader2,
-  Check
-} from 'lucide-react';
-import Link from 'next/link';
+import { Plus, Trash2, Music, Search, Check } from 'lucide-react';
 import { toast } from 'sonner';
 import Image from 'next/image';
+import styles from './artists-content.module.css';
 
 interface Artist {
   id: string;
@@ -42,7 +34,6 @@ interface AssignedArtist extends Artist {
 
 export default function EventArtistsPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
-  const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [event, setEvent] = useState<any>(null);
@@ -61,21 +52,17 @@ export default function EventArtistsPage({ params }: { params: Promise<{ id: str
   async function fetchData() {
     setLoading(true);
     try {
-      // Fetch event details
       const eventRes = await fetch(`/api/admin/events/${id}`);
       const eventData = await eventRes.json();
       setEvent(eventData.event);
 
-      // Fetch assigned artists
       const assignedRes = await fetch(`/api/admin/events/${id}/artists`);
       const assignedData = await assignedRes.json();
       setAssignedArtists(assignedData.artists || []);
 
-      // Fetch all artists
       const artistsRes = await fetch('/api/admin/artists');
       const artistsData = await artistsRes.json();
       
-      // Filter out already assigned artists
       const assignedIds = new Set((assignedData.artists || []).map((a: AssignedArtist) => a.id));
       const available = (artistsData.artists || []).filter((a: Artist) => !assignedIds.has(a.id));
       setAvailableArtists(available);
@@ -106,7 +93,7 @@ export default function EventArtistsPage({ params }: { params: Promise<{ id: str
       const data = await response.json();
 
       if (response.ok) {
-        await fetchData(); // Refresh data
+        await fetchData();
         setSelectedArtistId('');
         setIsHeadliner(false);
         setShowAddForm(false);
@@ -131,7 +118,7 @@ export default function EventArtistsPage({ params }: { params: Promise<{ id: str
       });
 
       if (response.ok) {
-        await fetchData(); // Refresh data
+        await fetchData();
         toast.success('Artist removed from event');
       } else {
         toast.error('Failed to remove artist');
@@ -150,7 +137,7 @@ export default function EventArtistsPage({ params }: { params: Promise<{ id: str
       });
 
       if (response.ok) {
-        await fetchData(); // Refresh data
+        await fetchData();
         toast.success(`Artist ${!currentStatus ? 'marked' : 'unmarked'} as headliner`);
       } else {
         toast.error('Failed to update artist');
@@ -164,273 +151,228 @@ export default function EventArtistsPage({ params }: { params: Promise<{ id: str
     artist.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
-        <Loader2 className="h-12 w-12 animate-spin text-black" />
-      </div>
-    );
-  }
-
-  return (
-    <main className="min-h-screen bg-white">
-      {/* Header */}
-      <section className="border-b-3 border-black py-12">
-        <div className="container mx-auto px-4 max-w-7xl">
-          <Link
-            href={`/admin/events/${id}`}
-            className="inline-flex items-center gap-2 font-bebas text-body uppercase mb-6 hover:underline"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Back to Event
-          </Link>
-          <h1 className="font-anton text-hero uppercase mb-2">
-            Event Artists
-          </h1>
-          <p className="font-share text-body text-grey-700">
-            {event?.name} - Manage artist lineup and billing
+  const assignedArtistsPane = (
+    <Card>
+      <CardHeader>
+        <CardTitle className={styles.cardTitle}>
+          <Music className={styles.iconInline} />
+          Assigned Artists ({assignedArtists.length})
+        </CardTitle>
+      </CardHeader>
+      <CardContent>
+        {assignedArtists.length === 0 ? (
+          <p className={styles.emptyText}>
+            No artists assigned yet. Add artists from the available list.
           </p>
-        </div>
-      </section>
-
-      <section className="py-12">
-        <div className="container mx-auto px-4 max-w-7xl">
-          <div className="grid lg:grid-cols-2 gap-8">
-            {/* Assigned Artists */}
-            <div>
-              <Card className="border-3 border-black shadow-geometric">
-                <CardHeader className="border-b-3 border-black">
-                  <CardTitle className="font-bebas text-h3 uppercase flex items-center gap-2">
-                    <Music className="h-5 w-5" />
-                    Assigned Artists ({assignedArtists.length})
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="p-6">
-                  {assignedArtists.length === 0 ? (
-                    <p className="text-center py-8 text-grey-600 font-share">
-                      No artists assigned yet. Add artists from the available list.
-                    </p>
-                  ) : (
-                    <div className="space-y-3">
-                      {assignedArtists
-                        .sort((a, b) => (a.billing_order || 0) - (b.billing_order || 0))
-                        .map((artist) => (
-                          <div
-                            key={artist.event_artist_id}
-                            className="border-3 border-black p-4 bg-white hover:bg-grey-50 transition-colors"
-                          >
-                            <div className="flex items-start gap-4">
-                              <div className="w-16 h-16 border-3 border-black bg-grey-200 flex-shrink-0 overflow-hidden">
-                                {artist.profile_image_url ? (
-                                  <Image
-                                    src={artist.profile_image_url}
-                                    alt={artist.name}
-                                    width={64}
-                                    height={64}
-                                    className="w-full h-full object-cover"
-                                  />
-                                ) : (
-                                  <div className="w-full h-full flex items-center justify-center">
-                                    <Music className="h-6 w-6 text-grey-400" />
-                                  </div>
-                                )}
-                              </div>
-                              <div className="flex-1">
-                                <div className="flex items-center gap-2 mb-1">
-                                  <h4 className="font-bebas text-h4 uppercase">{artist.name}</h4>
-                                  {artist.is_headliner && (
-                                    <Badge className="bg-yellow-400 text-black border-3 border-black">
-                                      Headliner
-                                    </Badge>
-                                  )}
-                                  {artist.verified && (
-                                    <Badge className="bg-blue-500 text-white border-3 border-black">
-                                      <Check className="h-3 w-3" />
-                                    </Badge>
-                                  )}
-                                </div>
-                                {artist.genre_tags && artist.genre_tags.length > 0 && (
-                                  <p className="font-share text-small text-grey-600">
-                                    {artist.genre_tags.slice(0, 3).join(', ')}
-                                  </p>
-                                )}
-                              </div>
-                              <div className="flex gap-2">
-                                <Button
-                                  onClick={() => handleToggleHeadliner(artist.event_artist_id, artist.is_headliner)}
-                                  variant="outline"
-                                  size="sm"
-                                  className="border-3 border-black"
-                                >
-                                  {artist.is_headliner ? 'Unmark' : 'Mark'} Headliner
-                                </Button>
-                                <Button
-                                  onClick={() => handleRemoveArtist(artist.event_artist_id)}
-                                  variant="outline"
-                                  size="sm"
-                                  className="border-3 border-red-600 text-red-600 hover:bg-red-600 hover:text-white"
-                                >
-                                  <Trash2 className="h-4 w-4" />
-                                </Button>
-                              </div>
-                            </div>
-                          </div>
-                        ))}
+        ) : (
+          <div className={styles.artistsList}>
+            {assignedArtists
+              .sort((a, b) => (a.billing_order || 0) - (b.billing_order || 0))
+              .map((artist) => (
+                <div key={artist.event_artist_id} className={styles.artistItem}>
+                  <div className={styles.artistContent}>
+                    <div className={styles.artistImageWrapper}>
+                      {artist.profile_image_url ? (
+                        <Image
+                          src={artist.profile_image_url}
+                          alt={artist.name}
+                          width={64}
+                          height={64}
+                          className={styles.artistImage}
+                        />
+                      ) : (
+                        <div className={styles.artistImagePlaceholder}>
+                          <Music className={styles.iconSmall} />
+                        </div>
+                      )}
                     </div>
-                  )}
-                </CardContent>
-              </Card>
-            </div>
-
-            {/* Available Artists */}
-            <div>
-              <Card className="border-3 border-black shadow-geometric">
-                <CardHeader className="border-b-3 border-black">
-                  <div className="flex items-center justify-between">
-                    <CardTitle className="font-bebas text-h3 uppercase flex items-center gap-2">
-                      <Plus className="h-5 w-5" />
-                      Available Artists
-                    </CardTitle>
-                  </div>
-                </CardHeader>
-                <CardContent className="p-6">
-                  {/* Search */}
-                  <div className="mb-6">
-                    <div className="relative">
-                      <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-grey-400" />
-                      <Input
-                        placeholder="Search artists..."
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                        className="pl-10 border-3 border-black"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Add Form */}
-                  {showAddForm && (
-                    <form onSubmit={handleAssignArtist} className="mb-6 p-4 border-3 border-black bg-grey-100">
-                      <h3 className="font-bebas text-h4 uppercase mb-4">Assign Artist</h3>
-                      <div className="space-y-4">
-                        <div>
-                          <select
-                            value={selectedArtistId}
-                            onChange={(e) => setSelectedArtistId(e.target.value)}
-                            required
-                            className="w-full px-4 py-3 border-3 border-black font-share"
-                          >
-                            <option value="">Select Artist</option>
-                            {filteredAvailableArtists.map((artist) => (
-                              <option key={artist.id} value={artist.id}>
-                                {artist.name}
-                              </option>
-                            ))}
-                          </select>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <input
-                            type="checkbox"
-                            id="headliner"
-                            checked={isHeadliner}
-                            onChange={(e) => setIsHeadliner(e.target.checked)}
-                            className="w-5 h-5 border-3 border-black"
-                          />
-                          <label htmlFor="headliner" className="font-bebas uppercase">
-                            Mark as Headliner
-                          </label>
-                        </div>
-                        <div className="flex gap-2">
-                          <Button
-                            type="submit"
-                            disabled={saving || !selectedArtistId}
-                            className="flex-1 bg-black text-white hover:bg-white hover:text-black border-3 border-black font-bebas uppercase"
-                          >
-                            {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : 'Assign Artist'}
-                          </Button>
-                          <Button
-                            type="button"
-                            onClick={() => {
-                              setShowAddForm(false);
-                              setSelectedArtistId('');
-                              setIsHeadliner(false);
-                            }}
-                            className="bg-white text-black hover:bg-black hover:text-white border-3 border-black font-bebas uppercase"
-                          >
-                            Cancel
-                          </Button>
-                        </div>
+                    <div className={styles.artistInfo}>
+                      <div className={styles.artistHeader}>
+                        <h4 className={styles.artistName}>{artist.name}</h4>
+                        {artist.is_headliner && (
+                          <Badge variant="default">Headliner</Badge>
+                        )}
+                        {artist.verified && (
+                          <Badge variant="secondary">
+                            <Check className={styles.iconSmall} />
+                          </Badge>
+                        )}
                       </div>
-                    </form>
-                  )}
+                      {artist.genre_tags && artist.genre_tags.length > 0 && (
+                        <p className={styles.genreTags}>
+                          {artist.genre_tags.slice(0, 3).join(', ')}
+                        </p>
+                      )}
+                    </div>
+                    <div className={styles.artistActions}>
+                      <Button
+                        onClick={() => handleToggleHeadliner(artist.event_artist_id, artist.is_headliner)}
+                        variant="outline"
+                        size="sm"
+                      >
+                        {artist.is_headliner ? 'Unmark' : 'Mark'} Headliner
+                      </Button>
+                      <Button
+                        onClick={() => handleRemoveArtist(artist.event_artist_id)}
+                        variant="outline"
+                        size="sm"
+                      >
+                        <Trash2 className={styles.iconSmall} />
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+          </div>
+        )}
+      </CardContent>
+    </Card>
+  );
 
-                  {!showAddForm && (
-                    <Button
-                      onClick={() => setShowAddForm(true)}
-                      disabled={availableArtists.length === 0}
-                      className="w-full mb-6 bg-black text-white hover:bg-white hover:text-black border-3 border-black font-bebas uppercase"
-                    >
-                      <Plus className="h-4 w-4 mr-2" />
-                      Assign Artist to Event
-                    </Button>
-                  )}
+  const availableArtistsPane = (
+    <Card>
+      <CardHeader>
+        <CardTitle className={styles.cardTitle}>
+          <Plus className={styles.iconInline} />
+          Available Artists
+        </CardTitle>
+      </CardHeader>
+      <CardContent>
+        <div className={styles.searchWrapper}>
+          <Search className={styles.searchIcon} />
+          <Input
+            placeholder="Search artists..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className={styles.searchInput}
+          />
+        </div>
 
-                  {/* Available Artists List */}
-                  <div className="space-y-3 max-h-[600px] overflow-y-auto">
-                    {filteredAvailableArtists.length === 0 ? (
-                      <p className="text-center py-8 text-grey-600 font-share">
-                        {availableArtists.length === 0 
-                          ? 'All artists have been assigned to this event.'
-                          : 'No artists found matching your search.'
-                        }
-                      </p>
+        {showAddForm && (
+          <form onSubmit={handleAssignArtist} className={styles.addForm}>
+            <h3 className={styles.formTitle}>Assign Artist</h3>
+            <div className={styles.formFields}>
+              <select
+                value={selectedArtistId}
+                onChange={(e) => setSelectedArtistId(e.target.value)}
+                required
+                className={styles.select}
+              >
+                <option value="">Select Artist</option>
+                {filteredAvailableArtists.map((artist) => (
+                  <option key={artist.id} value={artist.id}>
+                    {artist.name}
+                  </option>
+                ))}
+              </select>
+              <div className={styles.checkboxGroup}>
+                <input
+                  type="checkbox"
+                  id="headliner"
+                  checked={isHeadliner}
+                  onChange={(e) => setIsHeadliner(e.target.checked)}
+                  className={styles.checkbox}
+                />
+                <label htmlFor="headliner" className={styles.checkboxLabel}>
+                  Mark as Headliner
+                </label>
+              </div>
+              <div className={styles.formActions}>
+                <Button type="submit" disabled={saving || !selectedArtistId}>
+                  {saving ? 'Assigning...' : 'Assign Artist'}
+                </Button>
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => {
+                    setShowAddForm(false);
+                    setSelectedArtistId('');
+                    setIsHeadliner(false);
+                  }}
+                >
+                  Cancel
+                </Button>
+              </div>
+            </div>
+          </form>
+        )}
+
+        {!showAddForm && (
+          <Button
+            onClick={() => setShowAddForm(true)}
+            disabled={availableArtists.length === 0}
+            className={styles.addButton}
+          >
+            <Plus className={styles.iconSmall} />
+            Assign Artist to Event
+          </Button>
+        )}
+
+        <div className={styles.artistsList}>
+          {filteredAvailableArtists.length === 0 ? (
+            <p className={styles.emptyText}>
+              {availableArtists.length === 0 
+                ? 'All artists have been assigned to this event.'
+                : 'No artists found matching your search.'
+              }
+            </p>
+          ) : (
+            filteredAvailableArtists.map((artist) => (
+              <div key={artist.id} className={styles.artistItem}>
+                <div className={styles.artistContent}>
+                  <div className={styles.artistImageWrapper}>
+                    {artist.profile_image_url ? (
+                      <Image
+                        src={artist.profile_image_url}
+                        alt={artist.name}
+                        width={48}
+                        height={48}
+                        className={styles.artistImage}
+                      />
                     ) : (
-                      filteredAvailableArtists.map((artist) => (
-                        <div
-                          key={artist.id}
-                          className="border-3 border-black p-4 bg-white hover:bg-grey-50 transition-colors"
-                        >
-                          <div className="flex items-start gap-4">
-                            <div className="w-12 h-12 border-3 border-black bg-grey-200 flex-shrink-0 overflow-hidden">
-                              {artist.profile_image_url ? (
-                                <Image
-                                  src={artist.profile_image_url}
-                                  alt={artist.name}
-                                  width={48}
-                                  height={48}
-                                  className="w-full h-full object-cover"
-                                />
-                              ) : (
-                                <div className="w-full h-full flex items-center justify-center">
-                                  <Music className="h-5 w-5 text-grey-400" />
-                                </div>
-                              )}
-                            </div>
-                            <div className="flex-1">
-                              <div className="flex items-center gap-2 mb-1">
-                                <h4 className="font-bebas text-body uppercase">{artist.name}</h4>
-                                {artist.verified && (
-                                  <Badge className="bg-blue-500 text-white border-2 border-black text-xs">
-                                    <Check className="h-3 w-3" />
-                                  </Badge>
-                                )}
-                              </div>
-                              {artist.genre_tags && artist.genre_tags.length > 0 && (
-                                <p className="font-share text-small text-grey-600">
-                                  {artist.genre_tags.slice(0, 3).join(', ')}
-                                </p>
-                              )}
-                            </div>
-                          </div>
-                        </div>
-                      ))
+                      <div className={styles.artistImagePlaceholder}>
+                        <Music className={styles.iconSmall} />
+                      </div>
                     )}
                   </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
+                  <div className={styles.artistInfo}>
+                    <div className={styles.artistHeader}>
+                      <h4 className={styles.artistName}>{artist.name}</h4>
+                      {artist.verified && (
+                        <Badge variant="secondary">
+                          <Check className={styles.iconSmall} />
+                        </Badge>
+                      )}
+                    </div>
+                    {artist.genre_tags && artist.genre_tags.length > 0 && (
+                      <p className={styles.genreTags}>
+                        {artist.genre_tags.slice(0, 3).join(', ')}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))
+          )}
         </div>
-      </section>
-    </main>
+      </CardContent>
+    </Card>
+  );
+
+  return (
+    <ContextualPageTemplate
+      breadcrumbs={[
+        { label: 'Events', href: '/admin/events' },
+        { label: event?.name || 'Event', href: `/admin/events/${id}` },
+        { label: 'Artists', href: `/admin/events/${id}/artists` }
+      ]}
+      title="Event Artists"
+      subtitle={event?.name ? `${event.name} - Manage artist lineup and billing` : 'Manage artist lineup and billing'}
+      layout="split-pane"
+      splitRatio="50-50"
+      leftPane={assignedArtistsPane}
+      rightPane={availableArtistsPane}
+      loading={loading}
+    />
   );
 }

@@ -1,4 +1,0 @@
-.quickStats { display: grid; grid-template-columns: repeat(auto-fit, minmax(var(--space-48), 1fr)); gap: var(--space-4); }
-.statCard { padding: var(--space-4); border-radius: var(--radius-lg); border: var(--border-width-default) solid var(--color-border-default); background-color: var(--color-bg-primary); }
-.statValue { font-size: var(--font-size-3xl); font-weight: var(--font-weight-bold); color: var(--color-primary); margin-block-end: var(--space-1); }
-.statLabel { font-size: var(--font-size-sm); color: var(--color-text-secondary); }

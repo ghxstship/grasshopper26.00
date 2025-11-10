@@ -4,6 +4,7 @@
  */
 
 import { cn } from '@/lib/utils';
+import styles from './progress.module.css';
 
 interface ProgressProps {
   value: number; // 0-100
@@ -57,7 +58,7 @@ export function Progress({
         />
       </div>
       {showLabel && (
-        <div className="mt-2 flex justify-between font-share-mono text-meta">
+        <div className={styles.text}>
           <span>{clampedValue}%</span>
           <span>COMPLETE</span>
         </div>
@@ -125,13 +126,13 @@ export function CircularProgress({
     >
       {/* Background square */}
       <div
-        className="absolute inset-0 border-3 border-grey-300"
+        className={styles.card}
         style={{ borderWidth: strokeWidth }}
       />
       
       {/* Progress square (rotated) */}
       <div
-        className="absolute inset-0 border-3 border-black transition-transform duration-500"
+        className={styles.card}
         style={{
           borderWidth: strokeWidth,
           transform: `rotate(${rotation}deg)`,
@@ -141,8 +142,8 @@ export function CircularProgress({
 
       {/* Label */}
       {showLabel && (
-        <div className="relative z-10 text-center">
-          <div className="font-anton text-h3 uppercase">{Math.round(clampedValue)}%</div>
+        <div className={styles.text}>
+          <div className={styles.text}>{Math.round(clampedValue)}%</div>
         </div>
       )}
     </div>
@@ -156,7 +157,7 @@ export function LoadingBar({ className }: { className?: string }) {
   return (
     <div className={cn('w-full h-4 bg-white border-3 border-black overflow-hidden', className)}>
       <div
-        className="h-full w-1/3 bg-black animate-[slide_1.5s_ease-in-out_infinite]"
+        className={styles.card}
         style={{
           animation: 'slide 1.5s ease-in-out infinite',
         }}

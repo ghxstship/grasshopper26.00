@@ -1,5 +1,6 @@
 'use client';
 
+import styles from './page.module.css';
 import { useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { SuperAdminGate } from '@/lib/rbac';
@@ -220,16 +221,16 @@ export default function PermissionTestingPage() {
   }
 
   return (
-    <SuperAdminGate fallback={<div className="p-8"><p className="text-red-600">Access Denied: Super Admin Only</p></div>}>
-      <div className="p-8 max-w-6xl mx-auto">
-        <h1 className="text-3xl font-bold mb-8">Permission Testing Tool</h1>
+    <SuperAdminGate fallback={<div className={styles.card}><p >Access Denied: Super Admin Only</p></div>}>
+      <div className={styles.section}>
+        <h1 className={styles.title}>Permission Testing Tool</h1>
 
-        <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <h2 className="text-xl font-semibold mb-4">Test Configuration</h2>
+        <div className={styles.card}>
+          <h2 className={styles.label}>Test Configuration</h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className={styles.grid}>
             <div>
-              <label htmlFor="user-id" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="user-id" className={styles.label}>
                 User ID (Required)
               </label>
               <input
@@ -238,12 +239,12 @@ export default function PermissionTestingPage() {
                 value={userId}
                 onChange={(e) => setUserId(e.target.value)}
                 placeholder="Enter user UUID"
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500"
+                className={styles.input}
               />
             </div>
 
             <div>
-              <label htmlFor="resource-name" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="resource-name" className={styles.label}>
                 Resource Name
               </label>
               <input
@@ -252,19 +253,19 @@ export default function PermissionTestingPage() {
                 value={resourceName}
                 onChange={(e) => setResourceName(e.target.value)}
                 placeholder="e.g., events, orders"
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500"
+                className={styles.input}
               />
             </div>
 
             <div>
-              <label htmlFor="action" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="action" className={styles.label}>
                 Permission Action
               </label>
               <select
                 id="action"
                 value={action}
                 onChange={(e) => setAction(e.target.value as PermissionAction)}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500"
+                className={styles.input}
               >
                 <option value={PermissionAction.CREATE}>create</option>
                 <option value={PermissionAction.READ}>read</option>
@@ -275,7 +276,7 @@ export default function PermissionTestingPage() {
             </div>
 
             <div>
-              <label htmlFor="event-id" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="event-id" className={styles.label}>
                 Event ID (Optional)
               </label>
               <input
@@ -284,12 +285,12 @@ export default function PermissionTestingPage() {
                 value={eventId}
                 onChange={(e) => setEventId(e.target.value)}
                 placeholder="Enter event UUID for event-specific tests"
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500"
+                className={styles.input}
               />
             </div>
 
-            <div className="md:col-span-2">
-              <label htmlFor="permission-key" className="block text-sm font-medium text-gray-700 mb-2">
+            <div>
+              <label htmlFor="permission-key" className={styles.label}>
                 Event Permission Key (for event tests)
               </label>
               <input
@@ -298,7 +299,7 @@ export default function PermissionTestingPage() {
                 value={permissionKey}
                 onChange={(e) => setPermissionKey(e.target.value)}
                 placeholder="e.g., can_view_financials, can_scan_tickets"
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500"
+                className={styles.input}
               />
             </div>
           </div>
@@ -306,57 +307,49 @@ export default function PermissionTestingPage() {
           <button
             onClick={runTests}
             disabled={testing || !userId}
-            className="mt-6 px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 disabled:opacity-50 disabled:cursor-not-allowed"
+            className={styles.button}
           >
             {testing ? 'Running Tests...' : 'Run Permission Tests'}
           </button>
         </div>
 
         {results.length > 0 && (
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-xl font-semibold mb-4">Test Results</h2>
+          <div className={styles.card}>
+            <h2 className={styles.label}>Test Results</h2>
             
-            <div className="space-y-3">
+            <div className={styles.section}>
               {results.map((result, index) => (
                 <div
                   key={index}
-                  className={`p-4 rounded-lg border-2 ${
-                    result.result
-                      ? 'bg-green-50 border-green-200'
-                      : 'bg-red-50 border-red-200'
-                  }`}
+                  className={styles.card}
                 >
-                  <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-semibold text-gray-900">{result.test}</h3>
+                  <div className={styles.row}>
+                    <h3 className={styles.textGrey600}>{result.test}</h3>
                     <span
-                      className={`px-3 py-1 rounded-full text-sm font-medium ${
-                        result.result
-                          ? 'bg-green-100 text-green-800'
-                          : 'bg-red-100 text-red-800'
-                      }`}
+                      className={styles.badge}
                     >
                       {result.result ? 'PASS' : 'FAIL'}
                     </span>
                   </div>
                   {result.details && (
-                    <p className="text-sm text-gray-600">{result.details}</p>
+                    <p className={styles.subtitle}>{result.details}</p>
                   )}
                 </div>
               ))}
             </div>
 
-            <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-              <h3 className="font-semibold text-blue-900 mb-2">Summary</h3>
-              <p className="text-sm text-blue-800">
+            <div className={styles.card}>
+              <h3 className={styles.label}>Summary</h3>
+              <p className={styles.text}>
                 Passed: {results.filter(r => r.result).length} / {results.length}
               </p>
             </div>
           </div>
         )}
 
-        <div className="mt-8 bg-gray-50 rounded-lg p-6">
-          <h3 className="font-semibold text-gray-900 mb-3">Quick Tips</h3>
-          <ul className="space-y-2 text-sm text-gray-700">
+        <div className={styles.card}>
+          <h3 className={styles.textGrey600}>Quick Tips</h3>
+          <ul className={styles.section}>
             <li>• Use this tool to debug permission issues before they reach production</li>
             <li>• Test both positive and negative cases to ensure RLS policies work correctly</li>
             <li>• Event-specific tests require a valid Event ID</li>

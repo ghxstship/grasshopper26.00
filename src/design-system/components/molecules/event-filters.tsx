@@ -57,7 +57,7 @@ export function EventFilters({ onFilterChange }: EventFiltersProps) {
       {isOpen && (
         <Card className={styles.card}>
           <CardHeader className={styles.cardHeader}>
-            <CardTitle className="text-lg">Filter Events</CardTitle>
+            <CardTitle className={styles.textLarge}>Filter Events</CardTitle>
             <Button
               variant="ghost"
               size="sm"

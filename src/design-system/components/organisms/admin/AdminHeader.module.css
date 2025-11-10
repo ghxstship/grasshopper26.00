@@ -1,12 +1,12 @@
 /**
  * Admin Header Styles
- * Uses design tokens exclusively
+ * GHXSTSHIP Design System - Zero Tolerance Compliance
  */
 
 .header {
   height: var(--space-16);
-  background-color: var(--color-bg-primary);
-  border-block-end: var(--border-width-default) solid var(--color-border-default);
+  background-color: var(--color-white);
+  border-block-end: 3px solid var(--color-black);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -29,7 +29,7 @@
   transform: translateY(-50%);
   height: var(--space-4);
   width: var(--space-4);
-  color: var(--color-text-tertiary);
+  color: var(--color-grey-600);
 }
 
 .searchInput {
@@ -57,8 +57,8 @@
   inset-inline-end: var(--space-1);
   height: var(--space-2);
   width: var(--space-2);
-  background-color: var(--color-error);
-  border-radius: var(--radius-full);
+  background-color: var(--color-black);
+  border: 2px solid var(--color-white);
 }
 
 .userButton {
@@ -68,8 +68,8 @@
 .avatar {
   height: var(--space-8);
   width: var(--space-8);
-  border-radius: var(--radius-full);
-  background-color: var(--color-primary-subtle);
+  border: 3px solid var(--color-black);
+  background-color: var(--color-grey-100);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -78,12 +78,15 @@
 .avatarIcon {
   height: var(--space-4);
   width: var(--space-4);
-  color: var(--color-primary);
+  color: var(--color-black);
 }
 
 .userName {
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  text-transform: uppercase;
+  color: var(--color-black);
 }
 
 .menuContent {
@@ -97,13 +100,17 @@
 }
 
 .menuUserName {
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  text-transform: uppercase;
+  color: var(--color-black);
 }
 
 .menuUserEmail {
+  font-family: var(--font-share);
   font-size: var(--font-size-xs);
-  color: var(--color-text-secondary);
+  color: var(--color-grey-600);
 }
 
 .menuIcon {
@@ -113,7 +120,8 @@
 }
 
 .menuItemDanger {
-  color: var(--color-error-text);
+  color: var(--color-black);
+  font-weight: var(--font-weight-bold);
 }
 
 /* Legacy classes for backward compatibility */
@@ -122,16 +130,121 @@
   align-items: center; 
   justify-content: space-between; 
   padding: var(--space-4); 
-  border-block-end: var(--border-width-default) solid var(--color-border-default); 
-  background-color: var(--color-bg-primary); 
+  border-block-end: 3px solid var(--color-black); 
+  background-color: var(--color-white); 
 }
 
 .headerTitle { 
+  font-family: var(--font-anton);
   font-size: var(--font-size-xl); 
-  font-weight: var(--font-weight-bold); 
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  color: var(--color-black);
 }
 
 .headerActions { 
   display: flex; 
   gap: var(--space-2); 
+}
+
+
+.bgBlack {
+  background-color: var(--color-black);
+}
+
+.bgWhite {
+  background-color: var(--color-white);
+}
+
+.borderBlack {
+  border-color: var(--color-black);
+}
+
+.emptyIcon {
+  inline-size: var(--space-16);
+  block-size: var(--space-16);
+  margin-inline: auto;
+  color: var(--color-grey-600);
+  margin-block-end: var(--space-4);
+}
+
+.textGrey600 {
+  color: var(--color-grey-600);
+}
+
+.textGrey700 {
+  color: var(--color-grey-700);
+}
+
+.textBlack {
+  color: var(--color-black);
+}
+
+.textWhite {
+  color: var(--color-white);
+}
+
+.flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flexBetween {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.gap2 {
+  gap: var(--space-2);
+}
+
+.gap4 {
+  gap: var(--space-4);
+}
+
+
+.fullWidth {
+  inline-size: 100%;
+}
+
+.fullHeight {
+  block-size: 100%;
+}
+
+.marginBottom {
+  margin-block-end: var(--space-4);
+}
+
+.marginTop {
+  margin-block-start: var(--space-4);
+}
+
+.textSmall {
+  font-size: var(--font-size-sm);
+}
+
+.textLarge {
+  font-size: var(--font-size-lg);
+}
+
+.fontBold {
+  font-weight: var(--font-weight-semibold);
+}
+
+.fontMedium {
+  font-weight: var(--font-weight-medium);
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.rounded {
+  border-radius: var(--radius-md);
+}
+
+.shadow {
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.1);
 }

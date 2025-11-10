@@ -4,7 +4,7 @@
  */
 
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import type { PermissionAction, ResourceType, PermissionScope } from '@/lib/rbac/types';
+import { PermissionAction, ResourceType, PermissionScope } from '@/lib/rbac/types';
 
 describe('Permissions Service', () => {
   const mockPermissions = [
@@ -126,10 +126,15 @@ describe('Permissions Service', () => {
 
   describe('Permission Actions', () => {
     it('should validate CRUD actions', () => {
-      const actions: PermissionAction[] = ['create', 'read', 'update', 'delete'];
+      const actions: PermissionAction[] = [
+        PermissionAction.CREATE,
+        PermissionAction.READ,
+        PermissionAction.UPDATE,
+        PermissionAction.DELETE
+      ];
       
       actions.forEach(action => {
-        expect(['create', 'read', 'update', 'delete', 'manage', 'publish', 'approve', 'assign', 'transfer', 'refund', 'export', 'import', 'configure']).toContain(action);
+        expect(Object.values(PermissionAction)).toContain(action);
       });
     });
 

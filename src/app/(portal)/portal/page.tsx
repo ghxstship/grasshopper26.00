@@ -1,10 +1,11 @@
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
-import { MembershipCard } from '@/components/membership/membership-card'
-import { QuickStats } from '@/components/membership/quick-stats'
-import { UpcomingEvents } from '@/components/membership/upcoming-events'
-import { AvailableBenefits } from '@/components/membership/available-benefits'
-import { MemberEvents } from '@/components/membership/member-events'
+import { PortalDashboardTemplate } from '@/design-system/components/templates'
+import { MembershipCard } from '@/design-system/components/organisms/membership/membership-card'
+import { UpcomingEvents } from '@/design-system/components/organisms/membership/upcoming-events'
+import { AvailableBenefits } from '@/design-system/components/organisms/membership/available-benefits'
+import { MemberEvents } from '@/design-system/components/organisms/membership/member-events'
+import { Ticket, Gift, Calendar } from 'lucide-react'
 
 export default async function PortalPage() {
   const supabase = await createClient()
@@ -59,90 +60,74 @@ export default async function PortalPage() {
     .limit(4)
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Header */}
-      <div className="border-b-3 border-black bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <h1 className="font-bebas-neue text-5xl uppercase tracking-wide">
-            Welcome Back, {profile?.display_name || 'Member'}
-          </h1>
-          {membership && (
-            <div className="flex items-center gap-3 mt-2">
-              <span className="font-share-tech-mono text-sm uppercase tracking-wider text-grey-600">
-                {membership.membership_tiers?.display_name} Member
-              </span>
-              <span className="text-grey-400">•</span>
-              <span className="font-share-tech-mono text-sm uppercase tracking-wider text-grey-600">
-                Since {new Date(membership.start_date).getFullYear()}
-              </span>
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Top Section: Card + Stats */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-          <MembershipCard
-            membership={membership}
-            profile={profile}
-          />
-          <QuickStats
-            membership={membership}
-            recentBenefits={recentBenefits || []}
-          />
-        </div>
-
-        {/* Upcoming Events */}
-        {upcomingTickets && upcomingTickets.length > 0 && (
-          <div className="mb-12">
-            <h2 className="font-bebas-neue text-3xl uppercase tracking-wide mb-6 border-b-2 border-black pb-2">
-              Your Upcoming Events
-            </h2>
-            <UpcomingEvents tickets={upcomingTickets} />
-          </div>
-        )}
-
-        {/* Available Benefits */}
-        {membership && (
-          <div className="mb-12">
-            <h2 className="font-bebas-neue text-3xl uppercase tracking-wide mb-6 border-b-2 border-black pb-2">
-              Available Benefits
-            </h2>
-            <AvailableBenefits membership={membership} />
-          </div>
-        )}
-
-        {/* Member-Only Events */}
-        {memberEvents && memberEvents.length > 0 && (
-          <div className="mb-12">
-            <h2 className="font-bebas-neue text-3xl uppercase tracking-wide mb-6 border-b-2 border-black pb-2">
-              Member-Only Events
-            </h2>
-            <MemberEvents events={memberEvents} membership={membership} />
-          </div>
-        )}
-
-        {/* No Membership CTA */}
-        {!membership && (
-          <div className="border-3 border-black p-12 text-center">
-            <h2 className="font-bebas-neue text-4xl uppercase tracking-wide mb-4">
-              Join GVTEWAY Membership
-            </h2>
-            <p className="font-share-tech text-lg mb-8 max-w-2xl mx-auto">
-              Unlock exclusive benefits, ticket credits, early access, and more.
-              Choose the tier that fits your lifestyle.
-            </p>
-            <a
-              href="/membership"
-              className="inline-block bg-black text-white px-8 py-4 font-bebas-neue text-xl uppercase tracking-wide hover:bg-grey-900 transition-colors"
-            >
-              Explore Membership Tiers
-            </a>
-          </div>
-        )}
-      </div>
-    </div>
+    <PortalDashboardTemplate
+      greeting={`Welcome Back, ${profile?.display_name || 'Member'}`}
+      userInfo={
+        membership ? (
+          <>
+            <span>{membership.membership_tiers?.display_name} Member</span>
+            <span>•</span>
+            <span>Since {new Date(membership.start_date).getFullYear()}</span>
+          </>
+        ) : undefined
+      }
+      primaryCard={<MembershipCard membership={membership} profile={profile} />}
+      statsCards={[
+        {
+          label: 'Ticket Credits',
+          value: membership?.credits_remaining || 0,
+          icon: <Ticket />,
+        },
+        {
+          label: 'Benefits Used',
+          value: recentBenefits?.length || 0,
+          icon: <Gift />,
+        },
+        {
+          label: 'Upcoming Events',
+          value: upcomingTickets?.length || 0,
+          icon: <Calendar />,
+        },
+      ]}
+      sections={[
+        {
+          id: 'upcoming-events',
+          title: 'Your Upcoming Events',
+          content: <UpcomingEvents tickets={upcomingTickets || []} />,
+          isEmpty: !upcomingTickets || upcomingTickets.length === 0,
+          emptyState: {
+            icon: <Calendar />,
+            title: 'No upcoming events',
+            description: 'Browse events to find your next experience',
+            action: {
+              label: 'Browse Events',
+              onClick: () => window.location.href = '/events',
+            },
+          },
+        },
+        {
+          id: 'benefits',
+          title: 'Available Benefits',
+          content: membership ? <AvailableBenefits membership={membership} /> : null,
+          isEmpty: !membership,
+          emptyState: {
+            icon: <Gift />,
+            title: 'Join GVTEWAY Membership',
+            description: 'Unlock exclusive benefits, ticket credits, early access, and more.',
+            action: {
+              label: 'Explore Membership Tiers',
+              onClick: () => window.location.href = '/membership',
+            },
+          },
+        },
+        {
+          id: 'member-events',
+          title: 'Member-Only Events',
+          content: <MemberEvents events={memberEvents || []} membership={membership} />,
+          isEmpty: !memberEvents || memberEvents.length === 0,
+        },
+      ]}
+      layout="single-column"
+    />
   )
 }

@@ -1,5 +1,0 @@
-.chatRoom { display: flex; flex-direction: column; height: 100%; background-color: var(--color-bg-primary); border-radius: var(--radius-lg); border: var(--border-width-default) solid var(--color-border-default); }
-.chatHeader { padding: var(--space-4); border-block-end: var(--border-width-default) solid var(--color-border-default); }
-.chatMessages { flex: 1; overflow-y: auto; padding: var(--space-4); }
-.chatMessage { margin-block-end: var(--space-3); padding: var(--space-3); border-radius: var(--radius-md); background-color: var(--color-bg-secondary); }
-.chatInput { display: flex; gap: var(--space-2); padding: var(--space-4); border-block-start: var(--border-width-default) solid var(--color-border-default); }

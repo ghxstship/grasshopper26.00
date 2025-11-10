@@ -9,6 +9,7 @@ import { Loader2, ArrowLeft, Download, QrCode as QrCodeIcon } from 'lucide-react
 import { generateMultipleTicketsPDF, downloadPDF } from '@/lib/tickets/pdf-generator';
 import Link from 'next/link';
 import { QRCodeSVG } from 'qrcode.react';
+import styles from './page.module.css';
 
 interface Ticket {
   id: string;
@@ -127,17 +128,17 @@ export default function TicketDownloadPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center " style={{ background: 'var(--gradient-hero)' }}>
-        <Loader2 className="h-12 w-12 animate-spin text-purple-500" />
+      <div className={`${styles.row} ${styles.heroGradient}`}>
+        <Loader2 className={styles.spinner} />
       </div>
     );
   }
 
   if (!order || order.tickets.length === 0) {
     return (
-      <div className="min-h-screen flex items-center justify-center " style={{ background: 'var(--gradient-hero)' }}>
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-white mb-4">No Tickets Found</h1>
+      <div className={`${styles.row} ${styles.heroGradient}`}>
+        <div >
+          <h1 className={styles.title}>No Tickets Found</h1>
           <Button asChild>
             <Link href="/orders">Back to Orders</Link>
           </Button>
@@ -147,47 +148,47 @@ export default function TicketDownloadPage() {
   }
 
   return (
-    <div className="min-h-screen  py-12 px-4" style={{ background: 'var(--gradient-hero)' }}>
-      <div className="max-w-4xl mx-auto">
+    <div className={`${styles.container} ${styles.heroGradient}`}>
+      <div className={styles.content}>
         <Button
           asChild
           variant="ghost"
-          className="mb-6 text-gray-400 hover:text-white"
+          className={styles.text}
         >
           <Link href={`/orders/${order.id}`}>
-            <ArrowLeft className="h-4 w-4 mr-2" />
+            <ArrowLeft className={styles.icon} />
             Back to Order
           </Link>
         </Button>
 
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-white mb-2">Your Tickets</h1>
-          <p className="text-gray-400">
+        <div className={styles.section}>
+          <h1 className={styles.title}>Your Tickets</h1>
+          <p >
             Download your tickets or save the QR codes to your device
           </p>
         </div>
 
-        <div className="mb-6">
+        <div className={styles.section}>
           <Button
             onClick={handleDownloadAll}
             disabled={downloading}
-            className="w-full " style={{ background: 'var(--gradient-brand-primary)' }}
+            className={`${styles.fullWidth} ${styles.brandGradient}`}
           >
             {downloading ? (
               <>
-                <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                <Loader2 className={styles.spinner} />
                 Generating PDF...
               </>
             ) : (
               <>
-                <Download className="h-4 w-4 mr-2" />
+                <Download className={styles.icon} />
                 Download All Tickets as PDF
               </>
             )}
           </Button>
         </div>
 
-        <div className="space-y-6">
+        <div className={styles.section}>
           {order.tickets.map((ticket, index) => {
             const ticketType = ticket.ticket_type[0];
             const event = ticketType?.event[0];
@@ -195,29 +196,29 @@ export default function TicketDownloadPage() {
             return (
               <Card
                 key={ticket.id}
-                className="bg-black/40 backdrop-blur-lg border-purple-500/20"
+                
               >
                 <CardHeader>
-                  <CardTitle className="text-white">
+                  <CardTitle >
                     Ticket {index + 1} of {order.tickets.length}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div className="space-y-4">
+                  <div className={styles.grid}>
+                    <div className={styles.section}>
                       <div>
-                        <h3 className="text-xl font-bold text-white mb-1">
+                        <h3 className={styles.text}>
                           {event?.name || 'Event'}
                         </h3>
-                        <p className="text-purple-400">{ticketType?.name || 'Ticket'}</p>
+                        <p className={styles.text}>{ticketType?.name || 'Ticket'}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-400">Venue</p>
-                        <p className="text-white">{event?.venue_name || 'TBD'}</p>
+                        <p className={styles.subtitle}>Venue</p>
+                        <p >{event?.venue_name || 'TBD'}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-400">Date</p>
-                        <p className="text-white">
+                        <p className={styles.subtitle}>Date</p>
+                        <p >
                           {event?.start_date
                             ? new Date(event.start_date).toLocaleDateString('en-US', {
                                 weekday: 'long',
@@ -229,15 +230,15 @@ export default function TicketDownloadPage() {
                         </p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-400">Ticket ID</p>
-                        <p className="text-white font-mono text-sm">
+                        <p className={styles.subtitle}>Ticket ID</p>
+                        <p className={styles.text}>
                           {ticket.id.slice(0, 8).toUpperCase()}
                         </p>
                       </div>
                     </div>
 
-                    <div className="flex flex-col items-center justify-center">
-                      <div className="bg-white p-4 rounded-lg mb-4">
+                    <div className={styles.row}>
+                      <div className={styles.card}>
                         <QRCodeSVG
                           value={ticket.qr_code}
                           size={200}
@@ -245,8 +246,8 @@ export default function TicketDownloadPage() {
                           includeMargin
                         />
                       </div>
-                      <div className="flex items-center gap-2 text-sm text-gray-400">
-                        <QrCodeIcon className="h-4 w-4" />
+                      <div className={styles.row}>
+                        <QrCodeIcon className={styles.icon} />
                         <span>Scan at entrance</span>
                       </div>
                     </div>
@@ -257,9 +258,9 @@ export default function TicketDownloadPage() {
           })}
         </div>
 
-        <div className="mt-8 p-6 bg-purple-500/10 border border-purple-500/30 rounded-lg">
-          <h3 className="text-lg font-semibold text-white mb-2">Important Information</h3>
-          <ul className="space-y-2 text-sm text-gray-300">
+        <div className={styles.card}>
+          <h3 className={styles.text}>Important Information</h3>
+          <ul className={styles.section}>
             <li>• Save these QR codes to your device or print them out</li>
             <li>• Present your ticket at the venue entrance for scanning</li>
             <li>• Each ticket can only be scanned once</li>

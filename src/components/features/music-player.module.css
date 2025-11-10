@@ -1,5 +1,0 @@
-.musicPlayer { border-radius: var(--radius-lg); border: var(--border-width-default) solid var(--color-border-default); background-color: var(--color-bg-primary); padding: var(--space-4); }
-.playerControls { display: flex; align-items: center; justify-content: center; gap: var(--space-4); margin-block-end: var(--space-4); }
-.playButton { width: var(--space-12); height: var(--space-12); border-radius: var(--radius-full); background-color: var(--color-primary); color: var(--color-text-inverse); border: none; cursor: pointer; }
-.progressBar { width: 100%; height: var(--space-1); background-color: var(--color-bg-secondary); border-radius: var(--radius-full); overflow: hidden; }
-.progress { height: 100%; background-color: var(--color-primary); transition: width var(--duration-fast) var(--easing-out); }

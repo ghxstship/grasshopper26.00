@@ -5,6 +5,7 @@
 
 'use client';
 
+import styles from './page.module.css';
 import { use, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
@@ -121,8 +122,8 @@ export default function CredentialDetailPage({
         width: 300,
         margin: 2,
         color: {
-          dark: '#000000',
-          light: '#FFFFFF',
+          dark: '#030712', // eslint-disable-line no-restricted-syntax -- QR codes require hardcoded colors for proper scanning
+          light: '#FFFFFF', // eslint-disable-line no-restricted-syntax -- QR codes require hardcoded colors for proper scanning
         },
       });
 
@@ -183,10 +184,10 @@ export default function CredentialDetailPage({
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
-          <p className="mt-4 text-muted-foreground">Loading credential...</p>
+      <div className={styles.row}>
+        <div>
+          <div className={styles.loadingSpinner}></div>
+          <p className={styles.loadingText}>Loading credential...</p>
         </div>
       </div>
     );
@@ -194,11 +195,11 @@ export default function CredentialDetailPage({
 
   if (!credential) {
     return (
-      <div className="container mx-auto py-8 px-4">
+      <div className={styles.notFoundContainer}>
         <Card>
-          <CardContent className="py-12 text-center">
-            <AlertCircle className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
-            <h3 className="text-lg font-medium mb-2">Credential not found</h3>
+          <CardContent className={styles.section}>
+            <AlertCircle className={styles.notFoundIcon} />
+            <h3 className={styles.notFoundTitle}>Credential not found</h3>
             <Link href={`/admin/events/${id}/credentials`}>
               <Button>Back to Credentials</Button>
             </Link>
@@ -215,74 +216,74 @@ export default function CredentialDetailPage({
   };
 
   return (
-    <div className="container mx-auto py-8 px-4 max-w-4xl">
+    <div className={styles.container}>
       {/* Header */}
-      <div className="flex items-center justify-between mb-8">
-        <div className="flex items-center gap-4">
+      <div className={styles.header}>
+        <div className={styles.headerLeft}>
           <Link href={`/admin/events/${id}/credentials`}>
             <Button variant="ghost" size="sm">
-              <ArrowLeft className="h-4 w-4 mr-2" />
+              <ArrowLeft className={styles.icon} />
               Back
             </Button>
           </Link>
           <div>
-            <h1 className="text-3xl font-bold">Credential Details</h1>
-            <p className="text-muted-foreground font-mono">{credential.credential_number}</p>
+            <h1 className={styles.title}>Credential Details</h1>
+            <p className={styles.credentialNumber}>{credential.credential_number}</p>
           </div>
         </div>
 
-        <div className="flex gap-2">
+        <div className={styles.headerRight}>
           {!credential.revoked && !credential.printed && (
             <Button onClick={handlePrint}>
-              <Printer className="h-4 w-4 mr-2" />
+              <Printer className={styles.icon} />
               Print Badge
             </Button>
           )}
           {!credential.revoked && (
             <Button variant="destructive" onClick={handleRevoke}>
-              <XCircle className="h-4 w-4 mr-2" />
+              <XCircle className={styles.icon} />
               Revoke
             </Button>
           )}
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className={styles.grid}>
         {/* Main Info */}
-        <div className="lg:col-span-2 space-y-6">
+        <div>
           {/* Holder Information */}
           <Card>
             <CardHeader>
-              <div className="flex items-center gap-4">
-                <span className="text-5xl">{credType.badge}</span>
+              <div className={styles.cardHeader}>
+                <span className={styles.badgeEmoji}>{credType.badge}</span>
                 <div>
-                  <CardTitle className="text-2xl">{credential.holder_name}</CardTitle>
-                  <p className="text-muted-foreground">{credType.label}</p>
+                  <CardTitle className={styles.holderName}>{credential.holder_name}</CardTitle>
+                  <p className={styles.credentialType}>{credType.label}</p>
                 </div>
               </div>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className={styles.section}>
               {credential.holder_company && (
-                <div className="flex items-center gap-3">
-                  <Building className="h-4 w-4 text-muted-foreground" />
+                <div className={styles.infoRow}>
+                  <Building className={styles.infoIcon} />
                   <span>{credential.holder_company}</span>
                 </div>
               )}
               {credential.holder_role && (
-                <div className="flex items-center gap-3">
-                  <User className="h-4 w-4 text-muted-foreground" />
+                <div className={styles.infoRow}>
+                  <User className={styles.infoIcon} />
                   <span>{credential.holder_role}</span>
                 </div>
               )}
               {credential.holder_email && (
-                <div className="flex items-center gap-3">
-                  <Mail className="h-4 w-4 text-muted-foreground" />
+                <div className={styles.infoRow}>
+                  <Mail className={styles.infoIcon} />
                   <span>{credential.holder_email}</span>
                 </div>
               )}
               {credential.holder_phone && (
-                <div className="flex items-center gap-3">
-                  <Phone className="h-4 w-4 text-muted-foreground" />
+                <div className={styles.infoRow}>
+                  <Phone className={styles.infoIcon} />
                   <span>{credential.holder_phone}</span>
                 </div>
               )}
@@ -294,49 +295,49 @@ export default function CredentialDetailPage({
             <CardHeader>
               <CardTitle>Status & Validity</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="flex items-center gap-2 flex-wrap">
+            <CardContent className={styles.section}>
+              <div className={styles.statusRow}>
                 {credential.revoked ? (
-                  <Badge variant="destructive" className="text-base">
-                    <XCircle className="h-4 w-4 mr-2" />
+                  <Badge variant="destructive">
+                    <XCircle className={styles.icon} />
                     Revoked
                   </Badge>
                 ) : credential.checked_in ? (
-                  <Badge variant="default" className="bg-green-600 text-base">
-                    <CheckCircle className="h-4 w-4 mr-2" />
+                  <Badge variant="default" className={styles.badge}>
+                    <CheckCircle className={styles.icon} />
                     Checked In
                   </Badge>
                 ) : credential.is_active ? (
-                  <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200 text-base">
-                    <Shield className="h-4 w-4 mr-2" />
+                  <Badge variant="outline" className={styles.badgeActive}>
+                    <Shield className={styles.icon} />
                     Active
                   </Badge>
                 ) : (
-                  <Badge variant="outline" className="text-base">
+                  <Badge variant="outline">
                     Inactive
                   </Badge>
                 )}
 
                 {credential.printed && (
-                  <Badge variant="outline" className="bg-purple-50 text-purple-700 border-purple-200 text-base">
-                    <Printer className="h-4 w-4 mr-2" />
+                  <Badge variant="outline" className={styles.badgePrinted}>
+                    <Printer className={styles.icon} />
                     Printed
                   </Badge>
                 )}
               </div>
 
-              <div className="grid grid-cols-2 gap-4 text-sm">
+              <div className={styles.gridTwo}>
                 <div>
-                  <p className="text-muted-foreground mb-1">Valid From</p>
-                  <div className="flex items-center gap-2">
-                    <Calendar className="h-4 w-4" />
+                  <p className={styles.validityLabel}>Valid From</p>
+                  <div className={styles.validityValue}>
+                    <Calendar className={styles.icon} />
                     <span>{new Date(credential.valid_from).toLocaleDateString()}</span>
                   </div>
                 </div>
                 <div>
-                  <p className="text-muted-foreground mb-1">Valid Until</p>
-                  <div className="flex items-center gap-2">
-                    <Calendar className="h-4 w-4" />
+                  <p className={styles.validityLabel}>Valid Until</p>
+                  <div className={styles.validityValue}>
+                    <Calendar className={styles.icon} />
                     <span>
                       {credential.valid_until
                         ? new Date(credential.valid_until).toLocaleDateString()
@@ -348,24 +349,24 @@ export default function CredentialDetailPage({
 
               {credential.checked_in_at && (
                 <div>
-                  <p className="text-muted-foreground text-sm mb-1">Checked In</p>
-                  <p className="text-sm">{new Date(credential.checked_in_at).toLocaleString()}</p>
+                  <p className={styles.notesLabel}>Checked In</p>
+                  <p className={styles.notesText}>{new Date(credential.checked_in_at).toLocaleString()}</p>
                 </div>
               )}
 
               {credential.printed_at && (
                 <div>
-                  <p className="text-muted-foreground text-sm mb-1">Printed</p>
-                  <p className="text-sm">{new Date(credential.printed_at).toLocaleString()}</p>
+                  <p className={styles.notesLabel}>Printed</p>
+                  <p className={styles.notesText}>{new Date(credential.printed_at).toLocaleString()}</p>
                 </div>
               )}
 
               {credential.revoked_at && (
-                <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
-                  <p className="text-sm font-medium text-red-900 mb-1">Revoked</p>
-                  <p className="text-sm text-red-700">{new Date(credential.revoked_at).toLocaleString()}</p>
+                <div className={styles.revokedBox}>
+                  <p className={styles.revokedLabel}>Revoked</p>
+                  <p className={styles.revokedText}>{new Date(credential.revoked_at).toLocaleString()}</p>
                   {credential.revoke_reason && (
-                    <p className="text-sm text-red-700 mt-2">
+                    <p className={styles.revokedReason}>
                       <strong>Reason:</strong> {credential.revoke_reason}
                     </p>
                   )}
@@ -374,8 +375,8 @@ export default function CredentialDetailPage({
 
               {credential.notes && (
                 <div>
-                  <p className="text-muted-foreground text-sm mb-1">Notes</p>
-                  <p className="text-sm">{credential.notes}</p>
+                  <p className={styles.notesLabel}>Notes</p>
+                  <p className={styles.notesText}>{credential.notes}</p>
                 </div>
               )}
             </CardContent>
@@ -388,15 +389,15 @@ export default function CredentialDetailPage({
                 <CardTitle>Access Permissions</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-2 gap-3 text-sm">
+                <div className={styles.gridTwo}>
                   {Object.entries(credential.access_permissions).map(([key, value]) => (
-                    <div key={key} className="flex items-center gap-2">
+                    <div key={key} className={styles.permissionRow}>
                       {value ? (
-                        <CheckCircle className="h-4 w-4 text-green-600" />
+                        <CheckCircle className={styles.permissionIcon} />
                       ) : (
-                        <XCircle className="h-4 w-4 text-red-600" />
+                        <XCircle className={styles.permissionIcon} />
                       )}
-                      <span className="capitalize">{key.replace(/_/g, ' ')}</span>
+                      <span className={styles.permissionLabel}>{key.replace(/_/g, ' ')}</span>
                     </div>
                   ))}
                 </div>
@@ -406,22 +407,22 @@ export default function CredentialDetailPage({
         </div>
 
         {/* QR Code */}
-        <div className="space-y-6">
+        <div>
           <Card>
             <CardHeader>
               <CardTitle>QR Code</CardTitle>
             </CardHeader>
             <CardContent>
               {qrCodeUrl ? (
-                <div className="space-y-4">
-                  <img src={qrCodeUrl} alt="Credential QR Code" className="w-full rounded-lg border" />
-                  <p className="text-xs text-center text-muted-foreground">
+                <div className={styles.qrSection}>
+                  <img src={qrCodeUrl} alt="Credential QR Code" className={styles.qrImage} />
+                  <p className={styles.qrCaption}>
                     Scan this code to verify credential
                   </p>
                 </div>
               ) : (
-                <div className="aspect-square flex items-center justify-center bg-muted rounded-lg">
-                  <p className="text-sm text-muted-foreground">Generating QR code...</p>
+                <div className={styles.qrLoading}>
+                  <p className={styles.qrLoadingText}>Generating QR code...</p>
                 </div>
               )}
             </CardContent>
@@ -431,14 +432,14 @@ export default function CredentialDetailPage({
             <CardHeader>
               <CardTitle>Metadata</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-3 text-sm">
+            <CardContent className={styles.section}>
               <div>
-                <p className="text-muted-foreground">Credential ID</p>
-                <p className="font-mono text-xs">{credential.id}</p>
+                <p className={styles.metadataLabel}>Credential ID</p>
+                <p className={styles.metadataValue}>{credential.id}</p>
               </div>
               <div>
-                <p className="text-muted-foreground">Created</p>
-                <p>{new Date(credential.created_at).toLocaleString()}</p>
+                <p className={styles.metadataLabel}>Created</p>
+                <p className={styles.metadataDate}>{new Date(credential.created_at).toLocaleString()}</p>
               </div>
             </CardContent>
           </Card>

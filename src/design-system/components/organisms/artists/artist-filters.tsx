@@ -8,6 +8,7 @@
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useState, useTransition } from 'react';
 import { SearchIcon } from '@/design-system/components/atoms/icons/geometric-icons';
+import styles from './artist-filters.module.css';
 
 const GENRES = [
   'Electronic',
@@ -70,7 +71,7 @@ export function ArtistFilters() {
     <div className="space-y-6">
       {/* Search */}
       <div className="relative">
-        <div className="absolute left-4 top-1/2 -translate-y-1/2">
+        <div className={styles.card}>
           <SearchIcon size={20} />
         </div>
         <input
@@ -78,14 +79,14 @@ export function ArtistFilters() {
           value={search}
           onChange={(e) => handleSearch(e.target.value)}
           placeholder="SEARCH ARTISTS..."
-          className="w-full pl-12 pr-4 py-3 border-3 border-black font-bebas text-h6 uppercase placeholder:text-grey-400 focus:outline-none focus:bg-grey-100"
+          className={styles.card}
         />
       </div>
 
       {/* Genre Filters */}
       <div>
-        <p className="font-bebas text-h6 uppercase mb-3">FILTER BY GENRE:</p>
-        <div className="flex flex-wrap gap-2">
+        <p className={styles.text}>FILTER BY GENRE:</p>
+        <div className={styles.card}>
           {GENRES.map((genre) => (
             <button
               key={genre}
@@ -109,7 +110,7 @@ export function ArtistFilters() {
       {(search || currentGenre) && (
         <button
           onClick={clearFilters}
-          className="font-bebas text-body uppercase underline hover:no-underline"
+          className={styles.text}
         >
           CLEAR ALL FILTERS
         </button>
@@ -117,8 +118,8 @@ export function ArtistFilters() {
 
       {/* Loading State */}
       {isPending && (
-        <div className="text-center py-4">
-          <p className="font-share text-body text-grey-600">
+        <div className={styles.emptyState}>
+          <p className={styles.text}>
             Updating results...
           </p>
         </div>

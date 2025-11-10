@@ -5,6 +5,7 @@ import { Button } from '@/design-system/components/atoms/button';
 import { useCart, CartItem } from '@/lib/store/cart-store';
 import { ShoppingCart, Check } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import styles from './add-to-cart-button.module.css';
 
 interface AddToCartButtonProps {
   item: Omit<CartItem, 'quantity'>;
@@ -33,16 +34,16 @@ export function AddToCartButton({ item, quantity = 1, disabled }: AddToCartButto
     <Button
       onClick={handleAddToCart}
       disabled={disabled || added}
-      className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+      className={styles.card}
     >
       {added ? (
         <>
-          <Check className="mr-2 h-4 w-4" />
+          <Check className={styles.icon} />
           Added
         </>
       ) : (
         <>
-          <ShoppingCart className="mr-2 h-4 w-4" />
+          <ShoppingCart className={styles.icon} />
           Add to Cart
         </>
       )}

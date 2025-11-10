@@ -7,10 +7,7 @@ import { Button } from '@/design-system/components/atoms/button';
 import { Slider } from '@/design-system/components/atoms/slider';
 import { Card } from '@/design-system/components/atoms/card';
 import Image from 'next/image';
-
-// Constants
-const DEFAULT_VOLUME = 0.7;
-const SECONDS_PER_MINUTE = 60;
+import styles from './music-player.module.css';
 
 interface Track {
   id: string;
@@ -41,7 +38,7 @@ export function MusicPlayer({ tracks, artistName, autoPlay = false, className }:
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
-  const [volume, setVolume] = useState(DEFAULT_VOLUME);
+  const [volume, setVolume] = useState(0.7);
   const [isMuted, setIsMuted] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
@@ -118,15 +115,15 @@ export function MusicPlayer({ tracks, artistName, autoPlay = false, className }:
   };
 
   const formatTime = (seconds: number) => {
-    const mins = Math.floor(seconds / SECONDS_PER_MINUTE);
-    const secs = Math.floor(seconds % SECONDS_PER_MINUTE);
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
     return `${mins}:${secs.toString().padStart(2, '0')}`;
   };
 
   if (!currentTrack) {
     return (
-      <Card className={`p-6 ${className}`}>
-        <p className="text-center text-muted-foreground">No tracks available</p>
+      <Card className={`${styles.player} ${className || ''}`}>
+        <p className={styles.noTracksMessage}>No tracks available</p>
       </Card>
     );
   }
@@ -135,29 +132,29 @@ export function MusicPlayer({ tracks, artistName, autoPlay = false, className }:
   const duration = currentTrack.duration_ms / 1000;
 
   return (
-    <Card className={`p-6 ${className}`}>
-      <div className="space-y-4">
+    <Card className={`${styles.player} ${className || ''}`}>
+      <div className={styles.content}>
         {/* Album Art & Track Info */}
-        <div className="flex items-center gap-4">
+        <div className={styles.trackInfo}>
           {albumImage && (
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               key={currentTrack.id}
-              className="relative w-20 h-20 rounded-lg overflow-hidden flex-shrink-0"
+              className={styles.albumArt}
             >
               <Image
                 src={albumImage}
                 alt={currentTrack.album.name}
                 fill
-                className="object-cover"
+                className={styles.albumImage}
               />
             </motion.div>
           )}
-          <div className="flex-1 min-w-0">
-            <h3 className="font-semibold truncate">{currentTrack.name}</h3>
-            <p className="text-sm text-muted-foreground truncate">{artistName}</p>
-            <p className="text-xs text-muted-foreground truncate">{currentTrack.album.name}</p>
+          <div className={styles.trackDetails}>
+            <h3 className={styles.trackName}>{currentTrack.name}</h3>
+            <p className={styles.artistName}>{artistName}</p>
+            <p className={styles.albumName}>{currentTrack.album.name}</p>
           </div>
           <Button
             variant="ghost"
@@ -170,37 +167,37 @@ export function MusicPlayer({ tracks, artistName, autoPlay = false, className }:
               rel="noopener noreferrer"
               title="Open in Spotify"
             >
-              <ExternalLink className="h-4 w-4" />
+              <ExternalLink className={styles.icon} />
             </a>
           </Button>
         </div>
 
         {/* Progress Bar */}
-        <div className="space-y-2">
+        <div className={styles.progressSection}>
           <Slider
             value={[currentTime]}
             max={duration}
             step={0.1}
             onValueChange={handleSeek}
             disabled={!hasPreview}
-            className="cursor-pointer"
+            className={styles.progressSlider}
           />
-          <div className="flex justify-between text-xs text-muted-foreground">
+          <div className={styles.timeDisplay}>
             <span>{formatTime(currentTime)}</span>
             <span>{formatTime(duration)}</span>
           </div>
         </div>
 
         {/* Controls */}
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
+        <div className={styles.controls}>
+          <div className={styles.mainControls}>
             <Button
               variant="ghost"
               size="icon"
               onClick={handlePrevious}
               disabled={currentTrackIndex === 0}
             >
-              <SkipBack className="h-4 w-4" />
+              <SkipBack className={styles.icon} />
             </Button>
             
             {hasPreview ? (
@@ -208,12 +205,12 @@ export function MusicPlayer({ tracks, artistName, autoPlay = false, className }:
                 variant="default"
                 size="icon"
                 onClick={isPlaying ? handlePause : handlePlay}
-                className="h-10 w-10"
+                className={styles.playButton}
               >
                 {isPlaying ? (
-                  <Pause className="h-5 w-5" />
+                  <Pause className={styles.playIcon} />
                 ) : (
-                  <Play className="h-5 w-5 ml-0.5" />
+                  <Play className={styles.playIcon} />
                 )}
               </Button>
             ) : (
@@ -221,10 +218,10 @@ export function MusicPlayer({ tracks, artistName, autoPlay = false, className }:
                 variant="default"
                 size="icon"
                 disabled
-                className="h-10 w-10"
+                className={styles.playButton}
                 title="Preview not available"
               >
-                <Play className="h-5 w-5 ml-0.5" />
+                <Play className={styles.playIcon} />
               </Button>
             )}
 
@@ -234,21 +231,21 @@ export function MusicPlayer({ tracks, artistName, autoPlay = false, className }:
               onClick={handleNext}
               disabled={currentTrackIndex === tracks.length - 1}
             >
-              <SkipForward className="h-4 w-4" />
+              <SkipForward className={styles.icon} />
             </Button>
           </div>
 
           {/* Volume Control */}
-          <div className="flex items-center gap-2 w-32">
+          <div className={styles.volumeControl}>
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setIsMuted(!isMuted)}
             >
               {isMuted ? (
-                <VolumeX className="h-4 w-4" />
+                <VolumeX className={styles.icon} />
               ) : (
-                <Volume2 className="h-4 w-4" />
+                <Volume2 className={styles.icon} />
               )}
             </Button>
             <Slider
@@ -259,15 +256,15 @@ export function MusicPlayer({ tracks, artistName, autoPlay = false, className }:
                 setVolume(value[0]);
                 setIsMuted(false);
               }}
-              className="cursor-pointer"
+              className={styles.volumeSlider}
             />
           </div>
         </div>
 
         {/* Track List */}
         {tracks.length > 1 && (
-          <div className="space-y-1 max-h-48 overflow-y-auto">
-            <p className="text-sm font-medium mb-2">Top Tracks</p>
+          <div className={styles.trackList}>
+            <p className={styles.trackListTitle}>Top Tracks</p>
             {tracks.map((track, index) => (
               <button
                 key={track.id}
@@ -278,17 +275,15 @@ export function MusicPlayer({ tracks, artistName, autoPlay = false, className }:
                     setTimeout(handlePlay, 100);
                   }
                 }}
-                className={`w-full text-left px-3 py-2 rounded-md transition-colors ${
-                  index === currentTrackIndex
-                    ? 'bg-primary/10 text-primary'
-                    : 'hover:bg-muted'
+                className={`${styles.trackItem} ${
+                  index === currentTrackIndex ? styles.trackItemActive : ''
                 }`}
               >
-                <div className="flex items-center gap-2">
-                  <span className="text-xs text-muted-foreground w-4">{index + 1}</span>
-                  <span className="text-sm truncate flex-1">{track.name}</span>
+                <div className={styles.trackItemContent}>
+                  <span className={styles.trackNumber}>{index + 1}</span>
+                  <span className={styles.trackItemName}>{track.name}</span>
                   {!track.preview_url && (
-                    <span className="text-xs text-muted-foreground">No preview</span>
+                    <span className={styles.noPreviewBadge}>No preview</span>
                   )}
                 </div>
               </button>
@@ -297,7 +292,7 @@ export function MusicPlayer({ tracks, artistName, autoPlay = false, className }:
         )}
 
         {!hasPreview && (
-          <p className="text-xs text-center text-muted-foreground">
+          <p className={styles.noPreviewMessage}>
             Preview not available. Listen on Spotify →
           </p>
         )}

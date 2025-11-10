@@ -19,8 +19,8 @@ export class TicketService {
         width: 400,
         margin: 2,
         color: {
-          dark: '#000000',
-          light: '#FFFFFF',
+          dark: '#030712', // eslint-disable-line no-restricted-syntax -- QR codes require hardcoded colors for proper scanning
+          light: '#FFFFFF', // eslint-disable-line no-restricted-syntax -- QR codes require hardcoded colors for proper scanning
         },
       });
       return qrCode;

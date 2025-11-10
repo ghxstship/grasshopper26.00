@@ -1,0 +1,247 @@
+/* Dropdown Menu Component Styles */
+
+.subTrigger {
+  display: flex;
+  cursor: default;
+  user-select: none;
+  align-items: center;
+  padding-inline-start: var(--space-2);
+  padding-inline-end: var(--space-2);
+  padding-block: calc(var(--space-1) + var(--space-1) / 2);
+  font-size: var(--font-size-sm);
+  outline: none;
+  transition: background-color var(--duration-fast) var(--easing-out);
+}
+
+.subTrigger:focus {
+  background-color: var(--color-bg-secondary);
+}
+
+.subTrigger[data-state="open"] {
+  background-color: var(--color-bg-secondary);
+}
+
+.subTrigger.inset {
+  padding-inline-start: var(--space-8);
+}
+
+.subTriggerIcon {
+  margin-inline-start: auto;
+  height: var(--space-4);
+  width: var(--space-4);
+}
+
+.subContent {
+  z-index: 50;
+  min-width: 8rem;
+  overflow: hidden;
+  border: 1px solid var(--color-border-default);
+  background-color: var(--color-bg-primary);
+  padding: var(--space-1);
+  color: var(--color-text-secondary);
+  box-shadow: var(--shadow-md);
+}
+
+.subContent[data-state="open"] {
+  animation: fadeIn var(--duration-fast) var(--easing-out),
+             zoomIn var(--duration-fast) var(--easing-out);
+}
+
+.subContent[data-state="closed"] {
+  animation: fadeOut var(--duration-fast) var(--easing-in),
+             zoomOut var(--duration-fast) var(--easing-in);
+}
+
+.content {
+  z-index: 50;
+  min-width: 8rem;
+  overflow: hidden;
+  border: 1px solid var(--color-border-default);
+  background-color: var(--color-bg-primary);
+  padding: var(--space-1);
+  color: var(--color-text-secondary);
+  box-shadow: var(--shadow-md);
+}
+
+.content[data-state="open"] {
+  animation: fadeIn var(--duration-fast) var(--easing-out),
+             zoomIn var(--duration-fast) var(--easing-out);
+}
+
+.content[data-state="closed"] {
+  animation: fadeOut var(--duration-fast) var(--easing-in),
+             zoomOut var(--duration-fast) var(--easing-in);
+}
+
+.item {
+  position: relative;
+  display: flex;
+  cursor: default;
+  user-select: none;
+  align-items: center;
+  padding-inline-start: var(--space-2);
+  padding-inline-end: var(--space-2);
+  padding-block: calc(var(--space-1) + var(--space-1) / 2);
+  font-size: var(--font-size-sm);
+  outline: none;
+  transition: background-color var(--duration-fast) var(--easing-out),
+              color var(--duration-fast) var(--easing-out);
+}
+
+.item:focus {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-secondary);
+}
+
+.item[data-disabled] {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.item.inset {
+  padding-inline-start: var(--space-8);
+}
+
+.checkboxItem {
+  position: relative;
+  display: flex;
+  cursor: default;
+  user-select: none;
+  align-items: center;
+  padding-block: calc(var(--space-1) + var(--space-1) / 2);
+  padding-inline-start: var(--space-8);
+  padding-inline-end: var(--space-2);
+  font-size: var(--font-size-sm);
+  outline: none;
+  transition: background-color var(--duration-fast) var(--easing-out),
+              color var(--duration-fast) var(--easing-out);
+}
+
+.checkboxItem:focus {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-secondary);
+}
+
+.checkboxItem[data-disabled] {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.checkboxIndicator {
+  position: absolute;
+  inset-inline-start: var(--space-2);
+  display: flex;
+  height: calc(var(--space-3) + var(--space-1) / 2);
+  width: calc(var(--space-3) + var(--space-1) / 2);
+  align-items: center;
+  justify-content: center;
+}
+
+.checkboxIcon {
+  height: var(--space-4);
+  width: var(--space-4);
+}
+
+.radioItem {
+  position: relative;
+  display: flex;
+  cursor: default;
+  user-select: none;
+  align-items: center;
+  padding-block: calc(var(--space-1) + var(--space-1) / 2);
+  padding-inline-start: var(--space-8);
+  padding-inline-end: var(--space-2);
+  font-size: var(--font-size-sm);
+  outline: none;
+  transition: background-color var(--duration-fast) var(--easing-out),
+              color var(--duration-fast) var(--easing-out);
+}
+
+.radioItem:focus {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-secondary);
+}
+
+.radioItem[data-disabled] {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.radioIndicator {
+  position: absolute;
+  inset-inline-start: var(--space-2);
+  display: flex;
+  height: calc(var(--space-3) + var(--space-1) / 2);
+  width: calc(var(--space-3) + var(--space-1) / 2);
+  align-items: center;
+  justify-content: center;
+}
+
+.radioIcon {
+  height: var(--space-2);
+  width: var(--space-2);
+  fill: currentColor;
+}
+
+.label {
+  padding-inline-start: var(--space-2);
+  padding-inline-end: var(--space-2);
+  padding-block: calc(var(--space-1) + var(--space-1) / 2);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+}
+
+.label.inset {
+  padding-inline-start: var(--space-8);
+}
+
+.separator {
+  margin-inline: calc(-1 * var(--space-1));
+  margin-block: var(--space-1);
+  height: 1px;
+  background-color: var(--color-bg-secondary);
+}
+
+.shortcut {
+  margin-inline-start: auto;
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.05em;
+  opacity: 0.6;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.95);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes zoomOut {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0.95);
+  }
+}

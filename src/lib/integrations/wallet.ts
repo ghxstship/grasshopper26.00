@@ -193,6 +193,7 @@ export async function generateGoogleWalletPass(data: PassData): Promise<string> 
       value: data.qrCode,
     },
     
+    // eslint-disable-next-line no-restricted-syntax -- Google Wallet API requires hex color format
     hexBackgroundColor: '#000000',
   }
 
@@ -299,6 +300,7 @@ export async function generateGoogleMembershipPass(data: MembershipPassData): Pr
       value: data.qrCode,
     },
     
+    // eslint-disable-next-line no-restricted-syntax -- Google Wallet API requires hex color format
     hexBackgroundColor: '#000000',
   }
 

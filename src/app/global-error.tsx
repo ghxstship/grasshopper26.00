@@ -8,6 +8,7 @@
 import * as Sentry from '@sentry/nextjs';
 import { useEffect } from 'react';
 import { Button } from '@/design-system/components/atoms/button';
+import styles from './global-error.module.css';
 
 export default function GlobalError({
   error,
@@ -24,18 +25,17 @@ export default function GlobalError({
   return (
     <html lang="en">
       <body>
-        <div className="min-h-screen bg-black text-white flex items-center justify-center p-4">
-          <div className="max-w-md w-full border-3 border-white p-8">
-            <h1 className="font-anton text-hero uppercase mb-4">
+        <div className={styles.container}>
+          <div className={styles.card}>
+            <h1 className={styles.title}>
               ERROR
             </h1>
-            <p className="font-share text-body mb-6">
+            <p className={styles.message}>
               Something went wrong. Our team has been notified.
             </p>
             <Button
               onClick={reset}
               variant="outline"
-              className="w-full"
             >
               TRY AGAIN
             </Button>

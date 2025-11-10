@@ -4,6 +4,7 @@
  */
 
 import { cn } from '@/lib/utils';
+import styles from './loading.module.css';
 
 interface LoadingSpinnerProps {
   size?: 'sm' | 'md' | 'lg' | 'xl';
@@ -14,19 +15,19 @@ interface LoadingSpinnerProps {
  * Geometric loading spinner using rotating squares (GHXSTSHIP compliant)
  */
 export function LoadingSpinner({ size = 'md', className }: LoadingSpinnerProps) {
-  const sizeClasses = {
-    sm: 'h-4 w-4',
-    md: 'h-8 w-8',
-    lg: 'h-12 w-12',
-    xl: 'h-16 w-16',
-  };
+  const sizeClass = {
+    sm: styles.spinnerSm,
+    md: styles.spinnerMd,
+    lg: styles.spinnerLg,
+    xl: styles.spinnerXl,
+  }[size];
 
   return (
-    <div className={cn('relative', sizeClasses[size], className)}>
+    <div className={cn(styles.spinner, sizeClass, className)}>
       {/* Outer square */}
-      <div className="absolute inset-0 border-3 border-black animate-spin" style={{ animationDuration: '1.5s' }} />
+      <div className={styles.spinnerOuter} />
       {/* Inner square */}
-      <div className="absolute inset-2 border-2 border-grey-600 animate-spin" style={{ animationDuration: '1s', animationDirection: 'reverse' }} />
+      <div className={styles.spinnerInner} />
     </div>
   );
 }
@@ -35,17 +36,17 @@ export function LoadingSpinner({ size = 'md', className }: LoadingSpinnerProps) 
  * Alternative geometric loader using triangles
  */
 export function GeometricLoader({ size = 'md', className }: LoadingSpinnerProps) {
-  const sizeClasses = {
-    sm: 'h-4 w-4',
-    md: 'h-8 w-8',
-    lg: 'h-12 w-12',
-    xl: 'h-16 w-16',
-  };
+  const sizeClass = {
+    sm: styles.spinnerSm,
+    md: styles.spinnerMd,
+    lg: styles.spinnerLg,
+    xl: styles.spinnerXl,
+  }[size];
 
   return (
-    <div className={cn('relative', sizeClasses[size], className)}>
-      <div className="absolute inset-0 animate-pulse">
-        <svg viewBox="0 0 100 100" className="w-full h-full">
+    <div className={cn(styles.geometricLoader, sizeClass, className)}>
+      <div className={styles.geometricPulse}>
+        <svg viewBox="0 0 100 100" className={styles.geometricSvg}>
           <polygon points="50,10 90,90 10,90" fill="none" stroke="currentColor" strokeWidth="3" />
         </svg>
       </div>
@@ -62,13 +63,13 @@ export function LoadingOverlay({ message = 'Loading...', fullScreen = false }: L
   return (
     <div
       className={cn(
-        'flex flex-col items-center justify-center bg-white/80 backdrop-blur-sm',
-        fullScreen ? 'fixed inset-0 z-50' : 'absolute inset-0'
+        styles.overlay,
+        fullScreen ? styles.overlayFullScreen : styles.overlayAbsolute
       )}
     >
       <LoadingSpinner size="lg" />
       {message && (
-        <p className="mt-4 text-sm font-medium text-gray-700">{message}</p>
+        <p className={styles.overlayMessage}>{message}</p>
       )}
     </div>
   );
@@ -83,17 +84,11 @@ interface SkeletonProps {
  * Geometric skeleton loader (GHXSTSHIP compliant - NO rounded corners)
  */
 export function Skeleton({ className, variant = 'rectangular' }: SkeletonProps) {
-  const variantClasses = {
-    text: 'h-4 w-full',
-    square: '', // No rounding - hard edges only
-    rectangular: '', // No rounding - hard edges only
-  };
-
   return (
     <div
       className={cn(
-        'animate-pulse bg-grey-200 border-2 border-grey-300',
-        variantClasses[variant],
+        styles.skeleton,
+        variant === 'text' && styles.skeletonText,
         className
       )}
     />
@@ -105,11 +100,11 @@ export function Skeleton({ className, variant = 'rectangular' }: SkeletonProps) 
  */
 export function TableSkeleton({ rows = 5, columns = 4 }: { rows?: number; columns?: number }) {
   return (
-    <div className="space-y-3">
+    <div className={styles.tableSkeleton}>
       {Array.from({ length: rows }).map((_, i) => (
-        <div key={i} className="flex gap-4">
+        <div key={i} className={styles.tableRow}>
           {Array.from({ length: columns }).map((_, j) => (
-            <Skeleton key={j} className="h-12 flex-1" />
+            <Skeleton key={j} className={styles.tableCell} />
           ))}
         </div>
       ))}
@@ -122,13 +117,13 @@ export function TableSkeleton({ rows = 5, columns = 4 }: { rows?: number; column
  */
 export function CardSkeleton() {
   return (
-    <div className="border-3 border-black p-6 space-y-4 shadow-geometric">
-      <Skeleton className="h-6 w-3/4" />
-      <Skeleton className="h-4 w-full" />
-      <Skeleton className="h-4 w-5/6" />
-      <div className="flex gap-2 pt-2">
-        <Skeleton className="h-10 w-24" />
-        <Skeleton className="h-10 w-24" />
+    <div className={styles.cardSkeleton}>
+      <Skeleton className={styles.cardTitle} />
+      <Skeleton className={styles.cardLine1} />
+      <Skeleton className={styles.cardLine2} />
+      <div className={styles.cardButtons}>
+        <Skeleton className={styles.cardButton} />
+        <Skeleton className={styles.cardButton} />
       </div>
     </div>
   );
@@ -136,10 +131,10 @@ export function CardSkeleton() {
 
 export function PageLoader() {
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="text-center">
+    <div className={styles.pageLoader}>
+      <div className={styles.pageLoaderContent}>
         <LoadingSpinner size="xl" />
-        <p className="mt-4 text-lg font-medium text-gray-700">Loading page...</p>
+        <p className={styles.pageLoaderText}>Loading page...</p>
       </div>
     </div>
   );
@@ -156,15 +151,15 @@ export function LoadingButton({ loading, children, className }: LoadingButtonPro
     <button
       disabled={loading}
       className={cn(
-        'relative inline-flex items-center justify-center',
-        loading && 'opacity-70 cursor-not-allowed',
+        styles.loadingButton,
+        loading && styles.loadingButtonDisabled,
         className
       )}
     >
       {loading && (
-        <LoadingSpinner size="sm" className="absolute left-4" />
+        <LoadingSpinner size="sm" className={styles.loadingButtonSpinner} />
       )}
-      <span className={loading ? 'opacity-0' : ''}>{children}</span>
+      <span className={loading ? styles.loadingButtonText : ''}>{children}</span>
     </button>
   );
 }

@@ -1,0 +1,201 @@
+/* Select Component Styles */
+
+.trigger {
+  display: flex;
+  height: calc(var(--space-8) + var(--space-4) - var(--space-1));
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  border: 3px solid var(--color-border-strong);
+  background-color: var(--color-bg-primary);
+  padding-inline: var(--space-4);
+  padding-block: var(--space-2);
+  font-family: var(--font-share);
+  font-size: var(--font-size-base);
+  outline: none;
+  transition: box-shadow var(--duration-fast) var(--easing-out);
+}
+
+.trigger::placeholder {
+  color: var(--color-text-tertiary);
+}
+
+.trigger:focus {
+  box-shadow: 0 0 0 2px var(--color-border-strong),
+              0 0 0 4px var(--color-bg-primary);
+}
+
+.trigger:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.trigger > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.triggerIcon {
+  height: var(--space-4);
+  width: var(--space-4);
+  opacity: 0.5;
+}
+
+.scrollButton {
+  display: flex;
+  cursor: default;
+  align-items: center;
+  justify-content: center;
+  padding-block: var(--space-1);
+}
+
+.scrollIcon {
+  height: var(--space-4);
+  width: var(--space-4);
+}
+
+.content {
+  position: relative;
+  z-index: 50;
+  max-height: 24rem;
+  min-width: 8rem;
+  overflow: hidden;
+  border: 3px solid var(--color-border-strong);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  box-shadow: var(--shadow-geometric);
+}
+
+.content[data-state="open"] {
+  animation: fadeIn var(--duration-fast) var(--easing-out),
+             zoomIn var(--duration-fast) var(--easing-out);
+}
+
+.content[data-state="closed"] {
+  animation: fadeOut var(--duration-fast) var(--easing-in),
+             zoomOut var(--duration-fast) var(--easing-in);
+}
+
+.contentPopper[data-side="bottom"] {
+  transform: translateY(var(--space-1));
+}
+
+.contentPopper[data-side="left"] {
+  transform: translateX(calc(-1 * var(--space-1)));
+}
+
+.contentPopper[data-side="right"] {
+  transform: translateX(var(--space-1));
+}
+
+.contentPopper[data-side="top"] {
+  transform: translateY(calc(-1 * var(--space-1)));
+}
+
+.viewport {
+  padding: var(--space-1);
+}
+
+.viewportPopper {
+  height: var(--radix-select-trigger-height);
+  width: 100%;
+  min-width: var(--radix-select-trigger-width);
+}
+
+.label {
+  padding-block: calc(var(--space-1) + var(--space-1) / 2);
+  padding-inline-start: var(--space-8);
+  padding-inline-end: var(--space-2);
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-base);
+  text-transform: uppercase;
+}
+
+.item {
+  position: relative;
+  display: flex;
+  width: 100%;
+  cursor: default;
+  user-select: none;
+  align-items: center;
+  padding-block: var(--space-2);
+  padding-inline-start: var(--space-8);
+  padding-inline-end: var(--space-2);
+  font-family: var(--font-share);
+  font-size: var(--font-size-base);
+  outline: none;
+  transition: background-color var(--duration-fast) var(--easing-out),
+              color var(--duration-fast) var(--easing-out);
+}
+
+.item:focus {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+}
+
+.item[data-disabled] {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.itemIndicator {
+  position: absolute;
+  inset-inline-start: var(--space-2);
+  display: flex;
+  height: calc(var(--space-3) + var(--space-1) / 2);
+  width: calc(var(--space-3) + var(--space-1) / 2);
+  align-items: center;
+  justify-content: center;
+}
+
+.itemIcon {
+  height: var(--space-4);
+  width: var(--space-4);
+}
+
+.separator {
+  margin-inline: calc(-1 * var(--space-1));
+  margin-block: var(--space-1);
+  height: 1px;
+  background-color: var(--color-border-default);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.95);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes zoomOut {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0.95);
+  }
+}

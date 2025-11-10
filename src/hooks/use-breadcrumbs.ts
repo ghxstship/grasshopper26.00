@@ -1,6 +1,6 @@
 import { usePathname } from "next/navigation"
 import { useMemo } from "react"
-import type { BreadcrumbItem } from "@/components/ui/breadcrumb"
+import type { BreadcrumbItem } from "@/design-system/components/molecules/breadcrumb"
 
 interface RouteConfig {
   pattern: RegExp

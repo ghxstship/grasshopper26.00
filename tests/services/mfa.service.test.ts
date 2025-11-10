@@ -171,7 +171,11 @@ describe('MFA Service', () => {
 
   describe('MFA Enrollment', () => {
     it('should enable MFA for user', () => {
-      const user = {
+      const user: {
+        id: string;
+        mfa_enabled: boolean;
+        mfa_secret: string | null;
+      } = {
         id: 'user-123',
         mfa_enabled: false,
         mfa_secret: null,
@@ -220,7 +224,11 @@ describe('MFA Service', () => {
     });
 
     it('should disable MFA for user', () => {
-      const user = {
+      const user: {
+        id: string;
+        mfa_enabled: boolean;
+        mfa_secret: string | null;
+      } = {
         id: 'user-123',
         mfa_enabled: true,
         mfa_secret: 'JBSWY3DPEHPK3PXP',
@@ -311,7 +319,7 @@ describe('MFA Service', () => {
     it('should use secure secret generation', () => {
       const secret = new OTPAuth.Secret({ size: 20 });
       
-      expect(secret.buffer.length).toBe(20);
+      expect(secret.buffer.byteLength).toBe(20);
     });
 
     it('should enforce time window for TOTP validation', () => {

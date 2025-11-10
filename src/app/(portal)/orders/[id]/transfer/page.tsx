@@ -9,6 +9,7 @@ import { Input } from '@/design-system/components/atoms/input';
 import { Loader2, ArrowLeft, Send, AlertCircle } from 'lucide-react';
 import Link from 'next/link';
 import { toast } from 'sonner';
+import styles from './page.module.css';
 
 interface Ticket {
   id: string;
@@ -189,26 +190,26 @@ export default function TransferTicketsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center " style={{ background: 'var(--gradient-hero)' }}>
-        <Loader2 className="h-12 w-12 animate-spin text-purple-500" />
+      <div className={`${styles.row} ${styles.heroGradient}`}>
+        <Loader2 className={styles.spinner} />
       </div>
     );
   }
 
   if (!order || order.tickets.length === 0) {
     return (
-      <div className="min-h-screen  py-12 px-4" style={{ background: 'var(--gradient-hero)' }}>
-        <div className="max-w-4xl mx-auto">
-          <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20">
-            <CardContent className="py-12 text-center">
-              <AlertCircle className="h-16 w-16 mx-auto text-yellow-500 mb-4" />
-              <h3 className="text-xl font-semibold text-white mb-2">No Transferable Tickets</h3>
-              <p className="text-gray-400 mb-6">
+      <div className={`${styles.container} ${styles.heroGradient}`}>
+        <div className={styles.content}>
+          <Card >
+            <CardContent className={styles.section}>
+              <AlertCircle className={styles.alertIcon} />
+              <h3 className={styles.alertTitle}>No Transferable Tickets</h3>
+              <p className={styles.alertText}>
                 This order has no tickets available for transfer.
               </p>
-              <Button asChild className="" style={{ background: 'var(--gradient-brand-primary)' }}>
+              <Button asChild className={styles.brandGradient}>
                 <Link href="/orders">
-                  <ArrowLeft className="h-4 w-4 mr-2" />
+                  <ArrowLeft className={styles.icon} />
                   Back to Orders
                 </Link>
               </Button>
@@ -222,34 +223,34 @@ export default function TransferTicketsPage() {
   const event = order.tickets[0]?.ticket_type?.event;
 
   return (
-    <div className="min-h-screen  py-12 px-4" style={{ background: 'var(--gradient-hero)' }}>
-      <div className="max-w-4xl mx-auto">
+    <div className={`${styles.container} ${styles.heroGradient}`}>
+      <div className={styles.content}>
         {/* Header */}
-        <div className="mb-8">
+        <div className={styles.section}>
           <Button
             asChild
             variant="ghost"
-            className="mb-4 text-gray-400 hover:text-white"
+            className={styles.backButton}
           >
             <Link href={`/orders/${params.id}`}>
-              <ArrowLeft className="h-4 w-4 mr-2" />
+              <ArrowLeft className={styles.icon} />
               Back to Order
             </Link>
           </Button>
-          <h1 className="text-3xl font-bold text-white mb-2">Transfer Tickets</h1>
-          <p className="text-gray-400">
+          <h1 className={styles.title}>Transfer Tickets</h1>
+          <p >
             Transfer tickets to another person via email
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-6">
+        <div className={styles.grid}>
           {/* Ticket Selection */}
-          <div className="lg:col-span-2 space-y-4">
-            <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20">
+          <div className={styles.section}>
+            <Card >
               <CardHeader>
-                <CardTitle className="text-white">Select Tickets to Transfer</CardTitle>
+                <CardTitle >Select Tickets to Transfer</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-3">
+              <CardContent className={styles.section}>
                 {order.tickets.map((ticket) => (
                   <div
                     key={ticket.id}
@@ -263,30 +264,30 @@ export default function TransferTicketsPage() {
                         toggleTicketSelection(ticket.id);
                       }
                     }}
-                    className={`p-4 rounded-lg border-2 cursor-pointer transition-all ${
+                    className={`${styles.ticketCard} ${
                       selectedTickets.has(ticket.id)
-                        ? 'border-purple-500 bg-purple-500/10'
-                        : 'border-purple-500/20 bg-black/20 hover:border-purple-500/40'
+                        ? styles.ticketCardSelected
+                        : ''
                     }`}
                   >
-                    <div className="flex items-center justify-between">
+                    <div className={styles.header}>
                       <div>
-                        <h4 className="font-semibold text-white">
+                        <h4 className={styles.ticketName}>
                           {ticket.ticket_type.name}
                         </h4>
-                        <p className="text-sm text-gray-400">
+                        <p className={styles.subtitle}>
                           ${parseFloat(ticket.ticket_type.price).toFixed(2)}
                         </p>
                       </div>
                       <div
-                        className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${
+                        className={`${styles.checkbox} ${
                           selectedTickets.has(ticket.id)
-                            ? 'border-purple-500 bg-purple-500'
-                            : 'border-gray-500'
+                            ? styles.checkboxChecked
+                            : ''
                         }`}
                       >
                         {selectedTickets.has(ticket.id) && (
-                          <div className="w-3 h-3 bg-white rounded-full" />
+                          <div className={styles.checkmark} />
                         )}
                       </div>
                     </div>
@@ -297,14 +298,14 @@ export default function TransferTicketsPage() {
 
             {/* Event Info */}
             {event && (
-              <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20">
+              <Card >
                 <CardHeader>
-                  <CardTitle className="text-white">Event Details</CardTitle>
+                  <CardTitle >Event Details</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <h3 className="text-lg font-semibold text-white mb-2">{event.name}</h3>
-                  <p className="text-gray-400 text-sm mb-1">{event.venue_name}</p>
-                  <p className="text-gray-400 text-sm">
+                  <h3 className={styles.eventName}>{event.name}</h3>
+                  <p className={styles.eventVenue}>{event.venue_name}</p>
+                  <p className={styles.eventDate}>
                     {new Date(event.start_date).toLocaleString()}
                   </p>
                 </CardContent>
@@ -313,14 +314,14 @@ export default function TransferTicketsPage() {
           </div>
 
           {/* Transfer Form */}
-          <div className="lg:col-span-1">
-            <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20 sticky top-4">
+          <div className={styles.formColumn}>
+            <Card className={styles.formCard}>
               <CardHeader>
-                <CardTitle className="text-white">Recipient Information</CardTitle>
+                <CardTitle >Recipient Information</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className={styles.section}>
                 <div>
-                  <label htmlFor="recipient-name" className="text-sm text-gray-400 mb-2 block">
+                  <label htmlFor="recipient-name" className={styles.label}>
                     Recipient Name
                   </label>
                   <Input
@@ -329,12 +330,12 @@ export default function TransferTicketsPage() {
                     placeholder="John Doe"
                     value={recipientName}
                     onChange={(e) => setRecipientName(e.target.value)}
-                    className="bg-black/30 border-purple-500/30 text-white"
+                    className={styles.input}
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="recipient-email" className="text-sm text-gray-400 mb-2 block">
+                  <label htmlFor="recipient-email" className={styles.label}>
                     Recipient Email
                   </label>
                   <Input
@@ -343,16 +344,16 @@ export default function TransferTicketsPage() {
                     placeholder="john@example.com"
                     value={recipientEmail}
                     onChange={(e) => setRecipientEmail(e.target.value)}
-                    className="bg-black/30 border-purple-500/30 text-white"
+                    className={styles.input}
                   />
                 </div>
 
-                <div className="pt-4 border-t border-purple-500/20">
-                  <div className="text-sm text-gray-400 mb-4">
-                    <p className="mb-2">
-                      <strong className="text-white">{selectedTickets.size}</strong> ticket(s) selected
+                <div className={styles.summary}>
+                  <div className={styles.summaryText}>
+                    <p>
+                      <strong >{selectedTickets.size}</strong> ticket(s) selected
                     </p>
-                    <p className="text-xs text-yellow-400">
+                    <p className={styles.warning}>
                       ⚠️ Transfers cannot be undone. The recipient will receive an email with their tickets.
                     </p>
                   </div>
@@ -360,16 +361,16 @@ export default function TransferTicketsPage() {
                   <Button
                     onClick={handleTransfer}
                     disabled={transferring || selectedTickets.size === 0}
-                    className="w-full " style={{ background: 'var(--gradient-brand-primary)' }}
+                    className={`${styles.submitButton} ${styles.brandGradient}`}
                   >
                     {transferring ? (
                       <>
-                        <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                        <Loader2 className={styles.buttonIcon} />
                         Transferring...
                       </>
                     ) : (
                       <>
-                        <Send className="h-4 w-4 mr-2" />
+                        <Send className={styles.icon} />
                         Transfer Tickets
                       </>
                     )}

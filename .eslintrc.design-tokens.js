@@ -94,5 +94,34 @@ module.exports = {
         'jsx-a11y/label-has-associated-control': 'error',
       },
     },
+    {
+      // Allow test files to have magic numbers and hardcoded values for testing
+      files: [
+        '**/tests/**/*.ts',
+        '**/tests/**/*.tsx',
+        '**/*.test.ts',
+        '**/*.test.tsx',
+        '**/*.spec.ts',
+      ],
+      rules: {
+        'no-magic-numbers': 'off',
+        'no-restricted-syntax': 'off',
+      },
+    },
+    {
+      // Allow documentation examples and instrumentation files
+      files: [
+        '**/docs/**/*.ts',
+        '**/docs/**/*.tsx',
+        'instrumentation-*.ts',
+        'next.config.js',
+        'tailwind.config.ts',
+        'public/sw.js',
+      ],
+      rules: {
+        'no-magic-numbers': 'off',
+        'no-restricted-syntax': 'off',
+      },
+    },
   ],
 };

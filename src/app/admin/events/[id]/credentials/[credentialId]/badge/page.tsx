@@ -5,9 +5,10 @@
 
 'use client';
 
+import styles from './page.module.css';
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
-import { CredentialBadge } from '@/components/admin/CredentialBadge';
+import { CredentialBadge } from '@/design-system/components/organisms/admin/CredentialBadge';
 
 interface BadgeData {
   credential_number: string;
@@ -63,10 +64,10 @@ export default function CredentialBadgePage() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading badge...</p>
+      <div className={styles.row}>
+        <div>
+          <div className={styles.loadingSpinner}></div>
+          <p>Loading badge...</p>
         </div>
       </div>
     );
@@ -74,12 +75,12 @@ export default function CredentialBadgePage() {
 
   if (error || !badgeData) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="text-center">
-          <p className="text-red-600 mb-4">{error || 'Badge not found'}</p>
+      <div className={styles.row}>
+        <div>
+          <p className={styles.errorText}>{error || 'Badge not found'}</p>
           <button
             onClick={() => window.close()}
-            className="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700"
+            className={styles.button}
           >
             Close
           </button>
@@ -89,7 +90,7 @@ export default function CredentialBadgePage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 py-8">
+    <div className={styles.container}>
       <CredentialBadge credential={badgeData} />
     </div>
   );

@@ -1,133 +1,76 @@
-'use client'
+'use client';
 
-import Image from "next/image"
-import Link from "next/link"
-import { cn } from "@/lib/utils"
+import Image from 'next/image';
+import Link from 'next/link';
+import { Calendar, MapPin } from 'lucide-react';
+import { format } from 'date-fns';
+import styles from './event-card.module.css';
 
 interface EventCardProps {
   event: {
-    id: string
-    name: string
-    date: string
-    venue: string
-    imageUrl: string
-    status: 'on-sale' | 'sold-out' | 'coming-soon'
-    slug: string
-  }
-  className?: string
+    id: string;
+    name: string;
+    slug: string;
+    start_date: string;
+    venue_name: string;
+    hero_image_url?: string;
+    ticket_types?: Array<{
+      price: string;
+      quantity_available: number;
+      quantity_sold: number;
+    }>;
+  };
 }
 
-export function EventCard({ event, className }: EventCardProps) {
+export function EventCard({ event }: EventCardProps) {
+  const minPrice = event.ticket_types && event.ticket_types.length > 0
+    ? Math.min(...event.ticket_types.map(tt => parseFloat(tt.price)))
+    : null;
+
+  const isSoldOut = event.ticket_types?.every(
+    tt => tt.quantity_sold >= tt.quantity_available
+  ) || false;
+
   return (
-    <Link href={`/events/${event.slug}`}>
-      <div className={cn(
-        "relative overflow-hidden",
-        "border-3 border-black",
-        "bg-white",
-        "hover:bg-black hover:border-white",
-        "hover:scale-105",
-        "transition-all duration-300",
-        "group cursor-pointer",
-        className
-      )}>
-        {/* B&W Image with halftone overlay */}
-        <div className="relative aspect-[4/3] overflow-hidden">
+    <Link href={`/events/${event.slug}`} className={styles.card}>
+      <div className={styles.imageWrapper}>
+        {event.hero_image_url ? (
           <Image
-            src={event.imageUrl}
+            src={event.hero_image_url}
             alt={event.name}
             fill
-            className={cn(
-              "object-cover",
-              "grayscale",
-              "group-hover:scale-110",
-              "transition-transform duration-500"
-            )}
+            className={styles.image}
           />
-          <div className={cn(
-            "absolute inset-0",
-            "bg-halftone-pattern",
-            "opacity-0 group-hover:opacity-30",
-            "transition-opacity duration-300"
-          )} />
+        ) : (
+          <div className={styles.imagePlaceholder} />
+        )}
+        {isSoldOut && (
+          <div className={styles.soldOutBadge}>
+            <span>SOLD OUT</span>
+          </div>
+        )}
+      </div>
+
+      <div className={styles.content}>
+        <h3 className={styles.title}>{event.name}</h3>
+
+        <div className={styles.meta}>
+          <div className={styles.metaItem}>
+            <Calendar className={styles.metaIcon} />
+            <span>{format(new Date(event.start_date), 'PPP')}</span>
+          </div>
+          <div className={styles.metaItem}>
+            <MapPin className={styles.metaIcon} />
+            <span>{event.venue_name}</span>
+          </div>
         </div>
 
-        {/* Content */}
-        <div className="p-6">
-          <h3 className={cn(
-            "font-bebas text-h3 uppercase",
-            "text-black group-hover:text-white",
-            "transition-colors duration-300"
-          )}>
-            {event.name}
-          </h3>
-          
-          <p className={cn(
-            "font-share-mono text-meta uppercase",
-            "text-grey-600 group-hover:text-grey-400",
-            "mt-2 tracking-widest"
-          )}>
-            {event.date} {/* {event.venue} */}
-          </p>
-
-          {/* Status badge */}
-          {event.status === 'sold-out' && (
-            <div className={cn(
-              "mt-4 inline-block",
-              "px-4 py-2",
-              "border-2 border-black group-hover:border-white",
-              "bg-black group-hover:bg-white"
-            )}>
-              <span className={cn(
-                "font-bebas text-h6 uppercase",
-                "text-white group-hover:text-black"
-              )}>
-                SOLD OUT
-              </span>
-            </div>
-          )}
-
-          {event.status === 'on-sale' && (
-            <div className={cn(
-              "mt-4 inline-block",
-              "px-4 py-2",
-              "border-2 border-black group-hover:border-white",
-              "bg-white group-hover:bg-black"
-            )}>
-              <span className={cn(
-                "font-bebas text-h6 uppercase",
-                "text-black group-hover:text-white"
-              )}>
-                ON SALE
-              </span>
-            </div>
-          )}
-
-          {event.status === 'coming-soon' && (
-            <div className={cn(
-              "mt-4 inline-block",
-              "px-4 py-2",
-              "border-2 border-grey-500 group-hover:border-grey-400",
-              "bg-grey-100 group-hover:bg-grey-800"
-            )}>
-              <span className={cn(
-                "font-bebas text-h6 uppercase",
-                "text-grey-700 group-hover:text-grey-200"
-              )}>
-                COMING SOON
-              </span>
-            </div>
-          )}
-        </div>
-
-        {/* Geometric accent */}
-        <div className={cn(
-          "absolute top-4 right-4",
-          "w-12 h-12",
-          "border-2 border-black group-hover:border-white",
-          "rotate-45",
-          "transition-colors duration-300"
-        )} />
+        {minPrice !== null && (
+          <div className={styles.price}>
+            From ${minPrice.toFixed(2)}
+          </div>
+        )}
       </div>
     </Link>
-  )
+  );
 }

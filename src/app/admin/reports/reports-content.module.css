@@ -1,0 +1,116 @@
+/* Reports Content Styles */
+
+.reportCard {
+  display: flex;
+  flex-direction: column;
+  block-size: 100%;
+}
+
+.reportHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-block-end: var(--spacing-md);
+}
+
+.iconWrapper {
+  inline-size: var(--spacing-3xl);
+  block-size: var(--spacing-3xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-primary-surface);
+  border-radius: var(--radius-md);
+  border: 2px solid var(--color-primary);
+}
+
+.iconLarge {
+  inline-size: var(--icon-size-lg);
+  block-size: var(--icon-size-lg);
+  color: var(--color-primary);
+}
+
+.iconSmall {
+  inline-size: var(--icon-size-sm);
+  block-size: var(--icon-size-sm);
+}
+
+.spinner {
+  inline-size: var(--icon-size-sm);
+  block-size: var(--icon-size-sm);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.reportContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  flex: 1;
+}
+
+.fieldsSection {
+  flex: 1;
+}
+
+.fieldsLabel {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+  margin-block-end: var(--spacing-sm);
+}
+
+.fieldsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.fieldItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.generateButton {
+  inline-size: 100%;
+}
+
+.dateFields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.dateField {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+
+.dateInput {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-md);
+}
+
+.downloadAllButton {
+  inline-size: 100%;
+}

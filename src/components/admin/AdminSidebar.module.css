@@ -1,5 +1,0 @@
-.adminSidebar { width: var(--space-64); height: 100vh; border-inline-end: var(--border-width-default) solid var(--color-border-default); background-color: var(--color-bg-primary); padding: var(--space-4); }
-.sidebarNav { display: flex; flex-direction: column; gap: var(--space-1); }
-.navItem { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3); border-radius: var(--radius-md); font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); color: var(--color-text-secondary); transition: background-color var(--duration-fast) var(--easing-out); cursor: pointer; }
-.navItem:hover { background-color: var(--color-bg-secondary); color: var(--color-text-primary); }
-.navItem[data-active="true"] { background-color: var(--color-primary); color: var(--color-text-inverse); }

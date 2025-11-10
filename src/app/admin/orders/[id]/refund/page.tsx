@@ -2,10 +2,15 @@
 
 import { use, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { ContextualPageTemplate } from '@/design-system/components/templates';
 import { Button } from '@/design-system/components/atoms/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/card';
-import { ArrowLeft, DollarSign, Loader2, AlertTriangle } from 'lucide-react';
-import Link from 'next/link';
+import { Input } from '@/design-system/components/atoms/input';
+import { Label } from '@/design-system/components/atoms/label';
+import { Textarea } from '@/design-system/components/atoms/textarea';
+import { DollarSign, AlertTriangle } from 'lucide-react';
+import { toast } from 'sonner';
+import styles from './refund-content.module.css';
 
 export default function RefundOrderPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
@@ -29,6 +34,7 @@ export default function RefundOrderPage({ params }: { params: Promise<{ id: stri
         }
       } catch (error) {
         console.error('Failed to fetch order:', error);
+        toast.error('Failed to load order');
       } finally {
         setLoading(false);
       }
@@ -60,190 +66,88 @@ export default function RefundOrderPage({ params }: { params: Promise<{ id: stri
       const data = await response.json();
 
       if (data.success) {
-        alert('Refund processed successfully');
+        toast.success('Refund processed successfully');
         router.push(`/admin/orders/${id}`);
       } else {
-        alert(data.error || 'Failed to process refund');
+        toast.error(data.error || 'Failed to process refund');
       }
     } catch (error) {
       console.error('Refund error:', error);
-      alert('Failed to process refund');
+      toast.error('Failed to process refund');
     } finally {
       setProcessing(false);
     }
   };
 
-  if (loading) {
-    return (
-      <div className="min-h-screen  flex items-center justify-center" style={{ background: 'var(--gradient-hero)' }}>
-        <Loader2 className="h-12 w-12 animate-spin text-purple-500" />
-      </div>
-    );
-  }
-
-  if (!order) {
-    return (
-      <div className="min-h-screen  flex items-center justify-center" style={{ background: 'var(--gradient-hero)' }}>
-        <p className="text-white">Order not found</p>
-      </div>
-    );
-  }
-
-  const maxRefund = parseFloat(order.total_amount);
-
   return (
-    <div className="min-h-screen  py-12 px-4" style={{ background: 'var(--gradient-hero)' }}>
-      <div className="max-w-2xl mx-auto">
-        <div className="mb-8">
-          <Link
-            href={`/admin/orders/${id}`}
-            className="text-purple-400 hover:text-purple-300 mb-4 inline-flex items-center gap-2"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Back to Order
-          </Link>
-          <h1 className="text-3xl font-bold  bg-clip-text text-transparent" style={{ backgroundImage: 'var(--gradient-brand-primary)' }}>
-            Process Refund
-          </h1>
-        </div>
-
-        {/* Warning */}
-        <Card className="bg-yellow-500/10 border-yellow-500/30 mb-6">
-          <CardContent className="p-6">
-            <div className="flex items-start gap-3">
-              <AlertTriangle className="h-6 w-6 text-yellow-500 flex-shrink-0" />
-              <div>
-                <h3 className="text-yellow-500 font-semibold mb-1">Warning</h3>
-                <p className="text-yellow-200/80 text-sm">
-                  This action will process a refund through Stripe and cannot be undone. 
-                  The customer will receive the refund within 5-10 business days.
-                </p>
-              </div>
+    <ContextualPageTemplate
+      breadcrumbs={[
+        { label: 'Orders', href: '/admin/orders' },
+        { label: `Order #${order?.order_number || id}`, href: `/admin/orders/${id}` },
+        { label: 'Refund', href: `/admin/orders/${id}/refund` }
+      ]}
+      title="Process Refund"
+      subtitle={order ? `Order #${order.order_number} - ${order.customer_name}` : 'Loading...'}
+      loading={loading}
+    >
+      <Card>
+        <CardHeader>
+          <CardTitle>
+            <AlertTriangle />
+            Refund Order
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <form onSubmit={handleSubmit} className={styles.form}>
+            <div className={styles.field}>
+              <Label htmlFor="amount">Refund Amount ($)</Label>
+              <Input
+                id="amount"
+                type="number"
+                step="0.01"
+                value={refundAmount}
+                onChange={(e) => setRefundAmount(e.target.value)}
+                required
+              />
             </div>
-          </CardContent>
-        </Card>
 
-        {/* Order Info */}
-        <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20 mb-6">
-          <CardHeader>
-            <CardTitle>Order Information</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-2 gap-4 text-sm">
-              <div>
-                <p className="text-gray-400">Order ID</p>
-                <p className="text-white font-mono">#{order.id.slice(0, 8).toUpperCase()}</p>
-              </div>
-              <div>
-                <p className="text-gray-400">Total Amount</p>
-                <p className="text-white font-bold">${parseFloat(order.total_amount).toFixed(2)}</p>
-              </div>
-              <div>
-                <p className="text-gray-400">Status</p>
-                <p className="text-white capitalize">{order.status}</p>
-              </div>
-              <div>
-                <p className="text-gray-400">Date</p>
-                <p className="text-white">{new Date(order.created_at).toLocaleDateString()}</p>
-              </div>
+            <div className={styles.field}>
+              <Label htmlFor="reason">Reason</Label>
+              <select
+                id="reason"
+                value={refundReason}
+                onChange={(e) => setRefundReason(e.target.value)}
+className={styles.select}
+              >
+                <option value="requested_by_customer">Requested by Customer</option>
+                <option value="duplicate">Duplicate Order</option>
+                <option value="fraudulent">Fraudulent</option>
+                <option value="other">Other</option>
+              </select>
             </div>
-          </CardContent>
-        </Card>
 
-        {/* Refund Form */}
-        <form onSubmit={handleSubmit}>
-          <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20 mb-6">
-            <CardHeader>
-              <CardTitle>Refund Details</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              <div>
-                <label htmlFor="refundAmount" className="block text-sm font-medium text-gray-300 mb-2">
-                  Refund Amount *
-                </label>
-                <div className="relative">
-                  <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
-                  <input
-                    id="refundAmount"
-                    type="number"
-                    step="0.01"
-                    min="0.01"
-                    max={maxRefund}
-                    value={refundAmount}
-                    onChange={(e) => setRefundAmount(e.target.value)}
-                    required
-                    className="w-full pl-10 pr-4 py-3 bg-black/60 border border-purple-500/30 rounded-lg text-white focus:outline-none focus:border-purple-500"
-                  />
-                </div>
-                <p className="text-xs text-gray-400 mt-1">
-                  Maximum refund: ${maxRefund.toFixed(2)}
-                </p>
-              </div>
+            <div className={styles.field}>
+              <Label htmlFor="notes">Notes</Label>
+              <Textarea
+                id="notes"
+                value={notes}
+                onChange={(e) => setNotes(e.target.value)}
+                rows={4}
+              />
+            </div>
 
-              <div>
-                <label htmlFor="refundReason" className="block text-sm font-medium text-gray-300 mb-2">
-                  Refund Reason *
-                </label>
-                <select
-                  id="refundReason"
-                  value={refundReason}
-                  onChange={(e) => setRefundReason(e.target.value)}
-                  required
-                  className="w-full px-4 py-3 bg-black/60 border border-purple-500/30 rounded-lg text-white focus:outline-none focus:border-purple-500"
-                >
-                  <option value="requested_by_customer">Requested by Customer</option>
-                  <option value="duplicate">Duplicate Order</option>
-                  <option value="fraudulent">Fraudulent</option>
-                  <option value="event_cancelled">Event Cancelled</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-
-              <div>
-                <label htmlFor="notes" className="block text-sm font-medium text-gray-300 mb-2">
-                  Internal Notes
-                </label>
-                <textarea
-                  id="notes"
-                  value={notes}
-                  onChange={(e) => setNotes(e.target.value)}
-                  rows={3}
-                  placeholder="Add any internal notes about this refund..."
-                  className="w-full px-4 py-3 bg-black/60 border border-purple-500/30 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-purple-500"
-                />
-              </div>
-            </CardContent>
-          </Card>
-
-          <div className="flex gap-4">
-            <Button
-              type="submit"
-              disabled={processing}
-              className="flex-1 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800"
-            >
-              {processing ? (
-                <>
-                  <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                  Processing...
-                </>
-              ) : (
-                <>
-                  <DollarSign className="h-4 w-4 mr-2" />
-                  Process Refund
-                </>
-              )}
-            </Button>
-            <Button
-              type="button"
-              variant="outline"
-              onClick={() => router.push(`/admin/orders/${id}`)}
-              className="border-purple-500/30 hover:bg-purple-500/10"
-            >
-              Cancel
-            </Button>
-          </div>
-        </form>
-      </div>
-    </div>
+            <div className={styles.actions}>
+              <Button type="submit" disabled={processing}>
+                <DollarSign />
+                {processing ? 'Processing...' : 'Process Refund'}
+              </Button>
+              <Button type="button" variant="outline" onClick={() => router.back()}>
+                Cancel
+              </Button>
+            </div>
+          </form>
+        </CardContent>
+      </Card>
+    </ContextualPageTemplate>
   );
 }

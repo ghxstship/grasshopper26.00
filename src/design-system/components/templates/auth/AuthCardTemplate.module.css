@@ -1,0 +1,168 @@
+/**
+ * Auth Card Template Styles
+ * Design system compliant - CSS Modules, design tokens, logical properties
+ */
+
+/* Container - Full viewport centering */
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-block-size: 100vh;
+  padding-block: var(--spacing-8);
+  padding-inline: var(--spacing-4);
+  background: var(--gradient-hero);
+}
+
+/* Card */
+.card {
+  inline-size: 100%;
+  max-inline-size: 28rem; /* 448px */
+}
+
+/* Header */
+.header {
+  text-align: center;
+  padding-block-end: var(--spacing-6);
+}
+
+.title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
+  margin-block-end: var(--spacing-2);
+}
+
+.description {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+}
+
+/* Content */
+.content {
+  padding-block: var(--spacing-6);
+}
+
+/* Form */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.formFields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.submitButton {
+  inline-size: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+}
+
+/* Divider */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  margin-block: var(--spacing-6);
+}
+
+.dividerLine {
+  flex: 1;
+  block-size: 1px;
+  background-color: var(--color-border);
+}
+
+.dividerText {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+/* OAuth Grid */
+.oauthGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-3);
+}
+
+.oauthButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+}
+
+.oauthIcon {
+  inline-size: var(--spacing-5);
+  block-size: var(--spacing-5);
+}
+
+/* Spinner */
+.spinner {
+  inline-size: var(--spacing-4);
+  block-size: var(--spacing-4);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Footer */
+.footer {
+  padding-block-start: var(--spacing-6);
+  border-block-start: 1px solid var(--color-border);
+}
+
+.footerText {
+  inline-size: 100%;
+  text-align: center;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.footerLink {
+  color: var(--color-brand-primary);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.footerLink:hover {
+  color: var(--color-brand-primary-hover);
+  text-decoration: underline;
+}
+
+.footerLink:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .container {
+    padding-inline: var(--spacing-2);
+  }
+
+  .oauthGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .title {
+    font-size: var(--font-size-xl);
+  }
+}

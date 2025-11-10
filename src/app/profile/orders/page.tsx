@@ -5,6 +5,7 @@ import { Calendar, MapPin, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { redirect } from 'next/navigation';
+import styles from './page.module.css';
 
 export default async function OrdersPage() {
   const supabase = await createClient();
@@ -31,60 +32,60 @@ export default async function OrdersPage() {
     .order('created_at', { ascending: false });
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className={styles.container}>
       {/* Header */}
-      <section className="border-b-3 border-black py-12 md:py-20">
-        <div className="container mx-auto px-4">
+      <section className={styles.card}>
+        <div className={styles.content}>
           <Link
             href="/profile"
-            className="inline-flex items-center gap-2 font-bebas text-body uppercase mb-6 hover:underline"
+            className={styles.row}
           >
             ← Back to Profile
           </Link>
-          <h1 className="font-anton text-hero uppercase mb-4">
+          <h1 className={styles.container}>
             Order History
           </h1>
-          <p className="font-share text-body text-grey-700 max-w-2xl">
+          <p className={styles.text}>
             View and manage your past orders, tickets, and merchandise purchases
           </p>
         </div>
       </section>
 
       {/* Orders List */}
-      <section className="py-12">
-        <div className="container mx-auto px-4 max-w-4xl">
+      <section >
+        <div className={styles.container}>
 
           {!orders || orders.length === 0 ? (
-            <div className="border-3 border-black bg-grey-50 p-12 text-center">
-              <p className="font-bebas text-h3 uppercase mb-4">No Orders Yet</p>
-              <p className="font-share text-body text-grey-600 mb-6">
+            <div className={styles.card}>
+              <p >No Orders Yet</p>
+              <p className={styles.text}>
                 Start exploring events and get your tickets!
               </p>
               <Button
                 asChild
-                className="bg-black text-white hover:bg-white hover:text-black border-3 border-black font-bebas text-body uppercase"
+                className={styles.card}
               >
                 <Link href="/events">Browse Events</Link>
               </Button>
             </div>
           ) : (
-            <div className="space-y-6">
+            <div className={styles.section}>
               {orders.map((order) => {
                 const orderDate = new Date(order.created_at);
                 const statusColors = {
-                  completed: 'bg-green-500 text-white',
-                  pending: 'bg-yellow-500 text-black',
-                  cancelled: 'bg-red-500 text-white',
+                  completed: 'bg-grey-100 text-white',
+                  pending: 'bg-grey-100 text-black',
+                  cancelled: 'bg-grey-100 text-white',
                   refunded: 'bg-grey-500 text-white',
                 };
 
                 return (
                   <Link key={order.id} href={`/orders/${order.id}`}>
-                    <article className="border-3 border-black bg-white hover:bg-black hover:text-white transition-colors shadow-geometric group">
-                      <div className="p-6">
-                        <div className="flex gap-6">
+                    <article className={styles.card}>
+                      <div className={styles.card}>
+                        <div className={styles.row}>
                           {order.events?.hero_image_url && (
-                            <div className="w-32 h-32 border-3 border-black overflow-hidden flex-shrink-0 relative">
+                            <div className={styles.card}>
                               <Image
                                 src={order.events.hero_image_url}
                                 alt={order.events.name}
@@ -93,18 +94,18 @@ export default async function OrdersPage() {
                               />
                             </div>
                           )}
-                          <div className="flex-1 min-w-0">
-                            <div className="flex items-start justify-between mb-3">
+                          <div className={styles.container}>
+                            <div className={styles.container}>
                               <div>
-                                <h3 className="font-bebas text-h3 uppercase truncate mb-1 group-hover:text-white">
+                                <h3 className={styles.container}>
                                   {order.events?.name || 'Order'}
                                 </h3>
-                                <p className="font-share-mono text-meta text-grey-600 group-hover:text-grey-300">
+                                <p className={styles.text}>
                                   Order #{order.id.slice(0, 8).toUpperCase()}
                                 </p>
                               </div>
                               <span
-                                className={`px-4 py-1 font-bebas text-meta uppercase ${
+                                className={`${styles.orderStatusBadge} ${
                                   statusColors[order.status as keyof typeof statusColors] ||
                                   statusColors.pending
                                 }`}
@@ -112,9 +113,9 @@ export default async function OrdersPage() {
                                 {order.status}
                               </span>
                             </div>
-                            <div className="space-y-2 font-share text-body text-grey-700 group-hover:text-grey-300 mb-4">
-                              <div className="flex items-center gap-2">
-                                <Calendar className="h-4 w-4" />
+                            <div className={styles.section}>
+                              <div className={styles.row}>
+                                <Calendar className={styles.icon} />
                                 <span>
                                   Ordered {orderDate.toLocaleDateString('en-US', {
                                     month: 'short',
@@ -124,17 +125,17 @@ export default async function OrdersPage() {
                                 </span>
                               </div>
                               {order.events?.venue_name && (
-                                <div className="flex items-center gap-2">
-                                  <MapPin className="h-4 w-4" />
+                                <div className={styles.row}>
+                                  <MapPin className={styles.icon} />
                                   <span>{order.events.venue_name}</span>
                                 </div>
                               )}
                             </div>
-                            <div className="flex items-center justify-between">
-                              <p className="font-bebas text-h4 uppercase group-hover:text-white">
+                            <div className={styles.header}>
+                              <p className={styles.container}>
                                 ${order.total_amount.toFixed(2)}
                               </p>
-                              <ChevronRight className="h-5 w-5 text-grey-600 group-hover:text-white" />
+                              <ChevronRight className={styles.icon} />
                             </div>
                           </div>
                         </div>

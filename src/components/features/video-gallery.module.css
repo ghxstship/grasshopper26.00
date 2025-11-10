@@ -1,6 +1,0 @@
-.videoGallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(var(--space-80), 1fr)); gap: var(--space-6); }
-.videoCard { border-radius: var(--radius-lg); overflow: hidden; background-color: var(--color-bg-primary); border: var(--border-width-default) solid var(--color-border-default); }
-.videoThumbnail { position: relative; width: 100%; aspect-ratio: 16 / 9; background-color: var(--color-bg-secondary); }
-.playIcon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: var(--space-16); height: var(--space-16); color: var(--color-text-inverse); }
-.videoInfo { padding: var(--space-3); }
-.videoTitle { font-size: var(--font-size-base); font-weight: var(--font-weight-semibold); }

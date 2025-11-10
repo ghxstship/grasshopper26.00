@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { Check, Loader2, CreditCard } from 'lucide-react';
 import { Button } from '@/design-system/components/atoms/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/card';
+import styles from './page.module.css';
 
 function CheckoutContent() {
   const router = useRouter();
@@ -99,10 +100,10 @@ function CheckoutContent() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="text-center">
-          <Loader2 className="h-12 w-12 animate-spin text-black mx-auto mb-4" />
-          <p className="font-share-tech-mono text-sm uppercase tracking-wider">Loading...</p>
+      <div className={styles.row}>
+        <div className={styles.textCenter}>
+          <Loader2 className={styles.loadingIcon} />
+          <p className={styles.loadingText}>Loading...</p>
         </div>
       </div>
     );
@@ -116,62 +117,62 @@ function CheckoutContent() {
   const savings = billingCycle === 'annual' ? (tier.price_monthly * 12 - tier.price_annual) : 0;
 
   return (
-    <div className="min-h-screen bg-white py-12 px-4">
-      <div className="max-w-4xl mx-auto">
+    <div className={styles.container}>
+      <div className={styles.content}>
         {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="font-bebas-neue text-5xl uppercase tracking-wide mb-4">
+        <div className={styles.header}>
+          <h1 className={styles.headerTitle}>
             Complete Your Membership
           </h1>
-          <p className="font-share-tech text-lg text-grey-700">
+          <p className={styles.headerSubtitle}>
             You&apos;re one step away from exclusive benefits
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className={styles.grid}>
           {/* Order Summary */}
           <div>
-            <Card className="border-3 border-black">
-              <CardHeader className="border-b-2 border-black">
-                <CardTitle className="font-bebas-neue text-2xl uppercase tracking-wide">
+            <Card className={styles.cardBorder}>
+              <CardHeader className={styles.cardHeaderBorder}>
+                <CardTitle className={styles.cardTitle}>
                   Order Summary
                 </CardTitle>
               </CardHeader>
-              <CardContent className="p-6">
-                <div className="mb-6">
-                  <h3 className="font-bebas-neue text-3xl uppercase tracking-wide mb-2">
+              <CardContent className={styles.card}>
+                <div className={styles.section}>
+                  <h3 className={styles.tierTitle}>
                     {tier.name}
                   </h3>
-                  <p className="font-share-tech text-grey-700">{tier.description}</p>
+                  <p className={styles.tierDescription}>{tier.description}</p>
                 </div>
 
                 {/* Billing Cycle Toggle */}
-                <div className="mb-6">
-                  <p className="font-share-tech-mono text-sm uppercase tracking-wider text-grey-600 block mb-3">
+                <div className={styles.section}>
+                  <p className={styles.sectionLabel}>
                     Billing Cycle
                   </p>
-                  <div className="flex gap-3">
+                  <div className={styles.billingToggle}>
                     <button
                       onClick={() => setBillingCycle('monthly')}
-                      className={`flex-1 border-2 border-black px-4 py-3 font-share-tech-mono text-sm uppercase tracking-wider transition-colors ${
+                      className={`${styles.billingButton} ${
                         billingCycle === 'monthly'
-                          ? 'bg-black text-white'
-                          : 'bg-white text-black hover:bg-grey-100'
+                          ? styles.billingButtonActive
+                          : styles.billingButtonInactive
                       }`}
                     >
                       Monthly
                     </button>
                     <button
                       onClick={() => setBillingCycle('annual')}
-                      className={`flex-1 border-2 border-black px-4 py-3 font-share-tech-mono text-sm uppercase tracking-wider transition-colors relative ${
+                      className={`${styles.billingButton} ${
                         billingCycle === 'annual'
-                          ? 'bg-black text-white'
-                          : 'bg-white text-black hover:bg-grey-100'
+                          ? styles.billingButtonActive
+                          : styles.billingButtonInactive
                       }`}
                     >
                       Annual
                       {savings > 0 && (
-                        <span className="absolute -top-2 -right-2 bg-green-500 text-white text-xs px-2 py-1 font-share-tech-mono">
+                        <span className={styles.savingsBadge}>
                           Save ${savings}
                         </span>
                       )}
@@ -180,19 +181,19 @@ function CheckoutContent() {
                 </div>
 
                 {/* Price Breakdown */}
-                <div className="border-t-2 border-black pt-6 mb-6">
-                  <div className="flex justify-between items-center mb-3">
-                    <span className="font-share-tech text-grey-700">
+                <div className={styles.priceBreakdown}>
+                  <div className={styles.priceRow}>
+                    <span className={styles.priceLabel}>
                       {tier.name} ({billingCycle})
                     </span>
-                    <span className="font-share-tech-mono font-bold">
+                    <span className={styles.priceValue}>
                       ${price.toFixed(2)}
                     </span>
                   </div>
                   {billingCycle === 'annual' && savings > 0 && (
-                    <div className="flex justify-between items-center mb-3 text-green-600">
-                      <span className="font-share-tech text-sm">Annual savings</span>
-                      <span className="font-share-tech-mono text-sm font-bold">
+                    <div className={styles.priceRow}>
+                      <span className={styles.priceLabel}>Annual savings</span>
+                      <span className={styles.priceValue}>
                         -${savings.toFixed(2)}
                       </span>
                     </div>
@@ -200,8 +201,8 @@ function CheckoutContent() {
                 </div>
 
                 {/* Promo Code */}
-                <div className="mb-6">
-                  <label htmlFor="promoCode" className="font-share-tech-mono text-sm uppercase tracking-wider text-grey-600 block mb-2">
+                <div className={styles.section}>
+                  <label htmlFor="promoCode" className={styles.sectionLabel}>
                     Promo Code (Optional)
                   </label>
                   <input
@@ -210,27 +211,27 @@ function CheckoutContent() {
                     value={promoCode}
                     onChange={(e) => setPromoCode(e.target.value.toUpperCase())}
                     placeholder="ENTER CODE"
-                    className="w-full border-2 border-black px-4 py-3 font-share-tech-mono text-sm uppercase tracking-wider focus:outline-none focus:ring-2 focus:ring-black"
+                    className={styles.promoInput}
                   />
                 </div>
 
                 {/* Total */}
-                <div className="border-t-2 border-black pt-6">
-                  <div className="flex justify-between items-center">
-                    <span className="font-bebas-neue text-2xl uppercase tracking-wide">
+                <div className={styles.totalSection}>
+                  <div className={styles.totalRow}>
+                    <span className={styles.totalLabel}>
                       Total {billingCycle === 'annual' ? 'Annual' : 'Monthly'}
                     </span>
-                    <span className="font-bebas-neue text-3xl">
+                    <span className={styles.totalValue}>
                       ${price.toFixed(2)}
                     </span>
                   </div>
                   {billingCycle === 'monthly' && (
-                    <p className="font-share-tech text-xs text-grey-600 mt-2">
+                    <p className={styles.billingNote}>
                       Billed monthly. Cancel anytime.
                     </p>
                   )}
                   {billingCycle === 'annual' && (
-                    <p className="font-share-tech text-xs text-grey-600 mt-2">
+                    <p className={styles.billingNote}>
                       Billed annually. Save ${savings.toFixed(2)} vs monthly.
                     </p>
                   )}
@@ -241,57 +242,57 @@ function CheckoutContent() {
 
           {/* Benefits & Checkout */}
           <div>
-            <Card className="border-3 border-black mb-6">
-              <CardHeader className="border-b-2 border-black">
-                <CardTitle className="font-bebas-neue text-2xl uppercase tracking-wide">
+            <Card className={`${styles.cardBorder} ${styles.mb6}`}>
+              <CardHeader className={styles.cardHeaderBorder}>
+                <CardTitle className={styles.cardTitle}>
                   What&apos;s Included
                 </CardTitle>
               </CardHeader>
-              <CardContent className="p-6">
-                <ul className="space-y-3">
+              <CardContent className={styles.card}>
+                <ul className={styles.benefitsList}>
                   {tier.ticket_credits_monthly > 0 && (
-                    <li className="flex items-start gap-3">
-                      <Check className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span className="font-share-tech text-grey-800">
+                    <li className={styles.benefitItem}>
+                      <Check className={styles.benefitIcon} />
+                      <span className={styles.benefitText}>
                         <strong>{tier.ticket_credits_monthly}</strong> ticket credits per month
                       </span>
                     </li>
                   )}
                   {tier.priority_access && (
-                    <li className="flex items-start gap-3">
-                      <Check className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span className="font-share-tech text-grey-800">
+                    <li className={styles.benefitItem}>
+                      <Check className={styles.benefitIcon} />
+                      <span className={styles.benefitText}>
                         Priority access to ticket sales
                       </span>
                     </li>
                   )}
                   {tier.exclusive_events && (
-                    <li className="flex items-start gap-3">
-                      <Check className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span className="font-share-tech text-grey-800">
+                    <li className={styles.benefitItem}>
+                      <Check className={styles.benefitIcon} />
+                      <span className={styles.benefitText}>
                         Access to exclusive member events
                       </span>
                     </li>
                   )}
                   {tier.vip_vouchers_annual > 0 && (
-                    <li className="flex items-start gap-3">
-                      <Check className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span className="font-share-tech text-grey-800">
+                    <li className={styles.benefitItem}>
+                      <Check className={styles.benefitIcon} />
+                      <span className={styles.benefitText}>
                         <strong>{tier.vip_vouchers_annual}</strong> VIP upgrade vouchers per year
                       </span>
                     </li>
                   )}
                   {tier.discount_percentage > 0 && (
-                    <li className="flex items-start gap-3">
-                      <Check className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span className="font-share-tech text-grey-800">
+                    <li className={styles.benefitItem}>
+                      <Check className={styles.benefitIcon} />
+                      <span className={styles.benefitText}>
                         <strong>{tier.discount_percentage}%</strong> discount on all purchases
                       </span>
                     </li>
                   )}
-                  <li className="flex items-start gap-3">
-                    <Check className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
-                    <span className="font-share-tech text-grey-800">
+                  <li className={styles.benefitItem}>
+                    <Check className={styles.benefitIcon} />
+                    <span className={styles.benefitText}>
                       Cancel anytime, no commitments
                     </span>
                   </li>
@@ -303,22 +304,22 @@ function CheckoutContent() {
             <Button
               onClick={handleCheckout}
               disabled={processing}
-              className="w-full bg-black text-white hover:bg-grey-900 py-6 font-bebas-neue text-xl uppercase tracking-wide border-3 border-black"
+              className={styles.checkoutButton}
             >
               {processing ? (
                 <>
-                  <Loader2 className="h-5 w-5 animate-spin mr-2" />
+                  <Loader2 className={styles.iconSmall} />
                   Processing...
                 </>
               ) : (
                 <>
-                  <CreditCard className="h-5 w-5 mr-2" />
+                  <CreditCard className={styles.icon} />
                   Proceed to Payment
                 </>
               )}
             </Button>
 
-            <p className="font-share-tech text-xs text-center text-grey-600 mt-4">
+            <p className={styles.securityNote}>
               Secure payment powered by Stripe. Your payment information is encrypted and secure.
             </p>
           </div>
@@ -331,8 +332,8 @@ function CheckoutContent() {
 export default function MembershipCheckoutPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen bg-white flex items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin" />
+      <div className={styles.row}>
+        <Loader2 className={styles.loadingIcon} />
       </div>
     }>
       <CheckoutContent />

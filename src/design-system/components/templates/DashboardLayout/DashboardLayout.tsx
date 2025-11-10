@@ -5,12 +5,12 @@
  */
 
 import * as React from "react"
-import { Navigation, type NavItem } from '../../organisms/Navigation/Navigation';
+import { Navigation, type NavigationItem } from '../../organisms/Navigation/Navigation';
 import styles from './DashboardLayout.module.css';
 
 export interface DashboardLayoutProps {
   /** Navigation items */
-  navItems?: NavItem[];
+  navItems?: NavigationItem[];
   
   /** Logo component */
   logo?: React.ReactNode;

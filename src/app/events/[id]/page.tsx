@@ -204,17 +204,17 @@ export default function EventDetailPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center" style={{ background: 'var(--gradient-hero)' }}>
-        <Loader2 className="h-12 w-12 animate-spin text-purple-500" />
+      <div className="min-h-screen flex items-center justify-center bg-white">
+        <Loader2 className="h-12 w-12 animate-spin text-black" />
       </div>
     );
   }
 
   if (!event) {
     return (
-      <div className="min-h-screen flex items-center justify-center" style={{ background: 'var(--gradient-hero)' }}>
+      <div className="min-h-screen flex items-center justify-center bg-white">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-white mb-4">Event Not Found</h1>
+          <h1 className="font-bebas text-h2 uppercase text-black mb-4">Event Not Found</h1>
           <Button asChild>
             <Link href="/events">Browse Events</Link>
           </Button>
@@ -230,9 +230,9 @@ export default function EventDetailPage() {
   }, 0);
 
   return (
-    <div className="min-h-screen" style={{ background: 'var(--gradient-hero)' }}>
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <div className="relative h-96 overflow-hidden">
+      <div className="relative h-96 overflow-hidden border-b-3 border-black">
         {event.hero_image_url ? (
           <img
             src={event.hero_image_url}
@@ -240,9 +240,9 @@ export default function EventDetailPage() {
             className="w-full h-full object-cover"
           />
         ) : (
-          <div className="w-full h-full" style={{ background: 'var(--gradient-brand-dark)' }} />
+          <div className="w-full h-full bg-grey-200" />
         )}
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, #000, rgba(0,0,0,0.5), transparent)' }} />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
         
         {/* Action Buttons */}
         <div className="absolute top-4 right-4 flex gap-2">
@@ -250,25 +250,25 @@ export default function EventDetailPage() {
             onClick={toggleFavorite}
             variant="outline"
             size="icon"
-            className="bg-black/50 backdrop-blur-lg border-white/20 hover:bg-black/70"
+            className="bg-white border-3 border-black hover:bg-grey-100"
           >
-            <Heart className={`h-5 w-5 ${isFavorite ? 'fill-red-500 text-red-500' : ''}`} style={{ color: isFavorite ? 'var(--color-error)' : 'var(--color-text-inverse)' }} />
+            <Heart className={`h-5 w-5 ${isFavorite ? 'fill-black text-black' : 'text-black'}`} />
           </Button>
           <Button
             onClick={handleShare}
             variant="outline"
             size="icon"
-            className="bg-black/50 backdrop-blur-lg border-white/20 hover:bg-black/70"
+            className="bg-white border-3 border-black hover:bg-grey-100"
           >
-            <Share2 className="h-5 w-5" style={{ color: 'var(--color-text-inverse)' }} />
+            <Share2 className="h-5 w-5 text-black" />
           </Button>
         </div>
 
         {/* Event Title */}
         <div className="absolute bottom-0 left-0 right-0 p-8">
           <div className="max-w-6xl mx-auto">
-            <h1 className="text-5xl font-bold mb-4" style={{ color: 'var(--color-text-inverse)' }}>{event.name}</h1>
-            <div className="flex flex-wrap gap-4" style={{ color: 'rgba(255,255,255,0.9)' }}>
+            <h1 className="font-anton text-hero uppercase text-white mb-4">{event.name}</h1>
+            <div className="flex flex-wrap gap-4 font-share text-base text-white">
               <div className="flex items-center gap-2">
                 <Calendar className="h-5 w-5" />
                 <span>{format(new Date(event.start_date), 'PPP')}</span>
@@ -292,28 +292,28 @@ export default function EventDetailPage() {
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-8">
             {/* Description */}
-            <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20">
+            <Card className="bg-white border-3 border-black">
               <CardContent className="p-6">
-                <h2 className="text-2xl font-bold mb-4" style={{ color: 'var(--color-text-inverse)' }}>About This Event</h2>
-                <p className="whitespace-pre-wrap" style={{ color: 'var(--color-text-secondary)' }}>{event.description}</p>
+                <h2 className="font-bebas text-h2 uppercase text-black mb-4">About This Event</h2>
+                <p className="whitespace-pre-wrap font-share text-body text-grey-700">{event.description}</p>
               </CardContent>
             </Card>
 
             {/* Venue Details */}
-            <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20">
+            <Card className="bg-white border-3 border-black">
               <CardContent className="p-6">
-                <h2 className="text-2xl font-bold mb-4" style={{ color: 'var(--color-text-inverse)' }}>Venue</h2>
+                <h2 className="font-bebas text-h2 uppercase text-black mb-4">Venue</h2>
                 <div className="space-y-2">
-                  <p className="text-xl font-semibold" style={{ color: 'var(--color-text-inverse)' }}>{event.venue_name}</p>
-                  <p style={{ color: 'var(--color-text-tertiary)' }}>{event.venue_address}</p>
+                  <p className="font-bebas text-xl uppercase text-black">{event.venue_name}</p>
+                  <p className="font-share text-base text-grey-600">{event.venue_address}</p>
                   {event.capacity && (
-                    <div className="flex items-center gap-2 mt-4" style={{ color: 'var(--color-text-tertiary)' }}>
+                    <div className="flex items-center gap-2 mt-4 font-share text-base text-grey-600">
                       <Users className="h-5 w-5" />
                       <span>Capacity: {event.capacity}</span>
                     </div>
                   )}
                   {event.age_restriction && (
-                    <p className="text-sm mt-2" style={{ color: 'var(--color-warning)' }}>
+                    <p className="font-share text-meta mt-2 text-grey-700">
                       Age Restriction: {event.age_restriction}
                     </p>
                   )}
@@ -323,9 +323,9 @@ export default function EventDetailPage() {
 
             {/* Artists */}
             {event.artists && event.artists.length > 0 && (
-              <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20">
+              <Card className="bg-white border-3 border-black">
                 <CardContent className="p-6">
-                  <h2 className="text-2xl font-bold mb-4" style={{ color: 'var(--color-text-inverse)' }}>Lineup</h2>
+                  <h2 className="font-bebas text-h2 uppercase text-black mb-4">Lineup</h2>
                   <div className="space-y-4">
                     {event.artists.map((artist) => (
                       <div key={artist.id} className="flex gap-4">
@@ -333,12 +333,12 @@ export default function EventDetailPage() {
                           <img
                             src={artist.image_url}
                             alt={artist.name}
-                            className="w-20 h-20 rounded-lg object-cover"
+                            className="w-20 h-20 border-3 border-black object-cover"
                           />
                         )}
                         <div>
-                          <h3 className="text-lg font-semibold" style={{ color: 'var(--color-text-inverse)' }}>{artist.name}</h3>
-                          <p className="text-sm" style={{ color: 'var(--color-text-tertiary)' }}>{artist.bio}</p>
+                          <h3 className="font-bebas text-lg uppercase text-black">{artist.name}</h3>
+                          <p className="font-share text-meta text-grey-600">{artist.bio}</p>
                         </div>
                       </div>
                     ))}
@@ -351,12 +351,12 @@ export default function EventDetailPage() {
           {/* Sidebar - Tickets */}
           <div className="lg:col-span-1">
             <div className="sticky top-4">
-              <Card className="bg-black/40 backdrop-blur-lg border-purple-500/20">
+              <Card className="bg-grey-100 border-3 border-black">
                 <CardContent className="p-6">
-                  <h2 className="text-2xl font-bold mb-6" style={{ color: 'var(--color-text-inverse)' }}>Tickets</h2>
+                  <h2 className="font-bebas text-h2 uppercase text-black mb-6">Tickets</h2>
                   
                   {event.ticket_types.length === 0 ? (
-                    <p className="text-center py-8" style={{ color: 'var(--color-text-tertiary)' }}>
+                    <p className="text-center py-8 font-share text-base text-grey-600">
                       No tickets available at this time
                     </p>
                   ) : (
@@ -368,24 +368,23 @@ export default function EventDetailPage() {
                         return (
                           <div
                             key={ticketType.id}
-                            className="p-4 rounded-lg border"
-                            style={{ backgroundColor: 'rgba(0,0,0,0.3)', borderColor: 'rgba(147,51,234,0.1)' }}
+                            className="p-4 border-3 border-black bg-white"
                           >
                             <div className="flex justify-between items-start mb-2">
                               <div>
-                                <h3 className="font-semibold" style={{ color: 'var(--color-text-inverse)' }}>{ticketType.name}</h3>
+                                <h3 className="font-bebas text-lg uppercase text-black">{ticketType.name}</h3>
                                 {ticketType.description && (
-                                  <p className="text-sm mt-1" style={{ color: 'var(--color-text-tertiary)' }}>
+                                  <p className="font-share text-meta mt-1 text-grey-600">
                                     {ticketType.description}
                                   </p>
                                 )}
                               </div>
-                              <p className="text-lg font-bold" style={{ color: 'var(--color-primary)' }}>
+                              <p className="font-bebas text-xl uppercase text-black">
                                 ${parseFloat(ticketType.price).toFixed(2)}
                               </p>
                             </div>
                             
-                            <p className="text-xs mb-3" style={{ color: 'var(--color-text-disabled)' }}>
+                            <p className="font-share text-meta mb-3 text-grey-500">
                               {available} available
                             </p>
 
@@ -401,11 +400,10 @@ export default function EventDetailPage() {
                                   disabled={!selectedTickets[ticketType.id]}
                                   size="sm"
                                   variant="outline"
-                                  className="border-purple-500/30"
                                 >
                                   -
                                 </Button>
-                                <span className="w-8 text-center" style={{ color: 'var(--color-text-inverse)' }}>
+                                <span className="w-8 text-center font-bebas text-base text-black">
                                   {selectedTickets[ticketType.id] || 0}
                                 </span>
                                 <Button
@@ -420,13 +418,12 @@ export default function EventDetailPage() {
                                   }
                                   size="sm"
                                   variant="outline"
-                                  className="border-purple-500/30"
                                 >
                                   +
                                 </Button>
                               </div>
                             ) : (
-                              <p className="text-sm" style={{ color: 'var(--color-error)' }}>Sold Out</p>
+                              <p className="font-share text-meta text-grey-700">Sold Out</p>
                             )}
                           </div>
                         );
@@ -435,15 +432,14 @@ export default function EventDetailPage() {
                   )}
 
                   {totalSelected > 0 && (
-                    <div className="mt-6 pt-6 border-t" style={{ borderColor: 'rgba(147,51,234,0.2)' }}>
-                      <div className="flex justify-between mb-4" style={{ color: 'var(--color-text-inverse)' }}>
+                    <div className="mt-6 pt-6 border-t-3 border-black">
+                      <div className="flex justify-between mb-4 font-bebas text-lg uppercase text-black">
                         <span>Total ({totalSelected} tickets)</span>
-                        <span className="font-bold">${totalPrice.toFixed(2)}</span>
+                        <span>${totalPrice.toFixed(2)}</span>
                       </div>
                       <Button
                         onClick={handleAddToCart}
                         className="w-full"
-                        style={{ background: 'var(--gradient-brand-primary)' }}
                       >
                         <ShoppingCart className="h-4 w-4 mr-2" />
                         Add to Cart

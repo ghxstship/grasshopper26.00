@@ -49,7 +49,7 @@ export default function AdvanceConfirmationPage() {
         <p className={styles.errorText}>Advance not found</p>
         <button
           type="button"
-          onClick={() => router.push('/advances')}
+          onClick={() => router.push('/portal/advances')}
           className={styles.errorButton}
         >
           BACK TO MY ADVANCES

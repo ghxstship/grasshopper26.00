@@ -49,7 +49,7 @@ export default function LoginPage() {
       }
 
       toast.success('Logged in successfully!');
-      router.push('/profile');
+      router.push('/portal');
       router.refresh();
     } catch (err: any) {
       toast.error(err.message || 'An unexpected error occurred');

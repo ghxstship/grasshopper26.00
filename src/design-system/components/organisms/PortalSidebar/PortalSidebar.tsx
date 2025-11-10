@@ -21,12 +21,11 @@ import styles from './PortalSidebar.module.css';
 
 const navItems = [
   { href: '/portal', label: 'Dashboard', icon: LayoutDashboard },
-  { href: '/portal/tickets', label: 'My Tickets', icon: Ticket },
-  { href: '/portal/orders', label: 'Orders', icon: CreditCard },
+  { href: '/portal/orders', label: 'Orders', icon: Ticket },
+  { href: '/portal/advances', label: 'Advances', icon: CreditCard },
   { href: '/portal/credits', label: 'Credits', icon: Gift },
-  { href: '/portal/events', label: 'Events', icon: Calendar },
-  { href: '/portal/profile', label: 'Profile', icon: User },
-  { href: '/portal/settings', label: 'Settings', icon: Settings },
+  { href: '/portal/vouchers', label: 'Vouchers', icon: Gift },
+  { href: '/portal/referrals', label: 'Referrals', icon: User },
 ];
 
 export const PortalSidebar: React.FC = () => {

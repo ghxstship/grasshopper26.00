@@ -89,7 +89,7 @@ export default function MyAdvancesPage() {
 
             <button
               type="button"
-              onClick={() => router.push('/advances/catalog')}
+              onClick={() => router.push('/portal/advances/catalog')}
               className={styles.newButton}
             >
               <Plus className={styles.icon} />
@@ -139,7 +139,7 @@ export default function MyAdvancesPage() {
             </p>
             <button
               type="button"
-              onClick={() => router.push('/advances/catalog')}
+              onClick={() => router.push('/portal/advances/catalog')}
               className={styles.emptyButton}
             >
               CREATE ADVANCE

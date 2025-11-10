@@ -74,7 +74,7 @@ export default function OrderDetailsPage() {
       const { data: { user } } = await supabase.auth.getUser();
       
       if (!user) {
-        router.push('/login?redirect=/orders');
+        router.push('/login?redirect=/portal/orders');
         return;
       }
 
@@ -117,7 +117,7 @@ export default function OrderDetailsPage() {
       setOrder(data as any);
     } catch (error) {
       console.error('Error loading order:', error);
-      router.push('/orders');
+      router.push('/portal/orders');
     } finally {
       setLoading(false);
     }

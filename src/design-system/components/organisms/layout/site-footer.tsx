@@ -14,33 +14,31 @@ const FOOTER_COLUMNS = [
   {
     title: 'EVENTS',
     links: [
-      { label: 'Upcoming', href: '/events' },
-      { label: 'Past Events', href: '/events/past' },
-      { label: 'Calendar', href: '/calendar' },
+      { label: 'All Events', href: '/events' },
+      { label: 'Shop', href: '/shop' },
+      { label: 'Schedule', href: '/schedule' },
     ],
   },
   {
     title: 'ARTISTS',
     links: [
       { label: 'Browse All', href: '/artists' },
-      { label: 'Featured', href: '/artists/featured' },
-      { label: 'Genres', href: '/genres' },
+      { label: 'News', href: '/news' },
     ],
   },
   {
-    title: 'SUPPORT',
+    title: 'ACCOUNT',
     links: [
-      { label: 'Help Center', href: '/help' },
-      { label: 'Contact Us', href: '/contact' },
-      { label: 'FAQ', href: '/faq' },
+      { label: 'Portal', href: '/portal' },
+      { label: 'Orders', href: '/profile/orders' },
+      { label: 'Membership', href: '/membership' },
     ],
   },
   {
-    title: 'COMPANY',
+    title: 'LEGAL',
     links: [
-      { label: 'About', href: '/about' },
-      { label: 'Careers', href: '/careers' },
-      { label: 'Press', href: '/press' },
+      { label: 'Privacy Policy', href: '/legal/privacy' },
+      { label: 'Terms of Service', href: '/legal/terms' },
     ],
   },
 ] as const;
@@ -51,9 +49,8 @@ const SOCIAL_LINKS = [
 ] as const;
 
 const LEGAL_LINKS = [
-  { label: 'Privacy Policy', href: '/privacy' },
-  { label: 'Terms of Service', href: '/terms' },
-  { label: 'Cookie Policy', href: '/cookies' },
+  { label: 'Privacy Policy', href: '/legal/privacy' },
+  { label: 'Terms of Service', href: '/legal/terms' },
 ] as const;
 
 /**

@@ -37,10 +37,10 @@ export default async function OrdersPage() {
       <section className={styles.card}>
         <div className={styles.content}>
           <Link
-            href="/profile"
+            href="/portal"
             className={styles.row}
           >
-            ← Back to Profile
+            ← Back to Portal
           </Link>
           <h1 className={styles.container}>
             Order History

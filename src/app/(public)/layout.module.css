@@ -8,4 +8,5 @@
 
 .main {
   flex: 1;
+  padding-block-start: var(--space-16); /* Account for fixed header */
 }

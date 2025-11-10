@@ -4,6 +4,11 @@ import * as React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Button } from '../../atoms/Button';
+import { CartButton } from '../../molecules/CartButton';
+import { AuthButtons } from '../../molecules/AuthButtons';
+import { UserMenu } from '../../molecules/UserMenu';
+import { useAuth } from '@/hooks/use-auth';
+import { useCart } from '@/hooks/useCart';
 import styles from './site-header.module.css';
 
 export interface SiteHeaderProps {
@@ -12,7 +17,7 @@ export interface SiteHeaderProps {
 
 const NAV_ITEMS = [
   { label: 'ARTISTS', href: '/artists' },
-  { label: 'TICKETS', href: '/tickets' },
+  { label: 'EVENTS', href: '/events' },
   { label: 'NEWS', href: '/news' },
 ] as const;
 
@@ -20,11 +25,16 @@ const NAV_ITEMS = [
  * SiteHeader - Main navigation header for GVTEWAY
  * Composed using atomic design principles with Button atoms
  * GHXSTSHIP monochromatic design with BEBAS NEUE typography
+ * Features: Auth state, shopping cart, user menu, responsive behavior
  */
 export const SiteHeader: React.FC<SiteHeaderProps> = ({ className = '' }) => {
   const pathname = usePathname();
+  const { user, loading: authLoading, signOut } = useAuth();
+  const { items } = useCart();
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(false);
+
+  const cartItemCount = items?.length || 0;
 
   React.useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -58,10 +68,25 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({ className = '' }) => {
                 {item.label}
               </Link>
             ))}
-            <Link href="/tickets" className={styles.ctaButton}>
+            <Link href="/events" className={styles.ctaButton}>
               GET TICKETS
             </Link>
           </nav>
+
+          <div className={styles.actions}>
+            <CartButton itemCount={cartItemCount} />
+            {!authLoading && (
+              user ? (
+                <UserMenu
+                  userEmail={user.email}
+                  userName={user.user_metadata?.full_name}
+                  onSignOut={signOut}
+                />
+              ) : (
+                <AuthButtons />
+              )
+            )}
+          </div>
 
           <button
             className={`${styles.mobileMenuButton} ${mobileMenuOpen ? styles.open : ''}`}
@@ -91,12 +116,46 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({ className = '' }) => {
               </Link>
             ))}
             <Link
-              href="/tickets"
+              href="/events"
               className={styles.mobileCta}
               onClick={() => setMobileMenuOpen(false)}
             >
               GET TICKETS
             </Link>
+
+            <div className={styles.mobileActions}>
+              {!authLoading && (
+                user ? (
+                  <>
+                    <Link
+                      href="/portal"
+                      className={styles.mobileNavLink}
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      PORTAL
+                    </Link>
+                    <Link
+                      href="/profile"
+                      className={styles.mobileNavLink}
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      PROFILE
+                    </Link>
+                    <button
+                      className={styles.mobileSignOut}
+                      onClick={async () => {
+                        await signOut();
+                        setMobileMenuOpen(false);
+                      }}
+                    >
+                      SIGN OUT
+                    </button>
+                  </>
+                ) : (
+                  <AuthButtons variant="vertical" />
+                )
+              )}
+            </div>
           </nav>
         </div>
       )}

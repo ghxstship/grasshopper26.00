@@ -3,15 +3,7 @@
  * GHXSTSHIP Entertainment Platform
  */
 
-.container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background-color: var(--color-bg-primary);
-}
-
 .main {
-  flex: 1;
   max-width: 1400px;
   width: 100%;
   margin-inline: auto;

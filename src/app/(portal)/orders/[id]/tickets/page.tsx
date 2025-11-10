@@ -52,7 +52,7 @@ export default function TicketDownloadPage() {
       const { data: { user } } = await supabase.auth.getUser();
       
       if (!user) {
-        router.push('/login?redirect=/orders');
+        router.push('/login?redirect=/portal/orders');
         return;
       }
 

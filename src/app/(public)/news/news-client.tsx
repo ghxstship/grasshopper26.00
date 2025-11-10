@@ -3,8 +3,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { GridLayout } from '@/design-system/components/templates/GridLayout/GridLayout';
-import { SiteHeader } from '@/design-system/components/organisms/layout/site-header';
-import { SiteFooter } from '@/design-system/components/organisms/layout/site-footer';
 import { NewsCard } from '@/design-system/components/molecules/NewsCard/NewsCard';
 import { Input } from '@/design-system/components/atoms/Input/Input';
 import { Typography } from '@/design-system/components/atoms/Typography/Typography';
@@ -45,7 +43,6 @@ export function NewsBrowseClient({ initialArticles, initialSearch }: { initialAr
 
   return (
     <GridLayout
-      header={<SiteHeader />}
       title="News & Updates"
       description="Stay informed with the latest from GVTEWAY"
       search={
@@ -57,7 +54,6 @@ export function NewsBrowseClient({ initialArticles, initialSearch }: { initialAr
         />
       }
       columns={3}
-      footer={<SiteFooter />}
     >
       {filteredArticles.map(article => (
         <NewsCard

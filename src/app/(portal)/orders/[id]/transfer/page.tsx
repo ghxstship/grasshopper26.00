@@ -56,7 +56,7 @@ export default function TransferTicketsPage() {
       const { data: { user } } = await supabase.auth.getUser();
       
       if (!user) {
-        router.push('/login?redirect=/orders');
+        router.push('/login?redirect=/portal/orders');
         return;
       }
 
@@ -100,7 +100,7 @@ export default function TransferTicketsPage() {
     } catch (error) {
       console.error('Error loading order:', error);
       toast.error('Failed to load order');
-      router.push('/orders');
+      router.push('/portal/orders');
     } finally {
       setLoading(false);
     }
@@ -179,7 +179,7 @@ export default function TransferTicketsPage() {
       }
 
       toast.success(`Successfully transferred ${ticketIds.length} ticket(s)`);
-      router.push(`/orders/${params.id}`);
+      router.push(`/portal/orders/${params.id}`);
     } catch (error) {
       console.error('Error transferring tickets:', error);
       toast.error('Failed to transfer tickets. Please try again.');

@@ -170,9 +170,9 @@ export default function SignupPage() {
             />
             <label htmlFor="terms" className={styles.footerText}>
               I agree to the{' '}
-              <Link href="/terms" className={styles.link}>Terms of Service</Link>{' '}
+              <Link href="/legal/terms" className={styles.link}>Terms of Service</Link>{' '}
               and{' '}
-              <Link href="/privacy" className={styles.link}>Privacy Policy</Link>
+              <Link href="/legal/privacy" className={styles.link}>Privacy Policy</Link>
             </label>
           </div>
 

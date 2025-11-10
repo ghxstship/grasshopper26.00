@@ -1,0 +1,44 @@
+/**
+ * CartButton - GHXSTSHIP Design System
+ * ZERO TOLERANCE: All values use design tokens
+ * Monochromatic cart button with geometric badge
+ */
+
+.cartLink {
+  position: relative;
+  display: inline-flex;
+  text-decoration: none;
+}
+
+.cartButton {
+  position: relative;
+}
+
+.badge {
+  position: absolute;
+  inset-block-start: calc(-1 * var(--space-1));
+  inset-inline-end: calc(-1 * var(--space-1));
+  min-inline-size: var(--space-5);
+  block-size: var(--space-5);
+  padding-inline: var(--space-1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+  font-family: var(--font-family-share-tech-mono);
+  font-size: var(--font-size-meta);
+  font-weight: 700;
+  line-height: 1;
+  border: var(--border-width-3) solid var(--color-border-strong);
+  pointer-events: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .badge {
+    min-inline-size: var(--space-4);
+    block-size: var(--space-4);
+    font-size: calc(var(--font-size-meta) * 0.85);
+  }
+}

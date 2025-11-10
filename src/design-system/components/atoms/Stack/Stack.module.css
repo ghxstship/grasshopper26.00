@@ -1,0 +1,43 @@
+/**
+ * Stack Component Styles
+ * GHXSTSHIP Monochromatic Design System
+ */
+
+.stack {
+  display: flex;
+}
+
+/* Direction */
+.vertical {
+  flex-direction: column;
+}
+
+.horizontal {
+  flex-direction: row;
+}
+
+/* Spacing */
+.spacing-none { gap: 0; }
+.spacing-xs { gap: var(--spacing-1); }
+.spacing-sm { gap: var(--spacing-2); }
+.spacing-md { gap: var(--spacing-4); }
+.spacing-lg { gap: var(--spacing-6); }
+.spacing-xl { gap: var(--spacing-8); }
+
+/* Align */
+.align-start { align-items: flex-start; }
+.align-center { align-items: center; }
+.align-end { align-items: flex-end; }
+.align-stretch { align-items: stretch; }
+
+/* Justify */
+.justify-start { justify-content: flex-start; }
+.justify-center { justify-content: center; }
+.justify-end { justify-content: flex-end; }
+.justify-between { justify-content: space-between; }
+.justify-around { justify-content: space-around; }
+
+/* Wrap */
+.wrap {
+  flex-wrap: wrap;
+}

@@ -1,0 +1,103 @@
+/**
+ * FileUpload Styles
+ * GHXSTSHIP Monochromatic Design System
+ */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.label {
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-h5);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-text-primary);
+}
+
+.dropzone {
+  position: relative;
+  padding: var(--spacing-8);
+  border: var(--border-width-thick) dashed var(--color-black);
+  background-color: var(--color-white);
+  cursor: pointer;
+  transition: all var(--transition-fast) var(--easing-standard);
+}
+
+.dropzone:hover {
+  background-color: var(--color-grey-100);
+}
+
+.dropzone.active {
+  background-color: var(--color-grey-200);
+  border-style: solid;
+}
+
+.dropzone.error {
+  background-color: var(--color-grey-900);
+  color: var(--color-white);
+}
+
+.input {
+  display: none;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.icon {
+  font-size: var(--font-size-h2);
+  font-family: var(--font-share-mono);
+}
+
+.text {
+  font-family: var(--font-share);
+  font-size: var(--font-size-body);
+  text-align: center;
+}
+
+.hint {
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-meta);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+}
+
+.errorText {
+  font-family: var(--font-share);
+  font-size: var(--font-size-meta);
+  color: var(--color-text-primary);
+  background-color: var(--color-grey-900);
+  padding: var(--spacing-2);
+}
+
+.fileList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.fileItem {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--spacing-2) var(--spacing-3);
+  background-color: var(--color-grey-100);
+  border: var(--border-width-thin) solid var(--color-grey-300);
+}
+
+.fileName {
+  font-family: var(--font-share);
+  font-size: var(--font-size-body);
+}
+
+.fileSize {
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-meta);
+  color: var(--color-text-secondary);
+}

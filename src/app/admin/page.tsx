@@ -1,13 +1,14 @@
 import { createClient } from '@/lib/supabase/server';
-import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/card';
+import { AdminLayout } from '@/design-system/components/templates/AdminLayout/AdminLayout';
+import { AdminSidebar } from '@/design-system/components/organisms/AdminSidebar/AdminSidebar';
+import { StatCard } from '@/design-system/components/molecules/StatCard/StatCard';
+import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/Card';
 import styles from './page.module.css';
 import { 
   Calendar, 
   Users, 
   ShoppingBag, 
   DollarSign,
-  TrendingUp,
-  TrendingDown
 } from 'lucide-react';
 
 export default async function AdminDashboard() {
@@ -38,71 +39,34 @@ export default async function AdminDashboard() {
   const totalEvents = dashboardData.total_events || 0;
   const totalUsers = dashboardData.total_users || 0;
 
-  const stats = [
-    {
-      name: 'Total Revenue',
-      value: `$${totalRevenue.toLocaleString()}`,
-      icon: DollarSign,
-      change: '+12.5%',
-      changeType: 'positive' as const,
-    },
-    {
-      name: 'Total Orders',
-      value: totalOrders.toLocaleString(),
-      icon: ShoppingBag,
-      change: '+8.2%',
-      changeType: 'positive' as const,
-    },
-    {
-      name: 'Active Events',
-      value: totalEvents.toLocaleString(),
-      icon: Calendar,
-      change: '+3',
-      changeType: 'positive' as const,
-    },
-    {
-      name: 'Total Users',
-      value: totalUsers.toLocaleString(),
-      icon: Users,
-      change: '+15.3%',
-      changeType: 'positive' as const,
-    },
-  ];
-
   return (
-    <div className={styles.section}>
-      {/* Page header */}
-      <div>
-        <h1 className={styles.title}>Dashboard</h1>
-        <p className={styles.subtitle}>Welcome back! Here&apos;s what&apos;s happening today.</p>
-      </div>
-
+    <AdminLayout
+      sidebar={<AdminSidebar />}
+      title="Dashboard"
+      description="Welcome back! Here's what's happening today."
+    >
       {/* Stats grid */}
       <div className={styles.grid}>
-        {stats.map((stat) => (
-          <Card key={stat.name}>
-            <CardHeader className={styles.row}>
-              <CardTitle className={styles.statTitle}>
-                {stat.name}
-              </CardTitle>
-              <stat.icon className={styles.statIcon} />
-            </CardHeader>
-            <CardContent>
-              <div className={styles.statValue}>{stat.value}</div>
-              <div className={styles.statChange}>
-                {stat.changeType === 'positive' ? (
-                  <TrendingUp className={`${styles.changeIcon} ${styles.changeIconPositive}`} />
-                ) : (
-                  <TrendingDown className={`${styles.changeIcon} ${styles.changeIconNegative}`} />
-                )}
-                <span className={stat.changeType === 'positive' ? styles.changeTextPositive : styles.changeTextNegative}>
-                  {stat.change}
-                </span>
-                <span className={styles.changeLabel}>from last month</span>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
+        <StatCard
+          label="Total Revenue"
+          value={`$${totalRevenue.toLocaleString()}`}
+          icon={<DollarSign />}
+        />
+        <StatCard
+          label="Total Orders"
+          value={totalOrders.toLocaleString()}
+          icon={<ShoppingBag />}
+        />
+        <StatCard
+          label="Active Events"
+          value={totalEvents.toLocaleString()}
+          icon={<Calendar />}
+        />
+        <StatCard
+          label="Total Users"
+          value={totalUsers.toLocaleString()}
+          icon={<Users />}
+        />
       </div>
 
       {/* Recent orders */}
@@ -148,6 +112,6 @@ export default async function AdminDashboard() {
           </div>
         </CardContent>
       </Card>
-    </div>
+    </AdminLayout>
   );
 }

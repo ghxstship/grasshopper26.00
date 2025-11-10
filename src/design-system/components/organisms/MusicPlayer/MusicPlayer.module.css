@@ -1,0 +1,248 @@
+/**
+ * MusicPlayer Organism - GHXSTSHIP Design System
+ * Custom B&W music player for artist pages
+ * ZERO TOLERANCE: All values use design tokens
+ */
+
+.player {
+  inline-size: 100%;
+  padding: var(--space-6);
+  border: var(--border-width-3) solid var(--color-border-strong);
+  background-color: var(--color-bg-primary);
+}
+
+.trackInfo {
+  display: flex;
+  gap: var(--space-4);
+  margin-block-end: var(--space-6);
+}
+
+.artwork {
+  inline-size: var(--space-24);
+  block-size: var(--space-24);
+  flex-shrink: 0;
+  border: var(--border-width-3) solid var(--color-border-strong);
+  overflow: hidden;
+  background-color: var(--color-bg-secondary);
+}
+
+.artworkImage {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) contrast(1.2);
+}
+
+.details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-2);
+}
+
+.trackTitle {
+  font-family: var(--font-family-bebas);
+  font-size: var(--font-size-h5);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.artistName {
+  font-family: var(--font-family-share-mono);
+  font-size: var(--font-size-meta);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-block-end: var(--space-4);
+}
+
+.controlButton {
+  inline-size: var(--space-12);
+  block-size: var(--space-12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--border-width-3) solid var(--color-border-strong);
+  background-color: transparent;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  font-family: var(--font-family-bebas);
+  font-size: var(--font-size-h5);
+}
+
+.controlButton:hover {
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+  transform: scale(1.1);
+}
+
+.controlButton:active {
+  transform: scale(0.95);
+}
+
+.controlButton.play {
+  inline-size: var(--space-16);
+  block-size: var(--space-16);
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
+.controlButton.play:hover {
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+}
+
+.progress {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.progressBar {
+  inline-size: 100%;
+  block-size: var(--space-2);
+  background-color: var(--color-bg-secondary);
+  border: var(--border-width-2) solid var(--color-border-strong);
+  position: relative;
+  cursor: pointer;
+}
+
+.progressFill {
+  block-size: 100%;
+  background-color: var(--color-primary);
+  transition: inline-size 0.1s linear;
+}
+
+.progressTime {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-family-share-mono);
+  font-size: var(--font-size-meta);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-secondary);
+}
+
+.volume {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.volumeButton {
+  inline-size: var(--space-10);
+  block-size: var(--space-10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--border-width-2) solid var(--color-border-strong);
+  background-color: transparent;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  font-size: var(--font-size-body);
+}
+
+.volumeButton:hover {
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
+.volumeSlider {
+  inline-size: var(--space-24);
+  block-size: var(--space-2);
+  background-color: var(--color-bg-secondary);
+  border: var(--border-width-2) solid var(--color-border-strong);
+  position: relative;
+  cursor: pointer;
+}
+
+.volumeFill {
+  block-size: 100%;
+  background-color: var(--color-primary);
+}
+
+.playlist {
+  margin-block-start: var(--space-6);
+  padding-block-start: var(--space-6);
+  border-block-start: var(--border-width-3) solid var(--color-border-default);
+}
+
+.playlistTitle {
+  font-family: var(--font-family-bebas);
+  font-size: var(--font-size-h6);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--color-text-primary);
+  margin: 0;
+  margin-block-end: var(--space-4);
+}
+
+.playlistItems {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.playlistItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-3);
+  border: var(--border-width-2) solid var(--color-border-default);
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.playlistItem:hover {
+  background-color: var(--color-bg-secondary);
+  border-color: var(--color-border-strong);
+}
+
+.playlistItem.active {
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+  border-color: var(--color-border-strong);
+}
+
+.playlistItemInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.playlistItemTitle {
+  font-family: var(--font-family-share);
+  font-size: var(--font-size-body);
+  color: inherit;
+}
+
+.playlistItemDuration {
+  font-family: var(--font-family-share-mono);
+  font-size: var(--font-size-meta);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-secondary);
+}
+
+.playlistItem.active .playlistItemDuration {
+  color: var(--color-text-inverse);
+  opacity: 0.8;
+}

@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { EventStaffGate } from '@/lib/rbac';
 import { useAuth } from '@/hooks/use-auth';
+import { DayOfShowLayout } from '@/design-system/components/templates/DayOfShowLayout/DayOfShowLayout';
 import Link from 'next/link';
 import styles from './page.module.css';
 
@@ -156,36 +157,33 @@ export default function StaffDashboardPage() {
   const currentEvent = currentAssignment?.event;
 
   return (
-    <div className={styles.container}>
-      {/* Mobile-optimized header */}
-      <div className={styles.stickyHeader}>
-        <div className={styles.section}>
-          <h1 className={styles.pageTitle}>Event Staff Dashboard</h1>
-          <p className={styles.subtitle}>Welcome, {user?.email}</p>
-        </div>
-
-        {/* Event selector */}
-        {assignments.length > 1 && (
-          <div className={styles.selectorContainer}>
-            <select
-              value={selectedEvent || ''}
-              onChange={(e) => setSelectedEvent(e.target.value)}
-              className={styles.select}
-            >
-              {assignments.map(assignment => (
-                <option key={assignment.id} value={assignment.event_id}>
-                  {assignment.event.title}
-                </option>
-              ))}
-            </select>
+    <DayOfShowLayout
+      header={
+        <div className={styles.stickyHeader}>
+          <div className={styles.section}>
+            <h1 className={styles.pageTitle}>Event Staff Dashboard</h1>
+            <p className={styles.subtitle}>Welcome, {user?.email}</p>
           </div>
-        )}
-      </div>
 
-      {/* Main content */}
-      <div className={styles.section}>
-        {/* Event info card */}
-        {currentEvent && (
+          {assignments.length > 1 && (
+            <div className={styles.selectorContainer}>
+              <select
+                value={selectedEvent || ''}
+                onChange={(e) => setSelectedEvent(e.target.value)}
+                className={styles.select}
+              >
+                {assignments.map(assignment => (
+                  <option key={assignment.id} value={assignment.event_id}>
+                    {assignment.event.title}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+        </div>
+      }
+      liveMetrics={
+        currentEvent && (
           <div className={styles.card}>
             <h2 className={styles.cardTitle}>{currentEvent.title}</h2>
             <div className={styles.section}>
@@ -194,22 +192,18 @@ export default function StaffDashboardPage() {
               <p className={styles.infoText}>👥 Capacity: {currentEvent.capacity?.toLocaleString()}</p>
             </div>
           </div>
-        )}
-
-        {/* Real-time capacity stats */}
-        {stats && (
+        )
+      }
+      capacityMonitors={
+        stats && (
           <div className={styles.statsCard}>
             <div className={styles.header}>
               <h3 className={styles.cardTitle}>Live Capacity</h3>
-              <button
-                onClick={refreshStats}
-                className={styles.refreshButton}
-              >
+              <button onClick={refreshStats} className={styles.refreshButton}>
                 🔄 Refresh
               </button>
             </div>
 
-            {/* Progress bar */}
             <div className={styles.progressSection}>
               <div className={styles.progressHeader}>
                 <span className={styles.progressLabel}>Checked In</span>
@@ -220,7 +214,7 @@ export default function StaffDashboardPage() {
               <div className={styles.progressBarBg}>
                 <div
                   className={styles.progressBarFill}
-                  style={{ width: `${Math.min(stats.percentFull, 100)}%` }} // Dynamic width required
+                  style={{ width: `${Math.min(stats.percentFull, 100)}%` }}
                 />
               </div>
               <p className={styles.progressPercent}>
@@ -228,7 +222,6 @@ export default function StaffDashboardPage() {
               </p>
             </div>
 
-            {/* Stats grid */}
             <div className={styles.grid}>
               <div className={styles.statBox}>
                 <p className={styles.statValue}>{stats.checkedIn}</p>
@@ -240,7 +233,6 @@ export default function StaffDashboardPage() {
               </div>
             </div>
 
-            {/* Capacity warning */}
             {stats.percentFull >= 90 && (
               <div className={styles.warningBox}>
                 <p className={styles.warningTitle}>⚠️ Near Capacity</p>
@@ -248,47 +240,32 @@ export default function StaffDashboardPage() {
               </div>
             )}
           </div>
-        )}
-
-        {/* Quick actions */}
+        )
+      }
+      checkInSystem={
         <div className={styles.card}>
           <h3 className={styles.cardTitle}>Quick Actions</h3>
           <div className={styles.grid}>
-            <Link
-              href={`/staff/scanner?eventId=${selectedEvent}`}
-              className={styles.actionButton}
-            >
+            <Link href={`/staff/scanner?eventId=${selectedEvent}`} className={styles.actionButton}>
               <span className={styles.actionIcon}>📱</span>
               <span className={styles.actionLabel}>Scan Tickets</span>
             </Link>
-
-            <button
-              onClick={refreshStats}
-              className={styles.actionButton}
-            >
+            <button onClick={refreshStats} className={styles.actionButton}>
               <span className={styles.actionIcon}>📊</span>
               <span className={styles.actionLabel}>View Stats</span>
             </button>
-
-            <Link
-              href={`/staff/issues?eventId=${selectedEvent}`}
-              className={styles.actionButton}
-            >
+            <Link href={`/staff/issues?eventId=${selectedEvent}`} className={styles.actionButton}>
               <span className={styles.actionIcon}>⚠️</span>
               <span className={styles.actionLabel}>Report Issue</span>
             </Link>
-
-            <Link
-              href={`/staff/notes?eventId=${selectedEvent}`}
-              className={styles.actionButton}
-            >
+            <Link href={`/staff/notes?eventId=${selectedEvent}`} className={styles.actionButton}>
               <span className={styles.actionIcon}>📝</span>
               <span className={styles.actionLabel}>Quick Notes</span>
             </Link>
           </div>
         </div>
-
-        {/* Recent activity */}
+      }
+      staffStatus={
         <div className={styles.card}>
           <h3 className={styles.cardTitle}>Recent Activity</h3>
           <div className={styles.section}>
@@ -308,26 +285,17 @@ export default function StaffDashboardPage() {
             </div>
           </div>
         </div>
-
-        {/* Help & Support */}
+      }
+      footer={
         <div className={styles.card}>
           <h3 className={styles.cardTitle}>Need Help?</h3>
           <div className={styles.section}>
-            <button className={styles.helpButton}>
-              📞 Contact Event Manager
-            </button>
-            <button className={styles.helpButton}>
-              📖 View Staff Guide
-            </button>
-            <button className={styles.helpButton}>
-              🆘 Emergency Protocols
-            </button>
+            <button className={styles.helpButton}>📞 Contact Event Manager</button>
+            <button className={styles.helpButton}>📖 View Staff Guide</button>
+            <button className={styles.helpButton}>🆘 Emergency Protocols</button>
           </div>
         </div>
-      </div>
-
-      {/* Bottom padding for mobile */}
-      <div className={styles.bottomPadding} />
-    </div>
+      }
+    />
   );
 }

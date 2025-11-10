@@ -6,7 +6,7 @@
 }
 
 .heroSection {
-  border-block-end: 3px solid var(--color-black);
+  border-block-end: var(--border-width-3) solid var(--color-black);
 }
 
 .heroContainer {
@@ -43,7 +43,7 @@
 .artistImageContainer {
   aspect-ratio: 1;
   position: relative;
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   box-shadow: 8px 8px 0 0 var(--color-black);
 }
 
@@ -88,7 +88,7 @@
   color: var(--color-white);
   padding-inline: var(--space-4);
   padding-block: var(--space-2);
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
 }
 
 .verifiedText {
@@ -110,7 +110,7 @@
   font-size: var(--font-size-body);
   padding-inline: var(--space-3);
   padding-block: var(--space-1);
-  border: 2px solid var(--color-black);
+  border: var(--border-width-2) solid var(--color-black);
 }
 
 .artistBio {
@@ -144,7 +144,7 @@
 /* Events Section */
 .eventsSection {
   padding-block: var(--space-12);
-  border-block-end: 3px solid var(--color-black);
+  border-block-end: var(--border-width-3) solid var(--color-black);
 }
 
 .content {
@@ -163,7 +163,7 @@
 }
 
 .eventCard {
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   background-color: var(--color-white);
   box-shadow: 8px 8px 0 0 var(--color-black);
   transition: background-color var(--duration-fast) var(--easing-out), color var(--duration-fast) var(--easing-out);
@@ -177,7 +177,7 @@
 .eventImageContainer {
   aspect-ratio: 16 / 9;
   position: relative;
-  border-block-end: 3px solid var(--color-black);
+  border-block-end: var(--border-width-3) solid var(--color-black);
   overflow: hidden;
 }
 
@@ -308,7 +308,7 @@
 }
 
 .rounded {
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-none)(--radius-md);
 }
 
 .shadow {

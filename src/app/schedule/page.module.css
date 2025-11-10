@@ -79,7 +79,7 @@
   position: relative;
   inline-size: 6rem;
   block-size: 6rem;
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   overflow: hidden;
 }
 
@@ -245,7 +245,7 @@
 }
 
 .rounded {
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-none)(--radius-md);
 }
 
 .shadow {

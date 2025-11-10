@@ -1,0 +1,65 @@
+/**
+ * Table Styles
+ * GHXSTSHIP Monochromatic Design System
+ */
+
+.tableWrapper {
+  inline-size: 100%;
+  overflow-x: auto;
+}
+
+.table {
+  inline-size: 100%;
+  border-collapse: collapse;
+  border: var(--border-width-thick) solid var(--color-black);
+}
+
+.thead {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.th {
+  padding: var(--spacing-4);
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-h5);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  text-align: start;
+  border-inline-end: var(--border-width-thick) solid var(--color-white);
+}
+
+.th:last-child {
+  border-inline-end: none;
+}
+
+.tbody {
+  background-color: var(--color-white);
+}
+
+.tr {
+  border-block-end: var(--border-width-thin) solid var(--color-grey-300);
+}
+
+.tr:last-child {
+  border-block-end: none;
+}
+
+.td {
+  padding: var(--spacing-4);
+  font-family: var(--font-share);
+  font-size: var(--font-size-body);
+  border-inline-end: var(--border-width-thin) solid var(--color-grey-300);
+}
+
+.td:last-child {
+  border-inline-end: none;
+}
+
+.striped .tr:nth-child(even) {
+  background-color: var(--color-grey-100);
+}
+
+.tr:hover {
+  background-color: var(--color-grey-200);
+}

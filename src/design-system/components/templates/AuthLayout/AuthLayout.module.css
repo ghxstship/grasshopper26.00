@@ -1,0 +1,122 @@
+/**
+ * Auth Layout Styles
+ * GHXSTSHIP Monochromatic Design System
+ */
+
+.layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: var(--color-bg-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.layout.inverted {
+  background-color: var(--color-bg-inverse);
+}
+
+/* Background Pattern */
+.pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+.layout[data-pattern="halftone"] .pattern {
+  background-image: radial-gradient(circle, var(--color-text-primary) 1px, transparent 1px);
+  background-size: 8px 8px;
+}
+
+.layout[data-pattern="stripes"] .pattern {
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--color-text-primary),
+    var(--color-text-primary) 2px,
+    transparent 2px,
+    transparent 12px
+  );
+}
+
+.layout[data-pattern="grid"] .pattern {
+  background-image: 
+    linear-gradient(var(--color-border-default) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-border-default) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Container */
+.container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 480px;
+  padding: var(--space-6);
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  justify-content: center;
+  margin-block-end: var(--space-8);
+}
+
+/* Card */
+.card {
+  background-color: var(--color-bg-primary);
+  border: var(--border-width-3) solid var(--color-border-strong);
+  box-shadow: var(--shadow-geometric);
+  padding: var(--space-8);
+}
+
+.inverted .card {
+  background-color: var(--color-bg-inverse);
+  border-color: var(--color-border-inverse);
+  box-shadow: var(--shadow-geometric-white);
+}
+
+/* Footer */
+.footer {
+  margin-block-start: var(--space-6);
+  text-align: center;
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-meta);
+  color: var(--color-text-secondary);
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (min-width: 640px) {
+  .container {
+    padding: var(--space-8);
+  }
+  
+  .card {
+    padding: var(--space-10);
+  }
+}
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+
+@media (prefers-reduced-motion: no-preference) {
+  .card {
+    animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

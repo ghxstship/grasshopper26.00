@@ -1,0 +1,14 @@
+/**
+ * Code Component Styles
+ * GHXSTSHIP Monochromatic Design System
+ */
+
+.code {
+  display: inline-block;
+  padding: var(--spacing-1) var(--spacing-2);
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-meta);
+  background-color: var(--color-grey-100);
+  color: var(--color-black);
+  border: var(--border-width-thin) solid var(--color-grey-300);
+}

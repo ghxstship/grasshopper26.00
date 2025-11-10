@@ -1,28 +1,63 @@
 /**
- * Templates - Page-level Layout Components
- * Composed of organisms, molecules, and atoms
- * Define the overall page structure and layout
+ * Template Components
+ * GHXSTSHIP Monochromatic Design System
+ * Full page layouts and templates
  */
 
-// Auth Templates
-export * from './auth/AuthCardTemplate';
+export { DashboardLayout } from './DashboardLayout/DashboardLayout';
+export type { DashboardLayoutProps } from './DashboardLayout/DashboardLayout';
 
-// Admin Templates
-export * from './admin/AdminListTemplate';
-export * from './admin/AdminDetailTemplate';
-export * from './admin/AdminDashboardTemplate';
+export { AuthLayout } from './AuthLayout/AuthLayout';
+export type { AuthLayoutProps } from './AuthLayout/AuthLayout';
 
-// Public Templates
-export * from './public/PublicBrowseTemplate';
-export * from './public/DetailViewTemplate';
-export * from './public/LegalPageTemplate';
+export { EventLayout } from './EventLayout/EventLayout';
+export type { EventLayoutProps } from './EventLayout/EventLayout';
 
-// Portal Templates
-export * from './portal/PortalDashboardTemplate';
-export * from './portal/OrderHistoryTemplate';
+export { PortalLayout } from './PortalLayout/PortalLayout';
+export type { PortalLayoutProps } from './PortalLayout/PortalLayout';
 
-// Checkout Templates
-export * from './checkout/CheckoutFlowTemplate';
+export { CheckoutLayout } from './CheckoutLayout/CheckoutLayout';
+export type { CheckoutLayoutProps } from './CheckoutLayout/CheckoutLayout';
 
-// Shared/Universal Templates
-export * from './shared/ContextualPageTemplate';
+export { ContentLayout } from './ContentLayout/ContentLayout';
+export type { ContentLayoutProps } from './ContentLayout/ContentLayout';
+
+export { AdminLayout } from './AdminLayout/AdminLayout';
+export type { AdminLayoutProps } from './AdminLayout/AdminLayout';
+
+export { LandingLayout } from './LandingLayout/LandingLayout';
+export type { LandingLayoutProps } from './LandingLayout/LandingLayout';
+
+export { ErrorLayout } from './ErrorLayout/ErrorLayout';
+export type { ErrorLayoutProps } from './ErrorLayout/ErrorLayout';
+
+export { GridLayout } from './GridLayout/GridLayout';
+export type { GridLayoutProps } from './GridLayout/GridLayout';
+
+export { MembershipLayout } from './MembershipLayout/MembershipLayout';
+export type { MembershipLayoutProps } from './MembershipLayout/MembershipLayout';
+
+export * from './SplitLayout/SplitLayout';
+export * from './EventDashboardLayout';
+export * from './AnalyticsDashboardLayout';
+export * from './DayOfShowLayout';
+export * from './VendorManagementLayout';
+export * from './WorkspaceLayout';
+export * from './AutomationLayout';
+
+export { FullscreenLayout } from './FullscreenLayout/FullscreenLayout';
+export type { FullscreenLayoutProps } from './FullscreenLayout/FullscreenLayout';
+
+export * from './AdminFormTemplate';
+export * from './AdminListTemplate';
+export * from './AuthCardTemplate/AuthCardTemplate';
+
+// Template aliases for compatibility
+export { AdminFormTemplate as AdminDetailTemplate } from './AdminFormTemplate/AdminFormTemplate';
+export { AdminListTemplate as PublicBrowseTemplate } from './AdminListTemplate/AdminListTemplate';
+export { CheckoutLayout as CheckoutFlowTemplate } from './CheckoutLayout/CheckoutLayout';
+export { DashboardLayout as AdminDashboardTemplate } from './DashboardLayout/DashboardLayout';
+export { PortalLayout as PortalDashboardTemplate } from './PortalLayout/PortalLayout';
+export { ContentLayout as DetailViewTemplate } from './ContentLayout/ContentLayout';
+export { ContentLayout as ContextualPageTemplate } from './ContentLayout/ContentLayout';
+export { ContentLayout as LegalPageTemplate } from './ContentLayout/ContentLayout';

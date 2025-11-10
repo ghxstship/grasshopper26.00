@@ -1,0 +1,150 @@
+/**
+ * Card Styles
+ * GHXSTSHIP Entertainment Platform
+ * Thick borders, hard geometric shadows, color inversion hover
+ */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg-primary);
+  border: var(--border-width-3) solid var(--color-border-default);
+  border-radius: var(--radius-none)(--radius-none);
+  transition: all var(--duration-fast) var(--easing-out);
+}
+
+/* ========================================
+   VARIANTS
+   ======================================== */
+
+.default {
+  background-color: var(--color-bg-primary);
+  border: var(--border-width-3) solid var(--color-border-default);
+}
+
+.outlined {
+  background-color: transparent;
+  border: var(--border-width-3) solid var(--color-border-strong);
+}
+
+.elevated {
+  background-color: var(--color-bg-raised);
+  border: var(--border-width-3) solid var(--color-border-strong);
+  box-shadow: var(--shadow-base);
+}
+
+.interactive {
+  border: var(--border-width-3) solid var(--color-border-strong);
+  box-shadow: var(--shadow-base);
+  cursor: pointer;
+}
+
+.interactive:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-accent);
+  transform: scale(1.02);
+  box-shadow: var(--shadow-lg);
+}
+
+.interactive:active {
+  transform: scale(0.99);
+  box-shadow: var(--shadow-sm);
+}
+
+.hoverable:hover {
+  border-color: var(--color-border-strong);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/* ========================================
+   PADDING
+   ======================================== */
+
+.padding-none {
+  padding: 0;
+}
+
+.padding-sm {
+  padding: var(--space-3);
+}
+
+.padding-md {
+  padding: var(--space-6);
+}
+
+.padding-lg {
+  padding: var(--space-8);
+}
+
+/* ========================================
+   STATES
+   ======================================== */
+
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ========================================
+   CARD SECTIONS
+   ======================================== */
+
+.cardHeader {
+  padding-block-end: var(--space-3);
+  border-block-end: var(--border-width-2) solid var(--color-border-default);
+}
+
+.cardBody {
+  flex: 1;
+  padding-block: var(--space-3);
+}
+
+.cardFooter {
+  padding-block-start: var(--space-3);
+  border-block-start: var(--border-width-2) solid var(--color-border-default);
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+  
+  .hoverable:hover {
+    transform: none;
+  }
+}
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+.dark .elevated,
+[data-theme="dark"] .elevated {
+  box-shadow: var(--shadow-white-md);
+}
+
+.dark .hoverable:hover,
+[data-theme="dark"] .hoverable:hover {
+  box-shadow: var(--shadow-white-lg);
+}
+
+.dark .interactive,
+[data-theme="dark"] .interactive {
+  box-shadow: var(--shadow-white-md);
+}
+
+.dark .interactive:hover,
+[data-theme="dark"] .interactive:hover {
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+  box-shadow: var(--shadow-white-lg);
+}

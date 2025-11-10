@@ -32,7 +32,7 @@
 }
 
 .header {
-  border-block-end: 3px solid var(--color-black);
+  border-block-end: var(--border-width-3) solid var(--color-black);
   padding-block: var(--space-12);
 }
 
@@ -73,7 +73,7 @@
 }
 
 .card {
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   padding: var(--space-6);
   background-color: var(--color-white);
 }
@@ -85,7 +85,7 @@
 
 .button {
   padding: var(--space-3) var(--space-6);
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   font-family: var(--font-bebas);
   text-transform: uppercase;
   cursor: pointer;
@@ -99,7 +99,7 @@
 .input {
   inline-size: 100%;
   padding: var(--space-3);
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
 }
 
 .label {
@@ -213,7 +213,7 @@
 }
 
 .rounded {
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-none)(--radius-md);
 }
 
 .shadow {

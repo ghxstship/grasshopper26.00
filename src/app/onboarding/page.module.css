@@ -11,7 +11,7 @@
   width: 100%;
   max-width: 600px;
   background-color: var(--color-white);
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   padding: var(--space-8);
 }
 
@@ -58,35 +58,35 @@
 .input {
   width: 100%;
   padding: var(--space-3);
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   font-family: var(--font-share);
   font-size: var(--font-size-base);
   transition: border-color var(--duration-fast) var(--easing-out);
 }
 
 .input:focus {
-  outline: 2px solid var(--color-black);
+  outline: var(--border-width-2) solid var(--color-black);
   outline-offset: 2px;
 }
 
 .select {
   width: 100%;
   padding: var(--space-3);
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   font-family: var(--font-share);
   font-size: var(--font-size-base);
   transition: border-color var(--duration-fast) var(--easing-out);
 }
 
 .select:focus {
-  outline: 2px solid var(--color-black);
+  outline: var(--border-width-2) solid var(--color-black);
   outline-offset: 2px;
 }
 
 .textarea {
   width: 100%;
   padding: var(--space-3);
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   font-family: var(--font-share);
   font-size: var(--font-size-base);
   transition: border-color var(--duration-fast) var(--easing-out);
@@ -95,7 +95,7 @@
 }
 
 .textarea:focus {
-  outline: 2px solid var(--color-black);
+  outline: var(--border-width-2) solid var(--color-black);
   outline-offset: 2px;
 }
 
@@ -104,7 +104,7 @@
   padding: var(--space-4);
   background-color: var(--color-black);
   color: var(--color-white);
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   font-family: var(--font-bebas);
   font-size: var(--font-size-base);
   text-transform: uppercase;
@@ -180,24 +180,24 @@
 
 .cardBlack {
   background-color: var(--color-black);
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   padding: var(--space-6);
 }
 
 .cardGrey {
   background-color: var(--color-grey-100);
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   padding: var(--space-4);
 }
 
 .cardOrange {
   background-color: var(--color-grey-100);
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   padding: var(--space-4);
 }
 
 .cardBorder {
-  border: 3px solid var(--color-grey-200);
+  border: var(--border-width-3) solid var(--color-grey-200);
   padding: var(--space-4);
   transition: border-color var(--duration-fast) var(--easing-out);
 }
@@ -284,7 +284,7 @@
 .buttonPrevious {
   padding-inline: var(--space-6);
   padding-block: var(--space-3);
-  border: 3px solid var(--color-grey-300);
+  border: var(--border-width-3) solid var(--color-grey-300);
   color: var(--color-grey-600);
   background-color: var(--color-white);
   font-family: var(--font-share);
@@ -307,7 +307,7 @@
   padding-block: var(--space-3);
   background-color: var(--color-black);
   color: var(--color-white);
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   font-family: var(--font-share);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-medium);
@@ -418,7 +418,7 @@
 }
 
 .rounded {
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-none)(--radius-md);
 }
 
 .shadow {

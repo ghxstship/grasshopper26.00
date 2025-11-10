@@ -1,6 +1,7 @@
 /* Import Design System Tokens */
 @import '../design-system/tokens/tokens.css';
 @import '../design-system/tokens/utility-classes.css';
+@import '../design-system/tokens/geometric-patterns.css';
 
 @tailwind base;
 @tailwind components;

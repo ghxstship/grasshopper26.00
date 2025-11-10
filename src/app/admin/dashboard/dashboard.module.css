@@ -1,0 +1,33 @@
+/**
+ * Admin Dashboard Styles
+ * GHXSTSHIP Monochromatic Design System
+ */
+
+.statsGrid {
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  margin-block-end: var(--space-8);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (min-width: 768px) {
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .statsGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

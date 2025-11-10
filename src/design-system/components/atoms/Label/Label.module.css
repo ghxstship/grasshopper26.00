@@ -1,0 +1,35 @@
+/**
+ * Label Component Styles
+ * GHXSTSHIP Monochromatic Design System
+ */
+
+.label {
+  display: inline-block;
+  font-family: var(--font-bebas);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-text-primary);
+  margin-block-end: var(--spacing-2);
+}
+
+.sm {
+  font-size: var(--font-size-h6);
+}
+
+.md {
+  font-size: var(--font-size-h5);
+}
+
+.lg {
+  font-size: var(--font-size-h4);
+}
+
+.required {
+  color: var(--color-text-primary);
+  margin-inline-start: var(--spacing-1);
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

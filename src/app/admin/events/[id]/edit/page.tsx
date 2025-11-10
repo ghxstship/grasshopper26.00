@@ -8,11 +8,11 @@
 import { use, useEffect, useState } from 'react';
 import { ContextualPageTemplate } from '@/design-system/components/templates';
 import { createClient } from '@/lib/supabase/client';
-import { Button } from '@/design-system/components/atoms/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/card';
-import { Input } from '@/design-system/components/atoms/input';
-import { Label } from '@/design-system/components/atoms/label';
-import { Textarea } from '@/design-system/components/atoms/textarea';
+import { Button } from '@/design-system/components/atoms/Button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/Card';
+import { Input } from '@/design-system/components/atoms/Input';
+import { Label } from '@/design-system/components/atoms/Label';
+import { Textarea } from '@/design-system/components/atoms/Textarea';
 import { Save } from 'lucide-react';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
@@ -173,7 +173,7 @@ export default function EventEditPage({ params }: { params: Promise<{ id: string
                 <Save className={styles.iconSmall} />
                 {saving ? 'Saving...' : 'Save Changes'}
               </Button>
-              <Button type="button" variant="outline" onClick={() => router.back()}>
+              <Button type="button" variant="outlined" onClick={() => router.back()}>
                 Cancel
               </Button>
             </div>

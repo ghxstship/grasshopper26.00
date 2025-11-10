@@ -1,11 +1,17 @@
 /**
  * Responsive Utilities
  * Breakpoint management and responsive helpers
+ * GHXSTSHIP Contemporary Minimal Pop Art Design System
  */
 
 import { breakpoints } from '../tokens/primitives/breakpoints';
 
 export type Breakpoint = keyof typeof breakpoints;
+
+/**
+ * Breakpoint values for reference
+ */
+export const BREAKPOINT_VALUES = breakpoints;
 
 /**
  * Check if current viewport matches breakpoint

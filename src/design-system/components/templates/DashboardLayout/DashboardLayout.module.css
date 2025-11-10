@@ -1,0 +1,72 @@
+/**
+ * Dashboard Layout Styles
+ * GHXSTSHIP Monochromatic Design System
+ */
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--color-bg-secondary);
+}
+
+.container {
+  display: flex;
+  flex: 1;
+  max-width: 1920px;
+  margin-inline: auto;
+  width: 100%;
+}
+
+.sidebar {
+  display: none;
+  width: 280px;
+  flex-shrink: 0;
+  background-color: var(--color-bg-primary);
+  border-inline-end: var(--border-width-3) solid var(--color-border-default);
+  padding: var(--space-6);
+  overflow-y: auto;
+}
+
+.main {
+  flex: 1;
+  padding: var(--space-6);
+  overflow-x: hidden;
+}
+
+.footer {
+  background-color: var(--color-bg-primary);
+  border-block-start: var(--border-width-3) solid var(--color-border-strong);
+  padding: var(--space-8) var(--space-6);
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (min-width: 768px) {
+  .sidebar {
+    display: block;
+  }
+}
+
+@media (min-width: 1024px) {
+  .main {
+    padding: var(--space-8);
+  }
+}
+
+@media (min-width: 1440px) {
+  .sidebar {
+    width: 320px;
+  }
+}
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+.dark .layout,
+[data-theme="dark"] .layout {
+  background-color: var(--color-bg-tertiary);
+}

@@ -1,0 +1,344 @@
+/**
+ * TicketCard Styles
+ * GHXSTSHIP Entertainment Platform
+ * Bold geometric ticket cards with thick borders and hard shadows
+ */
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  
+  padding: var(--space-6);
+  
+  border: var(--border-width-3) solid var(--color-border-strong);
+  border-radius: var(--radius-none)(--radius-none);
+  background-color: var(--color-bg-primary);
+  
+  box-shadow: var(--shadow-base);
+  
+  transition: all var(--duration-base) var(--easing-out);
+  
+  isolation: isolate;
+}
+
+.card.clickable {
+  cursor: pointer;
+}
+
+.card.clickable:hover {
+  background-color: var(--color-bg-secondary);
+  border-color: var(--color-primary);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card.clickable:active {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.card:focus-visible {
+  outline: var(--border-width-2) solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+.card.selected {
+  background-color: var(--color-primary);
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-lg);
+}
+
+.card.soldOut {
+  opacity: var(--opacity-60);
+  cursor: not-allowed;
+}
+
+/* ========================================
+   HEADER
+   ======================================== */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.name {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  line-height: var(--line-height-tight);
+  
+  color: var(--color-text-primary);
+  
+  transition: color var(--duration-base) var(--easing-out);
+  
+  margin: 0;
+}
+
+.card.selected .name {
+  color: var(--color-text-inverse);
+}
+
+.price {
+  font-family: var(--font-anton);
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-normal);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: var(--line-height-hero);
+  
+  color: var(--color-text-primary);
+  
+  transition: color var(--duration-base) var(--easing-out);
+  
+  white-space: nowrap;
+}
+
+.card.selected .price {
+  color: var(--color-text-inverse);
+}
+
+/* ========================================
+   DESCRIPTION
+   ======================================== */
+
+.description {
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-body);
+  
+  color: var(--color-text-secondary);
+  
+  transition: color var(--duration-base) var(--easing-out);
+  
+  margin: 0;
+}
+
+.card.selected .description {
+  color: var(--color-text-tertiary);
+}
+
+/* ========================================
+   PERKS LIST
+   ======================================== */
+
+.perksList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.perk {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+  
+  color: var(--color-text-secondary);
+  
+  transition: color var(--duration-base) var(--easing-out);
+}
+
+.card.selected .perk {
+  color: var(--color-text-tertiary);
+}
+
+.perkIcon {
+  font-size: var(--font-size-lg);
+  line-height: 1;
+  color: var(--color-text-primary);
+  
+  transition: color var(--duration-base) var(--easing-out);
+}
+
+.card.selected .perkIcon {
+  color: var(--color-text-inverse);
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  align-items: center;
+  
+  padding-block-start: var(--space-4);
+  border-block-start: var(--border-width-2) solid var(--color-border-default);
+}
+
+.card.selected .footer {
+  border-color: var(--color-border-accent);
+}
+
+.availability,
+.maxOrder {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-widest);
+  text-transform: uppercase;
+  
+  color: var(--color-text-secondary);
+  
+  transition: color var(--duration-base) var(--easing-out);
+}
+
+.card.selected .availability,
+.card.selected .maxOrder {
+  color: var(--color-text-tertiary);
+}
+
+.soldOutBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  
+  padding-inline: var(--space-4);
+  padding-block: var(--space-2);
+  
+  border: var(--border-width-2) solid var(--color-border-strong);
+  border-radius: var(--radius-none)(--radius-none);
+  background-color: var(--color-primary);
+}
+
+.soldOutText {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  
+  color: var(--color-text-inverse);
+}
+
+/* ========================================
+   SELECTED INDICATOR
+   ======================================== */
+
+.selectedIndicator {
+  position: absolute;
+  inset-block-start: var(--space-4);
+  inset-inline-end: var(--space-4);
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  width: 48px;
+  height: 48px;
+  
+  border: var(--border-width-3) solid var(--color-border-accent);
+  border-radius: var(--radius-none)(--radius-none);
+  background-color: var(--color-accent);
+  
+  box-shadow: var(--shadow-sm);
+}
+
+.checkmark {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  line-height: 1;
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .name,
+  .price,
+  .description,
+  .perk,
+  .perkIcon,
+  .availability,
+  .maxOrder {
+    transition: none;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .card {
+    border-width: var(--border-width-4);
+  }
+  
+  .footer {
+    border-block-start-width: var(--border-width-3);
+  }
+  
+  .soldOutBadge,
+  .selectedIndicator {
+    border-width: var(--border-width-4);
+  }
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .price {
+    font-size: var(--font-size-2xl);
+  }
+}
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+.dark .card,
+[data-theme="dark"] .card {
+  box-shadow: var(--shadow-white-md);
+}
+
+.dark .card.clickable:hover,
+[data-theme="dark"] .card.clickable:hover {
+  box-shadow: var(--shadow-white-lg);
+}
+
+.dark .card.selected,
+[data-theme="dark"] .card.selected {
+  background-color: var(--color-accent);
+  box-shadow: var(--shadow-white-lg);
+}
+
+.dark .card.selected .name,
+.dark .card.selected .price,
+.dark .card.selected .perkIcon,
+[data-theme="dark"] .card.selected .name,
+[data-theme="dark"] .card.selected .price,
+[data-theme="dark"] .card.selected .perkIcon {
+  color: var(--color-primary);
+}
+
+.dark .selectedIndicator,
+[data-theme="dark"] .selectedIndicator {
+  background-color: var(--color-primary);
+  box-shadow: var(--shadow-white-sm);
+}
+
+.dark .checkmark,
+[data-theme="dark"] .checkmark {
+  color: var(--color-accent);
+}

@@ -1,0 +1,170 @@
+/**
+ * TaskCard Styles
+ * GHXSTSHIP Monochromatic Design System
+ */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  padding: var(--spacing-4);
+  border: var(--border-width-thick) solid var(--color-black);
+  background-color: var(--color-white);
+  transition: all var(--transition-fast) var(--easing-standard);
+}
+
+.card.clickable {
+  cursor: pointer;
+}
+
+.card.clickable:hover {
+  background-color: var(--color-grey-100);
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 0 0 var(--color-black);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.badges {
+  display: flex;
+  gap: var(--spacing-2);
+}
+
+.priority,
+.status {
+  padding: var(--spacing-1) var(--spacing-2);
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-meta);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.priority.critical {
+  background-color: var(--color-grey-900);
+  color: var(--color-white);
+}
+
+.priority.high {
+  background-color: var(--color-grey-700);
+  color: var(--color-white);
+}
+
+.priority.medium {
+  background-color: var(--color-grey-400);
+}
+
+.priority.low {
+  background-color: var(--color-grey-200);
+}
+
+.status {
+  border: var(--border-width-thin) solid var(--color-black);
+}
+
+.status.todo {
+  background-color: var(--color-white);
+}
+
+.status.in_progress {
+  background-color: var(--color-grey-300);
+}
+
+.status.blocked {
+  background-color: var(--color-grey-900);
+  color: var(--color-white);
+}
+
+.status.in_review {
+  background-color: var(--color-grey-400);
+}
+
+.status.completed {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.status.cancelled {
+  background-color: var(--color-grey-500);
+  text-decoration: line-through;
+}
+
+.overdue {
+  padding: var(--spacing-1) var(--spacing-2);
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-meta);
+  text-transform: uppercase;
+  background-color: var(--color-grey-900);
+  color: var(--color-white);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-h5);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.description {
+  margin: 0;
+  font-family: var(--font-share);
+  font-size: var(--font-size-meta);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+}
+
+.meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: var(--spacing-3);
+  padding-block-start: var(--spacing-2);
+  border-block-start: var(--border-width-thin) solid var(--color-grey-300);
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.metaLabel {
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-meta);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.metaValue {
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-body);
+}
+
+.progress {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.progressBar {
+  flex: 1;
+  block-size: 8px;
+  background-color: var(--color-grey-200);
+  border: var(--border-width-thin) solid var(--color-black);
+  overflow: hidden;
+}
+
+.progressFill {
+  block-size: 100%;
+  background-color: var(--color-black);
+  transition: width var(--transition-standard) var(--easing-standard);
+}
+
+.progressLabel {
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-meta);
+  font-weight: 700;
+}

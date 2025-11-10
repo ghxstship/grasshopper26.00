@@ -5,15 +5,15 @@ import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 
 export const dynamic = 'force-dynamic';
-import { Button } from '@/design-system/components/atoms/button';
-import { Input } from '@/design-system/components/atoms/input';
-import { Label } from '@/design-system/components/atoms/label';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/design-system/components/atoms/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/design-system/components/atoms/tabs';
-import { Avatar, AvatarFallback, AvatarImage } from '@/design-system/components/atoms/avatar';
+import { Button } from '@/design-system/components/atoms/Button';
+import { Input } from '@/design-system/components/atoms/Input';
+import { Label } from '@/design-system/components/atoms/Label';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/design-system/components/atoms/Card';
+import { Tabs } from '@/design-system/components/atoms/Tabs';
+import { Avatar } from '@/design-system/components/atoms/Avatar';
 import { toast } from 'sonner';
 import { Loader2, User, Heart, Calendar, ShoppingBag, Settings, Bell } from 'lucide-react';
-import { Checkbox } from '@/design-system/components/atoms/checkbox';
+import { Checkbox } from '@/design-system/components/atoms/Checkbox';
 import Link from 'next/link';
 import styles from '../auth.module.css';
 
@@ -30,6 +30,7 @@ export default function ProfilePage() {
     email_events: true,
     email_orders: true,
   });
+  const [activeTab, setActiveTab] = useState('profile');
 
   const checkUser = useCallback(async () => {
     const { data: { user } } = await supabase.auth.getUser();
@@ -120,38 +121,21 @@ export default function ProfilePage() {
             My Profile
           </h1>
           <Button
-            variant="outline"
+            variant="outlined"
             onClick={handleSignOut}
           >
             Sign Out
           </Button>
         </div>
 
-        <Tabs defaultValue="profile" className={styles.section}>
-          <TabsList className={styles.tabsList}>
-            <TabsTrigger value="profile">
-              <User className={styles.icon} />
-              Profile
-            </TabsTrigger>
-            <TabsTrigger value="favorites">
-              <Heart className={styles.icon} />
-              Favorites
-            </TabsTrigger>
-            <TabsTrigger value="events">
-              <Calendar className={styles.icon} />
-              My Events
-            </TabsTrigger>
-            <TabsTrigger value="orders">
-              <ShoppingBag className={styles.icon} />
-              Orders
-            </TabsTrigger>
-            <TabsTrigger value="settings">
-              <Settings className={styles.icon} />
-              Settings
-            </TabsTrigger>
-          </TabsList>
-
-          <TabsContent value="profile">
+        <Tabs
+          defaultTab="profile"
+          className={styles.section}
+          tabs={[
+            {
+              id: 'profile',
+              label: 'Profile',
+              content: (
             <Card className={styles.card}>
               <CardHeader>
                 <CardTitle className={styles.subtitle}>Profile Information</CardTitle>
@@ -159,12 +143,12 @@ export default function ProfilePage() {
               </CardHeader>
               <CardContent>
                 <div className={styles.row}>
-                  <Avatar className={styles.avatar}>
-                    <AvatarImage src={profile?.avatar_url} />
-                    <AvatarFallback className={styles.avatarFallback}>
-                      {displayName?.charAt(0) || user?.email?.charAt(0) || 'U'}
-                    </AvatarFallback>
-                  </Avatar>
+                  <Avatar
+                    src={profile?.avatar_url}
+                    alt={displayName || user?.email || 'User'}
+                    fallback={displayName?.charAt(0) || user?.email?.charAt(0) || 'U'}
+                    className={styles.avatar}
+                  />
                   <div>
                     <p className={styles.label}>Email</p>
                     <p className={styles.value}>{user?.email}</p>
@@ -177,7 +161,7 @@ export default function ProfilePage() {
                     <Input
                       id="displayName"
                       value={displayName}
-                      onChange={(e) => setDisplayName(e.target.value)}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDisplayName(e.target.value)}
                     />
                   </div>
                   <div className={styles.section}>
@@ -201,9 +185,12 @@ export default function ProfilePage() {
                 </form>
               </CardContent>
             </Card>
-          </TabsContent>
-
-          <TabsContent value="favorites">
+              ),
+            },
+            {
+              id: 'favorites',
+              label: 'Favorites',
+              content: (
             <Card className={styles.card}>
               <CardHeader>
                 <CardTitle className={styles.subtitle}>Favorite Artists</CardTitle>
@@ -213,9 +200,12 @@ export default function ProfilePage() {
                 <p className={styles.description}>No favorite artists yet. Start exploring!</p>
               </CardContent>
             </Card>
-          </TabsContent>
-
-          <TabsContent value="events">
+              ),
+            },
+            {
+              id: 'events',
+              label: 'My Events',
+              content: (
             <Card className={styles.card}>
               <CardHeader>
                 <CardTitle className={styles.subtitle}>My Events</CardTitle>
@@ -225,23 +215,29 @@ export default function ProfilePage() {
                 <p className={styles.description}>No upcoming events. Browse events to get tickets!</p>
               </CardContent>
             </Card>
-          </TabsContent>
-
-          <TabsContent value="orders">
+              ),
+            },
+            {
+              id: 'orders',
+              label: 'Orders',
+              content: (
             <Card className={styles.card}>
               <CardHeader>
                 <CardTitle className={styles.subtitle}>Order History</CardTitle>
                 <CardDescription className={styles.description}>Your ticket and merchandise orders</CardDescription>
               </CardHeader>
               <CardContent>
-                <Button asChild>
-                  <Link href="/orders">View All Orders</Link>
-                </Button>
+                <Link href="/orders">
+                  <Button>View All Orders</Button>
+                </Link>
               </CardContent>
             </Card>
-          </TabsContent>
-
-          <TabsContent value="settings">
+              ),
+            },
+            {
+              id: 'settings',
+              label: 'Settings',
+              content: (
             <div className={styles.section}>
               <Card className={styles.card}>
                 <CardHeader>
@@ -261,8 +257,8 @@ export default function ProfilePage() {
                     </div>
                     <Checkbox
                       checked={notifications.email_marketing}
-                      onCheckedChange={(checked: boolean) =>
-                        handleNotificationChange('email_marketing', checked)
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                        handleNotificationChange('email_marketing', e.target.checked)
                       }
                     />
                   </div>
@@ -275,8 +271,8 @@ export default function ProfilePage() {
                     </div>
                     <Checkbox
                       checked={notifications.email_events}
-                      onCheckedChange={(checked: boolean) =>
-                        handleNotificationChange('email_events', checked)
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                        handleNotificationChange('email_events', e.target.checked)
                       }
                     />
                   </div>
@@ -289,8 +285,8 @@ export default function ProfilePage() {
                     </div>
                     <Checkbox
                       checked={notifications.email_orders}
-                      onCheckedChange={(checked: boolean) =>
-                        handleNotificationChange('email_orders', checked)
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                        handleNotificationChange('email_orders', e.target.checked)
                       }
                     />
                   </div>
@@ -310,17 +306,18 @@ export default function ProfilePage() {
                   <CardDescription className={styles.description}>Manage your account security</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <Button
-                    asChild
-                    variant="outline"
-                  >
-                    <Link href="/forgot-password">Change Password</Link>
-                  </Button>
+                  <Link href="/forgot-password">
+                    <Button variant="outlined">
+                      Change Password
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
             </div>
-          </TabsContent>
-        </Tabs>
+              ),
+            },
+          ]}
+        />
       </div>
     </div>
   );

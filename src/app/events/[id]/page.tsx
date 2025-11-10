@@ -3,8 +3,8 @@
 import { useEffect, useState } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
-import { Card, CardContent } from '@/design-system/components/atoms/card';
-import { Button } from '@/design-system/components/atoms/button';
+import { Card, CardContent } from '@/design-system/components/atoms/Card';
+import { Button } from '@/design-system/components/atoms/Button';
 import { Loader2, Calendar, MapPin, Clock, Users, Heart, Share2, ShoppingCart } from 'lucide-react';
 import { format } from 'date-fns';
 import Link from 'next/link';
@@ -249,16 +249,16 @@ export default function EventDetailPage() {
         <div className={styles.heroActions}>
           <Button
             onClick={toggleFavorite}
-            variant="outline"
-            size="icon"
+            variant="outlined"
+            size="sm"
             className={styles.actionButton}
           >
             <Heart className={isFavorite ? styles.heartIconFilled : styles.heartIcon} />
           </Button>
           <Button
             onClick={handleShare}
-            variant="outline"
-            size="icon"
+            variant="outlined"
+            size="sm"
             className={styles.actionButton}
           >
             <Share2 className={styles.shareIcon} />
@@ -400,7 +400,7 @@ export default function EventDetailPage() {
                                   }
                                   disabled={!selectedTickets[ticketType.id]}
                                   size="sm"
-                                  variant="outline"
+                                  variant="outlined"
                                 >
                                   -
                                 </Button>
@@ -418,7 +418,7 @@ export default function EventDetailPage() {
                                     (selectedTickets[ticketType.id] || 0) >= available
                                   }
                                   size="sm"
-                                  variant="outline"
+                                  variant="outlined"
                                 >
                                   +
                                 </Button>

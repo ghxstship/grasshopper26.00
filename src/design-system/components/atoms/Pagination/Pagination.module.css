@@ -1,0 +1,44 @@
+/**
+ * Pagination Styles
+ * GHXSTSHIP Monochromatic Design System
+ */
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.button {
+  min-inline-size: 40px;
+  min-block-size: 40px;
+  padding: var(--spacing-2);
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-h6);
+  background-color: var(--color-white);
+  border: var(--border-width-thick) solid var(--color-black);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: all var(--transition-fast) var(--easing-standard);
+}
+
+.button:hover:not(:disabled) {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.button.active {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.dots {
+  padding: var(--spacing-2);
+  font-family: var(--font-share-mono);
+  color: var(--color-text-secondary);
+}

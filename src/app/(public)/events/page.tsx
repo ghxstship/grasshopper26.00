@@ -2,10 +2,13 @@
 
 import { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { PublicBrowseTemplate } from '@/design-system/components/templates';
-import { Calendar } from 'lucide-react';
+import { GridLayout } from '@/design-system/components/templates/GridLayout/GridLayout';
+import { Header } from '@/design-system/components/organisms/Header/Header';
+import { Footer } from '@/design-system/components/organisms/Footer/Footer';
+import { EventCard } from '@/design-system/components/organisms/EventCard/EventCard';
+import { Input } from '@/design-system/components/atoms/Input/Input';
+import { Typography } from '@/design-system/components/atoms/Typography/Typography';
 import { useEvents } from '@/hooks/useEvents';
-import { EventCard } from '@/design-system/components/organisms/events/event-card';
 
 function EventsPageContent() {
   const searchParams = useSearchParams();
@@ -24,42 +27,56 @@ function EventsPageContent() {
 
 
   return (
-    <PublicBrowseTemplate
-      title="DISCOVER EVENTS"
-      subtitle="Find your next unforgettable experience"
-      heroGradient={true}
-      searchPlaceholder="Search events, venues..."
-      searchValue={searchQuery}
-      onSearchChange={setSearchQuery}
-      showSearch={true}
-      sortOptions={[
-        { value: 'date-asc', label: 'Date (Earliest First)' },
-        { value: 'date-desc', label: 'Date (Latest First)' },
-        { value: 'name-asc', label: 'Name (A-Z)' },
-        { value: 'name-desc', label: 'Name (Z-A)' },
-        { value: 'price-asc', label: 'Price (Low to High)' },
-        { value: 'price-desc', label: 'Price (High to Low)' },
-      ]}
-      sortValue={sortBy}
-      onSortChange={(value) => setSortBy(value as any)}
-      items={filteredEvents}
-      renderItem={(event) => <EventCard event={event} />}
-      gridColumns={3}
-      gap="lg"
-      showResultsCount={true}
-      totalCount={events.length}
-      emptyState={{
-        icon: <Calendar />,
-        title: "No events found",
-        description: "Try adjusting your search or filters",
-        action: {
-          label: "Clear Filters",
-          onClick: clearFilters,
-        },
-      }}
-      loading={loading}
-      loadingCount={6}
-    />
+    <GridLayout
+      header={<Header />}
+      title="Discover Events"
+      description="Find your next unforgettable experience"
+      search={
+        <Input
+          type="search"
+          placeholder="Search events, venues..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+      }
+      columns={3}
+      footer={<Footer />}
+    >
+      {loading ? (
+        Array.from({ length: 6 }).map((_, i) => (
+          <div key={i} style={{ height: '400px', background: 'var(--color-bg-secondary)' }} />
+        ))
+      ) : filteredEvents.length > 0 ? (
+        filteredEvents.map((event) => {
+          const minPrice = event.ticket_types && event.ticket_types.length > 0
+            ? Math.min(...event.ticket_types.map(tt => parseFloat(tt.price)))
+            : null;
+          
+          return (
+            <EventCard
+              key={event.id}
+              title={event.name}
+              description={event.description}
+              imageUrl={event.hero_image_url || '/placeholder.jpg'}
+              imageAlt={event.name}
+              date={new Date(event.start_date).toLocaleDateString()}
+              location={event.venue_name || 'TBA'}
+              href={`/events/${event.id}`}
+              price={minPrice ? `$${minPrice.toFixed(2)}` : undefined}
+            />
+          );
+        })
+      ) : (
+        <div style={{ gridColumn: '1 / -1', textAlign: 'center', padding: 'var(--space-12)' }}>
+          <Typography variant="h3" as="p">
+            No events found
+          </Typography>
+          <Typography variant="body" as="p">
+            Try adjusting your search
+          </Typography>
+        </div>
+      )}
+    </GridLayout>
   );
 }
 

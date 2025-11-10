@@ -18,7 +18,7 @@
   justify-content: space-between;
   align-items: center;
   padding-block: var(--spacing-sm);
-  border-block-end: 1px solid var(--color-border);
+  border-block-end: var(--border-width-thin) solid var(--color-border);
 }
 
 .detailRow:last-child {
@@ -54,8 +54,8 @@
   align-items: center;
   padding: var(--spacing-md);
   background-color: var(--color-surface);
-  border-radius: var(--radius-md);
-  border: 1px solid var(--color-border);
+  border-radius: var(--radius-none)(--radius-md);
+  border: var(--border-width-thin) solid var(--color-border);
 }
 
 .ticketInfo {

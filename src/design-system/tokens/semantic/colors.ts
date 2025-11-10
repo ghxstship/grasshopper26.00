@@ -1,115 +1,118 @@
 /**
- * Semantic Color Tokens
- * Purpose-driven color assignments
+ * Semantic Color Tokens - Entertainment Platform
+ * Purpose-driven color assignments - monochromatic only
  * Components should ONLY use these, never primitive colors
  */
 
 import { primitiveColors } from '../primitives/colors';
 
 export const semanticColors = {
-  // Interactive elements
+  // Interactive elements - Entertainment Platform (black/white/grey)
   interactive: {
     primary: {
-      default: primitiveColors.brand[600],
-      hover: primitiveColors.brand[700],
-      active: primitiveColors.brand[800],
-      disabled: primitiveColors.neutral[300],
-      subtle: primitiveColors.brand[50],
+      default: primitiveColors.black,
+      hover: primitiveColors.grey[900],
+      active: primitiveColors.black,
+      disabled: primitiveColors.grey[300],
+      subtle: primitiveColors.grey[100],
     },
     secondary: {
-      default: primitiveColors.neutral[600],
-      hover: primitiveColors.neutral[700],
-      active: primitiveColors.neutral[800],
-      disabled: primitiveColors.neutral[300],
-      subtle: primitiveColors.neutral[50],
+      default: primitiveColors.grey[600],
+      hover: primitiveColors.grey[700],
+      active: primitiveColors.grey[800],
+      disabled: primitiveColors.grey[300],
+      subtle: primitiveColors.grey[100],
     },
     accent: {
-      default: primitiveColors.accent[500],
-      hover: primitiveColors.accent[600],
-      active: primitiveColors.accent[700],
-      disabled: primitiveColors.neutral[300],
-      subtle: primitiveColors.accent[50],
+      default: primitiveColors.white,
+      hover: primitiveColors.grey[100],
+      active: primitiveColors.grey[200],
+      disabled: primitiveColors.grey[300],
+      subtle: primitiveColors.grey[900],
     },
   },
   
-  // Status indicators
+  // Status indicators (monochromatic - use icons/text to differentiate)
   status: {
     success: {
-      default: primitiveColors.success[500],
-      bg: primitiveColors.success[50],
-      bgStrong: primitiveColors.success[100],
-      border: primitiveColors.success[300],
-      text: primitiveColors.success[700],
+      default: primitiveColors.black,
+      bg: primitiveColors.grey[100],
+      bgStrong: primitiveColors.grey[200],
+      border: primitiveColors.black,
+      text: primitiveColors.black,
     },
     error: {
-      default: primitiveColors.error[500],
-      bg: primitiveColors.error[50],
-      bgStrong: primitiveColors.error[100],
-      border: primitiveColors.error[300],
-      text: primitiveColors.error[700],
+      default: primitiveColors.black,
+      bg: primitiveColors.grey[100],
+      bgStrong: primitiveColors.grey[200],
+      border: primitiveColors.black,
+      text: primitiveColors.black,
     },
     warning: {
-      default: primitiveColors.warning[500],
-      bg: primitiveColors.warning[50],
-      bgStrong: primitiveColors.warning[100],
-      border: primitiveColors.warning[300],
-      text: primitiveColors.warning[700],
+      default: primitiveColors.black,
+      bg: primitiveColors.grey[100],
+      bgStrong: primitiveColors.grey[200],
+      border: primitiveColors.black,
+      text: primitiveColors.black,
     },
     info: {
-      default: primitiveColors.info[500],
-      bg: primitiveColors.info[50],
-      bgStrong: primitiveColors.info[100],
-      border: primitiveColors.info[300],
-      text: primitiveColors.info[700],
+      default: primitiveColors.black,
+      bg: primitiveColors.grey[100],
+      bgStrong: primitiveColors.grey[200],
+      border: primitiveColors.black,
+      text: primitiveColors.black,
     },
   },
   
-  // Text colors
+  // Text colors - Entertainment Platform
   text: {
-    primary: primitiveColors.neutral[900],
-    secondary: primitiveColors.neutral[600],
-    tertiary: primitiveColors.neutral[500],
-    disabled: primitiveColors.neutral[400],
-    inverse: primitiveColors.neutral[0],
-    brand: primitiveColors.brand[600],
-    accent: primitiveColors.accent[500],
-    success: primitiveColors.success[700],
-    error: primitiveColors.error[700],
-    warning: primitiveColors.warning[700],
-    info: primitiveColors.info[700],
+    primary: primitiveColors.black,
+    secondary: primitiveColors.grey[600],
+    tertiary: primitiveColors.grey[500],
+    disabled: primitiveColors.grey[400],
+    inverse: primitiveColors.white,
+    brand: primitiveColors.black,
+    accent: primitiveColors.white,
+    meta: primitiveColors.grey[500],
+    success: primitiveColors.black,
+    error: primitiveColors.black,
+    warning: primitiveColors.black,
+    info: primitiveColors.black,
   },
   
-  // Surface colors
+  // Surface colors - Entertainment Platform
   surface: {
-    primary: primitiveColors.neutral[0],
-    secondary: primitiveColors.neutral[50],
-    tertiary: primitiveColors.neutral[100],
-    raised: primitiveColors.neutral[0],
+    primary: primitiveColors.white,
+    secondary: primitiveColors.grey[100],
+    tertiary: primitiveColors.grey[200],
+    raised: primitiveColors.white,
     overlay: 'rgba(0, 0, 0, 0.5)',
     overlayLight: 'rgba(0, 0, 0, 0.3)',
     overlayStrong: 'rgba(0, 0, 0, 0.7)',
-    brand: primitiveColors.brand[50],
-    accent: primitiveColors.accent[50],
+    brand: primitiveColors.grey[100],
+    accent: primitiveColors.grey[900],
+    black: primitiveColors.black,
+    white: primitiveColors.white,
   },
   
-  // Border colors
+  // Border colors - Entertainment Platform
   border: {
-    default: primitiveColors.neutral[200],
-    strong: primitiveColors.neutral[300],
-    subtle: primitiveColors.neutral[100],
-    brand: primitiveColors.brand[500],
-    accent: primitiveColors.accent[500],
-    focus: primitiveColors.brand[500],
-    error: primitiveColors.error[500],
-    success: primitiveColors.success[500],
+    default: primitiveColors.grey[200],
+    strong: primitiveColors.black,
+    subtle: primitiveColors.grey[100],
+    brand: primitiveColors.black,
+    accent: primitiveColors.white,
+    focus: primitiveColors.black,
+    error: primitiveColors.black,
+    success: primitiveColors.black,
   },
   
-  // Gradient definitions (GHXSTSHIP: Monochromatic only)
+  // Gradient definitions (Monochromatic only - minimal use)
   gradients: {
-    brandPrimary: `linear-gradient(135deg, ${primitiveColors.neutral[900]} 0%, ${primitiveColors.neutral[800]} 100%)`,
-    brandSubtle: `linear-gradient(135deg, ${primitiveColors.neutral[50]} 0%, ${primitiveColors.neutral[0]} 100%)`,
-    brandDark: `linear-gradient(135deg, ${primitiveColors.neutral[950]} 0%, ${primitiveColors.neutral[900]} 100%)`,
-    heroBackground: `linear-gradient(to bottom right, ${primitiveColors.neutral[900]}, ${primitiveColors.neutral[950]}, ${primitiveColors.neutral[900]})`,
+    brandPrimary: `linear-gradient(135deg, ${primitiveColors.black} 0%, ${primitiveColors.grey[900]} 100%)`,
+    brandSubtle: `linear-gradient(135deg, ${primitiveColors.grey[100]} 0%, ${primitiveColors.white} 100%)`,
+    brandDark: `linear-gradient(135deg, ${primitiveColors.black} 0%, ${primitiveColors.grey[900]} 100%)`,
+    heroBackground: `linear-gradient(to bottom right, ${primitiveColors.black}, ${primitiveColors.grey[900]}, ${primitiveColors.black})`,
   },
 } as const;
 

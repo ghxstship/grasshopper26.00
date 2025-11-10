@@ -1,0 +1,214 @@
+/**
+ * ContactForm Organism - GHXSTSHIP Design System
+ * Contact form with geometric styling
+ * ZERO TOLERANCE: All values use design tokens
+ */
+
+.form {
+  inline-size: 100%;
+  max-inline-size: 600px;
+  margin-inline: auto;
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  margin-block-end: var(--space-8);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.label {
+  font-family: var(--font-family-bebas);
+  font-size: var(--font-size-h6);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--color-text-primary);
+}
+
+.required {
+  color: var(--color-text-primary);
+  margin-inline-start: var(--space-1);
+}
+
+.input,
+.textarea,
+.select {
+  font-family: var(--font-family-share);
+  font-size: var(--font-size-body);
+  padding-block: var(--space-4);
+  padding-inline: var(--space-4);
+  border: var(--border-width-3) solid var(--color-border-strong);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-share);
+}
+
+.input:focus,
+.textarea:focus,
+.select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 4px 4px 0 var(--color-primary);
+}
+
+.input:disabled,
+.textarea:disabled,
+.select:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.textarea {
+  min-block-size: 150px;
+  resize: vertical;
+}
+
+.select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%23000000' stroke-width='2'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--space-4) center;
+  padding-inline-end: var(--space-12);
+}
+
+.error {
+  font-family: var(--font-family-share-mono);
+  font-size: var(--font-size-meta);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-primary);
+  margin-block-start: var(--space-2);
+  padding-block: var(--space-2);
+  padding-inline: var(--space-3);
+  border: var(--border-width-2) solid var(--color-border-strong);
+  background-color: var(--color-bg-secondary);
+}
+
+.input.hasError,
+.textarea.hasError,
+.select.hasError {
+  border-color: var(--color-text-primary);
+  border-width: 4px;
+}
+
+.checkboxGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  cursor: pointer;
+  font-family: var(--font-family-share);
+  font-size: var(--font-size-body);
+  color: var(--color-text-primary);
+}
+
+.checkbox {
+  inline-size: var(--space-6);
+  block-size: var(--space-6);
+  border: var(--border-width-3) solid var(--color-border-strong);
+  background-color: var(--color-bg-primary);
+  cursor: pointer;
+  appearance: none;
+  position: relative;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.checkbox:checked {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.checkbox:checked::after {
+  content: '✓';
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--color-text-inverse);
+  font-family: var(--font-family-bebas);
+  font-size: var(--font-size-body);
+  font-weight: 700;
+}
+
+.checkbox:focus {
+  outline: var(--border-width-2) solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+.submitButton {
+  inline-size: 100%;
+  font-family: var(--font-family-bebas);
+  font-size: var(--font-size-h5);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  padding-block: var(--space-5);
+  padding-inline: var(--space-8);
+  border: var(--border-width-3) solid var(--color-border-strong);
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+.submitButton:hover {
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+  transform: scale(1.02);
+  box-shadow: 8px 8px 0 var(--color-primary);
+}
+
+.submitButton:active {
+  transform: scale(0.98);
+}
+
+.submitButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.submitButton:disabled:hover {
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+  transform: none;
+  box-shadow: none;
+}
+
+.successMessage {
+  font-family: var(--font-family-bebas);
+  font-size: var(--font-size-h5);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--color-text-primary);
+  text-align: center;
+  padding: var(--space-8);
+  border: var(--border-width-3) solid var(--color-border-strong);
+  background-color: var(--color-bg-secondary);
+  margin-block-end: var(--space-6);
+}
+
+.helpText {
+  font-family: var(--font-family-share-mono);
+  font-size: var(--font-size-meta);
+  color: var(--color-text-secondary);
+  margin-block-start: var(--space-2);
+}

@@ -7,7 +7,7 @@
 
 import * as Sentry from '@sentry/nextjs';
 import { useEffect } from 'react';
-import { Button } from '@/design-system/components/atoms/button';
+import { Button } from '@/design-system/components/atoms/Button';
 import styles from './global-error.module.css';
 
 export default function GlobalError({
@@ -35,7 +35,7 @@ export default function GlobalError({
             </p>
             <Button
               onClick={reset}
-              variant="outline"
+              variant="outlined"
             >
               TRY AGAIN
             </Button>

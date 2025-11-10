@@ -9,25 +9,23 @@ export default function SchedulePage() {
   const { events, loading } = useSchedule();
 
   return (
-    <PortalDashboardTemplate
-      greeting="My Schedule"
-      userInfo={<span>Your upcoming events</span>}
-      sections={[
-        {
-          id: 'schedule',
-          title: 'Upcoming Events',
-          content: <ScheduleList events={events} />,
-          isEmpty: events.length === 0,
-          emptyState: {
-            icon: <Calendar />,
-            title: 'No events scheduled',
-            description: 'Get tickets to see events here',
-            action: { label: 'Browse Events', onClick: () => window.location.href = '/events' },
-          },
-        },
-      ]}
-      layout="single-column"
-      loading={loading}
-    />
+    <PortalDashboardTemplate>
+      <div>
+        <h1>My Schedule</h1>
+        <p>Your upcoming events</p>
+        {loading ? (
+          <div>Loading...</div>
+        ) : events.length > 0 ? (
+          <ScheduleList events={events} />
+        ) : (
+          <div>
+            <Calendar />
+            <h2>No events scheduled</h2>
+            <p>Get tickets to see events here</p>
+            <button onClick={() => window.location.href = '/events'}>Browse Events</button>
+          </div>
+        )}
+      </div>
+    </PortalDashboardTemplate>
   );
 }

@@ -1,0 +1,53 @@
+/**
+ * ArtistName Styles
+ * GHXSTSHIP Entertainment Platform
+ * BEBAS NEUE artist names
+ */
+
+.name {
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-normal);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-tight);
+}
+
+.headliner {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+}
+
+/* ========================================
+   SIZES
+   ======================================== */
+
+.sm {
+  font-size: var(--font-size-sm);
+}
+
+.md {
+  font-size: var(--font-size-base);
+}
+
+.lg {
+  font-size: var(--font-size-xl);
+}
+
+.xl {
+  font-size: var(--font-size-3xl);
+}
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+.dark .name,
+[data-theme="dark"] .name {
+  color: var(--color-text-primary);
+}
+
+.dark .headliner,
+[data-theme="dark"] .headliner {
+  color: var(--color-accent);
+}

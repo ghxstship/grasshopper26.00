@@ -13,7 +13,7 @@
 
 /* Header */
 .headerBorder {
-  border-block-end: 3px solid var(--color-black);
+  border-block-end: var(--border-width-3) solid var(--color-black);
   background-color: var(--color-white);
 }
 
@@ -46,7 +46,7 @@
 }
 
 .statCard {
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   background-color: var(--color-grey-50);
   padding: var(--space-4);
 }
@@ -67,7 +67,7 @@
 
 /* Filter Tabs */
 .tabsBorder {
-  border-block-end: 2px solid var(--color-grey-200);
+  border-block-end: var(--border-width-2) solid var(--color-grey-200);
   background-color: var(--color-grey-50);
 }
 
@@ -80,7 +80,7 @@
 
 .tab {
   flex-shrink: 0;
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   padding-inline: var(--space-4);
   padding-block: var(--space-2);
   font-family: var(--font-bebas);
@@ -103,7 +103,7 @@
 
 /* Search Section */
 .searchBorder {
-  border-block-end: 2px solid var(--color-grey-200);
+  border-block-end: var(--border-width-2) solid var(--color-grey-200);
   background-color: var(--color-white);
 }
 
@@ -143,7 +143,7 @@
 
 .searchInput {
   inline-size: 100%;
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   background-color: var(--color-white);
   padding-block: var(--space-3);
   padding-inline-start: var(--space-12);
@@ -161,7 +161,7 @@
   align-items: center;
   justify-content: center;
   gap: var(--space-2);
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   background-color: var(--color-black);
   color: var(--color-white);
   padding-inline: var(--space-6);
@@ -197,7 +197,7 @@
   animation: spin 1s linear infinite;
   border: 4px solid var(--color-black);
   border-block-start-color: transparent;
-  border-radius: 0;
+  border-radius: var(--radius-none);
 }
 
 @keyframes spin {
@@ -231,16 +231,16 @@
 
 .table {
   inline-size: 100%;
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
 }
 
 .tableHead {
-  border-block-end: 3px solid var(--color-black);
+  border-block-end: var(--border-width-3) solid var(--color-black);
   background-color: var(--color-grey-50);
 }
 
 .tableHeader {
-  border-inline-end: 2px solid var(--color-grey-300);
+  border-inline-end: var(--border-width-2) solid var(--color-grey-300);
   padding-inline: var(--space-4);
   padding-block: var(--space-3);
   text-align: start;
@@ -254,7 +254,7 @@
 }
 
 .tableRow {
-  border-block-end: 2px solid var(--color-grey-200);
+  border-block-end: var(--border-width-2) solid var(--color-grey-200);
   transition: background-color var(--duration-fast) var(--easing-out);
 }
 
@@ -267,7 +267,7 @@
 }
 
 .tableCell {
-  border-inline-end: 2px solid var(--color-grey-200);
+  border-inline-end: var(--border-width-2) solid var(--color-grey-200);
   padding-inline: var(--space-4);
   padding-block: var(--space-4);
 }
@@ -346,7 +346,7 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   background-color: var(--color-white);
   padding-inline: var(--space-4);
   padding-block: var(--space-2);
@@ -456,7 +456,7 @@
 }
 
 .rounded {
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-none)(--radius-md);
 }
 
 .shadow {

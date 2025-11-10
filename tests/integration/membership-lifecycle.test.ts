@@ -4,7 +4,7 @@
  */
 
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
-import { createClient } from '@/lib/supabase/server';
+import { createClient } from '@/lib/supabase/client';
 
 describe('Membership Lifecycle Integration', () => {
   let supabase: ReturnType<typeof createClient>;

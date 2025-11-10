@@ -1,0 +1,46 @@
+/**
+ * ProgressBar Component Styles
+ * GHXSTSHIP Monochromatic Design System
+ */
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.progressBar {
+  position: relative;
+  inline-size: 100%;
+  background-color: var(--color-grey-200);
+  border: var(--border-width-thick) solid var(--color-black);
+  overflow: hidden;
+}
+
+.fill {
+  block-size: 100%;
+  background-color: var(--color-black);
+  transition: width var(--transition-standard) var(--easing-standard);
+}
+
+.label {
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-meta);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-text-primary);
+  white-space: nowrap;
+}
+
+/* Size variants */
+.sm {
+  block-size: 8px;
+}
+
+.md {
+  block-size: 12px;
+}
+
+.lg {
+  block-size: 16px;
+}

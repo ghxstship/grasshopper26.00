@@ -4,8 +4,9 @@
  */
 
 /**
- * Auth Pages Shared Styles
- * Design system compliant - CSS Modules, design tokens, logical properties
+ * Auth Pages Styles
+ * GHXSTSHIP Monochromatic Design System
+ * CSS Modules, design tokens, logical properties
  * Note: Most styles now handled by AuthCardTemplate
  */
 
@@ -14,24 +15,28 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-2);
-}
-
-.labelRow {
-  display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
+.labelRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .forgotLink {
-  font-size: var(--font-size-sm);
-  color: var(--color-brand-primary);
-  text-decoration: none;
-  transition: color var(--transition-fast);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-meta);
+  color: var(--color-text-secondary);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+  transition: opacity 0.2s ease;
 }
 
 .forgotLink:hover {
-  color: var(--color-brand-primary-hover);
-  text-decoration: underline;
+  opacity: 0.7;
 }
 
 /* Legacy styles below - can be removed after full migration */
@@ -86,20 +91,83 @@
 }
 
 /* Divider */
-.divider {
-  margin-block: var(--space-6);
+.authContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.title {
+  text-align: center;
+  margin-block-end: var(--space-2);
+}
+
+.description {
+  text-align: center;
+  color: var(--color-text-secondary);
+  margin-block-end: var(--space-4);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.formField {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.label {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-meta);
+  text-transform: uppercase;
+  color: var(--color-text-primary);
 }
 
 .dividerLine {
   inline-size: 100%;
-  border-block-start: 3px solid var(--color-black);
+  border-block-start: var(--border-width-3) solid var(--color-black);
 }
 
-/* Responsive */
-@media (max-width: 640px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
+.divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-block: var(--space-4);
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 3px;
+  background-color: var(--color-border-default);
+}
+
+.divider span {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-meta);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.oauthButtons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+}
+
+.footer {
+  text-align: center;
+}
+
+.footerText {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-meta);
+  color: var(--color-text-secondary);
 }
 
 /* Cards */
@@ -107,7 +175,7 @@
   inline-size: 100%;
   max-inline-size: 28rem;
   background-color: var(--color-white);
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
 }
 
 /* Typography */
@@ -127,12 +195,15 @@
 .link {
   font-family: var(--font-share);
   font-size: var(--font-size-sm);
-  color: var(--color-black);
+  color: var(--color-text-primary);
   text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+  transition: opacity 0.2s ease;
 }
 
 .link:hover {
-  color: var(--color-grey-700);
+  opacity: 0.7;
 }
 
 .footerText {
@@ -140,81 +211,12 @@
   font-family: var(--font-share);
   font-size: var(--font-size-sm);
   color: var(--color-grey-600);
-}
-
-/* Divider Text */
-.dividerText {
-  position: relative;
-  display: flex;
-  justify-content: center;
-}
-
-.dividerLabel {
-  background-color: var(--color-white);
-  padding-inline: var(--space-2);
-  font-family: var(--font-bebas);
-  font-size: var(--font-size-base);
-  text-transform: uppercase;
-  color: var(--color-grey-600);
-}
-
-/* Utilities */
-.fullWidth {
-  inline-size: 100%;
-}
-
-.textCenter {
-  text-align: center;
-}
-
-/* Error/Success boxes */
-.errorBox {
-  background-color: var(--color-grey-100);
-  border: 3px solid var(--color-black);
-  padding: var(--space-3);
-}
-
-.errorText {
-  font-family: var(--font-share);
-  font-size: var(--font-size-sm);
-  color: var(--color-black);
-}
-
-/* Loading */
-.loadingIcon {
-  block-size: var(--space-16);
-  inline-size: var(--space-16);
-  color: var(--color-black);
-  margin-inline: auto;
-  margin-block-end: var(--space-4);
-}
-
-.successIcon {
-  block-size: var(--space-16);
-  inline-size: var(--space-16);
-  color: var(--color-black);
-  margin-inline: auto;
-  margin-block-end: var(--space-4);
-}
-
-.subtitle {
-  font-family: var(--font-bebas);
-  font-size: var(--font-size-h2);
-  text-transform: uppercase;
-  color: var(--color-black);
-  margin-block-end: var(--space-2);
-}
-
-.bodyText {
-  font-family: var(--font-share);
-  font-size: var(--font-size-base);
-  color: var(--color-grey-600);
   margin-block-end: var(--space-6);
 }
 
 .metaText {
   font-family: var(--font-share);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-meta);
   color: var(--color-grey-500);
   margin-block-end: var(--space-6);
 }
@@ -241,7 +243,7 @@
   justify-content: space-between;
   align-items: center;
   margin-block-end: var(--space-8);
-  border-block-end: 3px solid var(--color-black);
+  border-block-end: var(--border-width-3) solid var(--color-black);
   padding-block-end: var(--space-4);
 }
 
@@ -254,13 +256,13 @@
 
 .tabsList {
   background-color: var(--color-grey-100);
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
 }
 
 .avatar {
   block-size: 5rem;
   inline-size: 5rem;
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
 }
 
 .avatarFallback {
@@ -286,7 +288,7 @@
 .textarea {
   display: flex;
   inline-size: 100%;
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   background-color: var(--color-white);
   padding-inline: var(--space-3);
   padding-block: var(--space-2);

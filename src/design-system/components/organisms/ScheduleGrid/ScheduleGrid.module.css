@@ -1,0 +1,293 @@
+/**
+ * ScheduleGrid Styles
+ * GHXSTSHIP Entertainment Platform
+ * Excel-style grid, thick lines (2px), BEBAS NEUE headers, alternating rows
+ */
+
+.scheduleGrid {
+  width: 100%;
+  overflow-x: auto;
+  
+  border: var(--border-width-3) solid var(--color-border-strong);
+  border-radius: var(--radius-none)(--radius-none);
+  background-color: var(--color-bg-primary);
+}
+
+.gridContainer {
+  min-width: 800px;
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* ========================================
+   HEADER ROW
+   ======================================== */
+
+.headerRow {
+  display: grid;
+  grid-template-columns: 120px repeat(auto-fit, minmax(200px, 1fr));
+  
+  border-block-end: var(--border-width-3) solid var(--color-border-strong);
+  background-color: var(--color-primary);
+}
+
+.timeHeader,
+.stageHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  padding: var(--space-4);
+  
+  font-family: var(--font-heading);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  text-align: center;
+  
+  color: var(--color-text-inverse);
+  
+  border-inline-end: var(--border-width-2) solid var(--color-border-accent);
+}
+
+.timeHeader:last-child,
+.stageHeader:last-child {
+  border-inline-end: none;
+}
+
+/* ========================================
+   ROWS
+   ======================================== */
+
+.row {
+  display: grid;
+  grid-template-columns: 120px repeat(auto-fit, minmax(200px, 1fr));
+  
+  border-block-end: var(--border-width-2) solid var(--color-border-default);
+}
+
+.row:last-child {
+  border-block-end: none;
+}
+
+.rowEven {
+  background-color: var(--color-bg-primary);
+}
+
+.rowOdd {
+  background-color: var(--color-bg-secondary);
+}
+
+.row:hover {
+  background-color: var(--color-bg-tertiary);
+}
+
+/* ========================================
+   CELLS
+   ======================================== */
+
+.timeCell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  padding: var(--space-3);
+  
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-widest);
+  text-transform: uppercase;
+  text-align: center;
+  
+  color: var(--color-text-secondary);
+  
+  border-inline-end: var(--border-width-2) solid var(--color-border-default);
+  background-color: var(--color-bg-secondary);
+}
+
+.slotCell {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  
+  padding: var(--space-3);
+  min-height: 80px;
+  
+  border-inline-end: var(--border-width-2) solid var(--color-border-default);
+  
+  transition: all var(--duration-fast) var(--easing-out);
+}
+
+.slotCell:last-child {
+  border-inline-end: none;
+}
+
+.slotCellFilled {
+  cursor: pointer;
+  background-color: var(--color-bg-primary);
+}
+
+.slotCellFilled:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-border-accent);
+  transform: scale(1.02);
+  z-index: 1;
+  box-shadow: var(--shadow-md);
+}
+
+.slotCellFilled:active {
+  transform: scale(0.99);
+}
+
+.slotCellFilled:focus-visible {
+  outline: var(--border-width-2) solid var(--color-border-focus);
+  outline-offset: -2px;
+  z-index: 2;
+}
+
+/* ========================================
+   SLOT CONTENT
+   ======================================== */
+
+.artistName {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  line-height: var(--line-height-tight);
+  
+  color: var(--color-text-primary);
+  
+  transition: color var(--duration-fast) var(--easing-out);
+}
+
+.slotCellFilled:hover .artistName {
+  color: var(--color-text-inverse);
+}
+
+.timeRange {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-normal);
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  
+  color: var(--color-text-secondary);
+  
+  transition: color var(--duration-fast) var(--easing-out);
+}
+
+.slotCellFilled:hover .timeRange {
+  color: var(--color-text-tertiary);
+}
+
+.notes {
+  font-family: var(--font-body);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-snug);
+  
+  color: var(--color-text-tertiary);
+  
+  margin-block-start: var(--space-1);
+  
+  transition: color var(--duration-fast) var(--easing-out);
+}
+
+.slotCellFilled:hover .notes {
+  color: var(--color-text-secondary);
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 1024px) {
+  .headerRow,
+  .row {
+    grid-template-columns: 100px repeat(auto-fit, minmax(180px, 1fr));
+  }
+  
+  .timeHeader,
+  .stageHeader {
+    font-size: var(--font-size-base);
+    padding: var(--space-3);
+  }
+  
+  .artistName {
+    font-size: var(--font-size-sm);
+  }
+}
+
+@media (max-width: 768px) {
+  .gridContainer {
+    min-width: 600px;
+  }
+  
+  .headerRow,
+  .row {
+    grid-template-columns: 80px repeat(auto-fit, minmax(150px, 1fr));
+  }
+  
+  .timeHeader,
+  .stageHeader {
+    font-size: var(--font-size-sm);
+    padding: var(--space-2);
+  }
+  
+  .slotCell {
+    padding: var(--space-2);
+    min-height: 70px;
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .slotCell {
+    transition: none;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .scheduleGrid {
+    border-width: var(--border-width-4);
+  }
+  
+  .headerRow,
+  .row {
+    border-block-end-width: var(--border-width-3);
+  }
+  
+  .timeCell,
+  .slotCell {
+    border-inline-end-width: var(--border-width-3);
+  }
+}
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+.dark .scheduleGrid,
+[data-theme="dark"] .scheduleGrid {
+  border-color: var(--color-border-strong);
+}
+
+.dark .headerRow,
+[data-theme="dark"] .headerRow {
+  background-color: var(--color-primary);
+}
+
+.dark .slotCellFilled:hover,
+[data-theme="dark"] .slotCellFilled:hover {
+  box-shadow: var(--shadow-white-md);
+}

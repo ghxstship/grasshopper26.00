@@ -1,0 +1,242 @@
+/**
+ * IncidentBoard Styles
+ * GHXSTSHIP Monochromatic Design System
+ */
+
+.board {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+  padding: var(--spacing-6);
+  border: var(--border-width-thick) solid var(--color-black);
+  background-color: var(--color-white);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block-end: var(--spacing-4);
+  border-block-end: var(--border-width-thick) solid var(--color-black);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-anton);
+  font-size: var(--font-size-h2);
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.reportButton {
+  padding: var(--spacing-3) var(--spacing-4);
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-h5);
+  text-transform: uppercase;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border: none;
+  cursor: pointer;
+  transition: transform var(--transition-fast) var(--easing-standard);
+}
+
+.reportButton:hover {
+  transform: scale(1.05);
+}
+
+.summary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-4);
+}
+
+.summaryCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  padding: var(--spacing-4);
+  border: var(--border-width-thick) solid var(--color-black);
+}
+
+.summaryCard.critical {
+  background-color: var(--color-grey-900);
+  color: var(--color-white);
+}
+
+.summaryLabel {
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-h6);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.summaryValue {
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-h3);
+  font-weight: 700;
+}
+
+.filters {
+  display: flex;
+  gap: var(--spacing-2);
+}
+
+.filterButton {
+  padding: var(--spacing-2) var(--spacing-4);
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-h6);
+  text-transform: uppercase;
+  background-color: var(--color-white);
+  border: var(--border-width-thick) solid var(--color-black);
+  cursor: pointer;
+  transition: all var(--transition-fast) var(--easing-standard);
+}
+
+.filterButton:hover {
+  background-color: var(--color-grey-100);
+}
+
+.filterButton.active {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  padding: var(--spacing-4);
+  border: var(--border-width-thick) solid var(--color-black);
+  background-color: var(--color-white);
+  cursor: pointer;
+  transition: all var(--transition-fast) var(--easing-standard);
+}
+
+.card.critical {
+  border-inline-start-width: calc(var(--border-width-thick) * 3);
+  background-color: var(--color-grey-900);
+  color: var(--color-white);
+}
+
+.card.high {
+  border-inline-start-width: calc(var(--border-width-thick) * 2);
+}
+
+.card:hover {
+  background-color: var(--color-grey-100);
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 0 0 var(--color-black);
+}
+
+.card.critical:hover {
+  background-color: var(--color-grey-800);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.badges {
+  display: flex;
+  gap: var(--spacing-2);
+}
+
+.severity,
+.type {
+  padding: var(--spacing-1) var(--spacing-2);
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-meta);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.severity.critical {
+  background-color: var(--color-grey-900);
+  color: var(--color-white);
+}
+
+.severity.high {
+  background-color: var(--color-grey-700);
+  color: var(--color-white);
+}
+
+.severity.medium {
+  background-color: var(--color-grey-400);
+}
+
+.severity.low {
+  background-color: var(--color-grey-200);
+}
+
+.type {
+  border: 1px solid var(--color-black);
+}
+
+.status {
+  padding: var(--spacing-1) var(--spacing-2);
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-meta);
+  text-transform: uppercase;
+  border: 1px solid var(--color-black);
+}
+
+.status.reported {
+  background-color: var(--color-grey-200);
+}
+
+.status.investigating {
+  background-color: var(--color-grey-400);
+}
+
+.status.resolved {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.status.escalated {
+  background-color: var(--color-grey-900);
+  color: var(--color-white);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.incidentNumber {
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-body);
+  font-weight: 700;
+}
+
+.description {
+  margin: 0;
+  font-family: var(--font-share);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-relaxed);
+}
+
+.meta {
+  display: flex;
+  gap: var(--spacing-4);
+  padding-block-start: var(--spacing-2);
+  border-block-start: 1px solid var(--color-grey-300);
+}
+
+.card.critical .meta {
+  border-block-start-color: var(--color-grey-700);
+}
+
+.metaItem {
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-meta);
+}

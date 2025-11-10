@@ -6,9 +6,13 @@
 'use client';
 
 import { useState } from 'react';
-import { PublicBrowseTemplate } from '@/design-system/components/templates';
+import { GridLayout } from '@/design-system/components/templates/GridLayout/GridLayout';
+import { Header } from '@/design-system/components/organisms/Header/Header';
+import { Footer } from '@/design-system/components/organisms/Footer/Footer';
+import { Input } from '@/design-system/components/atoms/Input/Input';
+import { Typography } from '@/design-system/components/atoms/Typography/Typography';
 import { Package } from 'lucide-react';
-import { ProductCard } from '@/design-system/components/organisms/shop/product-card';
+import styles from './shop-client.module.css';
 
 interface Product {
   id: string;
@@ -51,38 +55,35 @@ export function ShopBrowseClient({ initialProducts, initialSearch }: ShopBrowseC
     });
 
   return (
-    <PublicBrowseTemplate
-      title="SHOP"
-      subtitle="Official GVTEWAY merchandise. Limited edition items, event exclusives, and more."
-      heroGradient={true}
-      searchPlaceholder="Search products..."
-      searchValue={searchQuery}
-      onSearchChange={setSearchQuery}
-      showSearch={true}
-      sortOptions={[
-        { value: 'created-desc', label: 'Newest First' },
-        { value: 'name-asc', label: 'Name (A-Z)' },
-        { value: 'name-desc', label: 'Name (Z-A)' },
-        { value: 'price-asc', label: 'Price (Low to High)' },
-        { value: 'price-desc', label: 'Price (High to Low)' },
-      ]}
-      sortValue={sortBy}
-      onSortChange={setSortBy}
-      items={filteredProducts}
-      renderItem={(product) => <ProductCard product={product} />}
-      gridColumns={4}
-      gap="lg"
-      showResultsCount={true}
-      totalCount={initialProducts.length}
-      emptyState={{
-        icon: <Package />,
-        title: "No products found",
-        description: "Try adjusting your search",
-        action: {
-          label: "Clear Search",
-          onClick: () => setSearchQuery(''),
-        },
-      }}
-    />
+    <GridLayout
+      header={<Header />}
+      title="Shop"
+      description="Official GVTEWAY merchandise. Limited edition items, event exclusives, and more."
+      search={
+        <Input
+          type="search"
+          placeholder="Search products..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+      }
+      columns={4}
+      footer={<Footer />}
+    >
+      {filteredProducts.length > 0 ? (
+        filteredProducts.map(product => (
+          <div key={product.id} className={styles.productCard}>
+            <Typography variant="h4" as="div">{product.name}</Typography>
+            <Typography variant="body" as="div">${product.price}</Typography>
+          </div>
+        ))
+      ) : (
+        <div className={styles.emptyState}>
+          <Package className={styles.emptyIcon} />
+          <Typography variant="h3" as="p">No products found</Typography>
+          <Typography variant="body" as="p">Try adjusting your search</Typography>
+        </div>
+      )}
+    </GridLayout>
   );
 }

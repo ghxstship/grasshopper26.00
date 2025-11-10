@@ -29,7 +29,7 @@
 
 .button {
   padding: var(--space-2) var(--space-4);
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   cursor: pointer;
 }
 
@@ -44,7 +44,7 @@
 }
 
 .card {
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   padding: var(--space-4);
 }
 
@@ -143,7 +143,7 @@
 }
 
 .rounded {
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-none)(--radius-md);
 }
 
 .shadow {

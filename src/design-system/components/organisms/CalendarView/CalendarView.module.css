@@ -1,0 +1,109 @@
+/**
+ * CalendarView Styles
+ * GHXSTSHIP Monochromatic Design System
+ */
+
+.calendar {
+  display: flex;
+  flex-direction: column;
+  border: var(--border-width-thick) solid var(--color-black);
+  background-color: var(--color-white);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-4);
+  border-block-end: var(--border-width-thick) solid var(--color-black);
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-anton);
+  font-size: var(--font-size-h3);
+  text-transform: uppercase;
+}
+
+.navButton {
+  padding: var(--spacing-2) var(--spacing-3);
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-h5);
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border: none;
+  cursor: pointer;
+}
+
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background-color: var(--color-grey-200);
+  border-block-end: var(--border-width-thick) solid var(--color-black);
+}
+
+.weekday {
+  padding: var(--spacing-2);
+  text-align: center;
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-h6);
+  text-transform: uppercase;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.day {
+  min-block-size: 120px;
+  padding: var(--spacing-2);
+  border: 1px solid var(--color-grey-300);
+  cursor: pointer;
+}
+
+.day:hover {
+  background-color: var(--color-grey-100);
+}
+
+.dayNumber {
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-body);
+  font-weight: 700;
+}
+
+.dayEvents {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+  margin-block-start: var(--spacing-2);
+}
+
+.event {
+  padding: var(--spacing-1);
+  font-family: var(--font-share);
+  font-size: var(--font-size-meta);
+  background-color: var(--color-grey-200);
+  border-inline-start: var(--border-width-thick) solid var(--color-black);
+}
+
+.moreEvents {
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-meta);
+  color: var(--color-text-secondary);
+}
+
+.addEventButton {
+  position: absolute;
+  inset-block-end: var(--spacing-1);
+  inset-inline-end: var(--spacing-1);
+  inline-size: 24px;
+  block-size: 24px;
+  font-size: var(--font-size-h6);
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border: none;
+  cursor: pointer;
+}

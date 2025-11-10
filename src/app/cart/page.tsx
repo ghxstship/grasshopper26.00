@@ -1,37 +1,77 @@
 'use client';
 
-import { PortalDashboardTemplate } from '@/design-system/components/templates';
-import { ShoppingCart, Trash2 } from 'lucide-react';
+import { SplitLayout } from '@/design-system/components/templates/SplitLayout/SplitLayout';
+import { Header } from '@/design-system/components/organisms/Header/Header';
+import { Footer } from '@/design-system/components/organisms/Footer/Footer';
+import { Typography } from '@/design-system/components/atoms/Typography/Typography';
+import { Button } from '@/design-system/components/atoms/Button/Button';
+import { ShoppingCart } from 'lucide-react';
 import { useCart } from '@/hooks/useCart';
-import { CartItemsList } from '@/design-system/components/organisms/cart/cart-items-list';
+import Link from 'next/link';
+import styles from './cart.module.css';
 
 export default function CartPage() {
   const { items, total, loading } = useCart();
 
   return (
-    <PortalDashboardTemplate
-      greeting="Shopping Cart"
-      userInfo={<span>{items.length} items in cart</span>}
-      statsCards={[
-        { label: 'Items', value: items.length, icon: <ShoppingCart /> },
-        { label: 'Total', value: `$${total}`, icon: <ShoppingCart /> },
-      ]}
-      sections={[
-        {
-          id: 'cart',
-          title: 'Your Cart',
-          content: <CartItemsList items={items} />,
-          isEmpty: items.length === 0,
-          emptyState: {
-            icon: <ShoppingCart />,
-            title: 'Your cart is empty',
-            description: 'Browse events and shop to add items',
-            action: { label: 'Browse Events', onClick: () => window.location.href = '/events' },
-          },
-        },
-      ]}
-      layout="single-column"
-      loading={loading}
+    <SplitLayout
+      header={<Header />}
+      left={
+        <div className={styles.cartContent}>
+          <Typography variant="h2" as="h1">
+            Shopping Cart
+          </Typography>
+          
+          {loading ? (
+            <div className={styles.loading}>
+              <Typography variant="body" as="p">Loading cart...</Typography>
+            </div>
+          ) : items && items.length > 0 ? (
+            <div className={styles.itemsList}>
+              {items.map((item: any) => (
+                <div key={item.id} className={styles.cartItem}>
+                  <Typography variant="body" as="div">{item.name}</Typography>
+                  <Typography variant="body" as="div">${item.price}</Typography>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className={styles.empty}>
+              <ShoppingCart className={styles.emptyIcon} />
+              <Typography variant="h3" as="p">Your cart is empty</Typography>
+              <Typography variant="body" as="p">
+                Browse events and shop to add items
+              </Typography>
+              <Link href="/events">
+                <Button variant="filled">Browse Events</Button>
+              </Link>
+            </div>
+          )}
+        </div>
+      }
+      right={
+        <div className={styles.summary}>
+          <Typography variant="h3" as="h2">
+            Order Summary
+          </Typography>
+          <div className={styles.summaryRow}>
+            <Typography variant="body" as="div">Items</Typography>
+            <Typography variant="body" as="div">{items?.length || 0}</Typography>
+          </div>
+          <div className={styles.summaryRow}>
+            <Typography variant="h4" as="div">Total</Typography>
+            <Typography variant="h4" as="div">${total || 0}</Typography>
+          </div>
+          <Link href="/checkout">
+            <Button variant="filled" fullWidth disabled={!items || items.length === 0}>
+              Proceed to Checkout
+            </Button>
+          </Link>
+        </div>
+      }
+      footer={<Footer />}
+      ratio="60-40"
+      stickySide="right"
     />
   );
 }

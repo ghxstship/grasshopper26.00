@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import Image from 'next/image';
 import { ArrowLeft, X } from 'lucide-react';
-import { GeometricIcon } from '@/design-system/components/atoms/GeometricIcon';
+import { GeometricShape } from '@/design-system/components/atoms/GeometricShape';
 import { QuantitySelector } from '@/design-system/components/atoms/QuantitySelector';
 import { useAdvanceCart } from '@/contexts/AdvanceCartContext';
 import { CatalogItem, CatalogItemModifier } from '@/lib/types/production-advances';
@@ -88,7 +88,7 @@ export default function CatalogItemDetailPage() {
   if (!item) {
     return (
       <div className={styles.emptyState}>
-        <GeometricIcon name="alert" size="xl" className={styles.emptyIcon} />
+        <GeometricShape name="alert" size="xl" className={styles.emptyIcon} />
         <p className={styles.emptyText}>Item not found</p>
         <button
           type="button"
@@ -132,7 +132,7 @@ export default function CatalogItemDetailPage() {
               />
             ) : (
               <div className={styles.imagePlaceholder}>
-                <GeometricIcon name="package" size="xl" className={styles.placeholderIcon} />
+                <GeometricShape name="package" size="xl" className={styles.placeholderIcon} />
               </div>
             )}
 
@@ -289,7 +289,7 @@ export default function CatalogItemDetailPage() {
                 )}
               >
                 ADD TO ADVANCE ({quantity})
-                <GeometricIcon name="arrow-right" size="md" />
+                <GeometricShape name="arrow-right" size="md" />
               </button>
             </div>
 

@@ -17,7 +17,7 @@
   font-size: var(--font-size-hero);
   text-transform: uppercase;
   margin-block-end: var(--space-8);
-  border-block-end: 3px solid var(--color-black);
+  border-block-end: var(--border-width-3) solid var(--color-black);
   padding-block-end: var(--space-4);
 }
 
@@ -172,7 +172,7 @@
 }
 
 .rounded {
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-none)(--radius-md);
 }
 
 .shadow {

@@ -9,7 +9,7 @@
   padding-block: var(--space-12);
   padding-inline: var(--space-4);
   background-color: var(--color-white);
-  border-block-end: 3px solid var(--color-black);
+  border-block-end: var(--border-width-3) solid var(--color-black);
 }
 
 .content {
@@ -24,7 +24,7 @@
   color: var(--color-black);
   margin-block-end: var(--space-8);
   padding-block-end: var(--space-8);
-  border-block-end: 3px solid var(--color-black);
+  border-block-end: var(--border-width-3) solid var(--color-black);
 }
 
 /* Grid Layout */
@@ -57,12 +57,12 @@
 /* Cards */
 .card {
   background-color: var(--color-white);
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
 }
 
 .cardGrey {
   background-color: var(--color-grey-100);
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   position: sticky;
   inset-block-start: var(--space-4);
 }

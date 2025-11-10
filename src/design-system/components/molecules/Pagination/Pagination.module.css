@@ -1,0 +1,212 @@
+/**
+ * Pagination Styles
+ * GHXSTSHIP Entertainment Platform
+ */
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  width: 100%;
+}
+
+/* ========================================
+   BUTTONS
+   ======================================== */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  
+  padding-inline: var(--space-4);
+  padding-block: var(--space-2);
+  
+  border: var(--border-width-2) solid var(--color-border-strong);
+  border-radius: var(--radius-none);
+  background-color: var(--color-bg-primary);
+  
+  cursor: pointer;
+  
+  transition: all var(--duration-fast) var(--easing-out);
+}
+
+.button:hover:not(:disabled) {
+  background-color: var(--color-primary);
+  transform: scale(1.05);
+}
+
+.button:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.button:disabled {
+  opacity: var(--opacity-40);
+  cursor: not-allowed;
+}
+
+.button:focus-visible {
+  outline: var(--border-width-2) solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+.label {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  
+  color: var(--color-text-primary);
+  
+  transition: color var(--duration-fast) var(--easing-out);
+}
+
+.button:hover:not(:disabled) .label {
+  color: var(--color-text-inverse);
+}
+
+.arrow {
+  font-size: var(--font-size-lg);
+  line-height: 1;
+  color: var(--color-text-primary);
+  
+  transition: color var(--duration-fast) var(--easing-out);
+}
+
+.button:hover:not(:disabled) .arrow {
+  color: var(--color-text-inverse);
+}
+
+/* ========================================
+   PAGES
+   ======================================== */
+
+.pages {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.pageButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  
+  min-width: 40px;
+  height: 40px;
+  padding-inline: var(--space-2);
+  
+  border: var(--border-width-2) solid var(--color-border-default);
+  border-radius: var(--radius-none);
+  background-color: var(--color-bg-secondary);
+  
+  font-family: var(--font-mono);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  
+  color: var(--color-text-primary);
+  
+  cursor: pointer;
+  
+  transition: all var(--duration-fast) var(--easing-out);
+}
+
+.pageButton:hover {
+  background-color: var(--color-bg-tertiary);
+  border-color: var(--color-border-strong);
+  transform: translateY(-2px);
+}
+
+.pageButton:active {
+  transform: translateY(0);
+}
+
+.pageButton:focus-visible {
+  outline: var(--border-width-2) solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+.pageButton.active {
+  border-color: var(--color-border-strong);
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
+.dots {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-base);
+  color: var(--color-text-tertiary);
+  padding-inline: var(--space-2);
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+  .pagination {
+    gap: var(--space-2);
+  }
+  
+  .button {
+    padding-inline: var(--space-3);
+  }
+  
+  .label {
+    display: none;
+  }
+  
+  .pageButton {
+    min-width: 36px;
+    height: 36px;
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .button,
+  .pageButton,
+  .label,
+  .arrow {
+    transition: none;
+  }
+  
+  .button:hover:not(:disabled),
+  .pageButton:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .button,
+  .pageButton {
+    border-width: var(--border-width-3);
+  }
+}
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+.dark .button:hover:not(:disabled),
+[data-theme="dark"] .button:hover:not(:disabled) {
+  background-color: var(--color-accent);
+}
+
+.dark .button:hover:not(:disabled) .label,
+.dark .button:hover:not(:disabled) .arrow,
+[data-theme="dark"] .button:hover:not(:disabled) .label,
+[data-theme="dark"] .button:hover:not(:disabled) .arrow {
+  color: var(--color-primary);
+}
+
+.dark .pageButton.active,
+[data-theme="dark"] .pageButton.active {
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+}

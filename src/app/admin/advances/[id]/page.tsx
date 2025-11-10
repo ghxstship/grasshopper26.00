@@ -30,10 +30,7 @@ export default function AdminAdvanceDetailPage() {
         { label: 'Status', value: advance?.status },
       ]}
       primaryAction={{ label: 'Approve', onClick: () => {} }}
-      secondaryActions={[
-        { label: 'Reject', onClick: () => {} },
-        { label: 'Request Info', onClick: () => {} },
-      ]}
+      secondaryAction={{ label: 'Reject', onClick: () => {} }}
     />
   );
 }

@@ -1,0 +1,151 @@
+/**
+ * TimelineView Styles
+ * GHXSTSHIP Monochromatic Design System
+ */
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  border: var(--border-width-thick) solid var(--color-black);
+  background-color: var(--color-white);
+  overflow-x: auto;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  border-block-end: var(--border-width-thick) solid var(--color-black);
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.taskColumn {
+  padding: var(--spacing-3) var(--spacing-4);
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-h6);
+  text-transform: uppercase;
+  border-inline-end: var(--border-width-thick) solid var(--color-white);
+}
+
+.chartColumn {
+  overflow-x: auto;
+}
+
+.dateHeaders {
+  display: flex;
+  min-inline-size: 800px;
+}
+
+.dateHeader {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--spacing-2);
+  border-inline-end: 1px solid var(--color-grey-700);
+}
+
+.dateDay {
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-h5);
+  font-weight: 700;
+}
+
+.dateMonth {
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-meta);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  border-block-end: 1px solid var(--color-grey-300);
+  min-block-size: 60px;
+}
+
+.taskInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+  padding: var(--spacing-3) var(--spacing-4);
+  border-inline-end: 1px solid var(--color-grey-300);
+}
+
+.taskTitle {
+  margin: 0;
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-h6);
+  text-transform: uppercase;
+}
+
+.assignee {
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-meta);
+  color: var(--color-text-secondary);
+}
+
+.chartArea {
+  position: relative;
+  min-inline-size: 800px;
+}
+
+.gridLines {
+  position: absolute;
+  inset: 0;
+  display: flex;
+}
+
+.gridLine {
+  flex: 1;
+  border-inline-end: 1px solid var(--color-grey-200);
+}
+
+.bar {
+  position: absolute;
+  inset-block: 8px;
+  background-color: var(--color-grey-800);
+  border: var(--border-width-thick) solid var(--color-black);
+  cursor: pointer;
+  transition: all var(--transition-fast) var(--easing-standard);
+}
+
+.bar:hover {
+  background-color: var(--color-grey-900);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 0 0 var(--color-black);
+}
+
+.barContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+  padding: var(--spacing-2);
+  block-size: 100%;
+}
+
+.barTitle {
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-meta);
+  text-transform: uppercase;
+  color: var(--color-white);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.progress {
+  block-size: 4px;
+  background-color: var(--color-grey-600);
+  margin-block-start: auto;
+}
+
+.progressFill {
+  block-size: 100%;
+  background-color: var(--color-white);
+  transition: width var(--transition-standard) var(--easing-standard);
+}

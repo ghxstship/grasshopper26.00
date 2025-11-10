@@ -6,7 +6,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { AdminListTemplate } from '@/design-system/components/templates';
-import { GeometricIcon } from '@/design-system/components/atoms/GeometricIcon';
+import { GeometricShape } from '@/design-system/components/atoms/GeometricShape';
 import { StatusBadge, AdvanceStatus } from '@/design-system/components/atoms/StatusBadge';
 import { ProductionAdvance } from '@/lib/types/production-advances';
 import { cn } from '@/lib/utils';
@@ -100,10 +100,9 @@ export default function AdminAdvancesQueuePage() {
       searchPlaceholder="Search by advance number, event, company..."
       searchValue={searchQuery}
       onSearchChange={setSearchQuery}
-      onSearch={fetchAdvances}
       loading={loading}
       empty={advances.length === 0 ? {
-        icon: <GeometricIcon name="clipboard" size="xl" />,
+        icon: <GeometricShape name="clipboard" size="xl" />,
         title: "No advances found",
         description: filter === 'all' ? 'No advances in the system' : `No ${filter} advances`
       } : undefined}
@@ -154,7 +153,7 @@ export default function AdminAdvancesQueuePage() {
                       </Link>
                       {isUrgent(advance) && (
                         <span className={styles.urgentBadge}>
-                          <GeometricIcon name="alert" size="xs" />
+                          <GeometricShape name="alert" size="xs" />
                           URGENT
                         </span>
                       )}
@@ -188,7 +187,7 @@ export default function AdminAdvancesQueuePage() {
                           href={`/admin/advances/${advance.id}`}
                           className={styles.reviewLink}
                         >
-                          <GeometricIcon name="arrow-right" size="xs" />
+                          <GeometricShape name="arrow-right" size="xs" />
                           REVIEW
                         </Link>
                       </div>

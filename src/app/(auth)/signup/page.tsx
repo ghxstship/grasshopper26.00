@@ -6,10 +6,10 @@ export const dynamic = 'force-dynamic';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase/client';
-import { AuthCardTemplate } from '@/design-system/components/templates';
-import { Input } from '@/design-system/components/atoms/input';
-import { Label } from '@/design-system/components/atoms/label';
-import { Checkbox } from '@/design-system/components/atoms/checkbox';
+import { AuthLayout } from '@/design-system/components/templates/AuthLayout/AuthLayout';
+import { Input } from '@/design-system/components/atoms/Input/Input';
+import { Button } from '@/design-system/components/atoms/Button/Button';
+import { Typography } from '@/design-system/components/atoms/Typography/Typography';
 import { toast } from 'sonner';
 import styles from '../auth.module.css';
 
@@ -76,77 +76,135 @@ export default function SignupPage() {
   };
 
   return (
-    <AuthCardTemplate
-      title="Create Account"
-      description="Join the community and never miss an event"
-      onSubmit={handleSignup}
-      submitLabel="Create Account"
-      submitLoading={loading}
-      showOAuth={true}
-      oauthProviders={['google', 'github', 'azure']}
-      onOAuthLogin={handleOAuthSignup}
-      footerText="Already have an account?"
-      footerLink={{ text: 'Sign in', href: '/login' }}
+    <AuthLayout
+      pattern="stripes"
+      logo={
+        <Typography variant="h1" as="div">
+          GVTEWAY
+        </Typography>
+      }
+      footer={
+        <div className={styles.footer}>
+          <Typography variant="meta" as="span">
+            Already have an account?{' '}
+            <Link href="/login" className={styles.link}>
+              Sign in
+            </Link>
+          </Typography>
+        </div>
+      }
     >
-      <div className={styles.formField}>
-        <Label htmlFor="displayName">Display Name</Label>
-        <Input
-          id="displayName"
-          type="text"
-          placeholder="Your name"
-          value={formData.displayName}
-          onChange={(e) => setFormData({ ...formData, displayName: e.target.value })}
-          required
-        />
+      <div className={styles.authContent}>
+        <Typography variant="h2" as="h1" className={styles.title}>
+          Create Account
+        </Typography>
+        <Typography variant="body" as="p" className={styles.description}>
+          Join the community and never miss an event
+        </Typography>
+
+        <form onSubmit={handleSignup} className={styles.form}>
+          <div className={styles.formField}>
+            <label htmlFor="displayName" className={styles.label}>
+              Display Name
+            </label>
+            <Input
+              id="displayName"
+              type="text"
+              placeholder="Your name"
+              value={formData.displayName}
+              onChange={(e) => setFormData({ ...formData, displayName: e.target.value })}
+              required
+            />
+          </div>
+
+          <div className={styles.formField}>
+            <label htmlFor="email" className={styles.label}>
+              Email
+            </label>
+            <Input
+              id="email"
+              type="email"
+              placeholder="you@example.com"
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              required
+            />
+          </div>
+
+          <div className={styles.formField}>
+            <label htmlFor="password" className={styles.label}>
+              Password
+            </label>
+            <Input
+              id="password"
+              type="password"
+              value={formData.password}
+              onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+              required
+              minLength={8}
+            />
+            <Typography variant="meta" as="p">
+              Must be at least 8 characters
+            </Typography>
+          </div>
+
+          <div className={styles.formField}>
+            <label htmlFor="confirmPassword" className={styles.label}>
+              Confirm Password
+            </label>
+            <Input
+              id="confirmPassword"
+              type="password"
+              value={formData.confirmPassword}
+              onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
+              required
+            />
+          </div>
+
+          <div className={styles.labelRow}>
+            <input
+              type="checkbox"
+              id="terms"
+              checked={formData.agreeToTerms}
+              onChange={(e) => setFormData({ ...formData, agreeToTerms: e.target.checked })}
+            />
+            <label htmlFor="terms" className={styles.footerText}>
+              I agree to the{' '}
+              <Link href="/terms" className={styles.link}>Terms of Service</Link>{' '}
+              and{' '}
+              <Link href="/privacy" className={styles.link}>Privacy Policy</Link>
+            </label>
+          </div>
+
+          <Button
+            type="submit"
+            variant="filled"
+            fullWidth
+            disabled={loading}
+          >
+            {loading ? 'Creating account...' : 'Create Account'}
+          </Button>
+        </form>
+
+        <div className={styles.divider}>
+          <span>or</span>
+        </div>
+
+        <div className={styles.oauthButtons}>
+          <Button
+            variant="outlined"
+            onClick={() => handleOAuthSignup('google')}
+          >
+            Google
+          </Button>
+          <Button
+            variant="outlined"
+            onClick={() => handleOAuthSignup('github')}
+          >
+            GitHub
+          </Button>
+        </div>
       </div>
-      <div className={styles.formField}>
-        <Label htmlFor="email">Email</Label>
-        <Input
-          id="email"
-          type="email"
-          placeholder="you@example.com"
-          value={formData.email}
-          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-          required
-        />
-      </div>
-      <div className={styles.formField}>
-        <Label htmlFor="password">Password</Label>
-        <Input
-          id="password"
-          type="password"
-          value={formData.password}
-          onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-          required
-          minLength={8}
-        />
-        <p className={styles.footerText}>Must be at least 8 characters</p>
-      </div>
-      <div className={styles.formField}>
-        <Label htmlFor="confirmPassword">Confirm Password</Label>
-        <Input
-          id="confirmPassword"
-          type="password"
-          value={formData.confirmPassword}
-          onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
-          required
-        />
-      </div>
-      <div className={styles.labelRow}>
-        <Checkbox
-          id="terms"
-          checked={formData.agreeToTerms}
-          onCheckedChange={(checked) =>
-            setFormData({ ...formData, agreeToTerms: checked as boolean })
-          }
-        />
-        <label htmlFor="terms" className={styles.footerText}>
-          I agree to the{' '}
-          <Link href="/terms" className={styles.link}>Terms of Service</Link>{' '}
-          and{' '}
-          <Link href="/privacy" className={styles.link}>Privacy Policy</Link>
-        </label>
-      </div>
-    </AuthCardTemplate>
+    </AuthLayout>
   );
 }

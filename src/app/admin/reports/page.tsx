@@ -2,9 +2,9 @@
 
 import { useState } from 'react';
 import { ContextualPageTemplate } from '@/design-system/components/templates';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/design-system/components/atoms/card';
-import { Button } from '@/design-system/components/atoms/button';
-import { Badge } from '@/design-system/components/atoms/badge';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/design-system/components/atoms/Card';
+import { Button } from '@/design-system/components/atoms/Button';
+import { Badge } from '@/design-system/components/atoms/Badge';
 import { 
   FileText, 
   Download, 
@@ -171,7 +171,7 @@ export default function ReportsPage() {
           <Button
             onClick={generateAllReports}
             disabled={!!generating}
-            variant="outline"
+            variant="outlined"
             className={styles.downloadAllButton}
           >
             <Download className={styles.iconSmall} />
@@ -190,9 +190,6 @@ export default function ReportsPage() {
       ]}
       title="Advanced Reports"
       subtitle="Generate detailed reports and export data for analysis"
-      layout="grid-sidebar"
-      gridColumns={3}
-      gridGap="lg"
       sidebar={dateRangeSidebar}
     >
       {reports.map((report) => (
@@ -203,7 +200,7 @@ export default function ReportsPage() {
                 <report.icon className={styles.iconLarge} />
               </div>
               {generating === report.id && (
-                <Badge variant="secondary">
+                <Badge variant="outlined">
                   <Loader2 className={styles.spinner} />
                   Generating...
                 </Badge>

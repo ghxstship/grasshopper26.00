@@ -1,0 +1,155 @@
+/**
+ * BudgetLineItem Styles
+ * GHXSTSHIP Monochromatic Design System
+ */
+
+.lineItem {
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-4);
+  border: var(--border-width-thick) solid var(--color-black);
+  background-color: var(--color-white);
+  transition: background-color var(--transition-fast) var(--easing-standard);
+}
+
+.lineItem:hover {
+  background-color: var(--color-grey-100);
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 2fr 3fr 1fr;
+  gap: var(--spacing-4);
+  align-items: center;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.name {
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-h5);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.category {
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-meta);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+}
+
+.vendor {
+  font-family: var(--font-share);
+  font-size: var(--font-size-meta);
+  color: var(--color-text-secondary);
+}
+
+.amounts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-4);
+}
+
+.amountGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.label {
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-meta);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.amount {
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-body);
+  font-weight: 700;
+}
+
+.variance .amount.over {
+  background-color: var(--color-grey-900);
+  color: var(--color-white);
+  padding: var(--spacing-1) var(--spacing-2);
+}
+
+.variance .amount.under {
+  background-color: var(--color-grey-200);
+  padding: var(--spacing-1) var(--spacing-2);
+}
+
+.status {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.statusBadge {
+  padding: var(--spacing-2) var(--spacing-3);
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-meta);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  border: var(--border-width-thin) solid var(--color-black);
+}
+
+.statusBadge.planned {
+  background-color: var(--color-white);
+}
+
+.statusBadge.approved {
+  background-color: var(--color-grey-200);
+}
+
+.statusBadge.committed {
+  background-color: var(--color-grey-300);
+}
+
+.statusBadge.invoiced {
+  background-color: var(--color-grey-400);
+}
+
+.statusBadge.paid {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.statusBadge.cancelled {
+  background-color: var(--color-grey-900);
+  color: var(--color-white);
+  text-decoration: line-through;
+}
+
+.actions {
+  display: flex;
+  gap: var(--spacing-2);
+  margin-block-start: var(--spacing-3);
+  padding-block-start: var(--spacing-3);
+  border-block-start: var(--border-width-thin) solid var(--color-grey-300);
+}
+
+.actionButton {
+  padding: var(--spacing-2) var(--spacing-3);
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-meta);
+  text-transform: uppercase;
+  background-color: var(--color-white);
+  border: var(--border-width-thick) solid var(--color-black);
+  cursor: pointer;
+  transition: all var(--transition-fast) var(--easing-standard);
+}
+
+.actionButton:hover {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.actionButton.delete:hover {
+  background-color: var(--color-grey-900);
+}

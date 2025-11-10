@@ -3,10 +3,11 @@
 import { AdminDetailTemplate } from '@/design-system/components/templates';
 import { Building, DollarSign, Calendar, Globe } from 'lucide-react';
 import { useAdminBrandDetail } from '@/hooks/useAdminBrandDetail';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 
 export default function AdminBrandDetailPage() {
   const params = useParams();
+  const router = useRouter();
   const { brand, loading } = useAdminBrandDetail(params.id as string);
 
   return (
@@ -30,11 +31,8 @@ export default function AdminBrandDetailPage() {
         { label: 'Partner Since', value: brand?.created_at },
         { label: 'Website', value: brand?.website },
       ]}
-      primaryAction={{ label: 'Edit Brand', href: `/admin/brands/${params.id}/edit` }}
-      secondaryActions={[
-        { label: 'View Contract', onClick: () => {} },
-        { label: 'Send Report', onClick: () => {} },
-      ]}
+      primaryAction={{ label: 'Edit Brand', onClick: () => router.push(`/admin/brands/${params.id}/edit`) }}
+      secondaryAction={{ label: 'View Contract', onClick: () => {} }}
     />
   );
 }

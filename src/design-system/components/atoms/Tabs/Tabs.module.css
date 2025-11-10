@@ -1,0 +1,61 @@
+/**
+ * Tabs Component Styles
+ * GHXSTSHIP Monochromatic Design System
+ */
+
+.tabs {
+  inline-size: 100%;
+}
+
+.tabList {
+  display: flex;
+  gap: var(--spacing-4);
+  border-block-end: var(--border-width-thick) solid var(--color-grey-300);
+}
+
+.tab {
+  position: relative;
+  padding: var(--spacing-3) var(--spacing-4);
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-h5);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  background: none;
+  border: none;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: color var(--transition-fast) var(--easing-standard);
+}
+
+.tab::after {
+  content: '';
+  position: absolute;
+  inset-block-end: calc(var(--border-width-thick) * -1);
+  inset-inline-start: 0;
+  inline-size: 100%;
+  block-size: var(--border-width-thick);
+  background-color: var(--color-black);
+  transform: scaleX(0);
+  transition: transform var(--transition-standard) var(--easing-standard);
+}
+
+.tab:hover {
+  color: var(--color-text-primary);
+}
+
+.tab.active {
+  color: var(--color-text-primary);
+}
+
+.tab.active::after {
+  transform: scaleX(1);
+}
+
+.tab:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.panel {
+  padding-block-start: var(--spacing-6);
+}

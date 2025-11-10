@@ -1,9 +1,13 @@
 'use client';
 
 import { useState } from 'react';
-import { PublicBrowseTemplate } from '@/design-system/components/templates';
-import { Newspaper } from 'lucide-react';
-import { NewsCard } from '@/design-system/components/organisms/news/news-card';
+import { useRouter } from 'next/navigation';
+import { GridLayout } from '@/design-system/components/templates/GridLayout/GridLayout';
+import { Header } from '@/design-system/components/organisms/Header/Header';
+import { Footer } from '@/design-system/components/organisms/Footer/Footer';
+import { NewsCard } from '@/design-system/components/molecules/NewsCard/NewsCard';
+import { Input } from '@/design-system/components/atoms/Input/Input';
+import { Typography } from '@/design-system/components/atoms/Typography/Typography';
 
 interface NewsArticle {
   id: string;
@@ -12,48 +16,64 @@ interface NewsArticle {
   excerpt?: string;
   image_url?: string;
   published_at: string;
+  author?: string;
+  category?: string;
 }
 
 export function NewsBrowseClient({ initialArticles, initialSearch }: { initialArticles: NewsArticle[]; initialSearch?: string }) {
+  const router = useRouter();
   const [searchQuery, setSearchQuery] = useState(initialSearch || '');
-  const [sortBy, setSortBy] = useState('date-desc');
 
   const filteredArticles = initialArticles
     .filter(article =>
       searchQuery ? article.title.toLowerCase().includes(searchQuery.toLowerCase()) : true
-    )
-    .sort((a, b) => {
-      if (sortBy === 'date-desc') return new Date(b.published_at).getTime() - new Date(a.published_at).getTime();
-      if (sortBy === 'date-asc') return new Date(a.published_at).getTime() - new Date(b.published_at).getTime();
-      return 0;
-    });
+    );
+
+  const mappedArticles = filteredArticles.map(article => ({
+    id: article.id,
+    title: article.title,
+    excerpt: article.excerpt,
+    imageUrl: article.image_url,
+    date: new Date(article.published_at).toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+    }).toUpperCase(),
+    author: article.author,
+    category: article.category,
+  }));
 
   return (
-    <PublicBrowseTemplate
-      title="NEWS & UPDATES"
-      subtitle="Stay informed with the latest from GVTEWAY"
-      heroGradient={true}
-      searchPlaceholder="Search news..."
-      searchValue={searchQuery}
-      onSearchChange={setSearchQuery}
-      showSearch={true}
-      sortOptions={[
-        { value: 'date-desc', label: 'Newest First' },
-        { value: 'date-asc', label: 'Oldest First' },
-      ]}
-      sortValue={sortBy}
-      onSortChange={setSortBy}
-      items={filteredArticles}
-      renderItem={(article) => <NewsCard article={article} />}
-      gridColumns={3}
-      gap="lg"
-      showResultsCount={true}
-      totalCount={initialArticles.length}
-      emptyState={{
-        icon: <Newspaper />,
-        title: "No articles found",
-        description: "Check back soon for updates",
-      }}
-    />
+    <GridLayout
+      header={<Header />}
+      title="News & Updates"
+      description="Stay informed with the latest from GVTEWAY"
+      search={
+        <Input
+          type="search"
+          placeholder="Search news..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+      }
+      columns={3}
+      footer={<Footer />}
+    >
+      {filteredArticles.map(article => (
+        <NewsCard
+          key={article.id}
+          article={{
+            id: article.id,
+            title: article.title,
+            excerpt: article.excerpt || '',
+            imageUrl: article.image_url || '/placeholder.jpg',
+            date: new Date(article.published_at).toLocaleDateString(),
+            category: article.category,
+            author: article.author,
+          }}
+          onClick={() => router.push(`/news/${article.slug}`)}
+        />
+      ))}
+    </GridLayout>
   );
 }

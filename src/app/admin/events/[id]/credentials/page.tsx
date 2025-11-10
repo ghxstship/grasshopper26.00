@@ -8,11 +8,11 @@
 import { use, useEffect, useState } from 'react';
 import { ContextualPageTemplate } from '@/design-system/components/templates';
 import { createClient } from '@/lib/supabase/client';
-import { Button } from '@/design-system/components/atoms/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/card';
-import { Input } from '@/design-system/components/atoms/input';
-import { Badge } from '@/design-system/components/atoms/badge';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/design-system/components/atoms/select';
+import { Button } from '@/design-system/components/atoms/Button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/Card';
+import { Input } from '@/design-system/components/atoms/Input';
+import { Badge } from '@/design-system/components/atoms/Badge';
+import { Select } from '@/design-system/components/atoms/Select';
 import { Plus, Search, Shield, CheckCircle, XCircle, Printer } from 'lucide-react';
 import { toast } from 'sonner';
 import styles from './credentials-content.module.css';
@@ -158,12 +158,30 @@ export default function EventCredentialsPage({ params }: { params: Promise<{ id:
         href: `/admin/events/${id}/credentials/issue`,
         icon: <Plus />
       }}
-      metadata={[
-        { icon: <Shield />, label: 'Total Issued', value: stats.total.toString() },
-        { icon: <CheckCircle />, label: 'Active', value: stats.active.toString() },
-        { icon: <CheckCircle />, label: 'Checked In', value: stats.checkedIn.toString() },
-        { icon: <XCircle />, label: 'Revoked', value: stats.revoked.toString() }
-      ]}
+      metadata={
+        <div className={styles.statsGrid}>
+          <div className={styles.statItem}>
+            <Shield className={styles.statIcon} />
+            <span className={styles.statLabel}>Total Issued</span>
+            <span className={styles.statValue}>{stats.total}</span>
+          </div>
+          <div className={styles.statItem}>
+            <CheckCircle className={styles.statIcon} />
+            <span className={styles.statLabel}>Active</span>
+            <span className={styles.statValue}>{stats.active}</span>
+          </div>
+          <div className={styles.statItem}>
+            <CheckCircle className={styles.statIcon} />
+            <span className={styles.statLabel}>Checked In</span>
+            <span className={styles.statValue}>{stats.checkedIn}</span>
+          </div>
+          <div className={styles.statItem}>
+            <XCircle className={styles.statIcon} />
+            <span className={styles.statLabel}>Revoked</span>
+            <span className={styles.statValue}>{stats.revoked}</span>
+          </div>
+        </div>
+      }
       loading={loading}
     >
       <Card>
@@ -182,31 +200,32 @@ export default function EventCredentialsPage({ params }: { params: Promise<{ id:
               />
             </div>
 
-            <Select value={filterType} onValueChange={setFilterType}>
-              <SelectTrigger className={styles.filterSelect}>
-                <SelectValue placeholder="All Types" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All Types</SelectItem>
-                {CREDENTIAL_TYPES.map((type) => (
-                  <SelectItem key={type.value} value={type.value}>
-                    {type.badge} {type.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            <Select
+              value={filterType}
+              onChange={(e) => setFilterType(e.target.value)}
+              options={[
+                { value: 'all', label: 'All Types' },
+                ...CREDENTIAL_TYPES.map((type) => ({
+                  value: type.value,
+                  label: `${type.badge} ${type.label}`,
+                })),
+              ]}
+              placeholder="All Types"
+              className={styles.filterSelect}
+            />
 
-            <Select value={filterStatus} onValueChange={setFilterStatus}>
-              <SelectTrigger className={styles.filterSelect}>
-                <SelectValue placeholder="All Status" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All Status</SelectItem>
-                <SelectItem value="active">Active</SelectItem>
-                <SelectItem value="checked_in">Checked In</SelectItem>
-                <SelectItem value="revoked">Revoked</SelectItem>
-              </SelectContent>
-            </Select>
+            <Select
+              value={filterStatus}
+              onChange={(e) => setFilterStatus(e.target.value)}
+              options={[
+                { value: 'all', label: 'All Status' },
+                { value: 'active', label: 'Active' },
+                { value: 'checked_in', label: 'Checked In' },
+                { value: 'revoked', label: 'Revoked' },
+              ]}
+              placeholder="All Status"
+              className={styles.filterSelect}
+            />
           </div>
 
           <div className={styles.credentialsList}>
@@ -228,7 +247,7 @@ export default function EventCredentialsPage({ params }: { params: Promise<{ id:
                           </Badge>
                         )}
                         {credential.revoked && (
-                          <Badge variant="destructive">
+                          <Badge variant="outlined">
                             <XCircle className={styles.iconSmall} />
                             Revoked
                           </Badge>
@@ -246,7 +265,7 @@ export default function EventCredentialsPage({ params }: { params: Promise<{ id:
                     </div>
                     <div className={styles.credentialActions}>
                       <Button
-                        variant="outline"
+                        variant="outlined"
                         size="sm"
                         onClick={() => window.open(`/admin/events/${id}/credentials/${credential.id}/badge`, '_blank')}
                       >
@@ -254,7 +273,7 @@ export default function EventCredentialsPage({ params }: { params: Promise<{ id:
                         Print
                       </Button>
                       <Button
-                        variant="outline"
+                        variant="outlined"
                         size="sm"
                         onClick={() => window.location.href = `/admin/events/${id}/credentials/${credential.id}`}
                       >

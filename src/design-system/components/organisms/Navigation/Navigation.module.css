@@ -1,0 +1,415 @@
+/**
+ * Navigation Styles
+ * GHXSTSHIP Entertainment Platform
+ * Fixed header, BEBAS NEUE menu, thick underline hover, geometric hamburger
+ */
+
+.navigation {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  inset-inline-end: 0;
+  z-index: var(--z-fixed);
+  
+  border-block-end: var(--border-width-3) solid currentColor;
+  
+  backdrop-filter: blur(8px);
+  
+  transition: all var(--duration-base) var(--easing-out);
+}
+
+/* ========================================
+   VARIANTS
+   ======================================== */
+
+.black {
+  background-color: rgba(0, 0, 0, 0.95);
+  color: var(--color-text-inverse);
+}
+
+.white {
+  background-color: rgba(255, 255, 255, 0.95);
+  color: var(--color-text-primary);
+}
+
+/* ========================================
+   CONTAINER
+   ======================================== */
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-8);
+  
+  max-width: 1600px;
+  margin-inline: auto;
+  padding-inline: var(--space-6);
+  padding-block: var(--space-4);
+}
+
+/* ========================================
+   LOGO
+   ======================================== */
+
+.logoContainer {
+  flex-shrink: 0;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  
+  transition: transform var(--duration-fast) var(--easing-out);
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.logo:active {
+  transform: scale(0.98);
+}
+
+.logo:focus-visible {
+  outline: var(--border-width-2) solid var(--color-border-focus);
+  outline-offset: 4px;
+}
+
+.logoText {
+  font-family: var(--font-hero);
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-normal);
+  letter-spacing: var(--letter-spacing-tight);
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+/* ========================================
+   MOBILE MENU BUTTON
+   ======================================== */
+
+.mobileMenuButton {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  
+  width: 48px;
+  height: 48px;
+  
+  border: var(--border-width-2) solid currentColor;
+  border-radius: var(--radius-none)(--radius-none);
+  background-color: transparent;
+  
+  color: inherit;
+  cursor: pointer;
+  
+  transition: all var(--duration-fast) var(--easing-out);
+}
+
+.mobileMenuButton:hover {
+  background-color: currentColor;
+}
+
+.black .mobileMenuButton:hover {
+  background-color: var(--color-accent);
+}
+
+.white .mobileMenuButton:hover {
+  background-color: var(--color-primary);
+}
+
+.mobileMenuButton:active {
+  transform: scale(0.95);
+}
+
+.mobileMenuButton:focus-visible {
+  outline: var(--border-width-2) solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 24px;
+}
+
+.hamburgerLine {
+  display: block;
+  width: 100%;
+  height: var(--border-width-3);
+  background-color: currentColor;
+  
+  transition: all var(--duration-base) var(--easing-out);
+}
+
+.black .mobileMenuButton:hover .hamburgerLine {
+  background-color: var(--color-primary);
+}
+
+.white .mobileMenuButton:hover .hamburgerLine {
+  background-color: var(--color-accent);
+}
+
+.hamburgerOpen .hamburgerLine:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.hamburgerOpen .hamburgerLine:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburgerOpen .hamburgerLine:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* ========================================
+   MENU
+   ======================================== */
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.menuList {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menuItem {
+  position: relative;
+}
+
+.menuLink {
+  position: relative;
+  display: inline-block;
+  
+  font-family: var(--font-heading);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-normal);
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  text-decoration: none;
+  
+  color: inherit;
+  
+  padding-block: var(--space-2);
+  
+  transition: color var(--duration-fast) var(--easing-out);
+}
+
+.menuLink::after {
+  content: '';
+  position: absolute;
+  inset-block-end: 0;
+  inset-inline-start: 0;
+  inset-inline-end: 0;
+  
+  height: var(--border-width-3);
+  background-color: currentColor;
+  
+  transform: scaleX(0);
+  transform-origin: center;
+  
+  transition: transform var(--duration-base) var(--easing-out);
+}
+
+.menuLink:hover::after,
+.menuLinkActive::after {
+  transform: scaleX(1);
+}
+
+.menuLink:focus-visible {
+  outline: var(--border-width-2) solid var(--color-border-focus);
+  outline-offset: 4px;
+}
+
+/* ========================================
+   CTA BUTTON
+   ======================================== */
+
+.ctaContainer {
+  flex-shrink: 0;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  
+  font-family: var(--font-heading);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  text-decoration: none;
+  
+  padding-inline: var(--space-6);
+  padding-block: var(--space-3);
+  
+  min-height: 48px;
+  
+  border: var(--border-width-3) solid currentColor;
+  border-radius: var(--radius-none)(--radius-none);
+  background-color: transparent;
+  
+  color: inherit;
+  cursor: pointer;
+  
+  transition: all var(--duration-fast) var(--easing-out);
+}
+
+.black .cta {
+  border-color: var(--color-accent);
+}
+
+.black .cta:hover {
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+  transform: scale(1.05);
+}
+
+.white .cta {
+  border-color: var(--color-primary);
+}
+
+.white .cta:hover {
+  background-color: var(--color-primary);
+  color: var(--color-accent);
+  transform: scale(1.05);
+}
+
+.cta:active {
+  transform: scale(0.98);
+}
+
+.cta:focus-visible {
+  outline: var(--border-width-2) solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+/* ========================================
+   MOBILE RESPONSIVE
+   ======================================== */
+
+@media (max-width: 1024px) {
+  .mobileMenuButton {
+    display: flex;
+  }
+  
+  .menu {
+    position: fixed;
+    inset-block-start: 0;
+    inset-inline-end: 0;
+    inset-block-end: 0;
+    
+    width: 100%;
+    max-width: 400px;
+    
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-6);
+    
+    padding: var(--space-8);
+    padding-block-start: 100px;
+    
+    background-color: inherit;
+    border-inline-start: var(--border-width-3) solid currentColor;
+    
+    transform: translateX(100%);
+    transition: transform var(--duration-base) var(--easing-out);
+    
+    overflow-y: auto;
+  }
+  
+  .menuOpen {
+    transform: translateX(0);
+  }
+  
+  .menuList {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-4);
+  }
+  
+  .menuLink {
+    font-size: var(--font-size-2xl);
+    padding-block: var(--space-3);
+  }
+  
+  .ctaContainer {
+    margin-block-start: var(--space-6);
+  }
+  
+  .cta {
+    width: 100%;
+    font-size: var(--font-size-xl);
+    padding-block: var(--space-4);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-inline: var(--space-4);
+  }
+  
+  .logoText {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .menu {
+    max-width: 100%;
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .navigation,
+  .logo,
+  .mobileMenuButton,
+  .hamburgerLine,
+  .menu,
+  .menuLink,
+  .menuLink::after,
+  .cta {
+    transition: none;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .navigation {
+    border-block-end-width: var(--border-width-4);
+  }
+  
+  .mobileMenuButton,
+  .cta {
+    border-width: var(--border-width-4);
+  }
+}
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+.dark .black,
+[data-theme="dark"] .black {
+  background-color: rgba(0, 0, 0, 0.95);
+}
+
+.dark .white,
+[data-theme="dark"] .white {
+  background-color: rgba(17, 24, 39, 0.95);
+}

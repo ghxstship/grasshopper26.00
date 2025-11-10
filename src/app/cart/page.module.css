@@ -5,7 +5,7 @@
   padding-block: var(--space-12);
   padding-inline: var(--space-4);
   background-color: var(--color-white);
-  border-block-end: 3px solid var(--color-black);
+  border-block-end: var(--border-width-3) solid var(--color-black);
 }
 
 .content {
@@ -95,12 +95,12 @@
 
 .cardBg {
   background-color: var(--color-white);
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
 }
 
 .cardBgGrey {
   background-color: var(--color-grey-100);
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
 }
 
 .itemRow {
@@ -112,7 +112,7 @@
   position: relative;
   width: 6rem;
   height: 6rem;
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   overflow: hidden;
   flex-shrink: 0;
 }
@@ -233,7 +233,7 @@
 
 .summaryDivider {
   padding-block-start: var(--space-2);
-  border-block-start: 3px solid var(--color-black);
+  border-block-start: var(--border-width-3) solid var(--color-black);
 }
 
 .summaryTotal {

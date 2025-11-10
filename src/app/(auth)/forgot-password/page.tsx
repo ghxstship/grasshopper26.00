@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import { AuthCardTemplate } from '@/design-system/components/templates';
-import { Input } from '@/design-system/components/atoms/input';
-import { Label } from '@/design-system/components/atoms/label';
+import { Input } from '@/design-system/components/atoms/Input';
+import { Label } from '@/design-system/components/atoms/Label';
 import styles from '../auth.module.css';
 
 export default function ForgotPasswordPage() {

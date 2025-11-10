@@ -2,10 +2,20 @@
  * Focus Management Utilities
  * Handle focus trapping, restoration, and keyboard navigation
  * WCAG 2.2 AAA Compliant
+ * GHXSTSHIP Contemporary Minimal Pop Art Design System
  */
 
 export class FocusManager {
   private previousFocus: HTMLElement | null = null;
+  private focusableSelector = [
+    'a[href]',
+    'button:not([disabled])',
+    'textarea:not([disabled])',
+    'input:not([disabled])',
+    'select:not([disabled])',
+    '[tabindex]:not([tabindex="-1"])',
+    '[contenteditable="true"]',
+  ].join(',');
   
   /**
    * Trap focus within a container (for modals, dialogs)
@@ -58,17 +68,7 @@ export class FocusManager {
    * Get all focusable elements within a container
    */
   private getFocusableElements(container: HTMLElement): HTMLElement[] {
-    const selector = [
-      'a[href]',
-      'button:not([disabled])',
-      'textarea:not([disabled])',
-      'input:not([disabled])',
-      'select:not([disabled])',
-      '[tabindex]:not([tabindex="-1"])',
-      '[contenteditable="true"]',
-    ].join(',');
-    
-    return Array.from(container.querySelectorAll(selector));
+    return Array.from(container.querySelectorAll(this.focusableSelector));
   }
   
   /**

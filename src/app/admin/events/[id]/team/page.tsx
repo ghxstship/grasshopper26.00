@@ -8,9 +8,9 @@
 import { use, useEffect, useState } from 'react';
 import { ContextualPageTemplate } from '@/design-system/components/templates';
 import { createClient } from '@/lib/supabase/client';
-import { Button } from '@/design-system/components/atoms/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/card';
-import { Badge } from '@/design-system/components/atoms/badge';
+import { Button } from '@/design-system/components/atoms/Button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/Card';
+import { Badge } from '@/design-system/components/atoms/Badge';
 import { Plus, Users, Shield } from 'lucide-react';
 import { toast } from 'sonner';
 import styles from './team-content.module.css';
@@ -77,9 +77,9 @@ export default function EventTeamPage({ params }: { params: Promise<{ id: string
         href: `/admin/events/${id}/team/add`,
         icon: <Plus />
       }}
-      metadata={[
-        { icon: <Users />, label: 'Team Members', value: team.length.toString() }
-      ]}
+      metadata={
+        <div>{team.length} Team Members</div>
+      }
       loading={loading}
     >
       <div className={styles.teamGrid}>

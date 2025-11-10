@@ -18,8 +18,8 @@
 .spinner {
   inline-size: var(--space-12);
   block-size: var(--space-12);
-  border-block-end: 2px solid var(--color-black);
-  border-radius: 0;
+  border-block-end: var(--border-width-2) solid var(--color-black);
+  border-radius: var(--radius-none);
   margin-inline: auto;
   margin-block-end: var(--space-4);
   animation: spin 1s linear infinite;
@@ -38,7 +38,7 @@
 
 /* Hero Section */
 .hero {
-  border-block-end: 3px solid var(--color-black);
+  border-block-end: var(--border-width-3) solid var(--color-black);
   background-color: var(--color-black);
 }
 
@@ -135,7 +135,7 @@
 
 /* Benefits Section */
 .benefitsSection {
-  border-block-start: 3px solid var(--color-black);
+  border-block-start: var(--border-width-3) solid var(--color-black);
   background-color: var(--color-grey-50);
 }
 
@@ -174,7 +174,7 @@
 }
 
 .benefitCard {
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   background-color: var(--color-white);
   padding: var(--space-8);
 }
@@ -238,7 +238,7 @@
 }
 
 .faqItem {
-  border: 2px solid var(--color-black);
+  border: var(--border-width-2) solid var(--color-black);
   padding: var(--space-6);
 }
 
@@ -257,7 +257,7 @@
 
 /* CTA Section */
 .ctaSection {
-  border-block-start: 3px solid var(--color-black);
+  border-block-start: var(--border-width-3) solid var(--color-black);
   background-color: var(--color-black);
   color: var(--color-text-inverse);
 }
@@ -400,7 +400,7 @@
 }
 
 .rounded {
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-none)(--radius-md);
 }
 
 .shadow {

@@ -4,9 +4,9 @@ import { useEffect, useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { ContextualPageTemplate } from '@/design-system/components/templates';
 import { createClient } from '@/lib/supabase/client';
-import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/card';
-import { Button } from '@/design-system/components/atoms/button';
-import { Badge } from '@/design-system/components/atoms/badge';
+import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/Card';
+import { Button } from '@/design-system/components/atoms/Button';
+import { Badge } from '@/design-system/components/atoms/Badge';
 import { Mail, RefreshCw, DollarSign, Package } from 'lucide-react';
 import { toast } from 'sonner';
 import styles from './order-detail-content.module.css';
@@ -99,11 +99,11 @@ export default function AdminOrderDetailPage({ params }: { params: Promise<{ id:
   const getStatusBadge = (status: string) => {
     const variants = {
       completed: 'default' as const,
-      pending: 'secondary' as const,
-      cancelled: 'destructive' as const,
-      refunded: 'secondary' as const,
+      pending: 'outlined' as const,
+      cancelled: 'sold-out' as const,
+      refunded: 'outlined' as const,
     };
-    return variants[status as keyof typeof variants] || 'secondary';
+    return variants[status as keyof typeof variants] || 'outlined';
   };
 
   if (!order) {
@@ -120,36 +120,10 @@ export default function AdminOrderDetailPage({ params }: { params: Promise<{ id:
         { label: `Order #${order.order_number}`, href: `/admin/orders/${orderId}` }
       ]}
       title={`Order #${order.order_number}`}
-      subtitle={`${order.customer_name} • ${order.customer_email}`}
-      statusBadge={{
-        label: order.status,
-        variant: getStatusBadge(order.status) === 'default' ? 'success' : 
-                getStatusBadge(order.status) === 'destructive' ? 'error' : 'info'
-      }}
-      secondaryActions={[
-        {
-          label: 'Resend Tickets',
-          onClick: handleResendTickets,
-          icon: <Mail />
-        },
-        {
-          label: 'Refresh',
-          onClick: () => fetchOrder(orderId),
-          icon: <RefreshCw />
-        }
-      ]}
-      primaryAction={
-        order.status === 'completed' ? {
-          label: 'Refund Order',
-          onClick: handleRefund,
-          icon: <DollarSign />
-        } : undefined
+      subtitle={`${order.customer_name} • ${order.customer_email} • Status: ${order.status}`}
+      metadata={
+        <div>{order.tickets?.length || 0} Tickets • ${totalAmount.toFixed(2)} • {new Date(order.created_at).toLocaleDateString()}</div>
       }
-      metadata={[
-        { icon: <Package />, label: 'Tickets', value: order.tickets?.length.toString() || '0' },
-        { icon: <DollarSign />, label: 'Total', value: `$${totalAmount.toFixed(2)}` },
-        { label: 'Order Date', value: new Date(order.created_at).toLocaleDateString() }
-      ]}
       loading={loading}
     >
       <div className={styles.contentGrid}>
@@ -191,7 +165,7 @@ export default function AdminOrderDetailPage({ params }: { params: Promise<{ id:
                     <span className={styles.ticketType}>
                       {ticket.ticket_types?.name || 'General Admission'}
                     </span>
-                    <Badge variant={ticket.status === 'valid' ? 'default' : 'secondary'}>
+                    <Badge variant={ticket.status === 'valid' ? 'default' : 'outlined'}>
                       {ticket.status}
                     </Badge>
                   </div>

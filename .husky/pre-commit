@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Design token validation
+echo "🔍 Validating design tokens..."
+./scripts/validate-design-tokens.sh
+
+if [ $? -ne 0 ]; then
+  echo ""
+  echo "❌ Design token violations detected!"
+  echo "Run 'npm run fix:tokens' to auto-fix common violations"
+  echo "Or fix manually and commit again"
+  exit 1
+fi
+
+echo "✅ Design tokens validated"

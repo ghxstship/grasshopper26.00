@@ -1,0 +1,12 @@
+/**
+ * Overlay Styles
+ * GHXSTSHIP Monochromatic Design System
+ */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-index-overlay);
+  background-color: var(--color-black);
+  cursor: pointer;
+}

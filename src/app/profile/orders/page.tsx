@@ -1,6 +1,6 @@
 import { createClient } from '@/lib/supabase/server';
-import { Card, CardContent } from '@/design-system/components/atoms/card';
-import { Button } from '@/design-system/components/atoms/button';
+import { Card, CardContent } from '@/design-system/components/atoms/Card';
+import { Button } from '@/design-system/components/atoms/Button';
 import { Calendar, MapPin, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';

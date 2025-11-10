@@ -1,28 +1,43 @@
 'use client';
 
-import { PublicBrowseTemplate } from '@/design-system/components/templates';
-import { Crown } from 'lucide-react';
+import { MembershipLayout } from '@/design-system/components/templates/MembershipLayout/MembershipLayout';
+import { Header } from '@/design-system/components/organisms/Header/Header';
+import { Footer } from '@/design-system/components/organisms/Footer/Footer';
+import { Typography } from '@/design-system/components/atoms/Typography/Typography';
 import { useMembershipTiers } from '@/hooks/useMembershipTiers';
-import { MembershipTierCard } from '@/design-system/components/organisms/membership/tier-card';
+import { MembershipTierCard } from '@/design-system/components/organisms/MembershipTierCard/MembershipTierCard';
+import styles from './membership.module.css';
 
 export default function MembershipPage() {
   const { tiers, loading } = useMembershipTiers();
 
   return (
-    <PublicBrowseTemplate
-      title="MEMBERSHIP TIERS"
-      subtitle="Join GVTEWAY and unlock exclusive benefits"
-      heroGradient={true}
-      items={tiers}
-      renderItem={(tier) => <MembershipTierCard tier={tier} />}
-      gridColumns={3}
-      gap="lg"
-      loading={loading}
-      emptyState={{
-        icon: <Crown />,
-        title: "No tiers available",
-        description: "Check back soon",
-      }}
+    <MembershipLayout
+      header={<Header />}
+      hero={
+        <div className={styles.hero}>
+          <Typography variant="hero" as="h1">
+            Membership Tiers
+          </Typography>
+          <Typography variant="h3" as="p" className={styles.heroSubtitle}>
+            Join GVTEWAY and unlock exclusive benefits
+          </Typography>
+        </div>
+      }
+      tiers={
+        <div className={styles.tiersGrid}>
+          {loading ? (
+            Array.from({ length: 6 }).map((_, i) => (
+              <div key={i} className={styles.tierSkeleton} />
+            ))
+          ) : (
+            tiers.map((tier) => (
+              <MembershipTierCard key={tier.id} tier={tier} />
+            ))
+          )}
+        </div>
+      }
+      footer={<Footer />}
     />
   );
 }

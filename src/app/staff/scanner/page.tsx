@@ -235,11 +235,6 @@ function ScannerContent() {
           <div className={styles.card}>
             <QRScanner
               onScan={(ticketId: string) => handleScan(ticketId)}
-              onError={(error: Error) => addToHistory({
-                success: false,
-                message: error.message,
-                timestamp: new Date(),
-              })}
             />
           </div>
 

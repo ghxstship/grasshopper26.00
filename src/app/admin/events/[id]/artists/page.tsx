@@ -6,11 +6,11 @@
 'use client';
 
 import { use, useEffect, useState } from 'react';
-import { ContextualPageTemplate } from '@/design-system/components/templates';
-import { Button } from '@/design-system/components/atoms/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/card';
-import { Input } from '@/design-system/components/atoms/input';
-import { Badge } from '@/design-system/components/atoms/badge';
+import { SplitLayout } from '@/design-system/components/templates';
+import { Button } from '@/design-system/components/atoms/Button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/Card';
+import { Input } from '@/design-system/components/atoms/Input';
+import { Badge } from '@/design-system/components/atoms/Badge';
 import { Plus, Trash2, Music, Search, Check } from 'lucide-react';
 import { toast } from 'sonner';
 import Image from 'next/image';
@@ -193,7 +193,7 @@ export default function EventArtistsPage({ params }: { params: Promise<{ id: str
                           <Badge variant="default">Headliner</Badge>
                         )}
                         {artist.verified && (
-                          <Badge variant="secondary">
+                          <Badge variant="outlined">
                             <Check className={styles.iconSmall} />
                           </Badge>
                         )}
@@ -207,14 +207,14 @@ export default function EventArtistsPage({ params }: { params: Promise<{ id: str
                     <div className={styles.artistActions}>
                       <Button
                         onClick={() => handleToggleHeadliner(artist.event_artist_id, artist.is_headliner)}
-                        variant="outline"
+                        variant="outlined"
                         size="sm"
                       >
                         {artist.is_headliner ? 'Unmark' : 'Mark'} Headliner
                       </Button>
                       <Button
                         onClick={() => handleRemoveArtist(artist.event_artist_id)}
-                        variant="outline"
+                        variant="outlined"
                         size="sm"
                       >
                         <Trash2 className={styles.iconSmall} />
@@ -283,7 +283,7 @@ export default function EventArtistsPage({ params }: { params: Promise<{ id: str
                 </Button>
                 <Button
                   type="button"
-                  variant="outline"
+                  variant="outlined"
                   onClick={() => {
                     setShowAddForm(false);
                     setSelectedArtistId('');
@@ -339,7 +339,7 @@ export default function EventArtistsPage({ params }: { params: Promise<{ id: str
                     <div className={styles.artistHeader}>
                       <h4 className={styles.artistName}>{artist.name}</h4>
                       {artist.verified && (
-                        <Badge variant="secondary">
+                        <Badge variant="outlined">
                           <Check className={styles.iconSmall} />
                         </Badge>
                       )}
@@ -360,19 +360,10 @@ export default function EventArtistsPage({ params }: { params: Promise<{ id: str
   );
 
   return (
-    <ContextualPageTemplate
-      breadcrumbs={[
-        { label: 'Events', href: '/admin/events' },
-        { label: event?.name || 'Event', href: `/admin/events/${id}` },
-        { label: 'Artists', href: `/admin/events/${id}/artists` }
-      ]}
-      title="Event Artists"
-      subtitle={event?.name ? `${event.name} - Manage artist lineup and billing` : 'Manage artist lineup and billing'}
-      layout="split-pane"
-      splitRatio="50-50"
-      leftPane={assignedArtistsPane}
-      rightPane={availableArtistsPane}
-      loading={loading}
+    <SplitLayout
+      ratio="50-50"
+      left={assignedArtistsPane}
+      right={availableArtistsPane}
     />
   );
 }

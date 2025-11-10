@@ -3,10 +3,10 @@
 import { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { CheckCircle, XCircle, Loader2, Mail } from 'lucide-react';
-import { Button } from '@/design-system/components/atoms/button';
-import { Card, CardContent } from '@/design-system/components/atoms/card';
-import { Input } from '@/design-system/components/atoms/input';
-import { Label } from '@/design-system/components/atoms/label';
+import { Button } from '@/design-system/components/atoms/Button';
+import { Card, CardContent } from '@/design-system/components/atoms/Card';
+import { Input } from '@/design-system/components/atoms/Input';
+import { Label } from '@/design-system/components/atoms/Label';
 import Link from 'next/link';
 import styles from '../auth.module.css';
 
@@ -134,7 +134,7 @@ export default function VerifyEmailPage() {
                 </Button>
                 <Button
                   asChild
-                  variant="outline"
+                  variant="outlined"
                   className={styles.fullWidth}
                 >
                   <Link href="/login">Back to Login</Link>

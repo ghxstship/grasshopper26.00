@@ -4,8 +4,8 @@ import { useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 import { AuthCardTemplate } from '@/design-system/components/templates';
-import { Input } from '@/design-system/components/atoms/input';
-import { Label } from '@/design-system/components/atoms/label';
+import { Input } from '@/design-system/components/atoms/Input';
+import { Label } from '@/design-system/components/atoms/Label';
 import { toast } from 'sonner';
 import styles from '../auth.module.css';
 

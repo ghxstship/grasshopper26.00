@@ -2,11 +2,11 @@
 
 import { use, useEffect, useState, useCallback } from 'react';
 import { ContextualPageTemplate } from '@/design-system/components/templates';
-import { Button } from '@/design-system/components/atoms/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/card';
-import { Input } from '@/design-system/components/atoms/input';
-import { Label } from '@/design-system/components/atoms/label';
-import { Badge } from '@/design-system/components/atoms/badge';
+import { Button } from '@/design-system/components/atoms/Button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/Card';
+import { Input } from '@/design-system/components/atoms/Input';
+import { Label } from '@/design-system/components/atoms/Label';
+import { Badge } from '@/design-system/components/atoms/Badge';
 import { Plus, Edit, Trash2, Ticket } from 'lucide-react';
 import { toast } from 'sonner';
 import styles from './tickets-content.module.css';
@@ -241,7 +241,7 @@ export default function ManageTicketTypesPage({ params }: { params: Promise<{ id
                 <Button type="submit">{editingId ? 'Update' : 'Create'} Ticket Type</Button>
                 <Button
                   type="button"
-                  variant="outline"
+                  variant="outlined"
                   onClick={() => {
                     setShowForm(false);
                     setEditingId(null);
@@ -265,11 +265,11 @@ export default function ManageTicketTypesPage({ params }: { params: Promise<{ id
                   <CardTitle>{ticketType.name}</CardTitle>
                 </div>
                 <div className={styles.ticketActions}>
-                  <Button variant="outline" size="sm" onClick={() => handleEdit(ticketType)}>
+                  <Button variant="outlined" size="sm" onClick={() => handleEdit(ticketType)}>
                     <Edit className={styles.iconSmall} />
                     Edit
                   </Button>
-                  <Button variant="outline" size="sm" onClick={() => handleDelete(ticketType.id)}>
+                  <Button variant="outlined" size="sm" onClick={() => handleDelete(ticketType.id)}>
                     <Trash2 className={styles.iconSmall} />
                   </Button>
                 </div>
@@ -291,7 +291,7 @@ export default function ManageTicketTypesPage({ params }: { params: Promise<{ id
                 </div>
                 <div className={styles.ticketDetail}>
                   <span className={styles.label}>Available:</span>
-                  <Badge variant={ticketType.quantity - (ticketType.sold || 0) > 0 ? 'default' : 'destructive'}>
+                  <Badge variant={ticketType.quantity - (ticketType.sold || 0) > 0 ? 'default' : 'sold-out'}>
                     {ticketType.quantity - (ticketType.sold || 0)}
                   </Badge>
                 </div>

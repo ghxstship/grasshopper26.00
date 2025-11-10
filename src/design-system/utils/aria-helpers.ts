@@ -1,8 +1,7 @@
-/* eslint-disable no-magic-numbers */
-// ARIA ID generation and accessibility constants
 /**
  * ARIA Helper Utilities
  * Simplify ARIA attribute management
+ * WCAG 2.2 AAA Compliant
  */
 
 export const ariaHelpers = {
@@ -10,7 +9,7 @@ export const ariaHelpers = {
    * Generate unique IDs for ARIA relationships
    */
   generateId: (prefix: string): string => {
-    return `${prefix}-${Math.random().toString(36).substr(2, 9)}`;
+    return `${prefix}-${Math.random().toString(36).substring(2, 11)}`;
   },
   
   /**

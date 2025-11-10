@@ -9,18 +9,12 @@ import styles from './page.module.css';
 import { use, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
-import { Button } from '@/design-system/components/atoms/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/card';
-import { Input } from '@/design-system/components/atoms/input';
-import { Label } from '@/design-system/components/atoms/label';
-import { Textarea } from '@/design-system/components/atoms/textarea';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/design-system/components/atoms/select';
+import { Button } from '@/design-system/components/atoms/Button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/Card';
+import { Input } from '@/design-system/components/atoms/Input';
+import { Label } from '@/design-system/components/atoms/Label';
+import { Textarea } from '@/design-system/components/atoms/Textarea';
+import { Select } from '@/design-system/components/atoms/Select';
 import { ArrowLeft, ArrowRight, Check, Shield } from 'lucide-react';
 import Link from 'next/link';
 import { toast } from 'sonner';
@@ -294,7 +288,7 @@ export default function IssueCredentialPage({ params }: { params: Promise<{ id: 
             </div>
 
             <div className={styles.row}>
-              <Button variant="outline" onClick={() => setStep(1)}>
+              <Button variant="outlined" onClick={() => setStep(1)}>
                 <ArrowLeft className={styles.icon} />
                 Back
               </Button>
@@ -365,7 +359,7 @@ export default function IssueCredentialPage({ params }: { params: Promise<{ id: 
             </div>
 
             <div className={styles.row}>
-              <Button variant="outline" onClick={() => setStep(2)}>
+              <Button variant="outlined" onClick={() => setStep(2)}>
                 <ArrowLeft className={styles.icon} />
                 Back
               </Button>

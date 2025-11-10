@@ -1,0 +1,27 @@
+/**
+ * AspectRatio Component Styles
+ * GHXSTSHIP Monochromatic Design System
+ */
+
+.aspectRatio {
+  position: relative;
+  inline-size: 100%;
+}
+
+.inner {
+  position: relative;
+  block-size: 0;
+}
+
+.content {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.content > * {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}

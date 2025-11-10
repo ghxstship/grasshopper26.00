@@ -1,6 +1,7 @@
 /**
- * Layout Tokens
+ * Layout Tokens - Entertainment Platform
  * Container widths, aspect ratios, and layout-specific values
+ * Optimized for immersive full-screen experiences
  */
 
 export const layout = {
@@ -20,7 +21,7 @@ export const layout = {
     full: '100%',
   },
   
-  // Aspect ratios
+  // Aspect ratios - Entertainment Platform
   aspectRatio: {
     square: '1 / 1',
     video: '16 / 9',
@@ -28,6 +29,18 @@ export const layout = {
     landscape: '4 / 3',
     ultrawide: '21 / 9',
     golden: '1.618 / 1',
+    eventCard: '3 / 4',      // Event card imagery
+    artistCard: '1 / 1',     // Artist profile images
+    heroImage: '16 / 9',     // Hero sections
+  },
+  
+  // Entertainment Platform specific layout values
+  geometric: {
+    borderThickness: '2px',
+    borderThicknessBold: '3px',
+    shadowOffset: '8px',
+    gridLineWidth: '1px',
+    gridCellSize: '20px',
   },
   
   // Safe area insets (for mobile notches, etc.)

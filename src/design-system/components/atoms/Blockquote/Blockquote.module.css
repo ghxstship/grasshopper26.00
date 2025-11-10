@@ -1,0 +1,27 @@
+/**
+ * Blockquote Component Styles
+ * GHXSTSHIP Monochromatic Design System
+ */
+
+.blockquote {
+  margin: var(--spacing-6) 0;
+  padding: var(--spacing-6);
+  border-inline-start: var(--border-width-thick) solid var(--color-black);
+  background-color: var(--color-grey-100);
+}
+
+.content {
+  font-family: var(--font-share);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-primary);
+}
+
+.footer {
+  margin-block-start: var(--spacing-4);
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-meta);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-text-secondary);
+}

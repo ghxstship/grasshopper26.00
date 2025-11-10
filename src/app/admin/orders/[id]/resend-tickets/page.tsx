@@ -3,9 +3,9 @@
 import { use, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { ContextualPageTemplate } from '@/design-system/components/templates';
-import { Button } from '@/design-system/components/atoms/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/card';
-import { Badge } from '@/design-system/components/atoms/badge';
+import { Button } from '@/design-system/components/atoms/Button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/Card';
+import { Badge } from '@/design-system/components/atoms/Badge';
 import { Mail, CheckCircle, Ticket } from 'lucide-react';
 import { toast } from 'sonner';
 import styles from './resend-content.module.css';
@@ -128,7 +128,7 @@ className={`${styles.ticketItem} ${selectedTickets.has(ticket.id) ? styles.selec
                     {ticket.ticket_number}
                   </div>
                 </div>
-                <Badge variant={ticket.status === 'valid' ? 'default' : 'secondary'}>
+                <Badge variant={ticket.status === 'valid' ? 'default' : 'outlined'}>
                   {ticket.status}
                 </Badge>
               </div>

@@ -8,10 +8,10 @@
 import { use, useState, useEffect } from 'react';
 import { ContextualPageTemplate } from '@/design-system/components/templates';
 import { createClient } from '@/lib/supabase/client';
-import { Button } from '@/design-system/components/atoms/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/card';
-import { Input } from '@/design-system/components/atoms/input';
-import { Badge } from '@/design-system/components/atoms/badge';
+import { Button } from '@/design-system/components/atoms/Button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/Card';
+import { Input } from '@/design-system/components/atoms/Input';
+import { Badge } from '@/design-system/components/atoms/Badge';
 import { QrCode, Search, Users, CheckCircle, XCircle, Clock } from 'lucide-react';
 import { toast } from 'sonner';
 import { QRScanner } from '@/design-system/components/organisms/event-roles/QRScanner';
@@ -224,17 +224,28 @@ export default function EventCheckInPage({ params }: { params: Promise<{ id: str
         onClick: () => setShowScanner(!showScanner),
         icon: <QrCode />
       }}
-      metadata={[
-        { icon: <Users />, label: 'Total Tickets', value: stats.total_capacity.toString() },
-        { icon: <CheckCircle />, label: 'Checked In', value: stats.checked_in.toString() },
-        { icon: <Clock />, label: 'Remaining', value: stats.remaining.toString() },
-        { label: 'Progress', value: `${Math.round(stats.percentage)}%` }
-      ]}
       loading={loading}
-      contentZones={[
-        {
-          id: 'scanner',
-          content: showScanner && (
+    >
+      <div className={styles.statsGrid}>
+        <div className={styles.statCard}>
+          <span className={styles.statLabel}>Total Tickets</span>
+          <span className={styles.statValue}>{stats.total_capacity}</span>
+        </div>
+        <div className={styles.statCard}>
+          <span className={styles.statLabel}>Checked In</span>
+          <span className={styles.statValue}>{stats.checked_in}</span>
+        </div>
+        <div className={styles.statCard}>
+          <span className={styles.statLabel}>Remaining</span>
+          <span className={styles.statValue}>{stats.remaining}</span>
+        </div>
+        <div className={styles.statCard}>
+          <span className={styles.statLabel}>Progress</span>
+          <span className={styles.statValue}>{Math.round(stats.percentage)}%</span>
+        </div>
+      </div>
+
+      {showScanner && (
             <Card>
               <CardHeader>
                 <CardTitle>QR Code Scanner</CardTitle>
@@ -247,12 +258,9 @@ export default function EventCheckInPage({ params }: { params: Promise<{ id: str
                 />
               </CardContent>
             </Card>
-          )
-        },
-        {
-          id: 'search',
-          content: (
-            <Card>
+      )}
+
+      <Card>
               <CardHeader>
                 <CardTitle>Search Tickets</CardTitle>
               </CardHeader>
@@ -288,7 +296,7 @@ export default function EventCheckInPage({ params }: { params: Promise<{ id: str
                                 Checked In
                               </Badge>
                               <Button
-                                variant="outline"
+                                variant="outlined"
                                 size="sm"
                                 onClick={() => handleUndoCheckIn(ticket.id)}
                               >
@@ -307,12 +315,8 @@ export default function EventCheckInPage({ params }: { params: Promise<{ id: str
                 )}
               </CardContent>
             </Card>
-          )
-        },
-        {
-          id: 'recent',
-          content: (
-            <Card>
+
+      <Card>
               <CardHeader>
                 <CardTitle>Recent Check-Ins</CardTitle>
               </CardHeader>
@@ -336,9 +340,6 @@ export default function EventCheckInPage({ params }: { params: Promise<{ id: str
                 )}
               </CardContent>
             </Card>
-          )
-        }
-      ]}
-    />
+    </ContextualPageTemplate>
   );
 }

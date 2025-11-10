@@ -1,0 +1,71 @@
+/**
+ * MembershipCard Styles
+ * GHXSTSHIP Monochromatic Design System
+ */
+
+.card {
+  aspect-ratio: 375 / 240;
+  max-width: 375px;
+  background-color: var(--color-bg-inverse);
+  color: var(--color-text-inverse);
+  border: var(--border-width-3) solid var(--color-border-inverse);
+  box-shadow: var(--shadow-geometric-white);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.badge {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  border: var(--border-width-3) solid var(--color-border-strong);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-h3);
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.name {
+  margin-block-end: var(--space-2);
+}
+
+.tier {
+  opacity: 0.7;
+  text-transform: uppercase;
+}
+
+.footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.qr {
+  width: 64px;
+  height: 64px;
+  background-color: var(--color-bg-primary);
+  border: var(--border-width-3) solid var(--color-border-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-meta);
+  color: var(--color-text-primary);
+}

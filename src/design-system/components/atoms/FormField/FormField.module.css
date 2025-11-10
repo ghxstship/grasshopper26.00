@@ -1,0 +1,40 @@
+/**
+ * FormField Component Styles
+ * GHXSTSHIP Monochromatic Design System
+ */
+
+.formField {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.label {
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-h5);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-text-primary);
+}
+
+.required {
+  color: var(--color-text-primary);
+  margin-inline-start: var(--spacing-1);
+}
+
+.error {
+  font-family: var(--font-share);
+  font-size: var(--font-size-meta);
+  color: var(--color-text-primary);
+  background-color: var(--color-grey-900);
+  padding: var(--spacing-2) var(--spacing-3);
+  border-inline-start: var(--border-width-thick) solid var(--color-black);
+}
+
+.helper {
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-meta);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}

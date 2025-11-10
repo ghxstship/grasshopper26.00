@@ -19,8 +19,8 @@
 
 .builder {
   background: var(--color-surface-primary);
-  border: 1px solid var(--color-border-subtle);
-  border-radius: var(--radius-lg);
+  border: var(--border-width-thin) solid var(--color-border-subtle);
+  border-radius: var(--radius-none)(--radius-lg);
   padding-block: var(--spacing-xl);
   padding-inline: var(--spacing-xl);
 }
@@ -43,8 +43,8 @@
   padding-inline: var(--spacing-md);
   background: var(--color-background-primary);
   color: var(--color-text-primary);
-  border: 1px solid var(--color-border-subtle);
-  border-radius: var(--radius-md);
+  border: var(--border-width-thin) solid var(--color-border-subtle);
+  border-radius: var(--radius-none)(--radius-md);
   font-size: var(--font-size-sm);
 }
 
@@ -54,7 +54,7 @@
   background: var(--color-primary-500);
   color: var(--color-white);
   border: none;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-none)(--radius-md);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-semibold);
   cursor: pointer;

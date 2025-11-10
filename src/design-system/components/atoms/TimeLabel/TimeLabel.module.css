@@ -1,0 +1,30 @@
+/**
+ * TimeLabel Styles
+ * GHXSTSHIP Entertainment Platform
+ * SHARE TECH MONO time display
+ */
+
+.time {
+  font-family: var(--font-mono);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  color: var(--color-text-primary);
+}
+
+.sm {
+  font-size: var(--font-size-xs);
+}
+
+.md {
+  font-size: var(--font-size-sm);
+}
+
+.lg {
+  font-size: var(--font-size-base);
+}
+
+.dark .time,
+[data-theme="dark"] .time {
+  color: var(--color-text-primary);
+}

@@ -1,11 +1,13 @@
 'use client';
 
 import styles from './page.module.css';
-
 import { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { requireAdmin } from '@/lib/api/middleware';
 import { useSearchParams } from 'next/navigation';
+import { AdminLayout } from '@/design-system/components/templates/AdminLayout/AdminLayout';
+import { AdminSidebar } from '@/design-system/components/organisms/AdminSidebar/AdminSidebar';
+import { Button } from '@/design-system/components/atoms/Button/Button';
 
 interface PricingTier {
   id: string;
@@ -179,22 +181,20 @@ export default function DynamicPricingPage() {
   }
 
   return (
-    <div className={styles.container}>
-      {/* Header */}
-      <div className={styles.headerRow}>
-        <div>
-          <h1 className={styles.title}>Dynamic Pricing</h1>
-          <p className={styles.subtitle}>Configure automatic price adjustments based on demand and time</p>
-        </div>
-        <button
+    <AdminLayout
+      sidebar={<AdminSidebar />}
+      title="Dynamic Pricing"
+      description="Configure automatic price adjustments based on demand and time"
+      actions={
+        <Button
           onClick={handleSave}
           disabled={saving}
-          className={styles.button}
+          variant="filled"
         >
           {saving ? 'Saving...' : 'Save Configuration'}
-        </button>
-      </div>
-
+        </Button>
+      }
+    >
       {/* Messages */}
       {message && (
         <div className={`${styles.message} ${
@@ -418,6 +418,6 @@ export default function DynamicPricingPage() {
           <li>• Price changes are logged for analytics and reporting</li>
         </ul>
       </div>
-    </div>
+    </AdminLayout>
   );
 }

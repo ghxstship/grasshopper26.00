@@ -7,11 +7,11 @@
 
 import { use, useEffect, useState } from 'react';
 import { ContextualPageTemplate } from '@/design-system/components/templates';
-import { Button } from '@/design-system/components/atoms/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/card';
-import { Input } from '@/design-system/components/atoms/input';
-import { Label } from '@/design-system/components/atoms/label';
-import { Badge } from '@/design-system/components/atoms/badge';
+import { Button } from '@/design-system/components/atoms/Button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/Card';
+import { Input } from '@/design-system/components/atoms/Input';
+import { Label } from '@/design-system/components/atoms/Label';
+import { Badge } from '@/design-system/components/atoms/Badge';
 import { Plus, Save, Trash2, Clock, MapPin, Music, Calendar } from 'lucide-react';
 import { toast } from 'sonner';
 import styles from './schedule-content.module.css';
@@ -165,11 +165,8 @@ export default function EventSchedulePage({ params }: { params: Promise<{ id: st
       title="Event Schedule"
       subtitle={event?.name ? `${event.name} - Manage stages and performance schedule` : 'Manage stages and performance schedule'}
       loading={loading}
-      contentZones={[
-        {
-          id: 'stages',
-          content: (
-            <Card>
+    >
+      <Card>
               <CardHeader>
                 <div className={styles.cardHeaderRow}>
                   <CardTitle>
@@ -218,7 +215,7 @@ export default function EventSchedulePage({ params }: { params: Promise<{ id: st
                         <Save className={styles.iconSmall} />
                         Save Stage
                       </Button>
-                      <Button type="button" variant="outline" onClick={() => setShowStageForm(false)}>
+                      <Button type="button" variant="outlined" onClick={() => setShowStageForm(false)}>
                         Cancel
                       </Button>
                     </div>
@@ -245,12 +242,8 @@ export default function EventSchedulePage({ params }: { params: Promise<{ id: st
                 </div>
               </CardContent>
             </Card>
-          )
-        },
-        {
-          id: 'schedule',
-          content: (
-            <Card>
+
+      <Card>
               <CardHeader>
                 <div className={styles.cardHeaderRow}>
                   <CardTitle>
@@ -327,7 +320,7 @@ export default function EventSchedulePage({ params }: { params: Promise<{ id: st
                         <Save className={styles.iconSmall} />
                         Add to Schedule
                       </Button>
-                      <Button type="button" variant="outline" onClick={() => setShowScheduleForm(false)}>
+                      <Button type="button" variant="outlined" onClick={() => setShowScheduleForm(false)}>
                         Cancel
                       </Button>
                     </div>
@@ -343,7 +336,7 @@ export default function EventSchedulePage({ params }: { params: Promise<{ id: st
                           <div className={styles.scheduleHeader}>
                             <Music className={styles.iconSmall} />
                             <h4 className={styles.artistName}>{item.artist_name}</h4>
-                            <Badge variant="secondary">{item.stage_name}</Badge>
+                            <Badge variant="outlined">{item.stage_name}</Badge>
                           </div>
                           <p className={styles.scheduleTime}>
                             <Clock className={styles.iconSmall} />
@@ -351,7 +344,7 @@ export default function EventSchedulePage({ params }: { params: Promise<{ id: st
                           </p>
                         </div>
                         <Button
-                          variant="outline"
+                          variant="outlined"
                           size="sm"
                           onClick={() => item.id && handleDeleteScheduleItem(item.id)}
                         >
@@ -362,9 +355,6 @@ export default function EventSchedulePage({ params }: { params: Promise<{ id: st
                 </div>
               </CardContent>
             </Card>
-          )
-        }
-      ]}
-    />
+    </ContextualPageTemplate>
   );
 }

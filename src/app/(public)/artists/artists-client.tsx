@@ -1,9 +1,16 @@
 'use client';
 
-import { useState } from 'react';
-import { PublicBrowseTemplate } from '@/design-system/components/templates';
-import { Users } from 'lucide-react';
-import { ArtistCard } from '@/design-system/components/organisms/artists/artist-card';
+import { useState, useMemo } from 'react';
+import { useRouter } from 'next/navigation';
+import { GridLayout } from '@/design-system/components/templates/GridLayout/GridLayout';
+import { Header } from '@/design-system/components/organisms/Header/Header';
+import { Footer } from '@/design-system/components/organisms/Footer/Footer';
+import { ArtistCard } from '@/design-system/components/organisms/ArtistCard/ArtistCard';
+import { Input } from '@/design-system/components/atoms/Input/Input';
+import { Typography } from '@/design-system/components/atoms/Typography/Typography';
+import { ArtistGrid } from '@/design-system/components/organisms/ArtistGrid/ArtistGrid';
+import { SearchBar } from '@/design-system/components/molecules/SearchBar/SearchBar';
+import styles from './artists.module.css';
 
 interface Artist {
   id: string;
@@ -20,51 +27,79 @@ interface ArtistsBrowseClientProps {
 }
 
 export function ArtistsBrowseClient({ initialArtists, initialSearch }: ArtistsBrowseClientProps) {
+  const router = useRouter();
   const [searchQuery, setSearchQuery] = useState(initialSearch || '');
-  const [sortBy, setSortBy] = useState('name-asc');
+  const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
+
+  const allGenres = useMemo(() => {
+    const genres = new Set<string>();
+    initialArtists.forEach(artist => {
+      artist.genre_tags?.forEach(genre => genres.add(genre));
+    });
+    return Array.from(genres).sort();
+  }, [initialArtists]);
+
+  const filters = allGenres.map(genre => ({
+    id: genre,
+    label: genre.toUpperCase(),
+    count: initialArtists.filter(a => a.genre_tags?.includes(genre)).length,
+  }));
 
   const filteredArtists = initialArtists
-    .filter(artist =>
-      searchQuery
+    .filter(artist => {
+      const matchesSearch = searchQuery
         ? artist.name.toLowerCase().includes(searchQuery.toLowerCase())
-        : true
-    )
-    .sort((a, b) => {
-      if (sortBy === 'name-asc') return a.name.localeCompare(b.name);
-      if (sortBy === 'name-desc') return b.name.localeCompare(a.name);
-      return 0;
+        : true;
+      const matchesGenre = selectedFilters.length === 0 ||
+        artist.genre_tags?.some(tag => selectedFilters.includes(tag));
+      return matchesSearch && matchesGenre;
     });
 
+  const mappedArtists = filteredArtists.map(artist => ({
+    id: artist.id,
+    name: artist.name,
+    genre: artist.genre_tags || [],
+    imageUrl: artist.image_url || '/placeholder-artist.jpg',
+  }));
+
+  const handleFilterChange = (filterId: string) => {
+    setSelectedFilters(prev =>
+      prev.includes(filterId)
+        ? prev.filter(id => id !== filterId)
+        : [...prev, filterId]
+    );
+  };
+
   return (
-    <PublicBrowseTemplate
-      title="ARTISTS"
-      subtitle="Discover the incredible talent performing at GVTEWAY events"
-      heroGradient={true}
-      searchPlaceholder="Search artists..."
-      searchValue={searchQuery}
-      onSearchChange={setSearchQuery}
-      showSearch={true}
-      sortOptions={[
-        { value: 'name-asc', label: 'Name (A-Z)' },
-        { value: 'name-desc', label: 'Name (Z-A)' },
-      ]}
-      sortValue={sortBy}
-      onSortChange={setSortBy}
-      items={filteredArtists}
-      renderItem={(artist) => <ArtistCard artist={artist} />}
-      gridColumns={4}
-      gap="lg"
-      showResultsCount={true}
-      totalCount={initialArtists.length}
-      emptyState={{
-        icon: <Users />,
-        title: "No artists found",
-        description: "Try adjusting your search",
-        action: {
-          label: "Clear Search",
-          onClick: () => setSearchQuery(''),
-        },
-      }}
-    />
+    <div className={styles.container}>
+      <Header logoText="GVTEWAY" />
+      
+      <main className={styles.main}>
+        <div className={styles.header}>
+          <h1 className={styles.title}>ARTISTS</h1>
+          <p className={styles.subtitle}>DISCOVER THE INCREDIBLE TALENT PERFORMING AT GVTEWAY EVENTS</p>
+        </div>
+
+        <div className={styles.searchContainer}>
+          <SearchBar
+            placeholder="SEARCH ARTISTS..."
+            value={searchQuery}
+            onChange={setSearchQuery}
+            fullWidth
+          />
+        </div>
+
+        <ArtistGrid
+          artists={mappedArtists}
+          onArtistClick={(id) => router.push(`/artists/${id}`)}
+          filters={filters}
+          selectedFilters={selectedFilters}
+          onFilterChange={handleFilterChange}
+          variant="circle"
+        />
+      </main>
+
+      <Footer />
+    </div>
   );
 }

@@ -1,0 +1,115 @@
+/**
+ * Landing Layout Styles
+ * GHXSTSHIP Monochromatic Design System
+ */
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--color-bg-primary);
+}
+
+/* Header */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--color-bg-primary);
+  border-block-end: var(--border-width-3) solid var(--color-border-strong);
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg-inverse);
+  color: var(--color-text-inverse);
+  overflow: hidden;
+}
+
+/* Section */
+.section {
+  padding: var(--space-12) var(--space-6);
+  background-color: var(--color-bg-primary);
+  border-block-end: var(--border-width-3) solid var(--color-border-default);
+}
+
+.sectionInverted {
+  background-color: var(--color-bg-inverse);
+  color: var(--color-text-inverse);
+  border-block-end-color: var(--color-border-inverse);
+}
+
+/* Newsletter */
+.newsletter {
+  padding: var(--space-12) var(--space-6);
+  background-color: var(--color-bg-secondary);
+  border-block-end: var(--border-width-3) solid var(--color-border-default);
+}
+
+/* Footer */
+.footer {
+  background-color: var(--color-bg-primary);
+  border-block-start: var(--border-width-3) solid var(--color-border-strong);
+  padding: var(--space-12) var(--space-6);
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (min-width: 768px) {
+  .section,
+  .newsletter,
+  .footer {
+    padding-inline: var(--space-8);
+  }
+}
+
+@media (min-width: 1024px) {
+  .section {
+    padding: var(--space-16) var(--space-10);
+  }
+  
+  .newsletter {
+    padding: var(--space-16) var(--space-10);
+  }
+  
+  .footer {
+    padding: var(--space-16) var(--space-10);
+  }
+}
+
+@media (min-width: 1440px) {
+  .section,
+  .newsletter,
+  .footer {
+    padding-inline: var(--space-12);
+  }
+}
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+
+@media (prefers-reduced-motion: no-preference) {
+  .section,
+  .newsletter {
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

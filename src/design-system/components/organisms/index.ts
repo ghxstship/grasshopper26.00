@@ -1,68 +1,62 @@
-/**
- * Organisms - Complex UI Components
- * Composed of molecules and atoms following atomic design principles
- */
-
-// Artist organisms
-export { ArtistFilters } from './artists/artist-filters';
-export { ArtistGrid } from './artists/artist-grid';
-export { FollowArtistButton } from './artists/follow-artist-button';
-
-// Content organisms
-export { PostGrid } from './content/post-grid';
-
-// Event organisms
-export { EventCard } from './events/event-card';
-
-// Shop organisms
-export { ProductGrid } from './shop/product-grid';
-export { ProductDetailView } from './shop/product-detail-view';
-export { ShopFilters } from './shop/shop-filters';
-
-// Schedule organisms
-export { ScheduleGrid } from './schedule/schedule-grid';
-
-// Venue organisms
-export { VenueMap as VenueMapOrganism } from './venue/venue-map';
-
-// Messaging organisms
-export { MessageThread } from './messaging/message-thread';
-
-// Chat organisms
-export { ChatRoom } from './chat/chat-room';
-
-// Production advances organisms
-export { CartSidebar } from './production-advances/CartSidebar';
-export { FloatingCartButton } from './production-advances/FloatingCartButton';
-
-// Standalone organisms (complex components not in molecules)
-export { ImageUploadBW } from './image-upload-bw';
-export { MusicPlayer } from './music-player';
-export { VideoGallery } from './video-gallery';
-
-// Admin organisms
-export { default as AdminSidebar } from './admin/AdminSidebar';
-export { default as AdminHeader } from './admin/AdminHeader';
-export { AdminBreadcrumbs } from './admin/AdminBreadcrumbs';
-export { default as AdminImageUpload } from './admin/ImageUpload';
-export { RoleBadge } from './admin/RoleBadge';
-export { CredentialBadge } from './admin/CredentialBadge';
-
-// Event role organisms
-export { QRScanner } from './event-roles/QRScanner';
-
-// Layout organisms
-export { SiteHeader } from './layout/site-header';
-export { SiteFooter } from './layout/site-footer';
-
-// Membership organisms
-export { MembershipCard } from './membership/membership-card';
-export { QuickStats } from './membership/quick-stats';
-export { UpcomingEvents } from './membership/upcoming-events';
-export { AvailableBenefits } from './membership/available-benefits';
-export { MemberEvents } from './membership/member-events';
-export { TierComparison } from './membership/tier-comparison';
-
-// KPI Analytics organisms
-export { KPIMetricCard } from './KPIMetricCard';
-export { InsightsPanel } from './InsightsPanel';
+export * from './Hero';
+export * from './Navigation';
+export * from './ScheduleGrid';
+export * from './WeatherWidget';
+export * from './BudgetManager';
+export * from './TaskBoard';
+export * from './KPIDashboard';
+export * from './VendorManagement';
+export * from './TransactionHistory';
+export * from './StaffScheduler';
+export * from './CheckInSystem';
+export * from './IncidentBoard';
+export * from './DataTable';
+export * from './KanbanBoard';
+export * from './CalendarView';
+export * from './FormBuilder';
+export * from './ListView';
+export * from './TimelineView';
+export * from './GalleryView';
+export * from './AdvancedFilter';
+export * from './ActivityFeed';
+export * from './WorkflowBuilder';
+export * from './DashboardBuilder';
+export * from './CommentThread';
+export * from './NotificationCenter';
+export * from './Header';
+export * from './Footer';
+export * from './EventCard';
+export * from './ArtistCard';
+export * from './TicketCard';
+export * from './NewsCard';
+export * from './Gallery';
+export * from './FAQAccordion';
+export * from './FAQ/FAQ';
+export * from './ContactForm';
+export * from './StatsSection';
+export * from './ArtistGrid/ArtistGrid';
+export * from './EventsGrid/EventsGrid';
+export * from './LineupSection/LineupSection';
+export * from './NewsGrid/NewsGrid';
+export * from './TicketSelector/TicketSelector';
+export * from './HeroSection/HeroSection';
+export * from './VenueMap/VenueMap';
+export * from './NewsletterSignup/NewsletterSignup';
+export * from './Carousel/Carousel';
+export * from './SocialFeed/SocialFeed';
+export * from './MusicPlayer/MusicPlayer';
+export * from './FeatureSection/FeatureSection';
+export * from './Breadcrumbs/Breadcrumbs';
+export * from './Pagination/Pagination';
+export * from './Modal/Modal';
+export * from './Tabs/Tabs';
+export * from './VideoPlayer/VideoPlayer';
+export * from './Countdown/Countdown';
+export * from './FilterPanel/FilterPanel';
+export * from './Notification/Notification';
+export * from './SearchResults/SearchResults';
+export * from './WeatherWidget/WeatherWidget';
+export * from './AdminSidebar/AdminSidebar';
+export * from './PortalSidebar/PortalSidebar';
+export * from './MembershipCard/MembershipCard';
+export * from './MembershipTierCard/MembershipTierCard';

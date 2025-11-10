@@ -2,12 +2,13 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Button } from '@/design-system/components/atoms/button';
-import { Input } from '@/design-system/components/atoms/input';
-import { Label } from '@/design-system/components/atoms/label';
-import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/card';
-import { ArrowLeft, Save, Plus, X } from 'lucide-react';
-import Link from 'next/link';
+import { AdminFormTemplate } from '@/design-system/components/templates/AdminFormTemplate/AdminFormTemplate';
+import { AdminSidebar } from '@/design-system/components/organisms/AdminSidebar/AdminSidebar';
+import { Button } from '@/design-system/components/atoms/Button';
+import { Input } from '@/design-system/components/atoms/Input/Input';
+import { Label } from '@/design-system/components/atoms/Label';
+import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/Card';
+import { Plus, X } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import styles from './page.module.css';
 
@@ -72,8 +73,7 @@ export default function NewProductPage() {
     setVariants(variants.filter((_, i) => i !== index));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     setLoading(true);
 
     try {
@@ -84,14 +84,14 @@ export default function NewProductPage() {
         },
         body: JSON.stringify({
           ...formData,
-          basePrice: parseFloat(formData.basePrice) * 100, // Convert to cents
+          basePrice: parseFloat(formData.basePrice) * 100,
           images: images.filter(img => img.trim() !== ''),
           variants: variants.map(v => ({
             ...v,
             price: v.price ? parseFloat(v.price) * 100 : undefined,
             stockQuantity: v.stockQuantity ? parseInt(v.stockQuantity) : undefined,
           })),
-          brandId: 'default-brand-id', // TODO: Get from context
+          brandId: 'default-brand-id',
         }),
       });
 
@@ -117,20 +117,21 @@ export default function NewProductPage() {
   };
 
   return (
-    <div className={styles.section}>
-      <div className={styles.row}>
-        <Link href="/admin/products">
-          <Button variant="ghost" size="icon">
-            <ArrowLeft className={styles.icon} />
-          </Button>
-        </Link>
-        <div>
-          <h1 className={styles.title}>Create Product</h1>
-          <p className={styles.text}>Add a new product to your store</p>
-        </div>
-      </div>
-
-      <form onSubmit={handleSubmit} className={styles.section}>
+    <AdminFormTemplate
+      sidebar={<AdminSidebar />}
+      title="Create Product"
+      description="Add a new product to your store"
+      primaryAction={{
+        label: 'Create Product',
+        onClick: handleSubmit,
+        loading: loading,
+      }}
+      secondaryAction={{
+        label: 'Cancel',
+        onClick: () => router.push('/admin/products'),
+      }}
+      loading={false}
+    >
         <Card>
           <CardHeader>
             <CardTitle>Basic Information</CardTitle>
@@ -142,7 +143,7 @@ export default function NewProductPage() {
                 <Input
                   id="name"
                   value={formData.name}
-                  onChange={(e) => handleChange('name', e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange('name', e.target.value)}
                   placeholder="Festival T-Shirt"
                   required
                 />
@@ -152,7 +153,7 @@ export default function NewProductPage() {
                 <Input
                   id="slug"
                   value={formData.slug}
-                  onChange={(e) => handleChange('slug', e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange('slug', e.target.value)}
                   placeholder="festival-t-shirt"
                   required
                 />
@@ -194,7 +195,7 @@ export default function NewProductPage() {
                   type="number"
                   step="0.01"
                   value={formData.basePrice}
-                  onChange={(e) => handleChange('basePrice', e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange('basePrice', e.target.value)}
                   placeholder="29.99"
                   required
                 />
@@ -220,7 +221,7 @@ export default function NewProductPage() {
           <CardHeader>
             <div className={styles.header}>
               <CardTitle>Product Images</CardTitle>
-              <Button type="button" onClick={addImage} size="sm" variant="outline">
+              <Button type="button" onClick={addImage} size="sm" variant="outlined">
                 <Plus className={styles.icon} />
                 Add Image
               </Button>
@@ -231,7 +232,7 @@ export default function NewProductPage() {
               <div key={index} className={styles.row}>
                 <Input
                   value={image}
-                  onChange={(e) => updateImage(index, e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => updateImage(index, e.target.value)}
                   placeholder="https://example.com/image.jpg"
                   
                 />
@@ -239,11 +240,10 @@ export default function NewProductPage() {
                   <Button
                     type="button"
                     onClick={() => removeImage(index)}
-                    size="icon"
-                    variant="outline"
-                  >
-                    <X className={styles.icon} />
-                  </Button>
+                    variant="outlined"
+                    iconOnly={<X className={styles.icon} />}
+                    aria-label="Remove image"
+                  />
                 )}
               </div>
             ))}
@@ -254,7 +254,7 @@ export default function NewProductPage() {
           <CardHeader>
             <div className={styles.header}>
               <CardTitle>Product Variants (Optional)</CardTitle>
-              <Button type="button" onClick={addVariant} size="sm" variant="outline">
+              <Button type="button" onClick={addVariant} size="sm" variant="outlined">
                 <Plus className={styles.icon} />
                 Add Variant
               </Button>
@@ -279,7 +279,7 @@ export default function NewProductPage() {
                     <Label>Name</Label>
                     <Input
                       value={variant.name}
-                      onChange={(e) => updateVariant(index, 'name', e.target.value)}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => updateVariant(index, 'name', e.target.value)}
                       placeholder="Small"
                     />
                   </div>
@@ -287,7 +287,7 @@ export default function NewProductPage() {
                     <Label>SKU</Label>
                     <Input
                       value={variant.sku}
-                      onChange={(e) => updateVariant(index, 'sku', e.target.value)}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => updateVariant(index, 'sku', e.target.value)}
                       placeholder="TSH-SM-001"
                     />
                   </div>
@@ -297,7 +297,7 @@ export default function NewProductPage() {
                       type="number"
                       step="0.01"
                       value={variant.price}
-                      onChange={(e) => updateVariant(index, 'price', e.target.value)}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => updateVariant(index, 'price', e.target.value)}
                       placeholder="29.99"
                     />
                   </div>
@@ -306,7 +306,7 @@ export default function NewProductPage() {
                     <Input
                       type="number"
                       value={variant.stockQuantity}
-                      onChange={(e) => updateVariant(index, 'stockQuantity', e.target.value)}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => updateVariant(index, 'stockQuantity', e.target.value)}
                       placeholder="100"
                     />
                   </div>
@@ -321,18 +321,6 @@ export default function NewProductPage() {
           </CardContent>
         </Card>
 
-        <div className={styles.card}>
-          <Link href="/admin/products">
-            <Button type="button" variant="outline">
-              Cancel
-            </Button>
-          </Link>
-          <Button type="submit" disabled={loading}>
-            <Save className={styles.icon} />
-            {loading ? 'Creating...' : 'Create Product'}
-          </Button>
-        </div>
-      </form>
-    </div>
+    </AdminFormTemplate>
   );
 }

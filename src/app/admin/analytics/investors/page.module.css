@@ -23,9 +23,9 @@
   block-size: var(--space-12);
   inline-size: var(--space-12);
   animation: spin 1s linear infinite;
-  border: 2px solid var(--color-black);
+  border: var(--border-width-2) solid var(--color-black);
   border-block-start-color: transparent;
-  border-radius: 0;
+  border-radius: var(--radius-none);
   margin-inline: auto;
 }
 
@@ -41,13 +41,13 @@
 
 .card {
   background-color: var(--color-white);
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   padding: var(--space-6);
 }
 
 .errorBox {
   background-color: var(--color-grey-100);
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   padding: var(--space-4);
 }
 
@@ -90,7 +90,7 @@
 .toggleGroup {
   display: flex;
   background-color: var(--color-grey-100);
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   padding: var(--space-1);
 }
 
@@ -116,7 +116,7 @@
   padding-block: var(--space-3);
   background-color: var(--color-black);
   color: var(--color-white);
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   font-family: var(--font-bebas);
   text-transform: uppercase;
   cursor: pointer;
@@ -138,7 +138,7 @@
 
 .metricCard {
   background-color: var(--color-white);
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   box-shadow: 4px 4px 0 #000000;
   padding: var(--space-6);
   border-inline-start: 4px solid var(--color-black);
@@ -180,7 +180,7 @@
 
 .breakdownCard {
   background-color: var(--color-white);
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   padding: var(--space-6);
 }
 
@@ -227,7 +227,7 @@
   inline-size: 100%;
   background-color: var(--color-grey-100);
   block-size: var(--space-2);
-  border-radius: 0;
+  border-radius: var(--radius-none);
   overflow: hidden;
 }
 
@@ -239,7 +239,7 @@
 
 .breakdownTotal {
   padding-block-start: var(--space-4);
-  border-block-start: 1px solid var(--color-grey-200);
+  border-block-start: var(--border-width-thin) solid var(--color-grey-200);
 }
 
 .spaceBetween {
@@ -263,7 +263,7 @@
 /* Profitability Section */
 .profitabilityCard {
   background-color: var(--color-black);
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   padding: var(--space-6);
   margin-block-end: var(--space-8);
   color: var(--color-white);
@@ -310,7 +310,7 @@
 /* Projections Section */
 .projectionsCard {
   background-color: var(--color-white);
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   padding: var(--space-6);
   margin-block-end: var(--space-8);
 }
@@ -373,7 +373,7 @@
   inline-size: 100%;
   background-color: var(--color-grey-100);
   block-size: var(--space-2);
-  border-radius: 0;
+  border-radius: var(--radius-none);
   overflow: hidden;
 }
 
@@ -394,7 +394,7 @@
   margin-block-start: var(--space-8);
   padding: var(--space-4);
   background-color: var(--color-grey-100);
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
 }
 
 .disclaimerText {
@@ -503,7 +503,7 @@
 }
 
 .rounded {
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-none)(--radius-md);
 }
 
 .shadow {

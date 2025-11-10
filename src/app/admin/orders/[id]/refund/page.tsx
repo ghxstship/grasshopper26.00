@@ -3,11 +3,11 @@
 import { use, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { ContextualPageTemplate } from '@/design-system/components/templates';
-import { Button } from '@/design-system/components/atoms/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/card';
-import { Input } from '@/design-system/components/atoms/input';
-import { Label } from '@/design-system/components/atoms/label';
-import { Textarea } from '@/design-system/components/atoms/textarea';
+import { Button } from '@/design-system/components/atoms/Button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/Card';
+import { Input } from '@/design-system/components/atoms/Input';
+import { Label } from '@/design-system/components/atoms/Label';
+import { Textarea } from '@/design-system/components/atoms/Textarea';
 import { DollarSign, AlertTriangle } from 'lucide-react';
 import { toast } from 'sonner';
 import styles from './refund-content.module.css';
@@ -141,7 +141,7 @@ className={styles.select}
                 <DollarSign />
                 {processing ? 'Processing...' : 'Process Refund'}
               </Button>
-              <Button type="button" variant="outline" onClick={() => router.back()}>
+              <Button type="button" variant="outlined" onClick={() => router.back()}>
                 Cancel
               </Button>
             </div>

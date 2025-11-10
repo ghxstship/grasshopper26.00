@@ -1,31 +1,50 @@
 'use client';
 
-import { AdminDashboardTemplate } from '@/design-system/components/templates';
-import { Users, Ticket, DollarSign, TrendingUp, Calendar, Package } from 'lucide-react';
+import { AdminLayout } from '@/design-system/components/templates/AdminLayout/AdminLayout';
+import { AdminSidebar } from '@/design-system/components/organisms/AdminSidebar/AdminSidebar';
+import { Typography } from '@/design-system/components/atoms/Typography/Typography';
+import { StatCard } from '@/design-system/components/molecules/StatCard/StatCard';
+import { Users, Ticket, DollarSign, TrendingUp } from 'lucide-react';
 import { useAdminDashboard } from '@/hooks/useAdminDashboard';
+import styles from './dashboard.module.css';
 
 export default function AdminDashboardPage() {
   const { stats, loading } = useAdminDashboard();
 
   return (
-    <AdminDashboardTemplate
+    <AdminLayout
+      sidebar={<AdminSidebar />}
       title="Admin Dashboard"
-      subtitle="Overview of platform metrics and activity"
-      loading={loading}
-      stats={[
-        { label: 'Total Users', value: stats.total_users, icon: <Users />, trend: { value: 12, direction: 'up', label: '+12%' } },
-        { label: 'Active Members', value: stats.active_members, icon: <TrendingUp />, trend: { value: 8, direction: 'up', label: '+8%' } },
-        { label: 'Tickets Sold', value: stats.tickets_sold, icon: <Ticket />, trend: { value: 15, direction: 'up', label: '+15%' } },
-        { label: 'Revenue', value: `$${stats.revenue.toLocaleString()}`, icon: <DollarSign />, trend: { value: 22, direction: 'up', label: '+22%' } },
-      ]}
-      quickActions={[
-        { label: 'Create Event', icon: <Calendar />, href: '/admin/events/create' },
-        { label: 'Manage Inventory', icon: <Package />, href: '/admin/inventory' },
-      ]}
-      tabs={[
-        { key: 'overview', label: 'Overview', content: <div>Overview content</div> },
-        { key: 'recent', label: 'Recent Activity', content: <div>Recent activity</div> },
-      ]}
-    />
+      description="Overview of platform metrics and activity"
+    >
+      <div className={styles.statsGrid}>
+        <StatCard
+          label="Total Users"
+          value={loading ? '...' : stats.total_users}
+          icon={<Users />}
+        />
+        <StatCard
+          label="Active Members"
+          value={loading ? '...' : stats.active_members}
+          icon={<TrendingUp />}
+        />
+        <StatCard
+          label="Tickets Sold"
+          value={loading ? '...' : stats.tickets_sold}
+          icon={<Ticket />}
+        />
+        <StatCard
+          label="Revenue"
+          value={loading ? '...' : `$${stats.revenue?.toLocaleString() || 0}`}
+          icon={<DollarSign />}
+        />
+      </div>
+
+      <div className={styles.content}>
+        <Typography variant="h3" as="h2">
+          Recent Activity
+        </Typography>
+      </div>
+    </AdminLayout>
   );
 }

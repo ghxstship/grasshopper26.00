@@ -1,0 +1,15 @@
+/**
+ * Metadata Styles
+ * GHXSTSHIP Monochromatic Design System
+ */
+
+.metadata {
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-meta);
+  color: var(--color-text-secondary);
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.uppercase {
+  text-transform: uppercase;
+}

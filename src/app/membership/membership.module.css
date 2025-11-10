@@ -1,0 +1,44 @@
+/**
+ * Membership Page Styles
+ * GHXSTSHIP Monochromatic Design System
+ */
+
+.hero {
+  text-align: center;
+  padding: var(--space-12);
+}
+
+.heroSubtitle {
+  margin-block-start: var(--space-4);
+  opacity: 0.8;
+}
+
+.tiersGrid {
+  display: grid;
+  gap: var(--space-8);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  max-width: 1440px;
+  margin-inline: auto;
+}
+
+.tierSkeleton {
+  height: 600px;
+  background-color: var(--color-bg-secondary);
+  border: var(--border-width-3) solid var(--color-border-default);
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (min-width: 768px) {
+  .tiersGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .tiersGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

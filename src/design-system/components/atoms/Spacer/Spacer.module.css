@@ -1,0 +1,24 @@
+/**
+ * Spacer Styles
+ * GHXSTSHIP Monochromatic Design System
+ */
+
+.spacer {
+  flex-shrink: 0;
+}
+
+.vertical.xs { block-size: var(--spacing-1); }
+.vertical.sm { block-size: var(--spacing-2); }
+.vertical.md { block-size: var(--spacing-4); }
+.vertical.lg { block-size: var(--spacing-6); }
+.vertical.xl { block-size: var(--spacing-8); }
+.vertical.\32xl { block-size: var(--spacing-12); }
+.vertical.\33xl { block-size: var(--spacing-16); }
+
+.horizontal.xs { inline-size: var(--spacing-1); }
+.horizontal.sm { inline-size: var(--spacing-2); }
+.horizontal.md { inline-size: var(--spacing-4); }
+.horizontal.lg { inline-size: var(--spacing-6); }
+.horizontal.xl { inline-size: var(--spacing-8); }
+.horizontal.\32xl { inline-size: var(--spacing-12); }
+.horizontal.\33xl { inline-size: var(--spacing-16); }

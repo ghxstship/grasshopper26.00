@@ -1,30 +1,80 @@
-/* Home Page Styles - GVTEWAY Design System Compliant */
+/**
+ * Home Page Styles
+ * Entertainment Platform - Monochromatic Design System
+ */
 
-/* Featured Events - 3 columns */
-.featuredEventsGrid {
-  display: grid;
-  gap: var(--spacing-lg);
-  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+/* Section */
+.section {
+  max-width: 1440px;
+  margin-inline: auto;
+  width: 100%;
+  padding-inline: var(--space-6);
+  padding-block: var(--space-20);
 }
 
-/* Upcoming Events - 4 columns */
-.upcomingEventsGrid {
-  display: grid;
-  gap: var(--spacing-lg);
-  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+.section:nth-child(even) {
+  background-color: var(--color-bg-black);
+  color: var(--color-text-inverse);
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
-  .featuredEventsGrid,
-  .upcomingEventsGrid {
-    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+.section:nth-child(odd) {
+  background-color: var(--color-bg-white);
+  color: var(--color-text-primary);
+}
+
+.sectionTitle {
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-snug);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  text-align: center;
+  
+  margin: 0;
+  margin-block-end: var(--space-12);
+  
+  position: relative;
+}
+
+.sectionTitle::after {
+  content: '';
+  position: absolute;
+  inset-block-end: calc(var(--space-4) * -1);
+  inset-inline-start: 50%;
+  transform: translateX(-50%);
+  
+  width: 120px;
+  height: var(--border-width-3);
+  background-color: currentColor;
+}
+
+/* Events Grid */
+.eventsGrid {
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (min-width: 768px) {
+  .eventsGrid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 768px) {
-  .featuredEventsGrid,
-  .upcomingEventsGrid {
-    grid-template-columns: 1fr;
+@media (min-width: 1024px) {
+  .eventsGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-8);
+  }
+}
+
+@media (min-width: 1440px) {
+  .eventsGrid {
+    grid-template-columns: repeat(4, 1fr);
   }
 }

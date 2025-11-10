@@ -29,8 +29,8 @@
 
 .card {
   background: var(--color-surface-primary);
-  border: 1px solid var(--color-border-subtle);
-  border-radius: var(--radius-lg);
+  border: var(--border-width-thin) solid var(--color-border-subtle);
+  border-radius: var(--radius-none)(--radius-lg);
   padding-block: var(--spacing-lg);
   padding-inline: var(--spacing-lg);
 }
@@ -54,7 +54,7 @@
   font-weight: var(--font-weight-bold);
   padding-block: var(--spacing-xs);
   padding-inline: var(--spacing-sm);
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-none)(--radius-full);
   text-transform: uppercase;
 }
 
@@ -86,6 +86,6 @@
   padding-block: var(--spacing-xs);
   padding-inline: var(--spacing-sm);
   background: var(--color-background-secondary);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-none)(--radius-sm);
   color: var(--color-text-secondary);
 }

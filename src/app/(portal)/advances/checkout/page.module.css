@@ -7,7 +7,7 @@
 
 /* Header Section */
 .header {
-  border-block-end: 3px solid var(--color-black);
+  border-block-end: var(--border-width-3) solid var(--color-black);
   background-color: var(--color-white);
 }
 
@@ -34,7 +34,7 @@
 
 /* Progress Steps */
 .progressBar {
-  border-block-end: 2px solid var(--color-black);
+  border-block-end: var(--border-width-2) solid var(--color-black);
   background-color: var(--color-grey-50);
 }
 
@@ -64,7 +64,7 @@
   width: var(--space-10);
   align-items: center;
   justify-content: center;
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   font-family: var(--font-family-heading);
   font-size: var(--font-size-lg);
   transition: all var(--duration-fast) var(--easing-out);
@@ -147,7 +147,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   background-color: var(--color-grey-50);
   padding-block: var(--space-20);
   text-align: center;
@@ -165,16 +165,16 @@
 
 /* Cart Items */
 .cartContainer {
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
 }
 
 .cartDivider {
-  border-block-start: 2px solid var(--color-black);
+  border-block-start: var(--border-width-2) solid var(--color-black);
 }
 
 /* Form Sections */
 .formSection {
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   background-color: var(--color-white);
   padding: var(--space-6);
 }
@@ -211,7 +211,7 @@
 
 .formInput {
   width: 100%;
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   background-color: var(--color-white);
   padding-inline: var(--space-4);
   padding-block: var(--space-3);
@@ -226,7 +226,7 @@
 
 .formTextarea {
   width: 100%;
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   background-color: var(--color-white);
   padding-inline: var(--space-4);
   padding-block: var(--space-3);
@@ -274,7 +274,7 @@
 }
 
 .button {
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   padding-inline: var(--space-6);
   padding-block: var(--space-4);
   font-family: var(--font-family-heading);
@@ -290,7 +290,7 @@
 }
 
 .buttonPrimary {
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   padding-inline: var(--space-6);
   padding-block: var(--space-4);
   font-family: var(--font-family-heading);
@@ -318,7 +318,7 @@
 }
 
 .buttonSecondary {
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   padding-inline: var(--space-6);
   padding-block: var(--space-4);
   font-family: var(--font-family-heading);
@@ -340,7 +340,7 @@
 }
 
 .buttonOutline {
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   padding-inline: var(--space-6);
   padding-block: var(--space-4);
   font-family: var(--font-family-heading);
@@ -371,7 +371,7 @@
 }
 
 .reviewCard {
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   background-color: var(--color-white);
   padding: var(--space-6);
 }
@@ -414,9 +414,9 @@
   align-items: flex-start;
   gap: var(--space-3);
   padding: var(--space-4);
-  border: 2px solid var(--color-black);
+  border: var(--border-width-2) solid var(--color-black);
   background-color: var(--color-grey-50);
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
 }
 
 .checkbox {
@@ -445,7 +445,7 @@
 
 /* Summary */
 .summary {
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   background-color: var(--color-grey-50);
   padding: var(--space-6);
   margin-block-start: var(--space-8);
@@ -465,7 +465,7 @@
   justify-content: space-between;
   align-items: center;
   padding-block: var(--space-3);
-  border-block-end: 1px solid var(--color-black);
+  border-block-end: var(--border-width-thin) solid var(--color-black);
 }
 
 .summaryRow:last-child {
@@ -488,7 +488,7 @@
 .loadingOverlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--color-bg-overlay);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -523,7 +523,7 @@
   align-items: flex-start;
   gap: var(--space-3);
   padding-block-end: var(--space-3);
-  border-block-end: 2px solid var(--color-grey-200);
+  border-block-end: var(--border-width-2) solid var(--color-grey-200);
 }
 
 .itemRow:last-child {
@@ -566,7 +566,7 @@
 .itemTotal {
   margin-block-start: var(--space-4);
   padding-block-start: var(--space-4);
-  border-block-start: 2px solid var(--color-grey-200);
+  border-block-start: var(--border-width-2) solid var(--color-grey-200);
 }
 
 .itemTotalText {
@@ -678,7 +678,7 @@
 }
 
 .rounded {
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-none)(--radius-md);
 }
 
 .shadow {

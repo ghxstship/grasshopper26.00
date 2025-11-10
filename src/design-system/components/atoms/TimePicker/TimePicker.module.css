@@ -1,0 +1,58 @@
+/**
+ * TimePicker Styles
+ * GHXSTSHIP Monochromatic Design System
+ */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.label {
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-h5);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-text-primary);
+}
+
+.input {
+  inline-size: 100%;
+  padding: var(--spacing-3) var(--spacing-4);
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-body);
+  background-color: var(--color-white);
+  border: var(--border-width-thick) solid var(--color-black);
+  color: var(--color-text-primary);
+  transition: all var(--transition-fast) var(--easing-standard);
+}
+
+.input:hover:not(:disabled) {
+  background-color: var(--color-grey-100);
+}
+
+.input:focus {
+  outline: none;
+  background-color: var(--color-white);
+  box-shadow: 0 0 0 var(--border-width-thick) var(--color-black);
+}
+
+.input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.input.error {
+  border-color: var(--color-black);
+  background-color: var(--color-grey-900);
+  color: var(--color-white);
+}
+
+.errorText {
+  font-family: var(--font-share);
+  font-size: var(--font-size-meta);
+  color: var(--color-text-primary);
+  background-color: var(--color-grey-900);
+  padding: var(--spacing-2);
+}

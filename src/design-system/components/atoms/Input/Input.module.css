@@ -1,0 +1,210 @@
+/**
+ * Input Styles
+ * GHXSTSHIP Monochromatic Design System
+ * Zero tolerance for hardcoded values
+ */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.label {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.required {
+  color: var(--color-error);
+  margin-inline-start: var(--space-1);
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  color: var(--color-text-primary);
+  
+  padding-inline: var(--space-4);
+  padding-block: var(--space-3);
+  
+  background-color: var(--color-bg-primary);
+  border: var(--border-width-3) solid var(--color-border-default);
+  border-radius: var(--radius-none)(--radius-none);
+  
+  transition: all var(--duration-fast) var(--easing-out);
+  
+  min-height: 48px;
+}
+
+.input::placeholder {
+  color: var(--color-text-tertiary);
+}
+
+.input:hover:not(:disabled) {
+  border-color: var(--color-border-strong);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-border-focus);
+  box-shadow: var(--shadow-sm);
+}
+
+.input:disabled {
+  opacity: var(--opacity-50);
+  cursor: not-allowed;
+  background-color: var(--color-bg-secondary);
+}
+
+/* ========================================
+   VARIANTS
+   ======================================== */
+
+.default {
+  border-color: var(--color-border-default);
+}
+
+.error {
+  border-color: var(--color-error-border);
+}
+
+.error:focus {
+  border-color: var(--color-error-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.success {
+  border-color: var(--color-success-border);
+}
+
+.success:focus {
+  border-color: var(--color-success-border);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ========================================
+   SIZES
+   ======================================== */
+
+.sm {
+  min-height: 40px;
+  padding-inline: var(--space-3);
+  padding-block: var(--space-2);
+  font-size: var(--font-size-sm);
+}
+
+.md {
+  min-height: 48px;
+  padding-inline: var(--space-4);
+  padding-block: var(--space-3);
+  font-size: var(--font-size-base);
+}
+
+.lg {
+  min-height: 56px;
+  padding-inline: var(--space-5);
+  padding-block: var(--space-4);
+  font-size: var(--font-size-lg);
+}
+
+/* ========================================
+   WITH ICONS
+   ======================================== */
+
+.withIconBefore {
+  padding-inline-start: var(--space-12);
+}
+
+.withIconAfter {
+  padding-inline-end: var(--space-12);
+}
+
+.iconBefore,
+.iconAfter {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+  pointer-events: none;
+}
+
+.iconBefore {
+  inset-inline-start: var(--space-4);
+}
+
+.iconAfter {
+  inset-inline-end: var(--space-4);
+}
+
+/* ========================================
+   HELPER TEXT & ERRORS
+   ======================================== */
+
+.helperText,
+.errorText {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+}
+
+.helperText {
+  color: var(--color-text-secondary);
+}
+
+.errorText {
+  color: var(--color-error-text);
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .input {
+    transition: none;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .input {
+    border-width: var(--border-width-4);
+  }
+  
+  .input:focus {
+    outline: var(--border-width-2) solid var(--color-border-focus);
+    outline-offset: 2px;
+  }
+}
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+.dark .input,
+[data-theme="dark"] .input {
+  background-color: var(--color-bg-secondary);
+}
+
+.dark .input:focus,
+[data-theme="dark"] .input:focus {
+  box-shadow: var(--shadow-white-sm);
+}

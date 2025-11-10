@@ -79,7 +79,7 @@
   position: relative;
   inline-size: 6rem;
   block-size: 6rem;
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   overflow: hidden;
 }
 
@@ -175,7 +175,7 @@
 
 .orderSummary {
   background-color: var(--color-grey-50);
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   padding: var(--space-4);
 }
 
@@ -189,7 +189,7 @@
 
 .infoBox {
   background-color: var(--color-grey-50);
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   padding: var(--space-4);
   display: flex;
   align-items: flex-start;
@@ -406,7 +406,7 @@
 }
 
 .rounded {
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-none)(--radius-md);
 }
 
 .shadow {

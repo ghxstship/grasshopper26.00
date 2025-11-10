@@ -41,8 +41,8 @@
 
 .card {
   padding: var(--space-6);
-  border: 2px solid var(--color-border-default);
-  border-radius: var(--radius-md);
+  border: var(--border-width-2) solid var(--color-border-default);
+  border-radius: var(--radius-none)(--radius-md);
   background-color: var(--color-bg-primary);
 }
 
@@ -70,7 +70,7 @@
   justify-content: space-between;
   padding: var(--space-2);
   background-color: var(--color-grey-50);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-none)(--radius-sm);
 }
 
 .priceLabel {
@@ -88,8 +88,8 @@
   margin-block-start: var(--space-6);
   padding: var(--space-4);
   background-color: var(--color-white);
-  border: 1px solid var(--color-border-default);
-  border-radius: var(--radius-md);
+  border: var(--border-width-thin) solid var(--color-border-default);
+  border-radius: var(--radius-none)(--radius-md);
 }
 
 .actions {
@@ -100,7 +100,7 @@
 
 .button {
   padding: var(--space-2) var(--space-4);
-  border: 2px solid var(--color-black);
+  border: var(--border-width-2) solid var(--color-black);
   background-color: var(--color-white);
   color: var(--color-black);
   font-weight: var(--font-weight-medium);

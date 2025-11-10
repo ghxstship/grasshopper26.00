@@ -56,7 +56,7 @@
 }
 
 .buttonInactive {
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
 }
 
 .grid {
@@ -102,7 +102,7 @@
 
 .iconContainer {
   padding: var(--space-3);
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
 }
 
 .iconBgRevenue {
@@ -308,7 +308,7 @@
 }
 
 .rounded {
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-none)(--radius-md);
 }
 
 .shadow {

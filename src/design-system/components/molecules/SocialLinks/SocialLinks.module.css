@@ -1,0 +1,128 @@
+/**
+ * SocialLinks Styles
+ * GHXSTSHIP Entertainment Platform
+ * Geometric social media link buttons
+ */
+
+.container {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.horizontal {
+  flex-direction: row;
+}
+
+.vertical {
+  flex-direction: column;
+}
+
+/* ========================================
+   LINK
+   ======================================== */
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  
+  border: var(--border-width-2) solid var(--color-border-strong);
+  border-radius: var(--radius-none)(--radius-none);
+  background-color: var(--color-bg-primary);
+  
+  color: var(--color-text-primary);
+  text-decoration: none;
+  
+  transition: all var(--duration-fast) var(--easing-out);
+}
+
+.link:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-accent);
+  color: var(--color-text-inverse);
+  transform: scale(1.1);
+}
+
+.link:active {
+  transform: scale(0.95);
+}
+
+.link:focus-visible {
+  outline: var(--border-width-2) solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+/* ========================================
+   SIZES
+   ======================================== */
+
+.sm .link {
+  width: 32px;
+  height: 32px;
+}
+
+.md .link {
+  width: 40px;
+  height: 40px;
+}
+
+.lg .link {
+  width: 48px;
+  height: 48px;
+}
+
+/* ========================================
+   ICON
+   ======================================== */
+
+.icon {
+  line-height: 1;
+  transition: transform var(--duration-fast) var(--easing-out);
+}
+
+.sm .icon {
+  font-size: var(--font-size-base);
+}
+
+.md .icon {
+  font-size: var(--font-size-lg);
+}
+
+.lg .icon {
+  font-size: var(--font-size-xl);
+}
+
+.link:hover .icon {
+  transform: rotate(5deg);
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .link,
+  .icon {
+    transition: none;
+  }
+  
+  .link:hover .icon {
+    transform: none;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .link {
+    border-width: var(--border-width-3);
+  }
+}
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+.dark .link:hover,
+[data-theme="dark"] .link:hover {
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+}

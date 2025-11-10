@@ -3,8 +3,15 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { GeometricIcon } from '@/design-system/components/atoms/GeometricIcon';
-import { StatusBadge, AdvanceStatus } from '@/design-system/components/atoms/StatusBadge';
+
+import { PortalLayout } from '@/design-system/components/templates/PortalLayout/PortalLayout';
+import { PortalSidebar } from '@/design-system/components/organisms/PortalSidebar/PortalSidebar';
+import { Typography } from '@/design-system/components/atoms/Typography/Typography';
+import { StatCard } from '@/design-system/components/molecules/StatCard/StatCard';
+import { Button } from '@/design-system/components/atoms/Button/Button';
+import { GeometricShape } from '@/design-system/components/atoms/GeometricShape/GeometricShape';
+import { StatusBadge, AdvanceStatus } from '@/design-system/components/atoms/StatusBadge/StatusBadge';
+import { DollarSign, TrendingUp, Clock } from 'lucide-react';
 import { ProductionAdvance } from '@/lib/types/production-advances';
 import { cn } from '@/lib/utils';
 import { Plus } from 'lucide-react';
@@ -123,7 +130,7 @@ export default function MyAdvancesPage() {
           </div>
         ) : advances.length === 0 ? (
           <div className={styles.emptyState}>
-            <GeometricIcon name="clipboard" size="xl" className={styles.emptyIcon} />
+            <GeometricShape name="clipboard" size="xl" className={styles.emptyIcon} />
             <p className={styles.emptyTitle}>
               {filter === 'all' ? 'No advances found' : `No ${filter} advances`}
             </p>
@@ -198,7 +205,7 @@ export default function MyAdvancesPage() {
                   <div className={styles.cardActions}>
                     <span className={styles.viewLink}>
                       VIEW DETAILS
-                      <GeometricIcon name="arrow-right" size="sm" />
+                      <GeometricShape name="arrow-right" size="sm" />
                     </span>
 
                     {advance.status === 'draft' && (

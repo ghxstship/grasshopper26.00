@@ -9,9 +9,9 @@ import styles from './page.module.css';
 import { use, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
-import { Button } from '@/design-system/components/atoms/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/card';
-import { Badge } from '@/design-system/components/atoms/badge';
+import { Button } from '@/design-system/components/atoms/Button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/Card';
+import { Badge } from '@/design-system/components/atoms/Badge';
 import {
   ArrowLeft,
   Printer,
@@ -240,7 +240,7 @@ export default function CredentialDetailPage({
             </Button>
           )}
           {!credential.revoked && (
-            <Button variant="destructive" onClick={handleRevoke}>
+            <Button variant="danger" onClick={handleRevoke}>
               <XCircle className={styles.icon} />
               Revoke
             </Button>
@@ -298,7 +298,7 @@ export default function CredentialDetailPage({
             <CardContent className={styles.section}>
               <div className={styles.statusRow}>
                 {credential.revoked ? (
-                  <Badge variant="destructive">
+                  <Badge variant="default">
                     <XCircle className={styles.icon} />
                     Revoked
                   </Badge>
@@ -308,18 +308,18 @@ export default function CredentialDetailPage({
                     Checked In
                   </Badge>
                 ) : credential.is_active ? (
-                  <Badge variant="outline" className={styles.badgeActive}>
+                  <Badge variant="outlined" className={styles.badgeActive}>
                     <Shield className={styles.icon} />
                     Active
                   </Badge>
                 ) : (
-                  <Badge variant="outline">
+                  <Badge variant="outlined">
                     Inactive
                   </Badge>
                 )}
 
                 {credential.printed && (
-                  <Badge variant="outline" className={styles.badgePrinted}>
+                  <Badge variant="outlined" className={styles.badgePrinted}>
                     <Printer className={styles.icon} />
                     Printed
                   </Badge>

@@ -13,7 +13,7 @@
 .card {
   max-inline-size: 28rem;
   inline-size: 100%;
-  border: 3px solid var(--color-white);
+  border: var(--border-width-3) solid var(--color-white);
   padding: var(--space-8);
 }
 
@@ -125,7 +125,7 @@
 }
 
 .rounded {
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-none)(--radius-md);
 }
 
 .shadow {

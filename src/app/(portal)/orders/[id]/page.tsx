@@ -3,8 +3,8 @@
 import { useEffect, useState } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
-import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/card';
-import { Button } from '@/design-system/components/atoms/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/Card';
+import { Button } from '@/design-system/components/atoms/Button';
 import { Loader2, ArrowLeft, Download, Calendar, MapPin, DollarSign, User, Mail } from 'lucide-react';
 import { format } from 'date-fns';
 import Link from 'next/link';
@@ -36,6 +36,25 @@ interface OrderDetails {
     }>;
   }>;
 }
+
+const getStatusColor = (status: string): string => {
+  // GHXSTSHIP monochromatic design - using grey scale only
+  switch (status.toLowerCase()) {
+    case 'completed':
+    case 'active':
+    case 'valid':
+      return styles.bgBlack + ' ' + styles.textWhite;
+    case 'pending':
+    case 'processing':
+      return styles.bgWhite + ' ' + styles.textBlack + ' ' + styles.borderBlack;
+    case 'cancelled':
+    case 'refunded':
+    case 'invalid':
+      return styles.textGrey600;
+    default:
+      return styles.bgWhite + ' ' + styles.textBlack;
+  }
+};
 
 export default function OrderDetailsPage() {
   const router = useRouter();
@@ -104,17 +123,17 @@ export default function OrderDetailsPage() {
     }
   };
 
-  const getStatusColor = (status: string) => {
+  const getStatusVariant = (status: string): 'sold-out' | 'on-sale' | 'coming-soon' | 'live' | 'ended' => {
     switch (status) {
       case 'completed':
-        return 'text-black bg-grey-100/10 border-black/30';
+        return 'on-sale';
       case 'pending':
-        return 'text-black bg-grey-100/10 border-yellow-500/30';
+        return 'coming-soon';
       case 'cancelled':
       case 'refunded':
-        return 'text-black bg-grey-100/10 border-black/30';
+        return 'ended';
       default:
-        return 'text-grey-600 bg-grey-100/10 border-gray-500/30';
+        return 'coming-soon';
     }
   };
 

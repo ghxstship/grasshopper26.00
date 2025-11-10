@@ -120,12 +120,12 @@
 }
 
 .alertCard {
-  border: 3px solid var(--color-grey-600);
+  border: var(--border-width-3) solid var(--color-grey-600);
   opacity: 0.5;
 }
 
 .itemCard {
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   padding: var(--space-4);
   transition: background-color var(--duration-fast) var(--easing-out);
 }
@@ -264,7 +264,7 @@
 }
 
 .rounded {
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-none)(--radius-md);
 }
 
 .shadow {

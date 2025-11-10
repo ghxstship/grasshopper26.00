@@ -1,0 +1,46 @@
+/**
+ * Text Styles
+ * GHXSTSHIP Monochromatic Design System
+ */
+
+.text {
+  margin: 0;
+  font-family: var(--font-share);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-relaxed);
+}
+
+/* Size variants */
+.sm {
+  font-size: var(--font-size-meta);
+}
+
+.md {
+  font-size: var(--font-size-body);
+}
+
+.lg {
+  font-size: var(--font-size-h6);
+}
+
+/* Weight variants */
+.normal {
+  font-weight: 400;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+/* Alignment */
+.align-left {
+  text-align: start;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-right {
+  text-align: end;
+}

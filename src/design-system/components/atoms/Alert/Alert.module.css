@@ -1,0 +1,68 @@
+/**
+ * Alert Component Styles
+ * GHXSTSHIP Monochromatic Design System
+ */
+
+.alert {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-4);
+  padding: var(--spacing-4);
+  border: var(--border-width-thick) solid var(--color-black);
+  background-color: var(--color-white);
+}
+
+.content {
+  flex: 1;
+}
+
+.title {
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-h5);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  margin-block-end: var(--spacing-2);
+}
+
+.message {
+  font-family: var(--font-share);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-relaxed);
+}
+
+.close {
+  padding: var(--spacing-1);
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-h5);
+  background: none;
+  border: none;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: transform var(--transition-fast) var(--easing-standard);
+}
+
+.close:hover {
+  transform: scale(1.2);
+}
+
+/* Variant styles - using border-inline-start for distinction */
+.info {
+  border-inline-start-width: calc(var(--border-width-thick) * 2);
+}
+
+.success {
+  border-inline-start-width: calc(var(--border-width-thick) * 2);
+  background-color: var(--color-grey-100);
+}
+
+.warning {
+  border-inline-start-width: calc(var(--border-width-thick) * 2);
+  background-color: var(--color-grey-200);
+}
+
+.error {
+  border-inline-start-width: calc(var(--border-width-thick) * 2);
+  background-color: var(--color-grey-900);
+  color: var(--color-white);
+}

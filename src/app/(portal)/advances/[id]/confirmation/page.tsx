@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import Link from 'next/link';
-import { GeometricIcon } from '@/design-system/components/atoms/GeometricIcon';
+import { GeometricShape } from '@/design-system/components/atoms/GeometricShape';
 import { ProductionAdvance } from '@/lib/types/production-advances';
 import { Check } from 'lucide-react';
 import styles from './page.module.css';
@@ -45,7 +45,7 @@ export default function AdvanceConfirmationPage() {
   if (!advance) {
     return (
       <div className={styles.row}>
-        <GeometricIcon name="alert" size="xl" className={styles.errorIcon} />
+        <GeometricShape name="alert" size="xl" className={styles.errorIcon} />
         <p className={styles.errorText}>Advance not found</p>
         <button
           type="button"

@@ -1,6 +1,8 @@
 /**
  * Keyboard Navigation Utilities
  * Standard keyboard interaction patterns
+ * WCAG 2.2 AAA Compliant
+ * GHXSTSHIP Contemporary Minimal Pop Art Design System
  */
 
 export type NavigationDirection = 'horizontal' | 'vertical' | 'both';

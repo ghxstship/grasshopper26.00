@@ -1,0 +1,88 @@
+/**
+ * Countdown Styles
+ * GHXSTSHIP Entertainment Platform
+ * BEBAS NEUE numbers, geometric layout
+ */
+
+.countdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+}
+
+.unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  
+  padding: var(--space-4);
+  
+  border: var(--border-width-3) solid var(--color-border-strong);
+  border-radius: var(--radius-none)(--radius-none);
+  background-color: var(--color-bg-primary);
+  
+  min-width: 80px;
+}
+
+.value {
+  font-family: var(--font-display);
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  
+  color: var(--color-text-primary);
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-normal);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  
+  color: var(--color-text-secondary);
+}
+
+.separator {
+  font-family: var(--font-display);
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  
+  color: var(--color-text-tertiary);
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+  .countdown {
+    gap: var(--space-2);
+  }
+  
+  .unit {
+    min-width: 60px;
+    padding: var(--space-3);
+  }
+  
+  .value {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .separator {
+    font-size: var(--font-size-xl);
+  }
+}
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+.dark .unit,
+[data-theme="dark"] .unit {
+  border-color: var(--color-border-strong);
+  background-color: var(--color-bg-secondary);
+}

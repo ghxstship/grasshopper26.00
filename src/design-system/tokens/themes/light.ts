@@ -1,17 +1,20 @@
 /**
- * Light Theme
- * Default theme configuration
+ * Light Theme - Entertainment Platform
+ * Monochromatic design with hard geometric edges
  */
 
 import { semanticColors } from '../semantic/colors';
 import { spacing } from '../primitives/spacing';
 import { typography } from '../primitives/typography';
+import { animations } from '../primitives/animations';
 
 export const lightTheme = {
   colors: semanticColors,
   spacing,
   typography,
+  animations,
   
+  // Hard geometric shadows - Entertainment Platform
   shadows: {
     xs: '2px 2px 0 #000000',
     sm: '3px 3px 0 #000000',
@@ -23,8 +26,13 @@ export const lightTheme = {
     inner: 'inset 3px 3px 0 #000000',
     glow: 'none',
     glowStrong: 'none',
+    // White shadows for dark backgrounds
+    whiteSm: '3px 3px 0 #FFFFFF',
+    whiteMd: '6px 6px 0 #FFFFFF',
+    whiteLg: '8px 8px 0 #FFFFFF',
   },
   
+  // NO rounded corners - hard geometric edges only
   borderRadius: {
     none: '0',
     sm: '0',
@@ -37,9 +45,12 @@ export const lightTheme = {
     full: '0',
   },
   
+  // 2-3px thick borders for bold aesthetic
   borderWidth: {
     0: '0',
-    default: '3px',
+    thin: '1px',
+    default: '2px',
+    thick: '3px',
     2: '2px',
     3: '3px',
     4: '4px',
@@ -76,11 +87,13 @@ export const lightTheme = {
     notification: 1080,
   },
   
+  // Entertainment Platform transitions - snappy and energetic
   transitions: {
     duration: {
       instant: '0ms',
       fast: '150ms',
       base: '250ms',
+      medium: '300ms',
       slow: '350ms',
       slower: '500ms',
     },
@@ -90,7 +103,16 @@ export const lightTheme = {
       out: 'cubic-bezier(0, 0, 0.2, 1)',
       inOut: 'cubic-bezier(0.4, 0, 0.2, 1)',
       spring: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+      sharp: 'cubic-bezier(0.4, 0, 0.6, 1)',
     },
+  },
+  
+  // Entertainment Platform specific values
+  geometric: {
+    borderThickness: '2px',
+    borderThicknessBold: '3px',
+    shadowOffset: '8px',
+    halftoneSize: '4px',
   },
 } as const;
 

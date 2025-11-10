@@ -1,0 +1,75 @@
+/**
+ * FormBuilder Styles
+ * GHXSTSHIP Monochromatic Design System
+ */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  padding: var(--spacing-6);
+  border: var(--border-width-thick) solid var(--color-black);
+  background-color: var(--color-white);
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.label {
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-h6);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.required {
+  color: var(--color-grey-900);
+  margin-inline-start: var(--spacing-1);
+}
+
+.input,
+.select,
+.textarea {
+  padding: var(--spacing-3);
+  font-family: var(--font-share);
+  font-size: var(--font-size-body);
+  border: var(--border-width-thick) solid var(--color-black);
+  background-color: var(--color-white);
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 var(--border-width-thick) var(--color-black);
+}
+
+.textarea {
+  resize: vertical;
+  min-block-size: 100px;
+}
+
+.checkbox {
+  inline-size: 24px;
+  block-size: 24px;
+  cursor: pointer;
+}
+
+.submitButton {
+  padding: var(--spacing-4) var(--spacing-6);
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-h5);
+  text-transform: uppercase;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border: none;
+  cursor: pointer;
+  transition: transform var(--transition-fast) var(--easing-standard);
+}
+
+.submitButton:hover {
+  transform: scale(1.02);
+}

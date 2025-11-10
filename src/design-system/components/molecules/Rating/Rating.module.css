@@ -1,0 +1,122 @@
+/**
+ * Rating Styles
+ * GHXSTSHIP Entertainment Platform
+ */
+
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* ========================================
+   STARS
+   ======================================== */
+
+.stars {
+  display: inline-flex;
+  gap: var(--space-1);
+}
+
+.star {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  
+  padding: 0;
+  
+  border: none;
+  background: none;
+  
+  cursor: default;
+  
+  transition: transform var(--duration-fast) var(--easing-out);
+}
+
+.interactive .star {
+  cursor: pointer;
+}
+
+.interactive .star:hover {
+  transform: scale(1.2);
+}
+
+.interactive .star:active {
+  transform: scale(0.9);
+}
+
+.star:focus-visible {
+  outline: var(--border-width-2) solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+.star:disabled {
+  cursor: default;
+}
+
+/* ========================================
+   STAR ICON
+   ======================================== */
+
+.starIcon {
+  line-height: 1;
+  color: var(--color-border-default);
+  
+  transition: color var(--duration-fast) var(--easing-out);
+}
+
+.star.filled .starIcon {
+  color: var(--color-primary);
+}
+
+/* ========================================
+   SIZES
+   ======================================== */
+
+.sm .starIcon {
+  font-size: var(--font-size-base);
+}
+
+.md .starIcon {
+  font-size: var(--font-size-xl);
+}
+
+.lg .starIcon {
+  font-size: var(--font-size-3xl);
+}
+
+/* ========================================
+   VALUE
+   ======================================== */
+
+.value {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  
+  color: var(--color-text-secondary);
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .star,
+  .starIcon {
+    transition: none;
+  }
+  
+  .interactive .star:hover {
+    transform: none;
+  }
+}
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+.dark .star.filled .starIcon,
+[data-theme="dark"] .star.filled .starIcon {
+  color: var(--color-accent);
+}

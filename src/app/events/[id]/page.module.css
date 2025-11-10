@@ -57,7 +57,7 @@
   position: relative;
   height: 24rem;
   overflow: hidden;
-  border-block-end: 3px solid var(--color-black);
+  border-block-end: var(--border-width-3) solid var(--color-black);
 }
 
 .heroImage {
@@ -75,7 +75,7 @@
 .heroOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  background: linear-gradient(to top, var(--color-bg-overlay), transparent);
 }
 
 .heroActions {
@@ -88,7 +88,7 @@
 
 .actionButton {
   background-color: var(--color-white);
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
 }
 
 .actionButton:hover {
@@ -183,12 +183,12 @@
 
 .cardBg {
   background-color: var(--color-white);
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
 }
 
 .cardBgGrey {
   background-color: var(--color-grey-100);
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
 }
 
 .cardTitle {
@@ -249,7 +249,7 @@
 .artistImage {
   width: 5rem;
   height: 5rem;
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   object-fit: cover;
   flex-shrink: 0;
 }
@@ -294,7 +294,7 @@
 
 .ticketCard {
   padding: var(--space-4);
-  border: 3px solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-black);
   background-color: var(--color-white);
 }
 
@@ -360,7 +360,7 @@
 .cartSummary {
   margin-block-start: var(--space-6);
   padding-block-start: var(--space-6);
-  border-block-start: 3px solid var(--color-black);
+  border-block-start: var(--border-width-3) solid var(--color-black);
 }
 
 .cartTotal {
@@ -479,7 +479,7 @@
 }
 
 .rounded {
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-none)(--radius-md);
 }
 
 .shadow {

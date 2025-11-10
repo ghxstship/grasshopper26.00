@@ -1,0 +1,55 @@
+/**
+ * DurationLabel Styles
+ * GHXSTSHIP Entertainment Platform
+ * Event duration display
+ */
+
+.duration {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  
+  font-family: var(--font-mono);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  color: var(--color-text-secondary);
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.sm {
+  font-size: var(--font-size-xs);
+}
+
+.sm .icon {
+  width: 12px;
+  height: 12px;
+}
+
+.md {
+  font-size: var(--font-size-sm);
+}
+
+.md .icon {
+  width: 16px;
+  height: 16px;
+}
+
+.lg {
+  font-size: var(--font-size-base);
+}
+
+.lg .icon {
+  width: 20px;
+  height: 20px;
+}
+
+.dark .duration,
+[data-theme="dark"] .duration {
+  color: var(--color-text-secondary);
+}

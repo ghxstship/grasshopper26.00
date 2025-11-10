@@ -1,0 +1,82 @@
+/**
+ * Toast Component Styles
+ * GHXSTSHIP Monochromatic Design System
+ */
+
+.toast {
+  position: fixed;
+  z-index: var(--z-index-toast);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-4);
+  min-inline-size: 300px;
+  max-inline-size: 500px;
+  padding: var(--spacing-4);
+  background-color: var(--color-white);
+  border: var(--border-width-thick) solid var(--color-black);
+  box-shadow: 4px 4px 0 0 var(--color-black);
+  animation: slideIn var(--transition-standard) var(--easing-standard);
+}
+
+.message {
+  flex: 1;
+  font-family: var(--font-share);
+  font-size: var(--font-size-body);
+}
+
+.close {
+  padding: var(--spacing-1);
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-h5);
+  background: none;
+  border: none;
+  color: var(--color-text-primary);
+  cursor: pointer;
+}
+
+/* Position variants */
+.top-left {
+  inset-block-start: var(--spacing-4);
+  inset-inline-start: var(--spacing-4);
+}
+
+.top-right {
+  inset-block-start: var(--spacing-4);
+  inset-inline-end: var(--spacing-4);
+}
+
+.bottom-left {
+  inset-block-end: var(--spacing-4);
+  inset-inline-start: var(--spacing-4);
+}
+
+.bottom-right {
+  inset-block-end: var(--spacing-4);
+  inset-inline-end: var(--spacing-4);
+}
+
+/* Variant styles */
+.success {
+  background-color: var(--color-grey-100);
+}
+
+.warning {
+  background-color: var(--color-grey-200);
+}
+
+.error {
+  background-color: var(--color-grey-900);
+  color: var(--color-white);
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

@@ -1,0 +1,82 @@
+/**
+ * Icon Styles
+ * GHXSTSHIP Entertainment Platform
+ * Bold geometric icons for entertainment features
+ */
+
+.icon {
+  display: inline-block;
+  flex-shrink: 0;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+/* ========================================
+   SIZES
+   ======================================== */
+
+.xs {
+  width: var(--space-3);
+  height: var(--space-3);
+}
+
+.sm {
+  width: var(--space-4);
+  height: var(--space-4);
+}
+
+.md {
+  width: var(--space-6);
+  height: var(--space-6);
+}
+
+.lg {
+  width: var(--space-8);
+  height: var(--space-8);
+}
+
+.xl {
+  width: var(--space-12);
+  height: var(--space-12);
+}
+
+.\32xl {
+  width: var(--space-16);
+  height: var(--space-16);
+}
+
+/* ========================================
+   COLORS
+   ======================================== */
+
+.color-primary {
+  color: var(--color-text-primary);
+}
+
+.color-secondary {
+  color: var(--color-text-secondary);
+}
+
+.color-tertiary {
+  color: var(--color-text-tertiary);
+}
+
+.color-inverse {
+  color: var(--color-text-inverse);
+}
+
+.color-brand {
+  color: var(--color-text-brand);
+}
+
+.color-accent {
+  color: var(--color-text-accent);
+}
+
+.color-error {
+  color: var(--color-error-text);
+}
+
+.color-success {
+  color: var(--color-success-text);
+}

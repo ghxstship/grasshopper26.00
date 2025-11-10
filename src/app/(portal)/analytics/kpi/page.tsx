@@ -13,10 +13,10 @@ export default function KPIAnalyticsPage() {
       subtitle="Key performance indicators and metrics"
       loading={loading}
       stats={[
-        { label: 'Active KPIs', value: stats.active, icon: <Activity />, trend: { value: 5, direction: 'up' } },
-        { label: 'Trending Up', value: stats.trending_up, icon: <TrendingUp />, trend: { value: 10, direction: 'up' } },
-        { label: 'Alerts', value: stats.alerts, icon: <AlertTriangle />, trend: { value: 3, direction: 'down' } },
-        { label: 'On Target', value: stats.on_target, icon: <CheckCircle />, trend: { value: 8, direction: 'up' } },
+        { label: 'Active KPIs', value: stats.active, icon: <Activity />, trend: { value: 5, direction: 'up', label: '+5%' } },
+        { label: 'Trending Up', value: stats.trending_up, icon: <TrendingUp />, trend: { value: 10, direction: 'up', label: '+10%' } },
+        { label: 'Alerts', value: stats.alerts, icon: <AlertTriangle />, trend: { value: 3, direction: 'down', label: '-3%' } },
+        { label: 'On Target', value: stats.on_target, icon: <CheckCircle />, trend: { value: 8, direction: 'up', label: '+8%' } },
       ]}
       tabs={[
         { key: 'overview', label: 'Overview', content: <div>KPI Overview</div> },

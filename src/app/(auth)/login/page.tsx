@@ -99,13 +99,13 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center  p-4" style={{ background: 'var(--gradient-hero)' }}>
-      <Card className="w-full max-w-md bg-black/40 backdrop-blur-lg border-purple-500/20">
+    <div className="min-h-screen flex items-center justify-center p-4 bg-white">
+      <Card className="w-full max-w-md bg-white border-3 border-black">
         <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl font-bold text-center  bg-clip-text text-transparent" style={{ backgroundImage: 'var(--gradient-brand-primary)' }}>
+          <CardTitle className="text-center">
             Welcome Back
           </CardTitle>
-          <CardDescription className="text-center text-gray-400">
+          <CardDescription className="text-center">
             Sign in to your account to continue
           </CardDescription>
         </CardHeader>
@@ -120,7 +120,6 @@ export default function LoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="bg-black/50 border-purple-500/30"
               />
             </div>
             <div className="space-y-2">
@@ -128,7 +127,7 @@ export default function LoginPage() {
                 <Label htmlFor="password">Password</Label>
                 <Link
                   href="/reset-password"
-                  className="text-sm text-purple-400 hover:text-purple-300"
+                  className="font-share text-meta text-black hover:text-grey-700 underline"
                 >
                   Forgot password?
                 </Link>
@@ -139,12 +138,11 @@ export default function LoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="bg-black/50 border-purple-500/30"
               />
             </div>
             <Button
               type="submit"
-              className="w-full " style={{ background: 'var(--gradient-brand-primary)' }}
+              className="w-full"
               disabled={loading}
             >
               {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
@@ -154,10 +152,10 @@ export default function LoginPage() {
 
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
-              <span className="w-full border-t border-purple-500/20" />
+              <span className="w-full border-t-3 border-black" />
             </div>
-            <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-black/40 px-2 text-gray-400">Or continue with</span>
+            <div className="relative flex justify-center">
+              <span className="bg-white px-2 font-bebas text-base uppercase text-grey-600">Or continue with</span>
             </div>
           </div>
 
@@ -167,7 +165,6 @@ export default function LoginPage() {
                 type="button"
                 variant="outline"
                 onClick={() => handleOAuthLogin('google')}
-                className="border-purple-500/30 hover:bg-purple-500/10"
               >
                 <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24">
                   <path
@@ -193,7 +190,6 @@ export default function LoginPage() {
                 type="button"
                 variant="outline"
                 onClick={() => handleOAuthLogin('github')}
-                className="border-purple-500/30 hover:bg-purple-500/10"
               >
                 <svg className="mr-2 h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
@@ -206,7 +202,6 @@ export default function LoginPage() {
                 type="button"
                 variant="outline"
                 onClick={() => handleOAuthLogin('azure')}
-                className="border-purple-500/30 hover:bg-purple-500/10"
               >
                 <svg className="mr-2 h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M13.05 4.24L6.25 5.58l-.01 10.56 6.81 3.62 7.95-1.32V6.56l-7.95-2.32zm-.01 1.73l5.98 1.75v8.56l-5.98.99V5.97zm-5.98 1.14l5.01-.96v10.3l-5.01-2.66V7.11z"/>
@@ -217,7 +212,6 @@ export default function LoginPage() {
                 type="button"
                 variant="outline"
                 onClick={handleMagicLink}
-                className="border-purple-500/30 hover:bg-purple-500/10"
                 disabled={loading}
               >
                 {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
@@ -227,9 +221,9 @@ export default function LoginPage() {
           </div>
         </CardContent>
         <CardFooter>
-          <p className="text-center text-sm text-gray-400 w-full">
+          <p className="text-center font-share text-meta text-grey-600 w-full">
             Don&apos;t have an account?{' '}
-            <Link href="/signup" className="text-purple-400 hover:text-purple-300 font-medium">
+            <Link href="/signup" className="text-black hover:text-grey-700 underline">
               Sign up
             </Link>
           </p>

@@ -81,11 +81,11 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
           <div
             key={result.id}
             className={styles.result}
-            onClick={() => onResultClick?.(result.id)}
+            onClick={() => onResultClick?.(result)}
             onKeyDown={(e) => {
               if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
-                onResultClick?.(result.id);
+                onResultClick?.(result);
               }
             }}
             role="button"

@@ -167,6 +167,17 @@
   --font-mono: var(--font-share-mono);
   --font-meta: var(--font-share-mono);
   
+  /* Component-friendly aliases */
+  --font-family-anton: var(--font-anton);
+  --font-family-bebas: var(--font-bebas);
+  --font-family-share: var(--font-share);
+  --font-family-share-mono: var(--font-share-mono);
+  --font-family-hero: var(--font-anton);
+  --font-family-heading: var(--font-bebas);
+  --font-family-body: var(--font-share);
+  --font-family-mono: var(--font-share-mono);
+  --font-family-meta: var(--font-share-mono);
+  
   /* Font Sizes - Entertainment Platform Responsive Scale */
   --font-size-hero: clamp(48px, 10vw, 120px);    /* ANTON - Main heroes */
   --font-size-h1: clamp(36px, 8vw, 80px);        /* ANTON - Page titles */

@@ -8,26 +8,28 @@
   flex-direction: column;
   min-height: 100vh;
   background-color: var(--color-bg-primary);
+  padding-block-start: var(--space-16); /* Account for fixed header */
 }
 
 /* Header */
 .header {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 100;
+  inset-inline-start: 0;
+  inline-size: 100%;
+  z-index: 1000;
   background-color: var(--color-bg-primary);
-  border-block-end: var(--border-width-3) solid var(--color-border-strong);
 }
 
 /* Page Header */
 .pageHeader {
-  padding: var(--space-8) var(--space-6);
-  background-color: var(--color-bg-secondary);
-  border-block-end: var(--border-width-3) solid var(--color-border-default);
+  padding: var(--space-12) var(--space-6);
+  background-color: var(--color-bg-primary);
+  border-block-end: var(--border-width-3) solid var(--color-border-strong);
 }
 
 .title {
-  font-family: var(--font-family-display);
+  font-family: var(--font-family-anton);
   font-size: var(--font-size-h1);
   font-weight: 400;
   line-height: 1;

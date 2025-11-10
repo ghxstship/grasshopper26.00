@@ -144,11 +144,11 @@ export const DataTable: React.FC<DataTableProps> = ({
                   >
                     <div
                       className={styles.cell}
-                      onClick={() => onRowClick?.(row)}
+                      onClick={() => onRowClick?.(row.id)}
                       onKeyDown={(e) => {
                         if (e.key === 'Enter' || e.key === ' ') {
                           e.preventDefault();
-                          onRowClick?.(row);
+                          onRowClick?.(row.id);
                         }
                       }}
                       role="button"

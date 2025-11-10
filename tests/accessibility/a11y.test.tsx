@@ -5,9 +5,9 @@
 
 import { render } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { Button } from '@/design-system/components/atoms/button';
-import { Input } from '@/design-system/components/atoms/input';
-import { Dialog, DialogContent } from '@/design-system/components/atoms/dialog';
+import { Button } from '@/design-system/components/atoms/Button';
+import { Input } from '@/design-system/components/atoms/Input';
+import { Dialog, DialogContent } from '@/design-system/components/atoms/Dialog';
 
 expect.extend(toHaveNoViolations);
 

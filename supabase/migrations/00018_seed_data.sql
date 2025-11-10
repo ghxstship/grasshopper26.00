@@ -23,7 +23,7 @@ VALUES
     'An innovative electronic music group pushing the boundaries of sound and visual art.',
     ARRAY['Electronic', 'House', 'Techno'],
     true,
-    'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400'
+    'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=800&fit=crop&q=80'
   ),
   (
     '10000000-0000-0000-0000-000000000002',
@@ -32,7 +32,7 @@ VALUES
     'Indie rock band known for their ethereal soundscapes and powerful live performances.',
     ARRAY['Indie Rock', 'Alternative', 'Dream Pop'],
     true,
-    'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400'
+    'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&h=800&fit=crop&q=80'
   ),
   (
     '10000000-0000-0000-0000-000000000003',
@@ -41,7 +41,7 @@ VALUES
     'World-renowned DJ and producer specializing in progressive house and trance.',
     ARRAY['EDM', 'Progressive House', 'Trance'],
     true,
-    'https://images.unsplash.com/photo-1571330735066-03aaa9429d89?w=400'
+    'https://images.unsplash.com/photo-1571330735066-03aaa9429d89?w=800&h=800&fit=crop&q=80'
   ),
   (
     '10000000-0000-0000-0000-000000000004',
@@ -50,7 +50,7 @@ VALUES
     'Classic rock revival band bringing the spirit of the 70s to modern audiences.',
     ARRAY['Rock', 'Classic Rock', 'Blues Rock'],
     false,
-    'https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?w=400'
+    'https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?w=800&h=800&fit=crop&q=80'
   ),
   (
     '10000000-0000-0000-0000-000000000005',
@@ -59,7 +59,7 @@ VALUES
     'R&B and soul collective delivering smooth vocals and rich harmonies.',
     ARRAY['R&B', 'Soul', 'Neo-Soul'],
     true,
-    'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=400'
+    'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&h=800&fit=crop&q=80'
   )
 ON CONFLICT (id) DO NOTHING;
 
@@ -79,7 +79,7 @@ VALUES
     '{"street": "123 Riverside Drive", "city": "Portland", "state": "OR", "zip": "97201", "country": "USA"}'::jsonb,
     50000,
     'on_sale',
-    'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=1200'
+    'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=1200&h=800&fit=crop&q=80'
   ),
   (
     '20000000-0000-0000-0000-000000000002',
@@ -94,7 +94,7 @@ VALUES
     '{"street": "1332 W Burnside St", "city": "Portland", "state": "OR", "zip": "97209", "country": "USA"}'::jsonb,
     1500,
     'on_sale',
-    'https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=1200'
+    'https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=1200&h=800&fit=crop&q=80'
   ),
   (
     '20000000-0000-0000-0000-000000000003',
@@ -109,7 +109,7 @@ VALUES
     '{"street": "456 Industrial Ave", "city": "Portland", "state": "OR", "zip": "97202", "country": "USA"}'::jsonb,
     800,
     'on_sale',
-    'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=1200'
+    'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=1200&h=800&fit=crop&q=80'
   ),
   (
     '20000000-0000-0000-0000-000000000004',
@@ -124,7 +124,7 @@ VALUES
     '{"street": "1300 SE Stark St", "city": "Portland", "state": "OR", "zip": "97214", "country": "USA"}'::jsonb,
     850,
     'upcoming',
-    'https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=1200'
+    'https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=1200&h=800&fit=crop&q=80'
   )
 ON CONFLICT (id) DO NOTHING;
 
@@ -268,7 +268,7 @@ VALUES
     'Official festival t-shirt with exclusive 2025 design',
     'apparel',
     35.00,
-    ARRAY['https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400'],
+    ARRAY['https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&h=800&fit=crop&q=80'],
     'active'
   ),
   (
@@ -279,7 +279,7 @@ VALUES
     'Comfortable hoodie perfect for cool festival nights',
     'apparel',
     65.00,
-    ARRAY['https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400'],
+    ARRAY['https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=800&h=800&fit=crop&q=80'],
     'active'
   ),
   (
@@ -290,7 +290,7 @@ VALUES
     'Set of 3 collectible posters featuring festival artists',
     'collectibles',
     45.00,
-    ARRAY['https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=400'],
+    ARRAY['https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800&h=800&fit=crop&q=80'],
     'active'
   ),
   (
@@ -301,7 +301,7 @@ VALUES
     'Eco-friendly canvas tote bag',
     'accessories',
     25.00,
-    ARRAY['https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=400'],
+    ARRAY['https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=800&h=800&fit=crop&q=80'],
     'active'
   )
 ON CONFLICT (id) DO NOTHING;
@@ -339,7 +339,7 @@ VALUES
     'We are thrilled to announce the full lineup for Summer Sonic Festival 2025! This year''s festival will feature over 100 artists across 5 stages...',
     'The wait is over! Check out the incredible lineup for Summer Sonic Festival 2025.',
     'news',
-    'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800',
+    'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=1200&h=800&fit=crop&q=80',
     ARRAY['festival', 'lineup', 'announcement'],
     'published',
     NOW() - INTERVAL '7 days'
@@ -352,7 +352,7 @@ VALUES
     'Heading to your first music festival? Here are our top tips to make the most of your experience...',
     'Everything you need to know for your first festival experience.',
     'guide',
-    'https://images.unsplash.com/photo-1506157786151-b8491531f063?w=800',
+    'https://images.unsplash.com/photo-1506157786151-b8491531f063?w=1200&h=800&fit=crop&q=80',
     ARRAY['festival', 'guide', 'tips'],
     'published',
     NOW() - INTERVAL '14 days'

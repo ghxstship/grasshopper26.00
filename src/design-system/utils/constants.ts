@@ -108,7 +108,7 @@ export const ANIMATIONS = {
 /**
  * Z-index constants
  */
-export const Z_INDEX = {
+export const Z_INDEX_LAYERS = {
   DROPDOWN: 1000,
   STICKY: 1020,
   FIXED: 1030,

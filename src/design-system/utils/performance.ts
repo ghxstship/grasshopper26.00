@@ -50,8 +50,10 @@ export function requestIdleTask(
   }
   
   // Fallback to setTimeout
-  const timeoutId: ReturnType<typeof setTimeout> | number = typeof window !== 'undefined' ? window.setTimeout(callback, 1) : 0;
-  return timeoutId as number;
+  if (typeof globalThis !== 'undefined' && globalThis.setTimeout) {
+    return globalThis.setTimeout(callback, 1) as unknown as number;
+  }
+  return 0;
 }
 
 /**
@@ -60,8 +62,8 @@ export function requestIdleTask(
 export function cancelIdleTask(id: number): void {
   if (typeof window !== 'undefined' && 'cancelIdleCallback' in window) {
     window.cancelIdleCallback(id);
-  } else if (typeof window !== 'undefined') {
-    window.clearTimeout(id as unknown as ReturnType<typeof setTimeout>);
+  } else if (typeof globalThis !== 'undefined' && globalThis.clearTimeout) {
+    globalThis.clearTimeout(id as unknown as ReturnType<typeof setTimeout>);
   }
 }
 

@@ -1,10 +1,10 @@
 import { usePathname } from "next/navigation"
 import { useMemo } from "react"
-import type { BreadcrumbItem } from "@/design-system/components/molecules/breadcrumb"
+import type { BreadcrumbLinkItem } from "@/design-system"
 
 interface RouteConfig {
   pattern: RegExp
-  generator: (pathname: string, matches: RegExpMatchArray) => BreadcrumbItem[]
+  generator: (pathname: string, matches: RegExpMatchArray) => BreadcrumbLinkItem[]
 }
 
 // Route configuration for dynamic breadcrumb generation
@@ -253,7 +253,7 @@ const routeConfigs: RouteConfig[] = [
  * Hook to generate breadcrumb items based on the current pathname
  * @returns Array of breadcrumb items
  */
-export function useBreadcrumbs(): BreadcrumbItem[] {
+export function useBreadcrumbs(): BreadcrumbLinkItem[] {
   const pathname = usePathname()
 
   return useMemo(() => {

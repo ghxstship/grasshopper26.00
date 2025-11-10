@@ -17,7 +17,7 @@ export * from './FilterBar/FilterBar';
 export * from './FormField/FormField';
 export * from './LoadingCard/LoadingCard';
 export * from './Modal/Modal';
-export * from './NavigationItem/NavigationItem';
+export * from './NavigationItem';
 export * from './NewsCard/NewsCard';
 export * from './NotificationBadge/NotificationBadge';
 export { Pagination as PaginationControl } from './Pagination/Pagination';

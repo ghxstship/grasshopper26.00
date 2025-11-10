@@ -80,4 +80,4 @@ export const typography = {
   },
 } as const;
 
-export type Typography = typeof typography;
+export type TypographyTokens = typeof typography;

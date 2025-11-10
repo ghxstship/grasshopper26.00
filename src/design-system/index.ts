@@ -20,8 +20,7 @@ export * from './components/templates';
 // Export design tokens
 export * from './tokens';
 
-// Export components and utils explicitly to avoid duplicates
-export * from './components';
+// Export utils
 export { 
   getResponsiveValue, 
   useMediaQuery

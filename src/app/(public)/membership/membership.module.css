@@ -1,0 +1,162 @@
+/**
+ * Membership Page Styles
+ * GHXSTSHIP Design System - CSS Modules
+ */
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding-block: var(--space-16);
+  padding-inline: var(--space-6);
+  background: var(--color-bg-secondary);
+  border-block-end: var(--border-width-default) solid var(--color-border);
+}
+
+.heroTitle {
+  margin-block-end: var(--space-4);
+}
+
+.heroSubtitle {
+  max-inline-size: 600px;
+  margin-inline: auto;
+  color: var(--color-text-secondary);
+}
+
+/* Billing Toggle */
+.billingToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding-block: var(--space-6);
+  padding-inline: var(--space-4);
+}
+
+.billingToggle span {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-text-secondary);
+  transition: color var(--transition-fast);
+}
+
+.billingToggle span.active {
+  color: var(--color-text-primary);
+}
+
+.savingsBadge {
+  padding-block: var(--space-1);
+  padding-inline: var(--space-2);
+  background: var(--color-bg-primary);
+  border: var(--border-width-default) solid var(--color-border);
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+/* Tiers Grid */
+.tiersGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-6);
+  padding-block: var(--space-8);
+  padding-inline: var(--space-6);
+  max-inline-size: var(--container-max-width, 1400px);
+  margin-inline: auto;
+}
+
+.emptyState {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding-block: var(--space-12);
+}
+
+/* Benefits Section */
+.benefitsSection {
+  padding-block: var(--space-12);
+  padding-inline: var(--space-6);
+  max-inline-size: var(--container-max-width, 1400px);
+  margin-inline: auto;
+  background: var(--color-bg-secondary);
+}
+
+.sectionTitle {
+  text-align: center;
+  margin-block-end: var(--space-8);
+}
+
+.benefitsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-4);
+}
+
+.benefitItem {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+  padding-block: var(--space-4);
+  padding-inline: var(--space-4);
+  border: var(--border-width-default) solid var(--color-border);
+  background: var(--color-bg-primary);
+}
+
+.benefitIcon {
+  flex-shrink: 0;
+  inline-size: 24px;
+  block-size: 24px;
+  margin-block-start: var(--space-1);
+}
+
+/* FAQ Section */
+.faqSection {
+  padding-block: var(--space-12);
+  padding-inline: var(--space-6);
+  max-inline-size: 800px;
+  margin-inline: auto;
+}
+
+/* CTA Section */
+.ctaSection {
+  text-align: center;
+  padding-block: var(--space-16);
+  padding-inline: var(--space-6);
+  background: var(--color-bg-primary);
+  border-block-start: var(--border-width-default) solid var(--color-border);
+}
+
+.ctaSection h2 {
+  margin-block-end: var(--space-3);
+}
+
+.ctaSection p {
+  margin-block-end: var(--space-6);
+  color: var(--color-text-secondary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero {
+    padding-block: var(--space-12);
+    padding-inline: var(--space-4);
+  }
+
+  .tiersGrid {
+    grid-template-columns: 1fr;
+    padding-inline: var(--space-4);
+  }
+
+  .benefitsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .benefitsSection,
+  .faqSection,
+  .ctaSection {
+    padding-inline: var(--space-4);
+  }
+}

@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS budgets (
   -- Variance
   revenue_variance DECIMAL(12,2) GENERATED ALWAYS AS (total_revenue_actual - total_revenue_budgeted) STORED,
   expense_variance DECIMAL(12,2) GENERATED ALWAYS AS (total_expenses_actual - total_expenses_budgeted) STORED,
-  profit_variance DECIMAL(12,2) GENERATED ALWAYS AS (total_profit_actual - total_profit_budgeted) STORED,
+  profit_variance DECIMAL(12,2) GENERATED ALWAYS AS ((total_revenue_actual - total_expenses_actual) - (total_revenue_budgeted - total_expenses_budgeted)) STORED,
   
   -- Status
   budget_status TEXT DEFAULT 'draft' CHECK (budget_status IN ('draft', 'pending_approval', 'approved', 'locked', 'closed')),

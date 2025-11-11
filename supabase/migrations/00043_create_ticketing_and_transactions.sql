@@ -134,8 +134,11 @@ CREATE TABLE IF NOT EXISTS transactions (
   updated_at TIMESTAMPTZ DEFAULT NOW()
 );
 
+-- Drop old tickets table if it exists (from initial schema)
+DROP TABLE IF EXISTS tickets CASCADE;
+
 -- Tickets table
-CREATE TABLE IF NOT EXISTS tickets (
+CREATE TABLE tickets (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   event_id UUID REFERENCES events(id) ON DELETE CASCADE,
   tier_id UUID REFERENCES ticket_tiers(id),
@@ -233,13 +236,13 @@ ALTER TABLE ticket_tiers ENABLE ROW LEVEL SECURITY;
 ALTER TABLE tickets ENABLE ROW LEVEL SECURITY;
 ALTER TABLE transactions ENABLE ROW LEVEL SECURITY;
 
--- Ticket Tiers: Public can view active tiers for public events
+-- Ticket Tiers: Public can view active tiers for events on sale
 CREATE POLICY "Public can view active ticket tiers"
   ON ticket_tiers FOR SELECT
   USING (
     is_active = true
     AND event_id IN (
-      SELECT id FROM events WHERE is_public = true
+      SELECT id FROM events WHERE status IN ('on_sale', 'upcoming')
     )
   );
 

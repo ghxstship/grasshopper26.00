@@ -19,14 +19,27 @@ export interface MembershipTierCardProps {
     monthly_price: number;
     benefits: string[];
     featured?: boolean;
+    companion_pass?: {
+      id: string;
+      monthly_price: number;
+      annual_price: number;
+      max_companions: number;
+    };
   };
   onClick?: () => void;
+  isAnnual?: boolean;
 }
 
 export const MembershipTierCard: React.FC<MembershipTierCardProps> = ({
   tier,
   onClick,
+  isAnnual = true,
 }) => {
+  const displayPrice = isAnnual ? tier.annual_price : tier.monthly_price;
+  const priceLabel = isAnnual ? '/year' : '/month';
+  const alternatePrice = isAnnual ? tier.monthly_price : tier.annual_price;
+  const alternateLabel = isAnnual ? 'month' : 'year';
+
   return (
     <div className={`${styles.card} ${tier.featured ? styles.featured : ''}`}>
       {tier.featured && (
@@ -41,14 +54,14 @@ export const MembershipTierCard: React.FC<MembershipTierCardProps> = ({
         </Typography>
         <div className={styles.price}>
           <Typography variant="h2" as="div">
-            ${tier.annual_price}
+            ${displayPrice}
           </Typography>
           <Typography variant="meta" as="div">
-            /year
+            {priceLabel}
           </Typography>
         </div>
         <Typography variant="body" as="div" className={styles.monthly}>
-          or ${tier.monthly_price}/month
+          or ${alternatePrice}/{alternateLabel}
         </Typography>
       </div>
       
@@ -60,6 +73,17 @@ export const MembershipTierCard: React.FC<MembershipTierCardProps> = ({
           </li>
         ))}
       </ul>
+
+      {tier.companion_pass && (
+        <div className={styles.companionPass}>
+          <Typography variant="body" as="div" className={styles.companionPassLabel}>
+            + Companion Pass Add-on
+          </Typography>
+          <Typography variant="meta" as="div" className={styles.companionPassPrice}>
+            ${isAnnual ? tier.companion_pass.annual_price : tier.companion_pass.monthly_price}/{isAnnual ? 'year' : 'month'}
+          </Typography>
+        </div>
+      )}
       
       <Button
         variant={tier.featured ? 'filled' : 'outlined'}

@@ -13,7 +13,11 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/compon
 import { Input } from '@/design-system/components/atoms/Input';
 import { Label } from '@/design-system/components/atoms/Label';
 import { Textarea } from '@/design-system/components/atoms/Textarea';
-import { Save } from 'lucide-react';
+import { Progress } from '@/design-system/components/atoms/Progress/Progress';
+import { Alert } from '@/design-system/components/atoms/Alert/Alert';
+import { Skeleton } from '@/design-system/components/atoms/Skeleton/Skeleton';
+import { Typography } from '@/design-system/components/atoms/Typography/Typography';
+import { Save, AlertCircle, CheckCircle } from 'lucide-react';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
 import styles from './edit-content.module.css';
@@ -25,6 +29,8 @@ export default function EventEditPage({ params }: { params: Promise<{ id: string
   
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [saveProgress, setSaveProgress] = useState(0);
+  const [showSuccess, setShowSuccess] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     description: '',
@@ -67,8 +73,13 @@ export default function EventEditPage({ params }: { params: Promise<{ id: string
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSaving(true);
+    setSaveProgress(0);
+    setShowSuccess(false);
 
     try {
+      // Simulate progress for better UX
+      setSaveProgress(30);
+      
       const { error } = await supabase
         .from('events')
         .update({
@@ -81,16 +92,30 @@ export default function EventEditPage({ params }: { params: Promise<{ id: string
         })
         .eq('id', id);
 
+      setSaveProgress(70);
+
       if (error) throw error;
 
+      setSaveProgress(100);
+      setShowSuccess(true);
       toast.success('Event updated successfully');
-      router.push(`/admin/events/${id}`);
+      
+      setTimeout(() => {
+        router.push(`/admin/events/${id}`);
+      }, 1500);
     } catch (error: any) {
       toast.error('Failed to update event');
       console.error(error);
+      setSaveProgress(0);
     } finally {
       setSaving(false);
     }
+  };
+
+  const formCompleteness = () => {
+    const fields = [formData.name, formData.location, formData.start_date, formData.end_date, formData.description];
+    const filled = fields.filter(f => f && f.trim()).length;
+    return (filled / fields.length) * 100;
   };
 
   return (
@@ -104,12 +129,49 @@ export default function EventEditPage({ params }: { params: Promise<{ id: string
       subtitle="Update event details and settings"
       loading={loading}
     >
-      <Card>
-        <CardHeader>
-          <CardTitle>Event Details</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit} className={styles.form}>
+      {showSuccess && (
+        <Alert variant="success" className={styles.alert}>
+          <CheckCircle style={{ width: 20, height: 20 }} />
+          Event updated successfully! Redirecting...
+        </Alert>
+      )}
+
+      {!loading && formCompleteness() < 100 && (
+        <Alert variant="warning" className={styles.alert}>
+          <AlertCircle style={{ width: 20, height: 20 }} />
+          Please complete all required fields ({Math.round(formCompleteness())}% complete)
+        </Alert>
+      )}
+
+      {loading ? (
+        <Card>
+          <CardHeader>
+            <Skeleton variant="text" height="32px" width="200px" />
+          </CardHeader>
+          <CardContent>
+            <div className={styles.skeletonForm}>
+              {Array.from({ length: 6 }).map((_, i) => (
+                <Skeleton key={i} variant="rectangular" height="80px" />
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      ) : (
+        <Card>
+          <CardHeader>
+            <CardTitle>Event Details</CardTitle>
+            <Progress value={formCompleteness()} className={styles.progress} />
+          </CardHeader>
+          <CardContent>
+            {saving && saveProgress > 0 && (
+              <div className={styles.savingProgress}>
+                <Progress value={saveProgress} />
+                <Typography variant="body" as="p" className={styles.savingText}>
+                  Saving changes... {saveProgress}%
+                </Typography>
+              </div>
+            )}
+            <form onSubmit={handleSubmit} className={styles.form}>
             <div className={styles.formGrid}>
               <div className={styles.formField}>
                 <Label htmlFor="name">Event Name</Label>
@@ -180,6 +242,7 @@ export default function EventEditPage({ params }: { params: Promise<{ id: string
           </form>
         </CardContent>
       </Card>
+      )}
     </ContextualPageTemplate>
   );
 }

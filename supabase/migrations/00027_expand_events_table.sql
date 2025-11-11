@@ -47,16 +47,17 @@ ALTER TABLE events
   ADD COLUMN IF NOT EXISTS metadata JSONB DEFAULT '{}',
   ADD COLUMN IF NOT EXISTS created_by UUID REFERENCES auth.users(id);
 
--- Update event_status to include new statuses if not already present
+-- Update status column to include new statuses if not already present
 DO $$
 BEGIN
   IF NOT EXISTS (
     SELECT 1 FROM pg_constraint 
-    WHERE conname = 'events_event_status_check'
+    WHERE conname = 'events_status_expanded_check'
   ) THEN
     ALTER TABLE events
-      ADD CONSTRAINT events_event_status_check
-      CHECK (event_status IN (
+      DROP CONSTRAINT IF EXISTS events_status_check,
+      ADD CONSTRAINT events_status_expanded_check
+      CHECK (status IN (
         'draft',
         'planning',
         'budgeting',
@@ -65,7 +66,10 @@ BEGIN
         'day_of_show',
         'completed',
         'cancelled',
-        'postponed'
+        'postponed',
+        'upcoming',
+        'on_sale',
+        'sold_out'
       ));
   END IF;
 END $$;
@@ -89,7 +93,7 @@ CREATE POLICY "Users can view organization events"
       SELECT organization_id FROM user_organizations
       WHERE user_id = auth.uid()
     )
-    OR is_public = true
+    OR status IN ('upcoming', 'on_sale', 'sold_out')
   );
 
 DROP POLICY IF EXISTS "Event managers can manage events" ON events;

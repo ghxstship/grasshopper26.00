@@ -1,33 +1,47 @@
 /**
  * Admin Dashboard Styles
- * GHXSTSHIP Monochromatic Design System
+ * GHXSTSHIP Design System - CSS Modules
  */
 
 .statsGrid {
   display: grid;
-  gap: var(--space-6);
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-4);
   margin-block-end: var(--space-8);
 }
 
-.content {
+.contentGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+  margin-block-start: var(--space-8);
+}
+
+.section {
+  background: var(--color-bg-secondary);
+  border: var(--border-width-default) solid var(--color-border);
+  padding-block: var(--space-6);
+  padding-inline: var(--space-6);
+}
+
+.sectionTitle {
+  margin-block-end: var(--space-4);
+}
+
+.skeletonList {
   display: flex;
   flex-direction: column;
-  gap: var(--space-6);
+  gap: var(--space-3);
 }
 
-/* ========================================
-   RESPONSIVE
-   ======================================== */
-
-@media (min-width: 768px) {
-  .statsGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.emptyState {
+  color: var(--color-text-secondary);
+  text-align: center;
+  padding-block: var(--space-8);
 }
 
-@media (min-width: 1024px) {
-  .statsGrid {
-    grid-template-columns: repeat(4, 1fr);
+@media (max-width: 1024px) {
+  .contentGrid {
+    grid-template-columns: 1fr;
   }
 }

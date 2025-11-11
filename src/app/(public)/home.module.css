@@ -49,6 +49,42 @@
   background-color: currentColor;
 }
 
+/* Section Description */
+.sectionDescription {
+  text-align: center;
+  max-inline-size: 600px;
+  margin-inline: auto;
+  margin-block-end: var(--space-8);
+  color: var(--color-text-secondary);
+}
+
+/* Section CTA */
+.sectionCta {
+  display: flex;
+  justify-content: center;
+  margin-block-start: var(--space-8);
+}
+
+/* Newsletter Section */
+.newsletterSection {
+  text-align: center;
+  padding-block: var(--space-16);
+  padding-inline: var(--space-6);
+  background: var(--color-bg-primary);
+  border-block-start: var(--border-width-default) solid var(--color-border);
+}
+
+.newsletterTitle {
+  margin-block-end: var(--space-4);
+}
+
+.newsletterDescription {
+  max-inline-size: 600px;
+  margin-inline: auto;
+  margin-block-end: var(--space-8);
+  color: var(--color-text-secondary);
+}
+
 /* Events Grid */
 .eventsGrid {
   display: grid;

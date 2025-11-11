@@ -1,9 +1,15 @@
 'use client';
 
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { GridLayout } from '@/design-system/components/templates/GridLayout/GridLayout';
+import { MembershipLayout } from '@/design-system/components/templates/MembershipLayout/MembershipLayout';
 import { MembershipTierCard } from '@/design-system/components/organisms/MembershipTierCard/MembershipTierCard';
 import { Typography } from '@/design-system/components/atoms/Typography/Typography';
+import { Button } from '@/design-system/components/atoms/Button/Button';
+import { Toggle } from '@/design-system/components/atoms/Toggle/Toggle';
+import { FAQAccordion } from '@/design-system/components/organisms/FAQAccordion/FAQAccordion';
+import { Check } from 'lucide-react';
+import styles from './membership.module.css';
 
 interface MembershipTier {
   id: string;
@@ -18,10 +24,17 @@ interface MembershipTier {
   benefits: Record<string, boolean | string>;
   limits: Record<string, number | boolean | string>;
   is_active: boolean;
+  companion_pass?: {
+    id: string;
+    monthly_price: number;
+    annual_price: number;
+    max_companions: number;
+  };
 }
 
 interface MembershipBrowseClientProps {
   initialTiers: MembershipTier[];
+  companionPasses?: any[];
 }
 
 // Transform JSONB benefits into readable array
@@ -70,6 +83,7 @@ function transformBenefits(benefits: Record<string, boolean | string>): string[]
 
 export function MembershipBrowseClient({ initialTiers }: MembershipBrowseClientProps) {
   const router = useRouter();
+  const [isAnnual, setIsAnnual] = useState(true);
 
   // Mark tier_level 2 (Main) as featured
   const tiersWithBenefits = initialTiers.map((tier) => ({
@@ -78,30 +92,138 @@ export function MembershipBrowseClient({ initialTiers }: MembershipBrowseClientP
     featured: tier.tier_level === 2,
   }));
 
+  const faqItems = [
+    {
+      id: '1',
+      question: 'How do membership tiers work?',
+      answer: 'Each tier unlocks progressively more benefits, from basic event browsing to VIP backstage access. Choose the tier that fits your event-going lifestyle.',
+    },
+    {
+      id: '2',
+      question: 'What is a Companion Pass?',
+      answer: 'A Companion Pass allows you to add a guest who shares most of your membership benefits. Perfect for bringing a partner, friend, or family member to events. Available as an add-on for all non-business tiers.',
+    },
+    {
+      id: '3',
+      question: 'Can I upgrade my membership later?',
+      answer: 'Yes! You can upgrade to a higher tier at any time. Your remaining balance will be prorated toward your new membership.',
+    },
+    {
+      id: '4',
+      question: 'What payment methods do you accept?',
+      answer: 'We accept all major credit cards, debit cards, and digital payment methods including Apple Pay and Google Pay.',
+    },
+    {
+      id: '5',
+      question: 'Is there a refund policy?',
+      answer: 'Annual memberships can be refunded within 30 days of purchase. Monthly memberships can be canceled at any time.',
+    },
+  ];
+
+  const benefits = [
+    'Priority access to tickets',
+    'Exclusive member events',
+    'Discounts on merchandise',
+    'Early venue entry',
+    'Member-only content',
+    'Birthday perks',
+  ];
+
   return (
-    <GridLayout
-      title="Membership Tiers"
-      description="Join GVTEWAY and unlock exclusive benefits"
-      columns={3}
-    >
-      {tiersWithBenefits.length > 0 ? (
-        tiersWithBenefits.map((tier) => (
-          <MembershipTierCard
-            key={tier.id}
-            tier={tier}
-            onClick={() => router.push(`/membership/checkout?tier=${tier.id}`)}
-          />
-        ))
-      ) : (
-        <div style={{ gridColumn: '1 / -1', textAlign: 'center', padding: 'var(--space-12)' }}>
-          <Typography variant="h3" as="p">
-            No membership tiers available
+    <MembershipLayout
+      hero={
+        <div className={styles.hero}>
+          <Typography variant="h1" as="h1" className={styles.heroTitle}>
+            Join GVTEWAY
           </Typography>
-          <Typography variant="body" as="p">
-            Check back soon for membership options
+          <Typography variant="h3" as="p" className={styles.heroSubtitle}>
+            Unlock exclusive access to the best events and experiences
           </Typography>
         </div>
-      )}
-    </GridLayout>
+      }
+      billingToggle={
+        <div className={styles.billingToggle}>
+          <Typography variant="body" as="span" className={isAnnual ? styles.active : ''}>
+            Annual
+          </Typography>
+          <Toggle
+            checked={!isAnnual}
+            onChange={() => setIsAnnual(!isAnnual)}
+            aria-label="Toggle billing period"
+          />
+          <Typography variant="body" as="span" className={!isAnnual ? styles.active : ''}>
+            Monthly
+          </Typography>
+          {isAnnual && (
+            <span className={styles.savingsBadge}>Save 20%</span>
+          )}
+        </div>
+      }
+      tiers={
+        <div className={styles.tiersGrid}>
+          {tiersWithBenefits.length > 0 ? (
+            tiersWithBenefits.map((tier) => (
+              <MembershipTierCard
+                key={tier.id}
+                tier={tier}
+                onClick={() => router.push(`/membership/checkout?tier=${tier.id}`)}
+                isAnnual={isAnnual}
+              />
+            ))
+          ) : (
+            <div className={styles.emptyState}>
+              <Typography variant="h3" as="p">
+                No membership tiers available
+              </Typography>
+              <Typography variant="body" as="p">
+                Check back soon for membership options
+              </Typography>
+            </div>
+          )}
+        </div>
+      }
+      benefits={
+        <div className={styles.benefitsSection}>
+          <Typography variant="h2" as="h2" className={styles.sectionTitle}>
+            Member Benefits
+          </Typography>
+          <div className={styles.benefitsGrid}>
+            {benefits.map((benefit, idx) => (
+              <div key={idx} className={styles.benefitItem}>
+                <Check className={styles.benefitIcon} />
+                <Typography variant="body" as="p">
+                  {benefit}
+                </Typography>
+              </div>
+            ))}
+          </div>
+        </div>
+      }
+      faq={
+        <div className={styles.faqSection}>
+          <Typography variant="h2" as="h2" className={styles.sectionTitle}>
+            Frequently Asked Questions
+          </Typography>
+          <FAQAccordion items={faqItems} />
+        </div>
+      }
+      cta={
+        <div className={styles.ctaSection}>
+          <Typography variant="h2" as="h2">
+            Ready to Join?
+          </Typography>
+          <Typography variant="body" as="p">
+            Start your membership today and never miss an event
+          </Typography>
+          <Button
+            variant="filled"
+            size="lg"
+            onClick={() => router.push('/membership/checkout')}
+          >
+            Get Started
+          </Button>
+        </div>
+      }
+    />
   );
 }

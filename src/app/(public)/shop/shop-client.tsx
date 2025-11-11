@@ -54,7 +54,7 @@ export function ShopBrowseClient({ initialProducts, initialSearch }: ShopBrowseC
 
   return (
     <GridLayout
-      title="Shop"
+      title="Shop Brands"
       description="Official GVTEWAY merchandise. Limited edition items, event exclusives, and more."
       search={
         <Input

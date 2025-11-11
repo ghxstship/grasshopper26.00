@@ -58,7 +58,7 @@ export default function LoginPage() {
     }
   };
 
-  const handleOAuthLogin = async (provider: 'google' | 'github' | 'azure') => {
+  const handleOAuthLogin = async (provider: 'google' | 'azure') => {
     try {
       const { error } = await supabase.auth.signInWithOAuth({
         provider,
@@ -190,9 +190,9 @@ export default function LoginPage() {
           </Button>
           <Button
             variant="outlined"
-            onClick={() => handleOAuthLogin('github')}
+            onClick={() => window.location.href = '/api/auth/bluesky'}
           >
-            GitHub
+            BlueSky
           </Button>
         </div>
       </div>

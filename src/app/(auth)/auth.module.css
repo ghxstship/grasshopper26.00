@@ -120,7 +120,7 @@
 
 .description {
   text-align: center;
-  color: var(--color-text-secondary);
+  color: var(--color-grey-600);
   margin-block-end: var(--space-2);
   font-size: var(--font-size-sm);
 }

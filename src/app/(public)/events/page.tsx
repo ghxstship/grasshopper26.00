@@ -26,7 +26,7 @@ function EventsPageContent() {
 
   return (
     <GridLayout
-      title="Discover Events"
+      title="Explore Events"
       description="Find your next unforgettable experience"
       search={
         <Input

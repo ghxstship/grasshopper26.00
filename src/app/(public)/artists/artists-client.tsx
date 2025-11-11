@@ -35,7 +35,7 @@ export function ArtistsBrowseClient({ initialArtists, initialSearch }: ArtistsBr
 
   return (
     <GridLayout
-      title="Artists"
+      title="Discover Artists"
       description="Discover the incredible talent performing at GVTEWAY events"
       search={
         <Input

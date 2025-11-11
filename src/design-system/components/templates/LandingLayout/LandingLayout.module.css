@@ -29,6 +29,7 @@
   background-color: var(--color-bg-inverse);
   color: var(--color-text-inverse);
   overflow: hidden;
+  padding-block-start: var(--space-16);
 }
 
 /* Section */

@@ -1,0 +1,43 @@
+.badge {
+  display: inline-block;
+  padding-block: var(--space-1);
+  padding-inline: var(--space-3);
+  font-family: var(--font-family-bebas);
+  font-size: var(--font-size-sm);
+  letter-spacing: var(--letter-spacing-wider);
+  line-height: var(--line-height-tight);
+  border-width: var(--border-width-default);
+  border-style: solid;
+  border-color: var(--color-border-strong);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+
+.vip {
+  background-color: var(--color-grey-900);
+  color: var(--color-text-inverse);
+  border-color: var(--color-grey-900);
+}
+
+.reserved_seating {
+  background-color: var(--color-grey-800);
+  color: var(--color-text-inverse);
+  border-color: var(--color-grey-800);
+}
+
+.early_bird {
+  background-color: var(--color-grey-300);
+}
+
+.group {
+  background-color: var(--color-grey-200);
+}
+
+.comp {
+  background-color: var(--color-grey-100);
+  color: var(--color-text-secondary);
+}
+
+.general_admission {
+  background-color: var(--color-bg-primary);
+}

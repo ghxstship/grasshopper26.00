@@ -22,6 +22,7 @@
 /* Hero */
 .hero {
   padding: var(--space-12) var(--space-6);
+  padding-block-start: calc(var(--space-16) + var(--space-12));
   background-color: var(--color-bg-inverse);
   color: var(--color-text-inverse);
   text-align: center;
@@ -36,7 +37,7 @@
   background-color: var(--color-bg-secondary);
   border-block-end: var(--border-width-3) solid var(--color-border-default);
   position: sticky;
-  top: 80px;
+  top: var(--space-16);
   z-index: 90;
 }
 
@@ -107,6 +108,7 @@
 @media (min-width: 1024px) {
   .hero {
     padding: var(--space-16) var(--space-10);
+    padding-block-start: calc(var(--space-16) + var(--space-16));
   }
   
   .tiers {

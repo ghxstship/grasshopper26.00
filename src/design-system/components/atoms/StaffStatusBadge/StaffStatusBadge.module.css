@@ -1,0 +1,51 @@
+.badge {
+  display: inline-block;
+  padding-block: var(--space-1);
+  padding-inline: var(--space-3);
+  font-family: var(--font-family-share-mono);
+  font-size: var(--font-size-xs);
+  letter-spacing: var(--letter-spacing-meta);
+  line-height: var(--line-height-tight);
+  border-width: var(--border-width-default);
+  border-style: solid;
+  border-color: var(--color-border-default);
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+}
+
+.checked_in {
+  background-color: var(--color-grey-900);
+  color: var(--color-text-inverse);
+  border-color: var(--color-grey-900);
+}
+
+.on_break {
+  background-color: var(--color-grey-700);
+  color: var(--color-text-inverse);
+  border-color: var(--color-grey-700);
+}
+
+.checked_out {
+  background-color: var(--color-grey-400);
+  border-color: var(--color-grey-400);
+}
+
+.confirmed {
+  background-color: var(--color-bg-primary);
+  border-color: var(--color-border-strong);
+}
+
+.scheduled {
+  background-color: var(--color-grey-200);
+}
+
+.no_show {
+  background-color: var(--color-grey-800);
+  color: var(--color-text-inverse);
+  border-color: var(--color-grey-800);
+}
+
+.cancelled {
+  background-color: var(--color-grey-300);
+  color: var(--color-text-tertiary);
+}

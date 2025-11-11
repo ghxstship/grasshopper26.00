@@ -43,7 +43,7 @@ export function NewsBrowseClient({ initialArticles, initialSearch }: { initialAr
 
   return (
     <GridLayout
-      title="News & Updates"
+      title="Latest News"
       description="Stay informed with the latest from GVTEWAY"
       search={
         <Input

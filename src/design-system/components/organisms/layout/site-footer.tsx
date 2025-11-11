@@ -77,32 +77,6 @@ export const SiteFooter: React.FC<SiteFooterProps> = ({ className = '' }) => {
   return (
     <footer className={`${styles.footer} ${className}`}>
       <div className={styles.container}>
-        {/* Top Section: Tagline and Social */}
-        <div className={styles.topSection}>
-          <div className={styles.taglineSection}>
-            <p className={styles.tagline}>
-              Experience live music and entertainment like never before.
-            </p>
-            <div className={styles.social}>
-              {SOCIAL_LINKS.map((link) => {
-                const IconComponent = link.Icon;
-                return (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    className={styles.socialLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={link.label}
-                  >
-                    <IconComponent />
-                  </a>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-
         {/* Main Content Grid */}
         <div className={styles.grid}>
           {FOOTER_COLUMNS.map((column) => (
@@ -125,11 +99,31 @@ export const SiteFooter: React.FC<SiteFooterProps> = ({ className = '' }) => {
 
         <div className={styles.divider} />
 
-        {/* Newsletter Section */}
-        <div className={styles.newsletterSection}>
-          <p className={styles.newsletterText}>
-            Get the latest events, news, and exclusive offers.
-          </p>
+        {/* Bottom Section with Newsletter and Social */}
+        <div className={styles.bottom}>
+          <div className={styles.bottomLeft}>
+            <p className={styles.tagline}>
+              Experience live music and entertainment like never before.
+            </p>
+            <div className={styles.social}>
+              {SOCIAL_LINKS.map((link) => {
+                const IconComponent = link.Icon;
+                return (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className={styles.socialLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={link.label}
+                  >
+                    <IconComponent />
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+          
           <form className={styles.newsletterForm} onSubmit={handleNewsletterSubmit}>
             <Input
               type="email"
@@ -158,14 +152,10 @@ export const SiteFooter: React.FC<SiteFooterProps> = ({ className = '' }) => {
 
         <div className={styles.divider} />
 
-        {/* Bottom Section */}
-        <div className={styles.bottom}>
-          <p className={styles.copyright}>
-            © {new Date().getFullYear()} GVTEWAY. All rights reserved.
-          </p>
-          <p className={styles.madeWith}>
-            Made with <span className={styles.heart}>♥</span> for live music fans everywhere
-          </p>
+        {/* Copyright */}
+        <div className={styles.copyright}>
+          <p>© {new Date().getFullYear()} GVTEWAY. All rights reserved.</p>
+          <p>Made with <span className={styles.heart}>♥</span> for live music fans everywhere</p>
         </div>
       </div>
     </footer>

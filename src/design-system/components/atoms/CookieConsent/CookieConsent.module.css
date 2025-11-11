@@ -4,9 +4,10 @@
   inset-inline-start: 0;
   inset-inline-end: 0;
   background: var(--color-background);
-  border-block-start: var(--border-width) solid var(--color-border);
+  border-block-start: var(--border-width-3) solid var(--color-border);
   padding: var(--space-4);
-  z-index: 9999;
+  z-index: 10000;
+  box-shadow: var(--shadow-hard);
 }
 
 .content {

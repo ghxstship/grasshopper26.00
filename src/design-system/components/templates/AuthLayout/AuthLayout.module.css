@@ -10,7 +10,9 @@
   min-height: 100vh;
   background-color: var(--color-bg-primary);
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-block: var(--space-4);
 }
 
 .layout.inverted {
@@ -53,14 +55,23 @@
   z-index: 1;
   width: 100%;
   max-width: 480px;
-  padding: var(--space-6);
+  padding: var(--space-4);
+  margin-inline: auto;
 }
 
 /* Logo */
 .logo {
   display: flex;
   justify-content: center;
-  margin-block-end: var(--space-8);
+  margin-block-end: var(--space-6);
+  font-size: var(--font-size-h1);
+}
+
+@media (min-width: 640px) {
+  .logo {
+    margin-block-end: var(--space-8);
+    font-size: var(--font-size-hero);
+  }
 }
 
 /* Card */
@@ -68,7 +79,7 @@
   background-color: var(--color-bg-primary);
   border: var(--border-width-3) solid var(--color-border-strong);
   box-shadow: var(--shadow-geometric);
-  padding: var(--space-8);
+  padding: var(--space-6);
 }
 
 .inverted .card {
@@ -84,6 +95,8 @@
   font-family: var(--font-family-mono);
   font-size: var(--font-size-meta);
   color: var(--color-text-secondary);
+  padding-inline: var(--space-2);
+  word-wrap: break-word;
 }
 
 /* ========================================
@@ -91,6 +104,20 @@
    ======================================== */
 
 @media (min-width: 640px) {
+  .container {
+    padding: var(--space-6);
+  }
+  
+  .card {
+    padding: var(--space-8);
+  }
+  
+  .footer {
+    padding-inline: 0;
+  }
+}
+
+@media (min-width: 1024px) {
   .container {
     padding: var(--space-8);
   }

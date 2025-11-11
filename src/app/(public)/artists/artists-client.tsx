@@ -1,10 +1,11 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { ArtistGrid } from '@/design-system/components/organisms/ArtistGrid/ArtistGrid';
-import { SearchBar } from '@/design-system/components/molecules/SearchBar/SearchBar';
-import styles from './artists.module.css';
+import { GridLayout } from '@/design-system/components/templates/GridLayout/GridLayout';
+import { ArtistCard } from '@/design-system/components/molecules/ArtistCard/ArtistCard';
+import { Input } from '@/design-system/components/atoms/Input/Input';
+import { Typography } from '@/design-system/components/atoms/Typography/Typography';
 
 interface Artist {
   id: string;
@@ -23,71 +24,53 @@ interface ArtistsBrowseClientProps {
 export function ArtistsBrowseClient({ initialArtists, initialSearch }: ArtistsBrowseClientProps) {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState(initialSearch || '');
-  const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
-
-  const allGenres = useMemo(() => {
-    const genres = new Set<string>();
-    initialArtists.forEach(artist => {
-      artist.genre_tags?.forEach(genre => genres.add(genre));
-    });
-    return Array.from(genres).sort();
-  }, [initialArtists]);
-
-  const filters = allGenres.map(genre => ({
-    id: genre,
-    label: genre.toUpperCase(),
-    count: initialArtists.filter(a => a.genre_tags?.includes(genre)).length,
-  }));
 
   const filteredArtists = initialArtists
     .filter(artist => {
       const matchesSearch = searchQuery
         ? artist.name.toLowerCase().includes(searchQuery.toLowerCase())
         : true;
-      const matchesGenre = selectedFilters.length === 0 ||
-        artist.genre_tags?.some(tag => selectedFilters.includes(tag));
-      return matchesSearch && matchesGenre;
+      return matchesSearch;
     });
 
-  const mappedArtists = filteredArtists.map(artist => ({
-    id: artist.id,
-    name: artist.name,
-    genre: artist.genre_tags || [],
-    imageUrl: artist.image_url || '/placeholder-artist.jpg',
-  }));
-
-  const handleFilterChange = (filterId: string) => {
-    setSelectedFilters(prev =>
-      prev.includes(filterId)
-        ? prev.filter(id => id !== filterId)
-        : [...prev, filterId]
-    );
-  };
-
   return (
-    <div className={styles.main}>
-      <div className={styles.header}>
-        <h1 className={styles.title}>ARTISTS</h1>
-        <p className={styles.subtitle}>DISCOVER THE INCREDIBLE TALENT PERFORMING AT GVTEWAY EVENTS</p>
-      </div>
-
-      <div className={styles.searchContainer}>
-        <SearchBar
-          placeholder="SEARCH ARTISTS..."
+    <GridLayout
+      title="Artists"
+      description="Discover the incredible talent performing at GVTEWAY events"
+      search={
+        <Input
+          type="search"
+          placeholder="Search artists..."
           value={searchQuery}
-          onChange={setSearchQuery}
-          fullWidth
+          onChange={(e) => setSearchQuery(e.target.value)}
         />
-      </div>
-
-      <ArtistGrid
-        artists={mappedArtists}
-        onArtistClick={(id) => router.push(`/artists/${id}`)}
-        filters={filters}
-        selectedFilters={selectedFilters}
-        onFilterChange={handleFilterChange}
-        variant="circle"
-      />
-    </div>
+      }
+      columns={3}
+    >
+      {filteredArtists.length > 0 ? (
+        filteredArtists.map((artist) => (
+          <ArtistCard
+            key={artist.id}
+            artist={{
+              id: artist.id,
+              name: artist.name,
+              genre: artist.genre_tags || [],
+              imageUrl: artist.image_url || '/placeholder-artist.jpg',
+            }}
+            onClick={() => router.push(`/artists/${artist.slug}`)}
+            variant="square"
+          />
+        ))
+      ) : (
+        <div style={{ gridColumn: '1 / -1', textAlign: 'center', padding: 'var(--space-12)' }}>
+          <Typography variant="h3" as="p">
+            No artists found
+          </Typography>
+          <Typography variant="body" as="p">
+            Try adjusting your search
+          </Typography>
+        </div>
+      )}
+    </GridLayout>
   );
 }

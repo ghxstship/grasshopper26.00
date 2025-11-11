@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import Link from 'next/link';
+import { Instagram, Music2, Youtube, Linkedin, Facebook } from 'lucide-react';
 import { Input } from '../../atoms/Input';
 import { Button } from '../../atoms/Button';
 import styles from './site-footer.module.css';
@@ -12,46 +13,46 @@ export interface SiteFooterProps {
 
 const FOOTER_COLUMNS = [
   {
-    title: 'EVENTS',
+    title: 'Browse Events',
     links: [
-      { label: 'All Events', href: '/events' },
-      { label: 'Shop', href: '/shop' },
-      { label: 'Schedule', href: '/schedule' },
+      { label: 'Artists', href: '/artists' },
+      { label: 'Venues', href: '/venues' },
+      { label: 'Calendar', href: '/events' },
     ],
   },
   {
-    title: 'ARTISTS',
+    title: 'Merchandise',
     links: [
-      { label: 'Browse All', href: '/artists' },
+      { label: 'Gift Cards', href: '/shop/gift-cards' },
+      { label: 'Shipping Info', href: '/shipping' },
+    ],
+  },
+  {
+    title: 'About Us',
+    links: [
       { label: 'News', href: '/news' },
+      { label: 'Careers', href: '/careers' },
+      { label: 'Contact', href: '/contact' },
     ],
   },
   {
-    title: 'ACCOUNT',
-    links: [
-      { label: 'Portal', href: '/portal' },
-      { label: 'Orders', href: '/profile/orders' },
-      { label: 'Membership', href: '/membership' },
-    ],
-  },
-  {
-    title: 'LEGAL',
+    title: 'Legal',
     links: [
       { label: 'Privacy Policy', href: '/legal/privacy' },
       { label: 'Terms of Service', href: '/legal/terms' },
+      { label: 'Cookie Policy', href: '/legal/cookies' },
+      { label: 'Accessibility', href: '/accessibility' },
     ],
   },
 ] as const;
 
 const SOCIAL_LINKS = [
-  { label: 'Facebook', href: 'https://facebook.com', icon: 'FB' },
-  { label: 'Twitter', href: 'https://twitter.com', icon: 'YT' },
+  { label: 'Facebook', href: 'https://facebook.com/gvteway.xyz', Icon: Facebook },
+  { label: 'Instagram', href: 'https://instagram.com/gvteway.xyz', Icon: Instagram },
+  { label: 'TikTok', href: 'https://tiktok.com/@gvteway.xyz', Icon: Music2 },
+  { label: 'YouTube', href: 'https://youtube.com/@gvteway.xyz', Icon: Youtube },
 ] as const;
 
-const LEGAL_LINKS = [
-  { label: 'Privacy Policy', href: '/legal/privacy' },
-  { label: 'Terms of Service', href: '/legal/terms' },
-] as const;
 
 /**
  * SiteFooter - Main footer for GVTEWAY
@@ -76,6 +77,33 @@ export const SiteFooter: React.FC<SiteFooterProps> = ({ className = '' }) => {
   return (
     <footer className={`${styles.footer} ${className}`}>
       <div className={styles.container}>
+        {/* Top Section: Tagline and Social */}
+        <div className={styles.topSection}>
+          <div className={styles.taglineSection}>
+            <p className={styles.tagline}>
+              Experience live music and entertainment like never before.
+            </p>
+            <div className={styles.social}>
+              {SOCIAL_LINKS.map((link) => {
+                const IconComponent = link.Icon;
+                return (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className={styles.socialLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={link.label}
+                  >
+                    <IconComponent />
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+
+        {/* Main Content Grid */}
         <div className={styles.grid}>
           {FOOTER_COLUMNS.map((column) => (
             <div key={column.title} className={styles.column}>
@@ -93,70 +121,52 @@ export const SiteFooter: React.FC<SiteFooterProps> = ({ className = '' }) => {
               </nav>
             </div>
           ))}
-
-          <div className={styles.newsletter}>
-            <h3 className={styles.newsletterTitle}>STAY UPDATED</h3>
-            <form className={styles.newsletterForm} onSubmit={handleNewsletterSubmit}>
-              <Input
-                type="email"
-                placeholder="YOUR EMAIL"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className={styles.newsletterInput}
-                aria-label="Email address for newsletter"
-              />
-              <Button
-                type="submit"
-                variant="filled"
-                size="md"
-                disabled={isSubmitting}
-                className={styles.newsletterButton}
-              >
-                {isSubmitting ? 'SUBSCRIBING...' : 'SUBSCRIBE'}
-              </Button>
-            </form>
-          </div>
         </div>
 
         <div className={styles.divider} />
 
-        <div className={styles.bottom}>
-          <Link href="/" className={styles.logo} aria-label="GVTEWAY Home">
-            GVTEWAY
-          </Link>
-
-          <div className={styles.social}>
-            {SOCIAL_LINKS.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className={styles.socialLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={link.label}
-              >
-                {link.icon}
-              </a>
-            ))}
-          </div>
+        {/* Newsletter Section */}
+        <div className={styles.newsletterSection}>
+          <p className={styles.newsletterText}>
+            Get the latest events, news, and exclusive offers.
+          </p>
+          <form className={styles.newsletterForm} onSubmit={handleNewsletterSubmit}>
+            <Input
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className={styles.newsletterInput}
+              aria-label="Email address for newsletter"
+            />
+            <Button
+              type="submit"
+              variant="filled"
+              size="md"
+              disabled={isSubmitting}
+              className={styles.newsletterButton}
+              aria-label="Subscribe to newsletter"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </Button>
+          </form>
         </div>
 
-        <nav className={styles.legalLinks} aria-label="Legal links">
-          {LEGAL_LINKS.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={styles.legalLink}
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
+        <div className={styles.divider} />
 
-        <p className={styles.copyright}>
-          © {new Date().getFullYear()} GVTEWAY. ALL RIGHTS RESERVED.
-        </p>
+        {/* Bottom Section */}
+        <div className={styles.bottom}>
+          <p className={styles.copyright}>
+            © {new Date().getFullYear()} GVTEWAY. All rights reserved.
+          </p>
+          <p className={styles.madeWith}>
+            Made with <span className={styles.heart}>♥</span> for live music fans everywhere
+          </p>
+        </div>
       </div>
     </footer>
   );

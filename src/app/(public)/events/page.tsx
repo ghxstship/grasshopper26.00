@@ -57,7 +57,7 @@ function EventsPageContent() {
               imageAlt={event.name}
               date={new Date(event.start_date).toLocaleDateString()}
               location={event.venue_name || 'TBA'}
-              href={`/events/${event.id}`}
+              href={`/events/${event.slug}`}
               price={minPrice ? `$${minPrice.toFixed(2)}` : undefined}
             />
           );

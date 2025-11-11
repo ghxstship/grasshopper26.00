@@ -3,7 +3,6 @@
 import { useRouter } from 'next/navigation';
 import { LandingLayout } from '@/design-system/components/templates/LandingLayout/LandingLayout';
 import { SiteHeader } from '@/design-system/components/organisms/layout/site-header';
-import { SiteFooter } from '@/design-system/components/organisms/layout/site-footer';
 import { HeroSection } from '@/design-system/components/organisms/HeroSection/HeroSection';
 import { EventsGrid } from '@/design-system/components/organisms/EventsGrid/EventsGrid';
 import styles from './home.module.css';
@@ -58,7 +57,6 @@ export function HomeClient({ featuredEvents, upcomingEvents }: { featuredEvents:
           />
         </div>
       }
-      footer={<SiteFooter />}
     />
   );
 }

@@ -16,8 +16,9 @@ export interface SiteHeaderProps {
 }
 
 const NAV_ITEMS = [
-  { label: 'ARTISTS', href: '/artists' },
   { label: 'EVENTS', href: '/events' },
+  { label: 'ARTISTS', href: '/artists' },
+  { label: 'SHOP', href: '/shop' },
   { label: 'NEWS', href: '/news' },
 ] as const;
 
@@ -68,8 +69,8 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({ className = '' }) => {
                 {item.label}
               </Link>
             ))}
-            <Link href="/events" className={styles.ctaButton}>
-              GET TICKETS
+            <Link href="/memberships" className={styles.ctaButton}>
+              MEMBERSHIPS
             </Link>
           </nav>
 
@@ -116,11 +117,11 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({ className = '' }) => {
               </Link>
             ))}
             <Link
-              href="/events"
+              href="/memberships"
               className={styles.mobileCta}
               onClick={() => setMobileMenuOpen(false)}
             >
-              GET TICKETS
+              MEMBERSHIPS
             </Link>
 
             <div className={styles.mobileActions}>

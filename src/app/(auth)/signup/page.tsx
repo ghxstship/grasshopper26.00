@@ -161,14 +161,15 @@ export default function SignupPage() {
             />
           </div>
 
-          <div className={styles.labelRow}>
+          <div className={styles.checkboxRow}>
             <input
               type="checkbox"
               id="terms"
               checked={formData.agreeToTerms}
               onChange={(e) => setFormData({ ...formData, agreeToTerms: e.target.checked })}
+              className={styles.checkbox}
             />
-            <label htmlFor="terms" className={styles.footerText}>
+            <label htmlFor="terms" className={styles.checkboxLabel}>
               I agree to the{' '}
               <Link href="/legal/terms" className={styles.link}>Terms of Service</Link>{' '}
               and{' '}

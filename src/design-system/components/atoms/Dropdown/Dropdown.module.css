@@ -55,8 +55,8 @@
   z-index: var(--z-index-dropdown);
   background-color: var(--color-white);
   border: var(--border-width-thick) solid var(--color-black);
-  box-shadow: 4px 4px 0 0 var(--color-black);
-  max-block-size: 300px;
+  box-shadow: 0.25rem 0.25rem 0 0 var(--color-black);
+  max-block-size: 18.75rem;
   overflow-y: auto;
 }
 

@@ -18,7 +18,7 @@
 
 .layout[data-variant="inverse"] {
   background-color: var(--color-bg-inverse);
-  color: var(--color-text-inverse);
+  color: var(--color-white);
 }
 
 .layout[data-variant="secondary"] {
@@ -60,7 +60,7 @@
    RESPONSIVE
    ======================================== */
 
-@media (min-width: 768px) {
+@media (min-width: 48rem) {
   .topBar,
   .bottomBar {
     padding-inline: var(--space-8);

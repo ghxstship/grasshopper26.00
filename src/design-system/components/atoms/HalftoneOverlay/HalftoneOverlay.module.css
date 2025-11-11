@@ -19,30 +19,30 @@
   background-image: 
     radial-gradient(circle, var(--color-primary) 20%, transparent 20%),
     radial-gradient(circle, var(--color-primary) 20%, transparent 20%);
-  background-position: 0 0, 4px 4px;
+  background-position: 0 0, 0.25rem 0.25rem;
 }
 
 .diagonal {
   background-image: repeating-linear-gradient(
     45deg,
     var(--color-primary),
-    var(--color-primary) 2px,
-    transparent 2px,
-    transparent 10px
+    var(--color-primary) 0.125rem,
+    transparent 0.125rem,
+    transparent 0.625rem
   );
 }
 
 .grid {
   background-image: 
-    linear-gradient(var(--color-primary) 1px, transparent 1px),
-    linear-gradient(90deg, var(--color-primary) 1px, transparent 1px);
+    linear-gradient(var(--color-primary) var(--space-px), transparent var(--space-px)),
+    linear-gradient(90deg, var(--color-primary) var(--space-px), transparent var(--space-px));
 }
 
 .screen-print {
   background-image: 
     radial-gradient(circle, var(--color-primary) 30%, transparent 30%),
     radial-gradient(circle, var(--color-primary) 30%, transparent 30%);
-  background-position: 0 0, 6px 6px;
+  background-position: 0 0, 0.375rem 0.375rem;
 }
 
 /* ========================================
@@ -50,57 +50,57 @@
    ======================================== */
 
 .sm.dots {
-  background-size: 4px 4px;
-  background-position: 0 0, 2px 2px;
+  background-size: 0.25rem 0.25rem;
+  background-position: 0 0, 0.125rem 0.125rem;
 }
 
 .sm.diagonal {
-  background-size: 6px 6px;
+  background-size: 0.375rem 0.375rem;
 }
 
 .sm.grid {
-  background-size: 6px 6px;
+  background-size: 0.375rem 0.375rem;
 }
 
 .sm.screen-print {
-  background-size: 8px 8px;
-  background-position: 0 0, 4px 4px;
+  background-size: 0.5rem 0.5rem;
+  background-position: 0 0, 0.25rem 0.25rem;
 }
 
 .md.dots {
-  background-size: 8px 8px;
-  background-position: 0 0, 4px 4px;
+  background-size: 0.5rem 0.5rem;
+  background-position: 0 0, 0.25rem 0.25rem;
 }
 
 .md.diagonal {
-  background-size: 10px 10px;
+  background-size: 0.625rem 0.625rem;
 }
 
 .md.grid {
-  background-size: 10px 10px;
+  background-size: 0.625rem 0.625rem;
 }
 
 .md.screen-print {
-  background-size: 12px 12px;
-  background-position: 0 0, 6px 6px;
+  background-size: 0.75rem 0.75rem;
+  background-position: 0 0, 0.375rem 0.375rem;
 }
 
 .lg.dots {
-  background-size: 12px 12px;
-  background-position: 0 0, 6px 6px;
+  background-size: 0.75rem 0.75rem;
+  background-position: 0 0, 0.375rem 0.375rem;
 }
 
 .lg.diagonal {
-  background-size: 16px 16px;
+  background-size: 1rem 1rem;
 }
 
 .lg.grid {
-  background-size: 16px 16px;
+  background-size: 1rem 1rem;
 }
 
 .lg.screen-print {
-  background-size: 18px 18px;
-  background-position: 0 0, 9px 9px;
+  background-size: 1.125rem 1.125rem;
+  background-position: 0 0, 0.5625rem 0.5625rem;
 }
 
 /* ========================================
@@ -124,17 +124,17 @@
   background-image: repeating-linear-gradient(
     45deg,
     var(--color-accent),
-    var(--color-accent) 2px,
-    transparent 2px,
-    transparent 10px
+    var(--color-accent) 0.125rem,
+    transparent 0.125rem,
+    transparent 0.625rem
   );
 }
 
 .dark .grid,
 [data-theme="dark"] .grid {
   background-image: 
-    linear-gradient(var(--color-accent) 1px, transparent 1px),
-    linear-gradient(90deg, var(--color-accent) 1px, transparent 1px);
+    linear-gradient(var(--color-accent) var(--space-px), transparent var(--space-px)),
+    linear-gradient(90deg, var(--color-accent) var(--space-px), transparent var(--space-px));
 }
 
 .dark .screen-print,

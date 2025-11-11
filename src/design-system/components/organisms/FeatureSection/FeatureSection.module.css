@@ -15,8 +15,8 @@
 }
 
 .section.black {
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
 }
 
 .section.white {
@@ -39,7 +39,7 @@
   align-items: center;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 64rem) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-16);
@@ -98,16 +98,16 @@
   align-items: center;
   justify-content: center;
   border: var(--border-width-3) solid var(--color-border-strong);
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
   font-family: var(--font-family-bebas);
   font-size: var(--font-size-h6);
   font-weight: 700;
 }
 
 .section.white .featureIcon {
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
 }
 
 .section.black .featureIcon {
@@ -144,8 +144,8 @@
 }
 
 .ctaButton:hover {
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
   transform: scale(1.05);
 }
 
@@ -184,14 +184,14 @@
 .halftoneOverlay {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle, var(--color-primary) 1px, transparent 1px);
-  background-size: 4px 4px;
+  background-image: radial-gradient(circle, var(--color-primary) var(--space-px), transparent var(--space-px));
+  background-size: 0.25rem 0.25rem;
   opacity: 0.3;
   pointer-events: none;
 }
 
 .section.black .halftoneOverlay {
-  background-image: radial-gradient(circle, var(--color-accent) 1px, transparent 1px);
+  background-image: radial-gradient(circle, var(--color-accent) var(--space-px), transparent var(--space-px));
 }
 
 .shapes {
@@ -212,16 +212,16 @@
 }
 
 .shape1 {
-  inline-size: 200px;
-  block-size: 200px;
+  inline-size: 12.5rem;
+  block-size: 12.5rem;
   inset-block-start: 10%;
   inset-inline-start: 5%;
   transform: rotate(45deg);
 }
 
 .shape2 {
-  inline-size: 150px;
-  block-size: 150px;
+  inline-size: 9.375rem;
+  block-size: 9.375rem;
   inset-block-end: 15%;
   inset-inline-end: 10%;
   border-radius: var(--radius-none);

@@ -60,15 +60,15 @@
 
 /* Width variants */
 .thin {
-  --stripe-width: 2px;
+  --stripe-width: 0.125rem;
 }
 
 .medium {
-  --stripe-width: 4px;
+  --stripe-width: 0.25rem;
 }
 
 .thick {
-  --stripe-width: 8px;
+  --stripe-width: 0.5rem;
 }
 
 /* Color variants */

@@ -51,9 +51,9 @@
   
   border: var(--border-width-2) solid var(--color-border-strong);
   border-radius: var(--radius-none);
-  background-color: var(--color-primary);
+  background-color: var(--color-black);
   
-  color: var(--color-text-inverse);
+  color: var(--color-white);
 }
 
 /* ========================================
@@ -62,7 +62,7 @@
 
 .ticketGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
   gap: var(--space-6);
   width: 100%;
 }
@@ -82,7 +82,7 @@
   border-block-start: var(--border-width-3) solid var(--color-border-strong);
   background-color: var(--color-bg-primary);
   
-  box-shadow: 0 -8px 0 var(--color-black);
+  box-shadow: 0 -0.5rem 0 var(--color-black);
   
   z-index: var(--z-sticky);
 }
@@ -94,25 +94,25 @@
   gap: var(--space-6);
   flex-wrap: wrap;
   
-  max-width: 1200px;
+  max-width: 75rem;
   margin-inline: auto;
 }
 
 .checkoutButton {
-  min-width: 240px;
+  min-width: 15rem;
 }
 
 /* ========================================
    RESPONSIVE
    ======================================== */
 
-@media (max-width: 1024px) {
+@media (max-width: 64rem) {
   .ticketGrid {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(17.5rem, 1fr));
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .header {
     flex-direction: column;
     align-items: flex-start;
@@ -171,5 +171,5 @@
 
 .dark .summary,
 [data-theme="dark"] .summary {
-  box-shadow: 0 -8px 0 var(--color-white);
+  box-shadow: 0 -0.5rem 0 var(--color-white);
 }

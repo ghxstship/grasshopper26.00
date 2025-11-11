@@ -1,0 +1,58 @@
+/**
+ * StatusPill Styles
+ * GHXSTSHIP Monochromatic Design System
+ */
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-1) var(--spacing-2);
+  font-family: var(--font-bebas);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  border: 1px solid var(--color-black);
+  inline-size: fit-content;
+}
+
+.pill.small {
+  font-size: var(--font-size-meta);
+  padding: var(--spacing-1) var(--spacing-2);
+}
+
+.pill.medium {
+  font-size: var(--font-size-body);
+  padding: var(--spacing-2) var(--spacing-3);
+}
+
+.pill.large {
+  font-size: var(--font-size-h6);
+  padding: var(--spacing-2) var(--spacing-4);
+}
+
+.pill.active {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.pill.pending {
+  background-color: var(--color-grey-300);
+}
+
+.pill.completed {
+  background-color: var(--color-grey-200);
+}
+
+.pill.cancelled {
+  background-color: var(--color-grey-500);
+  color: var(--color-white);
+}
+
+.pill.error {
+  background-color: var(--color-grey-900);
+  color: var(--color-white);
+}
+
+.pill.warning {
+  background-color: var(--color-grey-400);
+}

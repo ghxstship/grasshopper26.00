@@ -47,7 +47,7 @@
 
 .star:focus-visible {
   outline: var(--border-width-2) solid var(--color-border-focus);
-  outline-offset: 2px;
+  outline-offset: 0.125rem;
 }
 
 .star:disabled {

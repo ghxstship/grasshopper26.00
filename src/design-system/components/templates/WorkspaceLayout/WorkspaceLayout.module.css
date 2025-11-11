@@ -23,7 +23,7 @@
 }
 
 .sidebar {
-  inline-size: 280px;
+  inline-size: 17.5rem;
   padding: var(--spacing-4);
   border-inline-end: var(--border-width-thick) solid var(--color-black);
   background-color: var(--color-white);
@@ -38,7 +38,7 @@
 
 .toolbar {
   padding: var(--spacing-3) var(--spacing-4);
-  border-block-end: 1px solid var(--color-grey-300);
+  border-block-end: var(--space-px) solid var(--color-grey-300);
   background-color: var(--color-white);
 }
 
@@ -49,7 +49,7 @@
 }
 
 .rightPanel {
-  inline-size: 320px;
+  inline-size: 20rem;
   padding: var(--spacing-4);
   border-inline-start: var(--border-width-thick) solid var(--color-black);
   background-color: var(--color-white);
@@ -61,7 +61,7 @@
   background-color: var(--color-white);
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 64rem) {
   .main {
     grid-template-columns: 1fr;
   }

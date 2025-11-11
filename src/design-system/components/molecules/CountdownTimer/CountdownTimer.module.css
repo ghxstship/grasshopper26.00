@@ -106,7 +106,7 @@
    RESPONSIVE
    ======================================== */
 
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .countdown {
     gap: var(--space-2);
   }

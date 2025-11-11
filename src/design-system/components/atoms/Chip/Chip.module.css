@@ -39,8 +39,8 @@
 }
 
 .filled {
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
   border-color: var(--color-primary);
 }
 
@@ -75,8 +75,8 @@
 }
 
 .clickable:hover {
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
   border-color: var(--color-border-strong);
   transform: scale(1.05);
 }
@@ -87,12 +87,12 @@
 
 .clickable:focus-visible {
   outline: var(--border-width-2) solid var(--color-border-focus);
-  outline-offset: 2px;
+  outline-offset: 0.125rem;
 }
 
 .selected {
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
   border-color: var(--color-border-strong);
 }
 
@@ -110,8 +110,8 @@
   align-items: center;
   justify-content: center;
   
-  width: 16px;
-  height: 16px;
+  width: 1rem;
+  height: 1rem;
   
   font-size: var(--font-size-lg);
   line-height: 1;
@@ -139,7 +139,7 @@
 
 .deleteButton:focus-visible {
   outline: var(--border-width-2) solid var(--color-border-focus);
-  outline-offset: 1px;
+  outline-offset: var(--space-px);
 }
 
 /* ========================================

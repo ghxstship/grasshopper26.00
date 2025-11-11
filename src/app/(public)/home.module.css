@@ -8,7 +8,7 @@
    SECTION CONTAINER
    ======================================== */
 .sectionContainer {
-  max-inline-size: 1400px;
+  max-inline-size: 87.5rem;
   margin-inline: auto;
   inline-size: 100%;
 }
@@ -38,19 +38,19 @@
   inset-inline-start: 50%;
   transform: translateX(-50%);
   
-  inline-size: 80px;
+  inline-size: 5rem;
   block-size: var(--border-width-3);
   background-color: currentColor;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 48rem) {
   .sectionTitle {
     font-size: var(--font-size-4xl);
     margin-block-end: var(--space-10);
   }
   
   .sectionTitle::after {
-    inline-size: 120px;
+    inline-size: 7.5rem;
   }
 }
 
@@ -62,14 +62,14 @@
   font-size: var(--font-size-base);
   line-height: var(--line-height-normal);
   text-align: center;
-  max-inline-size: 600px;
+  max-inline-size: 37.5rem;
   margin-inline: auto;
   margin-block-end: var(--space-6);
   color: var(--color-text-secondary);
   margin-block-start: 0;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 48rem) {
   .sectionDescription {
     font-size: var(--font-size-lg);
   }
@@ -84,7 +84,7 @@
   margin-block-start: var(--space-6);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 48rem) {
   .sectionCta {
     margin-block-start: var(--space-8);
   }
@@ -95,7 +95,7 @@
    ======================================== */
 .newsletterContainer {
   text-align: center;
-  max-inline-size: 800px;
+  max-inline-size: 50rem;
   margin-inline: auto;
 }
 
@@ -110,7 +110,7 @@
   margin-block-end: var(--space-3);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 48rem) {
   .newsletterTitle {
     font-size: var(--font-size-4xl);
     margin-block-end: var(--space-4);
@@ -121,14 +121,14 @@
   font-family: var(--font-body);
   font-size: var(--font-size-base);
   line-height: var(--line-height-normal);
-  max-inline-size: 600px;
+  max-inline-size: 37.5rem;
   margin-inline: auto;
   margin-block-start: 0;
   margin-block-end: var(--space-6);
   color: var(--color-text-secondary);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 48rem) {
   .newsletterDescription {
     font-size: var(--font-size-lg);
   }

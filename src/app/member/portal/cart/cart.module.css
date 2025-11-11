@@ -37,8 +37,8 @@
 }
 
 .emptyIcon {
-  inline-size: 80px;
-  block-size: 80px;
+  inline-size: 5rem;
+  block-size: 5rem;
   color: var(--color-text-secondary);
 }
 
@@ -59,8 +59,8 @@
 }
 
 .itemImage {
-  inline-size: 100px;
-  block-size: 100px;
+  inline-size: 6.25rem;
+  block-size: 6.25rem;
   overflow: hidden;
   border: var(--border-width-default) solid var(--color-border);
 }
@@ -122,7 +122,7 @@
 }
 
 .quantity {
-  min-inline-size: 40px;
+  min-inline-size: 2.5rem;
   text-align: center;
   font-family: var(--font-mono);
 }
@@ -173,7 +173,7 @@
   padding-block: var(--space-3);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .cartItem {
     grid-template-columns: 1fr;
   }

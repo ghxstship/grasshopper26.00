@@ -51,7 +51,7 @@
 }
 
 /* Size variants */
-.sm { --arrow-size: 6px; }
-.md { --arrow-size: 10px; }
-.lg { --arrow-size: 14px; }
-.xl { --arrow-size: 20px; }
+.sm { --arrow-size: 0.375rem; }
+.md { --arrow-size: 0.625rem; }
+.lg { --arrow-size: 0.875rem; }
+.xl { --arrow-size: 1.25rem; }

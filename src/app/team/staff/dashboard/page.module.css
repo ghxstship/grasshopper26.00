@@ -105,7 +105,7 @@
 
 .select:focus {
   outline: var(--border-width-3) solid var(--color-black);
-  outline-offset: 2px;
+  outline-offset: 0.125rem;
 }
 
 .card {

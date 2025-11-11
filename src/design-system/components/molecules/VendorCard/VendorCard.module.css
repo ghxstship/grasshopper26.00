@@ -19,8 +19,8 @@
 
 .card.clickable:hover {
   background-color: var(--color-grey-100);
-  transform: translateY(-2px);
-  box-shadow: 4px 4px 0 0 var(--color-black);
+  transform: translateY(-0.125rem);
+  box-shadow: 0.25rem 0.25rem 0 0 var(--color-black);
 }
 
 .header {

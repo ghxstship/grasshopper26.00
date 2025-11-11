@@ -17,7 +17,7 @@
 
 .card:hover {
   transform: translateY(calc(-1 * var(--space-2)));
-  box-shadow: 8px 8px 0 var(--color-primary);
+  box-shadow: 0.5rem 0.5rem 0 var(--color-primary);
 }
 
 .card:active {
@@ -56,8 +56,8 @@
   letter-spacing: 0.02em;
   padding-block: var(--space-1);
   padding-inline: var(--space-3);
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
   border: var(--border-width-2) solid var(--color-border-strong);
   z-index: 10;
 }
@@ -196,7 +196,7 @@
   inline-size: 60%;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .card.horizontal {
     flex-direction: column;
   }

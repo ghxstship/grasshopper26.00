@@ -42,7 +42,7 @@
 
 .header:focus-visible {
   outline: var(--border-width-2) solid var(--color-border-focus);
-  outline-offset: -2px;
+  outline-offset: -0.125rem;
 }
 
 /* ========================================
@@ -82,8 +82,8 @@
   align-items: center;
   justify-content: center;
   
-  width: 32px;
-  height: 32px;
+  width: 2rem;
+  height: 2rem;
   
   border: var(--border-width-2) solid var(--color-border-strong);
   border-radius: var(--radius-none);
@@ -100,8 +100,8 @@
 }
 
 .accordion.open .indicator {
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
 }
 
 /* ========================================

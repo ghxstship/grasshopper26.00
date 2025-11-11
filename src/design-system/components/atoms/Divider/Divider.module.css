@@ -1,7 +1,7 @@
 /**
  * Divider Styles
  * GHXSTSHIP Entertainment Platform
- * Thick geometric dividers (3px standard)
+ * Thick geometric dividers (0.1875rem standard)
  */
 
 .divider {
@@ -22,7 +22,7 @@
 .vertical {
   width: var(--border-width-3);
   height: 100%;
-  min-height: 40px;
+  min-height: 2.5rem;
 }
 
 /* ========================================

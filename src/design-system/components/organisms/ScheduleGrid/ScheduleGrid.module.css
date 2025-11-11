@@ -1,7 +1,7 @@
 /**
  * ScheduleGrid Styles
  * GHXSTSHIP Entertainment Platform
- * Excel-style grid, thick lines (2px), BEBAS NEUE headers, alternating rows
+ * Excel-style grid, thick lines (0.125rem), BEBAS NEUE headers, alternating rows
  */
 
 .scheduleGrid {
@@ -14,7 +14,7 @@
 }
 
 .gridContainer {
-  min-width: 800px;
+  min-width: 50rem;
 }
 
 .grid {
@@ -29,10 +29,10 @@
 
 .headerRow {
   display: grid;
-  grid-template-columns: 120px repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: 7.5rem repeat(auto-fit, minmax(12.5rem, 1fr));
   
   border-block-end: var(--border-width-3) solid var(--color-border-strong);
-  background-color: var(--color-primary);
+  background-color: var(--color-black);
 }
 
 .timeHeader,
@@ -50,7 +50,7 @@
   text-transform: uppercase;
   text-align: center;
   
-  color: var(--color-text-inverse);
+  color: var(--color-white);
   
   border-inline-end: var(--border-width-2) solid var(--color-border-accent);
 }
@@ -66,7 +66,7 @@
 
 .row {
   display: grid;
-  grid-template-columns: 120px repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: 7.5rem repeat(auto-fit, minmax(12.5rem, 1fr));
   
   border-block-end: var(--border-width-2) solid var(--color-border-default);
 }
@@ -117,7 +117,7 @@
   gap: var(--space-1);
   
   padding: var(--space-3);
-  min-height: 80px;
+  min-height: 5rem;
   
   border-inline-end: var(--border-width-2) solid var(--color-border-default);
   
@@ -134,7 +134,7 @@
 }
 
 .slotCellFilled:hover {
-  background-color: var(--color-primary);
+  background-color: var(--color-black);
   border-color: var(--color-border-accent);
   transform: scale(1.02);
   z-index: 1;
@@ -147,7 +147,7 @@
 
 .slotCellFilled:focus-visible {
   outline: var(--border-width-2) solid var(--color-border-focus);
-  outline-offset: -2px;
+  outline-offset: -0.125rem;
   z-index: 2;
 }
 
@@ -169,7 +169,7 @@
 }
 
 .slotCellFilled:hover .artistName {
-  color: var(--color-text-inverse);
+  color: var(--color-white);
 }
 
 .timeRange {
@@ -208,10 +208,10 @@
    RESPONSIVE
    ======================================== */
 
-@media (max-width: 1024px) {
+@media (max-width: 64rem) {
   .headerRow,
   .row {
-    grid-template-columns: 100px repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: 6.25rem repeat(auto-fit, minmax(11.25rem, 1fr));
   }
   
   .timeHeader,
@@ -225,14 +225,14 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .gridContainer {
-    min-width: 600px;
+    min-width: 37.5rem;
   }
   
   .headerRow,
   .row {
-    grid-template-columns: 80px repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: 5rem repeat(auto-fit, minmax(9.375rem, 1fr));
   }
   
   .timeHeader,
@@ -243,7 +243,7 @@
   
   .slotCell {
     padding: var(--space-2);
-    min-height: 70px;
+    min-height: 4.375rem;
   }
 }
 
@@ -284,7 +284,7 @@
 
 .dark .headerRow,
 [data-theme="dark"] .headerRow {
-  background-color: var(--color-primary);
+  background-color: var(--color-black);
 }
 
 .dark .slotCellFilled:hover,

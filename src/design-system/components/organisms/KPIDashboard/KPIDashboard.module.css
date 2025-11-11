@@ -37,7 +37,7 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr));
   gap: var(--spacing-4);
 }
 
@@ -78,8 +78,8 @@
 }
 
 .statusIndicator {
-  inline-size: 12px;
-  block-size: 12px;
+  inline-size: 0.75rem;
+  block-size: 0.75rem;
   border: var(--border-width-thick) solid var(--color-black);
 }
 

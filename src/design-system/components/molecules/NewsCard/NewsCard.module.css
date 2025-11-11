@@ -27,18 +27,18 @@
 .card.clickable:hover {
   background-color: var(--color-bg-secondary);
   border-color: var(--color-primary);
-  transform: translateY(-4px);
+  transform: translateY(-0.25rem);
   box-shadow: var(--shadow-md);
 }
 
 .card.clickable:active {
-  transform: translateY(-2px);
+  transform: translateY(-0.125rem);
   box-shadow: var(--shadow-sm);
 }
 
 .card:focus-visible {
   outline: var(--border-width-2) solid var(--color-border-focus);
-  outline-offset: 2px;
+  outline-offset: 0.125rem;
 }
 
 /* ========================================
@@ -71,7 +71,7 @@
 
 .horizontal .imageContainer {
   width: 40%;
-  min-height: 240px;
+  min-height: 15rem;
 }
 
 .image {
@@ -91,8 +91,8 @@
   background-image: 
     radial-gradient(circle, var(--color-primary) 20%, transparent 20%),
     radial-gradient(circle, var(--color-primary) 20%, transparent 20%);
-  background-size: 8px 8px;
-  background-position: 0 0, 4px 4px;
+  background-size: 0.5rem 0.5rem;
+  background-position: 0 0, 0.25rem 0.25rem;
   
   opacity: 0;
   transition: opacity var(--duration-base) var(--easing-out);
@@ -138,9 +138,9 @@
   
   border: var(--border-width-2) solid var(--color-border-strong);
   border-radius: var(--radius-none)(--radius-none);
-  background-color: var(--color-primary);
+  background-color: var(--color-black);
   
-  color: var(--color-text-inverse);
+  color: var(--color-white);
   
   transition: all var(--duration-base) var(--easing-out);
 }
@@ -270,7 +270,7 @@
    RESPONSIVE
    ======================================== */
 
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .horizontal {
     flex-direction: column;
   }

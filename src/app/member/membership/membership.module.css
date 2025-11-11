@@ -16,13 +16,13 @@
 .tiersGrid {
   display: grid;
   gap: var(--space-8);
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  max-width: 1440px;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  max-width: 90rem;
   margin-inline: auto;
 }
 
 .tierSkeleton {
-  height: 600px;
+  height: 37.5rem;
   background-color: var(--color-bg-secondary);
   border: var(--border-width-3) solid var(--color-border-default);
 }
@@ -31,13 +31,13 @@
    RESPONSIVE
    ======================================== */
 
-@media (min-width: 768px) {
+@media (min-width: 48rem) {
   .tiersGrid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 64rem) {
   .tiersGrid {
     grid-template-columns: repeat(3, 1fr);
   }

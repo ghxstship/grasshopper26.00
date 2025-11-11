@@ -18,24 +18,24 @@
   position: relative;
   background-color: var(--color-white);
   border: var(--border-width-thick) solid var(--color-black);
-  box-shadow: 8px 8px 0 0 var(--color-black);
+  box-shadow: 0.5rem 0.5rem 0 0 var(--color-black);
   max-block-size: 90vh;
   overflow-y: auto;
 }
 
 .sm {
   inline-size: 100%;
-  max-inline-size: 400px;
+  max-inline-size: 25rem;
 }
 
 .md {
   inline-size: 100%;
-  max-inline-size: 600px;
+  max-inline-size: 37.5rem;
 }
 
 .lg {
   inline-size: 100%;
-  max-inline-size: 900px;
+  max-inline-size: 56.25rem;
 }
 
 .full {

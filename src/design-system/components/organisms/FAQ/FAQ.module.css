@@ -80,7 +80,7 @@
 
 .question:focus-visible {
   outline: var(--border-width-2) solid var(--color-border-focus);
-  outline-offset: -2px;
+  outline-offset: -0.125rem;
 }
 
 .item.expanded .question {
@@ -109,8 +109,8 @@
   align-items: center;
   justify-content: center;
   
-  inline-size: 40px;
-  block-size: 40px;
+  inline-size: 2.5rem;
+  block-size: 2.5rem;
   
   border: var(--border-width-3) solid var(--color-border-strong);
   border-radius: var(--radius-none)(--radius-none);
@@ -129,13 +129,13 @@
 }
 
 .question:hover .icon {
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
 }
 
 .item.expanded .icon {
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
 }
 
 /* ========================================
@@ -150,7 +150,7 @@
 }
 
 .item.expanded .answer {
-  max-block-size: 1000px;
+  max-block-size: 62.5rem;
 }
 
 .answerContent {
@@ -168,7 +168,7 @@
    RESPONSIVE
    ======================================== */
 
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .title {
     font-size: var(--font-size-2xl);
   }
@@ -182,8 +182,8 @@
   }
   
   .icon {
-    inline-size: 32px;
-    block-size: 32px;
+    inline-size: 2rem;
+    block-size: 2rem;
     font-size: var(--font-size-xl);
   }
   

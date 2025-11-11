@@ -69,7 +69,7 @@
   padding: var(--space-4);
   border: var(--border-width-3) solid var(--color-border-strong);
   border-radius: var(--radius-none)(--radius-none);
-  background-color: var(--color-primary);
+  background-color: var(--color-black);
   box-shadow: var(--shadow-base);
 }
 
@@ -78,7 +78,7 @@
 }
 
 .highlighted .price {
-  color: var(--color-text-inverse);
+  color: var(--color-white);
 }
 
 /* ========================================

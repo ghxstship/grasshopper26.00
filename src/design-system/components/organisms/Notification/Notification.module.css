@@ -9,11 +9,11 @@
   inset-block-end: var(--space-6);
   inset-inline-end: var(--space-6);
   inline-size: 100%;
-  max-inline-size: 400px;
+  max-inline-size: 25rem;
   padding: var(--space-5);
   border: var(--border-width-3) solid var(--color-border-strong);
   background-color: var(--color-bg-primary);
-  box-shadow: 8px 8px 0 var(--color-primary);
+  box-shadow: 0.5rem 0.5rem 0 var(--color-primary);
   z-index: 10000;
   animation: slideIn 0.3s ease;
 }
@@ -29,22 +29,22 @@
 
 .notification.success {
   border-color: var(--color-border-strong);
-  box-shadow: 8px 8px 0 var(--color-primary);
+  box-shadow: 0.5rem 0.5rem 0 var(--color-primary);
 }
 
 .notification.error {
   border-color: var(--color-border-strong);
-  box-shadow: 8px 8px 0 var(--color-primary);
+  box-shadow: 0.5rem 0.5rem 0 var(--color-primary);
 }
 
 .notification.warning {
   border-color: var(--color-border-strong);
-  box-shadow: 8px 8px 0 var(--color-text-secondary);
+  box-shadow: 0.5rem 0.5rem 0 var(--color-text-secondary);
 }
 
 .notification.info {
   border-color: var(--color-border-strong);
-  box-shadow: 8px 8px 0 var(--color-text-tertiary);
+  box-shadow: 0.5rem 0.5rem 0 var(--color-text-tertiary);
 }
 
 .header {
@@ -63,8 +63,8 @@
   align-items: center;
   justify-content: center;
   border: var(--border-width-2) solid var(--color-border-strong);
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
   font-family: var(--font-family-bebas);
   font-size: var(--font-size-h6);
   font-weight: 700;
@@ -110,8 +110,8 @@
 }
 
 .closeButton:hover {
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
 }
 
 .actions {
@@ -136,13 +136,13 @@
 }
 
 .actionButton:hover {
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
 }
 
 .actionButton.primary {
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
 }
 
 .actionButton.primary:hover {

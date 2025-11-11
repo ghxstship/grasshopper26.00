@@ -1,0 +1,178 @@
+/**
+ * KanbanBoard Styles
+ * GHXSTSHIP Monochromatic Design System
+ */
+
+.board {
+  display: flex;
+  gap: var(--spacing-4);
+  padding: var(--spacing-4);
+  overflow-x: auto;
+  min-block-size: 600px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  min-inline-size: 320px;
+  max-inline-size: 320px;
+  padding: var(--spacing-4);
+  border: var(--border-width-thick) solid var(--color-black);
+  background-color: var(--color-grey-100);
+}
+
+.columnHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block-end: var(--spacing-3);
+  border-block-end: var(--border-width-thick) solid var(--color-black);
+}
+
+.columnTitle {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.columnName {
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-h5);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.columnCount {
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-meta);
+  color: var(--color-text-secondary);
+}
+
+.addCardButton {
+  inline-size: 32px;
+  block-size: 32px;
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-h4);
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border: none;
+  cursor: pointer;
+  transition: transform var(--transition-fast) var(--easing-standard);
+}
+
+.addCardButton:hover {
+  transform: scale(1.1);
+}
+
+.cardList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  flex: 1;
+  overflow-y: auto;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3);
+  border: var(--border-width-thick) solid var(--color-black);
+  background-color: var(--color-white);
+  cursor: grab;
+  transition: all var(--transition-fast) var(--easing-standard);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 0 0 var(--color-black);
+}
+
+.card:active {
+  cursor: grabbing;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--spacing-2);
+}
+
+.cardTitle {
+  margin: 0;
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-h6);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  flex: 1;
+}
+
+.priority {
+  padding: var(--spacing-1) var(--spacing-2);
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-meta);
+  text-transform: uppercase;
+  border: 1px solid var(--color-black);
+}
+
+.priority.low {
+  background-color: var(--color-grey-200);
+}
+
+.priority.medium {
+  background-color: var(--color-grey-400);
+}
+
+.priority.high {
+  background-color: var(--color-grey-700);
+  color: var(--color-white);
+}
+
+.priority.urgent {
+  background-color: var(--color-grey-900);
+  color: var(--color-white);
+}
+
+.cardDescription {
+  margin: 0;
+  font-family: var(--font-share);
+  font-size: var(--font-size-meta);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-1);
+}
+
+.tag {
+  padding: var(--spacing-1) var(--spacing-2);
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-meta);
+  text-transform: uppercase;
+  background-color: var(--color-grey-200);
+  border: 1px solid var(--color-grey-400);
+}
+
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block-start: var(--spacing-2);
+  border-block-start: 1px solid var(--color-grey-300);
+}
+
+.assignee {
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-meta);
+}
+
+.dueDate {
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-meta);
+  color: var(--color-text-secondary);
+}

@@ -1,0 +1,152 @@
+/**
+ * TaskBoard Styles
+ * GHXSTSHIP Monochromatic Design System
+ */
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-4);
+  padding: var(--spacing-6);
+  background-color: var(--color-grey-100);
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  min-block-size: 500px;
+}
+
+.columnHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-3) var(--spacing-4);
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border: var(--border-width-thick) solid var(--color-black);
+}
+
+.columnTitle {
+  margin: 0;
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-h5);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.columnCount {
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-h5);
+  font-weight: 700;
+}
+
+.columnContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  padding: var(--spacing-3);
+  background-color: var(--color-white);
+  border: var(--border-width-thick) solid var(--color-black);
+  border-block-start: none;
+  flex: 1;
+}
+
+.taskCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3);
+  background-color: var(--color-white);
+  border: var(--border-width-thick) solid var(--color-black);
+  cursor: pointer;
+  transition: all var(--transition-fast) var(--easing-standard);
+}
+
+.taskCard:hover {
+  background-color: var(--color-grey-100);
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 0 0 var(--color-black);
+}
+
+.taskHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.priority {
+  padding: var(--spacing-1) var(--spacing-2);
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-meta);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.priority.critical {
+  background-color: var(--color-grey-900);
+  color: var(--color-white);
+}
+
+.priority.high {
+  background-color: var(--color-grey-700);
+  color: var(--color-white);
+}
+
+.priority.medium {
+  background-color: var(--color-grey-400);
+}
+
+.priority.low {
+  background-color: var(--color-grey-200);
+}
+
+.taskName {
+  margin: 0;
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-h6);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.taskDescription {
+  margin: 0;
+  font-family: var(--font-share);
+  font-size: var(--font-size-meta);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+}
+
+.taskMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block-start: var(--spacing-2);
+  border-block-start: 1px solid var(--color-grey-300);
+}
+
+.assignee,
+.dueDate {
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-meta);
+  color: var(--color-text-secondary);
+}
+
+.addButton {
+  padding: var(--spacing-3);
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-meta);
+  text-transform: uppercase;
+  background-color: var(--color-white);
+  border: var(--border-width-thick) dashed var(--color-grey-400);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast) var(--easing-standard);
+}
+
+.addButton:hover {
+  background-color: var(--color-grey-100);
+  border-color: var(--color-black);
+  color: var(--color-text-primary);
+}

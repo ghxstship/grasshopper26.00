@@ -171,7 +171,7 @@ export function MembershipBrowseClient({ initialTiers }: MembershipBrowseClientP
             Monthly
           </Typography>
           {isAnnual && (
-            <span className={styles.savingsBadge}>Save 20%</span>
+            <span className={styles.savingsBadge}>Save 2 Months</span>
           )}
         </div>
       }

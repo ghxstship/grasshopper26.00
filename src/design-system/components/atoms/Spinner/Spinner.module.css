@@ -10,10 +10,10 @@
 
 .visuallyHidden {
   position: absolute;
-  inline-size: 1px;
-  block-size: 1px;
+  inline-size: var(--space-px);
+  block-size: var(--space-px);
   padding: 0;
-  margin: -1px;
+  margin: -var(--space-px);
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
@@ -63,19 +63,19 @@
 
 /* Size variants */
 .sm {
-  --spinner-size: 16px;
+  --spinner-size: 1rem;
 }
 
 .md {
-  --spinner-size: 24px;
+  --spinner-size: 1.5rem;
 }
 
 .lg {
-  --spinner-size: 32px;
+  --spinner-size: 2rem;
 }
 
 .xl {
-  --spinner-size: 48px;
+  --spinner-size: 3rem;
 }
 
 .square.sm,

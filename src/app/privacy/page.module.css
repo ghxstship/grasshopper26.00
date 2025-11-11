@@ -12,7 +12,7 @@
   padding-block: var(--space-16);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 48rem) {
   .content {
     max-inline-size: 56rem;
   }

@@ -1,0 +1,38 @@
+/**
+ * Admin Users Page Styles
+ * GHXSTSHIP Monochromatic Design System
+ */
+
+.statsGrid {
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  margin-block-end: var(--space-8);
+}
+
+.toolbar {
+  margin-block-end: var(--space-6);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.usersTable {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.userRow {
+  padding: var(--space-4);
+  border: var(--border-width-3) solid var(--color-border-default);
+  background-color: var(--color-bg-primary);
+}
+
+.empty {
+  padding: var(--space-12);
+  text-align: center;
+}

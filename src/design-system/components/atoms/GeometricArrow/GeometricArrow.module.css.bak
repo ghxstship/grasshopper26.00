@@ -1,0 +1,57 @@
+/**
+ * GeometricArrow Component Styles
+ * GHXSTSHIP Monochromatic Design System
+ */
+
+.arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shape {
+  display: block;
+  border-style: solid;
+  border-color: currentColor;
+}
+
+/* Triangle style */
+.triangle .shape {
+  width: 0;
+  height: 0;
+  border-width: var(--arrow-size);
+}
+
+.triangle.right .shape {
+  border-left-width: calc(var(--arrow-size) * 1.5);
+  border-inline-end-width: 0;
+  border-block-start-color: transparent;
+  border-block-end-color: transparent;
+}
+
+.triangle.left .shape {
+  border-inline-end-width: calc(var(--arrow-size) * 1.5);
+  border-inline-start-width: 0;
+  border-block-start-color: transparent;
+  border-block-end-color: transparent;
+}
+
+.triangle.up .shape {
+  border-block-end-width: calc(var(--arrow-size) * 1.5);
+  border-block-start-width: 0;
+  border-inline-start-color: transparent;
+  border-inline-end-color: transparent;
+}
+
+.triangle.down .shape {
+  border-block-start-width: calc(var(--arrow-size) * 1.5);
+  border-block-end-width: 0;
+  border-inline-start-color: transparent;
+  border-inline-end-color: transparent;
+}
+
+/* Size variants */
+.sm { --arrow-size: 6px; }
+.md { --arrow-size: 10px; }
+.lg { --arrow-size: 14px; }
+.xl { --arrow-size: 20px; }

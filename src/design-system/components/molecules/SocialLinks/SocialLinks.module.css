@@ -37,9 +37,9 @@
 }
 
 .link:hover {
-  background-color: var(--color-primary);
+  background-color: var(--color-black);
   border-color: var(--color-accent);
-  color: var(--color-text-inverse);
+  color: var(--color-white);
   transform: scale(1.1);
 }
 
@@ -49,7 +49,7 @@
 
 .link:focus-visible {
   outline: var(--border-width-2) solid var(--color-border-focus);
-  outline-offset: 2px;
+  outline-offset: 0.125rem;
 }
 
 /* ========================================
@@ -57,18 +57,18 @@
    ======================================== */
 
 .sm .link {
-  width: 32px;
-  height: 32px;
+  width: 2rem;
+  height: 2rem;
 }
 
 .md .link {
-  width: 40px;
-  height: 40px;
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 .lg .link {
-  width: 48px;
-  height: 48px;
+  width: 3rem;
+  height: 3rem;
 }
 
 /* ========================================

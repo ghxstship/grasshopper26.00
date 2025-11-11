@@ -27,15 +27,15 @@
 }
 
 .button:hover {
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
   border-color: var(--color-primary);
   transform: scale(1.05);
 }
 
 .button:focus-visible {
   outline: var(--border-width-2) solid var(--color-border-focus);
-  outline-offset: 2px;
+  outline-offset: 0.125rem;
 }
 
 .button:active {
@@ -43,8 +43,8 @@
 }
 
 .icon {
-  width: 20px;
-  height: 20px;
+  width: 1.25rem;
+  height: 1.25rem;
   flex-shrink: 0;
 }
 
@@ -59,8 +59,8 @@
 }
 
 .sm .icon {
-  width: 16px;
-  height: 16px;
+  width: 1rem;
+  height: 1rem;
 }
 
 .md {
@@ -70,8 +70,8 @@
 }
 
 .md .icon {
-  width: 20px;
-  height: 20px;
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
 .lg {
@@ -81,8 +81,8 @@
 }
 
 .lg .icon {
-  width: 24px;
-  height: 24px;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .icon-only {
@@ -111,4 +111,33 @@
   background-color: var(--color-accent);
   color: var(--color-primary);
   border-color: var(--color-accent);
+}
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+.dark .filled,
+[data-theme="dark"] .filled {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border-color: var(--color-white);
+}
+
+.dark .outlined,
+[data-theme="dark"] .outlined {
+  color: var(--color-white);
+  border-color: var(--color-white);
+}
+
+.dark .outlined:hover,
+[data-theme="dark"] .outlined:hover {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+.dark .active,
+[data-theme="dark"] .active {
+  background-color: var(--color-white);
+  color: var(--color-black);
 }

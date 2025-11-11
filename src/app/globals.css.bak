@@ -1,0 +1,125 @@
+/* Import Design System Tokens */
+@import '../design-system/tokens/tokens.css';
+@import '../design-system/tokens/utility-classes.css';
+@import '../design-system/tokens/geometric-patterns.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* GHXSTSHIP Tailwind compatibility layer - MONOCHROMATIC ONLY */
+  :root {
+    --background: 0 0% 100%; /* White */
+    --foreground: 0 0% 0%; /* Black */
+    --card: 0 0% 100%; /* White */
+    --card-foreground: 0 0% 0%; /* Black */
+    --popover: 0 0% 100%; /* White */
+    --popover-foreground: 0 0% 0%; /* Black */
+    --primary: 0 0% 0%; /* Black - NO PURPLE */
+    --primary-foreground: 0 0% 100%; /* White */
+    --secondary: 0 0% 29.4%; /* Grey-600 */
+    --secondary-foreground: 0 0% 0%; /* Black */
+    --muted: 0 0% 96.1%; /* Grey-100 */
+    --muted-foreground: 0 0% 42%; /* Grey-500 */
+    --accent: 0 0% 100%; /* White - NO PINK */
+    --accent-foreground: 0 0% 0%; /* Black */
+    --destructive: 0 0% 0%; /* Black */
+    --destructive-foreground: 0 0% 100%; /* White */
+    --border: 0 0% 90%; /* Grey-200 */
+    --input: 0 0% 90%; /* Grey-200 */
+    --ring: 0 0% 0%; /* Black - NO PURPLE */
+    --radius: 0; /* NO ROUNDED CORNERS */
+  }
+
+  .dark {
+    --background: 0 0% 0%; /* Black */
+    --foreground: 0 0% 100%; /* White */
+    --card: 0 0% 12%; /* Grey-900 */
+    --card-foreground: 0 0% 100%; /* White */
+    --popover: 0 0% 12%; /* Grey-900 */
+    --popover-foreground: 0 0% 100%; /* White */
+    --primary: 0 0% 100%; /* White */
+    --primary-foreground: 0 0% 0%; /* Black */
+    --secondary: 0 0% 17.5%; /* Grey-800 */
+    --secondary-foreground: 0 0% 100%; /* White */
+    --muted: 0 0% 17.5%; /* Grey-800 */
+    --muted-foreground: 0 0% 65.1%; /* Grey-400 */
+    --accent: 0 0% 0%; /* Black */
+    --accent-foreground: 0 0% 100%; /* White */
+    --destructive: 0 0% 100%; /* White */
+    --destructive-foreground: 0 0% 0%; /* Black */
+    --border: 0 0% 17.5%; /* Grey-800 */
+    --input: 0 0% 17.5%; /* Grey-800 */
+    --ring: 0 0% 100%; /* White */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+  }
+  
+  /* Ensure minimum touch targets for accessibility */
+  /* Touch targets for mobile accessibility */
+  button, a, input, select, textarea {
+    min-height: var(--space-11);
+    min-width: var(--space-11);
+  }
+  
+  /* Focus visible styles for accessibility */
+  *:focus-visible {
+    outline: var(--border-width-2) solid var(--color-border-focus);
+    outline-offset: var(--space-0.5);
+  }
+}
+
+/* Sonner Toast Styling - GHXSTSHIP Design System */
+@layer components {
+  /* Hide toaster container when empty or no toasts */
+  [data-sonner-toaster]:empty {
+    display: none !important;
+  }
+  
+  [data-sonner-toaster]:has([data-sonner-toast]:only-child[data-removed="true"]) {
+    display: none !important;
+  }
+  
+  /* Hide toaster when all toasts are removed */
+  [data-sonner-toaster]:not(:has([data-sonner-toast]:not([data-removed="true"]))) {
+    display: none !important;
+  }
+  
+  /* GHXSTSHIP toast styling - monochromatic, hard edges, 3px borders */
+  .ghxstship-toast {
+    border-radius: 0 !important;
+    border-width: 3px !important;
+  }
+  
+  /* Toast close button styling */
+  [data-sonner-toast] [data-close-button] {
+    border: var(--border-width-thick) solid var(--color-border-strong) !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    color: var(--color-text-primary) !important;
+    transition: all var(--duration-fast) var(--easing-out) !important;
+    min-inline-size: var(--space-8) !important;
+    min-block-size: var(--space-8) !important;
+  }
+  
+  [data-sonner-toast] [data-close-button]:hover {
+    background: var(--color-black) !important;
+    color: var(--color-white) !important;
+    transform: translate(calc(var(--space-1) * -1), calc(var(--space-1) * -1)) !important;
+    box-shadow: var(--shadow-base) !important;
+  }
+  
+  [data-sonner-toast] [data-close-button]:active {
+    transform: translate(0, 0) !important;
+    box-shadow: none !important;
+  }
+}

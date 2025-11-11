@@ -32,7 +32,7 @@
 
 .button:focus-visible {
   outline: var(--border-width-2) solid var(--color-border-focus);
-  outline-offset: 2px;
+  outline-offset: 0.125rem;
 }
 
 .button:disabled {
@@ -49,8 +49,8 @@
   align-items: center;
   justify-content: center;
   
-  min-width: 20px;
-  height: 20px;
+  min-width: 1.25rem;
+  height: 1.25rem;
   
   padding-inline: var(--space-1);
   
@@ -68,8 +68,8 @@
    ======================================== */
 
 .active {
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
   border-color: var(--color-primary);
 }
 

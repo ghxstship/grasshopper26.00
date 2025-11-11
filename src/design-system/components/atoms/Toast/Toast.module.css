@@ -10,8 +10,8 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--space-4);
-  min-inline-size: 300px;
-  max-inline-size: 500px;
+  min-inline-size: 18.75rem;
+  max-inline-size: 31.25rem;
   padding: var(--space-4);
   background-color: var(--color-bg-primary);
   border: var(--border-width-thick) solid var(--color-border-strong);

@@ -1,6 +1,6 @@
 .container {
   display: grid;
-  grid-template-columns: 280px 1fr;
+  grid-template-columns: 17.5rem 1fr;
   min-block-size: 100vh;
   background-color: var(--color-bg-primary);
 }
@@ -35,7 +35,7 @@
 }
 
 .logo:hover {
-  transform: translateX(2px);
+  transform: translateX(0.125rem);
 }
 
 .portalLabel {
@@ -83,15 +83,15 @@
   background-color: var(--color-bg-primary);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .container {
     grid-template-columns: 1fr;
   }
 
   .sidebar {
     position: fixed;
-    inset-inline-start: -280px;
-    inline-size: 280px;
+    inset-inline-start: -17.5rem;
+    inline-size: 17.5rem;
     z-index: 100;
     transition: inset-inline-start var(--duration-base) var(--easing-out);
   }

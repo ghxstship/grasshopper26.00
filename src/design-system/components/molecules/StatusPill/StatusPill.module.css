@@ -11,7 +11,7 @@
   font-family: var(--font-bebas);
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-wide);
-  border: 1px solid var(--color-black);
+  border: var(--space-px) solid var(--color-black);
   inline-size: fit-content;
 }
 

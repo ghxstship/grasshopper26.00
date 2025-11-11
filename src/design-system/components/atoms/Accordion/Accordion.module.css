@@ -47,7 +47,7 @@
 
 .trigger:focus-visible {
   outline: var(--border-width-2) solid var(--color-border-focus);
-  outline-offset: -2px;
+  outline-offset: -0.125rem;
 }
 
 .title {
@@ -59,8 +59,8 @@
   align-items: center;
   justify-content: center;
   
-  width: 24px;
-  height: 24px;
+  width: 1.5rem;
+  height: 1.5rem;
   
   font-family: var(--font-mono);
   font-size: var(--font-size-xl);
@@ -75,8 +75,8 @@
 }
 
 .trigger:hover .icon {
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
 }
 
 .content {
@@ -96,7 +96,7 @@
 @keyframes slideDown {
   from {
     opacity: 0;
-    transform: translateY(-8px);
+    transform: translateY(-0.5rem);
   }
   to {
     opacity: 1;

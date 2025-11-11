@@ -1,0 +1,111 @@
+/**
+ * NotificationBadge Styles
+ * GHXSTSHIP Entertainment Platform
+ */
+
+.container {
+  position: relative;
+  display: inline-flex;
+}
+
+/* ========================================
+   BADGE
+   ======================================== */
+
+.badge {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  
+  border: var(--border-width-2) solid var(--color-bg-primary);
+  border-radius: var(--radius-none);
+  background-color: var(--color-black);
+  
+  font-family: var(--font-mono);
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  
+  color: var(--color-white);
+  
+  z-index: var(--z-badge);
+}
+
+/* ========================================
+   POSITIONS
+   ======================================== */
+
+.top-right {
+  inset-block-start: 0;
+  inset-inline-end: 0;
+  transform: translate(50%, -50%);
+}
+
+.top-left {
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  transform: translate(-50%, -50%);
+}
+
+.bottom-right {
+  inset-block-end: 0;
+  inset-inline-end: 0;
+  transform: translate(50%, 50%);
+}
+
+.bottom-left {
+  inset-block-end: 0;
+  inset-inline-start: 0;
+  transform: translate(-50%, 50%);
+}
+
+/* ========================================
+   VARIANTS
+   ======================================== */
+
+.dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+}
+
+.count.sm {
+  min-width: 16px;
+  height: 16px;
+  padding-inline: var(--space-1);
+  font-size: var(--font-size-xs);
+}
+
+.count.md {
+  min-width: 20px;
+  height: 20px;
+  padding-inline: var(--space-1-5);
+  font-size: var(--font-size-xs);
+}
+
+.count.lg {
+  min-width: 24px;
+  height: 24px;
+  padding-inline: var(--space-2);
+  font-size: var(--font-size-sm);
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+@media (prefers-contrast: high) {
+  .badge {
+    border-width: var(--border-width-3);
+  }
+}
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+.dark .badge,
+[data-theme="dark"] .badge {
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+}

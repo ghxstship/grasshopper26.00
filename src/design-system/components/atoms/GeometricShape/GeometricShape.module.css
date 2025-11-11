@@ -14,7 +14,7 @@
 }
 
 .filled {
-  background-color: var(--color-primary);
+  background-color: var(--color-black);
 }
 
 /* ========================================
@@ -38,9 +38,9 @@
   width: 0;
   height: 0;
   border: none;
-  border-inline-start: 50px solid transparent;
-  border-inline-end: 50px solid transparent;
-  border-block-end: 86.6px solid var(--color-border-strong);
+  border-inline-start: 3.125rem solid transparent;
+  border-inline-end: 3.125rem solid transparent;
+  border-block-end: 86.0.375rem solid var(--color-border-strong);
   background-color: transparent;
 }
 
@@ -53,47 +53,47 @@
    ======================================== */
 
 .sm {
-  width: 40px;
-  height: 40px;
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 .sm.triangle {
-  border-inline-start-width: 20px;
-  border-inline-end-width: 20px;
-  border-block-end-width: 34.64px;
+  border-inline-start-width: 1.25rem;
+  border-inline-end-width: 1.25rem;
+  border-block-end-width: 34.4rem;
 }
 
 .md {
-  width: 80px;
-  height: 80px;
+  width: 5rem;
+  height: 5rem;
 }
 
 .md.triangle {
-  border-inline-start-width: 40px;
-  border-inline-end-width: 40px;
-  border-block-end-width: 69.28px;
+  border-inline-start-width: 2.5rem;
+  border-inline-end-width: 2.5rem;
+  border-block-end-width: 69.1.75rem;
 }
 
 .lg {
-  width: 120px;
-  height: 120px;
+  width: 7.5rem;
+  height: 7.5rem;
 }
 
 .lg.triangle {
-  border-inline-start-width: 60px;
-  border-inline-end-width: 60px;
-  border-block-end-width: 103.92px;
+  border-inline-start-width: 3.75rem;
+  border-inline-end-width: 3.75rem;
+  border-block-end-width: 6.495rem;
 }
 
 .xl {
-  width: 200px;
-  height: 200px;
+  width: 12.5rem;
+  height: 12.5rem;
 }
 
 .xl.triangle {
-  border-inline-start-width: 100px;
-  border-inline-end-width: 100px;
-  border-block-end-width: 173.2px;
+  border-inline-start-width: 6.25rem;
+  border-inline-end-width: 6.25rem;
+  border-block-end-width: 173.0.125rem;
 }
 
 /* ========================================

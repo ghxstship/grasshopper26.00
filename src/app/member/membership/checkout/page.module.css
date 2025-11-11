@@ -20,7 +20,7 @@
   gap: var(--space-8);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 48rem) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -211,7 +211,7 @@
 
 .promoInput:focus {
   outline: none;
-  box-shadow: 0 0 0 2px var(--color-black);
+  box-shadow: 0 0 0 0.125rem var(--color-black);
 }
 
 .totalSection {

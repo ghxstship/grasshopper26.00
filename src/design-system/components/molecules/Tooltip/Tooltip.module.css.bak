@@ -1,0 +1,151 @@
+/**
+ * Tooltip Styles
+ * GHXSTSHIP Entertainment Platform
+ */
+
+.container {
+  position: relative;
+  display: inline-flex;
+}
+
+/* ========================================
+   TOOLTIP
+   ======================================== */
+
+.tooltip {
+  position: absolute;
+  z-index: var(--z-tooltip);
+  
+  padding-inline: var(--space-3);
+  padding-block: var(--space-2);
+  
+  border: var(--border-width-2) solid var(--color-border-strong);
+  border-radius: var(--radius-none);
+  background-color: var(--color-black);
+  box-shadow: var(--shadow-lg);
+  
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+  
+  color: var(--color-white);
+  
+  white-space: nowrap;
+  
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--duration-fast) var(--easing-out),
+              visibility var(--duration-fast) var(--easing-out);
+}
+
+.tooltip.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ========================================
+   POSITIONS
+   ======================================== */
+
+.top {
+  inset-block-end: calc(100% + 8px);
+  inset-inline-start: 50%;
+  transform: translateX(-50%);
+}
+
+.bottom {
+  inset-block-start: calc(100% + 8px);
+  inset-inline-start: 50%;
+  transform: translateX(-50%);
+}
+
+.left {
+  inset-inline-end: calc(100% + 8px);
+  inset-block-start: 50%;
+  transform: translateY(-50%);
+}
+
+.right {
+  inset-inline-start: calc(100% + 8px);
+  inset-block-start: 50%;
+  transform: translateY(-50%);
+}
+
+/* ========================================
+   ARROW
+   ======================================== */
+
+.arrow {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-black);
+  border: var(--border-width-2) solid var(--color-border-strong);
+  transform: rotate(45deg);
+}
+
+.top .arrow {
+  inset-block-end: -5px;
+  inset-inline-start: 50%;
+  margin-inline-start: -4px;
+  border-block-start: none;
+  border-inline-start: none;
+}
+
+.bottom .arrow {
+  inset-block-start: -5px;
+  inset-inline-start: 50%;
+  margin-inline-start: -4px;
+  border-block-end: none;
+  border-inline-end: none;
+}
+
+.left .arrow {
+  inset-inline-end: -5px;
+  inset-block-start: 50%;
+  margin-block-start: -4px;
+  border-block-end: none;
+  border-inline-start: none;
+}
+
+.right .arrow {
+  inset-inline-start: -5px;
+  inset-block-start: 50%;
+  margin-block-start: -4px;
+  border-block-start: none;
+  border-inline-end: none;
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .tooltip {
+    transition: none;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .tooltip,
+  .arrow {
+    border-width: var(--border-width-3);
+  }
+}
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+.dark .tooltip,
+.dark .arrow,
+[data-theme="dark"] .tooltip,
+[data-theme="dark"] .arrow {
+  background-color: var(--color-accent);
+  box-shadow: var(--shadow-white-lg);
+}
+
+.dark .tooltip,
+[data-theme="dark"] .tooltip {
+  color: var(--color-primary);
+}

@@ -83,32 +83,32 @@
 }
 
 .widget:hover {
-  transform: translateY(-2px);
-  box-shadow: 4px 4px 0 0 var(--color-black);
+  transform: translateY(-0.125rem);
+  box-shadow: 0.25rem 0.25rem 0 0 var(--color-black);
 }
 
 .widget.selected {
-  box-shadow: 8px 8px 0 0 var(--color-black);
+  box-shadow: 0.5rem 0.5rem 0 0 var(--color-black);
 }
 
 .widget.small {
   grid-column: span 3;
-  min-block-size: 200px;
+  min-block-size: 12.5rem;
 }
 
 .widget.medium {
   grid-column: span 6;
-  min-block-size: 300px;
+  min-block-size: 18.75rem;
 }
 
 .widget.large {
   grid-column: span 9;
-  min-block-size: 400px;
+  min-block-size: 25rem;
 }
 
 .widget.full {
   grid-column: span 12;
-  min-block-size: 500px;
+  min-block-size: 31.25rem;
 }
 
 .widgetHeader {
@@ -132,8 +132,8 @@
 }
 
 .removeButton {
-  inline-size: 28px;
-  block-size: 28px;
+  inline-size: 1.75rem;
+  block-size: 1.75rem;
   font-family: var(--font-bebas);
   font-size: var(--font-size-h4);
   background-color: var(--color-grey-900);
@@ -157,7 +157,7 @@
   color: var(--color-text-secondary);
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 64rem) {
   .widget.small,
   .widget.medium,
   .widget.large,

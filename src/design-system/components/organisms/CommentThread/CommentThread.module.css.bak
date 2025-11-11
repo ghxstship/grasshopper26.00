@@ -1,0 +1,199 @@
+/**
+ * CommentThread Styles
+ * GHXSTSHIP Monochromatic Design System
+ */
+
+.thread {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  border: var(--border-width-thick) solid var(--color-black);
+  background-color: var(--color-white);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-4);
+  border-block-end: var(--border-width-thick) solid var(--color-black);
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-h5);
+  text-transform: uppercase;
+}
+
+.count {
+  padding: var(--spacing-1) var(--spacing-2);
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-meta);
+  background-color: var(--color-grey-700);
+}
+
+.newComment {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  padding: var(--spacing-4);
+  border-block-end: 1px solid var(--color-grey-300);
+}
+
+.commentInput,
+.replyInput {
+  padding: var(--spacing-3);
+  font-family: var(--font-share);
+  font-size: var(--font-size-body);
+  border: var(--border-width-thick) solid var(--color-black);
+  background-color: var(--color-white);
+  resize: vertical;
+}
+
+.commentInput:focus,
+.replyInput:focus {
+  outline: none;
+  box-shadow: 0 0 0 var(--border-width-thick) var(--color-black);
+}
+
+.submitButton {
+  align-self: flex-end;
+  padding: var(--spacing-2) var(--spacing-4);
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-h6);
+  text-transform: uppercase;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border: none;
+  cursor: pointer;
+  transition: transform var(--transition-fast) var(--easing-standard);
+}
+
+.submitButton:hover {
+  transform: scale(1.05);
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  padding: var(--spacing-4);
+}
+
+.comment {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3);
+  border: 1px solid var(--color-grey-300);
+  background-color: var(--color-grey-50);
+}
+
+.comment.reply {
+  margin-inline-start: var(--spacing-6);
+  background-color: var(--color-white);
+}
+
+.commentHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.author {
+  font-family: var(--font-share);
+  font-size: var(--font-size-body);
+  font-weight: 700;
+}
+
+.timestamp {
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-meta);
+  color: var(--color-text-secondary);
+}
+
+.commentContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.content {
+  margin: 0;
+  font-family: var(--font-share);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-relaxed);
+}
+
+.attachments {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.attachment {
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-meta);
+  color: var(--color-black);
+  text-decoration: none;
+}
+
+.attachment:hover {
+  text-decoration: underline;
+}
+
+.commentActions {
+  display: flex;
+  gap: var(--spacing-2);
+}
+
+.actionButton {
+  padding: var(--spacing-1) var(--spacing-2);
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-meta);
+  text-transform: uppercase;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-grey-400);
+  cursor: pointer;
+  transition: background-color var(--transition-fast) var(--easing-standard);
+}
+
+.actionButton:hover {
+  background-color: var(--color-grey-200);
+}
+
+.replyBox {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  margin-block-start: var(--spacing-2);
+  padding: var(--spacing-3);
+  border: 1px solid var(--color-grey-400);
+  background-color: var(--color-white);
+}
+
+.replyActions {
+  display: flex;
+  gap: var(--spacing-2);
+  justify-content: flex-end;
+}
+
+.cancelButton {
+  padding: var(--spacing-2) var(--spacing-3);
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-meta);
+  text-transform: uppercase;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-grey-400);
+  cursor: pointer;
+}
+
+.replies {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  margin-block-start: var(--spacing-2);
+}

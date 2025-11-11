@@ -130,8 +130,8 @@
 
 .card:hover {
   background-color: var(--color-grey-100);
-  transform: translateY(-2px);
-  box-shadow: 4px 4px 0 0 var(--color-black);
+  transform: translateY(-0.125rem);
+  box-shadow: 0.25rem 0.25rem 0 0 var(--color-black);
 }
 
 .card.critical:hover {
@@ -177,7 +177,7 @@
 }
 
 .type {
-  border: 1px solid var(--color-black);
+  border: var(--space-px) solid var(--color-black);
 }
 
 .status {
@@ -185,7 +185,7 @@
   font-family: var(--font-bebas);
   font-size: var(--font-size-meta);
   text-transform: uppercase;
-  border: 1px solid var(--color-black);
+  border: var(--space-px) solid var(--color-black);
 }
 
 .status.reported {
@@ -229,7 +229,7 @@
   display: flex;
   gap: var(--spacing-4);
   padding-block-start: var(--spacing-2);
-  border-block-start: 1px solid var(--color-grey-300);
+  border-block-start: var(--space-px) solid var(--color-grey-300);
 }
 
 .card.critical .meta {

@@ -33,28 +33,28 @@
    ======================================== */
 
 .xs {
-  width: 24px;
-  height: 24px;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .sm {
-  width: 32px;
-  height: 32px;
+  width: 2rem;
+  height: 2rem;
 }
 
 .md {
-  width: 40px;
-  height: 40px;
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 .lg {
-  width: 56px;
-  height: 56px;
+  width: 3.5rem;
+  height: 3.5rem;
 }
 
 .xl {
-  width: 80px;
-  height: 80px;
+  width: 5rem;
+  height: 5rem;
 }
 
 /* ========================================
@@ -125,7 +125,7 @@
 }
 
 .status-online {
-  background-color: var(--color-primary);
+  background-color: var(--color-black);
 }
 
 .status-offline {

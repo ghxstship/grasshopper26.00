@@ -1,0 +1,295 @@
+/**
+ * Admin List Template Styles
+ * GHXSTSHIP Monochromatic Design System
+ */
+
+.layout {
+  display: flex;
+  min-block-size: 100vh;
+  background-color: var(--color-bg-primary);
+}
+
+.sidebar {
+  inline-size: 250px;
+  background-color: var(--color-bg-secondary);
+  border-inline-end: var(--border-width-default) solid var(--color-border-default);
+  position: sticky;
+  inset-block-start: 0;
+  block-size: 100vh;
+  overflow-y: auto;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Page Header */
+.pageHeader {
+  padding: var(--space-6);
+  border-block-end: var(--border-width-default) solid var(--color-border-default);
+  background-color: var(--color-bg-primary);
+}
+
+.headerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.headerLeft {
+  flex: 1;
+}
+
+.breadcrumbs {
+  margin-block-end: var(--space-2);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  font-family: var(--font-body);
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0;
+  line-height: var(--line-height-tight);
+}
+
+.description {
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  margin-block-start: var(--space-2);
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.primaryButton {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border: var(--border-width-default) solid var(--color-border-strong);
+  font-family: var(--font-heading);
+  font-size: var(--font-size-base);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--duration-fast) var(--easing-out);
+}
+
+.primaryButton:hover {
+  background-color: var(--color-primary-hover);
+  box-shadow: var(--shadow-md);
+}
+
+/* Stats Grid */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-4);
+  padding: var(--space-6);
+}
+
+.statCard {
+  padding: var(--space-4);
+  background-color: var(--color-bg-secondary);
+  border: var(--border-width-default) solid var(--color-border-default);
+}
+
+.statHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-block-end: var(--space-2);
+}
+
+.statLabel {
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.statIcon {
+  inline-size: 20px;
+  block-size: 20px;
+  color: var(--color-text-tertiary);
+}
+
+.statValue {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-tight);
+}
+
+.statChange {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  margin-block-start: var(--space-1);
+}
+
+/* Toolbar */
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-6);
+  background-color: var(--color-bg-secondary);
+  border-block-end: var(--border-width-default) solid var(--color-border-default);
+}
+
+.searchContainer {
+  flex: 1;
+  max-inline-size: 400px;
+}
+
+.searchInput {
+  inline-size: 100%;
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--color-bg-primary);
+  border: var(--border-width-default) solid var(--color-border-default);
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  color: var(--color-text-primary);
+  transition: border-color var(--duration-fast) var(--easing-out);
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: var(--color-border-focus);
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* Main Content */
+.mainContent {
+  flex: 1;
+  padding: var(--space-6);
+}
+
+.loadingState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-12);
+  gap: var(--space-4);
+}
+
+.spinner {
+  inline-size: 40px;
+  block-size: 40px;
+  border: var(--border-width-thick) solid var(--color-border-default);
+  border-block-start-color: var(--color-primary);
+  border-radius: var(--radius-none);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Empty State */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-12);
+  text-align: center;
+}
+
+.emptyIcon {
+  inline-size: 64px;
+  block-size: 64px;
+  margin-block-end: var(--space-4);
+  color: var(--color-text-tertiary);
+}
+
+.emptyTitle {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-2xl);
+  color: var(--color-text-primary);
+  margin: 0 0 var(--space-2) 0;
+}
+
+.emptyDescription {
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--space-6) 0;
+  max-inline-size: 400px;
+}
+
+.emptyButton {
+  padding: var(--space-3) var(--space-6);
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border: var(--border-width-default) solid var(--color-border-strong);
+  font-family: var(--font-heading);
+  font-size: var(--font-size-base);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--duration-fast) var(--easing-out);
+}
+
+.emptyButton:hover {
+  background-color: var(--color-primary-hover);
+  box-shadow: var(--shadow-md);
+}
+
+/* Pagination */
+.pagination {
+  padding: var(--space-4) var(--space-6);
+  border-block-start: var(--border-width-default) solid var(--color-border-default);
+  background-color: var(--color-bg-secondary);
+}
+
+/* Responsive */
+@media (max-width: 48rem) {
+  .sidebar {
+    display: none;
+  }
+  
+  .headerContent {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .headerActions {
+    justify-content: flex-end;
+  }
+  
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .searchContainer {
+    max-inline-size: none;
+  }
+}

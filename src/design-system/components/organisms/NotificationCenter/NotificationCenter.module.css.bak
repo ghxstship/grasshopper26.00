@@ -1,0 +1,189 @@
+/**
+ * NotificationCenter Styles
+ * GHXSTSHIP Monochromatic Design System
+ */
+
+.center {
+  display: flex;
+  flex-direction: column;
+  inline-size: 400px;
+  max-block-size: 600px;
+  border: var(--border-width-thick) solid var(--color-black);
+  background-color: var(--color-white);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  padding: var(--spacing-4);
+  border-block-end: var(--border-width-thick) solid var(--color-black);
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-h5);
+  text-transform: uppercase;
+}
+
+.badge {
+  padding: var(--spacing-1) var(--spacing-2);
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-meta);
+  font-weight: 700;
+  background-color: var(--color-grey-700);
+}
+
+.actions {
+  display: flex;
+  gap: var(--spacing-2);
+}
+
+.actionButton {
+  padding: var(--spacing-1) var(--spacing-2);
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-meta);
+  text-transform: uppercase;
+  background-color: var(--color-grey-700);
+  color: var(--color-white);
+  border: none;
+  cursor: pointer;
+}
+
+.actionButton:hover {
+  background-color: var(--color-grey-600);
+}
+
+.filters {
+  display: flex;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3) var(--spacing-4);
+  border-block-end: 1px solid var(--color-grey-300);
+}
+
+.filterButton {
+  padding: var(--spacing-2) var(--spacing-3);
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-h6);
+  text-transform: uppercase;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-grey-400);
+  cursor: pointer;
+}
+
+.filterButton.active {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border-color: var(--color-black);
+}
+
+.list {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.empty {
+  padding: var(--spacing-6);
+  text-align: center;
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-body);
+  color: var(--color-text-secondary);
+}
+
+.notification {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: var(--spacing-3);
+  padding: var(--spacing-3) var(--spacing-4);
+  border-block-end: 1px solid var(--color-grey-300);
+  cursor: pointer;
+  transition: background-color var(--transition-fast) var(--easing-standard);
+}
+
+.notification:hover {
+  background-color: var(--color-grey-100);
+}
+
+.notification.unread {
+  background-color: var(--color-grey-50);
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 32px;
+  block-size: 32px;
+  font-size: var(--font-size-h5);
+  background-color: var(--color-grey-200);
+  border: 1px solid var(--color-black);
+}
+
+.icon.mention {
+  background-color: var(--color-grey-400);
+}
+
+.icon.assignment {
+  background-color: var(--color-grey-300);
+}
+
+.icon.comment {
+  background-color: var(--color-grey-200);
+}
+
+.icon.update {
+  background-color: var(--color-grey-500);
+}
+
+.icon.deadline {
+  background-color: var(--color-grey-600);
+  color: var(--color-white);
+}
+
+.icon.system {
+  background-color: var(--color-grey-300);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.notificationTitle {
+  margin: 0;
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-h6);
+  text-transform: uppercase;
+}
+
+.message {
+  margin: 0;
+  font-family: var(--font-share);
+  font-size: var(--font-size-meta);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
+}
+
+.timestamp {
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-meta);
+  color: var(--color-text-secondary);
+}
+
+.unreadDot {
+  inline-size: 8px;
+  block-size: 8px;
+  background-color: var(--color-black);
+  align-self: center;
+}

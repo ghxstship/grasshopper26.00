@@ -22,7 +22,7 @@
 .vertical {
   width: var(--border-width-2);
   height: 100%;
-  min-height: 40px;
+  min-height: 2.5rem;
 }
 
 /* ========================================
@@ -39,9 +39,9 @@
   background-image: repeating-linear-gradient(
     to right,
     var(--color-border-default) 0,
-    var(--color-border-default) 8px,
-    transparent 8px,
-    transparent 16px
+    var(--color-border-default) 0.5rem,
+    transparent 0.5rem,
+    transparent 1rem
   );
 }
 
@@ -49,9 +49,9 @@
   background-image: repeating-linear-gradient(
     to bottom,
     var(--color-border-default) 0,
-    var(--color-border-default) 8px,
-    transparent 8px,
-    transparent 16px
+    var(--color-border-default) 0.5rem,
+    transparent 0.5rem,
+    transparent 1rem
   );
 }
 
@@ -61,9 +61,9 @@
   background-image: repeating-linear-gradient(
     to right,
     var(--color-border-default) 0,
-    var(--color-border-default) 3px,
-    transparent 3px,
-    transparent 9px
+    var(--color-border-default) 0.1875rem,
+    transparent 0.1875rem,
+    transparent 0.5625rem
   );
 }
 
@@ -71,9 +71,9 @@
   background-image: repeating-linear-gradient(
     to bottom,
     var(--color-border-default) 0,
-    var(--color-border-default) 3px,
-    transparent 3px,
-    transparent 9px
+    var(--color-border-default) 0.1875rem,
+    transparent 0.1875rem,
+    transparent 0.5625rem
   );
 }
 
@@ -124,9 +124,9 @@
   background-image: repeating-linear-gradient(
     to right,
     var(--color-border-default) 0,
-    var(--color-border-default) 8px,
-    transparent 8px,
-    transparent 16px
+    var(--color-border-default) 0.5rem,
+    transparent 0.5rem,
+    transparent 1rem
   );
 }
 
@@ -135,9 +135,9 @@
   background-image: repeating-linear-gradient(
     to bottom,
     var(--color-border-default) 0,
-    var(--color-border-default) 8px,
-    transparent 8px,
-    transparent 16px
+    var(--color-border-default) 0.5rem,
+    transparent 0.5rem,
+    transparent 1rem
   );
 }
 
@@ -146,9 +146,9 @@
   background-image: repeating-linear-gradient(
     to right,
     var(--color-border-default) 0,
-    var(--color-border-default) 3px,
-    transparent 3px,
-    transparent 9px
+    var(--color-border-default) 0.1875rem,
+    transparent 0.1875rem,
+    transparent 0.5625rem
   );
 }
 
@@ -157,8 +157,8 @@
   background-image: repeating-linear-gradient(
     to bottom,
     var(--color-border-default) 0,
-    var(--color-border-default) 3px,
-    transparent 3px,
-    transparent 9px
+    var(--color-border-default) 0.1875rem,
+    transparent 0.1875rem,
+    transparent 0.5625rem
   );
 }

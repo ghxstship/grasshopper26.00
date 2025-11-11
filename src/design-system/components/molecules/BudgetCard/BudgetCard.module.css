@@ -118,7 +118,7 @@
   font-weight: var(--font-weight-bold);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .metrics {
     grid-template-columns: 1fr;
   }

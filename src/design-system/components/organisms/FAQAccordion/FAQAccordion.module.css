@@ -19,7 +19,7 @@
 }
 
 .item.open {
-  box-shadow: 8px 8px 0 var(--color-primary);
+  box-shadow: 0.5rem 0.5rem 0 var(--color-primary);
 }
 
 .header {
@@ -41,8 +41,8 @@
 }
 
 .item.open .header {
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
 }
 
 .question {
@@ -84,7 +84,7 @@
 }
 
 .item.open .content {
-  max-block-size: 1000px;
+  max-block-size: 62.5rem;
   border-block-start: var(--border-width-3) solid var(--color-border-default);
 }
 

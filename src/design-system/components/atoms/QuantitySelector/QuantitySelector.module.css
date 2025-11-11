@@ -24,8 +24,8 @@
 }
 
 .button:hover:not(:disabled) {
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
 }
 
 .button:disabled {
@@ -75,4 +75,33 @@
 
 .lg .input {
   font-size: var(--font-size-3xl);
+}
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+.dark .filled,
+[data-theme="dark"] .filled {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border-color: var(--color-white);
+}
+
+.dark .outlined,
+[data-theme="dark"] .outlined {
+  color: var(--color-white);
+  border-color: var(--color-white);
+}
+
+.dark .outlined:hover,
+[data-theme="dark"] .outlined:hover {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+.dark .active,
+[data-theme="dark"] .active {
+  background-color: var(--color-white);
+  color: var(--color-black);
 }

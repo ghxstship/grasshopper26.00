@@ -28,7 +28,7 @@
 }
 
 /* Responsive adjustments */
-@media (max-width: 767px) {
+@media (max-width: 47.9375rem) {
   .authButtons.horizontal {
     gap: var(--space-2);
   }

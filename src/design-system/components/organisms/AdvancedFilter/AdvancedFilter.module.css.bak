@@ -1,0 +1,170 @@
+/**
+ * AdvancedFilter Styles
+ * GHXSTSHIP Monochromatic Design System
+ */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  padding: var(--spacing-6);
+  border: var(--border-width-thick) solid var(--color-black);
+  background-color: var(--color-white);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block-end: var(--spacing-4);
+  border-block-end: var(--border-width-thick) solid var(--color-black);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-h4);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.actions {
+  display: flex;
+  gap: var(--spacing-2);
+}
+
+.clearButton,
+.applyButton {
+  padding: var(--spacing-2) var(--spacing-4);
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-h6);
+  text-transform: uppercase;
+  border: var(--border-width-thick) solid var(--color-black);
+  cursor: pointer;
+  transition: all var(--transition-fast) var(--easing-standard);
+}
+
+.clearButton {
+  background-color: var(--color-white);
+}
+
+.clearButton:hover {
+  background-color: var(--color-grey-200);
+}
+
+.applyButton {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.applyButton:hover {
+  transform: scale(1.05);
+}
+
+.groups {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  padding: var(--spacing-4);
+  border: 1px solid var(--color-grey-400);
+  background-color: var(--color-grey-50);
+}
+
+.groupLogic {
+  margin-block-end: var(--spacing-2);
+}
+
+.logicSelect {
+  padding: var(--spacing-2) var(--spacing-3);
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-h6);
+  text-transform: uppercase;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border: none;
+}
+
+.conditions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.condition {
+  display: grid;
+  grid-template-columns: auto 1fr 150px 1fr auto;
+  gap: var(--spacing-2);
+  align-items: center;
+}
+
+.conditionLogic {
+  padding: var(--spacing-1) var(--spacing-2);
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-meta);
+  text-transform: uppercase;
+  background-color: var(--color-grey-300);
+}
+
+.fieldSelect,
+.operatorSelect,
+.valueInput {
+  padding: var(--spacing-2) var(--spacing-3);
+  font-family: var(--font-share);
+  font-size: var(--font-size-body);
+  border: var(--border-width-thick) solid var(--color-black);
+  background-color: var(--color-white);
+}
+
+.fieldSelect:focus,
+.operatorSelect:focus,
+.valueInput:focus {
+  outline: none;
+  box-shadow: 0 0 0 var(--border-width-thick) var(--color-black);
+}
+
+.removeButton {
+  inline-size: 32px;
+  block-size: 32px;
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-h4);
+  background-color: var(--color-grey-900);
+  color: var(--color-white);
+  border: none;
+  cursor: pointer;
+  transition: transform var(--transition-fast) var(--easing-standard);
+}
+
+.removeButton:hover {
+  transform: scale(1.1);
+}
+
+.addCondition,
+.addGroup {
+  padding: var(--spacing-2) var(--spacing-4);
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-h6);
+  text-transform: uppercase;
+  background-color: var(--color-white);
+  border: var(--border-width-thick) solid var(--color-black);
+  cursor: pointer;
+  transition: all var(--transition-fast) var(--easing-standard);
+}
+
+.addCondition:hover,
+.addGroup:hover {
+  background-color: var(--color-grey-100);
+}
+
+.addCondition {
+  inline-size: fit-content;
+}
+
+.addGroup {
+  inline-size: 100%;
+}

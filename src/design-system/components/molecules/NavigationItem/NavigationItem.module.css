@@ -1,7 +1,7 @@
 /**
  * NavigationItem Styles
  * GHXSTSHIP Entertainment Platform
- * Thick underline hover effects (2-3px)
+ * Thick underline hover effects (2-0.1875rem)
  */
 
 .navItem {
@@ -21,7 +21,7 @@
 }
 
 .navItem:hover {
-  transform: translateY(-2px);
+  transform: translateY(-0.125rem);
 }
 
 .navItem:active {
@@ -30,7 +30,7 @@
 
 .navItem:focus-visible {
   outline: var(--border-width-2) solid var(--color-border-focus);
-  outline-offset: 2px;
+  outline-offset: 0.125rem;
 }
 
 /* ========================================
@@ -70,7 +70,7 @@
   inset-inline-end: var(--space-4);
   
   height: var(--border-width-3);
-  background-color: var(--color-primary);
+  background-color: var(--color-black);
   
   transform: scaleX(0);
   transform-origin: left;

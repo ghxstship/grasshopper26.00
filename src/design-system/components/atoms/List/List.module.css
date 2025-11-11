@@ -35,8 +35,8 @@
   position: absolute;
   inset-inline-start: 0;
   inset-block-start: 0.5em;
-  inline-size: 8px;
-  block-size: 8px;
+  inline-size: 0.5rem;
+  block-size: 0.5rem;
   background-color: var(--color-black);
   border: var(--border-width-thin) solid var(--color-black);
 }

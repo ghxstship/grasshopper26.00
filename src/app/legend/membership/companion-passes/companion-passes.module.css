@@ -4,7 +4,7 @@
  */
 
 .container {
-  max-inline-size: var(--container-max-width, 1200px);
+  max-inline-size: var(--container-max-width, 75rem);
   margin-inline: auto;
   padding-block: var(--space-8);
   padding-inline: var(--space-6);
@@ -120,7 +120,7 @@
 
 .statusActive {
   background: var(--color-bg-inverse);
-  color: var(--color-text-inverse);
+  color: var(--color-white);
 }
 
 .statusPending {
@@ -139,8 +139,8 @@
 }
 
 .emptyIcon {
-  inline-size: 64px;
-  block-size: 64px;
+  inline-size: 4rem;
+  block-size: 4rem;
   opacity: 0.3;
 }
 
@@ -150,7 +150,7 @@
   color: var(--color-text-secondary);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .header {
     flex-direction: column;
     gap: var(--space-4);

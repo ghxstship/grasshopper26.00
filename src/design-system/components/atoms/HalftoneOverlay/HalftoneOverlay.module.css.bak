@@ -1,0 +1,145 @@
+/**
+ * HalftoneOverlay Styles
+ * GHXSTSHIP Entertainment Platform
+ * Ben-Day dot patterns, diagonal stripes, grid overlays
+ */
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ========================================
+   PATTERN TYPES
+   ======================================== */
+
+.dots {
+  background-image: 
+    radial-gradient(circle, var(--color-primary) 20%, transparent 20%),
+    radial-gradient(circle, var(--color-primary) 20%, transparent 20%);
+  background-position: 0 0, 4px 4px;
+}
+
+.diagonal {
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--color-primary),
+    var(--color-primary) 2px,
+    transparent 2px,
+    transparent 10px
+  );
+}
+
+.grid {
+  background-image: 
+    linear-gradient(var(--color-primary) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-primary) 1px, transparent 1px);
+}
+
+.screen-print {
+  background-image: 
+    radial-gradient(circle, var(--color-primary) 30%, transparent 30%),
+    radial-gradient(circle, var(--color-primary) 30%, transparent 30%);
+  background-position: 0 0, 6px 6px;
+}
+
+/* ========================================
+   SIZES
+   ======================================== */
+
+.sm.dots {
+  background-size: 4px 4px;
+  background-position: 0 0, 2px 2px;
+}
+
+.sm.diagonal {
+  background-size: 6px 6px;
+}
+
+.sm.grid {
+  background-size: 6px 6px;
+}
+
+.sm.screen-print {
+  background-size: 8px 8px;
+  background-position: 0 0, 4px 4px;
+}
+
+.md.dots {
+  background-size: 8px 8px;
+  background-position: 0 0, 4px 4px;
+}
+
+.md.diagonal {
+  background-size: 10px 10px;
+}
+
+.md.grid {
+  background-size: 10px 10px;
+}
+
+.md.screen-print {
+  background-size: 12px 12px;
+  background-position: 0 0, 6px 6px;
+}
+
+.lg.dots {
+  background-size: 12px 12px;
+  background-position: 0 0, 6px 6px;
+}
+
+.lg.diagonal {
+  background-size: 16px 16px;
+}
+
+.lg.grid {
+  background-size: 16px 16px;
+}
+
+.lg.screen-print {
+  background-size: 18px 18px;
+  background-position: 0 0, 9px 9px;
+}
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+.dark .overlay,
+[data-theme="dark"] .overlay {
+  background-color: transparent;
+}
+
+.dark .dots,
+[data-theme="dark"] .dots {
+  background-image: 
+    radial-gradient(circle, var(--color-accent) 20%, transparent 20%),
+    radial-gradient(circle, var(--color-accent) 20%, transparent 20%);
+}
+
+.dark .diagonal,
+[data-theme="dark"] .diagonal {
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--color-accent),
+    var(--color-accent) 2px,
+    transparent 2px,
+    transparent 10px
+  );
+}
+
+.dark .grid,
+[data-theme="dark"] .grid {
+  background-image: 
+    linear-gradient(var(--color-accent) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-accent) 1px, transparent 1px);
+}
+
+.dark .screen-print,
+[data-theme="dark"] .screen-print {
+  background-image: 
+    radial-gradient(circle, var(--color-accent) 30%, transparent 30%),
+    radial-gradient(circle, var(--color-accent) 30%, transparent 30%);
+}

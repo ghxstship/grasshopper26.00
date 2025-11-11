@@ -50,7 +50,6 @@ export * from './HeroSection/HeroSection';
 export { VenueMap } from './VenueMap/VenueMap';
 export type { VenueMapProps } from './VenueMap/VenueMap';
 export type { Stage as VenueStage } from './VenueMap/VenueMap';
-export * from './NewsletterSignup/NewsletterSignup';
 export * from './Carousel/Carousel';
 export * from './SocialFeed/SocialFeed';
 export * from './MusicPlayer/MusicPlayer';

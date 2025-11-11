@@ -1,11 +1,11 @@
 /* New Event - Design System Compliant */
-.section{display:flex;flex-direction:column;gap:var(--space-6);padding-block:var(--space-8);padding-inline:var(--space-4);max-inline-size:1280px;margin-inline:auto}
+.section{display:flex;flex-direction:column;gap:var(--space-6);padding-block:var(--space-8);padding-inline:var(--space-4);max-inline-size:80rem;margin-inline:auto}
 .row{display:flex;align-items:center;gap:var(--space-4);margin-block-end:var(--space-6)}
 .title{font-family:var(--font-anton);font-size:var(--font-size-3xl);text-transform:uppercase;color:var(--color-black)}
 .subtitle{color:var(--color-grey-600);margin-block-start:var(--space-1)}
 .icon{block-size:var(--space-4);inline-size:var(--space-4)}
 .grid{display:grid;gap:var(--space-4);grid-template-columns:1fr}
-@media(min-width:640px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:40rem){.grid{grid-template-columns:repeat(2,1fr)}}
 .actions{display:flex;justify-content:flex-end;gap:var(--space-4)}
 
 

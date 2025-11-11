@@ -16,7 +16,7 @@
 }
 
 .card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-0.25rem);
   box-shadow: var(--shadow-xl);
 }
 
@@ -88,10 +88,10 @@
 }
 
 .checkIcon {
-  width: 20px;
-  height: 20px;
+  width: 1.25rem;
+  height: 1.25rem;
   flex-shrink: 0;
-  margin-block-start: 2px;
+  margin-block-start: 0.125rem;
 }
 
 .companionPass {

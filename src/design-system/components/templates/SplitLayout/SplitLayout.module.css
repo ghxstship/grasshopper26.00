@@ -44,7 +44,7 @@
 
 .right {
   background-color: var(--color-bg-inverse);
-  color: var(--color-text-inverse);
+  color: var(--color-white);
 }
 
 .sticky {
@@ -64,7 +64,7 @@
    RESPONSIVE
    ======================================== */
 
-@media (min-width: 1024px) {
+@media (min-width: 64rem) {
   .container {
     flex-direction: row;
   }

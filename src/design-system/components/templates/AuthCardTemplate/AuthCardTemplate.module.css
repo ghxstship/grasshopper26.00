@@ -56,7 +56,7 @@
   color: var(--color-primary-hover);
 }
 
-@media (max-width: 640px) {
+@media (max-width: 40rem) {
   .card {
     padding: var(--space-6);
   }

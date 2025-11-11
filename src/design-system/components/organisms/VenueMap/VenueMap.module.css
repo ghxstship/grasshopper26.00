@@ -74,7 +74,7 @@
 
 .stage:focus-visible {
   outline: var(--border-width-2) solid var(--color-border-focus);
-  outline-offset: 4px;
+  outline-offset: 0.25rem;
 }
 
 .stage.selected {
@@ -83,8 +83,8 @@
 
 .stageMarker {
   display: block;
-  inline-size: 24px;
-  block-size: 24px;
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
   
   border: var(--border-width-3) solid var(--color-border-strong);
   border-radius: var(--radius-none)(--radius-none);
@@ -94,9 +94,9 @@
 }
 
 .stage.main .stageMarker {
-  inline-size: 32px;
-  block-size: 32px;
-  background-color: var(--color-primary);
+  inline-size: 2rem;
+  block-size: 2rem;
+  background-color: var(--color-black);
 }
 
 .stage.underground .stageMarker {
@@ -105,7 +105,7 @@
 
 .stage:hover .stageMarker,
 .stage.selected .stageMarker {
-  background-color: var(--color-primary);
+  background-color: var(--color-black);
   box-shadow: var(--shadow-base);
 }
 
@@ -193,18 +193,18 @@
 
 .legendItem:focus-visible {
   outline: var(--border-width-2) solid var(--color-border-focus);
-  outline-offset: 2px;
+  outline-offset: 0.125rem;
 }
 
 .legendItem.legendItemActive {
   border-color: var(--color-border-strong);
-  background-color: var(--color-primary);
+  background-color: var(--color-black);
 }
 
 .legendMarker {
   display: block;
-  inline-size: 16px;
-  block-size: 16px;
+  inline-size: 1rem;
+  block-size: 1rem;
   
   border: var(--border-width-2) solid var(--color-border-strong);
   border-radius: var(--radius-none)(--radius-none);
@@ -214,9 +214,9 @@
 }
 
 .legendMarker.main {
-  inline-size: 20px;
-  block-size: 20px;
-  background-color: var(--color-primary);
+  inline-size: 1.25rem;
+  block-size: 1.25rem;
+  background-color: var(--color-black);
 }
 
 .legendMarker.underground {
@@ -240,26 +240,26 @@
 }
 
 .legendItem.legendItemActive .legendLabel {
-  color: var(--color-text-inverse);
+  color: var(--color-white);
 }
 
 /* ========================================
    RESPONSIVE
    ======================================== */
 
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .mapContainer {
     aspect-ratio: 4 / 3;
   }
   
   .stageMarker {
-    inline-size: 20px;
-    block-size: 20px;
+    inline-size: 1.25rem;
+    block-size: 1.25rem;
   }
   
   .stage.main .stageMarker {
-    inline-size: 28px;
-    block-size: 28px;
+    inline-size: 1.75rem;
+    block-size: 1.75rem;
   }
   
   .stageName {
@@ -341,7 +341,7 @@
 
 .dark .legendItem.legendItemActive .legendMarker,
 [data-theme="dark"] .legendItem.legendItemActive .legendMarker {
-  background-color: var(--color-primary);
+  background-color: var(--color-black);
 }
 
 .dark .legendItem.legendItemActive .legendLabel,

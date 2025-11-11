@@ -49,7 +49,7 @@
 
 @keyframes slideUp {
   from {
-    transform: translateY(32px);
+    transform: translateY(2rem);
     opacity: 0;
   }
   to {
@@ -64,22 +64,22 @@
 
 .sm {
   width: 100%;
-  max-width: 400px;
+  max-width: 25rem;
 }
 
 .md {
   width: 100%;
-  max-width: 600px;
+  max-width: 37.5rem;
 }
 
 .lg {
   width: 100%;
-  max-width: 800px;
+  max-width: 50rem;
 }
 
 .xl {
   width: 100%;
-  max-width: 1200px;
+  max-width: 75rem;
 }
 
 /* ========================================
@@ -119,8 +119,8 @@
   align-items: center;
   justify-content: center;
   
-  width: 40px;
-  height: 40px;
+  width: 2.5rem;
+  height: 2.5rem;
   padding: 0;
   
   border: var(--border-width-2) solid var(--color-border-strong);
@@ -133,7 +133,7 @@
 }
 
 .closeButton:hover {
-  background-color: var(--color-primary);
+  background-color: var(--color-black);
   transform: scale(1.1);
 }
 
@@ -143,7 +143,7 @@
 
 .closeButton:focus-visible {
   outline: var(--border-width-2) solid var(--color-border-focus);
-  outline-offset: 2px;
+  outline-offset: 0.125rem;
 }
 
 .closeIcon {
@@ -155,7 +155,7 @@
 }
 
 .closeButton:hover .closeIcon {
-  color: var(--color-text-inverse);
+  color: var(--color-white);
 }
 
 /* ========================================
@@ -170,7 +170,7 @@
    RESPONSIVE
    ======================================== */
 
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .overlay {
     padding: var(--space-2);
   }

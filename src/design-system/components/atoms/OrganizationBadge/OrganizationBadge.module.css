@@ -16,7 +16,7 @@
 }
 
 .badge:hover {
-  transform: translateY(-1px);
+  transform: translateY(-var(--space-px));
   box-shadow: var(--shadow-md);
 }
 

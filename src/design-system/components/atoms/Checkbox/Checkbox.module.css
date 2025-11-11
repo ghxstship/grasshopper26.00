@@ -26,8 +26,8 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   
-  width: 24px;
-  height: 24px;
+  width: 1.5rem;
+  height: 1.5rem;
   flex-shrink: 0;
   
   border: var(--border-width-3) solid var(--color-border-strong);
@@ -46,11 +46,11 @@
 
 .checkbox:focus-visible {
   outline: var(--border-width-2) solid var(--color-border-focus);
-  outline-offset: 2px;
+  outline-offset: 0.125rem;
 }
 
 .checkbox:checked {
-  background-color: var(--color-primary);
+  background-color: var(--color-black);
   border-color: var(--color-primary);
 }
 
@@ -61,8 +61,8 @@
   inset-inline-start: 50%;
   transform: translate(-50%, -50%);
   
-  width: 12px;
-  height: 12px;
+  width: 0.75rem;
+  height: 0.75rem;
   
   background-color: var(--color-accent);
   
@@ -90,33 +90,33 @@
    ======================================== */
 
 .sm {
-  width: 20px;
-  height: 20px;
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
 .sm:checked::after {
-  width: 10px;
-  height: 10px;
+  width: 0.625rem;
+  height: 0.625rem;
 }
 
 .md {
-  width: 24px;
-  height: 24px;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .md:checked::after {
-  width: 12px;
-  height: 12px;
+  width: 0.75rem;
+  height: 0.75rem;
 }
 
 .lg {
-  width: 28px;
-  height: 28px;
+  width: 1.75rem;
+  height: 1.75rem;
 }
 
 .lg:checked::after {
-  width: 14px;
-  height: 14px;
+  width: 0.875rem;
+  height: 0.875rem;
 }
 
 /* ========================================
@@ -150,7 +150,7 @@
   
   color: var(--color-text-secondary);
   
-  margin-inline-start: calc(24px + var(--space-3));
+  margin-inline-start: calc(1.5rem + var(--space-3));
 }
 
 .errorText {
@@ -160,7 +160,7 @@
   
   color: var(--color-error-text);
   
-  margin-inline-start: calc(24px + var(--space-3));
+  margin-inline-start: calc(1.5rem + var(--space-3));
 }
 
 /* ========================================
@@ -197,5 +197,5 @@
 
 .dark .checkbox:checked::after,
 [data-theme="dark"] .checkbox:checked::after {
-  background-color: var(--color-primary);
+  background-color: var(--color-black);
 }

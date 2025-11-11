@@ -24,7 +24,7 @@
   position: relative;
   min-height: 40vh;
   background-color: var(--color-bg-inverse);
-  color: var(--color-text-inverse);
+  color: var(--color-white);
   overflow: hidden;
 }
 
@@ -36,7 +36,7 @@
 }
 
 .articleHeaderContent {
-  max-width: 800px;
+  max-width: 50rem;
   margin-inline: auto;
 }
 
@@ -72,7 +72,7 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-8);
-  max-width: 1440px;
+  max-width: 90rem;
   margin-inline: auto;
   width: 100%;
   padding: var(--space-8) var(--space-6);
@@ -85,7 +85,7 @@
 
 /* Article */
 .article {
-  max-width: 800px;
+  max-width: 50rem;
   width: 100%;
   font-family: var(--font-family-body);
   font-size: var(--font-size-body);
@@ -116,7 +116,7 @@
    RESPONSIVE
    ======================================== */
 
-@media (min-width: 768px) {
+@media (min-width: 48rem) {
   .hero {
     min-height: 50vh;
   }
@@ -130,9 +130,9 @@
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 64rem) {
   .container {
-    grid-template-columns: 1fr 320px;
+    grid-template-columns: 1fr 20rem;
   }
   
   .sidebar {
@@ -143,9 +143,9 @@
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 80rem) {
   .container {
-    grid-template-columns: 240px 1fr 320px;
+    grid-template-columns: 15rem 1fr 20rem;
     padding: var(--space-12) var(--space-10);
   }
   
@@ -198,8 +198,8 @@
 .article :global(a) {
   color: var(--color-text-primary);
   text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 4px;
+  text-decoration-thickness: 0.125rem;
+  text-underline-offset: 0.25rem;
   transition: opacity var(--duration-fast) var(--easing-out);
 }
 
@@ -233,7 +233,7 @@
 
 .article :global(pre) {
   background-color: var(--color-bg-inverse);
-  color: var(--color-text-inverse);
+  color: var(--color-white);
   border: var(--border-width-3) solid var(--color-border-inverse);
   padding: var(--space-6);
   overflow-x: auto;

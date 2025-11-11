@@ -1,0 +1,159 @@
+/**
+ * Chip Styles
+ * GHXSTSHIP Entertainment Platform
+ */
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  
+  border-radius: var(--radius-none);
+  
+  font-family: var(--font-mono);
+  font-weight: var(--font-weight-normal);
+  letter-spacing: var(--letter-spacing-meta);
+  text-transform: uppercase;
+  line-height: var(--line-height-tight);
+  
+  transition: all var(--duration-fast) var(--easing-out);
+}
+
+.chip.disabled {
+  opacity: var(--opacity-40);
+  cursor: not-allowed;
+}
+
+/* ========================================
+   SIZES
+   ======================================== */
+
+.sm {
+  padding-inline: var(--space-2);
+  padding-block: var(--space-1);
+  font-size: var(--font-size-xs);
+}
+
+.md {
+  padding-inline: var(--space-3);
+  padding-block: var(--space-1-5);
+  font-size: var(--font-size-sm);
+}
+
+.lg {
+  padding-inline: var(--space-4);
+  padding-block: var(--space-2);
+  font-size: var(--font-size-base);
+}
+
+/* ========================================
+   VARIANTS
+   ======================================== */
+
+.default {
+  border: var(--border-width-2) solid var(--color-border-default);
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+}
+
+.outlined {
+  border: var(--border-width-2) solid var(--color-border-strong);
+  background-color: transparent;
+  color: var(--color-text-primary);
+}
+
+.filled {
+  border: var(--border-width-2) solid var(--color-border-strong);
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+/* ========================================
+   ICON
+   ======================================== */
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+}
+
+/* ========================================
+   LABEL
+   ======================================== */
+
+.label {
+  white-space: nowrap;
+}
+
+/* ========================================
+   REMOVE BUTTON
+   ======================================== */
+
+.removeButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  
+  border: none;
+  border-radius: var(--radius-none);
+  background: none;
+  
+  cursor: pointer;
+  
+  transition: transform var(--duration-fast) var(--easing-out);
+}
+
+.removeButton:hover {
+  transform: scale(1.2);
+}
+
+.removeButton:active {
+  transform: scale(0.9);
+}
+
+.removeButton:focus-visible {
+  outline: var(--border-width-2) solid var(--color-border-focus);
+  outline-offset: 0.125rem;
+}
+
+.removeIcon {
+  font-size: var(--font-size-xs);
+  line-height: 1;
+  color: currentColor;
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .chip,
+  .removeButton {
+    transition: none;
+  }
+  
+  .removeButton:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .chip {
+    border-width: var(--border-width-3);
+  }
+}
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+.dark .filled,
+[data-theme="dark"] .filled {
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+}

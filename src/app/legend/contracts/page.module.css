@@ -41,7 +41,7 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 400px), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 25rem), 1fr));
   gap: var(--spacing-lg);
 }
 
@@ -59,7 +59,7 @@
   margin: 0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .container {
     padding-block: var(--spacing-lg);
     padding-inline: var(--spacing-md);

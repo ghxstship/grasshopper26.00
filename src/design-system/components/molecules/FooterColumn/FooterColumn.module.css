@@ -1,0 +1,41 @@
+/**
+ * FooterColumn - GHXSTSHIP Design System
+ * Footer navigation column styling
+ */
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.title {
+  font-family: var(--font-family-bebas);
+  font-size: var(--font-size-h5);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  margin-block-end: var(--space-1);
+  color: var(--color-white);
+}
+
+.link {
+  font-family: var(--font-family-share);
+  font-size: var(--font-size-body);
+  color: var(--color-white);
+  text-decoration: none;
+  display: block;
+  transition: color var(--duration-fast) var(--easing-out),
+              transform var(--duration-fast) var(--easing-out);
+}
+
+.link:hover {
+  color: var(--color-bg-primary);
+  transform: translateX(var(--space-1));
+}
+
+.link:focus-visible {
+  outline: var(--border-width-3) solid var(--color-accent);
+  outline-offset: var(--space-1);
+}

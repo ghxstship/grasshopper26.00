@@ -8,7 +8,7 @@
   position: relative;
   display: flex;
   
-  min-width: 280px;
+  min-width: 17.5rem;
   
   border: var(--border-width-3) solid var(--color-border-strong);
   border-radius: var(--radius-none);
@@ -19,17 +19,17 @@
 
 .perforation {
   position: absolute;
-  inset-inline-start: 80px;
+  inset-inline-start: 5rem;
   inset-block: 0;
   
-  width: 2px;
+  width: 0.125rem;
   
   background-image: repeating-linear-gradient(
     to bottom,
     var(--color-border-strong) 0,
-    var(--color-border-strong) 4px,
-    transparent 4px,
-    transparent 8px
+    var(--color-border-strong) 0.25rem,
+    transparent 0.25rem,
+    transparent 0.5rem
   );
 }
 
@@ -39,7 +39,7 @@
   gap: var(--space-3);
   
   padding: var(--space-4);
-  padding-inline-start: calc(80px + var(--space-4));
+  padding-inline-start: calc(5rem + var(--space-4));
   
   width: 100%;
 }
@@ -131,8 +131,8 @@
   background-image: repeating-linear-gradient(
     to bottom,
     var(--color-border-strong) 0,
-    var(--color-border-strong) 4px,
-    transparent 4px,
-    transparent 8px
+    var(--color-border-strong) 0.25rem,
+    transparent 0.25rem,
+    transparent 0.5rem
   );
 }

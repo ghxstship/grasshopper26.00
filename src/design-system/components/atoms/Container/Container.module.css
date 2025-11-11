@@ -10,19 +10,19 @@
 }
 
 .sm {
-  max-inline-size: 640px;
+  max-inline-size: 40rem;
 }
 
 .md {
-  max-inline-size: 768px;
+  max-inline-size: 48rem;
 }
 
 .lg {
-  max-inline-size: 1024px;
+  max-inline-size: 64rem;
 }
 
 .xl {
-  max-inline-size: 1280px;
+  max-inline-size: 80rem;
 }
 
 .full {
@@ -33,13 +33,13 @@
   padding-inline: 0;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 48rem) {
   .container {
     padding-inline: var(--spacing-6);
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 64rem) {
   .container {
     padding-inline: var(--spacing-8);
   }

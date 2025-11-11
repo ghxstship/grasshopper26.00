@@ -49,7 +49,7 @@
 }
 
 .content {
-  max-inline-size: 1280px;
+  max-inline-size: 80rem;
   margin-inline: auto;
   padding-inline: var(--space-4);
   padding-block: var(--space-8);

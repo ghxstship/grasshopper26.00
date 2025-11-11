@@ -17,7 +17,7 @@
 
 .card:hover {
   transform: scale(1.05);
-  box-shadow: 8px 8px 0 var(--color-primary);
+  box-shadow: 0.5rem 0.5rem 0 var(--color-primary);
 }
 
 .card:active {
@@ -56,8 +56,8 @@
   letter-spacing: 0.02em;
   padding-block: var(--space-2);
   padding-inline: var(--space-4);
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
   border: var(--border-width-3) solid var(--color-border-strong);
   z-index: 10;
 }
@@ -68,8 +68,8 @@
 }
 
 .badge.onSale {
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
 }
 
 .content {
@@ -167,8 +167,8 @@
 }
 
 .button:hover {
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
   transform: scale(1.05);
 }
 
@@ -216,7 +216,7 @@
   grid-column: span 2;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .card.featured {
     grid-column: span 1;
   }

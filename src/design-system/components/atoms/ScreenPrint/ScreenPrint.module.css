@@ -37,7 +37,7 @@
     var(--color-black) 52%,
     transparent 52%
   );
-  background-size: 4px 4px;
+  background-size: 0.25rem 0.25rem;
 }
 
 .medium img,
@@ -53,7 +53,7 @@
     var(--color-black) 53%,
     transparent 53%
   );
-  background-size: 3px 3px;
+  background-size: 0.1875rem 0.1875rem;
 }
 
 .bold img,
@@ -69,7 +69,7 @@
     var(--color-black) 54%,
     transparent 54%
   );
-  background-size: 2px 2px;
+  background-size: 0.125rem 0.125rem;
 }
 
 /* Hover effect - show overlay */

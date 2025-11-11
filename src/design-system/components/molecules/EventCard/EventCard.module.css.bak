@@ -1,0 +1,286 @@
+/**
+ * EventCard Styles
+ * GHXSTSHIP Entertainment Platform
+ * Thick borders (3px), hard geometric shadows, color inversion on hover
+ */
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  
+  border: var(--border-width-3) solid var(--color-border-strong);
+  border-radius: var(--radius-none)(--radius-none);
+  background-color: var(--color-bg-primary);
+  
+  box-shadow: var(--shadow-base);
+  
+  transition: all var(--duration-base) var(--easing-out);
+  cursor: pointer;
+  
+  /* Ensure proper stacking */
+  isolation: isolate;
+}
+
+.card:hover {
+  background-color: var(--color-black);
+  border-color: var(--color-accent);
+  transform: scale(1.05);
+  box-shadow: var(--shadow-lg);
+}
+
+.card:active {
+  transform: scale(0.98);
+  box-shadow: var(--shadow-sm);
+}
+
+.card:focus-visible {
+  outline: var(--border-width-2) solid var(--color-border-focus);
+  outline-offset: 0.125rem;
+}
+
+/* ========================================
+   IMAGE CONTAINER
+   ======================================== */
+
+.imageContainer {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background-color: var(--color-bg-tertiary);
+}
+
+.image {
+  object-fit: cover;
+  
+  /* Convert to B&W */
+  filter: grayscale(100%) contrast(1.2);
+  
+  transition: transform var(--duration-slower) var(--easing-out);
+}
+
+.card:hover .image {
+  transform: scale(1.1);
+}
+
+/* Halftone overlay effect */
+.halftoneOverlay {
+  position: absolute;
+  inset: 0;
+  
+  /* Halftone dot pattern */
+  background-image: 
+    radial-gradient(circle, var(--color-primary) 20%, transparent 20%),
+    radial-gradient(circle, var(--color-primary) 20%, transparent 20%);
+  background-size: 8px 8px;
+  background-position: 0 0, 4px 4px;
+  
+  opacity: 0;
+  transition: opacity var(--duration-base) var(--easing-out);
+  pointer-events: none;
+}
+
+.card:hover .halftoneOverlay {
+  opacity: 0.3;
+}
+
+/* ========================================
+   CONTENT
+   ======================================== */
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-6);
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  
+  color: var(--color-text-primary);
+  
+  transition: color var(--duration-base) var(--easing-out);
+  
+  margin: 0;
+}
+
+.card:hover .title {
+  color: var(--color-white);
+}
+
+.metadata {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-widest);
+  text-transform: uppercase;
+  
+  color: var(--color-text-secondary);
+  
+  transition: color var(--duration-base) var(--easing-out);
+  
+  margin: 0;
+}
+
+.card:hover .metadata {
+  color: var(--color-text-tertiary);
+}
+
+/* ========================================
+   STATUS BADGE
+   ======================================== */
+
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  
+  margin-block-start: var(--space-4);
+  padding-inline: var(--space-4);
+  padding-block: var(--space-2);
+  
+  border: var(--border-width-2) solid var(--color-border-strong);
+  border-radius: var(--radius-none)(--radius-none);
+  background-color: var(--color-black);
+  
+  width: fit-content;
+  
+  transition: all var(--duration-base) var(--easing-out);
+}
+
+.card:hover .statusBadge {
+  border-color: var(--color-border-accent);
+  background-color: var(--color-bg-primary);
+}
+
+.statusText {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  
+  color: var(--color-white);
+  
+  transition: color var(--duration-base) var(--easing-out);
+}
+
+.card:hover .statusText {
+  color: var(--color-text-primary);
+}
+
+/* Status variants */
+.statusOnSale {
+  border-color: var(--color-border-strong);
+  background-color: var(--color-bg-primary);
+}
+
+.statusOnSale .statusText {
+  color: var(--color-text-primary);
+}
+
+.card:hover .statusOnSale {
+  background-color: var(--color-black);
+  border-color: var(--color-border-accent);
+}
+
+.card:hover .statusOnSale .statusText {
+  color: var(--color-white);
+}
+
+.statusComingSoon {
+  border-color: var(--color-border-default);
+  background-color: var(--color-bg-secondary);
+}
+
+.statusComingSoon .statusText {
+  color: var(--color-text-secondary);
+}
+
+.card:hover .statusComingSoon {
+  background-color: var(--color-bg-tertiary);
+  border-color: var(--color-border-accent);
+}
+
+.card:hover .statusComingSoon .statusText {
+  color: var(--color-text-tertiary);
+}
+
+/* ========================================
+   GEOMETRIC ACCENT
+   ======================================== */
+
+.geometricAccent {
+  position: absolute;
+  inset-block-start: var(--space-4);
+  inset-inline-end: var(--space-4);
+  
+  width: 48px;
+  height: 48px;
+  
+  border: var(--border-width-2) solid var(--color-border-strong);
+  border-radius: var(--radius-none)(--radius-none);
+  
+  transform: rotate(45deg);
+  
+  transition: border-color var(--duration-base) var(--easing-out);
+  pointer-events: none;
+}
+
+.card:hover .geometricAccent {
+  border-color: var(--color-border-accent);
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .image,
+  .halftoneOverlay,
+  .title,
+  .metadata,
+  .statusBadge,
+  .statusText,
+  .geometricAccent {
+    transition: none;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .card {
+    border-width: var(--border-width-4);
+  }
+  
+  .statusBadge {
+    border-width: var(--border-width-3);
+  }
+}
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+.dark .card,
+[data-theme="dark"] .card {
+  box-shadow: var(--shadow-white-md);
+}
+
+.dark .card:hover,
+[data-theme="dark"] .card:hover {
+  box-shadow: var(--shadow-white-lg);
+}
+
+.dark .card:active,
+[data-theme="dark"] .card:active {
+  box-shadow: var(--shadow-white-sm);
+}

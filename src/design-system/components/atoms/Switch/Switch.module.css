@@ -11,8 +11,8 @@
 
 .switch {
   position: relative;
-  inline-size: 48px;
-  block-size: 24px;
+  inline-size: 3rem;
+  block-size: 1.5rem;
   padding: 0;
   background-color: var(--color-grey-300);
   border: var(--border-width-thick) solid var(--color-black);
@@ -30,17 +30,17 @@
 
 .thumb {
   position: absolute;
-  inset-block-start: 2px;
-  inset-inline-start: 2px;
-  inline-size: 16px;
-  block-size: 16px;
+  inset-block-start: 0.125rem;
+  inset-inline-start: 0.125rem;
+  inline-size: 1rem;
+  block-size: 1rem;
   background-color: var(--color-white);
   border: var(--border-width-thick) solid var(--color-black);
   transition: transform var(--transition-fast) var(--easing-standard);
 }
 
 .checked .thumb {
-  transform: translateX(24px);
+  transform: translateX(1.5rem);
 }
 
 .disabled {

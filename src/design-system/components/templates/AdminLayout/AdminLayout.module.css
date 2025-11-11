@@ -14,10 +14,10 @@
   position: fixed;
   inset-block-start: 0;
   inset-inline-start: 0;
-  width: 280px;
+  width: 17.5rem;
   height: 100vh;
   background-color: var(--color-bg-inverse);
-  color: var(--color-text-inverse);
+  color: var(--color-white);
   border-inline-end: var(--border-width-3) solid var(--color-border-inverse);
   padding: var(--space-6);
   overflow-y: auto;
@@ -113,7 +113,7 @@
 .main {
   flex: 1;
   padding: var(--space-6);
-  max-width: 1920px;
+  max-width: 120rem;
   width: 100%;
 }
 
@@ -121,7 +121,7 @@
    RESPONSIVE
    ======================================== */
 
-@media (min-width: 768px) {
+@media (min-width: 48rem) {
   .sidebar {
     position: static;
     transform: translateX(0);
@@ -136,9 +136,9 @@
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 64rem) {
   .sidebar {
-    width: 320px;
+    width: 20rem;
     padding: var(--space-8);
   }
   
@@ -155,9 +155,9 @@
   }
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 90rem) {
   .sidebar {
-    width: 360px;
+    width: 22.5rem;
   }
 }
 
@@ -182,7 +182,7 @@
   @keyframes fadeIn {
     from {
       opacity: 0;
-      transform: translateY(8px);
+      transform: translateY(0.5rem);
     }
     to {
       opacity: 1;
@@ -196,7 +196,7 @@
    ======================================== */
 
 .sidebar::-webkit-scrollbar {
-  width: 8px;
+  width: 0.5rem;
 }
 
 .sidebar::-webkit-scrollbar-track {
@@ -204,8 +204,8 @@
 }
 
 .sidebar::-webkit-scrollbar-thumb {
-  background: var(--color-text-inverse);
-  border: var(--border-width-2) solid var(--color-bg-inverse);
+  background: var(--color-text-primary);
+  border: var(--border-width-2) solid var(--color-bg-primary);
 }
 
 .sidebar::-webkit-scrollbar-thumb:hover {

@@ -118,7 +118,7 @@
   margin: 0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .ticketItem {
     flex-direction: column;
     align-items: flex-start;

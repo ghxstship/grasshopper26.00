@@ -41,8 +41,8 @@
 }
 
 .sm .canvas {
-  width: 128px;
-  height: 128px;
+  width: 8rem;
+  height: 8rem;
 }
 
 .md {
@@ -50,8 +50,8 @@
 }
 
 .md .canvas {
-  width: 192px;
-  height: 192px;
+  width: 12rem;
+  height: 12rem;
 }
 
 .lg {
@@ -59,8 +59,8 @@
 }
 
 .lg .canvas {
-  width: 256px;
-  height: 256px;
+  width: 16rem;
+  height: 16rem;
 }
 
 .xl {
@@ -68,8 +68,8 @@
 }
 
 .xl .canvas {
-  width: 320px;
-  height: 320px;
+  width: 20rem;
+  height: 20rem;
 }
 
 /* ========================================

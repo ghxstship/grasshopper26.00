@@ -2,7 +2,7 @@
 
 .container {
   padding: var(--space-6);
-  max-inline-size: 800px;
+  max-inline-size: 50rem;
   margin-inline: auto;
 }
 
@@ -57,7 +57,7 @@
 }
 
 .textarea {
-  min-block-size: 120px;
+  min-block-size: 7.5rem;
   resize: vertical;
 }
 

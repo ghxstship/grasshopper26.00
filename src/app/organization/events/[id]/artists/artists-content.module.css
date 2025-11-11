@@ -55,8 +55,8 @@
 }
 
 .artistImagePlaceholder {
-  inline-size: 64px;
-  block-size: 64px;
+  inline-size: 4rem;
+  block-size: 4rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -170,7 +170,7 @@
   margin-block-end: var(--spacing-md);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .artistContent {
     flex-direction: column;
     align-items: flex-start;

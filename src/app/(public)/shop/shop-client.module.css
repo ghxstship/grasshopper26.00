@@ -24,8 +24,8 @@
 }
 
 .emptyIcon {
-  width: 64px;
-  height: 64px;
+  width: 4rem;
+  height: 4rem;
   margin-inline: auto;
   margin-block-end: var(--space-4);
 }

@@ -179,15 +179,15 @@
   --font-family-meta: var(--font-share-mono);
   
   /* Font Sizes - Entertainment Platform Responsive Scale */
-  --font-size-hero: clamp(48px, 10vw, 120px);    /* ANTON - Main heroes */
-  --font-size-h1: clamp(36px, 8vw, 80px);        /* ANTON - Page titles */
-  --font-size-h2: clamp(28px, 5vw, 56px);        /* BEBAS NEUE - Section headers */
-  --font-size-h3: clamp(24px, 4vw, 40px);        /* BEBAS NEUE - Subsections */
-  --font-size-h4: clamp(20px, 3vw, 32px);        /* BEBAS NEUE - Categories */
-  --font-size-h5: clamp(18px, 2.5vw, 24px);      /* BEBAS NEUE - Labels */
-  --font-size-h6: clamp(16px, 2vw, 20px);        /* BEBAS NEUE - Small headers */
-  --font-size-body: clamp(15px, 1.5vw, 18px);    /* SHARE TECH - Body copy */
-  --font-size-meta: clamp(11px, 1.2vw, 14px);    /* SHARE TECH MONO - Metadata */
+  --font-size-hero: clamp(3rem, 10vw, 7.5rem);    /* ANTON - Main heroes */
+  --font-size-h1: clamp(2.25rem, 8vw, 5rem);      /* ANTON - Page titles */
+  --font-size-h2: clamp(1.75rem, 5vw, 3.5rem);    /* BEBAS NEUE - Section headers */
+  --font-size-h3: clamp(1.5rem, 4vw, 2.5rem);     /* BEBAS NEUE - Subsections */
+  --font-size-h4: clamp(1.25rem, 3vw, 2rem);      /* BEBAS NEUE - Categories */
+  --font-size-h5: clamp(1.125rem, 2.5vw, 1.5rem); /* BEBAS NEUE - Labels */
+  --font-size-h6: clamp(1rem, 2vw, 1.25rem);      /* BEBAS NEUE - Small headers */
+  --font-size-body: clamp(0.9375rem, 1.5vw, 1.125rem); /* SHARE TECH - Body copy */
+  --font-size-meta: clamp(0.6875rem, 1.2vw, 0.875rem); /* SHARE TECH MONO - Metadata */
   
   /* Standard Font Sizes (for components) */
   --font-size-xs: 0.75rem;      /* 12px */

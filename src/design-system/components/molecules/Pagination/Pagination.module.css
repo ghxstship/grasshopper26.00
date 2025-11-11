@@ -33,7 +33,7 @@
 }
 
 .button:hover:not(:disabled) {
-  background-color: var(--color-primary);
+  background-color: var(--color-black);
   transform: scale(1.05);
 }
 
@@ -48,7 +48,7 @@
 
 .button:focus-visible {
   outline: var(--border-width-2) solid var(--color-border-focus);
-  outline-offset: 2px;
+  outline-offset: 0.125rem;
 }
 
 .label {
@@ -64,7 +64,7 @@
 }
 
 .button:hover:not(:disabled) .label {
-  color: var(--color-text-inverse);
+  color: var(--color-white);
 }
 
 .arrow {
@@ -76,7 +76,7 @@
 }
 
 .button:hover:not(:disabled) .arrow {
-  color: var(--color-text-inverse);
+  color: var(--color-white);
 }
 
 /* ========================================
@@ -94,8 +94,8 @@
   align-items: center;
   justify-content: center;
   
-  min-width: 40px;
-  height: 40px;
+  min-width: 2.5rem;
+  height: 2.5rem;
   padding-inline: var(--space-2);
   
   border: var(--border-width-2) solid var(--color-border-default);
@@ -116,7 +116,7 @@
 .pageButton:hover {
   background-color: var(--color-bg-tertiary);
   border-color: var(--color-border-strong);
-  transform: translateY(-2px);
+  transform: translateY(-0.125rem);
 }
 
 .pageButton:active {
@@ -125,13 +125,13 @@
 
 .pageButton:focus-visible {
   outline: var(--border-width-2) solid var(--color-border-focus);
-  outline-offset: 2px;
+  outline-offset: 0.125rem;
 }
 
 .pageButton.active {
   border-color: var(--color-border-strong);
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
 }
 
 .dots {
@@ -145,7 +145,7 @@
    RESPONSIVE
    ======================================== */
 
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .pagination {
     gap: var(--space-2);
   }
@@ -159,8 +159,8 @@
   }
   
   .pageButton {
-    min-width: 36px;
-    height: 36px;
+    min-width: 2.25rem;
+    height: 2.25rem;
   }
 }
 
@@ -193,20 +193,35 @@
    DARK THEME
    ======================================== */
 
+.dark .label,
+.dark .arrow,
+[data-theme="dark"] .label,
+[data-theme="dark"] .arrow {
+  color: var(--color-white);
+}
+
 .dark .button:hover:not(:disabled),
 [data-theme="dark"] .button:hover:not(:disabled) {
-  background-color: var(--color-accent);
+  background-color: var(--color-white);
 }
 
 .dark .button:hover:not(:disabled) .label,
 .dark .button:hover:not(:disabled) .arrow,
 [data-theme="dark"] .button:hover:not(:disabled) .label,
 [data-theme="dark"] .button:hover:not(:disabled) .arrow {
-  color: var(--color-primary);
+  color: var(--color-black);
+}
+
+.dark .pageButton,
+[data-theme="dark"] .pageButton {
+  color: var(--color-white);
+  border-color: var(--color-grey-700);
+  background-color: var(--color-grey-900);
 }
 
 .dark .pageButton.active,
 [data-theme="dark"] .pageButton.active {
-  background-color: var(--color-accent);
-  color: var(--color-primary);
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border-color: var(--color-white);
 }

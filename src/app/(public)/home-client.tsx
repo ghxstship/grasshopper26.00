@@ -6,7 +6,7 @@ import { SiteHeader } from '@/design-system/components/organisms/layout/site-hea
 import { HeroSection } from '@/design-system/components/organisms/HeroSection/HeroSection';
 import { EventsGrid } from '@/design-system/components/organisms/EventsGrid/EventsGrid';
 import { Carousel } from '@/design-system/components/organisms/Carousel/Carousel';
-import { NewsletterSignup } from '@/design-system/components/organisms/NewsletterSignup/NewsletterSignup';
+import { NewsletterSignup } from '@/design-system/components/molecules/NewsletterSignup';
 import { EventCard } from '@/design-system/components/organisms/EventCard/EventCard';
 import { Typography } from '@/design-system/components/atoms/Typography/Typography';
 import { Button } from '@/design-system/components/atoms/Button/Button';
@@ -122,18 +122,7 @@ export function HomeClient({ featuredEvents, upcomingEvents }: { featuredEvents:
           </div>
         </div>
       }
-      newsletter={
-        <div className={styles.newsletterContainer}>
-          <h2 className={styles.newsletterTitle}>Stay in the Loop</h2>
-          <p className={styles.newsletterDescription}>
-            Get the latest event announcements, exclusive offers, and insider news
-          </p>
-          <NewsletterSignup
-            onSubmit={handleNewsletterSubmit}
-            variant="black"
-          />
-        </div>
-      }
+      newsletter={<NewsletterSignup />}
     />
   );
 }

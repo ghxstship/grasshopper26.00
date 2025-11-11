@@ -1,0 +1,68 @@
+/**
+ * Section Component Styles
+ * GHXSTSHIP Monochromatic Design System
+ */
+
+.section {
+  inline-size: 100%;
+}
+
+/* Background variants */
+.black {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.white {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+.grey-light {
+  background-color: var(--color-grey-100);
+  color: var(--color-black);
+}
+
+.grey-dark {
+  background-color: var(--color-grey-900);
+  color: var(--color-white);
+}
+
+/* Padding variants */
+.padding-none {
+  padding-block: 0;
+}
+
+.padding-sm {
+  padding-block: var(--spacing-8);
+}
+
+.padding-md {
+  padding-block: var(--spacing-12);
+}
+
+.padding-lg {
+  padding-block: var(--spacing-16);
+}
+
+.padding-xl {
+  padding-block: var(--spacing-24);
+}
+
+@media (min-width: 768px) {
+  .padding-sm {
+    padding-block: var(--spacing-12);
+  }
+
+  .padding-md {
+    padding-block: var(--spacing-16);
+  }
+
+  .padding-lg {
+    padding-block: var(--spacing-24);
+  }
+
+  .padding-xl {
+    padding-block: var(--spacing-32);
+  }
+}

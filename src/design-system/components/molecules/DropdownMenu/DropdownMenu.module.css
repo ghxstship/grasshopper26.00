@@ -14,7 +14,7 @@
 
 .trigger:focus-visible {
   outline: var(--border-width-2) solid var(--color-border-focus);
-  outline-offset: 2px;
+  outline-offset: 0.125rem;
 }
 
 /* ========================================
@@ -23,10 +23,10 @@
 
 .menu {
   position: absolute;
-  inset-block-start: calc(100% + 8px);
+  inset-block-start: calc(100% + 0.5rem);
   z-index: var(--z-dropdown);
   
-  min-width: 200px;
+  min-width: 12.5rem;
   
   border: var(--border-width-3) solid var(--color-border-strong);
   border-radius: var(--radius-none);
@@ -35,7 +35,7 @@
   
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-8px);
+  transform: translateY(-0.5rem);
   transition: all var(--duration-fast) var(--easing-out);
 }
 
@@ -89,7 +89,7 @@
 
 .item:focus-visible {
   outline: var(--border-width-2) solid var(--color-border-focus);
-  outline-offset: -2px;
+  outline-offset: -0.125rem;
 }
 
 .item.disabled {

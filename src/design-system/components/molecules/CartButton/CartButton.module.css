@@ -24,8 +24,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
   font-family: var(--font-family-share-tech-mono);
   font-size: var(--font-size-meta);
   font-weight: 700;
@@ -35,7 +35,7 @@
 }
 
 /* Responsive adjustments */
-@media (max-width: 767px) {
+@media (max-width: 47.9375rem) {
   .badge {
     min-inline-size: var(--space-4);
     block-size: var(--space-4);

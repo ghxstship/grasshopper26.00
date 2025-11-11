@@ -27,7 +27,7 @@
 
 .formFields {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
   gap: var(--spacing-md);
   margin-block-end: var(--spacing-md);
 }
@@ -54,7 +54,7 @@
 
 .stagesList {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(15.625rem, 1fr));
   gap: var(--spacing-md);
 }
 
@@ -132,7 +132,7 @@
   margin: 0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .formFields {
     grid-template-columns: 1fr;
   }

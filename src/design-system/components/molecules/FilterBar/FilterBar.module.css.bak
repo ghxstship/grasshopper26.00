@@ -1,0 +1,183 @@
+/**
+ * FilterBar Styles
+ * GHXSTSHIP Entertainment Platform
+ * Geometric filter buttons with thick borders
+ */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  width: 100%;
+}
+
+/* ========================================
+   LABEL
+   ======================================== */
+
+.label {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  line-height: var(--line-height-tight);
+  
+  color: var(--color-text-primary);
+}
+
+/* ========================================
+   FILTERS
+   ======================================== */
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.filter {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  
+  padding-inline: var(--space-4);
+  padding-block: var(--space-2);
+  
+  border: var(--border-width-2) solid var(--color-border-default);
+  border-radius: var(--radius-none)(--radius-none);
+  background-color: var(--color-bg-secondary);
+  
+  cursor: pointer;
+  user-select: none;
+  
+  transition: all var(--duration-fast) var(--easing-out);
+}
+
+.filter:hover {
+  background-color: var(--color-bg-tertiary);
+  border-color: var(--color-border-strong);
+  transform: translateY(-2px);
+}
+
+.filter:active {
+  transform: translateY(0);
+}
+
+.filter:focus-visible {
+  outline: var(--border-width-2) solid var(--color-border-focus);
+  outline-offset: 0.125rem;
+}
+
+.filter.selected {
+  border-color: var(--color-border-strong);
+  background-color: var(--color-black);
+}
+
+.filter.selected:hover {
+  background-color: var(--color-black);
+  border-color: var(--color-border-strong);
+}
+
+/* ========================================
+   FILTER LABEL
+   ======================================== */
+
+.filterLabel {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  line-height: var(--line-height-tight);
+  
+  color: var(--color-text-primary);
+  
+  transition: color var(--duration-fast) var(--easing-out);
+}
+
+.filter.selected .filterLabel {
+  color: var(--color-white);
+}
+
+/* ========================================
+   COUNT
+   ======================================== */
+
+.count {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-meta);
+  
+  padding-inline: var(--space-2);
+  padding-block: var(--space-1);
+  
+  border: var(--border-width-2) solid var(--color-border-strong);
+  border-radius: var(--radius-none)(--radius-none);
+  background-color: var(--color-bg-primary);
+  
+  color: var(--color-text-secondary);
+  
+  transition: all var(--duration-fast) var(--easing-out);
+}
+
+.filter.selected .count {
+  background-color: var(--color-bg-tertiary);
+  color: var(--color-text-tertiary);
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .filter,
+  .filterLabel,
+  .count {
+    transition: none;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .filter {
+    border-width: var(--border-width-3);
+  }
+  
+  .count {
+    border-width: var(--border-width-3);
+  }
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 48rem) {
+  .filters {
+    gap: var(--space-2);
+  }
+  
+  .filter {
+    padding-inline: var(--space-3);
+    padding-block: var(--space-1-5);
+  }
+  
+  .filterLabel {
+    font-size: var(--font-size-xs);
+  }
+}
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+.dark .filter.selected,
+[data-theme="dark"] .filter.selected {
+  background-color: var(--color-accent);
+}
+
+.dark .filter.selected .filterLabel,
+[data-theme="dark"] .filter.selected .filterLabel {
+  color: var(--color-primary);
+}

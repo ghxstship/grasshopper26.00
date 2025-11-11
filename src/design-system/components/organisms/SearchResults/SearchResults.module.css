@@ -62,7 +62,7 @@
 
 .item:hover {
   border-color: var(--color-border-strong);
-  box-shadow: 4px 4px 0 var(--color-primary);
+  box-shadow: 0.25rem 0.25rem 0 var(--color-primary);
 }
 
 .thumbnail {

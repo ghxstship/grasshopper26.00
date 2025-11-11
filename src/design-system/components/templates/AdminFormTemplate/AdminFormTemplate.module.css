@@ -10,7 +10,7 @@
 }
 
 .sidebar {
-  inline-size: 250px;
+  inline-size: 15.625rem;
   background-color: var(--color-bg-secondary);
   border-inline-end: var(--border-width-default) solid var(--color-border-default);
   position: sticky;
@@ -88,8 +88,8 @@
 }
 
 .toggleInput {
-  inline-size: 44px;
-  block-size: 24px;
+  inline-size: 2.75rem;
+  block-size: 1.5rem;
 }
 
 .toggleText {
@@ -100,8 +100,8 @@
 
 .primaryButton {
   padding: var(--space-3) var(--space-6);
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
   border: var(--border-width-default) solid var(--color-border-strong);
   font-family: var(--font-heading);
   font-size: var(--font-size-base);
@@ -161,7 +161,7 @@
 .formContent {
   flex: 1;
   padding: var(--space-6);
-  max-inline-size: 1200px;
+  max-inline-size: 75rem;
   margin-inline: auto;
   inline-size: 100%;
 }
@@ -176,8 +176,8 @@
 }
 
 .spinner {
-  inline-size: 40px;
-  block-size: 40px;
+  inline-size: 2.5rem;
+  block-size: 2.5rem;
   border: var(--border-width-thick) solid var(--color-border-default);
   border-block-start-color: var(--color-primary);
   border-radius: var(--radius-none);
@@ -219,7 +219,7 @@
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .sidebar {
     display: none;
   }

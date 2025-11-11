@@ -1,6 +1,6 @@
 .section{display:flex;flex-direction:column;gap:var(--space-6);padding:var(--space-8)}
 .title{font-family:var(--font-anton);font-size:var(--font-size-3xl);text-transform:uppercase}
-.grid{display:grid;gap:var(--space-4);grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.grid{display:grid;gap:var(--space-4);grid-template-columns:repeat(auto-fit,minmax(12.5rem,1fr))}
 .label{font-family:var(--font-bebas);text-transform:uppercase}
 .formLabel{display:block;margin-block-end:var(--space-2);font-family:var(--font-bebas);text-transform:uppercase}
 .row{display:flex;align-items:center;gap:var(--space-2)}

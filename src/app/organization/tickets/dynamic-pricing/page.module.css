@@ -2,7 +2,7 @@
 
 .container {
   padding: var(--space-6);
-  max-inline-size: 1400px;
+  max-inline-size: 87.5rem;
   margin-inline: auto;
 }
 
@@ -35,7 +35,7 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(21.875rem, 1fr));
   gap: var(--space-4);
 }
 

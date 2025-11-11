@@ -27,7 +27,7 @@
 
 .infoGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
   gap: var(--spacing-lg);
   padding-block: var(--spacing-lg);
   padding-inline: var(--spacing-lg);
@@ -78,7 +78,7 @@
 .contactGrid,
 .capacityGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(15.625rem, 1fr));
   gap: var(--spacing-md);
 }
 
@@ -102,7 +102,7 @@
 
 .amenitiesList {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
   gap: var(--spacing-md);
 }
 
@@ -115,7 +115,7 @@
   border: var(--border-width-default) solid var(--color-border);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .container {
     padding-block: var(--spacing-lg);
     padding-inline: var(--spacing-md);

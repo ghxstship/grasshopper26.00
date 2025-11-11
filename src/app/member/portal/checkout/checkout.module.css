@@ -10,7 +10,7 @@
 }
 
 .stepContent {
-  min-height: 400px;
+  min-height: 25rem;
   padding: var(--space-6);
   border: var(--border-width-3) solid var(--color-border-default);
 }

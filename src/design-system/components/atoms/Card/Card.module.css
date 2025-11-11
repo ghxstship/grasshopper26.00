@@ -40,7 +40,7 @@
 }
 
 .interactive:hover {
-  background-color: var(--color-primary);
+  background-color: var(--color-black);
   border-color: var(--color-accent);
   transform: scale(1.02);
   box-shadow: var(--shadow-lg);
@@ -54,7 +54,7 @@
 .hoverable:hover {
   border-color: var(--color-border-strong);
   box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
+  transform: translateY(-0.125rem);
 }
 
 /* ========================================

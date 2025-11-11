@@ -88,7 +88,7 @@
   margin: 0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .container {
     padding-block: var(--spacing-lg);
     padding-inline: var(--spacing-md);

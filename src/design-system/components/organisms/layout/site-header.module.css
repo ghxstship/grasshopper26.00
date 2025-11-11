@@ -17,7 +17,7 @@
 }
 
 .header.scrolled {
-  box-shadow: 8px 8px 0 var(--color-primary);
+  box-shadow: 0.5rem 0.5rem 0 var(--color-primary);
 }
 
 .container {
@@ -52,7 +52,7 @@
   align-items: center;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 48rem) {
   .nav {
     display: flex;
   }
@@ -80,7 +80,7 @@
   inset-inline-start: 0;
   inline-size: 0;
   block-size: var(--border-width-3);
-  background-color: var(--color-primary);
+  background-color: var(--color-black);
   transition: inline-size var(--duration-normal) var(--easing-out);
 }
 
@@ -90,12 +90,13 @@
 }
 
 .navLink:hover {
-  color: var(--color-text-inverse);
-  background-color: var(--color-primary);
+  color: var(--color-white);
+  background-color: var(--color-black);
 }
 
 .navLink.active {
-  color: var(--color-primary);
+  color: var(--color-white);
+  background-color: var(--color-black);
   font-weight: 700;
 }
 
@@ -118,8 +119,8 @@
 }
 
 .ctaButton:hover {
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
   transform: scale(1.05);
 }
 
@@ -138,7 +139,7 @@
   z-index: 1001;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 48rem) {
   .mobileMenuButton {
     display: none;
   }
@@ -147,7 +148,7 @@
 .hamburgerLine {
   inline-size: var(--space-8);
   block-size: var(--border-width-3);
-  background-color: var(--color-primary);
+  background-color: var(--color-black);
   transition: transform var(--duration-normal) var(--easing-out),
               opacity var(--duration-normal) var(--easing-out);
 }
@@ -170,7 +171,7 @@
   inset-inline-start: 0;
   inline-size: 100%;
   block-size: calc(100vh - var(--space-16));
-  background-color: var(--color-primary);
+  background-color: var(--color-black);
   z-index: 999;
   animation: slideIn var(--duration-normal) var(--easing-out);
 }
@@ -200,7 +201,7 @@
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.02em;
-  color: var(--color-text-inverse);
+  color: var(--color-white);
   text-decoration: none;
   padding-block: var(--space-4);
   padding-inline: var(--space-6);
@@ -231,7 +232,7 @@
   margin-block-start: var(--space-8);
   border: var(--border-width-3) solid var(--color-border-accent);
   background-color: transparent;
-  color: var(--color-text-inverse);
+  color: var(--color-white);
   text-decoration: none;
   display: inline-block;
   transition: background-color var(--duration-fast) var(--easing-out),
@@ -256,7 +257,7 @@
   align-items: center;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 48rem) {
   .actions {
     display: flex;
   }
@@ -283,7 +284,7 @@
   padding-inline: var(--space-8);
   border: var(--border-width-3) solid var(--color-border-accent);
   background-color: transparent;
-  color: var(--color-text-inverse);
+  color: var(--color-white);
   cursor: pointer;
   transition: background-color var(--duration-fast) var(--easing-out),
               color var(--duration-fast) var(--easing-out),
@@ -298,4 +299,53 @@
 
 .mobileSignOut:active {
   transform: scale(0.98);
+}
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+.dark .header,
+[data-theme="dark"] .header {
+  background-color: var(--color-black);
+  border-block-end-color: var(--color-white);
+}
+
+.dark .logo,
+[data-theme="dark"] .logo {
+  color: var(--color-white);
+}
+
+.dark .navLink,
+[data-theme="dark"] .navLink {
+  color: var(--color-white);
+}
+
+.dark .navLink:hover,
+[data-theme="dark"] .navLink:hover {
+  color: var(--color-black);
+  background-color: var(--color-white);
+}
+
+.dark .navLink.active,
+[data-theme="dark"] .navLink.active {
+  color: var(--color-black);
+  background-color: var(--color-white);
+}
+
+.dark .ctaButton,
+[data-theme="dark"] .ctaButton {
+  color: var(--color-white);
+  border-color: var(--color-white);
+}
+
+.dark .ctaButton:hover,
+[data-theme="dark"] .ctaButton:hover {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+.dark .hamburgerLine,
+[data-theme="dark"] .hamburgerLine {
+  background-color: var(--color-white);
 }

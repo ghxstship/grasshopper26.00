@@ -17,13 +17,14 @@
 }
 
 .heroSubtitle {
-  max-inline-size: 600px;
+  max-inline-size: 37.5rem;
   margin-inline: auto;
   color: var(--color-text-secondary);
 }
 
 /* Billing Toggle */
 .billingToggle {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -47,6 +48,10 @@
 }
 
 .savingsBadge {
+  position: absolute;
+  inset-inline-start: 50%;
+  inset-block-start: 50%;
+  transform: translate(calc(var(--space-3) * 2 + 3rem + var(--space-3) * 2), -50%);
   padding-block: var(--space-1);
   padding-inline: var(--space-2);
   background: var(--color-bg-primary);
@@ -56,16 +61,17 @@
   font-weight: var(--font-weight-bold);
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-wide);
+  white-space: nowrap;
 }
 
 /* Tiers Grid */
 .tiersGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   gap: var(--space-6);
   padding-block: var(--space-8);
   padding-inline: var(--space-6);
-  max-inline-size: var(--container-max-width, 1400px);
+  max-inline-size: var(--container-max-width, 87.5rem);
   margin-inline: auto;
 }
 
@@ -79,7 +85,7 @@
 .benefitsSection {
   padding-block: var(--space-12);
   padding-inline: var(--space-6);
-  max-inline-size: var(--container-max-width, 1400px);
+  max-inline-size: var(--container-max-width, 87.5rem);
   margin-inline: auto;
   background: var(--color-bg-secondary);
 }
@@ -91,7 +97,7 @@
 
 .benefitsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr));
   gap: var(--space-4);
 }
 
@@ -107,8 +113,8 @@
 
 .benefitIcon {
   flex-shrink: 0;
-  inline-size: 24px;
-  block-size: 24px;
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
   margin-block-start: var(--space-1);
 }
 
@@ -116,7 +122,7 @@
 .faqSection {
   padding-block: var(--space-12);
   padding-inline: var(--space-6);
-  max-inline-size: 800px;
+  max-inline-size: 50rem;
   margin-inline: auto;
 }
 
@@ -124,7 +130,7 @@
 .discountsSection {
   padding-block: var(--space-12);
   padding-inline: var(--space-6);
-  max-inline-size: var(--container-max-width, 1400px);
+  max-inline-size: var(--container-max-width, 87.5rem);
   margin-inline: auto;
   background: var(--color-bg-primary);
   border-block-start: var(--border-width-default) solid var(--color-border);
@@ -132,7 +138,7 @@
 
 .discountsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
   gap: var(--space-4);
   margin-block-start: var(--space-6);
 }
@@ -170,7 +176,7 @@
 .corporateSection {
   padding-block: var(--space-12);
   padding-inline: var(--space-6);
-  max-inline-size: 800px;
+  max-inline-size: 50rem;
   margin-inline: auto;
   text-align: center;
   background: var(--color-bg-secondary);
@@ -190,7 +196,7 @@
 .industrySection {
   padding-block: var(--space-12);
   padding-inline: var(--space-6);
-  max-inline-size: 800px;
+  max-inline-size: 50rem;
   margin-inline: auto;
   text-align: center;
   background: var(--color-bg-primary);
@@ -225,7 +231,7 @@
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .hero {
     padding-block: var(--space-12);
     padding-inline: var(--space-4);

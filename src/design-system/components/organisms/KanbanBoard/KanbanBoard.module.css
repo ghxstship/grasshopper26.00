@@ -8,15 +8,15 @@
   gap: var(--spacing-4);
   padding: var(--spacing-4);
   overflow-x: auto;
-  min-block-size: 600px;
+  min-block-size: 37.5rem;
 }
 
 .column {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-3);
-  min-inline-size: 320px;
-  max-inline-size: 320px;
+  min-inline-size: 20rem;
+  max-inline-size: 20rem;
   padding: var(--spacing-4);
   border: var(--border-width-thick) solid var(--color-black);
   background-color: var(--color-grey-100);
@@ -50,8 +50,8 @@
 }
 
 .addCardButton {
-  inline-size: 32px;
-  block-size: 32px;
+  inline-size: 2rem;
+  block-size: 2rem;
   font-family: var(--font-bebas);
   font-size: var(--font-size-h4);
   background-color: var(--color-black);
@@ -85,8 +85,8 @@
 }
 
 .card:hover {
-  transform: translateY(-2px);
-  box-shadow: 4px 4px 0 0 var(--color-black);
+  transform: translateY(-0.125rem);
+  box-shadow: 0.25rem 0.25rem 0 0 var(--color-black);
 }
 
 .card:active {
@@ -114,7 +114,7 @@
   font-family: var(--font-bebas);
   font-size: var(--font-size-meta);
   text-transform: uppercase;
-  border: 1px solid var(--color-black);
+  border: var(--space-px) solid var(--color-black);
 }
 
 .priority.low {
@@ -155,7 +155,7 @@
   font-size: var(--font-size-meta);
   text-transform: uppercase;
   background-color: var(--color-grey-200);
-  border: 1px solid var(--color-grey-400);
+  border: var(--space-px) solid var(--color-grey-400);
 }
 
 .cardFooter {
@@ -163,7 +163,7 @@
   justify-content: space-between;
   align-items: center;
   padding-block-start: var(--spacing-2);
-  border-block-start: 1px solid var(--color-grey-300);
+  border-block-start: var(--space-px) solid var(--color-grey-300);
 }
 
 .assignee {

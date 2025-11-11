@@ -10,7 +10,7 @@
 }
 
 .sidebar {
-  inline-size: 250px;
+  inline-size: 15.625rem;
   background-color: var(--color-bg-secondary);
   border-inline-end: var(--border-width-default) solid var(--color-border-default);
   position: sticky;
@@ -77,8 +77,8 @@
   align-items: center;
   gap: var(--space-2);
   padding: var(--space-3) var(--space-6);
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
   border: var(--border-width-default) solid var(--color-border-strong);
   font-family: var(--font-heading);
   font-size: var(--font-size-base);
@@ -95,7 +95,7 @@
 /* Stats Grid */
 .statsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(15.625rem, 1fr));
   gap: var(--space-4);
   padding: var(--space-6);
 }
@@ -122,8 +122,8 @@
 }
 
 .statIcon {
-  inline-size: 20px;
-  block-size: 20px;
+  inline-size: 1.25rem;
+  block-size: 1.25rem;
   color: var(--color-text-tertiary);
 }
 
@@ -154,7 +154,7 @@
 
 .searchContainer {
   flex: 1;
-  max-inline-size: 400px;
+  max-inline-size: 25rem;
 }
 
 .searchInput {
@@ -195,8 +195,8 @@
 }
 
 .spinner {
-  inline-size: 40px;
-  block-size: 40px;
+  inline-size: 2.5rem;
+  block-size: 2.5rem;
   border: var(--border-width-thick) solid var(--color-border-default);
   border-block-start-color: var(--color-primary);
   border-radius: var(--radius-none);
@@ -220,8 +220,8 @@
 }
 
 .emptyIcon {
-  inline-size: 64px;
-  block-size: 64px;
+  inline-size: 4rem;
+  block-size: 4rem;
   margin-block-end: var(--space-4);
   color: var(--color-text-tertiary);
 }
@@ -238,13 +238,13 @@
   font-size: var(--font-size-base);
   color: var(--color-text-secondary);
   margin: 0 0 var(--space-6) 0;
-  max-inline-size: 400px;
+  max-inline-size: 25rem;
 }
 
 .emptyButton {
   padding: var(--space-3) var(--space-6);
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
   border: var(--border-width-default) solid var(--color-border-strong);
   font-family: var(--font-heading);
   font-size: var(--font-size-base);
@@ -266,7 +266,7 @@
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .sidebar {
     display: none;
   }

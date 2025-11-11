@@ -40,8 +40,8 @@
 }
 
 .statusIndicator {
-  inline-size: 12px;
-  block-size: 12px;
+  inline-size: 0.75rem;
+  block-size: 0.75rem;
   border: var(--border-width-thick) solid var(--color-black);
 }
 

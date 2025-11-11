@@ -10,13 +10,13 @@
 }
 
 .heroContainer {
-  max-width: 1280px;
+  max-width: 80rem;
   margin-inline: auto;
   padding-inline: var(--space-4);
   padding-block: var(--space-12);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 48rem) {
   .heroContainer {
     padding-block: var(--space-20);
   }
@@ -28,13 +28,13 @@
   grid-template-columns: 1fr;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 48rem) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 64rem) {
   .grid {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -44,7 +44,7 @@
   aspect-ratio: 1;
   position: relative;
   border: var(--border-width-3) solid var(--color-black);
-  box-shadow: 8px 8px 0 0 var(--color-black);
+  box-shadow: 0.5rem 0.5rem 0 0 var(--color-black);
 }
 
 .artistImageCover {
@@ -148,7 +148,7 @@
 }
 
 .content {
-  max-width: 1280px;
+  max-width: 80rem;
   margin-inline: auto;
   padding-inline: var(--space-4);
 }
@@ -165,7 +165,7 @@
 .eventCard {
   border: var(--border-width-3) solid var(--color-black);
   background-color: var(--color-white);
-  box-shadow: 8px 8px 0 0 var(--color-black);
+  box-shadow: 0.5rem 0.5rem 0 0 var(--color-black);
   transition: background-color var(--duration-fast) var(--easing-out), color var(--duration-fast) var(--easing-out);
 }
 

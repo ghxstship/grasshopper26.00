@@ -232,7 +232,7 @@
   font-family: var(--font-bebas);
   font-size: var(--font-size-meta);
   text-transform: uppercase;
-  border: 1px solid var(--color-black);
+  border: var(--space-px) solid var(--color-black);
   text-align: center;
 }
 
@@ -246,7 +246,7 @@
   gap: var(--spacing-2);
   margin-block-start: var(--spacing-3);
   padding-block-start: var(--spacing-3);
-  border-block-start: 1px solid var(--color-grey-300);
+  border-block-start: var(--space-px) solid var(--color-grey-300);
 }
 
 .itemActions button {

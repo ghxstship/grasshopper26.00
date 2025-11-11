@@ -8,13 +8,13 @@
   margin-inline: auto;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 48rem) {
   .container {
     padding-inline: var(--space-6);
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 64rem) {
   .container {
     padding-inline: var(--space-8);
   }

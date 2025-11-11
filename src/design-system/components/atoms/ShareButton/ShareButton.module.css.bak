@@ -1,0 +1,143 @@
+/**
+ * ShareButton Styles
+ * GHXSTSHIP Entertainment Platform
+ * Social share button
+ */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-normal);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  
+  background-color: transparent;
+  color: var(--color-text-primary);
+  
+  border: var(--border-width-2) solid var(--color-border-strong);
+  border-radius: var(--radius-none);
+  
+  cursor: pointer;
+  
+  transition: all var(--duration-fast) var(--easing-out);
+}
+
+.button:hover {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+  transform: scale(1.05);
+}
+
+.button:focus-visible {
+  outline: var(--border-width-2) solid var(--color-border-focus);
+  outline-offset: 0.125rem;
+}
+
+.button:active {
+  transform: scale(0.98);
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.label {
+  display: inline-block;
+}
+
+.sm {
+  padding-inline: var(--space-2);
+  padding-block: var(--space-1);
+  font-size: var(--font-size-xs);
+}
+
+.sm .icon {
+  width: 16px;
+  height: 16px;
+}
+
+.md {
+  padding-inline: var(--space-3);
+  padding-block: var(--space-2);
+  font-size: var(--font-size-sm);
+}
+
+.md .icon {
+  width: 20px;
+  height: 20px;
+}
+
+.lg {
+  padding-inline: var(--space-4);
+  padding-block: var(--space-3);
+  font-size: var(--font-size-base);
+}
+
+.lg .icon {
+  width: 24px;
+  height: 24px;
+}
+
+.icon-only {
+  padding: var(--space-2);
+  aspect-ratio: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+  
+  .button:hover,
+  .button:active {
+    transform: none;
+  }
+}
+
+.dark .button,
+[data-theme="dark"] .button {
+  border-color: var(--color-border-strong);
+}
+
+.dark .button:hover,
+[data-theme="dark"] .button:hover {
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+  border-color: var(--color-accent);
+}
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+.dark .filled,
+[data-theme="dark"] .filled {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border-color: var(--color-white);
+}
+
+.dark .outlined,
+[data-theme="dark"] .outlined {
+  color: var(--color-white);
+  border-color: var(--color-white);
+}
+
+.dark .outlined:hover,
+[data-theme="dark"] .outlined:hover {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+.dark .active,
+[data-theme="dark"] .active {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}

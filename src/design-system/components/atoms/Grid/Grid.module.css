@@ -21,7 +21,7 @@
 .cols-mobile-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .cols-mobile-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 
-@media (min-width: 768px) {
+@media (min-width: 48rem) {
   .cols-tablet-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
   .cols-tablet-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .cols-tablet-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -29,7 +29,7 @@
   .cols-tablet-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 64rem) {
   .cols-desktop-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
   .cols-desktop-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .cols-desktop-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }

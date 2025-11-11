@@ -1,0 +1,197 @@
+/**
+ * CheckInSystem Styles
+ * GHXSTSHIP Monochromatic Design System
+ */
+
+.system {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+  padding: var(--spacing-6);
+  border: var(--border-width-thick) solid var(--color-black);
+  background-color: var(--color-white);
+}
+
+.header {
+  padding-block-end: var(--spacing-4);
+  border-block-end: var(--border-width-thick) solid var(--color-black);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-anton);
+  font-size: var(--font-size-h2);
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-4);
+}
+
+.statCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  padding: var(--spacing-4);
+  border: var(--border-width-thick) solid var(--color-black);
+}
+
+.statLabel {
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-h6);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.statValue {
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-h2);
+  font-weight: 700;
+}
+
+.progress {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.progressBar {
+  block-size: 24px;
+  background-color: var(--color-grey-200);
+  border: var(--border-width-thick) solid var(--color-black);
+  overflow: hidden;
+}
+
+.progressFill {
+  block-size: 100%;
+  background-color: var(--color-black);
+  transition: width var(--transition-standard) var(--easing-standard);
+}
+
+.progressLabel {
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-h5);
+  font-weight: 700;
+  text-align: center;
+}
+
+.scanner {
+  display: flex;
+  gap: var(--spacing-3);
+  padding: var(--spacing-6);
+  border: var(--border-width-thick) solid var(--color-black);
+  background-color: var(--color-grey-100);
+}
+
+.scanForm {
+  display: flex;
+  gap: var(--spacing-3);
+  flex: 1;
+}
+
+.scanInput {
+  flex: 1;
+  padding: var(--spacing-3) var(--spacing-4);
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-h5);
+  background-color: var(--color-white);
+  border: var(--border-width-thick) solid var(--color-black);
+}
+
+.scanInput:focus {
+  outline: none;
+  box-shadow: 0 0 0 var(--border-width-thick) var(--color-black);
+}
+
+.scanButton {
+  padding: var(--spacing-3) var(--spacing-6);
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-h4);
+  text-transform: uppercase;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border: none;
+  cursor: pointer;
+  transition: transform var(--transition-fast) var(--easing-standard);
+}
+
+.scanButton:hover {
+  transform: scale(1.05);
+}
+
+.manualButton {
+  padding: var(--spacing-3) var(--spacing-4);
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-h5);
+  text-transform: uppercase;
+  background-color: var(--color-white);
+  border: var(--border-width-thick) solid var(--color-black);
+  cursor: pointer;
+  transition: all var(--transition-fast) var(--easing-standard);
+}
+
+.manualButton:hover {
+  background-color: var(--color-grey-200);
+}
+
+.recent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.recentTitle {
+  margin: 0;
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-h4);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.recentList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.recentItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-3);
+  border: 1px solid var(--color-grey-300);
+  background-color: var(--color-grey-50);
+}
+
+.recentInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.recentName {
+  font-family: var(--font-share);
+  font-size: var(--font-size-body);
+  font-weight: 700;
+}
+
+.recentTicket {
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-meta);
+}
+
+.recentTier {
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-meta);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.recentTime {
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-body);
+  font-weight: 700;
+}

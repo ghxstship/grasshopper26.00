@@ -43,8 +43,8 @@
   background-image: 
     radial-gradient(circle, var(--color-black) 20%, transparent 20%),
     radial-gradient(circle, var(--color-black) 20%, transparent 20%);
-  background-size: 8px 8px;
-  background-position: 0 0, 4px 4px;
+  background-size: 0.5rem 0.5rem;
+  background-position: 0 0, 0.25rem 0.25rem;
   
   opacity: 0.2;
   pointer-events: none;
@@ -71,23 +71,23 @@
 .shape1 {
   inset-block-start: 10%;
   inset-inline-start: 5%;
-  inline-size: 200px;
-  block-size: 200px;
+  inline-size: 12.5rem;
+  block-size: 12.5rem;
   transform: rotate(45deg);
 }
 
 .shape2 {
   inset-block-end: 15%;
   inset-inline-end: 10%;
-  inline-size: 150px;
-  block-size: 150px;
+  inline-size: 9.375rem;
+  block-size: 9.375rem;
 }
 
 .shape3 {
   inset-block-start: 50%;
   inset-inline-end: 20%;
-  inline-size: 100px;
-  block-size: 100px;
+  inline-size: 6.25rem;
+  block-size: 6.25rem;
   transform: rotate(30deg);
 }
 
@@ -108,13 +108,13 @@
   padding-block: var(--space-12);
   
   text-align: center;
-  max-inline-size: 1400px;
+  max-inline-size: 87.5rem;
   margin-inline: auto;
 }
 
 .title {
   font-family: var(--font-anton);
-  font-size: clamp(48px, 10vw, 120px);
+  font-size: clamp(3rem, 10vw, 7.5rem);
   font-weight: var(--font-weight-normal);
   line-height: 0.9;
   letter-spacing: var(--letter-spacing-tight);
@@ -125,13 +125,13 @@
   margin: 0;
   
   text-shadow: 
-    4px 4px 0 var(--color-bg-primary),
-    8px 8px 0 var(--color-border-strong);
+    0.25rem 0.25rem 0 var(--color-bg-primary),
+    0.5rem 0.5rem 0 var(--color-border-strong);
 }
 
 .tagline {
   font-family: var(--font-bebas);
-  font-size: clamp(24px, 4vw, 48px);
+  font-size: clamp(1.5rem, 4vw, 3rem);
   font-weight: var(--font-weight-normal);
   line-height: 1.2;
   letter-spacing: var(--letter-spacing-wide);
@@ -140,7 +140,7 @@
   color: var(--color-text-secondary);
   
   margin: 0;
-  max-inline-size: 800px;
+  max-inline-size: 50rem;
 }
 
 /* ========================================
@@ -166,8 +166,8 @@
   text-transform: uppercase;
   text-decoration: none;
   
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
   
   border: var(--border-width-3) solid var(--color-border-strong);
   border-radius: var(--radius-none)(--radius-none);
@@ -177,7 +177,7 @@
   cursor: pointer;
   transition: all var(--duration-base) var(--easing-out);
   
-  min-block-size: 64px;
+  min-block-size: 4rem;
 }
 
 .cta:hover {
@@ -194,7 +194,7 @@
 
 .cta:focus-visible {
   outline: var(--border-width-2) solid var(--color-border-focus);
-  outline-offset: 4px;
+  outline-offset: 0.25rem;
 }
 
 .ctaText {
@@ -208,7 +208,7 @@
 }
 
 .cta:hover .ctaArrow {
-  transform: translateX(4px);
+  transform: translateX(0.25rem);
 }
 
 /* ========================================
@@ -233,8 +233,8 @@
   font-size: var(--font-size-2xl);
   color: var(--color-text-primary);
   
-  inline-size: 48px;
-  block-size: 48px;
+  inline-size: 3rem;
+  block-size: 3rem;
   
   display: flex;
   align-items: center;
@@ -249,7 +249,7 @@
     transform: translateX(-50%) translateY(0);
   }
   50% {
-    transform: translateX(-50%) translateY(10px);
+    transform: translateX(-50%) translateY(0.625rem);
   }
 }
 
@@ -264,8 +264,8 @@
 .white .title {
   color: var(--color-text-primary);
   text-shadow: 
-    4px 4px 0 var(--color-bg-secondary),
-    8px 8px 0 var(--color-border-strong);
+    0.25rem 0.25rem 0 var(--color-bg-secondary),
+    0.5rem 0.5rem 0 var(--color-border-strong);
 }
 
 .black {
@@ -273,10 +273,10 @@
 }
 
 .black .title {
-  color: var(--color-text-inverse);
+  color: var(--color-white);
   text-shadow: 
-    4px 4px 0 var(--color-bg-tertiary),
-    8px 8px 0 var(--color-border-accent);
+    0.25rem 0.25rem 0 var(--color-bg-tertiary),
+    0.5rem 0.5rem 0 var(--color-border-accent);
 }
 
 .black .tagline {
@@ -296,7 +296,7 @@
 }
 
 .black .scrollArrow {
-  color: var(--color-text-inverse);
+  color: var(--color-white);
   border-color: var(--color-border-accent);
   background-color: var(--color-bg-tertiary);
 }
@@ -305,7 +305,7 @@
    RESPONSIVE
    ======================================== */
 
-@media (max-width: 767px) {
+@media (max-width: 47.9375rem) {
   .content {
     padding-inline: var(--space-4);
     gap: var(--space-6);
@@ -323,7 +323,7 @@
     padding-inline: var(--space-8);
     padding-block: var(--space-4);
     font-size: var(--font-size-xl);
-    min-block-size: 56px;
+    min-block-size: 3.5rem;
   }
   
   .shape1,

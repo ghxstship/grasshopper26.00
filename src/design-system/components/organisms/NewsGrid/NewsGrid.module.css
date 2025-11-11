@@ -22,7 +22,7 @@
 }
 
 .featuredCard {
-  min-height: 400px;
+  min-height: 25rem;
 }
 
 /* ========================================
@@ -31,7 +31,7 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
   gap: var(--space-8);
   width: 100%;
 }
@@ -76,14 +76,14 @@
    RESPONSIVE
    ======================================== */
 
-@media (max-width: 1024px) {
+@media (max-width: 64rem) {
   .grid {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(17.5rem, 1fr));
     gap: var(--space-6);
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .container {
     gap: var(--space-8);
   }
@@ -93,7 +93,7 @@
   }
   
   .featuredCard {
-    min-height: 300px;
+    min-height: 18.75rem;
   }
   
   .grid {

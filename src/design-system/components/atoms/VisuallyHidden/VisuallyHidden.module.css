@@ -5,10 +5,10 @@
 
 .visuallyHidden {
   position: absolute;
-  inline-size: 1px;
-  block-size: 1px;
+  inline-size: var(--space-px);
+  block-size: var(--space-px);
   padding: 0;
-  margin: -1px;
+  margin: -var(--space-px);
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;

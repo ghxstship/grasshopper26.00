@@ -1,0 +1,119 @@
+/**
+ * TransactionRow Styles
+ * GHXSTSHIP Monochromatic Design System
+ */
+
+.row {
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr 1fr 2fr;
+  gap: var(--spacing-4);
+  align-items: center;
+  padding: var(--spacing-3) var(--spacing-4);
+  border-block-end: 1px solid var(--color-grey-300);
+  transition: background-color var(--transition-fast) var(--easing-standard);
+}
+
+.row.clickable {
+  cursor: pointer;
+}
+
+.row.clickable:hover {
+  background-color: var(--color-grey-100);
+}
+
+.id {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.number {
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-body);
+  font-weight: 700;
+}
+
+.type {
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-meta);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.customer {
+  font-family: var(--font-share);
+  font-size: var(--font-size-body);
+}
+
+.amount {
+  text-align: end;
+}
+
+.value {
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-body);
+  font-weight: 700;
+  padding: var(--spacing-1) var(--spacing-2);
+}
+
+.value.positive {
+  background-color: var(--color-grey-200);
+}
+
+.value.negative {
+  background-color: var(--color-grey-900);
+  color: var(--color-white);
+}
+
+.status {
+  display: flex;
+  justify-content: center;
+}
+
+.statusBadge {
+  padding: var(--spacing-1) var(--spacing-2);
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-meta);
+  text-transform: uppercase;
+  border: 1px solid var(--color-black);
+}
+
+.statusBadge.pending {
+  background-color: var(--color-grey-200);
+}
+
+.statusBadge.processing {
+  background-color: var(--color-grey-300);
+}
+
+.statusBadge.completed {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.statusBadge.failed {
+  background-color: var(--color-grey-900);
+  color: var(--color-white);
+}
+
+.statusBadge.refunded {
+  background-color: var(--color-grey-500);
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.date {
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-meta);
+}
+
+.payment {
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-meta);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+}

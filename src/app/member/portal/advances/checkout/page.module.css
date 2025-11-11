@@ -12,7 +12,7 @@
 }
 
 .headerContent {
-  max-width: 1280px;
+  max-width: 80rem;
   margin-inline: auto;
   padding-inline: var(--space-4);
   padding-block: var(--space-8);
@@ -39,7 +39,7 @@
 }
 
 .progressContent {
-  max-width: 1280px;
+  max-width: 80rem;
   margin-inline: auto;
   padding-inline: var(--space-4);
   padding-block: var(--space-6);
@@ -73,7 +73,7 @@
 .stepCircleActive {
   border-color: var(--color-black);
   background-color: var(--color-black);
-  color: var(--color-text-inverse);
+  color: var(--color-white);
 }
 
 .stepCircleInactive {
@@ -89,7 +89,7 @@
   transition: color var(--duration-fast) var(--easing-out);
 }
 
-@media (min-width: 640px) {
+@media (min-width: 40rem) {
   .stepLabel {
     display: inline;
   }
@@ -104,21 +104,21 @@
 }
 
 .stepConnector {
-  height: 2px;
+  height: 0.125rem;
   width: var(--space-12);
   background-color: var(--color-black);
 }
 
 /* Main Content */
 .mainContent {
-  max-width: 1280px;
+  max-width: 80rem;
   margin-inline: auto;
   padding-inline: var(--space-4);
   padding-block: var(--space-8);
 }
 
 .contentWrapper {
-  max-width: 768px;
+  max-width: 48rem;
   margin-inline: auto;
 }
 
@@ -233,7 +233,7 @@
   font-family: var(--font-family-mono);
   outline: none;
   transition: border-color var(--duration-fast) var(--easing-out);
-  min-height: 120px;
+  min-height: 7.5rem;
   resize: vertical;
 }
 
@@ -246,7 +246,7 @@
   gap: var(--space-4);
 }
 
-@media (min-width: 640px) {
+@media (min-width: 40rem) {
   .formGrid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -299,7 +299,7 @@
   cursor: pointer;
   font-weight: var(--font-weight-semibold);
   background-color: var(--color-black);
-  color: var(--color-text-inverse);
+  color: var(--color-white);
   flex: 1;
   display: flex;
   align-items: center;
@@ -499,7 +499,7 @@
   width: var(--space-12);
   height: var(--space-12);
   animation: spin 1s linear infinite;
-  color: var(--color-text-inverse);
+  color: var(--color-white);
 }
 
 @keyframes spin {
@@ -577,7 +577,7 @@
 }
 
 /* Responsive Adjustments */
-@media (min-width: 768px) {
+@media (min-width: 48rem) {
   .reviewGrid {
     grid-template-columns: repeat(2, 1fr);
   }

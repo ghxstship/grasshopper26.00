@@ -41,7 +41,7 @@
 }
 
 .content {
-  max-inline-size: 1280px;
+  max-inline-size: 80rem;
   margin-inline: auto;
   padding-inline: var(--space-4);
   padding-block: var(--space-8);
@@ -213,8 +213,8 @@
 }
 
 .statusIndicator {
-  width: 12px;
-  height: 12px;
+  width: 0.75rem;
+  height: 0.75rem;
   border-radius: var(--radius-none)(--radius-full);
 }
 

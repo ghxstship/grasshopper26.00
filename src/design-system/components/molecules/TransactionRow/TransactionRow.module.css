@@ -9,7 +9,7 @@
   gap: var(--spacing-4);
   align-items: center;
   padding: var(--spacing-3) var(--spacing-4);
-  border-block-end: 1px solid var(--color-grey-300);
+  border-block-end: var(--space-px) solid var(--color-grey-300);
   transition: background-color var(--transition-fast) var(--easing-standard);
 }
 
@@ -75,7 +75,7 @@
   font-family: var(--font-bebas);
   font-size: var(--font-size-meta);
   text-transform: uppercase;
-  border: 1px solid var(--color-black);
+  border: var(--space-px) solid var(--color-black);
 }
 
 .statusBadge.pending {

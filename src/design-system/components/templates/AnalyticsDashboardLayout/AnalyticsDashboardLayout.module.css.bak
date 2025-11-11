@@ -1,0 +1,55 @@
+/**
+ * AnalyticsDashboardLayout Styles
+ * GHXSTSHIP Monochromatic Design System
+ */
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-block-size: 100vh;
+  background-color: var(--color-grey-100);
+}
+
+.header {
+  border-block-end: var(--border-width-thick) solid var(--color-black);
+  background-color: var(--color-white);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+  padding: var(--spacing-6);
+  flex: 1;
+}
+
+.filters {
+  padding: var(--spacing-4);
+  border: var(--border-width-thick) solid var(--color-black);
+  background-color: var(--color-white);
+}
+
+.kpiSection {
+  inline-size: 100%;
+}
+
+.chartsSection {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: var(--spacing-6);
+}
+
+.tablesSection {
+  inline-size: 100%;
+}
+
+.footer {
+  border-block-start: var(--border-width-thick) solid var(--color-black);
+  background-color: var(--color-white);
+}
+
+@media (max-width: 48rem) {
+  .chartsSection {
+    grid-template-columns: 1fr;
+  }
+}

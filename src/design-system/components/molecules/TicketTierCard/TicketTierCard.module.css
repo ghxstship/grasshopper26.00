@@ -13,7 +13,7 @@
 }
 
 .card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-0.125rem);
   box-shadow: var(--shadow-lg);
 }
 
@@ -69,7 +69,7 @@
 
 .availabilityBar {
   position: relative;
-  block-size: 8px;
+  block-size: 0.5rem;
   background-color: var(--color-grey-200);
   border-width: var(--border-width-default);
   border-style: solid;

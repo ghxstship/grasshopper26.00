@@ -84,8 +84,8 @@
 }
 
 .controlButton:hover {
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
   transform: scale(1.1);
 }
 
@@ -96,8 +96,8 @@
 .controlButton.play {
   inline-size: var(--space-16);
   block-size: var(--space-16);
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
 }
 
 .controlButton.play:hover {
@@ -123,7 +123,7 @@
 
 .progressFill {
   block-size: 100%;
-  background-color: var(--color-primary);
+  background-color: var(--color-black);
   transition: inline-size 0.1s linear;
 }
 
@@ -158,8 +158,8 @@
 }
 
 .volumeButton:hover {
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
 }
 
 .volumeSlider {
@@ -173,7 +173,7 @@
 
 .volumeFill {
   block-size: 100%;
-  background-color: var(--color-primary);
+  background-color: var(--color-black);
 }
 
 .playlist {
@@ -216,8 +216,8 @@
 }
 
 .playlistItem.active {
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
   border-color: var(--color-border-strong);
 }
 
@@ -243,6 +243,6 @@
 }
 
 .playlistItem.active .playlistItemDuration {
-  color: var(--color-text-inverse);
+  color: var(--color-white);
   opacity: 0.8;
 }

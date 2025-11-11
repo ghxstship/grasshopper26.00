@@ -1,0 +1,83 @@
+/**
+ * QRCode Styles
+ * GHXSTSHIP Entertainment Platform
+ * High-contrast B&W QR codes
+ */
+
+.container {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  
+  padding: var(--space-4);
+  
+  border: var(--border-width-3) solid var(--color-border-strong);
+  border-radius: var(--radius-none);
+  background-color: var(--color-bg-primary);
+}
+
+.canvas {
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-normal);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  color: var(--color-text-secondary);
+}
+
+/* ========================================
+   SIZES
+   ======================================== */
+
+.sm {
+  padding: var(--space-2);
+}
+
+.sm .canvas {
+  width: 128px;
+  height: 128px;
+}
+
+.md {
+  padding: var(--space-4);
+}
+
+.md .canvas {
+  width: 192px;
+  height: 192px;
+}
+
+.lg {
+  padding: var(--space-6);
+}
+
+.lg .canvas {
+  width: 256px;
+  height: 256px;
+}
+
+.xl {
+  padding: var(--space-8);
+}
+
+.xl .canvas {
+  width: 320px;
+  height: 320px;
+}
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+.dark .container,
+[data-theme="dark"] .container {
+  border-color: var(--color-border-strong);
+  background-color: var(--color-bg-secondary);
+}

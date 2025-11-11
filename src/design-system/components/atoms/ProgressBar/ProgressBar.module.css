@@ -34,13 +34,13 @@
 
 /* Size variants */
 .sm {
-  block-size: 8px;
+  block-size: 0.5rem;
 }
 
 .md {
-  block-size: 12px;
+  block-size: 0.75rem;
 }
 
 .lg {
-  block-size: 16px;
+  block-size: 1rem;
 }

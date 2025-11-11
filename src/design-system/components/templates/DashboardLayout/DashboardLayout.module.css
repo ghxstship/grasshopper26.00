@@ -13,14 +13,14 @@
 .container {
   display: flex;
   flex: 1;
-  max-width: 1920px;
+  max-width: 120rem;
   margin-inline: auto;
   width: 100%;
 }
 
 .sidebar {
   display: none;
-  width: 280px;
+  width: 17.5rem;
   flex-shrink: 0;
   background-color: var(--color-bg-primary);
   border-inline-end: var(--border-width-3) solid var(--color-border-default);
@@ -44,21 +44,21 @@
    RESPONSIVE
    ======================================== */
 
-@media (min-width: 768px) {
+@media (min-width: 48rem) {
   .sidebar {
     display: block;
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 64rem) {
   .main {
     padding: var(--space-8);
   }
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 90rem) {
   .sidebar {
-    width: 320px;
+    width: 20rem;
   }
 }
 

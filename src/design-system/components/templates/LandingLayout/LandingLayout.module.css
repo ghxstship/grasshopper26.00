@@ -27,7 +27,7 @@
   align-items: center;
   justify-content: center;
   background-color: var(--color-bg-inverse);
-  color: var(--color-text-inverse);
+  color: var(--color-white);
   overflow: hidden;
 }
 
@@ -41,7 +41,7 @@
 
 .sectionInverted {
   background-color: var(--color-bg-inverse);
-  color: var(--color-text-inverse);
+  color: var(--color-white);
   border-block-end-color: var(--color-border-inverse);
 }
 
@@ -65,7 +65,7 @@
    RESPONSIVE
    ======================================== */
 
-@media (min-width: 768px) {
+@media (min-width: 48rem) {
   .section,
   .newsletter,
   .footer {
@@ -73,7 +73,7 @@
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 64rem) {
   .section {
     padding-block: var(--space-12);
     padding-inline: var(--space-8);
@@ -90,7 +90,7 @@
   }
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 90rem) {
   .section,
   .newsletter,
   .footer {
@@ -111,7 +111,7 @@
   @keyframes fadeInUp {
     from {
       opacity: 0;
-      transform: translateY(24px);
+      transform: translateY(1.5rem);
     }
     to {
       opacity: 1;

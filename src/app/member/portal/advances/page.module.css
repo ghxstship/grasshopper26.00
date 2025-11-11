@@ -10,7 +10,7 @@
 }
 
 .headerContainer {
-  max-width: 1280px;
+  max-width: 80rem;
   margin-inline: auto;
   padding-inline: var(--space-4);
   padding-block: var(--space-8);
@@ -46,7 +46,7 @@
   gap: var(--space-2);
   border: var(--border-width-3) solid var(--color-black);
   background-color: var(--color-black);
-  color: var(--color-text-inverse);
+  color: var(--color-white);
   padding-inline: var(--space-6);
   padding-block: var(--space-3);
   font-family: var(--font-family-heading);
@@ -97,7 +97,7 @@
 
 .filterButtonActive {
   background-color: var(--color-black);
-  color: var(--color-text-inverse);
+  color: var(--color-white);
 }
 
 .filterButtonInactive {
@@ -110,7 +110,7 @@
 }
 
 .mainContainer {
-  max-width: 1280px;
+  max-width: 80rem;
   margin-inline: auto;
   padding-inline: var(--space-4);
   padding-block: var(--space-8);
@@ -120,13 +120,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-block-size: 400px;
+  min-block-size: 25rem;
 }
 
 .spinner {
   inline-size: var(--space-12);
   block-size: var(--space-12);
-  border: 4px solid var(--color-black);
+  border: 0.25rem solid var(--color-black);
   border-block-start-color: transparent;
   border-radius: var(--radius-none);
   animation: spin 1s linear infinite;
@@ -142,7 +142,7 @@
   align-items: center;
   justify-content: center;
   gap: var(--space-4);
-  min-block-size: 400px;
+  min-block-size: 25rem;
 }
 
 .emptyIcon {
@@ -176,12 +176,12 @@
 
 .emptyButton:hover {
   background-color: var(--color-black);
-  color: var(--color-text-inverse);
+  color: var(--color-white);
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(18.75rem, 1fr));
   gap: var(--space-6);
 }
 
@@ -209,7 +209,7 @@
   padding-block-end: var(--space-4);
 }
 
-@media (min-width: 640px) {
+@media (min-width: 40rem) {
   .cardHeader {
     flex-direction: row;
     align-items: flex-start;
@@ -236,7 +236,7 @@
 
 .detailsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(9.375rem, 1fr));
   gap: var(--space-4);
   margin-block-start: var(--space-4);
 }
@@ -267,7 +267,7 @@
 }
 
 .detailHint {
-  margin-block-start: 2px;
+  margin-block-start: 0.125rem;
   font-family: var(--font-family-mono);
   font-size: var(--font-size-xs);
   color: var(--color-grey-600);
@@ -300,7 +300,7 @@
   font-family: var(--font-family-heading);
   font-size: var(--font-size-xs);
   text-transform: uppercase;
-  color: var(--color-text-inverse);
+  color: var(--color-white);
 }
 
 .readyBadge {

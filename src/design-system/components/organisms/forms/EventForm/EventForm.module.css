@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-8);
-  max-inline-size: 800px;
+  max-inline-size: 50rem;
 }
 
 .section {
@@ -78,7 +78,7 @@
   padding-inline: var(--space-6);
   font-family: var(--font-family-share-mono);
   font-size: var(--font-size-sm);
-  color: var(--color-text-inverse);
+  color: var(--color-white);
   background-color: var(--color-grey-900);
   border-width: var(--border-width-default);
   border-style: solid;
@@ -108,14 +108,14 @@
 
 .buttonPrimary {
   background-color: var(--color-grey-900);
-  color: var(--color-text-inverse);
+  color: var(--color-white);
   border-color: var(--color-grey-900);
 }
 
 .buttonPrimary:hover:not(:disabled) {
   background-color: var(--color-grey-800);
   border-color: var(--color-grey-800);
-  transform: translateY(-1px);
+  transform: translateY(-var(--space-px));
   box-shadow: var(--shadow-md);
 }
 
@@ -127,7 +127,7 @@
 
 .buttonSecondary:hover:not(:disabled) {
   background-color: var(--color-bg-secondary);
-  transform: translateY(-1px);
+  transform: translateY(-var(--space-px));
 }
 
 .buttonPrimary:disabled,

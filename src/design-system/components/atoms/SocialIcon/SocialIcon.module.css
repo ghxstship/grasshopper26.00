@@ -21,15 +21,15 @@
 }
 
 .icon:hover {
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
   border-color: var(--color-primary);
   transform: scale(1.1);
 }
 
 .icon:focus-visible {
   outline: var(--border-width-2) solid var(--color-border-focus);
-  outline-offset: 2px;
+  outline-offset: 0.125rem;
 }
 
 .icon svg {
@@ -43,20 +43,20 @@
    ======================================== */
 
 .sm {
-  width: 32px;
-  height: 32px;
+  width: 2rem;
+  height: 2rem;
   padding: var(--space-1-5);
 }
 
 .md {
-  width: 40px;
-  height: 40px;
+  width: 2.5rem;
+  height: 2.5rem;
   padding: var(--space-2);
 }
 
 .lg {
-  width: 48px;
-  height: 48px;
+  width: 3rem;
+  height: 3rem;
   padding: var(--space-2-5);
 }
 

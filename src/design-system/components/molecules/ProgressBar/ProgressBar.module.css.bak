@@ -1,0 +1,131 @@
+/**
+ * ProgressBar Styles
+ * GHXSTSHIP Entertainment Platform
+ */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: 100%;
+}
+
+/* ========================================
+   HEADER
+   ======================================== */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.label {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  
+  color: var(--color-text-primary);
+}
+
+.percentage {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  
+  color: var(--color-text-secondary);
+}
+
+/* ========================================
+   BAR
+   ======================================== */
+
+.bar {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  
+  border: var(--border-width-3) solid var(--color-border-strong);
+  border-radius: var(--radius-none);
+  background-color: var(--color-bg-secondary);
+}
+
+.sm {
+  height: 8px;
+}
+
+.md {
+  height: 16px;
+}
+
+.lg {
+  height: 24px;
+}
+
+/* ========================================
+   FILL
+   ======================================== */
+
+.fill {
+  height: 100%;
+  background-color: var(--color-black);
+  
+  transition: width var(--duration-medium) var(--easing-out);
+}
+
+/* ========================================
+   VARIANTS
+   ======================================== */
+
+.striped .fill {
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--color-white),
+    var(--color-white) 3px,
+    transparent 3px,
+    transparent 10px
+  );
+  opacity: 0.15;
+  animation: stripes 1s linear infinite;
+}
+
+@keyframes stripes {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 20px 0;
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .fill {
+    transition: none;
+  }
+  
+  .striped .fill {
+    animation: none;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .bar {
+    border-width: var(--border-width-4);
+  }
+}
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+.dark .fill,
+[data-theme="dark"] .fill {
+  background-color: var(--color-accent);
+}

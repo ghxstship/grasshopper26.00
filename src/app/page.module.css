@@ -14,8 +14,8 @@
 .halftonePattern {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle, var(--color-black) 1px, transparent 1px);
-  background-size: 20px 20px;
+  background-image: radial-gradient(circle, var(--color-black) var(--space-px), transparent var(--space-px));
+  background-size: 1.25rem 1.25rem;
   opacity: 0.05;
 }
 
@@ -24,7 +24,7 @@
   z-index: 10;
   text-align: center;
   padding-inline: var(--space-4);
-  max-width: 1536px;
+  max-width: 96rem;
   margin-inline: auto;
   padding-block: var(--space-20);
 }
@@ -100,7 +100,7 @@
 }
 
 .content {
-  max-width: 1280px;
+  max-width: 80rem;
   margin-inline: auto;
 }
 
@@ -120,13 +120,13 @@
   grid-template-columns: 1fr;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 40rem) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 64rem) {
   .grid {
     grid-template-columns: repeat(4, 1fr);
   }
@@ -140,7 +140,7 @@
 }
 
 .featureCard:hover {
-  box-shadow: 8px 8px 0 0 var(--color-black);
+  box-shadow: 0.5rem 0.5rem 0 0 var(--color-black);
 }
 
 .featureIcon {
@@ -178,7 +178,7 @@
 }
 
 .ctaContainer {
-  max-width: 1024px;
+  max-width: 64rem;
   margin-inline: auto;
   text-align: center;
 }

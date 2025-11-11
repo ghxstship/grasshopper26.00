@@ -9,7 +9,7 @@
 
 .card {
   width: 100%;
-  max-width: 600px;
+  max-width: 37.5rem;
   background-color: var(--color-white);
   border: var(--border-width-3) solid var(--color-black);
   padding: var(--space-8);
@@ -66,7 +66,7 @@
 
 .input:focus {
   outline: var(--border-width-2) solid var(--color-black);
-  outline-offset: 2px;
+  outline-offset: 0.125rem;
 }
 
 .select {
@@ -80,7 +80,7 @@
 
 .select:focus {
   outline: var(--border-width-2) solid var(--color-black);
-  outline-offset: 2px;
+  outline-offset: 0.125rem;
 }
 
 .textarea {
@@ -90,13 +90,13 @@
   font-family: var(--font-share);
   font-size: var(--font-size-base);
   transition: border-color var(--duration-fast) var(--easing-out);
-  min-height: 120px;
+  min-height: 7.5rem;
   resize: vertical;
 }
 
 .textarea:focus {
   outline: var(--border-width-2) solid var(--color-black);
-  outline-offset: 2px;
+  outline-offset: 0.125rem;
 }
 
 .button {
@@ -130,13 +130,13 @@
 
 .progressStep {
   flex: 1;
-  height: 4px;
+  height: 0.25rem;
   background-color: var(--color-grey-200);
 }
 
 .progressStepActive {
   flex: 1;
-  height: 4px;
+  height: 0.25rem;
   background-color: var(--color-black);
 }
 
@@ -158,7 +158,7 @@
   grid-template-columns: 1fr;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 40rem) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }

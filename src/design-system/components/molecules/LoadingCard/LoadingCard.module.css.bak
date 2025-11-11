@@ -1,0 +1,216 @@
+/**
+ * LoadingCard Styles
+ * GHXSTSHIP Entertainment Platform
+ * Geometric loading animation, no circular spinners
+ */
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  
+  border: var(--border-width-3) solid var(--color-border-default);
+  border-radius: var(--radius-none)(--radius-none);
+  background-color: var(--color-bg-primary);
+  
+  box-shadow: var(--shadow-sm);
+  
+  isolation: isolate;
+}
+
+/* ========================================
+   SKELETON BLOCKS
+   ======================================== */
+
+.skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  width: 100%;
+}
+
+.event .skeleton {
+  gap: 0;
+}
+
+.imageBlock {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background-color: var(--color-bg-tertiary);
+  animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.imageCircle {
+  width: 200px;
+  height: 200px;
+  margin-inline: auto;
+  background-color: var(--color-bg-tertiary);
+  border: var(--border-width-3) solid var(--color-border-default);
+  animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-6);
+}
+
+.titleBlock {
+  height: 32px;
+  width: 80%;
+  background-color: var(--color-bg-tertiary);
+  animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite 0.1s;
+}
+
+.textBlock {
+  height: 16px;
+  width: 100%;
+  background-color: var(--color-bg-tertiary);
+  animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite 0.2s;
+}
+
+.textBlock:nth-child(3) {
+  width: 90%;
+}
+
+.badgeBlock {
+  height: 32px;
+  width: 120px;
+  background-color: var(--color-bg-tertiary);
+  animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite 0.3s;
+}
+
+.tagsBlock {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.tagsBlock::before,
+.tagsBlock::after {
+  content: '';
+  height: 24px;
+  width: 80px;
+  background-color: var(--color-bg-tertiary);
+  animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite 0.2s;
+}
+
+.metaBlock {
+  height: 16px;
+  width: 200px;
+  background-color: var(--color-bg-tertiary);
+  animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.headerBlock {
+  height: 40px;
+  width: 100%;
+  background-color: var(--color-bg-tertiary);
+  animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.footerBlock {
+  height: 24px;
+  width: 150px;
+  background-color: var(--color-bg-tertiary);
+  animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite 0.3s;
+}
+
+/* ========================================
+   LOADING INDICATOR
+   ======================================== */
+
+.loadingIndicator {
+  position: absolute;
+  inset-block-start: var(--space-4);
+  inset-inline-end: var(--space-4);
+  
+  width: 32px;
+  height: 32px;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.square {
+  width: 24px;
+  height: 24px;
+  
+  border: var(--border-width-3) solid var(--color-border-strong);
+  border-radius: var(--radius-none)(--radius-none);
+  background-color: var(--color-black);
+  
+  animation: rotate 2s linear infinite;
+}
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .imageBlock,
+  .imageCircle,
+  .titleBlock,
+  .textBlock,
+  .badgeBlock,
+  .tagsBlock::before,
+  .tagsBlock::after,
+  .metaBlock,
+  .headerBlock,
+  .footerBlock {
+    animation: none;
+  }
+  
+  .square {
+    animation: none;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .card {
+    border-width: var(--border-width-4);
+  }
+  
+  .imageCircle,
+  .square {
+    border-width: var(--border-width-4);
+  }
+}
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+.dark .card,
+[data-theme="dark"] .card {
+  box-shadow: var(--shadow-white-sm);
+}
+
+.dark .square,
+[data-theme="dark"] .square {
+  background-color: var(--color-accent);
+}

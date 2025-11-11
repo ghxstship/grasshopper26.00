@@ -28,7 +28,7 @@
 
 .tab:focus-visible {
   outline: var(--border-width-2) solid var(--color-border-focus);
-  outline-offset: 2px;
+  outline-offset: 0.125rem;
 }
 
 .tab.disabled {
@@ -82,8 +82,8 @@
 
 .tab.active .count {
   border-color: var(--color-border-strong);
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
 }
 
 /* ========================================
@@ -150,7 +150,7 @@
   inset-inline-end: 0;
   
   height: var(--border-width-3);
-  background-color: var(--color-primary);
+  background-color: var(--color-black);
   
   transform: scaleX(0);
   transition: transform var(--duration-fast) var(--easing-out);
@@ -174,18 +174,18 @@
 
 .pills .tab.active {
   border-color: var(--color-border-strong);
-  background-color: var(--color-primary);
+  background-color: var(--color-black);
 }
 
 .pills .tab.active .label {
-  color: var(--color-text-inverse);
+  color: var(--color-white);
 }
 
 /* ========================================
    RESPONSIVE
    ======================================== */
 
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .container {
     overflow-x: auto;
     scrollbar-width: thin;
@@ -228,20 +228,40 @@
    DARK THEME
    ======================================== */
 
+.dark .label,
+[data-theme="dark"] .label {
+  color: var(--color-grey-400);
+}
+
+.dark .tab:hover:not(.disabled) .label,
+[data-theme="dark"] .tab:hover:not(.disabled) .label {
+  color: var(--color-white);
+}
+
+.dark .tab.active .label,
+[data-theme="dark"] .tab.active .label {
+  color: var(--color-white);
+}
+
 .dark .tab.active .count,
+[data-theme="dark"] .tab.active .count {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border-color: var(--color-white);
+}
+
 .dark .pills .tab.active,
-[data-theme="dark"] .tab.active .count,
 [data-theme="dark"] .pills .tab.active {
-  background-color: var(--color-accent);
-  color: var(--color-primary);
+  background-color: var(--color-white);
+  border-color: var(--color-white);
 }
 
 .dark .pills .tab.active .label,
 [data-theme="dark"] .pills .tab.active .label {
-  color: var(--color-primary);
+  color: var(--color-black);
 }
 
 .dark .underline .tab::after,
 [data-theme="dark"] .underline .tab::after {
-  background-color: var(--color-accent);
+  background-color: var(--color-white);
 }

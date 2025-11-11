@@ -51,7 +51,7 @@
 .container {
   display: flex;
   flex: 1;
-  max-width: 1920px;
+  max-width: 120rem;
   margin-inline: auto;
   width: 100%;
   position: relative;
@@ -62,7 +62,7 @@
   position: fixed;
   inset-block-start: 0;
   inset-inline-start: 0;
-  width: 280px;
+  width: 17.5rem;
   height: 100vh;
   background-color: var(--color-bg-secondary);
   border-inline-end: var(--border-width-3) solid var(--color-border-default);
@@ -103,7 +103,7 @@
 
 .search {
   flex: 1;
-  min-width: 240px;
+  min-width: 15rem;
 }
 
 .toolbarActions {
@@ -120,15 +120,15 @@
 }
 
 .grid[data-columns="2"] {
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(17.5rem, 1fr));
 }
 
 .grid[data-columns="3"] {
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(17.5rem, 1fr));
 }
 
 .grid[data-columns="4"] {
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
 }
 
 /* Pagination */
@@ -149,12 +149,12 @@
    RESPONSIVE
    ======================================== */
 
-@media (min-width: 768px) {
+@media (min-width: 48rem) {
   .filters {
     position: static;
     transform: translateX(0);
     height: auto;
-    min-height: calc(100vh - 200px);
+    min-height: calc(100vh - 12.5rem);
   }
   
   .overlay {
@@ -178,9 +178,9 @@
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 64rem) {
   .filters {
-    width: 320px;
+    width: 20rem;
   }
   
   .grid[data-columns="3"] {
@@ -192,7 +192,7 @@
   }
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 90rem) {
   .grid[data-columns="4"] {
     grid-template-columns: repeat(4, 1fr);
   }
@@ -210,7 +210,7 @@
   @keyframes fadeIn {
     from {
       opacity: 0;
-      transform: translateY(8px);
+      transform: translateY(0.5rem);
     }
     to {
       opacity: 1;

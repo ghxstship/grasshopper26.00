@@ -49,12 +49,12 @@
 
 .textarea {
   resize: vertical;
-  min-block-size: 100px;
+  min-block-size: 6.25rem;
 }
 
 .checkbox {
-  inline-size: 24px;
-  block-size: 24px;
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
   cursor: pointer;
 }
 

@@ -50,3 +50,5 @@ export * from './StatusPill';
 export * from './CartButton';
 export * from './AuthButtons';
 export * from './UserMenu';
+export * from './NewsletterSignup';
+export * from './FooterColumn';

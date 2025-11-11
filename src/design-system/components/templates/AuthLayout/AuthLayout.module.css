@@ -28,25 +28,25 @@
 }
 
 .layout[data-pattern="halftone"] .pattern {
-  background-image: radial-gradient(circle, var(--color-text-inverse) 1px, transparent 1px);
-  background-size: 8px 8px;
+  background-image: radial-gradient(circle, var(--color-text-primary) var(--space-px), transparent var(--space-px));
+  background-size: 0.5rem 0.5rem;
 }
 
 .layout[data-pattern="stripes"] .pattern {
   background-image: repeating-linear-gradient(
     45deg,
-    var(--color-text-inverse),
-    var(--color-text-inverse) 2px,
-    transparent 2px,
-    transparent 12px
+    var(--color-text-primary),
+    var(--color-text-primary) 0.125rem,
+    transparent 0.125rem,
+    transparent 0.75rem
   );
 }
 
 .layout[data-pattern="grid"] .pattern {
   background-image: 
-    linear-gradient(var(--color-border-default) 1px, transparent 1px),
-    linear-gradient(90deg, var(--color-border-default) 1px, transparent 1px);
-  background-size: 24px 24px;
+    linear-gradient(var(--color-border-default) var(--space-px), transparent var(--space-px)),
+    linear-gradient(90deg, var(--color-border-default) var(--space-px), transparent var(--space-px));
+  background-size: 1.5rem 1.5rem;
 }
 
 /* Container */
@@ -54,7 +54,7 @@
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 420px;
+  max-width: 26.25rem;
   margin-inline: auto;
   display: flex;
   flex-direction: column;
@@ -76,10 +76,10 @@
   line-height: var(--line-height-tight);
   letter-spacing: var(--letter-spacing-tight);
   text-transform: uppercase;
-  color: var(--color-text-inverse);
+  color: var(--color-white);
 }
 
-@media (min-width: 640px) {
+@media (min-width: 40rem) {
   .logo span {
     font-size: var(--font-size-5xl);
   }
@@ -98,7 +98,7 @@
   background-color: var(--color-bg-inverse);
   border-color: var(--color-border-inverse);
   box-shadow: var(--shadow-base);
-  color: var(--color-text-inverse);
+  color: var(--color-white);
 }
 
 /* Footer */
@@ -106,7 +106,7 @@
   text-align: center;
   font-family: var(--font-family-mono);
   font-size: var(--font-size-sm);
-  color: var(--color-text-inverse);
+  color: var(--color-white);
   padding-inline: var(--space-2);
   word-wrap: break-word;
   flex-shrink: 0;
@@ -116,7 +116,7 @@
    RESPONSIVE
    ======================================== */
 
-@media (min-width: 640px) {
+@media (min-width: 40rem) {
   .card {
     padding: var(--space-5);
   }
@@ -127,7 +127,7 @@
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 64rem) {
   .card {
     padding: var(--space-6);
   }
@@ -145,7 +145,7 @@
   @keyframes slideUp {
     from {
       opacity: 0;
-      transform: translateY(24px);
+      transform: translateY(1.5rem);
     }
     to {
       opacity: 1;

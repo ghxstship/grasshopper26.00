@@ -1,0 +1,19 @@
+/**
+ * Kbd Component Styles
+ * GHXSTSHIP Monochromatic Design System
+ */
+
+.kbd {
+  display: inline-block;
+  padding: var(--spacing-1) var(--spacing-2);
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-meta);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  background-color: var(--color-grey-100);
+  color: var(--color-black);
+  border: var(--border-width-thick) solid var(--color-black);
+  box-shadow: 2px 2px 0 0 var(--color-black);
+  min-inline-size: 2em;
+  text-align: center;
+}

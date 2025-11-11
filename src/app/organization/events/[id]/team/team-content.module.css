@@ -2,7 +2,7 @@
 
 .teamGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(18.75rem, 1fr));
   gap: var(--spacing-lg);
 }
 
@@ -23,7 +23,7 @@
   block-size: var(--icon-size-sm);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .teamGrid {
     grid-template-columns: 1fr;
   }

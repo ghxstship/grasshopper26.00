@@ -122,7 +122,7 @@
 
 .status.paid {
   background-color: var(--color-grey-800);
-  color: var(--color-text-inverse);
+  color: var(--color-white);
 }
 
 .empty,

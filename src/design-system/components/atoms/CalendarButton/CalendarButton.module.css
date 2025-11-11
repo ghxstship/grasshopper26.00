@@ -27,8 +27,8 @@
 }
 
 .button:hover {
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
   border-color: var(--color-primary);
   transform: scale(1.05);
 }
@@ -38,8 +38,8 @@
 }
 
 .icon {
-  width: 20px;
-  height: 20px;
+  width: 1.25rem;
+  height: 1.25rem;
   flex-shrink: 0;
 }
 
@@ -54,8 +54,8 @@
 }
 
 .sm .icon {
-  width: 16px;
-  height: 16px;
+  width: 1rem;
+  height: 1rem;
 }
 
 .md {
@@ -65,8 +65,8 @@
 }
 
 .md .icon {
-  width: 20px;
-  height: 20px;
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
 .lg {
@@ -76,8 +76,8 @@
 }
 
 .lg .icon {
-  width: 24px;
-  height: 24px;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .icon-only {

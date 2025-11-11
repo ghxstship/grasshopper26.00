@@ -57,7 +57,7 @@
 .filter:hover {
   background-color: var(--color-bg-tertiary);
   border-color: var(--color-border-strong);
-  transform: translateY(-2px);
+  transform: translateY(-0.125rem);
 }
 
 .filter:active {
@@ -66,16 +66,16 @@
 
 .filter:focus-visible {
   outline: var(--border-width-2) solid var(--color-border-focus);
-  outline-offset: 2px;
+  outline-offset: 0.125rem;
 }
 
 .filter.selected {
   border-color: var(--color-border-strong);
-  background-color: var(--color-primary);
+  background-color: var(--color-black);
 }
 
 .filter.selected:hover {
-  background-color: var(--color-primary);
+  background-color: var(--color-black);
   border-color: var(--color-border-strong);
 }
 
@@ -97,7 +97,7 @@
 }
 
 .filter.selected .filterLabel {
-  color: var(--color-text-inverse);
+  color: var(--color-white);
 }
 
 /* ========================================
@@ -153,7 +153,7 @@
    RESPONSIVE
    ======================================== */
 
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .filters {
     gap: var(--space-2);
   }

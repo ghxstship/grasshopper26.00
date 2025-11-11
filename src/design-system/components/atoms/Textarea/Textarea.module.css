@@ -44,7 +44,7 @@
   
   transition: all var(--duration-fast) var(--easing-out);
   
-  min-height: 120px;
+  min-height: 7.5rem;
 }
 
 .textarea::placeholder {
@@ -80,19 +80,19 @@
    ======================================== */
 
 .sm {
-  min-height: 80px;
+  min-height: 5rem;
   padding: var(--space-3);
   font-size: var(--font-size-sm);
 }
 
 .md {
-  min-height: 120px;
+  min-height: 7.5rem;
   padding: var(--space-4);
   font-size: var(--font-size-base);
 }
 
 .lg {
-  min-height: 160px;
+  min-height: 10rem;
   padding: var(--space-5);
   font-size: var(--font-size-lg);
 }
@@ -154,7 +154,7 @@
   
   .textarea:focus {
     outline: var(--border-width-2) solid var(--color-border-focus);
-    outline-offset: 2px;
+    outline-offset: 0.125rem;
   }
 }
 

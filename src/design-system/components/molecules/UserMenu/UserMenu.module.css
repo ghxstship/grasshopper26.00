@@ -20,7 +20,7 @@
   min-inline-size: var(--space-64);
   background-color: var(--color-bg-primary);
   border: var(--border-width-3) solid var(--color-border-strong);
-  box-shadow: 8px 8px 0 var(--color-primary);
+  box-shadow: 0.5rem 0.5rem 0 var(--color-primary);
   z-index: 1000;
   animation: dropdownSlide var(--duration-fast) var(--easing-out);
 }
@@ -85,8 +85,8 @@
 }
 
 .menuItem:hover {
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
 }
 
 .menuItem:focus-visible {
@@ -103,19 +103,19 @@
 }
 
 .menuItem.signOut:hover {
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
 }
 
 /* Responsive adjustments */
-@media (max-width: 767px) {
+@media (max-width: 47.9375rem) {
   .dropdown {
     min-inline-size: calc(100vw - var(--space-8));
     inset-inline-end: calc(-1 * var(--space-2));
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 30rem) {
   .dropdown {
     inset-inline-start: 50%;
     inset-inline-end: auto;

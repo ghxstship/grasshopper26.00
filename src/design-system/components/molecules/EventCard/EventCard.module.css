@@ -1,7 +1,7 @@
 /**
  * EventCard Styles
  * GHXSTSHIP Entertainment Platform
- * Thick borders (3px), hard geometric shadows, color inversion on hover
+ * Thick borders (0.1875rem), hard geometric shadows, color inversion on hover
  */
 
 .card {
@@ -24,7 +24,7 @@
 }
 
 .card:hover {
-  background-color: var(--color-primary);
+  background-color: var(--color-black);
   border-color: var(--color-accent);
   transform: scale(1.05);
   box-shadow: var(--shadow-lg);
@@ -37,7 +37,7 @@
 
 .card:focus-visible {
   outline: var(--border-width-2) solid var(--color-border-focus);
-  outline-offset: 2px;
+  outline-offset: 0.125rem;
 }
 
 /* ========================================
@@ -73,8 +73,8 @@
   background-image: 
     radial-gradient(circle, var(--color-primary) 20%, transparent 20%),
     radial-gradient(circle, var(--color-primary) 20%, transparent 20%);
-  background-size: 8px 8px;
-  background-position: 0 0, 4px 4px;
+  background-size: 0.5rem 0.5rem;
+  background-position: 0 0, 0.25rem 0.25rem;
   
   opacity: 0;
   transition: opacity var(--duration-base) var(--easing-out);
@@ -112,7 +112,7 @@
 }
 
 .card:hover .title {
-  color: var(--color-text-inverse);
+  color: var(--color-white);
 }
 
 .metadata {
@@ -149,7 +149,7 @@
   
   border: var(--border-width-2) solid var(--color-border-strong);
   border-radius: var(--radius-none)(--radius-none);
-  background-color: var(--color-primary);
+  background-color: var(--color-black);
   
   width: fit-content;
   
@@ -168,7 +168,7 @@
   letter-spacing: var(--letter-spacing-wider);
   text-transform: uppercase;
   
-  color: var(--color-text-inverse);
+  color: var(--color-white);
   
   transition: color var(--duration-base) var(--easing-out);
 }
@@ -188,12 +188,12 @@
 }
 
 .card:hover .statusOnSale {
-  background-color: var(--color-primary);
+  background-color: var(--color-black);
   border-color: var(--color-border-accent);
 }
 
 .card:hover .statusOnSale .statusText {
-  color: var(--color-text-inverse);
+  color: var(--color-white);
 }
 
 .statusComingSoon {
@@ -223,8 +223,8 @@
   inset-block-start: var(--space-4);
   inset-inline-end: var(--space-4);
   
-  width: 48px;
-  height: 48px;
+  width: 3rem;
+  height: 3rem;
   
   border: var(--border-width-2) solid var(--color-border-strong);
   border-radius: var(--radius-none)(--radius-none);

@@ -6,7 +6,7 @@
 
 .form {
   inline-size: 100%;
-  max-inline-size: 600px;
+  max-inline-size: 37.5rem;
   margin-inline: auto;
 }
 
@@ -61,7 +61,7 @@
 .textarea:focus,
 .select:focus {
   border-color: var(--color-primary);
-  box-shadow: 4px 4px 0 var(--color-primary);
+  box-shadow: 0.25rem 0.25rem 0 var(--color-primary);
 }
 
 .input:disabled,
@@ -72,7 +72,7 @@
 }
 
 .textarea {
-  min-block-size: 150px;
+  min-block-size: 9.375rem;
   resize: vertical;
 }
 
@@ -102,7 +102,7 @@
 .textarea.hasError,
 .select.hasError {
   border-color: var(--color-text-primary);
-  border-width: 4px;
+  border-width: 0.25rem;
 }
 
 .checkboxGroup {
@@ -133,7 +133,7 @@
 }
 
 .checkbox:checked {
-  background-color: var(--color-primary);
+  background-color: var(--color-black);
   border-color: var(--color-primary);
 }
 
@@ -143,7 +143,7 @@
   inset-block-start: 50%;
   inset-inline-start: 50%;
   transform: translate(-50%, -50%);
-  color: var(--color-text-inverse);
+  color: var(--color-white);
   font-family: var(--font-family-bebas);
   font-size: var(--font-size-body);
   font-weight: 700;
@@ -151,7 +151,7 @@
 
 .checkbox:focus {
   outline: var(--border-width-2) solid var(--color-border-focus);
-  outline-offset: 2px;
+  outline-offset: 0.125rem;
 }
 
 .submitButton {
@@ -164,8 +164,8 @@
   padding-block: var(--space-5);
   padding-inline: var(--space-8);
   border: var(--border-width-3) solid var(--color-border-strong);
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
   cursor: pointer;
   transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
 }
@@ -174,7 +174,7 @@
   background-color: var(--color-accent);
   color: var(--color-primary);
   transform: scale(1.02);
-  box-shadow: 8px 8px 0 var(--color-primary);
+  box-shadow: 0.5rem 0.5rem 0 var(--color-primary);
 }
 
 .submitButton:active {
@@ -187,8 +187,8 @@
 }
 
 .submitButton:disabled:hover {
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
   transform: none;
   box-shadow: none;
 }

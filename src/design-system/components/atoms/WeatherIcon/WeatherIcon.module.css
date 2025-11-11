@@ -28,8 +28,8 @@
 }
 
 .sm .icon {
-  width: 16px;
-  height: 16px;
+  width: 1rem;
+  height: 1rem;
 }
 
 .sm .temp {
@@ -37,8 +37,8 @@
 }
 
 .md .icon {
-  width: 24px;
-  height: 24px;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .md .temp {
@@ -46,8 +46,8 @@
 }
 
 .lg .icon {
-  width: 32px;
-  height: 32px;
+  width: 2rem;
+  height: 2rem;
 }
 
 .lg .temp {

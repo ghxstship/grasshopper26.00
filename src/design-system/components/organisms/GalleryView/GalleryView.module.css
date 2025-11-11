@@ -60,8 +60,8 @@
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: 8px 8px 0 0 var(--color-black);
+  transform: translateY(-0.25rem);
+  box-shadow: 0.5rem 0.5rem 0 0 var(--color-black);
 }
 
 .imageContainer {
@@ -113,7 +113,7 @@
   font-size: var(--font-size-meta);
   text-transform: uppercase;
   background-color: var(--color-grey-200);
-  border: 1px solid var(--color-grey-400);
+  border: var(--space-px) solid var(--color-grey-400);
 }
 
 .metadata {
@@ -121,7 +121,7 @@
   flex-direction: column;
   gap: var(--spacing-1);
   padding-block-start: var(--spacing-2);
-  border-block-start: 1px solid var(--color-grey-300);
+  border-block-start: var(--space-px) solid var(--color-grey-300);
 }
 
 .metaItem {
@@ -130,14 +130,14 @@
   color: var(--color-text-secondary);
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 64rem) {
   .grid.columns4,
   .grid.columns5 {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .grid.columns3,
   .grid.columns4,
   .grid.columns5 {
@@ -145,7 +145,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 30rem) {
   .grid {
     grid-template-columns: 1fr;
   }

@@ -5,7 +5,7 @@
 }
 
 .content {
-  max-width: 1280px;
+  max-width: 80rem;
   margin-inline: auto;
 }
 
@@ -46,7 +46,7 @@
 
 .buttonPrimary {
   background-color: var(--color-black);
-  color: var(--color-text-inverse);
+  color: var(--color-white);
   border-color: var(--color-black);
 }
 
@@ -59,7 +59,7 @@
   gap: var(--space-6);
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 64rem) {
   .grid {
     grid-template-columns: 2fr 1fr;
   }
@@ -85,7 +85,7 @@
   gap: var(--space-4);
 }
 
-@media (min-width: 640px) {
+@media (min-width: 40rem) {
   .infoGrid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -122,7 +122,7 @@
   block-size: var(--space-12);
   inline-size: var(--space-12);
   animation: spin 1s linear infinite;
-  border: 4px solid var(--color-black);
+  border: 0.25rem solid var(--color-black);
   border-block-start-color: transparent;
   border-radius: var(--radius-none);
 }
@@ -160,7 +160,7 @@
 }
 
 .headerContainer {
-  max-inline-size: 1280px;
+  max-inline-size: 80rem;
   margin-inline: auto;
   padding-inline: var(--space-4);
   padding-block: var(--space-6);
@@ -192,7 +192,7 @@
   gap: var(--space-4);
 }
 
-@media (min-width: 640px) {
+@media (min-width: 40rem) {
   .headerFlex {
     flex-direction: row;
     align-items: flex-start;
@@ -215,7 +215,7 @@
 
 /* Main Content */
 .mainContainer {
-  max-inline-size: 1280px;
+  max-inline-size: 80rem;
   margin-inline: auto;
   padding-inline: var(--space-4);
   padding-block: var(--space-8);
@@ -226,7 +226,7 @@
   gap: var(--space-6);
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 64rem) {
   .mainGrid {
     grid-template-columns: 2fr 1fr;
   }
@@ -236,7 +236,7 @@
   grid-column: span 1;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 64rem) {
   .colSpan2 {
     grid-column: span 2;
   }
@@ -262,7 +262,7 @@
   gap: var(--space-4);
 }
 
-@media (min-width: 640px) {
+@media (min-width: 40rem) {
   .dl {
     grid-template-columns: repeat(2, 1fr);
   }

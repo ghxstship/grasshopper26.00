@@ -16,7 +16,7 @@
 
 .card:hover {
   transform: scale(1.03);
-  box-shadow: 8px 8px 0 var(--color-primary);
+  box-shadow: 0.5rem 0.5rem 0 var(--color-primary);
 }
 
 .card:active {
@@ -25,7 +25,7 @@
 
 .card.featured {
   border-color: var(--color-primary);
-  border-width: 4px;
+  border-width: 0.25rem;
 }
 
 .card.soldOut {
@@ -45,8 +45,8 @@
 }
 
 .card.featured .header {
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
 }
 
 .badge {
@@ -57,8 +57,8 @@
   letter-spacing: 0.02em;
   padding-block: var(--space-1);
   padding-inline: var(--space-2);
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
   border: var(--border-width-2) solid var(--color-border-strong);
   display: inline-block;
   margin-block-end: var(--space-3);
@@ -90,7 +90,7 @@
 }
 
 .card.featured .subtitle {
-  color: var(--color-text-inverse);
+  color: var(--color-white);
   opacity: 0.8;
 }
 
@@ -160,8 +160,8 @@
   align-items: center;
   justify-content: center;
   border: var(--border-width-2) solid var(--color-border-strong);
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
   font-family: var(--font-family-share-mono);
   font-size: var(--font-size-meta);
   font-weight: 700;
@@ -192,8 +192,8 @@
 }
 
 .button:hover {
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
   transform: scale(1.02);
 }
 
@@ -202,8 +202,8 @@
 }
 
 .card.featured .button {
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
 }
 
 .card.featured .button:hover {

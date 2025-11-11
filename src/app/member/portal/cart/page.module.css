@@ -9,7 +9,7 @@
 }
 
 .content {
-  max-width: 1280px;
+  max-width: 80rem;
   margin-inline: auto;
 }
 
@@ -34,7 +34,7 @@
   grid-template-columns: 1fr;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 64rem) {
   .grid {
     grid-template-columns: 2fr 1fr;
   }
@@ -212,7 +212,7 @@
   grid-column: span 1;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 64rem) {
   .sidebar {
     grid-column: span 1;
   }

@@ -1,7 +1,7 @@
 /**
  * CTAButton Styles
  * GHXSTSHIP Entertainment Platform
- * Outlined (2-3px) or Filled, color inversion on hover
+ * Outlined (2-0.1875rem) or Filled, color inversion on hover
  */
 
 .button {
@@ -26,7 +26,7 @@
   transition: all var(--duration-base) var(--easing-out);
   
   /* Minimum touch target */
-  min-height: 48px;
+  min-height: 3rem;
 }
 
 .button:hover {
@@ -39,7 +39,7 @@
 
 .button:focus-visible {
   outline: var(--border-width-2) solid var(--color-border-focus);
-  outline-offset: 2px;
+  outline-offset: 0.125rem;
 }
 
 .button:disabled {
@@ -56,44 +56,44 @@
 .outlined {
   border-color: var(--color-border-strong);
   background-color: transparent;
-  color: var(--color-text-primary);
+  color: var(--color-black);
 }
 
 .outlined:hover:not(:disabled) {
-  background-color: var(--color-primary);
+  background-color: var(--color-black);
   border-color: var(--color-border-strong);
-  color: var(--color-text-inverse);
+  color: var(--color-white);
 }
 
 .outlined .arrow {
-  color: var(--color-text-primary);
+  color: var(--color-black);
   transition: color var(--duration-base) var(--easing-out);
 }
 
 .outlined:hover:not(:disabled) .arrow {
-  color: var(--color-text-inverse);
+  color: var(--color-white);
 }
 
 /* Filled variant */
 .filled {
   border-color: var(--color-border-strong);
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--color-black);
+  color: var(--color-white);
 }
 
 .filled:hover:not(:disabled) {
-  background-color: var(--color-bg-primary);
+  background-color: var(--color-white);
   border-color: var(--color-border-strong);
-  color: var(--color-text-primary);
+  color: var(--color-black);
 }
 
 .filled .arrow {
-  color: var(--color-text-inverse);
+  color: var(--color-white);
   transition: color var(--duration-base) var(--easing-out);
 }
 
 .filled:hover:not(:disabled) .arrow {
-  color: var(--color-text-primary);
+  color: var(--color-black);
 }
 
 /* ========================================
@@ -104,21 +104,21 @@
   padding-inline: var(--space-4);
   padding-block: var(--space-2);
   font-size: var(--font-size-sm);
-  min-height: 40px;
+  min-height: 2.5rem;
 }
 
 .md {
   padding-inline: var(--space-8);
   padding-block: var(--space-4);
   font-size: var(--font-size-lg);
-  min-height: 48px;
+  min-height: 3rem;
 }
 
 .lg {
   padding-inline: var(--space-12);
   padding-block: var(--space-5);
   font-size: var(--font-size-xl);
-  min-height: 56px;
+  min-height: 3.5rem;
 }
 
 /* ========================================
@@ -145,7 +145,7 @@
 }
 
 .button:hover:not(:disabled) .arrow {
-  transform: translateX(4px);
+  transform: translateX(0.25rem);
 }
 
 /* ========================================
@@ -175,24 +175,36 @@
 
 .dark .outlined,
 [data-theme="dark"] .outlined {
-  border-color: var(--color-border-strong);
-  color: var(--color-text-primary);
+  border-color: var(--color-white);
+  color: var(--color-white);
 }
 
 .dark .outlined:hover:not(:disabled),
 [data-theme="dark"] .outlined:hover:not(:disabled) {
-  background-color: var(--color-accent);
-  color: var(--color-primary);
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+.dark .outlined:hover:not(:disabled) .arrow,
+[data-theme="dark"] .outlined:hover:not(:disabled) .arrow {
+  color: var(--color-black);
 }
 
 .dark .filled,
 [data-theme="dark"] .filled {
-  background-color: var(--color-accent);
-  color: var(--color-primary);
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border-color: var(--color-white);
 }
 
 .dark .filled:hover:not(:disabled),
 [data-theme="dark"] .filled:hover:not(:disabled) {
-  background-color: var(--color-primary);
-  color: var(--color-accent);
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border-color: var(--color-white);
+}
+
+.dark .filled:hover:not(:disabled) .arrow,
+[data-theme="dark"] .filled:hover:not(:disabled) .arrow {
+  color: var(--color-white);
 }

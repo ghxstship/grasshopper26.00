@@ -21,14 +21,14 @@
   
   border: var(--border-width-2) solid var(--color-border-strong);
   border-radius: var(--radius-none);
-  background-color: var(--color-primary);
+  background-color: var(--color-black);
   box-shadow: var(--shadow-lg);
   
   font-family: var(--font-body);
   font-size: var(--font-size-sm);
   line-height: var(--line-height-normal);
   
-  color: var(--color-text-inverse);
+  color: var(--color-white);
   
   white-space: nowrap;
   
@@ -48,25 +48,25 @@
    ======================================== */
 
 .top {
-  inset-block-end: calc(100% + 8px);
+  inset-block-end: calc(100% + 0.5rem);
   inset-inline-start: 50%;
   transform: translateX(-50%);
 }
 
 .bottom {
-  inset-block-start: calc(100% + 8px);
+  inset-block-start: calc(100% + 0.5rem);
   inset-inline-start: 50%;
   transform: translateX(-50%);
 }
 
 .left {
-  inset-inline-end: calc(100% + 8px);
+  inset-inline-end: calc(100% + 0.5rem);
   inset-block-start: 50%;
   transform: translateY(-50%);
 }
 
 .right {
-  inset-inline-start: calc(100% + 8px);
+  inset-inline-start: calc(100% + 0.5rem);
   inset-block-start: 50%;
   transform: translateY(-50%);
 }
@@ -77,41 +77,41 @@
 
 .arrow {
   position: absolute;
-  width: 8px;
-  height: 8px;
-  background-color: var(--color-primary);
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: var(--color-black);
   border: var(--border-width-2) solid var(--color-border-strong);
   transform: rotate(45deg);
 }
 
 .top .arrow {
-  inset-block-end: -5px;
+  inset-block-end: -0.3125rem;
   inset-inline-start: 50%;
-  margin-inline-start: -4px;
+  margin-inline-start: -0.25rem;
   border-block-start: none;
   border-inline-start: none;
 }
 
 .bottom .arrow {
-  inset-block-start: -5px;
+  inset-block-start: -0.3125rem;
   inset-inline-start: 50%;
-  margin-inline-start: -4px;
+  margin-inline-start: -0.25rem;
   border-block-end: none;
   border-inline-end: none;
 }
 
 .left .arrow {
-  inset-inline-end: -5px;
+  inset-inline-end: -0.3125rem;
   inset-block-start: 50%;
-  margin-block-start: -4px;
+  margin-block-start: -0.25rem;
   border-block-end: none;
   border-inline-start: none;
 }
 
 .right .arrow {
-  inset-inline-start: -5px;
+  inset-inline-start: -0.3125rem;
   inset-block-start: 50%;
-  margin-block-start: -4px;
+  margin-block-start: -0.25rem;
   border-block-start: none;
   border-inline-end: none;
 }

@@ -6,7 +6,7 @@
 .statsGrid {
   display: grid;
   gap: var(--space-6);
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
   margin-block-end: var(--space-8);
 }
 
@@ -45,7 +45,7 @@
 }
 
 .emptyIcon {
-  width: 64px;
-  height: 64px;
+  width: 4rem;
+  height: 4rem;
   color: var(--color-text-secondary);
 }

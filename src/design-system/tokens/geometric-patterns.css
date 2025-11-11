@@ -12,40 +12,40 @@
   background-image: 
     radial-gradient(circle, var(--color-black) 20%, transparent 20%),
     radial-gradient(circle, var(--color-black) 20%, transparent 20%);
-  background-size: 4px 4px;
-  background-position: 0 0, 2px 2px;
+  background-size: 0.25rem 0.25rem;
+  background-position: 0 0, 0.125rem 0.125rem;
 }
 
 .halftone-md {
   background-image: 
     radial-gradient(circle, var(--color-black) 20%, transparent 20%),
     radial-gradient(circle, var(--color-black) 20%, transparent 20%);
-  background-size: 6px 6px;
-  background-position: 0 0, 3px 3px;
+  background-size: 0.375rem 0.375rem;
+  background-position: 0 0, 0.1875rem 0.1875rem;
 }
 
 .halftone-lg {
   background-image: 
     radial-gradient(circle, var(--color-black) 20%, transparent 20%),
     radial-gradient(circle, var(--color-black) 20%, transparent 20%);
-  background-size: 8px 8px;
-  background-position: 0 0, 4px 4px;
+  background-size: 0.5rem 0.5rem;
+  background-position: 0 0, 0.25rem 0.25rem;
 }
 
 .halftone-white-sm {
   background-image: 
     radial-gradient(circle, var(--color-white) 20%, transparent 20%),
     radial-gradient(circle, var(--color-white) 20%, transparent 20%);
-  background-size: 4px 4px;
-  background-position: 0 0, 2px 2px;
+  background-size: 0.25rem 0.25rem;
+  background-position: 0 0, 0.125rem 0.125rem;
 }
 
 .halftone-white-md {
   background-image: 
     radial-gradient(circle, var(--color-white) 20%, transparent 20%),
     radial-gradient(circle, var(--color-white) 20%, transparent 20%);
-  background-size: 6px 6px;
-  background-position: 0 0, 3px 3px;
+  background-size: 0.375rem 0.375rem;
+  background-position: 0 0, 0.1875rem 0.1875rem;
 }
 
 /* ========================================
@@ -56,9 +56,9 @@
   background-image: repeating-linear-gradient(
     45deg,
     var(--color-black),
-    var(--color-black) 3px,
-    transparent 3px,
-    transparent 10px
+    var(--color-black) var(--border-width-3),
+    transparent var(--border-width-3),
+    transparent 0.625rem
   );
 }
 
@@ -66,9 +66,9 @@
   background-image: repeating-linear-gradient(
     45deg,
     var(--color-white),
-    var(--color-white) 3px,
-    transparent 3px,
-    transparent 10px
+    var(--color-white) var(--border-width-3),
+    transparent var(--border-width-3),
+    transparent 0.625rem
   );
 }
 
@@ -76,9 +76,9 @@
   background-image: repeating-linear-gradient(
     90deg,
     var(--color-black),
-    var(--color-black) 3px,
-    transparent 3px,
-    transparent 10px
+    var(--color-black) var(--border-width-3),
+    transparent var(--border-width-3),
+    transparent 0.625rem
   );
 }
 
@@ -86,9 +86,9 @@
   background-image: repeating-linear-gradient(
     0deg,
     var(--color-black),
-    var(--color-black) 3px,
-    transparent 3px,
-    transparent 10px
+    var(--color-black) var(--border-width-3),
+    transparent var(--border-width-3),
+    transparent 0.625rem
   );
 }
 
@@ -98,16 +98,16 @@
 
 .grid-overlay {
   background-image: 
-    linear-gradient(var(--color-grey-200) 1px, transparent 1px),
-    linear-gradient(90deg, var(--color-grey-200) 1px, transparent 1px);
-  background-size: 20px 20px;
+    linear-gradient(var(--color-grey-200) var(--border-width-thin), transparent var(--border-width-thin)),
+    linear-gradient(90deg, var(--color-grey-200) var(--border-width-thin), transparent var(--border-width-thin));
+  background-size: 1.25rem 1.25rem;
 }
 
 .grid-overlay-bold {
   background-image: 
-    linear-gradient(var(--color-black) 2px, transparent 2px),
-    linear-gradient(90deg, var(--color-black) 2px, transparent 2px);
-  background-size: 20px 20px;
+    linear-gradient(var(--color-black) var(--border-width-2), transparent var(--border-width-2)),
+    linear-gradient(90deg, var(--color-black) var(--border-width-2), transparent var(--border-width-2));
+  background-size: 1.25rem 1.25rem;
 }
 
 /* ========================================
@@ -128,15 +128,15 @@
 }
 
 .shadow-geometric-white-sm {
-  box-shadow: 4px 4px 0 var(--color-white);
+  box-shadow: 0.25rem 0.25rem 0 var(--color-white);
 }
 
 .shadow-geometric-white-md {
-  box-shadow: 6px 6px 0 var(--color-white);
+  box-shadow: 0.375rem 0.375rem 0 var(--color-white);
 }
 
 .shadow-geometric-white-lg {
-  box-shadow: 8px 8px 0 var(--color-white);
+  box-shadow: 0.5rem 0.5rem 0 var(--color-white);
 }
 
 /* ========================================
@@ -243,25 +243,25 @@
 
 /* Triangle pointing up */
 .shape-triangle-up {
-  border-width: 0 20px 34.64px 20px;
+  border-width: 0 1.25rem 2.165rem 1.25rem;
   border-color: transparent transparent var(--color-black) transparent;
 }
 
 /* Triangle pointing down */
 .shape-triangle-down {
-  border-width: 34.64px 20px 0 20px;
+  border-width: 2.165rem 1.25rem 0 1.25rem;
   border-color: var(--color-black) transparent transparent transparent;
 }
 
 /* Triangle pointing right */
 .shape-triangle-right {
-  border-width: 20px 0 20px 34.64px;
+  border-width: 1.25rem 0 1.25rem 2.165rem;
   border-color: transparent transparent transparent var(--color-black);
 }
 
 /* Triangle pointing left */
 .shape-triangle-left {
-  border-width: 20px 34.64px 20px 0;
+  border-width: 1.25rem 2.165rem 1.25rem 0;
   border-color: transparent var(--color-black) transparent transparent;
 }
 

@@ -1,0 +1,68 @@
+/**
+ * Image Styles
+ * GHXSTSHIP Entertainment Platform
+ * B&W/duotone treatment with halftone overlays
+ */
+
+.container {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ========================================
+   TREATMENTS
+   ======================================== */
+
+.bw .image {
+  filter: grayscale(100%) contrast(1.2);
+}
+
+.duotone .image {
+  filter: grayscale(100%) contrast(1.3) brightness(0.9);
+  mix-blend-mode: multiply;
+}
+
+.halftone .image {
+  filter: grayscale(100%) contrast(1.2);
+}
+
+.none .image {
+  filter: none;
+}
+
+/* ========================================
+   HALFTONE OVERLAY
+   ======================================== */
+
+.halftoneOverlay {
+  position: absolute;
+  inset: 0;
+  
+  background-image: 
+    radial-gradient(circle, var(--color-primary) 20%, transparent 20%),
+    radial-gradient(circle, var(--color-primary) 20%, transparent 20%);
+  background-size: 4px 4px;
+  background-position: 0 0, 2px 2px;
+  
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+.dark .halftoneOverlay,
+[data-theme="dark"] .halftoneOverlay {
+  background-image: 
+    radial-gradient(circle, var(--color-accent) 20%, transparent 20%),
+    radial-gradient(circle, var(--color-accent) 20%, transparent 20%);
+}

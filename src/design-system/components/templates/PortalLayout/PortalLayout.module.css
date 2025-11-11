@@ -31,10 +31,10 @@
   position: fixed;
   inset-block-start: 0;
   inset-inline-start: 0;
-  width: 280px;
+  width: 17.5rem;
   height: 100vh;
   background-color: var(--color-bg-inverse);
-  color: var(--color-text-inverse);
+  color: var(--color-white);
   border-inline-end: var(--border-width-3) solid var(--color-border-inverse);
   padding: var(--space-6);
   overflow-y: auto;
@@ -114,7 +114,7 @@
 
 /* Content */
 .content {
-  max-width: 1440px;
+  max-width: 90rem;
   width: 100%;
 }
 
@@ -122,12 +122,12 @@
    RESPONSIVE
    ======================================== */
 
-@media (min-width: 768px) {
+@media (min-width: 48rem) {
   .sidebar {
     position: static;
     transform: translateX(0);
     height: auto;
-    min-height: calc(100vh - 80px);
+    min-height: calc(100vh - 5rem);
   }
   
   .overlay {
@@ -139,9 +139,9 @@
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 64rem) {
   .sidebar {
-    width: 320px;
+    width: 20rem;
     padding: var(--space-8);
   }
   
@@ -154,9 +154,9 @@
   }
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 90rem) {
   .sidebar {
-    width: 360px;
+    width: 22.5rem;
   }
 }
 
@@ -181,7 +181,7 @@
   @keyframes fadeIn {
     from {
       opacity: 0;
-      transform: translateY(8px);
+      transform: translateY(0.5rem);
     }
     to {
       opacity: 1;

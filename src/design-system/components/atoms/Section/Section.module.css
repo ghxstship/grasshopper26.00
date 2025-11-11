@@ -49,7 +49,7 @@
   padding-block: var(--spacing-24);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 48rem) {
   .padding-sm {
     padding-block: var(--spacing-12);
   }

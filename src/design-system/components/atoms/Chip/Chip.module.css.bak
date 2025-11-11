@@ -1,0 +1,190 @@
+/**
+ * Chip Styles
+ * GHXSTSHIP Entertainment Platform
+ * Geometric chips for tags and filters
+ */
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  
+  font-family: var(--font-mono);
+  font-weight: var(--font-weight-normal);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  
+  border: var(--border-width-2) solid var(--color-border-default);
+  border-radius: var(--radius-none)(--radius-none);
+  
+  white-space: nowrap;
+  
+  transition: all var(--duration-fast) var(--easing-out);
+}
+
+/* ========================================
+   VARIANTS
+   ======================================== */
+
+.default {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+  border-color: var(--color-border-default);
+}
+
+.outlined {
+  background-color: transparent;
+  color: var(--color-text-primary);
+  border-color: var(--color-border-strong);
+}
+
+.filled {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+}
+
+/* ========================================
+   SIZES
+   ======================================== */
+
+.sm {
+  padding-inline: var(--space-2);
+  padding-block: var(--space-1);
+  font-size: var(--font-size-xs);
+}
+
+.md {
+  padding-inline: var(--space-3);
+  padding-block: var(--space-1-5);
+  font-size: var(--font-size-sm);
+}
+
+.lg {
+  padding-inline: var(--space-4);
+  padding-block: var(--space-2);
+  font-size: var(--font-size-base);
+}
+
+/* ========================================
+   STATES
+   ======================================== */
+
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:hover {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border-color: var(--color-border-strong);
+  transform: scale(1.05);
+}
+
+.clickable:active {
+  transform: scale(0.98);
+}
+
+.clickable:focus-visible {
+  outline: var(--border-width-2) solid var(--color-border-focus);
+  outline-offset: 0.125rem;
+}
+
+.selected {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border-color: var(--color-border-strong);
+}
+
+.selected:hover {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+
+/* ========================================
+   DELETE BUTTON
+   ======================================== */
+
+.deleteButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  
+  width: 16px;
+  height: 16px;
+  
+  font-size: var(--font-size-lg);
+  line-height: 1;
+  
+  background: none;
+  border: none;
+  border-radius: var(--radius-none)(--radius-none);
+  
+  color: inherit;
+  cursor: pointer;
+  
+  padding: 0;
+  
+  transition: all var(--duration-fast) var(--easing-out);
+}
+
+.deleteButton:hover {
+  background-color: var(--color-bg-tertiary);
+  transform: scale(1.2);
+}
+
+.deleteButton:active {
+  transform: scale(0.9);
+}
+
+.deleteButton:focus-visible {
+  outline: var(--border-width-2) solid var(--color-border-focus);
+  outline-offset: 1px;
+}
+
+/* ========================================
+   LABEL
+   ======================================== */
+
+.label {
+  display: inline-block;
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .chip,
+  .deleteButton {
+    transition: none;
+    transform: none !important;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .chip {
+    border-width: var(--border-width-3);
+  }
+}
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+.dark .chip,
+[data-theme="dark"] .chip {
+  border-color: var(--color-border-default);
+}
+
+.dark .filled,
+[data-theme="dark"] .filled {
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+}
+
+.dark .selected,
+[data-theme="dark"] .selected {
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+}

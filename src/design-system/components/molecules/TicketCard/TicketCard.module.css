@@ -30,22 +30,22 @@
 .card.clickable:hover {
   background-color: var(--color-bg-secondary);
   border-color: var(--color-primary);
-  transform: translateY(-4px);
+  transform: translateY(-0.25rem);
   box-shadow: var(--shadow-lg);
 }
 
 .card.clickable:active {
-  transform: translateY(-2px);
+  transform: translateY(-0.125rem);
   box-shadow: var(--shadow-md);
 }
 
 .card:focus-visible {
   outline: var(--border-width-2) solid var(--color-border-focus);
-  outline-offset: 2px;
+  outline-offset: 0.125rem;
 }
 
 .card.selected {
-  background-color: var(--color-primary);
+  background-color: var(--color-black);
   border-color: var(--color-accent);
   box-shadow: var(--shadow-lg);
 }
@@ -82,7 +82,7 @@
 }
 
 .card.selected .name {
-  color: var(--color-text-inverse);
+  color: var(--color-white);
 }
 
 .price {
@@ -100,7 +100,7 @@
 }
 
 .card.selected .price {
-  color: var(--color-text-inverse);
+  color: var(--color-white);
 }
 
 /* ========================================
@@ -164,7 +164,7 @@
 }
 
 .card.selected .perkIcon {
-  color: var(--color-text-inverse);
+  color: var(--color-white);
 }
 
 /* ========================================
@@ -213,7 +213,7 @@
   
   border: var(--border-width-2) solid var(--color-border-strong);
   border-radius: var(--radius-none)(--radius-none);
-  background-color: var(--color-primary);
+  background-color: var(--color-black);
 }
 
 .soldOutText {
@@ -223,7 +223,7 @@
   letter-spacing: var(--letter-spacing-wider);
   text-transform: uppercase;
   
-  color: var(--color-text-inverse);
+  color: var(--color-white);
 }
 
 /* ========================================
@@ -239,8 +239,8 @@
   align-items: center;
   justify-content: center;
   
-  width: 48px;
-  height: 48px;
+  width: 3rem;
+  height: 3rem;
   
   border: var(--border-width-3) solid var(--color-border-accent);
   border-radius: var(--radius-none)(--radius-none);
@@ -292,7 +292,7 @@
    RESPONSIVE
    ======================================== */
 
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .header {
     flex-direction: column;
     align-items: flex-start;
@@ -334,7 +334,7 @@
 
 .dark .selectedIndicator,
 [data-theme="dark"] .selectedIndicator {
-  background-color: var(--color-primary);
+  background-color: var(--color-black);
   box-shadow: var(--shadow-white-sm);
 }
 

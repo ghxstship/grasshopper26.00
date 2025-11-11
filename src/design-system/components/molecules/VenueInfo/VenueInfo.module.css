@@ -129,7 +129,7 @@
    RESPONSIVE
    ======================================== */
 
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .venueName {
     font-size: var(--font-size-xl);
   }

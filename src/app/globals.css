@@ -94,10 +94,10 @@
     display: none !important;
   }
   
-  /* GHXSTSHIP toast styling - monochromatic, hard edges, 3px borders */
+  /* GHXSTSHIP toast styling - monochromatic, hard edges, 0.1875rem borders */
   .ghxstship-toast {
     border-radius: 0 !important;
-    border-width: 3px !important;
+    border-width: 0.1875rem !important;
   }
   
   /* Toast close button styling */

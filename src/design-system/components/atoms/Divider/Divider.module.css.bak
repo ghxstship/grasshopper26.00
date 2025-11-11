@@ -1,0 +1,63 @@
+/**
+ * Divider Styles
+ * GHXSTSHIP Entertainment Platform
+ * Thick geometric dividers (3px standard)
+ */
+
+.divider {
+  border: none;
+  background-color: var(--color-border-strong);
+  margin: 0;
+}
+
+/* ========================================
+   ORIENTATION
+   ======================================== */
+
+.horizontal {
+  width: 100%;
+  height: var(--border-width-3);
+}
+
+.vertical {
+  width: var(--border-width-3);
+  height: 100%;
+  min-height: 40px;
+}
+
+/* ========================================
+   THICKNESS
+   ======================================== */
+
+.thin.horizontal {
+  height: var(--border-width-2);
+}
+
+.thin.vertical {
+  width: var(--border-width-2);
+}
+
+.default.horizontal {
+  height: var(--border-width-3);
+}
+
+.default.vertical {
+  width: var(--border-width-3);
+}
+
+.thick.horizontal {
+  height: var(--border-width-4);
+}
+
+.thick.vertical {
+  width: var(--border-width-4);
+}
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+.dark .divider,
+[data-theme="dark"] .divider {
+  background-color: var(--color-border-strong);
+}

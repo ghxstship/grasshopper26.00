@@ -55,11 +55,11 @@
 
 .status.locked {
   background-color: var(--color-grey-800);
-  color: var(--color-text-inverse);
+  color: var(--color-white);
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(15.625rem, 1fr));
   gap: var(--space-6);
 }

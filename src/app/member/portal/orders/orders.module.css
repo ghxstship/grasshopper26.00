@@ -17,7 +17,7 @@
 .ordersGrid {
   display: grid;
   gap: var(--space-6);
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(18.75rem, 1fr));
 }
 
 .orderCard {
@@ -37,7 +37,7 @@
 }
 
 .emptyIcon {
-  width: 64px;
-  height: 64px;
+  width: 4rem;
+  height: 4rem;
   color: var(--color-text-secondary);
 }

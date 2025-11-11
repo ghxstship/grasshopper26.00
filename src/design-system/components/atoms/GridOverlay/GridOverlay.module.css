@@ -16,22 +16,22 @@
   opacity: var(--grid-opacity);
   pointer-events: none;
   background-image:
-    linear-gradient(var(--grid-color) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+    linear-gradient(var(--grid-color) var(--space-px), transparent var(--space-px)),
+    linear-gradient(90deg, var(--grid-color) var(--space-px), transparent var(--space-px));
   background-size: var(--grid-size) var(--grid-size);
 }
 
 /* Size variants */
 .small {
-  --grid-size: 16px;
+  --grid-size: 1rem;
 }
 
 .medium {
-  --grid-size: 32px;
+  --grid-size: 2rem;
 }
 
 .large {
-  --grid-size: 64px;
+  --grid-size: 4rem;
 }
 
 /* Color variants */

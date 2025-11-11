@@ -1,38 +1,32 @@
 /**
  * Home Page Styles
- * Entertainment Platform - Monochromatic Design System
+ * GHXSTSHIP Monochromatic Design System
+ * Zero tolerance: CSS Modules only, design tokens only
  */
 
-/* Section */
-.section {
-  max-width: 1440px;
+/* ========================================
+   SECTION CONTAINER
+   ======================================== */
+.sectionContainer {
+  max-inline-size: 1400px;
   margin-inline: auto;
-  width: 100%;
-  padding-inline: var(--space-6);
-  padding-block: var(--space-20);
+  inline-size: 100%;
 }
 
-.section:nth-child(even) {
-  background-color: var(--color-bg-black);
-  color: var(--color-text-inverse);
-}
-
-.section:nth-child(odd) {
-  background-color: var(--color-bg-white);
-  color: var(--color-text-primary);
-}
-
+/* ========================================
+   SECTION TITLE
+   ======================================== */
 .sectionTitle {
-  font-family: var(--font-bebas);
-  font-size: var(--font-size-h2);
+  font-family: var(--font-heading);
+  font-size: var(--font-size-3xl);
   font-weight: var(--font-weight-normal);
-  line-height: var(--line-height-snug);
+  line-height: var(--line-height-tight);
   letter-spacing: var(--letter-spacing-wide);
   text-transform: uppercase;
   text-align: center;
   
   margin: 0;
-  margin-block-end: var(--space-12);
+  margin-block-end: var(--space-8);
   
   position: relative;
 }
@@ -40,77 +34,103 @@
 .sectionTitle::after {
   content: '';
   position: absolute;
-  inset-block-end: calc(var(--space-4) * -1);
+  inset-block-end: calc(var(--space-3) * -1);
   inset-inline-start: 50%;
   transform: translateX(-50%);
   
-  width: 120px;
-  height: var(--border-width-3);
+  inline-size: 80px;
+  block-size: var(--border-width-3);
   background-color: currentColor;
 }
 
-/* Section Description */
-.sectionDescription {
-  text-align: center;
-  max-inline-size: 600px;
-  margin-inline: auto;
-  margin-block-end: var(--space-8);
-  color: var(--color-text-secondary);
-}
-
-/* Section CTA */
-.sectionCta {
-  display: flex;
-  justify-content: center;
-  margin-block-start: var(--space-8);
-}
-
-/* Newsletter Section */
-.newsletterSection {
-  text-align: center;
-  padding-block: var(--space-16);
-  padding-inline: var(--space-6);
-  background: var(--color-bg-primary);
-  border-block-start: var(--border-width-default) solid var(--color-border);
-}
-
-.newsletterTitle {
-  margin-block-end: var(--space-4);
-}
-
-.newsletterDescription {
-  max-inline-size: 600px;
-  margin-inline: auto;
-  margin-block-end: var(--space-8);
-  color: var(--color-text-secondary);
-}
-
-/* Events Grid */
-.eventsGrid {
-  display: grid;
-  gap: var(--space-6);
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+@media (min-width: 768px) {
+  .sectionTitle {
+    font-size: var(--font-size-4xl);
+    margin-block-end: var(--space-10);
+  }
+  
+  .sectionTitle::after {
+    inline-size: 120px;
+  }
 }
 
 /* ========================================
-   RESPONSIVE
+   SECTION DESCRIPTION
    ======================================== */
+.sectionDescription {
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  text-align: center;
+  max-inline-size: 600px;
+  margin-inline: auto;
+  margin-block-end: var(--space-6);
+  color: var(--color-text-secondary);
+  margin-block-start: 0;
+}
 
 @media (min-width: 768px) {
-  .eventsGrid {
-    grid-template-columns: repeat(2, 1fr);
+  .sectionDescription {
+    font-size: var(--font-size-lg);
   }
 }
 
-@media (min-width: 1024px) {
-  .eventsGrid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-8);
+/* ========================================
+   SECTION CTA
+   ======================================== */
+.sectionCta {
+  display: flex;
+  justify-content: center;
+  margin-block-start: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .sectionCta {
+    margin-block-start: var(--space-8);
   }
 }
 
-@media (min-width: 1440px) {
-  .eventsGrid {
-    grid-template-columns: repeat(4, 1fr);
+/* ========================================
+   NEWSLETTER SECTION
+   ======================================== */
+.newsletterContainer {
+  text-align: center;
+  max-inline-size: 800px;
+  margin-inline: auto;
+}
+
+.newsletterTitle {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  margin: 0;
+  margin-block-end: var(--space-3);
+}
+
+@media (min-width: 768px) {
+  .newsletterTitle {
+    font-size: var(--font-size-4xl);
+    margin-block-end: var(--space-4);
   }
 }
+
+.newsletterDescription {
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  max-inline-size: 600px;
+  margin-inline: auto;
+  margin-block-start: 0;
+  margin-block-end: var(--space-6);
+  color: var(--color-text-secondary);
+}
+
+@media (min-width: 768px) {
+  .newsletterDescription {
+    font-size: var(--font-size-lg);
+  }
+}
+

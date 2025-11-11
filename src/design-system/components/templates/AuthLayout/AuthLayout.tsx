@@ -8,8 +8,8 @@ import * as React from "react";
 import styles from './AuthLayout.module.css';
 
 export interface AuthLayoutProps {
-  /** Logo component */
-  logo?: React.ReactNode;
+  /** Logo text or component */
+  logo?: React.ReactNode | string;
   
   /** Form content */
   children: React.ReactNode;
@@ -44,7 +44,7 @@ export const AuthLayout: React.FC<AuthLayoutProps> = ({
         {/* Logo */}
         {logo && (
           <div className={styles.logo}>
-            {logo}
+            {typeof logo === 'string' ? <span>{logo}</span> : logo}
           </div>
         )}
         

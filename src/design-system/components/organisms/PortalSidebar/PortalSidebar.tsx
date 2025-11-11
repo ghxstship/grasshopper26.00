@@ -20,12 +20,14 @@ import {
 import styles from './PortalSidebar.module.css';
 
 const navItems = [
-  { href: '/portal', label: 'Dashboard', icon: LayoutDashboard },
-  { href: '/portal/orders', label: 'Orders', icon: Ticket },
-  { href: '/portal/advances', label: 'Advances', icon: CreditCard },
-  { href: '/portal/credits', label: 'Credits', icon: Gift },
-  { href: '/portal/vouchers', label: 'Vouchers', icon: Gift },
-  { href: '/portal/referrals', label: 'Referrals', icon: User },
+  { href: '/member/portal', label: 'Dashboard', icon: LayoutDashboard },
+  { href: '/member/portal/orders', label: 'Orders', icon: Ticket },
+  { href: '/member/portal/advances', label: 'Advances', icon: CreditCard },
+  { href: '/member/portal/credits', label: 'Credits', icon: Gift },
+  { href: '/member/portal/vouchers', label: 'Vouchers', icon: Gift },
+  { href: '/member/portal/referrals', label: 'Referrals', icon: User },
+  { href: '/member/portal/favorites', label: 'Favorites', icon: User },
+  { href: '/member/portal/schedule', label: 'Schedule', icon: Calendar },
 ];
 
 export const PortalSidebar: React.FC = () => {

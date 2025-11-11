@@ -1,10 +1,8 @@
 export type MembershipTierSlug =
   | 'community'
-  | 'basic'
-  | 'main'
+  | 'access'
+  | 'plus'
   | 'extra'
-  | 'business'
-  | 'first_class'
 
 export type MembershipStatus =
   | 'active'
@@ -204,4 +202,51 @@ export interface UpgradePromptData {
   benefitHighlight: string
   discountOffer?: string
   comparisonValue?: number
+}
+
+export type DiscountType = 'student' | 'educator' | 'veteran' | 'senior'
+
+export interface MembershipDiscountCode {
+  id: string
+  code: string
+  discount_type: DiscountType
+  discount_percentage: number
+  description: string | null
+  verification_required: boolean
+  verification_instructions: string | null
+  stripe_coupon_id: string | null
+  is_active: boolean
+  valid_from: string
+  valid_until: string | null
+  created_at: string
+  updated_at: string
+}
+
+export interface UserDiscountVerification {
+  id: string
+  user_id: string
+  discount_code_id: string
+  verification_status: 'pending' | 'approved' | 'rejected' | 'expired'
+  verification_document_url: string | null
+  verification_notes: string | null
+  verified_by: string | null
+  verified_at: string | null
+  expires_at: string | null
+  created_at: string
+  updated_at: string
+}
+
+export interface MembershipCompanionPass {
+  id: string
+  tier_id: string
+  pass_name: string
+  pass_slug: string
+  description: string | null
+  monthly_price: number
+  annual_price: number
+  max_companions: number
+  benefits: Record<string, any>
+  is_active: boolean
+  created_at: string
+  updated_at: string
 }

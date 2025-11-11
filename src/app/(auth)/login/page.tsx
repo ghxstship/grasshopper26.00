@@ -101,11 +101,7 @@ export default function LoginPage() {
   return (
     <AuthLayout
       pattern="halftone"
-      logo={
-        <Typography variant="h1" as="div">
-          GVTEWAY
-        </Typography>
-      }
+      logo="GVTEWAY"
       footer={
         <div className={styles.footer}>
           <Typography variant="meta" as="span">
@@ -118,13 +114,13 @@ export default function LoginPage() {
       }
     >
       <div className={styles.authContent}>
-        <Typography variant="h2" as="h1" className={styles.title}>
-          Welcome Back
-        </Typography>
-        <Typography variant="body" as="p" className={styles.description}>
-          Sign in to your account to continue
-        </Typography>
+        {/* Header Section */}
+        <header className={styles.header}>
+          <h1 className={styles.title}>Welcome Back</h1>
+          <p className={styles.description}>Sign in to your account to continue</p>
+        </header>
 
+        {/* Primary Form */}
         <form onSubmit={handleSubmit} className={styles.form}>
           <div className={styles.formField}>
             <label htmlFor="email" className={styles.label}>
@@ -137,23 +133,27 @@ export default function LoginPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
+              autoComplete="email"
             />
           </div>
 
           <div className={styles.formField}>
-            <label htmlFor="password" className={styles.label}>
-              Password
-            </label>
+            <div className={styles.labelRow}>
+              <label htmlFor="password" className={styles.label}>
+                Password
+              </label>
+              <Link href="/reset-password" className={styles.forgotLink}>
+                Forgot?
+              </Link>
+            </div>
             <Input
               id="password"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              autoComplete="current-password"
             />
-            <Link href="/reset-password" className={styles.forgotLink}>
-              Forgot password?
-            </Link>
           </div>
 
           <Button
@@ -166,6 +166,7 @@ export default function LoginPage() {
           </Button>
         </form>
 
+        {/* Alternative Methods */}
         <div className={styles.divider}>
           <span>or</span>
         </div>
@@ -179,16 +180,19 @@ export default function LoginPage() {
           Send Magic Link
         </Button>
 
+        {/* OAuth Options */}
         <div className={styles.oauthButtons}>
           <Button
             variant="outlined"
             onClick={() => handleOAuthLogin('google')}
+            disabled={loading}
           >
             Google
           </Button>
           <Button
             variant="outlined"
             onClick={() => window.location.href = '/api/auth/bluesky'}
+            disabled={loading}
           >
             BlueSky
           </Button>

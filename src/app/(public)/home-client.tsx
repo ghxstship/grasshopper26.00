@@ -52,7 +52,6 @@ export function HomeClient({ featuredEvents, upcomingEvents }: { featuredEvents:
         <HeroSection
           title="EXPERIENCE LIVE"
           tagline="WORLD-CLASS FESTIVALS, CONCERTS & EVENTS"
-          backgroundImage="/hero-bg.jpg"
           ctaText="EXPLORE EVENTS"
           ctaHref="/events"
           variant="black"
@@ -61,10 +60,8 @@ export function HomeClient({ featuredEvents, upcomingEvents }: { featuredEvents:
       }
       featuredEvents={
         featuredEvents.length > 0 ? (
-          <div className={styles.section}>
-            <Typography variant="h2" as="h2" className={styles.sectionTitle}>
-              FEATURED EVENTS
-            </Typography>
+          <div className={styles.sectionContainer}>
+            <h2 className={styles.sectionTitle}>Featured Events</h2>
             <Carousel
               showNavigation
               showDots
@@ -89,10 +86,8 @@ export function HomeClient({ featuredEvents, upcomingEvents }: { featuredEvents:
       }
       featuredArtists={
         upcomingEvents.length > 0 ? (
-          <div className={styles.section}>
-            <Typography variant="h2" as="h2" className={styles.sectionTitle}>
-              UPCOMING EVENTS
-            </Typography>
+          <div className={styles.sectionContainer}>
+            <h2 className={styles.sectionTitle}>Upcoming Events</h2>
             <EventsGrid
               events={upcomingEvents.map(mapEventData)}
               onEventClick={(id) => router.push(`/events/${id}`)}
@@ -104,39 +99,35 @@ export function HomeClient({ featuredEvents, upcomingEvents }: { featuredEvents:
                 size="lg"
                 onClick={() => router.push('/events')}
               >
-                VIEW ALL EVENTS
+                View All Events
               </Button>
             </div>
           </div>
         ) : undefined
       }
       membershipTiers={
-        <div className={styles.section}>
-          <Typography variant="h2" as="h2" className={styles.sectionTitle}>
-            BECOME A MEMBER
-          </Typography>
-          <Typography variant="body" as="p" className={styles.sectionDescription}>
+        <div className={styles.sectionContainer}>
+          <h2 className={styles.sectionTitle}>Become a Member</h2>
+          <p className={styles.sectionDescription}>
             Unlock exclusive access to presales, VIP experiences, and member-only events
-          </Typography>
+          </p>
           <div className={styles.sectionCta}>
             <Button
               variant="filled"
               size="lg"
               onClick={() => router.push('/membership')}
             >
-              EXPLORE MEMBERSHIP
+              Explore Membership
             </Button>
           </div>
         </div>
       }
       newsletter={
-        <div className={styles.newsletterSection}>
-          <Typography variant="h2" as="h2" className={styles.newsletterTitle}>
-            STAY IN THE LOOP
-          </Typography>
-          <Typography variant="body" as="p" className={styles.newsletterDescription}>
+        <div className={styles.newsletterContainer}>
+          <h2 className={styles.newsletterTitle}>Stay in the Loop</h2>
+          <p className={styles.newsletterDescription}>
             Get the latest event announcements, exclusive offers, and insider news
-          </Typography>
+          </p>
           <NewsletterSignup
             onSubmit={handleNewsletterSubmit}
             variant="black"

@@ -20,7 +20,7 @@
 }
 
 .text {
-  color: var(--color-text-inverse);
+  color: var(--color-text-inverse) !important;
   font-family: var(--font-family-body);
   font-size: var(--font-size-body);
   line-height: var(--line-height-body);

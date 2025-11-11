@@ -33,12 +33,26 @@ export default function GlobalError({
             <p className={styles.message}>
               Something went wrong. Our team has been notified.
             </p>
-            <Button
-              onClick={reset}
-              variant="outlined"
-            >
-              TRY AGAIN
-            </Button>
+            <div className={styles.actions}>
+              <Button
+                onClick={reset}
+                variant="outlined"
+              >
+                TRY AGAIN
+              </Button>
+              <Button
+                onClick={() => window.history.back()}
+                variant="outlined"
+              >
+                GO BACK
+              </Button>
+              <Button
+                onClick={() => window.location.href = '/'}
+                variant="outlined"
+              >
+                GO HOME
+              </Button>
+            </div>
           </div>
         </div>
       </body>

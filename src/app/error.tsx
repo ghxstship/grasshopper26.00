@@ -4,6 +4,7 @@ import { ErrorLayout } from '@/design-system/components/templates/ErrorLayout/Er
 import { Button } from '@/design-system/components/atoms/Button/Button';
 import { Typography } from '@/design-system/components/atoms/Typography/Typography';
 import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function Error({
   error,
@@ -12,6 +13,8 @@ export default function Error({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
+  const router = useRouter();
+
   useEffect(() => {
     console.error(error);
   }, [error]);
@@ -30,6 +33,9 @@ export default function Error({
         <>
           <Button variant="filled" onClick={reset}>
             Try Again
+          </Button>
+          <Button variant="outlined" onClick={() => router.back()}>
+            Go Back
           </Button>
           <Button variant="outlined" onClick={() => window.location.href = '/'}>
             Go Home

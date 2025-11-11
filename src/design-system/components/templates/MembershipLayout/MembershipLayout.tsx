@@ -20,6 +20,15 @@ export interface MembershipLayoutProps {
   /** Benefits breakdown */
   benefits?: React.ReactNode;
   
+  /** Special discounts section */
+  discounts?: React.ReactNode;
+  
+  /** Corporate memberships section */
+  corporate?: React.ReactNode;
+  
+  /** Industry memberships section */
+  industry?: React.ReactNode;
+  
   /** FAQ section */
   faq?: React.ReactNode;
   
@@ -41,6 +50,9 @@ export const MembershipLayout: React.FC<MembershipLayoutProps> = ({
   hero,
   tiers,
   benefits,
+  discounts,
+  corporate,
+  industry,
   faq,
   testimonials,
   cta,
@@ -79,6 +91,27 @@ export const MembershipLayout: React.FC<MembershipLayoutProps> = ({
       {benefits && (
         <section className={styles.benefits} aria-label="Membership benefits">
           {benefits}
+        </section>
+      )}
+      
+      {/* Special Discounts */}
+      {discounts && (
+        <section className={styles.discounts} aria-label="Special discounts">
+          {discounts}
+        </section>
+      )}
+      
+      {/* Corporate Memberships */}
+      {corporate && (
+        <section className={styles.corporate} aria-label="Corporate memberships">
+          {corporate}
+        </section>
+      )}
+      
+      {/* Industry Memberships */}
+      {industry && (
+        <section className={styles.industry} aria-label="Industry memberships">
+          {industry}
         </section>
       )}
       

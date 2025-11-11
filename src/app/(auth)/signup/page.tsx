@@ -78,11 +78,7 @@ export default function SignupPage() {
   return (
     <AuthLayout
       pattern="stripes"
-      logo={
-        <Typography variant="h1" as="div">
-          GVTEWAY
-        </Typography>
-      }
+      logo="GVTEWAY"
       footer={
         <div className={styles.footer}>
           <Typography variant="meta" as="span">
@@ -95,13 +91,13 @@ export default function SignupPage() {
       }
     >
       <div className={styles.authContent}>
-        <Typography variant="h2" as="h1" className={styles.title}>
-          Create Account
-        </Typography>
-        <Typography variant="body" as="p" className={styles.description}>
-          Join the community and never miss an event
-        </Typography>
+        {/* Header Section */}
+        <header className={styles.header}>
+          <h1 className={styles.title}>Create Account</h1>
+          <p className={styles.description}>Join the community and never miss an event</p>
+        </header>
 
+        {/* Registration Form */}
         <form onSubmit={handleSignup} className={styles.form}>
           <div className={styles.formField}>
             <label htmlFor="displayName" className={styles.label}>
@@ -114,6 +110,7 @@ export default function SignupPage() {
               value={formData.displayName}
               onChange={(e) => setFormData({ ...formData, displayName: e.target.value })}
               required
+              autoComplete="name"
             />
           </div>
 
@@ -128,6 +125,7 @@ export default function SignupPage() {
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               required
+              autoComplete="email"
             />
           </div>
 
@@ -142,10 +140,9 @@ export default function SignupPage() {
               onChange={(e) => setFormData({ ...formData, password: e.target.value })}
               required
               minLength={8}
+              autoComplete="new-password"
             />
-            <Typography variant="meta" as="p">
-              Must be at least 8 characters
-            </Typography>
+            <p className={styles.helperText}>Must be at least 8 characters</p>
           </div>
 
           <div className={styles.formField}>
@@ -158,6 +155,7 @@ export default function SignupPage() {
               value={formData.confirmPassword}
               onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
               required
+              autoComplete="new-password"
             />
           </div>
 
@@ -168,12 +166,13 @@ export default function SignupPage() {
               checked={formData.agreeToTerms}
               onChange={(e) => setFormData({ ...formData, agreeToTerms: e.target.checked })}
               className={styles.checkbox}
+              required
             />
             <label htmlFor="terms" className={styles.checkboxLabel}>
               I agree to the{' '}
-              <Link href="/legal/terms" className={styles.link}>Terms of Service</Link>{' '}
+              <Link href="/legal/terms" className={styles.link} target="_blank" rel="noopener noreferrer">Terms of Service</Link>{' '}
               and{' '}
-              <Link href="/legal/privacy" className={styles.link}>Privacy Policy</Link>
+              <Link href="/legal/privacy" className={styles.link} target="_blank" rel="noopener noreferrer">Privacy Policy</Link>
             </label>
           </div>
 
@@ -187,20 +186,24 @@ export default function SignupPage() {
           </Button>
         </form>
 
+        {/* Alternative Methods */}
         <div className={styles.divider}>
           <span>or</span>
         </div>
 
+        {/* OAuth Options */}
         <div className={styles.oauthButtons}>
           <Button
             variant="outlined"
             onClick={() => handleOAuthSignup('google')}
+            disabled={loading}
           >
             Google
           </Button>
           <Button
             variant="outlined"
             onClick={() => window.location.href = '/api/auth/bluesky'}
+            disabled={loading}
           >
             BlueSky
           </Button>

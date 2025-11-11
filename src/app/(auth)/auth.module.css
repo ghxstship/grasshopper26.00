@@ -1,308 +1,216 @@
 /**
  * Auth Pages - GHXSTSHIP Design System
  * Zero tolerance compliance: CSS Modules only, design tokens only
+ * Optimized for UI/UX best practices: visual hierarchy, alignment, spacing rhythm
  */
 
-/**
- * Auth Pages Styles
- * GHXSTSHIP Monochromatic Design System
- * CSS Modules, design tokens, logical properties
- * Note: Most styles now handled by AuthCardTemplate
- */
-
-/* Custom form field styles for auth pages */
-.formField {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-2);
-  align-items: center;
-  justify-content: space-between;
-}
-
-.labelRow {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: var(--space-2);
-  flex-wrap: wrap;
-}
-
-.forgotLink {
-  font-family: var(--font-family-mono);
-  font-size: var(--font-size-meta);
-  color: var(--color-text-primary);
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 2px;
-  transition: opacity 0.2s ease;
-  white-space: nowrap;
-  align-self: flex-end;
-  margin-block-start: calc(var(--space-1) * -1);
-}
-
-.forgotLink:hover {
-  opacity: 0.7;
-}
-
-.forgotLink:focus-visible {
-  outline: 2px solid var(--color-text-primary);
-  outline-offset: 2px;
-}
-
-/* Legacy styles below - can be removed after full migration */
-
-/* Layout */
-.container {
-  min-block-size: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-inline: var(--space-4);
-  padding-block: var(--space-8);
-  background-color: var(--color-white);
-}
-
-/* Spacing */
-.section {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-}
-
-.row {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-3);
-}
-
-.gridFull {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-3);
-}
-
-/* Icons */
-.icon {
-  inline-size: var(--space-5);
-  block-size: var(--space-5);
-  margin-inline-end: var(--space-2);
-}
-
-/* Divider */
+/* ========================================
+   AUTH CONTENT CONTAINER
+   ======================================== */
 .authContent {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: var(--space-5);
 }
 
-@media (min-width: 640px) {
-  .authContent {
-    gap: var(--space-6);
-  }
+/* ========================================
+   HEADER SECTION
+   ======================================== */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  text-align: center;
 }
 
 .title {
-  text-align: center;
-  margin-block-end: var(--space-2);
-  font-size: var(--font-size-h2);
+  font-family: var(--font-heading);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-tight);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-text-primary);
+  margin: 0;
 }
 
 @media (min-width: 640px) {
   .title {
-    font-size: var(--font-size-h1);
+    font-size: var(--font-size-3xl);
   }
 }
 
 .description {
-  text-align: center;
-  color: var(--color-grey-600);
-  margin-block-end: var(--space-2);
+  font-family: var(--font-body);
   font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-secondary);
+  margin: 0;
 }
 
 @media (min-width: 640px) {
   .description {
-    margin-block-end: var(--space-4);
     font-size: var(--font-size-base);
   }
 }
 
+/* ========================================
+   FORM SECTION
+   ======================================== */
 .form {
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
 }
 
-@media (min-width: 640px) {
-  .form {
-    gap: var(--space-5);
-  }
-}
-
 .formField {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: var(--space-1-5);
 }
 
 .label {
-  font-family: var(--font-family-heading);
-  font-size: var(--font-size-meta);
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-normal);
   text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.fieldWithLink {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1-5);
+}
+
+.labelRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.forgotLink {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  transition: color var(--duration-fast) var(--easing-out);
+  white-space: nowrap;
+}
+
+.forgotLink:hover {
   color: var(--color-text-primary);
 }
 
-.dividerLine {
-  inline-size: 100%;
-  border-block-start: var(--border-width-3) solid var(--color-black);
+.forgotLink:focus-visible {
+  outline: var(--border-width-2) solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+.helperText {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  margin: 0;
+  margin-block-start: calc(var(--space-1) * -1);
+}
+
+/* ========================================
+   DIVIDER SECTION
+   ======================================== */
+.dividerSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
 }
 
 .divider {
   display: flex;
   align-items: center;
   gap: var(--space-3);
-  margin-block: var(--space-3);
-}
-
-@media (min-width: 640px) {
-  .divider {
-    gap: var(--space-4);
-    margin-block: var(--space-4);
-  }
+  margin-block: var(--space-1);
 }
 
 .divider::before,
 .divider::after {
   content: '';
   flex: 1;
-  height: 3px;
+  block-size: 2px;
   background-color: var(--color-border-default);
 }
 
 .divider span {
   font-family: var(--font-family-mono);
-  font-size: var(--font-size-meta);
+  font-size: var(--font-size-xs);
   text-transform: uppercase;
-  color: var(--color-text-secondary);
+  letter-spacing: var(--letter-spacing-widest);
+  color: var(--color-text-tertiary);
   white-space: nowrap;
+  padding-inline: var(--space-1);
 }
 
+/* ========================================
+   OAUTH SECTION
+   ======================================== */
 .oauthButtons {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-3);
+  gap: var(--space-2-5);
 }
 
-@media (min-width: 480px) {
+@media (min-width: 400px) {
   .oauthButtons {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
+/* ========================================
+   FOOTER SECTION
+   ======================================== */
 .footer {
   text-align: center;
-  font-size: var(--font-size-base);
-  line-height: 1.5;
-  margin-block-start: var(--space-4);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-inverse);
 }
 
 @media (min-width: 640px) {
   .footer {
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-base);
   }
 }
 
-.footerText {
-  font-family: var(--font-family-mono);
-  font-size: var(--font-size-meta);
-  color: var(--color-text-secondary);
-}
-
-/* Cards */
-.card {
-  inline-size: 100%;
-  max-inline-size: 28rem;
-  background-color: var(--color-white);
-  border: var(--border-width-3) solid var(--color-black);
-}
-
-/* Typography */
-.title {
-  font-family: var(--font-anton);
-  font-size: var(--font-size-h1);
-  text-transform: uppercase;
-  color: var(--color-black);
-}
-
-.description {
-  font-family: var(--font-share);
-  font-size: var(--font-size-base);
-  color: var(--color-grey-600);
-}
-
+/* ========================================
+   LINKS
+   ======================================== */
 .link {
   font-family: var(--font-family-mono);
-  font-size: var(--font-size-base);
-  color: var(--color-white);
+  font-size: inherit;
+  color: var(--color-text-inverse);
   text-decoration: underline;
-  text-decoration-thickness: 3px;
-  text-underline-offset: 3px;
-  transition: opacity 0.2s ease;
-  cursor: pointer;
-  display: inline-block;
-  padding-block: var(--space-1);
-  padding-inline: var(--space-2);
-  margin-inline: calc(var(--space-1) * -1);
-  font-weight: 700;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
   text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  font-weight: var(--font-weight-bold);
+  transition: opacity var(--duration-fast) var(--easing-out);
+  cursor: pointer;
 }
 
 .link:hover {
-  opacity: 0.8;
-  text-decoration-thickness: 3px;
+  opacity: 0.7;
 }
 
 .link:focus-visible {
-  outline: 3px solid var(--color-white);
-  outline-offset: 3px;
-}
-
-@media (min-width: 640px) {
-  .link {
-    font-size: var(--font-size-lg);
-  }
-}
-
-.footerText {
-  text-align: center;
-  font-family: var(--font-share);
-  font-size: var(--font-size-sm);
-  color: var(--color-grey-600);
-  margin-block-end: var(--space-6);
-}
-
-.metaText {
-  font-family: var(--font-share);
-  font-size: var(--font-size-meta);
-  color: var(--color-grey-500);
-  margin-block-end: var(--space-6);
-}
-
-.strongText {
-  font-family: var(--font-bebas);
-  color: var(--color-black);
+  outline: var(--border-width-2) solid var(--color-text-inverse);
+  outline-offset: 2px;
 }
 
 /* Profile Page Specific */
@@ -447,34 +355,46 @@
   gap: var(--space-4);
 }
 
-/* Checkbox styling */
+/* ========================================
+   CHECKBOX SECTION
+   ======================================== */
 .checkboxRow {
   display: flex;
   align-items: flex-start;
-  gap: var(--space-3);
-  margin-block-start: var(--space-2);
+  gap: var(--space-2-5);
+  padding-block: var(--space-1);
 }
 
 .checkbox {
-  inline-size: 20px;
-  block-size: 20px;
-  min-inline-size: 20px;
-  min-block-size: 20px;
-  margin-block-start: 2px;
+  inline-size: 18px;
+  block-size: 18px;
+  min-inline-size: 18px;
+  min-block-size: 18px;
+  margin-block-start: 3px;
   cursor: pointer;
   accent-color: var(--color-text-primary);
+  border: var(--border-width-2) solid var(--color-border-default);
 }
 
 .checkboxLabel {
-  font-family: var(--font-family-mono);
-  font-size: var(--font-size-sm);
+  font-family: var(--font-body);
+  font-size: var(--font-size-xs);
   color: var(--color-text-secondary);
-  line-height: 1.5;
+  line-height: var(--line-height-normal);
   cursor: pointer;
+}
+
+.checkboxLabel .link {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-xs);
 }
 
 @media (min-width: 640px) {
   .checkboxLabel {
-    font-size: var(--font-size-base);
+    font-size: var(--font-size-sm);
+  }
+  
+  .checkboxLabel .link {
+    font-size: var(--font-size-sm);
   }
 }

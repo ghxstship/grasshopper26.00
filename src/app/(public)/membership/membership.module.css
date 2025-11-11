@@ -120,6 +120,92 @@
   margin-inline: auto;
 }
 
+/* Special Discounts Section */
+.discountsSection {
+  padding-block: var(--space-12);
+  padding-inline: var(--space-6);
+  max-inline-size: var(--container-max-width, 1400px);
+  margin-inline: auto;
+  background: var(--color-bg-primary);
+  border-block-start: var(--border-width-default) solid var(--color-border);
+}
+
+.discountsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-4);
+  margin-block-start: var(--space-6);
+}
+
+.discountCard {
+  padding-block: var(--space-6);
+  padding-inline: var(--space-4);
+  border: var(--border-width-default) solid var(--color-border);
+  background: var(--color-bg-secondary);
+  text-align: center;
+}
+
+.discountType {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  margin-block-end: var(--space-2);
+}
+
+.discountAmount {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  margin-block-end: var(--space-2);
+}
+
+.discountDescription {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+/* Corporate Section */
+.corporateSection {
+  padding-block: var(--space-12);
+  padding-inline: var(--space-6);
+  max-inline-size: 800px;
+  margin-inline: auto;
+  text-align: center;
+  background: var(--color-bg-secondary);
+  border-block-start: var(--border-width-default) solid var(--color-border);
+}
+
+.corporateSection h2 {
+  margin-block-end: var(--space-4);
+}
+
+.corporateSection p {
+  margin-block-end: var(--space-6);
+  color: var(--color-text-secondary);
+}
+
+/* Industry Section */
+.industrySection {
+  padding-block: var(--space-12);
+  padding-inline: var(--space-6);
+  max-inline-size: 800px;
+  margin-inline: auto;
+  text-align: center;
+  background: var(--color-bg-primary);
+  border-block-start: var(--border-width-default) solid var(--color-border);
+}
+
+.industrySection h2 {
+  margin-block-end: var(--space-4);
+}
+
+.industrySection p {
+  margin-block-end: var(--space-6);
+  color: var(--color-text-secondary);
+}
+
 /* CTA Section */
 .ctaSection {
   text-align: center;

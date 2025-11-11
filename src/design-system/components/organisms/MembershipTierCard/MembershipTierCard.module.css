@@ -10,21 +10,31 @@
   gap: var(--space-6);
   padding: var(--space-8);
   background-color: var(--color-bg-primary);
-  border: var(--border-width-3) solid var(--color-border-strong);
-  box-shadow: var(--shadow-geometric);
-  transition: transform var(--duration-fast) var(--easing-out), box-shadow 0.2s ease;
+  border: var(--border-width-thick) solid var(--color-border-strong);
+  box-shadow: var(--shadow-lg);
+  transition: transform var(--duration-fast) var(--easing-out), box-shadow var(--duration-fast) var(--easing-out);
 }
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-geometric-large);
+  box-shadow: var(--shadow-xl);
 }
 
 .featured {
-  background-color: var(--color-bg-inverse);
-  color: var(--color-text-inverse);
-  border-color: var(--color-border-inverse);
-  box-shadow: var(--shadow-geometric-white);
+  background-color: var(--color-black);
+  color: var(--color-white) !important;
+  border-color: var(--color-white);
+  box-shadow: var(--shadow-white-lg);
+}
+
+.featured * {
+  color: var(--color-white) !important;
+}
+
+.featured .badge {
+  background-color: var(--color-white);
+  color: var(--color-black) !important;
+  border-color: var(--color-black);
 }
 
 .badge {
@@ -35,7 +45,7 @@
   padding-inline: var(--space-4);
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
-  border: var(--border-width-3) solid var(--color-border-strong);
+  border: var(--border-width-thick) solid var(--color-border-strong);
   font-family: var(--font-mono);
   font-size: var(--font-size-meta);
   text-transform: uppercase;
@@ -46,7 +56,7 @@
   flex-direction: column;
   gap: var(--space-3);
   padding-block-end: var(--space-6);
-  border-block-end: var(--border-width-3) solid currentColor;
+  border-block-end: var(--border-width-thick) solid currentColor;
 }
 
 .price {

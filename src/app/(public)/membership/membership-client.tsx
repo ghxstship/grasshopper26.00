@@ -49,30 +49,18 @@ function transformBenefits(benefits: Record<string, boolean | string>): string[]
     purchase_tickets: 'Purchase tickets',
     member_presales: 'Member presale access',
     digital_card: 'Digital membership card',
-    birthday_discount: 'Birthday discount',
-    all_basic: 'All Basic benefits',
+    priority_support: 'Priority support',
+    all_access: 'All Access benefits',
     quarterly_credits: 'Quarterly ticket credits',
     member_lounges: 'Member lounge access',
     exclusive_content: 'Exclusive content',
-    priority_support: 'Priority support',
-    digital_collectibles: 'Digital collectibles',
-    all_main: 'All Main benefits',
     vip_upgrades: 'VIP upgrade credits',
+    all_plus: 'All Plus benefits',
     exclusive_events: 'Exclusive member events',
     concierge_support: '24/7 concierge support',
     skip_line: 'Skip the line access',
     guest_privileges: 'Guest privileges',
-    all_extra: 'All Extra benefits',
-    team_management: 'Team management',
-    pooled_tickets: 'Pooled ticket credits',
-    private_suites: 'Private suite access',
-    account_manager: 'Dedicated account manager',
-    custom_branding: 'Custom branding options',
-    unlimited_ga: 'Unlimited GA tickets',
-    guaranteed_vip: 'Guaranteed VIP access',
     backstage_access: 'Backstage access',
-    white_glove_concierge: 'White glove concierge',
-    all_access_potential: 'All-access potential',
   };
 
   return Object.entries(benefits)
@@ -85,12 +73,35 @@ export function MembershipBrowseClient({ initialTiers }: MembershipBrowseClientP
   const router = useRouter();
   const [isAnnual, setIsAnnual] = useState(true);
 
-  // Mark tier_level 2 (Main) as featured
+  // Mark tier_level 2 (Plus) as featured
   const tiersWithBenefits = initialTiers.map((tier) => ({
     ...tier,
     benefits: transformBenefits(tier.benefits),
     featured: tier.tier_level === 2,
   }));
+
+  const specialDiscounts = [
+    {
+      type: 'Student',
+      discount: '25% OFF',
+      description: 'Valid student ID required',
+    },
+    {
+      type: 'Educator',
+      discount: '25% OFF',
+      description: 'Valid educator ID required',
+    },
+    {
+      type: 'Veteran',
+      discount: '25% OFF',
+      description: 'Valid military ID required',
+    },
+    {
+      type: 'Senior',
+      discount: '25% OFF',
+      description: 'Valid ID required (65+)',
+    },
+  ];
 
   const faqItems = [
     {
@@ -101,7 +112,7 @@ export function MembershipBrowseClient({ initialTiers }: MembershipBrowseClientP
     {
       id: '2',
       question: 'What is a Companion Pass?',
-      answer: 'A Companion Pass allows you to add a guest who shares most of your membership benefits. Perfect for bringing a partner, friend, or family member to events. Available as an add-on for all non-business tiers.',
+      answer: 'A Companion Pass allows you to add a guest who shares most of your membership benefits. Perfect for bringing a partner, friend, or family member to events. Available as a monthly add-on for Plus and Extra tiers only.',
     },
     {
       id: '3',
@@ -117,6 +128,11 @@ export function MembershipBrowseClient({ initialTiers }: MembershipBrowseClientP
       id: '5',
       question: 'Is there a refund policy?',
       answer: 'Annual memberships can be refunded within 30 days of purchase. Monthly memberships can be canceled at any time.',
+    },
+    {
+      id: '6',
+      question: 'How do I qualify for special discounts?',
+      answer: 'Students, educators, veterans, and seniors (65+) receive 25% off all membership tiers. You\'ll need to verify your eligibility with a valid ID during checkout.',
     },
   ];
 
@@ -197,6 +213,56 @@ export function MembershipBrowseClient({ initialTiers }: MembershipBrowseClientP
               </div>
             ))}
           </div>
+        </div>
+      }
+      discounts={
+        <div className={styles.discountsSection}>
+          <Typography variant="h2" as="h2" className={styles.sectionTitle}>
+            Special Discounts
+          </Typography>
+          <div className={styles.discountsGrid}>
+            {specialDiscounts.map((discount, idx) => (
+              <div key={idx} className={styles.discountCard}>
+                <div className={styles.discountType}>{discount.type}</div>
+                <div className={styles.discountAmount}>{discount.discount}</div>
+                <div className={styles.discountDescription}>{discount.description}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      }
+      corporate={
+        <div className={styles.corporateSection}>
+          <Typography variant="h2" as="h2">
+            Corporate Memberships
+          </Typography>
+          <Typography variant="body" as="p">
+            Custom packages available for businesses and organizations
+          </Typography>
+          <Button
+            variant="outlined"
+            size="lg"
+            onClick={() => window.location.href = 'mailto:support@gvteway.com?subject=Corporate%20Membership%20Inquiry'}
+          >
+            Contact Sales
+          </Button>
+        </div>
+      }
+      industry={
+        <div className={styles.industrySection}>
+          <Typography variant="h2" as="h2">
+            Industry Memberships
+          </Typography>
+          <Typography variant="body" as="p">
+            For Organizer Teams, Production Crews & Event Staff
+          </Typography>
+          <Button
+            variant="filled"
+            size="lg"
+            onClick={() => window.open('https://atlvs.one', '_blank')}
+          >
+            Explore ATLVS
+          </Button>
         </div>
       }
       faq={

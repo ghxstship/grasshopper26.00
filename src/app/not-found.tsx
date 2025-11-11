@@ -1,9 +1,14 @@
+'use client';
+
 import { ErrorLayout } from '@/design-system/components/templates/ErrorLayout/ErrorLayout';
 import { Button } from '@/design-system/components/atoms/Button/Button';
 import { Typography } from '@/design-system/components/atoms/Typography/Typography';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function NotFound() {
+  const router = useRouter();
+
   return (
     <ErrorLayout
       code="404"
@@ -16,14 +21,17 @@ export default function NotFound() {
       }
       actions={
         <>
-          <Link href="/">
+          <Link href="/events">
             <Button variant="filled">
-              Go Home
+              Browse Events
             </Button>
           </Link>
-          <Link href="/events">
+          <Button variant="outlined" onClick={() => router.back()}>
+            Go Back
+          </Button>
+          <Link href="/">
             <Button variant="outlined">
-              Browse Events
+              Go Home
             </Button>
           </Link>
         </>

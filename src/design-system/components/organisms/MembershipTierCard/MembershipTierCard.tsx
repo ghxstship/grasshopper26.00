@@ -20,10 +20,12 @@ export interface MembershipTierCardProps {
     benefits: string[];
     featured?: boolean;
   };
+  onClick?: () => void;
 }
 
 export const MembershipTierCard: React.FC<MembershipTierCardProps> = ({
   tier,
+  onClick,
 }) => {
   return (
     <div className={`${styles.card} ${tier.featured ? styles.featured : ''}`}>
@@ -62,6 +64,7 @@ export const MembershipTierCard: React.FC<MembershipTierCardProps> = ({
       <Button
         variant={tier.featured ? 'filled' : 'outlined'}
         fullWidth
+        onClick={onClick}
       >
         Select Plan
       </Button>

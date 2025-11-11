@@ -101,10 +101,10 @@
 
 /* Footer */
 .footer {
-  margin-block-start: var(--space-4);
+  margin-block-start: var(--space-6);
   text-align: center;
   font-family: var(--font-family-mono);
-  font-size: var(--font-size-meta);
+  font-size: var(--font-size-base);
   color: var(--color-text-inverse);
   padding-inline: var(--space-2);
   word-wrap: break-word;
@@ -121,6 +121,8 @@
   }
   
   .footer {
+    font-size: var(--font-size-lg);
+    margin-block-start: var(--space-8);
     padding-inline: 0;
   }
 }

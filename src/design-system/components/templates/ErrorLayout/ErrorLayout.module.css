@@ -63,7 +63,7 @@
   margin-block-end: var(--space-6);
   text-shadow: 
     8px 8px 0 var(--color-bg-primary),
-    16px 16px 0 rgba(255, 255, 255, 0.1);
+    16px 16px 0 var(--color-grey-100);
 }
 
 /* Title */

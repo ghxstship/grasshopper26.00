@@ -30,16 +30,23 @@
 .forgotLink {
   font-family: var(--font-family-mono);
   font-size: var(--font-size-meta);
-  color: var(--color-text-secondary);
+  color: var(--color-text-primary);
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 2px;
   transition: opacity 0.2s ease;
   white-space: nowrap;
+  align-self: flex-end;
+  margin-block-start: calc(var(--space-1) * -1);
 }
 
 .forgotLink:hover {
   opacity: 0.7;
+}
+
+.forgotLink:focus-visible {
+  outline: 2px solid var(--color-text-primary);
+  outline-offset: 2px;
 }
 
 /* Legacy styles below - can be removed after full migration */
@@ -206,13 +213,14 @@
 
 .footer {
   text-align: center;
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-base);
   line-height: 1.5;
+  margin-block-start: var(--space-4);
 }
 
 @media (min-width: 640px) {
   .footer {
-    font-size: var(--font-size-base);
+    font-size: var(--font-size-lg);
   }
 }
 
@@ -245,27 +253,36 @@
 }
 
 .link {
-  font-family: var(--font-share);
-  font-size: var(--font-size-sm);
-  color: var(--color-text-primary);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-base);
+  color: var(--color-white);
   text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 2px;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 3px;
   transition: opacity 0.2s ease;
   cursor: pointer;
   display: inline-block;
   padding-block: var(--space-1);
-  padding-inline: var(--space-1);
+  padding-inline: var(--space-2);
   margin-inline: calc(var(--space-1) * -1);
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 .link:hover {
-  opacity: 0.7;
+  opacity: 0.8;
+  text-decoration-thickness: 3px;
 }
 
 .link:focus-visible {
-  outline: 2px solid var(--color-text-primary);
-  outline-offset: 2px;
+  outline: 3px solid var(--color-white);
+  outline-offset: 3px;
+}
+
+@media (min-width: 640px) {
+  .link {
+    font-size: var(--font-size-lg);
+  }
 }
 
 .footerText {

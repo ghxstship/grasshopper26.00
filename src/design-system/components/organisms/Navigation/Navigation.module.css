@@ -23,13 +23,15 @@
    ======================================== */
 
 .black {
-  background-color: rgba(0, 0, 0, 0.95);
+  background-color: var(--color-bg-black);
   color: var(--color-text-inverse);
+  opacity: 0.95;
 }
 
 .white {
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: var(--color-bg-white);
   color: var(--color-text-primary);
+  opacity: 0.95;
 }
 
 /* ========================================
@@ -133,7 +135,7 @@
 .hamburger {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: var(--space-1-5);
   width: 24px;
 }
 
@@ -406,10 +408,12 @@
 
 .dark .black,
 [data-theme="dark"] .black {
-  background-color: rgba(0, 0, 0, 0.95);
+  background-color: var(--color-bg-black);
+  opacity: 0.95;
 }
 
 .dark .white,
 [data-theme="dark"] .white {
-  background-color: rgba(17, 24, 39, 0.95);
+  background-color: var(--color-grey-900);
+  opacity: 0.95;
 }

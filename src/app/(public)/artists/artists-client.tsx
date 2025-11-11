@@ -12,7 +12,7 @@ interface Artist {
   name: string;
   slug: string;
   bio?: string;
-  image_url?: string;
+  profile_image_url?: string;
   genre_tags?: string[];
 }
 
@@ -55,7 +55,7 @@ export function ArtistsBrowseClient({ initialArtists, initialSearch }: ArtistsBr
               id: artist.id,
               name: artist.name,
               genre: artist.genre_tags || [],
-              imageUrl: artist.image_url || '/placeholder-artist.jpg',
+              imageUrl: artist.profile_image_url || '/placeholder-artist.jpg',
             }}
             onClick={() => router.push(`/artists/${artist.slug}`)}
             variant="square"

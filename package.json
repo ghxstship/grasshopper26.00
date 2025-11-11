@@ -32,6 +32,7 @@
     "db:migrate": "supabase db push",
     "db:reset": "supabase db reset",
     "db:seed": "node scripts/seed.js",
+    "seed:users": "tsx scripts/seed-demo-users.ts",
     "health-check": "bash scripts/health-check.sh",
     "health-check:production": "bash scripts/health-check.sh https://gvteway.com/api/health",
     "health-check:staging": "bash scripts/health-check.sh https://staging.gvteway.com/api/health",

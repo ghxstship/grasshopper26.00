@@ -141,14 +141,9 @@ export default function LoginPage() {
           </div>
 
           <div className={styles.formField}>
-            <div className={styles.labelRow}>
-              <label htmlFor="password" className={styles.label}>
-                Password
-              </label>
-              <Link href="/reset-password" className={styles.forgotLink}>
-                Forgot password?
-              </Link>
-            </div>
+            <label htmlFor="password" className={styles.label}>
+              Password
+            </label>
             <Input
               id="password"
               type="password"
@@ -156,6 +151,9 @@ export default function LoginPage() {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
+            <Link href="/reset-password" className={styles.forgotLink}>
+              Forgot password?
+            </Link>
           </div>
 
           <Button

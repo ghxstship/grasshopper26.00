@@ -3,11 +3,11 @@
   inset-block-end: 0;
   inset-inline-start: 0;
   inset-inline-end: 0;
-  background: var(--color-background);
-  border-block-start: var(--border-width-3) solid var(--color-border);
+  background: var(--color-black);
+  border-block-start: var(--border-width-thick) solid var(--color-white);
   padding: var(--space-4);
-  z-index: 10000;
-  box-shadow: var(--shadow-hard);
+  z-index: var(--z-notification);
+  box-shadow: var(--shadow-lg);
 }
 
 .content {
@@ -20,34 +20,65 @@
 }
 
 .text {
-  color: var(--color-text);
-  font-family: var(--font-body);
-  font-size: var(--font-size-sm);
-  line-height: var(--line-height-normal);
+  color: var(--color-text-inverse);
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
   margin: 0;
 }
 
 .button {
-  padding: var(--space-2) var(--space-4);
-  background: var(--color-primary);
-  color: var(--color-primary-text);
-  border: var(--border-width) solid var(--color-border);
-  font-family: var(--font-heading);
-  font-size: var(--font-size-sm);
+  padding: var(--space-3) var(--space-6);
+  background: var(--color-white);
+  color: var(--color-black);
+  border: var(--border-width-thick) solid var(--color-white);
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-h6);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-tight);
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: all var(--duration-fast) var(--easing-out);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
 }
 
 .button:hover {
-  background: var(--color-primary-hover);
+  background: var(--color-grey-200);
   transform: translate(calc(var(--space-1) * -1), calc(var(--space-1) * -1));
-  box-shadow: var(--shadow-hard);
+  box-shadow: var(--shadow-base);
+}
+
+.button:active {
+  transform: translate(0, 0);
+  box-shadow: none;
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+.buttonSecondary {
+  background: transparent;
+  color: var(--color-white);
+  border: var(--border-width-thick) solid var(--color-white);
+}
+
+.buttonSecondary:hover {
+  background: var(--color-grey-800);
+  color: var(--color-white);
 }
 
 @media (max-width: 768px) {
   .content {
     flex-direction: column;
     align-items: flex-start;
+  }
+  
+  .actions {
+    inline-size: 100%;
+    flex-direction: column;
   }
   
   .button {

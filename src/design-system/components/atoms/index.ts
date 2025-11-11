@@ -20,6 +20,8 @@ export * from './HalftoneOverlay';
 export * from './Spinner';
 export * from './Alert';
 export * from './Toast';
+export * from './Toaster';
+export * from './CookieConsent';
 export * from './Popover';
 export * from './ProgressBar';
 export * from './Switch';

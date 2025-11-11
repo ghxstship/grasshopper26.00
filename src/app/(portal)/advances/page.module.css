@@ -193,7 +193,7 @@
 }
 
 .advanceCard:hover {
-  box-shadow: 8px 8px 0 #000000;
+  box-shadow: var(--shadow-lg);
 }
 
 .card {
@@ -414,5 +414,5 @@
 }
 
 .shadow {
-  box-shadow: 8px 8px 0 #000000;
+  box-shadow: var(--shadow-lg);
 }

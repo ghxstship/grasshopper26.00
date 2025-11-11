@@ -199,7 +199,7 @@
   block-size: 40px;
   border: var(--border-width-thick) solid var(--color-border-default);
   border-block-start-color: var(--color-primary);
-  border-radius: 50%;
+  border-radius: var(--radius-none);
   animation: spin 1s linear infinite;
 }
 

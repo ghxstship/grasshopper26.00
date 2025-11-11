@@ -157,7 +157,7 @@
 }
 
 .emptyIcon {
-  font-size: 80px;
+  font-size: var(--font-size-8xl);
   line-height: 1;
   color: var(--color-text-tertiary);
   opacity: 0.3;

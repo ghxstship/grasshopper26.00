@@ -1,3 +1,9 @@
+/**
+ * Toaster Component
+ * GHXSTSHIP Entertainment Platform - Toast notification container
+ * Atomic Design: Atom (wraps Sonner library)
+ */
+
 'use client';
 
 import { Toaster as SonnerToaster } from 'sonner';
@@ -8,12 +14,14 @@ export const Toaster = () => {
       position="bottom-right"
       toastOptions={{
         style: {
-          background: 'var(--color-background)',
-          color: 'var(--color-text)',
-          border: '3px solid var(--color-border)',
+          background: 'var(--color-bg-primary)',
+          color: 'var(--color-text-primary)',
+          border: 'var(--border-width-thick) solid var(--color-border-strong)',
           borderRadius: '0',
           fontFamily: 'var(--font-body)',
-          boxShadow: '8px 8px 0 rgba(0, 0, 0, 0.5)',
+          fontSize: 'var(--font-size-base)',
+          boxShadow: 'var(--shadow-lg)',
+          padding: 'var(--space-4)',
         },
         className: 'ghxstship-toast',
       }}
@@ -21,7 +29,10 @@ export const Toaster = () => {
       closeButton
       richColors
       expand={false}
-      gap={12}
+      gap={16}
+      duration={5000}
     />
   );
 };
+
+Toaster.displayName = 'Toaster';

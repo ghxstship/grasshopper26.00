@@ -18,7 +18,7 @@ export function useAdminArtists() {
     try {
       const { data } = await supabase.from('artists').select('*').order('name');
       setArtists(data || []);
-      setStats({ total: data?.length || 0, active: data?.filter(a => a.status === 'active').length || 0, upcoming_shows: 0 });
+      setStats({ total: data?.length || 0, active: data?.filter((a: any) => a.status === 'active').length || 0, upcoming_shows: 0 });
     } catch (error) {
       console.error('Error loading artists:', error);
     } finally {

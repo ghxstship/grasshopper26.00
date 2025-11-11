@@ -24,9 +24,9 @@ export function useAdminEvents() {
       setEvents(eventList);
       setStats({
         total: eventList.length,
-        upcoming: eventList.filter(e => new Date(e.start_date) > now).length,
-        past: eventList.filter(e => new Date(e.start_date) < now).length,
-        on_sale: eventList.filter(e => e.status === 'on_sale').length,
+        upcoming: eventList.filter((e: any) => new Date(e.start_date) > now).length,
+        past: eventList.filter((e: any) => new Date(e.start_date) < now).length,
+        on_sale: eventList.filter((e: any) => e.status === 'on_sale').length,
       });
     } catch (error) {
       console.error('Error loading events:', error);

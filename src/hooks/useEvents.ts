@@ -73,7 +73,8 @@ export function useEvents(options: UseEventsOptions = {}) {
     } finally {
       setLoading(false);
     }
-  }, [supabase]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // Apply filters and sorting
   const applyFiltersAndSort = useCallback(() => {

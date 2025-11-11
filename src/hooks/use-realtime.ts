@@ -133,13 +133,13 @@ export function usePresence(
         const users = Object.values(state).flat();
         setOnlineUsers(users);
       })
-      .on('presence', { event: 'join' }, ({ newPresences }) => {
+      .on('presence', { event: 'join' }, ({ newPresences }: any) => {
         console.log('User joined:', newPresences);
       })
-      .on('presence', { event: 'leave' }, ({ leftPresences }) => {
+      .on('presence', { event: 'leave' }, ({ leftPresences }: any) => {
         console.log('User left:', leftPresences);
       })
-      .subscribe(async (status) => {
+      .subscribe(async (status: string) => {
         if (status === 'SUBSCRIBED') {
           await channel.track({
             user_id: userId,
@@ -172,7 +172,7 @@ export function useBroadcast(channelName: string) {
     const newChannel = supabase.channel(channelName);
 
     newChannel
-      .on('broadcast', { event: 'message' }, (payload) => {
+      .on('broadcast', { event: 'message' }, (payload: any) => {
         setMessages((current) => [...current, payload.payload]);
       })
       .subscribe();

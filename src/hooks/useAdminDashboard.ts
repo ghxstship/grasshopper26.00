@@ -25,7 +25,7 @@ export function useAdminDashboard() {
         total_users: users.count || 0,
         active_members: members.count || 0,
         tickets_sold: tickets.count || 0,
-        revenue: orders.data?.reduce((sum, o) => sum + parseFloat(o.total_amount), 0) || 0,
+        revenue: orders.data?.reduce((sum: number, o: any) => sum + parseFloat(o.total_amount), 0) || 0,
       });
     } catch (error) {
       console.error('Error loading dashboard stats:', error);

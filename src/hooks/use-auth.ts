@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { User } from '@supabase/supabase-js';
+import { User, AuthChangeEvent, Session } from '@supabase/supabase-js';
 import { createClient } from '@/lib/supabase/client';
 
 interface UseAuthReturn {
@@ -33,7 +33,7 @@ export function useAuth(): UseAuthReturn {
 
     // Listen for auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      async (event, session) => {
+      async (event: AuthChangeEvent, session: Session | null) => {
         setUser(session?.user ?? null);
         setLoading(false);
       }
@@ -42,7 +42,8 @@ export function useAuth(): UseAuthReturn {
     return () => {
       subscription.unsubscribe();
     };
-  }, [supabase]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const signIn = async (email: string, password: string) => {
     setLoading(true);

@@ -14,7 +14,7 @@ export function useAdminBulkOps() {
     try {
       const { data } = await supabase.from('bulk_operations').select('*');
       setOperations(data || []);
-      setStats({ total: data?.length || 0, completed: data?.filter(o => o.status === 'completed').length || 0, in_progress: data?.filter(o => o.status === 'in_progress').length || 0 });
+      setStats({ total: data?.length || 0, completed: data?.filter((o: any) => o.status === 'completed').length || 0, in_progress: data?.filter((o: any) => o.status === 'in_progress').length || 0 });
     } finally { setLoading(false); }
   };
 

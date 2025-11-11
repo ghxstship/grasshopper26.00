@@ -26,8 +26,8 @@ export function useReferrals() {
       setReferrals(referralList);
       setStats({
         total: referralList.length,
-        active: referralList.filter(r => r.status === 'active').length,
-        rewards: referralList.reduce((sum, r) => sum + (r.reward_amount || 0), 0),
+        active: referralList.filter((r: any) => r.status === 'active').length,
+        rewards: referralList.reduce((sum: number, r: any) => sum + (r.reward_amount || 0), 0),
       });
     } catch (error) {
       console.error('Error loading referrals:', error);

@@ -21,7 +21,7 @@ export async function batchFetchEvents(eventIds: string[]) {
   if (error) throw error;
   
   // Return as map for O(1) lookup
-  return new Map(data?.map(event => [event.id, event]) || []);
+  return new Map(data?.map((event: any) => [event.id, event]) || []);
 }
 
 /**
@@ -39,7 +39,7 @@ export async function batchFetchUserPermissions(userIds: string[]) {
   
   if (error) throw error;
   
-  return new Map(data?.map(user => [user.id, user]) || []);
+  return new Map(data?.map((user: any) => [user.id, user]) || []);
 }
 
 /**
@@ -138,7 +138,7 @@ export async function getEventStats(eventId: string) {
     return {
       tickets_count: ticketsCount.count || 0,
       orders_count: ordersCount.count || 0,
-      total_revenue: revenue.data?.reduce((sum, o) => sum + (o.total_amount || 0), 0) || 0,
+      total_revenue: revenue.data?.reduce((sum: number, o: any) => sum + (o.total_amount || 0), 0) || 0,
     };
   }
   

@@ -15,7 +15,7 @@ export function useAdminInventory() {
     try {
       const { data } = await supabase.from('products').select('*');
       setInventory(data || []);
-      setStats({ total: data?.length || 0, in_stock: data?.filter(p => p.stock > 0).length || 0, low_stock: data?.filter(p => p.stock < 10 && p.stock > 0).length || 0 });
+      setStats({ total: data?.length || 0, in_stock: data?.filter((p: any) => p.stock > 0).length || 0, low_stock: data?.filter((p: any) => p.stock < 10 && p.stock > 0).length || 0 });
     } finally { setLoading(false); }
   };
 

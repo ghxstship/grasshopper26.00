@@ -18,7 +18,7 @@ export function useAdminBrands() {
     try {
       const { data } = await supabase.from('brands').select('*').order('name');
       setBrands(data || []);
-      setStats({ total: data?.length || 0, active: data?.filter(b => b.status === 'active').length || 0, total_value: 0 });
+      setStats({ total: data?.length || 0, active: data?.filter((b: any) => b.status === 'active').length || 0, total_value: 0 });
     } catch (error) {
       console.error('Error loading brands:', error);
     } finally {

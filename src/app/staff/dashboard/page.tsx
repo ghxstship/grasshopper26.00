@@ -110,7 +110,7 @@ export default function StaffDashboardPage() {
 
       if (ticketsError) throw ticketsError;
 
-      const checkedIn = tickets?.filter(t => t.checked_in_at).length || 0;
+      const checkedIn = tickets?.filter((t: any) => t.checked_in_at).length || 0;
       const totalCapacity = event.capacity || 0;
       const remaining = totalCapacity - checkedIn;
       const percentFull = totalCapacity > 0 ? (checkedIn / totalCapacity) * 100 : 0;

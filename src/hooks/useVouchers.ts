@@ -26,9 +26,9 @@ export function useVouchers() {
 
       setVouchers(voucherList);
       setStats({
-        active: voucherList.filter(v => !v.used && (!v.expires_at || new Date(v.expires_at) > now)).length,
-        used: voucherList.filter(v => v.used).length,
-        expired: voucherList.filter(v => v.expires_at && new Date(v.expires_at) < now && !v.used).length,
+        active: voucherList.filter((v: any) => !v.used && (!v.expires_at || new Date(v.expires_at) > now)).length,
+        used: voucherList.filter((v: any) => v.used).length,
+        expired: voucherList.filter((v: any) => v.expires_at && new Date(v.expires_at) < now && !v.used).length,
       });
     } catch (error) {
       console.error('Error loading vouchers:', error);

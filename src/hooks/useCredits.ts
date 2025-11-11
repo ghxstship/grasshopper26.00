@@ -26,10 +26,10 @@ export function useCredits() {
 
       setCredits(creditList);
       setStats({
-        total_credits: creditList.reduce((sum, c) => sum + c.amount, 0),
-        available_credits: creditList.filter(c => !c.used && (!c.expires_at || new Date(c.expires_at) > now)).reduce((sum, c) => sum + c.amount, 0),
-        expiring_soon: creditList.filter(c => !c.used && c.expires_at && new Date(c.expires_at) > now && new Date(c.expires_at) < new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)).length,
-        expired_credits: creditList.filter(c => c.expires_at && new Date(c.expires_at) < now).reduce((sum, c) => sum + c.amount, 0),
+        total_credits: creditList.reduce((sum: number, c: any) => sum + c.amount, 0),
+        available_credits: creditList.filter((c: any) => !c.used && (!c.expires_at || new Date(c.expires_at) > now)).reduce((sum: number, c: any) => sum + c.amount, 0),
+        expiring_soon: creditList.filter((c: any) => !c.used && c.expires_at && new Date(c.expires_at) > now && new Date(c.expires_at) < new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)).length,
+        expired_credits: creditList.filter((c: any) => c.expires_at && new Date(c.expires_at) < now).reduce((sum: number, c: any) => sum + c.amount, 0),
       });
     } catch (error) {
       console.error('Error loading credits:', error);

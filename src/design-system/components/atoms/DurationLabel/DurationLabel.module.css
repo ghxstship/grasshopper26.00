@@ -49,7 +49,6 @@
   height: 1.25rem;
 }
 
-.dark .duration,
 [data-theme="dark"] .duration {
   color: var(--color-text-secondary);
 }

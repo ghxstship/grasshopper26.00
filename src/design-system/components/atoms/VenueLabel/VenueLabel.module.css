@@ -77,17 +77,14 @@
    DARK THEME
    ======================================== */
 
-.dark .venue,
 [data-theme="dark"] .venue {
   color: var(--color-text-primary);
 }
 
-.dark .location,
 [data-theme="dark"] .location {
   color: var(--color-text-secondary);
 }
 
-.dark .icon,
 [data-theme="dark"] .icon {
   color: var(--color-text-tertiary);
 }

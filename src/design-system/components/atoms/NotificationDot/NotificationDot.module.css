@@ -75,7 +75,6 @@
   }
 }
 
-.dark .dot,
 [data-theme="dark"] .dot {
   background-color: var(--color-accent);
   border-color: var(--color-bg-secondary);

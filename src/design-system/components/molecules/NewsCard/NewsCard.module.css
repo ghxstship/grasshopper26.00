@@ -290,29 +290,24 @@
    DARK THEME
    ======================================== */
 
-.dark .card,
 [data-theme="dark"] .card {
   box-shadow: var(--shadow-white-sm);
 }
 
-.dark .card.clickable:hover,
 [data-theme="dark"] .card.clickable:hover {
   box-shadow: var(--shadow-white-md);
 }
 
-.dark .category,
 [data-theme="dark"] .category {
   background-color: var(--color-accent);
   color: var(--color-primary);
 }
 
-.dark .card:hover .category,
 [data-theme="dark"] .card:hover .category {
   background-color: var(--color-bg-tertiary);
   color: var(--color-text-primary);
 }
 
-.dark .card:hover .title,
 [data-theme="dark"] .card:hover .title {
   color: var(--color-accent);
 }

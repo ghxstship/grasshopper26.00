@@ -205,12 +205,10 @@
    DARK THEME
    ======================================== */
 
-.dark .card,
 [data-theme="dark"] .card {
   box-shadow: var(--shadow-white-sm);
 }
 
-.dark .square,
 [data-theme="dark"] .square {
   background-color: var(--color-accent);
 }

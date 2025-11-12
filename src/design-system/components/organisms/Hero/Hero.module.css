@@ -359,13 +359,11 @@
    DARK THEME
    ======================================== */
 
-.dark .white,
 [data-theme="dark"] .white {
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
 }
 
-.dark .black,
 [data-theme="dark"] .black {
   background-color: var(--color-black);
   color: var(--color-white);

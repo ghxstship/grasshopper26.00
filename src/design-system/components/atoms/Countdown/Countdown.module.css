@@ -81,7 +81,6 @@
    DARK THEME
    ======================================== */
 
-.dark .unit,
 [data-theme="dark"] .unit {
   border-color: var(--color-border-strong);
   background-color: var(--color-bg-secondary);

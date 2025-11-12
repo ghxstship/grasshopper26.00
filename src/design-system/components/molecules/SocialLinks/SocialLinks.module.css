@@ -121,7 +121,6 @@
    DARK THEME
    ======================================== */
 
-.dark .link:hover,
 [data-theme="dark"] .link:hover {
   background-color: var(--color-accent);
   color: var(--color-primary);

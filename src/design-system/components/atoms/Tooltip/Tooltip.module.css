@@ -87,7 +87,6 @@
    DARK THEME
    ======================================== */
 
-.dark .tooltip,
 [data-theme="dark"] .tooltip {
   background-color: var(--color-accent);
   color: var(--color-primary);

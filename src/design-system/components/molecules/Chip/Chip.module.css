@@ -152,7 +152,6 @@
    DARK THEME
    ======================================== */
 
-.dark .filled,
 [data-theme="dark"] .filled {
   background-color: var(--color-accent);
   color: var(--color-primary);

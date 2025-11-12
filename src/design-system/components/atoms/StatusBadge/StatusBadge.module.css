@@ -189,30 +189,25 @@
    DARK THEME
    ======================================== */
 
-.dark .badge,
 [data-theme="dark"] .badge {
   border-color: var(--color-border-strong);
 }
 
-.dark .success,
 [data-theme="dark"] .success {
   background-color: var(--color-accent);
   color: var(--color-primary);
 }
 
-.dark .active,
 [data-theme="dark"] .active {
   background-color: var(--color-accent);
   color: var(--color-primary);
 }
 
-.dark .soldOut,
 [data-theme="dark"] .soldOut {
   background-color: var(--color-accent);
   color: var(--color-primary);
 }
 
-.dark .live,
 [data-theme="dark"] .live {
   background-color: var(--color-accent);
   color: var(--color-primary);

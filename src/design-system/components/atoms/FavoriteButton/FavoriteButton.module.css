@@ -82,19 +82,16 @@
   }
 }
 
-.dark .button,
 [data-theme="dark"] .button {
   border-color: var(--color-border-strong);
 }
 
-.dark .active,
 [data-theme="dark"] .active {
   background-color: var(--color-accent);
   color: var(--color-primary);
   border-color: var(--color-accent);
 }
 
-.dark .active:hover,
 [data-theme="dark"] .active:hover {
   background-color: var(--color-bg-secondary);
   color: var(--color-text-primary);

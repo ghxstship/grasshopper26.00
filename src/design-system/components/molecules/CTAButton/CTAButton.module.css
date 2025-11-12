@@ -173,38 +173,32 @@
    DARK THEME
    ======================================== */
 
-.dark .outlined,
 [data-theme="dark"] .outlined {
   border-color: var(--color-white);
   color: var(--color-white);
 }
 
-.dark .outlined:hover:not(:disabled),
 [data-theme="dark"] .outlined:hover:not(:disabled) {
   background-color: var(--color-white);
   color: var(--color-black);
 }
 
-.dark .outlined:hover:not(:disabled) .arrow,
 [data-theme="dark"] .outlined:hover:not(:disabled) .arrow {
   color: var(--color-black);
 }
 
-.dark .filled,
 [data-theme="dark"] .filled {
   background-color: var(--color-white);
   color: var(--color-black);
   border-color: var(--color-white);
 }
 
-.dark .filled:hover:not(:disabled),
 [data-theme="dark"] .filled:hover:not(:disabled) {
   background-color: var(--color-black);
   color: var(--color-white);
   border-color: var(--color-white);
 }
 
-.dark .filled:hover:not(:disabled) .arrow,
 [data-theme="dark"] .filled:hover:not(:disabled) .arrow {
   color: var(--color-white);
 }

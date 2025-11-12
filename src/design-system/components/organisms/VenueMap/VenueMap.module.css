@@ -316,35 +316,28 @@
    DARK THEME
    ======================================== */
 
-.dark .stage.main .stageMarker,
 [data-theme="dark"] .stage.main .stageMarker {
   background-color: var(--color-accent);
 }
 
-.dark .stage:hover .stageMarker,
-.dark .stage.selected .stageMarker,
 [data-theme="dark"] .stage:hover .stageMarker,
 [data-theme="dark"] .stage.selected .stageMarker {
   background-color: var(--color-accent);
   box-shadow: var(--shadow-white-md);
 }
 
-.dark .legendMarker.main,
 [data-theme="dark"] .legendMarker.main {
   background-color: var(--color-accent);
 }
 
-.dark .legendItem.legendItemActive,
 [data-theme="dark"] .legendItem.legendItemActive {
   background-color: var(--color-accent);
 }
 
-.dark .legendItem.legendItemActive .legendMarker,
 [data-theme="dark"] .legendItem.legendItemActive .legendMarker {
   background-color: var(--color-black);
 }
 
-.dark .legendItem.legendItemActive .legendLabel,
 [data-theme="dark"] .legendItem.legendItemActive .legendLabel {
   color: var(--color-primary);
 }

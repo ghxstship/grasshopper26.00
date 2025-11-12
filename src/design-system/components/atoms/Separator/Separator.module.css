@@ -109,17 +109,14 @@
    DARK THEME
    ======================================== */
 
-.dark .separator,
 [data-theme="dark"] .separator {
   background-color: var(--color-border-default);
 }
 
-.dark .line,
 [data-theme="dark"] .line {
   background-color: var(--color-border-default);
 }
 
-.dark .dashed,
 [data-theme="dark"] .dashed {
   background-image: repeating-linear-gradient(
     to right,
@@ -130,7 +127,6 @@
   );
 }
 
-.dark .dashed.vertical,
 [data-theme="dark"] .dashed.vertical {
   background-image: repeating-linear-gradient(
     to bottom,
@@ -141,7 +137,6 @@
   );
 }
 
-.dark .dotted,
 [data-theme="dark"] .dotted {
   background-image: repeating-linear-gradient(
     to right,
@@ -152,7 +147,6 @@
   );
 }
 
-.dark .dotted.vertical,
 [data-theme="dark"] .dotted.vertical {
   background-image: repeating-linear-gradient(
     to bottom,

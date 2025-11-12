@@ -107,19 +107,16 @@
    DARK THEME
    ======================================== */
 
-.dark .overlay,
 [data-theme="dark"] .overlay {
   background-color: transparent;
 }
 
-.dark .dots,
 [data-theme="dark"] .dots {
   background-image: 
     radial-gradient(circle, var(--color-accent) 20%, transparent 20%),
     radial-gradient(circle, var(--color-accent) 20%, transparent 20%);
 }
 
-.dark .diagonal,
 [data-theme="dark"] .diagonal {
   background-image: repeating-linear-gradient(
     45deg,
@@ -130,14 +127,12 @@
   );
 }
 
-.dark .grid,
 [data-theme="dark"] .grid {
   background-image: 
     linear-gradient(var(--color-accent) var(--space-px), transparent var(--space-px)),
     linear-gradient(90deg, var(--color-accent) var(--space-px), transparent var(--space-px));
 }
 
-.dark .screen-print,
 [data-theme="dark"] .screen-print {
   background-image: 
     radial-gradient(circle, var(--color-accent) 30%, transparent 30%),

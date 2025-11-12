@@ -406,13 +406,11 @@
    DARK THEME
    ======================================== */
 
-.dark .black,
 [data-theme="dark"] .black {
   background-color: var(--color-bg-black);
   opacity: 0.95;
 }
 
-.dark .white,
 [data-theme="dark"] .white {
   background-color: var(--color-grey-900);
   opacity: 0.95;

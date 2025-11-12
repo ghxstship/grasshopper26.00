@@ -108,17 +108,14 @@
    DARK THEME
    ======================================== */
 
-.dark .navItem:hover .label,
 [data-theme="dark"] .navItem:hover .label {
   color: var(--color-accent);
 }
 
-.dark .active .label,
 [data-theme="dark"] .active .label {
   color: var(--color-accent);
 }
 
-.dark .underline,
 [data-theme="dark"] .underline {
   background-color: var(--color-accent);
 }

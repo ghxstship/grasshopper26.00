@@ -77,13 +77,11 @@
   }
 }
 
-.dark .bar,
 [data-theme="dark"] .bar {
   background-color: var(--color-bg-tertiary);
   border-color: var(--color-border-default);
 }
 
-.dark .fill,
 [data-theme="dark"] .fill {
   background-color: var(--color-accent);
 }

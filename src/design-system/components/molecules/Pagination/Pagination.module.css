@@ -193,33 +193,26 @@
    DARK THEME
    ======================================== */
 
-.dark .label,
-.dark .arrow,
 [data-theme="dark"] .label,
 [data-theme="dark"] .arrow {
   color: var(--color-white);
 }
 
-.dark .button:hover:not(:disabled),
 [data-theme="dark"] .button:hover:not(:disabled) {
   background-color: var(--color-white);
 }
 
-.dark .button:hover:not(:disabled) .label,
-.dark .button:hover:not(:disabled) .arrow,
 [data-theme="dark"] .button:hover:not(:disabled) .label,
 [data-theme="dark"] .button:hover:not(:disabled) .arrow {
   color: var(--color-black);
 }
 
-.dark .pageButton,
 [data-theme="dark"] .pageButton {
   color: var(--color-white);
   border-color: var(--color-grey-700);
   background-color: var(--color-grey-900);
 }
 
-.dark .pageButton.active,
 [data-theme="dark"] .pageButton.active {
   background-color: var(--color-white);
   color: var(--color-black);

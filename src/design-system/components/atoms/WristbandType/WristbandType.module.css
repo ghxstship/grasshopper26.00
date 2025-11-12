@@ -61,14 +61,12 @@
   font-size: var(--font-size-base);
 }
 
-.dark .vip,
 [data-theme="dark"] .vip {
   background-color: var(--color-accent);
   color: var(--color-primary);
   border-color: var(--color-accent);
 }
 
-.dark .artist,
 [data-theme="dark"] .artist {
   background-color: var(--color-accent);
   color: var(--color-primary);

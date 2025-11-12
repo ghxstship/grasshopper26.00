@@ -175,19 +175,16 @@
    DARK THEME
    ======================================== */
 
-.dark .radio,
 [data-theme="dark"] .radio {
   border-color: var(--color-border-strong);
   background-color: var(--color-bg-primary);
 }
 
-.dark .radio:checked,
 [data-theme="dark"] .radio:checked {
   background-color: var(--color-accent);
   border-color: var(--color-accent);
 }
 
-.dark .radio:checked::after,
 [data-theme="dark"] .radio:checked::after {
   background-color: var(--color-black);
 }

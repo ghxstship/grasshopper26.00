@@ -222,8 +222,6 @@
    DARK THEME
    ======================================== */
 
-.dark .question:hover .icon,
-.dark .item.expanded .icon,
 [data-theme="dark"] .question:hover .icon,
 [data-theme="dark"] .item.expanded .icon {
   background-color: var(--color-accent);

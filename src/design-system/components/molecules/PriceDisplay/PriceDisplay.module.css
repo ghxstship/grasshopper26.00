@@ -95,13 +95,11 @@
    DARK THEME
    ======================================== */
 
-.dark .highlighted,
 [data-theme="dark"] .highlighted {
   background-color: var(--color-accent);
   box-shadow: var(--shadow-white-md);
 }
 
-.dark .highlighted .price,
 [data-theme="dark"] .highlighted .price {
   color: var(--color-primary);
 }

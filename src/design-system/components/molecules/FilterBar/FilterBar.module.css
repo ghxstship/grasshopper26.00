@@ -172,12 +172,10 @@
    DARK THEME
    ======================================== */
 
-.dark .filter.selected,
 [data-theme="dark"] .filter.selected {
   background-color: var(--color-accent);
 }
 
-.dark .filter.selected .filterLabel,
 [data-theme="dark"] .filter.selected .filterLabel {
   color: var(--color-primary);
 }

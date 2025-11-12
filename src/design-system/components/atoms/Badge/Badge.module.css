@@ -108,18 +108,15 @@
    DARK THEME
    ======================================== */
 
-.dark .badge,
 [data-theme="dark"] .badge {
   border-color: var(--color-border-strong);
 }
 
-.dark .filled,
 [data-theme="dark"] .filled {
   background-color: var(--color-accent);
   color: var(--color-primary);
 }
 
-.dark .sold-out,
 [data-theme="dark"] .sold-out {
   background-color: var(--color-accent);
   color: var(--color-primary);

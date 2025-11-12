@@ -154,7 +154,6 @@
    DARK THEME
    ======================================== */
 
-.dark .status-online,
 [data-theme="dark"] .status-online {
   background-color: var(--color-accent);
 }

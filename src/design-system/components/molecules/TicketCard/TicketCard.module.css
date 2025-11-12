@@ -307,38 +307,30 @@
    DARK THEME
    ======================================== */
 
-.dark .card,
 [data-theme="dark"] .card {
   box-shadow: var(--shadow-white-md);
 }
 
-.dark .card.clickable:hover,
 [data-theme="dark"] .card.clickable:hover {
   box-shadow: var(--shadow-white-lg);
 }
 
-.dark .card.selected,
 [data-theme="dark"] .card.selected {
   background-color: var(--color-accent);
   box-shadow: var(--shadow-white-lg);
 }
 
-.dark .card.selected .name,
-.dark .card.selected .price,
-.dark .card.selected .perkIcon,
 [data-theme="dark"] .card.selected .name,
 [data-theme="dark"] .card.selected .price,
 [data-theme="dark"] .card.selected .perkIcon {
   color: var(--color-primary);
 }
 
-.dark .selectedIndicator,
 [data-theme="dark"] .selectedIndicator {
   background-color: var(--color-black);
   box-shadow: var(--shadow-white-sm);
 }
 
-.dark .checkmark,
 [data-theme="dark"] .checkmark {
   color: var(--color-accent);
 }

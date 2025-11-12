@@ -144,7 +144,6 @@
    DARK THEME
    ======================================== */
 
-.dark .container,
 [data-theme="dark"] .container {
   box-shadow: var(--shadow-white-sm);
 }

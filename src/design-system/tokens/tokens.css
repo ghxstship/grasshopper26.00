@@ -404,8 +404,8 @@
 /* ========================================
    DARK THEME - ENTERTAINMENT PLATFORM
    Inverted monochromatic palette
+   Uses [data-theme="dark"] attribute set by next-themes
    ======================================== */
-.dark,
 [data-theme="dark"] {
   /* Text Colors - Dark Mode */
   --color-text-primary: #FFFFFF;
@@ -494,7 +494,6 @@
     --border-width-thick: 4px;
   }
   
-  .dark,
   [data-theme="dark"] {
     --color-border-default: #FFFFFF;
     --color-text-secondary: #FFFFFF;

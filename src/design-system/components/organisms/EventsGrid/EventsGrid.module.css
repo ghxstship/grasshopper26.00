@@ -267,13 +267,11 @@
    DARK THEME
    ======================================== */
 
-.dark .filters,
 [data-theme="dark"] .filters {
   background-color: var(--color-bg-primary);
   border-color: var(--color-border-strong);
 }
 
-.dark .emptyState,
 [data-theme="dark"] .emptyState {
   background-color: var(--color-bg-secondary);
   border-color: var(--color-border-default);

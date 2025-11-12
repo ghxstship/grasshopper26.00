@@ -127,22 +127,18 @@
    DARK THEME
    ======================================== */
 
-.dark .elevated,
 [data-theme="dark"] .elevated {
   box-shadow: var(--shadow-white-md);
 }
 
-.dark .hoverable:hover,
 [data-theme="dark"] .hoverable:hover {
   box-shadow: var(--shadow-white-lg);
 }
 
-.dark .interactive,
 [data-theme="dark"] .interactive {
   box-shadow: var(--shadow-white-md);
 }
 
-.dark .interactive:hover,
 [data-theme="dark"] .interactive:hover {
   background-color: var(--color-accent);
   color: var(--color-primary);

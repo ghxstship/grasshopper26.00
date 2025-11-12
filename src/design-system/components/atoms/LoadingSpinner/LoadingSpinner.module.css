@@ -202,18 +202,15 @@
    DARK THEME
    ======================================== */
 
-.dark .block,
 [data-theme="dark"] .block {
   background-color: var(--color-accent);
   border-color: var(--color-border-strong);
 }
 
-.dark .bar,
 [data-theme="dark"] .bar {
   background-color: var(--color-accent);
 }
 
-.dark .pulseShape,
 [data-theme="dark"] .pulseShape {
   background-color: var(--color-accent);
   border-color: var(--color-border-strong);

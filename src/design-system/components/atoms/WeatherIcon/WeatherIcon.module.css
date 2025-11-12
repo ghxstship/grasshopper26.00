@@ -54,7 +54,6 @@
   font-size: var(--font-size-base);
 }
 
-.dark .icon,
 [data-theme="dark"] .icon {
   color: var(--color-text-primary);
 }

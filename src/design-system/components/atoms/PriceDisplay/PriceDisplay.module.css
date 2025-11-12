@@ -91,12 +91,10 @@
    DARK THEME
    ======================================== */
 
-.dark .amount,
 [data-theme="dark"] .amount {
   color: var(--color-text-primary);
 }
 
-.dark .original,
 [data-theme="dark"] .original {
   color: var(--color-text-tertiary);
 }

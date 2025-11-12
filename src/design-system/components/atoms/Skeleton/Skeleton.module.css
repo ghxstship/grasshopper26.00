@@ -106,12 +106,10 @@
    DARK THEME
    ======================================== */
 
-.dark .skeleton,
 [data-theme="dark"] .skeleton {
   background-color: var(--color-bg-tertiary);
 }
 
-.dark .wave::after,
 [data-theme="dark"] .wave::after {
   background: linear-gradient(
     90deg,

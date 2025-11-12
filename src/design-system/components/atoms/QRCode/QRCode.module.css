@@ -76,7 +76,6 @@
    DARK THEME
    ======================================== */
 
-.dark .container,
 [data-theme="dark"] .container {
   border-color: var(--color-border-strong);
   background-color: var(--color-bg-secondary);

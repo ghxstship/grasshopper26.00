@@ -162,12 +162,10 @@
    DARK THEME
    ======================================== */
 
-.dark .textarea,
 [data-theme="dark"] .textarea {
   background-color: var(--color-bg-secondary);
 }
 
-.dark .textarea:focus,
 [data-theme="dark"] .textarea:focus {
   box-shadow: var(--shadow-white-sm);
 }

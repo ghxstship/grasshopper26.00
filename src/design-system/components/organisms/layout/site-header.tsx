@@ -8,6 +8,7 @@ import { AuthButtons } from '../../molecules/AuthButtons';
 import { UserMenu } from '../../molecules/UserMenu';
 import { useAuth } from '@/hooks/use-auth';
 import { useCart } from '@/hooks/useCart';
+import { useTheme } from '@/hooks/use-theme';
 import styles from './site-header.module.css';
 
 export interface SiteHeaderProps {
@@ -47,8 +48,8 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
   const [scrollState, setScrollState] = React.useState<'top' | 'scrolling' | 'scrolled'>('top');
   const [scrollDirection, setScrollDirection] = React.useState<'up' | 'down'>('up');
   const [mousePosition, setMousePosition] = React.useState({ x: 0, y: 0 });
-  const [theme, setTheme] = React.useState<'light' | 'dark' | 'system'>('system');
   const [searchOpen, setSearchOpen] = React.useState(false);
+  const { theme, cycleTheme, mounted } = useTheme();
   const lastScrollY = React.useRef(0);
   const headerRef = React.useRef<HTMLElement>(null);
   const searchInputRef = React.useRef<HTMLInputElement>(null);
@@ -104,31 +105,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
     return () => { document.body.style.overflow = ''; };
   }, [mobileMenuOpen]);
 
-  // Theme management
-  React.useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | 'system' || 'system';
-    setTheme(savedTheme);
-    applyTheme(savedTheme);
-  }, []);
-
-  const applyTheme = (newTheme: 'light' | 'dark' | 'system') => {
-    const root = document.documentElement;
-    if (newTheme === 'system') {
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      root.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
-    } else {
-      root.setAttribute('data-theme', newTheme);
-    }
-  };
-
-  const toggleTheme = () => {
-    const themes: Array<'light' | 'dark' | 'system'> = ['light', 'dark', 'system'];
-    const currentIndex = themes.indexOf(theme);
-    const nextTheme = themes[(currentIndex + 1) % themes.length];
-    setTheme(nextTheme);
-    localStorage.setItem('theme', nextTheme);
-    applyTheme(nextTheme);
-  };
+  // Theme is now managed by useTheme hook - no manual management needed
 
   // Search focus management and ESC handler
   React.useEffect(() => {
@@ -246,16 +223,18 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
             </button>
 
             {/* Theme Toggle */}
-            <button
-              className={styles.themeToggle}
-              onClick={toggleTheme}
-              aria-label={`Switch to ${theme === 'light' ? 'dark' : theme === 'dark' ? 'system' : 'light'} theme`}
-              title={`Current: ${theme}`}
-            >
-              <span className={styles.themeIcon} aria-hidden="true">
-                {theme === 'light' ? '☀' : theme === 'dark' ? '☾' : '◐'}
-              </span>
-            </button>
+            {mounted && (
+              <button
+                className={styles.themeToggle}
+                onClick={cycleTheme}
+                aria-label={`Switch to ${theme === 'light' ? 'dark' : theme === 'dark' ? 'system' : 'light'} theme`}
+                title={`Current: ${theme || 'system'}`}
+              >
+                <span className={styles.themeIcon} aria-hidden="true">
+                  {theme === 'light' ? '☀' : theme === 'dark' ? '☾' : '◐'}
+                </span>
+              </button>
+            )}
 
             {/* Cart */}
             <div className={styles.cartWrapper}>

@@ -228,40 +228,33 @@
    DARK THEME
    ======================================== */
 
-.dark .label,
 [data-theme="dark"] .label {
   color: var(--color-grey-400);
 }
 
-.dark .tab:hover:not(.disabled) .label,
 [data-theme="dark"] .tab:hover:not(.disabled) .label {
   color: var(--color-white);
 }
 
-.dark .tab.active .label,
 [data-theme="dark"] .tab.active .label {
   color: var(--color-white);
 }
 
-.dark .tab.active .count,
 [data-theme="dark"] .tab.active .count {
   background-color: var(--color-white);
   color: var(--color-black);
   border-color: var(--color-white);
 }
 
-.dark .pills .tab.active,
 [data-theme="dark"] .pills .tab.active {
   background-color: var(--color-white);
   border-color: var(--color-white);
 }
 
-.dark .pills .tab.active .label,
 [data-theme="dark"] .pills .tab.active .label {
   color: var(--color-black);
 }
 
-.dark .underline .tab::after,
 [data-theme="dark"] .underline .tab::after {
   background-color: var(--color-white);
 }

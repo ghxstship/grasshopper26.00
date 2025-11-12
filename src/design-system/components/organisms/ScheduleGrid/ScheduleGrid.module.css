@@ -277,17 +277,14 @@
    DARK THEME
    ======================================== */
 
-.dark .scheduleGrid,
 [data-theme="dark"] .scheduleGrid {
   border-color: var(--color-border-strong);
 }
 
-.dark .headerRow,
 [data-theme="dark"] .headerRow {
   background-color: var(--color-black);
 }
 
-.dark .slotCellFilled:hover,
 [data-theme="dark"] .slotCellFilled:hover {
   box-shadow: var(--shadow-white-md);
 }

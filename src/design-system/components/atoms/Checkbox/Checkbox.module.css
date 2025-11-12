@@ -183,19 +183,16 @@
    DARK THEME
    ======================================== */
 
-.dark .checkbox,
 [data-theme="dark"] .checkbox {
   border-color: var(--color-border-strong);
   background-color: var(--color-bg-primary);
 }
 
-.dark .checkbox:checked,
 [data-theme="dark"] .checkbox:checked {
   background-color: var(--color-accent);
   border-color: var(--color-accent);
 }
 
-.dark .checkbox:checked::after,
 [data-theme="dark"] .checkbox:checked::after {
   background-color: var(--color-black);
 }

@@ -62,12 +62,10 @@
    DARK THEME
    ======================================== */
 
-.dark .tag,
 [data-theme="dark"] .tag {
   border-color: var(--color-border-default);
 }
 
-.dark .filled,
 [data-theme="dark"] .filled {
   background-color: var(--color-accent);
   color: var(--color-primary);

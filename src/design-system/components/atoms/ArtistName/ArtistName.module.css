@@ -42,12 +42,10 @@
    DARK THEME
    ======================================== */
 
-.dark .name,
 [data-theme="dark"] .name {
   color: var(--color-text-primary);
 }
 
-.dark .headliner,
 [data-theme="dark"] .headliner {
   color: var(--color-accent);
 }

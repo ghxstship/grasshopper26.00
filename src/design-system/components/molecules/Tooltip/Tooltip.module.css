@@ -137,15 +137,12 @@
    DARK THEME
    ======================================== */
 
-.dark .tooltip,
-.dark .arrow,
 [data-theme="dark"] .tooltip,
 [data-theme="dark"] .arrow {
   background-color: var(--color-accent);
   box-shadow: var(--shadow-white-lg);
 }
 
-.dark .tooltip,
 [data-theme="dark"] .tooltip {
   color: var(--color-primary);
 }

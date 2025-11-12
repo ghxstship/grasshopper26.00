@@ -145,9 +145,9 @@ export function MembershipBrowseClient({ initialTiers }: MembershipBrowseClientP
     'Birthday perks',
   ];
 
-  return (
+  // Header with hero and billing toggle
+  const headerContent = (
     <>
-      {/* Hero Section */}
       <div className={styles.hero}>
         <Typography variant="h1" as="h1" className={styles.heroTitle}>
           Join GVTEWAY
@@ -157,7 +157,6 @@ export function MembershipBrowseClient({ initialTiers }: MembershipBrowseClientP
         </Typography>
       </div>
 
-      {/* Billing Toggle */}
       <div className={styles.billingToggle}>
         <Typography variant="body" as="span" className={isAnnual ? styles.active : ''}>
           Annual
@@ -174,9 +173,14 @@ export function MembershipBrowseClient({ initialTiers }: MembershipBrowseClientP
           <span className={styles.savingsBadge}>Save 2 Months</span>
         )}
       </div>
+    </>
+  );
 
+  return (
+    <>
       {/* Membership Tiers Grid */}
       <GridLayout
+        header={headerContent}
         title="Memberships"
         description="Unlock exclusive benefits and experiences"
         columns={3}

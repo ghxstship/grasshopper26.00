@@ -101,7 +101,6 @@
    DARK THEME
    ======================================== */
 
-.dark .clearButton:hover,
 [data-theme="dark"] .clearButton:hover {
   background-color: var(--color-accent);
   color: var(--color-primary);

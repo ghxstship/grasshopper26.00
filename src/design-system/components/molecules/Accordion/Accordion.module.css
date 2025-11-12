@@ -152,7 +152,6 @@
    DARK THEME
    ======================================== */
 
-.dark .accordion.open .indicator,
 [data-theme="dark"] .accordion.open .indicator {
   background-color: var(--color-accent);
   color: var(--color-primary);

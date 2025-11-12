@@ -262,7 +262,6 @@
    DARK THEME
    ======================================== */
 
-.dark .filled,
 [data-theme="dark"] .filled {
   background-color: var(--color-white);
   color: var(--color-black);
@@ -270,7 +269,6 @@
   box-shadow: var(--shadow-white-md);
 }
 
-.dark .filled:hover:not(:disabled),
 [data-theme="dark"] .filled:hover:not(:disabled) {
   background-color: var(--color-black);
   color: var(--color-white);
@@ -278,7 +276,6 @@
   box-shadow: var(--shadow-white-lg);
 }
 
-.dark .outlined,
 [data-theme="dark"] .outlined {
   background-color: transparent;
   color: var(--color-white);
@@ -286,32 +283,27 @@
   box-shadow: var(--shadow-white-sm);
 }
 
-.dark .outlined:hover:not(:disabled),
 [data-theme="dark"] .outlined:hover:not(:disabled) {
   background-color: var(--color-white);
   color: var(--color-black);
   box-shadow: var(--shadow-white-md);
 }
 
-.dark .ghost,
 [data-theme="dark"] .ghost {
   color: var(--color-white);
 }
 
-.dark .ghost:hover:not(:disabled),
 [data-theme="dark"] .ghost:hover:not(:disabled) {
   background-color: var(--color-grey-900);
   color: var(--color-white);
 }
 
-.dark .cta,
 [data-theme="dark"] .cta {
   background-color: var(--color-white);
   color: var(--color-black);
   border-color: var(--color-white);
 }
 
-.dark .cta:hover:not(:disabled),
 [data-theme="dark"] .cta:hover:not(:disabled) {
   background-color: var(--color-black);
   color: var(--color-white);

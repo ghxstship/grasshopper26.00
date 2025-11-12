@@ -184,12 +184,10 @@
    DARK THEME
    ======================================== */
 
-.dark .select,
 [data-theme="dark"] .select {
   background-color: var(--color-bg-secondary);
 }
 
-.dark .select:focus,
 [data-theme="dark"] .select:focus {
   box-shadow: var(--shadow-white-sm);
 }

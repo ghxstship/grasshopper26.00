@@ -60,7 +60,6 @@
    DARK THEME
    ======================================== */
 
-.dark .halftoneOverlay,
 [data-theme="dark"] .halftoneOverlay {
   background-image: 
     radial-gradient(circle, var(--color-accent) 20%, transparent 20%),

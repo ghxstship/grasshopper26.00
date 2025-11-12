@@ -127,24 +127,20 @@
    DARK THEME
    ======================================== */
 
-.dark .item,
 [data-theme="dark"] .item {
   border-color: var(--color-border-strong);
   background-color: var(--color-bg-secondary);
 }
 
-.dark .trigger:hover,
 [data-theme="dark"] .trigger:hover {
   background-color: var(--color-bg-tertiary);
 }
 
-.dark .icon,
 [data-theme="dark"] .icon {
   border-color: var(--color-border-strong);
   background-color: var(--color-bg-secondary);
 }
 
-.dark .trigger:hover .icon,
 [data-theme="dark"] .trigger:hover .icon {
   background-color: var(--color-accent);
   color: var(--color-primary);

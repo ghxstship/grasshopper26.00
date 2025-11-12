@@ -116,7 +116,6 @@
    DARK THEME
    ======================================== */
 
-.dark .star.filled .starIcon,
 [data-theme="dark"] .star.filled .starIcon {
   color: var(--color-accent);
 }

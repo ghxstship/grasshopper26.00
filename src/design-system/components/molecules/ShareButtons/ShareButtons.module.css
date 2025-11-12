@@ -155,8 +155,6 @@
    DARK THEME
    ======================================== */
 
-.dark .button:hover,
-.dark .button.copied,
 [data-theme="dark"] .button:hover,
 [data-theme="dark"] .button.copied {
   background-color: var(--color-accent);

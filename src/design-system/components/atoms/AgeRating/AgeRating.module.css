@@ -56,7 +56,6 @@
   font-size: var(--font-size-base);
 }
 
-.dark .\32 1\+,
 [data-theme="dark"] .\32 1\+ {
   background-color: var(--color-accent);
   color: var(--color-primary);

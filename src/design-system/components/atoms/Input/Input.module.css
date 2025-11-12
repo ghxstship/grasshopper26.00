@@ -199,12 +199,10 @@
    DARK THEME
    ======================================== */
 
-.dark .input,
 [data-theme="dark"] .input {
   background-color: var(--color-bg-secondary);
 }
 
-.dark .input:focus,
 [data-theme="dark"] .input:focus {
   box-shadow: var(--shadow-white-sm);
 }

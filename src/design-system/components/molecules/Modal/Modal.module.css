@@ -225,17 +225,14 @@
    DARK THEME
    ======================================== */
 
-.dark .modal,
 [data-theme="dark"] .modal {
   box-shadow: var(--shadow-white-xl);
 }
 
-.dark .closeButton:hover,
 [data-theme="dark"] .closeButton:hover {
   background-color: var(--color-accent);
 }
 
-.dark .closeButton:hover .closeIcon,
 [data-theme="dark"] .closeButton:hover .closeIcon {
   color: var(--color-primary);
 }

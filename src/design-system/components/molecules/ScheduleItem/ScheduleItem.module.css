@@ -173,14 +173,10 @@
    DARK THEME
    ======================================== */
 
-.dark .item.highlighted,
 [data-theme="dark"] .item.highlighted {
   background-color: var(--color-accent);
 }
 
-.dark .item.highlighted .artistName,
-.dark .item.highlighted .time,
-.dark .item.highlighted .stageName,
 [data-theme="dark"] .item.highlighted .artistName,
 [data-theme="dark"] .item.highlighted .time,
 [data-theme="dark"] .item.highlighted .stageName {

@@ -110,23 +110,19 @@
    DARK THEME
    ======================================== */
 
-.dark .stub,
 [data-theme="dark"] .stub {
   border-color: var(--color-border-strong);
   background-color: var(--color-bg-secondary);
 }
 
-.dark .vip,
 [data-theme="dark"] .vip {
   border-color: var(--color-accent);
 }
 
-.dark .vip .eventName,
 [data-theme="dark"] .vip .eventName {
   color: var(--color-accent);
 }
 
-.dark .perforation,
 [data-theme="dark"] .perforation {
   background-image: repeating-linear-gradient(
     to bottom,

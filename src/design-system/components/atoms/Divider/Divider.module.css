@@ -57,7 +57,6 @@
    DARK THEME
    ======================================== */
 
-.dark .divider,
 [data-theme="dark"] .divider {
   background-color: var(--color-border-strong);
 }

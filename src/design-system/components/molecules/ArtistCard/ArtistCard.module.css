@@ -269,17 +269,14 @@
    DARK THEME
    ======================================== */
 
-.dark .card,
 [data-theme="dark"] .card {
   box-shadow: var(--shadow-white-sm);
 }
 
-.dark .card:hover,
 [data-theme="dark"] .card:hover {
   box-shadow: var(--shadow-white-md);
 }
 
-.dark .card:active,
 [data-theme="dark"] .card:active {
   box-shadow: var(--shadow-white-xs);
 }

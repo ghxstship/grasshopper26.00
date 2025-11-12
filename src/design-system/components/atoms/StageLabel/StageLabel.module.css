@@ -56,12 +56,10 @@
   font-size: var(--font-size-base);
 }
 
-.dark .label,
 [data-theme="dark"] .label {
   border-color: var(--color-border-strong);
 }
 
-.dark .primary,
 [data-theme="dark"] .primary {
   background-color: var(--color-accent);
   color: var(--color-primary);

@@ -163,13 +163,11 @@
    DARK THEME
    ======================================== */
 
-.dark .selectedCount,
 [data-theme="dark"] .selectedCount {
   background-color: var(--color-accent);
   color: var(--color-primary);
 }
 
-.dark .summary,
 [data-theme="dark"] .summary {
   box-shadow: 0 -0.5rem 0 var(--color-white);
 }

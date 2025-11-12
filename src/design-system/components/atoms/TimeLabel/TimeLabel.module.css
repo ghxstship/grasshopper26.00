@@ -24,7 +24,6 @@
   font-size: var(--font-size-base);
 }
 
-.dark .time,
 [data-theme="dark"] .time {
   color: var(--color-text-primary);
 }

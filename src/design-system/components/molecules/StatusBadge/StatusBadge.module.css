@@ -151,28 +151,23 @@
    DARK THEME
    ======================================== */
 
-.dark .sold-out,
 [data-theme="dark"] .sold-out {
   background-color: var(--color-accent);
 }
 
-.dark .sold-out .label,
 [data-theme="dark"] .sold-out .label {
   color: var(--color-primary);
 }
 
-.dark .on-sale,
 [data-theme="dark"] .on-sale {
   background-color: var(--color-bg-primary);
   border-color: var(--color-border-strong);
 }
 
-.dark .live,
 [data-theme="dark"] .live {
   background-color: var(--color-accent);
 }
 
-.dark .live .label,
 [data-theme="dark"] .live .label {
   color: var(--color-primary);
 }

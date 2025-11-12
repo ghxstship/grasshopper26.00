@@ -193,19 +193,16 @@
    DARK THEME
    ======================================== */
 
-.dark .toggle,
 [data-theme="dark"] .toggle {
   border-color: var(--color-border-strong);
   background-color: var(--color-bg-secondary);
 }
 
-.dark .toggle:checked,
 [data-theme="dark"] .toggle:checked {
   background-color: var(--color-accent);
   border-color: var(--color-accent);
 }
 
-.dark .toggle:checked::before,
 [data-theme="dark"] .toggle:checked::before {
   background-color: var(--color-black);
 }

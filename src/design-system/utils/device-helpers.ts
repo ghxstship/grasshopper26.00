@@ -319,6 +319,7 @@ export function devicePrefersReducedMotion(): boolean {
 
 /**
  * Check if dark mode preferred
+ * @deprecated Use useTheme hook from @/hooks/use-theme instead
  */
 export function prefersDarkMode(): boolean {
   if (typeof window === 'undefined') return false;

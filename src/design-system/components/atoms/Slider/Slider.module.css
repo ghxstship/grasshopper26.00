@@ -183,25 +183,20 @@
    DARK THEME
    ======================================== */
 
-.dark .track,
 [data-theme="dark"] .track {
   background-color: var(--color-bg-tertiary);
   border-color: var(--color-border-default);
 }
 
-.dark .fill,
-.dark .range,
 [data-theme="dark"] .fill,
 [data-theme="dark"] .range {
   background-color: var(--color-accent);
 }
 
-.dark .input::-webkit-slider-thumb,
 [data-theme="dark"] .input::-webkit-slider-thumb {
   background-color: var(--color-accent);
 }
 
-.dark .input::-moz-range-thumb,
 [data-theme="dark"] .input::-moz-range-thumb {
   background-color: var(--color-accent);
 }

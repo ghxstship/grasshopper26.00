@@ -167,12 +167,10 @@
    DARK THEME
    ======================================== */
 
-.dark .alert,
 [data-theme="dark"] .alert {
   box-shadow: var(--shadow-white-md);
 }
 
-.dark .error,
 [data-theme="dark"] .error {
   background-color: var(--color-accent);
   color: var(--color-primary);

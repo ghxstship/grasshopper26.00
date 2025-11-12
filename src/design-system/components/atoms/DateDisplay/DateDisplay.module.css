@@ -61,12 +61,10 @@
    DARK THEME
    ======================================== */
 
-.dark .date,
 [data-theme="dark"] .date {
   color: var(--color-text-primary);
 }
 
-.dark .time,
 [data-theme="dark"] .time {
   color: var(--color-text-secondary);
 }

@@ -945,47 +945,39 @@
    DARK THEME
    ======================================== */
 
-.dark .header,
 [data-theme="dark"] .header {
   background-color: var(--color-black);
   border-block-end-color: var(--color-white);
 }
 
-.dark .logo,
 [data-theme="dark"] .logo {
   color: var(--color-white);
 }
 
-.dark .navLink,
 [data-theme="dark"] .navLink {
   color: var(--color-white);
 }
 
-.dark .navLink:hover,
 [data-theme="dark"] .navLink:hover {
   color: var(--color-black);
   background-color: var(--color-white);
 }
 
-.dark .navLink.active,
 [data-theme="dark"] .navLink.active {
   color: var(--color-black);
   background-color: var(--color-white);
 }
 
-.dark .ctaButton,
 [data-theme="dark"] .ctaButton {
   color: var(--color-white);
   border-color: var(--color-white);
 }
 
-.dark .ctaButton:hover,
 [data-theme="dark"] .ctaButton:hover {
   background-color: var(--color-white);
   color: var(--color-black);
 }
 
-.dark .hamburgerLine,
 [data-theme="dark"] .hamburgerLine {
   background-color: var(--color-white);
 }

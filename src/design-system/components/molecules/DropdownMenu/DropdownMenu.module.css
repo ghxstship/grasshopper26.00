@@ -145,7 +145,6 @@
    DARK THEME
    ======================================== */
 
-.dark .menu,
 [data-theme="dark"] .menu {
   box-shadow: var(--shadow-white-lg);
 }

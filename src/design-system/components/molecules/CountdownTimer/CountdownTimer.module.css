@@ -147,7 +147,6 @@
    DARK THEME
    ======================================== */
 
-.dark .unit,
 [data-theme="dark"] .unit {
   box-shadow: var(--shadow-white-md);
 }

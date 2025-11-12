@@ -165,7 +165,6 @@
    DARK THEME
    ======================================== */
 
-.dark .content,
 [data-theme="dark"] .content {
   background-color: var(--color-bg-tertiary);
 }

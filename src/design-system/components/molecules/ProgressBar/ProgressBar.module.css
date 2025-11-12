@@ -125,7 +125,6 @@
    DARK THEME
    ======================================== */
 
-.dark .fill,
 [data-theme="dark"] .fill {
   background-color: var(--color-accent);
 }

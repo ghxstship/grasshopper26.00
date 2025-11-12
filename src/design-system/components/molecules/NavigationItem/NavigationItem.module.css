@@ -51,11 +51,11 @@
 }
 
 .navItem:hover .label {
-  color: var(--color-primary);
+  color: var(--color-text-inverse);
 }
 
 .active .label {
-  color: var(--color-primary);
+  color: var(--color-text-inverse);
   font-weight: var(--font-weight-bold);
 }
 
@@ -70,7 +70,7 @@
   inset-inline-end: var(--space-4);
   
   height: var(--border-width-3);
-  background-color: var(--color-black);
+  background-color: var(--color-text-inverse);
   
   transform: scaleX(0);
   transform-origin: left;
@@ -108,14 +108,3 @@
    DARK THEME
    ======================================== */
 
-[data-theme="dark"] .navItem:hover .label {
-  color: var(--color-accent);
-}
-
-[data-theme="dark"] .active .label {
-  color: var(--color-accent);
-}
-
-[data-theme="dark"] .underline {
-  background-color: var(--color-accent);
-}

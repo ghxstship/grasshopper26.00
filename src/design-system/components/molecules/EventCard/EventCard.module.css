@@ -24,8 +24,8 @@
 }
 
 .card:hover {
-  background-color: var(--color-black);
-  border-color: var(--color-accent);
+  background-color: var(--color-text-inverse);
+  border-color: var(--color-text-primary);
   transform: scale(1.05);
   box-shadow: var(--shadow-lg);
 }
@@ -112,7 +112,7 @@
 }
 
 .card:hover .title {
-  color: var(--color-white);
+  color: var(--color-text-primary);
 }
 
 .metadata {
@@ -149,7 +149,7 @@
   
   border: var(--border-width-2) solid var(--color-border-strong);
   border-radius: var(--radius-none)(--radius-none);
-  background-color: var(--color-black);
+  background-color: var(--color-text-inverse);
   
   width: fit-content;
   
@@ -157,7 +157,7 @@
 }
 
 .card:hover .statusBadge {
-  border-color: var(--color-border-accent);
+  border-color: var(--color-text-primary);
   background-color: var(--color-bg-primary);
 }
 
@@ -168,7 +168,7 @@
   letter-spacing: var(--letter-spacing-wider);
   text-transform: uppercase;
   
-  color: var(--color-white);
+  color: var(--color-text-primary);
   
   transition: color var(--duration-base) var(--easing-out);
 }
@@ -188,12 +188,12 @@
 }
 
 .card:hover .statusOnSale {
-  background-color: var(--color-black);
-  border-color: var(--color-border-accent);
+  background-color: var(--color-text-inverse);
+  border-color: var(--color-text-primary);
 }
 
 .card:hover .statusOnSale .statusText {
-  color: var(--color-white);
+  color: var(--color-text-primary);
 }
 
 .statusComingSoon {

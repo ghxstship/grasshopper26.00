@@ -26,7 +26,7 @@
 
 .card.clickable:hover {
   background-color: var(--color-bg-secondary);
-  border-color: var(--color-primary);
+  border-color: var(--color-text-inverse);
   transform: translateY(-0.25rem);
   box-shadow: var(--shadow-md);
 }
@@ -181,7 +181,7 @@
 }
 
 .card:hover .title {
-  color: var(--color-primary);
+  color: var(--color-text-inverse);
 }
 
 /* ========================================
@@ -308,6 +308,3 @@
   color: var(--color-text-primary);
 }
 
-[data-theme="dark"] .card:hover .title {
-  color: var(--color-accent);
-}

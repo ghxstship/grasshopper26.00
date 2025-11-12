@@ -5,22 +5,25 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { joinWaitlist, getWaitlistPosition } from '../waitlist';
 
+// Create persistent query builder
+const mockQueryBuilder = {
+  select: vi.fn().mockReturnThis(),
+  insert: vi.fn().mockReturnThis(),
+  update: vi.fn().mockReturnThis(),
+  delete: vi.fn().mockReturnThis(),
+  eq: vi.fn().mockReturnThis(),
+  gt: vi.fn().mockReturnThis(),
+  single: vi.fn(),
+  order: vi.fn().mockReturnThis(),
+  limit: vi.fn().mockReturnThis(),
+};
+
 const mockSupabase = {
-  from: vi.fn(() => ({
-    select: vi.fn().mockReturnThis(),
-    insert: vi.fn().mockReturnThis(),
-    update: vi.fn().mockReturnThis(),
-    delete: vi.fn().mockReturnThis(),
-    eq: vi.fn().mockReturnThis(),
-    gt: vi.fn().mockReturnThis(),
-    single: vi.fn(),
-    order: vi.fn().mockReturnThis(),
-    limit: vi.fn().mockReturnThis(),
-  })),
+  from: vi.fn(() => mockQueryBuilder),
 };
 
 vi.mock('@/lib/supabase/server', () => ({
-  createClient: vi.fn(() => mockSupabase),
+  createClient: vi.fn(async () => mockSupabase),
 }));
 
 describe('Waitlist System', () => {
@@ -30,20 +33,22 @@ describe('Waitlist System', () => {
 
   describe('joinWaitlist', () => {
     it('should add user to waitlist with correct priority', async () => {
-      // Mock no existing entry
-      mockSupabase.from().single.mockResolvedValueOnce({ data: null, error: { code: 'PGRST116' } });
-      
-      // Mock membership tier
-      mockSupabase.from().single.mockResolvedValueOnce({
-        data: { membership_tiers: { tier_level: 3 } },
-        error: null,
-      });
-
-      // Mock insert
-      mockSupabase.from().insert.mockResolvedValueOnce({ error: null });
+      // Mock no existing entry (first call - check existing)
+      mockQueryBuilder.single
+        .mockResolvedValueOnce({ data: null, error: { code: 'PGRST116' } })
+        // Mock membership tier (second call)
+        .mockResolvedValueOnce({
+          data: { membership_tiers: { tier_level: 3 } },
+          error: null,
+        })
+        // Mock insert result (third call)
+        .mockResolvedValueOnce({ 
+          data: { id: 'new-entry', priority_score: 42 },
+          error: null 
+        });
 
       // Mock position query
-      mockSupabase.from().select.mockResolvedValueOnce({ data: [], error: null });
+      mockQueryBuilder.select.mockResolvedValueOnce({ data: [], error: null });
 
       const result = await joinWaitlist('event-123', 'user-456', 'ticket-type-789');
 
@@ -52,7 +57,7 @@ describe('Waitlist System', () => {
     });
 
     it('should throw error if already on waitlist', async () => {
-      mockSupabase.from().single.mockResolvedValueOnce({
+      mockQueryBuilder.single.mockResolvedValueOnce({
         data: { id: 'existing-123' },
         error: null,
       });
@@ -65,23 +70,25 @@ describe('Waitlist System', () => {
 
   describe('getWaitlistPosition', () => {
     it('should return correct position', async () => {
-      // Mock user entry
-      mockSupabase.from().single.mockResolvedValueOnce({
+      // Mock user entry (first single call)
+      mockQueryBuilder.single.mockResolvedValueOnce({
         data: { priority_score: 50 },
         error: null,
       });
 
-      // Mock higher priority count
-      mockSupabase.from().select.mockResolvedValueOnce({
-        data: [{ id: '1' }, { id: '2' }],
-        error: null,
-      });
-
-      // Mock total waiting
-      mockSupabase.from().select.mockResolvedValueOnce({
-        data: [{ id: '1' }, { id: '2' }, { id: '3' }],
-        error: null,
-      });
+      // Mock higher priority count (first select call - returns promise with count)
+      mockQueryBuilder.select
+        .mockReturnValueOnce(Promise.resolve({
+          data: [{ id: '1' }, { id: '2' }],
+          error: null,
+          count: 2
+        }))
+        // Mock total waiting (second select call)
+        .mockReturnValueOnce(Promise.resolve({
+          data: [{ id: '1' }, { id: '2' }, { id: '3' }],
+          error: null,
+          count: 3
+        }));
 
       const result = await getWaitlistPosition('user-456', 'event-123', 'ticket-type-789');
 

@@ -5,23 +5,26 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { getCreditBalance, allocateCredits, redeemCredits, hasCredits } from '../credits';
 
+// Create persistent query builder
+const mockQueryBuilder = {
+  select: vi.fn().mockReturnThis(),
+  insert: vi.fn().mockReturnThis(),
+  update: vi.fn().mockReturnThis(),
+  eq: vi.fn().mockReturnThis(),
+  order: vi.fn().mockReturnThis(),
+  limit: vi.fn().mockReturnThis(),
+  single: vi.fn(),
+  gte: vi.fn().mockReturnThis(),
+  lte: vi.fn().mockReturnThis(),
+};
+
 // Mock Supabase
 const mockSupabase = {
-  from: vi.fn(() => ({
-    select: vi.fn().mockReturnThis(),
-    insert: vi.fn().mockReturnThis(),
-    update: vi.fn().mockReturnThis(),
-    eq: vi.fn().mockReturnThis(),
-    order: vi.fn().mockReturnThis(),
-    limit: vi.fn().mockReturnThis(),
-    single: vi.fn(),
-    gte: vi.fn().mockReturnThis(),
-    lte: vi.fn().mockReturnThis(),
-  })),
+  from: vi.fn(() => mockQueryBuilder),
 };
 
 vi.mock('@/lib/supabase/server', () => ({
-  createClient: vi.fn(() => mockSupabase),
+  createClient: vi.fn(async () => mockSupabase),
 }));
 
 describe('Credit System', () => {
@@ -32,8 +35,8 @@ describe('Credit System', () => {
   describe('getCreditBalance', () => {
     it('should return credit balance', async () => {
       const mockBalance = { credits_balance: 10 };
-      mockSupabase.from().single.mockResolvedValueOnce({ data: mockBalance, error: null });
-      mockSupabase.from().select.mockResolvedValueOnce({ data: [], error: null });
+      mockQueryBuilder.single.mockResolvedValueOnce({ data: mockBalance, error: null });
+      mockQueryBuilder.select.mockResolvedValueOnce({ data: [], error: null });
 
       const balance = await getCreditBalance('membership-123');
 
@@ -42,11 +45,11 @@ describe('Credit System', () => {
     });
 
     it('should return zero for no credits', async () => {
-      mockSupabase.from().single.mockResolvedValueOnce({ 
+      mockQueryBuilder.single.mockResolvedValueOnce({ 
         data: null, 
         error: { code: 'PGRST116' } 
       });
-      mockSupabase.from().select.mockResolvedValueOnce({ data: [], error: null });
+      mockQueryBuilder.select.mockResolvedValueOnce({ data: [], error: null });
 
       const balance = await getCreditBalance('membership-123');
 
@@ -54,7 +57,7 @@ describe('Credit System', () => {
     });
 
     it('should throw error on database failure', async () => {
-      mockSupabase.from().single.mockResolvedValueOnce({ 
+      mockQueryBuilder.single.mockResolvedValueOnce({ 
         data: null, 
         error: { message: 'Database error', code: 'ERROR' } 
       });
@@ -72,10 +75,10 @@ describe('Credit System', () => {
         credits_balance: 7 
       };
 
-      mockSupabase.from().single.mockResolvedValueOnce({ data: mockBalance, error: null });
-      mockSupabase.from().select.mockResolvedValueOnce({ data: [], error: null });
-      mockSupabase.from().single.mockResolvedValueOnce({ data: mockTransaction, error: null });
-      mockSupabase.from().update.mockResolvedValueOnce({ error: null });
+      mockQueryBuilder.single.mockResolvedValueOnce({ data: mockBalance, error: null });
+      mockQueryBuilder.select.mockResolvedValueOnce({ data: [], error: null });
+      mockQueryBuilder.single.mockResolvedValueOnce({ data: mockTransaction, error: null });
+      mockQueryBuilder.update.mockResolvedValueOnce({ error: null });
 
       const result = await allocateCredits('membership-123', 2);
 
@@ -93,11 +96,11 @@ describe('Credit System', () => {
         credits_balance: 3 
       };
 
-      mockSupabase.from().single.mockResolvedValueOnce({ data: mockBalance, error: null });
-      mockSupabase.from().select.mockResolvedValueOnce({ data: [], error: null });
-      mockSupabase.from().single.mockResolvedValueOnce({ data: mockTransaction, error: null });
-      mockSupabase.from().update.mockResolvedValueOnce({ error: null });
-      mockSupabase.from().insert.mockResolvedValueOnce({ error: null });
+      mockQueryBuilder.single.mockResolvedValueOnce({ data: mockBalance, error: null });
+      mockQueryBuilder.select.mockResolvedValueOnce({ data: [], error: null });
+      mockQueryBuilder.single.mockResolvedValueOnce({ data: mockTransaction, error: null });
+      mockQueryBuilder.update.mockResolvedValueOnce({ error: null });
+      mockQueryBuilder.insert.mockResolvedValueOnce({ error: null });
 
       const result = await redeemCredits('membership-123', 2, 'order-123', 'event-123');
 
@@ -108,8 +111,8 @@ describe('Credit System', () => {
     it('should throw error for insufficient credits', async () => {
       const mockBalance = { credits_balance: 1 };
 
-      mockSupabase.from().single.mockResolvedValueOnce({ data: mockBalance, error: null });
-      mockSupabase.from().select.mockResolvedValueOnce({ data: [], error: null });
+      mockQueryBuilder.single.mockResolvedValueOnce({ data: mockBalance, error: null });
+      mockQueryBuilder.select.mockResolvedValueOnce({ data: [], error: null });
 
       await expect(
         redeemCredits('membership-123', 5, 'order-123', 'event-123')
@@ -121,8 +124,8 @@ describe('Credit System', () => {
     it('should return true when sufficient credits', async () => {
       const mockBalance = { credits_balance: 10 };
 
-      mockSupabase.from().single.mockResolvedValueOnce({ data: mockBalance, error: null });
-      mockSupabase.from().select.mockResolvedValueOnce({ data: [], error: null });
+      mockQueryBuilder.single.mockResolvedValueOnce({ data: mockBalance, error: null });
+      mockQueryBuilder.select.mockResolvedValueOnce({ data: [], error: null });
 
       const result = await hasCredits('membership-123', 5);
 
@@ -132,8 +135,8 @@ describe('Credit System', () => {
     it('should return false when insufficient credits', async () => {
       const mockBalance = { credits_balance: 2 };
 
-      mockSupabase.from().single.mockResolvedValueOnce({ data: mockBalance, error: null });
-      mockSupabase.from().select.mockResolvedValueOnce({ data: [], error: null });
+      mockQueryBuilder.single.mockResolvedValueOnce({ data: mockBalance, error: null });
+      mockQueryBuilder.select.mockResolvedValueOnce({ data: [], error: null });
 
       const result = await hasCredits('membership-123', 5);
 

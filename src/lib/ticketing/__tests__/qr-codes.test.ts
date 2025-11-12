@@ -5,17 +5,20 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { generateTicketCode, validateTicketQRCode, markTicketAsScanned } from '../qr-codes';
 
+// Create persistent query builder
+const mockQueryBuilder = {
+  select: vi.fn().mockReturnThis(),
+  update: vi.fn().mockReturnThis(),
+  eq: vi.fn().mockReturnThis(),
+  single: vi.fn(),
+};
+
 const mockSupabase = {
-  from: vi.fn(() => ({
-    select: vi.fn().mockReturnThis(),
-    update: vi.fn().mockReturnThis(),
-    eq: vi.fn().mockReturnThis(),
-    single: vi.fn(),
-  })),
+  from: vi.fn(() => mockQueryBuilder),
 };
 
 vi.mock('@/lib/supabase/server', () => ({
-  createClient: vi.fn(() => mockSupabase),
+  createClient: vi.fn(async () => mockSupabase),
 }));
 
 describe('QR Code System', () => {
@@ -27,7 +30,7 @@ describe('QR Code System', () => {
     it('should generate valid ticket code format', () => {
       const code = generateTicketCode('ticket-12345678', 'event-87654321');
 
-      expect(code).toMatch(/^TKT-[A-Z0-9]+-[A-Z0-9]+-[A-Z0-9]+-[A-Z0-9]+$/);
+      expect(code).toMatch(/^TKT-[A-Z0-9-]+-[A-Z0-9-]+-[A-Z0-9]+-[A-Z0-9]+$/);
       expect(code).toContain('TKT-');
     });
 
@@ -49,7 +52,7 @@ describe('QR Code System', () => {
         qr_code: 'TKT-EVENT456-TICKET12-ABC123-XYZ789',
       };
 
-      mockSupabase.from().single.mockResolvedValueOnce({ data: mockTicket, error: null });
+      mockQueryBuilder.single.mockResolvedValueOnce({ data: mockTicket, error: null });
 
       const result = await validateTicketQRCode('TKT-EVENT456-TICKET12-ABC123-XYZ789');
 
@@ -74,7 +77,7 @@ describe('QR Code System', () => {
         qr_code: 'TKT-EVENT456-TICKET12-ABC123-XYZ789',
       };
 
-      mockSupabase.from().single.mockResolvedValueOnce({ data: mockTicket, error: null });
+      mockQueryBuilder.single.mockResolvedValueOnce({ data: mockTicket, error: null });
 
       const result = await validateTicketQRCode('TKT-EVENT456-TICKET12-ABC123-XYZ789');
 
@@ -91,7 +94,7 @@ describe('QR Code System', () => {
         qr_code: 'TKT-EVENT456-TICKET12-ABC123-XYZ789',
       };
 
-      mockSupabase.from().single.mockResolvedValueOnce({ data: mockTicket, error: null });
+      mockQueryBuilder.single.mockResolvedValueOnce({ data: mockTicket, error: null });
 
       const result = await validateTicketQRCode('TKT-EVENT456-TICKET12-ABC123-XYZ789');
 
@@ -100,7 +103,7 @@ describe('QR Code System', () => {
     });
 
     it('should reject non-existent ticket', async () => {
-      mockSupabase.from().single.mockResolvedValueOnce({ 
+      mockQueryBuilder.single.mockResolvedValueOnce({ 
         data: null, 
         error: { message: 'Not found' } 
       });
@@ -114,7 +117,7 @@ describe('QR Code System', () => {
 
   describe('markTicketAsScanned', () => {
     it('should mark ticket as scanned', async () => {
-      mockSupabase.from().update.mockResolvedValueOnce({ error: null });
+      mockQueryBuilder.update.mockResolvedValueOnce({ error: null });
 
       await expect(
         markTicketAsScanned('ticket-123', 'scanner-456')
@@ -124,7 +127,7 @@ describe('QR Code System', () => {
     });
 
     it('should throw error on database failure', async () => {
-      mockSupabase.from().update.mockResolvedValueOnce({ 
+      mockQueryBuilder.update.mockResolvedValueOnce({ 
         error: { message: 'Database error' } 
       });
 

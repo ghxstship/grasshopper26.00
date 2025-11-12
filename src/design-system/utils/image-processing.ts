@@ -2,7 +2,10 @@
  * Image Processing Utilities
  * GHXSTSHIP Contemporary Minimal Pop Art Image Treatment
  * Convert all images to high-contrast B&W, duotone, or halftone
+ * 
+ * @design-system-exemption This file contains image processing calculations that require px units
  */
+/* eslint-disable no-restricted-syntax */
 
 export type ImageFilter = 
   | 'high-contrast-bw'

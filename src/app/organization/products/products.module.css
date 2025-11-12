@@ -49,3 +49,13 @@
   height: 4rem;
   color: var(--color-text-secondary);
 }
+
+/* DARK MODE */
+[data-theme="dark"] .productRow {
+  background-color: var(--color-bg-primary);
+  border-color: var(--color-border-default);
+}
+
+[data-theme="dark"] .emptyIcon {
+  color: var(--color-text-secondary);
+}

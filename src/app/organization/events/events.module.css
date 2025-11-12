@@ -36,3 +36,9 @@
   padding: var(--space-12);
   text-align: center;
 }
+
+/* DARK MODE */
+[data-theme="dark"] .eventRow {
+  background-color: var(--color-bg-primary);
+  border-color: var(--color-border-default);
+}

@@ -2,7 +2,11 @@
  * Animation Utilities
  * GHXSTSHIP Contemporary Minimal Pop Art Animation System
  * Hard geometric transitions, no soft fades
+ * 
+ * @design-system-exemption This file contains animation calculations that require px units
+ * for transform offsets, border widths, and intersection observer margins
  */
+/* eslint-disable no-restricted-syntax */
 
 export type AnimationDuration = 'instant' | 'fast' | 'normal' | 'slow';
 export type AnimationEasing = 'linear' | 'ease-in' | 'ease-out' | 'ease-in-out' | 'sharp';
@@ -88,13 +92,14 @@ export function getInvertAnimation(): {
 
 /**
  * Hard geometric shadow animation
+ * @design-system-exemption Shadow offset calculation requires px units
  */
 export function getGeometricShadow(
   offsetX: number = 8,
   offsetY: number = 8,
   color: string = 'var(--color-primary)'
 ): string {
-  return `${offsetX}px ${offsetY}px 0 ${color}`;
+  return `${offsetX}px ${offsetY}px 0 ${color}`; // eslint-disable-line no-restricted-syntax
 }
 
 /**

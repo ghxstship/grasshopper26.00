@@ -178,7 +178,7 @@
   font-family: var(--font-family-mono);
   font-size: var(--font-size-sm);
   line-height: var(--line-height-normal);
-  color: var(--color-white);
+  color: var(--color-bg-primary);
 }
 
 @media (min-width: 40rem) {
@@ -193,7 +193,7 @@
 .link {
   font-family: var(--font-family-mono);
   font-size: inherit;
-  color: var(--color-white);
+  color: var(--color-bg-primary);
   text-decoration: underline;
   text-decoration-thickness: 0.125rem;
   text-underline-offset: 0.125rem;
@@ -216,7 +216,7 @@
 /* Profile Page Specific */
 .pageContainer {
   min-block-size: 100vh;
-  background-color: var(--color-white);
+  background-color: var(--color-bg-primary);
   padding: var(--space-8);
 }
 
@@ -230,7 +230,7 @@
   justify-content: space-between;
   align-items: center;
   margin-block-end: var(--space-8);
-  border-block-end: var(--border-width-3) solid var(--color-black);
+  border-block-end: var(--border-width-3) solid var(--color-text-primary);
   padding-block-end: var(--space-4);
 }
 
@@ -238,23 +238,23 @@
   font-family: var(--font-anton);
   font-size: var(--font-size-hero);
   text-transform: uppercase;
-  color: var(--color-black);
+  color: var(--color-text-primary);
 }
 
 .tabsList {
-  background-color: var(--color-grey-100);
-  border: var(--border-width-3) solid var(--color-black);
+  background-color: var(--color-bg-secondary);
+  border: var(--border-width-3) solid var(--color-text-primary);
 }
 
 .avatar {
   block-size: 5rem;
   inline-size: 5rem;
-  border: var(--border-width-3) solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-text-primary);
 }
 
 .avatarFallback {
-  background-color: var(--color-grey-100);
-  color: var(--color-black);
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-primary);
   font-family: var(--font-bebas);
   font-size: var(--font-size-2xl);
 }
@@ -263,34 +263,34 @@
   font-family: var(--font-bebas);
   font-size: var(--font-size-base);
   text-transform: uppercase;
-  color: var(--color-grey-600);
+  color: var(--color-text-secondary);
 }
 
 .value {
   font-family: var(--font-share);
   font-size: var(--font-size-base);
-  color: var(--color-black);
+  color: var(--color-text-primary);
 }
 
 .textarea {
   display: flex;
   inline-size: 100%;
-  border: var(--border-width-3) solid var(--color-black);
-  background-color: var(--color-white);
+  border: var(--border-width-3) solid var(--color-text-primary);
+  background-color: var(--color-bg-primary);
   padding-inline: var(--space-3);
   padding-block: var(--space-2);
   font-family: var(--font-share);
   font-size: var(--font-size-base);
-  color: var(--color-black);
+  color: var(--color-text-primary);
 }
 
 .textarea::placeholder {
-  color: var(--color-grey-500);
+  color: var(--color-text-tertiary);
 }
 
 .textarea:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 0.125rem var(--color-black);
+  box-shadow: 0 0 0 0.125rem var(--color-text-primary);
 }
 
 .textarea:disabled {
@@ -300,39 +300,39 @@
 
 
 .bgBlack {
-  background-color: var(--color-black);
+  background-color: var(--color-text-primary);
 }
 
 .bgWhite {
-  background-color: var(--color-white);
+  background-color: var(--color-bg-primary);
 }
 
 .borderBlack {
-  border-color: var(--color-black);
+  border-color: var(--color-text-primary);
 }
 
 .emptyIcon {
   inline-size: var(--space-16);
   block-size: var(--space-16);
   margin-inline: auto;
-  color: var(--color-grey-600);
+  color: var(--color-text-secondary);
   margin-block-end: var(--space-4);
 }
 
 .textGrey600 {
-  color: var(--color-grey-600);
+  color: var(--color-text-secondary);
 }
 
 .textGrey700 {
-  color: var(--color-grey-700);
+  color: var(--color-text-secondary);
 }
 
 .textBlack {
-  color: var(--color-black);
+  color: var(--color-text-primary);
 }
 
 .textWhite {
-  color: var(--color-white);
+  color: var(--color-bg-primary);
 }
 
 .flexCenter {
@@ -397,4 +397,26 @@
   .checkboxLabel .link {
     font-size: var(--font-size-sm);
   }
+}
+
+/* DARK MODE */
+[data-theme="dark"] .container,
+[data-theme="dark"] .card,
+[data-theme="dark"] .content,
+[data-theme="dark"] .section {
+  background-color: var(--color-bg-primary);
+}
+
+[data-theme="dark"] .button,
+[data-theme="dark"] .input,
+[data-theme="dark"] .select,
+[data-theme="dark"] .textarea {
+  background-color: var(--color-bg-primary);
+  border-color: var(--color-border-strong);
+  color: var(--color-text-primary);
+}
+
+[data-theme="dark"] .button:hover {
+  background-color: var(--color-text-primary);
+  color: var(--color-text-inverse);
 }

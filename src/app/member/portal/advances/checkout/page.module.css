@@ -2,13 +2,13 @@
 
 .pageContainer {
   min-height: 100vh;
-  background-color: var(--color-white);
+  background-color: var(--color-bg-primary);
 }
 
 /* Header Section */
 .header {
-  border-block-end: var(--border-width-3) solid var(--color-black);
-  background-color: var(--color-white);
+  border-block-end: var(--border-width-3) solid var(--color-text-primary);
+  background-color: var(--color-bg-primary);
 }
 
 .headerContent {
@@ -22,20 +22,20 @@
   font-family: var(--font-family-display);
   font-size: var(--font-size-3xl);
   text-transform: uppercase;
-  color: var(--color-black);
+  color: var(--color-text-primary);
   font-weight: var(--font-weight-bold);
 }
 
 .pageSubtitle {
   margin-block-start: var(--space-2);
   font-family: var(--font-family-mono);
-  color: var(--color-grey-600);
+  color: var(--color-text-secondary);
 }
 
 /* Progress Steps */
 .progressBar {
-  border-block-end: var(--border-width-2) solid var(--color-black);
-  background-color: var(--color-grey-50);
+  border-block-end: var(--border-width-2) solid var(--color-text-primary);
+  background-color: var(--color-bg-secondary);
 }
 
 .progressContent {
@@ -64,22 +64,22 @@
   width: var(--space-10);
   align-items: center;
   justify-content: center;
-  border: var(--border-width-3) solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-text-primary);
   font-family: var(--font-family-heading);
   font-size: var(--font-size-lg);
   transition: all var(--duration-fast) var(--easing-out);
 }
 
 .stepCircleActive {
-  border-color: var(--color-black);
-  background-color: var(--color-black);
-  color: var(--color-white);
+  border-color: var(--color-text-primary);
+  background-color: var(--color-text-primary);
+  color: var(--color-bg-primary);
 }
 
 .stepCircleInactive {
-  border-color: var(--color-black);
-  background-color: var(--color-white);
-  color: var(--color-grey-600);
+  border-color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-secondary);
 }
 
 .stepLabel {
@@ -96,17 +96,17 @@
 }
 
 .stepLabelActive {
-  color: var(--color-black);
+  color: var(--color-text-primary);
 }
 
 .stepLabelInactive {
-  color: var(--color-grey-600);
+  color: var(--color-text-secondary);
 }
 
 .stepConnector {
   height: 0.125rem;
   width: var(--space-12);
-  background-color: var(--color-black);
+  background-color: var(--color-text-primary);
 }
 
 /* Main Content */
@@ -131,14 +131,14 @@
   font-family: var(--font-family-display);
   font-size: var(--font-size-2xl);
   text-transform: uppercase;
-  color: var(--color-black);
+  color: var(--color-text-primary);
   font-weight: var(--font-weight-bold);
 }
 
 .sectionSubtitle {
   margin-block-start: var(--space-2);
   font-family: var(--font-family-mono);
-  color: var(--color-grey-600);
+  color: var(--color-text-secondary);
 }
 
 /* Empty State */
@@ -147,35 +147,35 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: var(--border-width-3) solid var(--color-black);
-  background-color: var(--color-grey-50);
+  border: var(--border-width-3) solid var(--color-text-primary);
+  background-color: var(--color-bg-secondary);
   padding-block: var(--space-20);
   text-align: center;
 }
 
 .emptyStateIcon {
   margin-block-end: var(--space-4);
-  color: var(--color-grey-600);
+  color: var(--color-text-secondary);
 }
 
 .emptyStateText {
   font-family: var(--font-family-mono);
-  color: var(--color-grey-600);
+  color: var(--color-text-secondary);
 }
 
 /* Cart Items */
 .cartContainer {
-  border: var(--border-width-3) solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-text-primary);
 }
 
 .cartDivider {
-  border-block-start: var(--border-width-2) solid var(--color-black);
+  border-block-start: var(--border-width-2) solid var(--color-text-primary);
 }
 
 /* Form Sections */
 .formSection {
-  border: var(--border-width-3) solid var(--color-black);
-  background-color: var(--color-white);
+  border: var(--border-width-3) solid var(--color-text-primary);
+  background-color: var(--color-bg-primary);
   padding: var(--space-6);
 }
 
@@ -184,7 +184,7 @@
   font-family: var(--font-family-heading);
   font-size: var(--font-size-xl);
   text-transform: uppercase;
-  color: var(--color-black);
+  color: var(--color-text-primary);
   font-weight: var(--font-weight-semibold);
 }
 
@@ -205,14 +205,14 @@
   font-family: var(--font-family-mono);
   font-size: var(--font-size-xs);
   text-transform: uppercase;
-  color: var(--color-black);
+  color: var(--color-text-primary);
   font-weight: var(--font-weight-medium);
 }
 
 .formInput {
   width: 100%;
-  border: var(--border-width-3) solid var(--color-black);
-  background-color: var(--color-white);
+  border: var(--border-width-3) solid var(--color-text-primary);
+  background-color: var(--color-bg-primary);
   padding-inline: var(--space-4);
   padding-block: var(--space-3);
   font-family: var(--font-family-mono);
@@ -226,8 +226,8 @@
 
 .formTextarea {
   width: 100%;
-  border: var(--border-width-3) solid var(--color-black);
-  background-color: var(--color-white);
+  border: var(--border-width-3) solid var(--color-text-primary);
+  background-color: var(--color-bg-primary);
   padding-inline: var(--space-4);
   padding-block: var(--space-3);
   font-family: var(--font-family-mono);
@@ -262,7 +262,7 @@
   inset-inline-end: var(--space-3);
   inset-block-start: 50%;
   transform: translateY(-50%);
-  color: var(--color-grey-600);
+  color: var(--color-text-secondary);
   pointer-events: none;
 }
 
@@ -274,7 +274,7 @@
 }
 
 .button {
-  border: var(--border-width-3) solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-text-primary);
   padding-inline: var(--space-6);
   padding-block: var(--space-4);
   font-family: var(--font-family-heading);
@@ -290,7 +290,7 @@
 }
 
 .buttonPrimary {
-  border: var(--border-width-3) solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-text-primary);
   padding-inline: var(--space-6);
   padding-block: var(--space-4);
   font-family: var(--font-family-heading);
@@ -298,8 +298,8 @@
   transition: all var(--duration-fast) var(--easing-out);
   cursor: pointer;
   font-weight: var(--font-weight-semibold);
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-text-primary);
+  color: var(--color-bg-primary);
   flex: 1;
   display: flex;
   align-items: center;
@@ -313,12 +313,12 @@
 }
 
 .buttonPrimary:hover:not(:disabled) {
-  background-color: var(--color-white);
-  color: var(--color-black);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
 }
 
 .buttonSecondary {
-  border: var(--border-width-3) solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-text-primary);
   padding-inline: var(--space-6);
   padding-block: var(--space-4);
   font-family: var(--font-family-heading);
@@ -326,8 +326,8 @@
   transition: all var(--duration-fast) var(--easing-out);
   cursor: pointer;
   font-weight: var(--font-weight-semibold);
-  background-color: var(--color-white);
-  color: var(--color-black);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
 }
 
 .buttonSecondary:disabled {
@@ -336,11 +336,11 @@
 }
 
 .buttonSecondary:hover:not(:disabled) {
-  background-color: var(--color-grey-50);
+  background-color: var(--color-bg-secondary);
 }
 
 .buttonOutline {
-  border: var(--border-width-3) solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-text-primary);
   padding-inline: var(--space-6);
   padding-block: var(--space-4);
   font-family: var(--font-family-heading);
@@ -349,8 +349,8 @@
   cursor: pointer;
   font-weight: var(--font-weight-semibold);
   background-color: transparent;
-  border-color: var(--color-black);
-  color: var(--color-grey-600);
+  border-color: var(--color-text-primary);
+  color: var(--color-text-secondary);
 }
 
 .buttonOutline:disabled {
@@ -359,8 +359,8 @@
 }
 
 .buttonOutline:hover:not(:disabled) {
-  border-color: var(--color-black);
-  color: var(--color-black);
+  border-color: var(--color-text-primary);
+  color: var(--color-text-primary);
 }
 
 /* Review Section */
@@ -371,8 +371,8 @@
 }
 
 .reviewCard {
-  border: var(--border-width-3) solid var(--color-black);
-  background-color: var(--color-white);
+  border: var(--border-width-3) solid var(--color-text-primary);
+  background-color: var(--color-bg-primary);
   padding: var(--space-6);
 }
 
@@ -381,7 +381,7 @@
   font-family: var(--font-family-heading);
   font-size: var(--font-size-lg);
   text-transform: uppercase;
-  color: var(--color-black);
+  color: var(--color-text-primary);
   font-weight: var(--font-weight-semibold);
 }
 
@@ -400,12 +400,12 @@
   font-family: var(--font-family-mono);
   font-size: var(--font-size-xs);
   text-transform: uppercase;
-  color: var(--color-grey-600);
+  color: var(--color-text-secondary);
 }
 
 .reviewValue {
   font-family: var(--font-family-mono);
-  color: var(--color-black);
+  color: var(--color-text-primary);
 }
 
 /* Checkbox */
@@ -414,9 +414,9 @@
   align-items: flex-start;
   gap: var(--space-3);
   padding: var(--space-4);
-  border: var(--border-width-2) solid var(--color-black);
-  background-color: var(--color-grey-50);
-  border: var(--border-width-3) solid var(--color-black);
+  border: var(--border-width-2) solid var(--color-text-primary);
+  background-color: var(--color-bg-secondary);
+  border: var(--border-width-3) solid var(--color-text-primary);
 }
 
 .checkbox {
@@ -430,23 +430,23 @@
 .checkboxLabel {
   font-family: var(--font-family-mono);
   font-size: var(--font-size-sm);
-  color: var(--color-black);
+  color: var(--color-text-primary);
   cursor: pointer;
 }
 
 .checkboxLink {
-  color: var(--color-black);
+  color: var(--color-text-primary);
   text-decoration: underline;
 }
 
 .checkboxLink:hover {
-  color: var(--color-black);
+  color: var(--color-text-primary);
 }
 
 /* Summary */
 .summary {
-  border: var(--border-width-3) solid var(--color-black);
-  background-color: var(--color-grey-50);
+  border: var(--border-width-3) solid var(--color-text-primary);
+  background-color: var(--color-bg-secondary);
   padding: var(--space-6);
   margin-block-start: var(--space-8);
 }
@@ -456,7 +456,7 @@
   font-family: var(--font-family-heading);
   font-size: var(--font-size-xl);
   text-transform: uppercase;
-  color: var(--color-black);
+  color: var(--color-text-primary);
   font-weight: var(--font-weight-bold);
 }
 
@@ -465,7 +465,7 @@
   justify-content: space-between;
   align-items: center;
   padding-block: var(--space-3);
-  border-block-end: var(--border-width-thin) solid var(--color-black);
+  border-block-end: var(--border-width-thin) solid var(--color-text-primary);
 }
 
 .summaryRow:last-child {
@@ -474,13 +474,13 @@
 
 .summaryLabel {
   font-family: var(--font-family-mono);
-  color: var(--color-grey-600);
+  color: var(--color-text-secondary);
 }
 
 .summaryValue {
   font-family: var(--font-family-heading);
   font-size: var(--font-size-lg);
-  color: var(--color-black);
+  color: var(--color-text-primary);
   font-weight: var(--font-weight-semibold);
 }
 
@@ -499,7 +499,7 @@
   width: var(--space-12);
   height: var(--space-12);
   animation: spin 1s linear infinite;
-  color: var(--color-white);
+  color: var(--color-bg-primary);
 }
 
 @keyframes spin {
@@ -523,7 +523,7 @@
   align-items: flex-start;
   gap: var(--space-3);
   padding-block-end: var(--space-3);
-  border-block-end: var(--border-width-2) solid var(--color-grey-200);
+  border-block-end: var(--border-width-2) solid var(--color-border-default);
 }
 
 .itemRow:last-child {
@@ -534,7 +534,7 @@
 .itemQuantity {
   font-family: var(--font-family-heading);
   font-size: var(--font-size-lg);
-  color: var(--color-black);
+  color: var(--color-text-primary);
   flex-shrink: 0;
 }
 
@@ -545,34 +545,34 @@
 .itemName {
   font-family: var(--font-family-heading);
   text-transform: uppercase;
-  color: var(--color-black);
+  color: var(--color-text-primary);
   font-weight: var(--font-weight-semibold);
 }
 
 .itemMeta {
   font-family: var(--font-family-mono);
   font-size: var(--font-size-xs);
-  color: var(--color-grey-600);
+  color: var(--color-text-secondary);
   margin-block-start: var(--space-1);
 }
 
 .itemModifiers {
   font-family: var(--font-family-mono);
   font-size: var(--font-size-xs);
-  color: var(--color-grey-600);
+  color: var(--color-text-secondary);
   margin-block-start: var(--space-1);
 }
 
 .itemTotal {
   margin-block-start: var(--space-4);
   padding-block-start: var(--space-4);
-  border-block-start: var(--border-width-2) solid var(--color-grey-200);
+  border-block-start: var(--border-width-2) solid var(--color-border-default);
 }
 
 .itemTotalText {
   font-family: var(--font-family-heading);
   text-transform: uppercase;
-  color: var(--color-black);
+  color: var(--color-text-primary);
   font-weight: var(--font-weight-bold);
 }
 
@@ -585,39 +585,39 @@
 
 
 .bgBlack {
-  background-color: var(--color-black);
+  background-color: var(--color-text-primary);
 }
 
 .bgWhite {
-  background-color: var(--color-white);
+  background-color: var(--color-bg-primary);
 }
 
 .borderBlack {
-  border-color: var(--color-black);
+  border-color: var(--color-text-primary);
 }
 
 .emptyIcon {
   inline-size: var(--space-16);
   block-size: var(--space-16);
   margin-inline: auto;
-  color: var(--color-grey-600);
+  color: var(--color-text-secondary);
   margin-block-end: var(--space-4);
 }
 
 .textGrey600 {
-  color: var(--color-grey-600);
+  color: var(--color-text-secondary);
 }
 
 .textGrey700 {
-  color: var(--color-grey-700);
+  color: var(--color-text-secondary);
 }
 
 .textBlack {
-  color: var(--color-black);
+  color: var(--color-text-primary);
 }
 
 .textWhite {
-  color: var(--color-white);
+  color: var(--color-bg-primary);
 }
 
 .flexCenter {
@@ -683,4 +683,26 @@
 
 .shadow {
   box-shadow: var(--shadow-lg);
+}
+
+/* DARK MODE */
+[data-theme="dark"] .container,
+[data-theme="dark"] .card,
+[data-theme="dark"] .content,
+[data-theme="dark"] .section {
+  background-color: var(--color-bg-primary);
+}
+
+[data-theme="dark"] .button,
+[data-theme="dark"] .input,
+[data-theme="dark"] .select,
+[data-theme="dark"] .textarea {
+  background-color: var(--color-bg-primary);
+  border-color: var(--color-border-strong);
+  color: var(--color-text-primary);
+}
+
+[data-theme="dark"] .button:hover {
+  background-color: var(--color-text-primary);
+  color: var(--color-text-inverse);
 }

@@ -1,7 +1,7 @@
 /* Catalog Item Detail - Design System Compliant */
 .container {
   min-block-size: 100vh;
-  background-color: var(--color-white);
+  background-color: var(--color-bg-primary);
 }
 
 /* Loading & Empty States */
@@ -16,7 +16,7 @@
 .spinner {
   inline-size: var(--space-12);
   block-size: var(--space-12);
-  border: 0.25rem solid var(--color-black);
+  border: 0.25rem solid var(--color-text-primary);
   border-block-start-color: transparent;
   border-radius: var(--radius-none);
   animation: spin 1s linear infinite;
@@ -37,18 +37,18 @@
 
 .emptyIcon {
   margin-block-end: var(--space-4);
-  color: var(--color-grey-400);
+  color: var(--color-text-tertiary);
 }
 
 .emptyText {
   font-family: var(--font-family-mono);
-  color: var(--color-grey-600);
+  color: var(--color-text-secondary);
 }
 
 .emptyButton {
   margin-block-start: var(--space-4);
-  border: var(--border-width-3) solid var(--color-black);
-  background-color: var(--color-white);
+  border: var(--border-width-3) solid var(--color-text-primary);
+  background-color: var(--color-bg-primary);
   padding-inline: var(--space-6);
   padding-block: var(--space-3);
   font-family: var(--font-family-heading);
@@ -58,14 +58,14 @@
 }
 
 .emptyButton:hover {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-text-primary);
+  color: var(--color-bg-primary);
 }
 
 /* Header */
 .headerSection {
-  border-block-end: var(--border-width-3) solid var(--color-black);
-  background-color: var(--color-white);
+  border-block-end: var(--border-width-3) solid var(--color-text-primary);
+  background-color: var(--color-bg-primary);
 }
 
 .headerContainer {
@@ -81,7 +81,7 @@
   gap: var(--space-2);
   font-family: var(--font-family-heading);
   text-transform: uppercase;
-  color: var(--color-black);
+  color: var(--color-text-primary);
   background: none;
   border: none;
   cursor: pointer;
@@ -89,7 +89,7 @@
 }
 
 .backButton:hover {
-  color: var(--color-grey-600);
+  color: var(--color-text-secondary);
 }
 
 .icon {
@@ -122,8 +122,8 @@
   position: relative;
   aspect-ratio: 1;
   overflow: hidden;
-  border: var(--border-width-3) solid var(--color-black);
-  background-color: var(--color-grey-100);
+  border: var(--border-width-3) solid var(--color-text-primary);
+  background-color: var(--color-bg-secondary);
 }
 
 .imagePlaceholder {
@@ -135,7 +135,7 @@
 }
 
 .placeholderIcon {
-  color: var(--color-grey-400);
+  color: var(--color-text-tertiary);
 }
 
 .availabilityBadge {
@@ -145,15 +145,15 @@
 }
 
 .badgeAvailable {
-  border: var(--border-width-2) solid var(--color-white);
-  background-color: var(--color-black);
+  border: var(--border-width-2) solid var(--color-bg-primary);
+  background-color: var(--color-text-primary);
   padding-inline: var(--space-4);
   padding-block: var(--space-2);
 }
 
 .badgeUnavailable {
-  border: var(--border-width-2) solid var(--color-black);
-  background-color: var(--color-grey-400);
+  border: var(--border-width-2) solid var(--color-text-primary);
+  background-color: var(--color-text-tertiary);
   padding-inline: var(--space-4);
   padding-block: var(--space-2);
 }
@@ -165,11 +165,11 @@
 }
 
 .badgeTextAvailable {
-  color: var(--color-white);
+  color: var(--color-bg-primary);
 }
 
 .badgeTextUnavailable {
-  color: var(--color-black);
+  color: var(--color-text-primary);
 }
 
 /* Details Column */
@@ -180,7 +180,7 @@
 
 /* Item Header */
 .itemHeader {
-  border-block-end: var(--border-width-2) solid var(--color-grey-200);
+  border-block-end: var(--border-width-2) solid var(--color-border-default);
   padding-block-end: var(--space-6);
 }
 
@@ -194,23 +194,23 @@
   margin-block-start: var(--space-2);
   font-family: var(--font-family-mono);
   font-size: var(--font-size-sm);
-  color: var(--color-grey-600);
+  color: var(--color-text-secondary);
 }
 
 /* Description */
 .descriptionSection {
-  border-block-end: var(--border-width-2) solid var(--color-grey-200);
+  border-block-end: var(--border-width-2) solid var(--color-border-default);
   padding-block: var(--space-6);
 }
 
 .descriptionText {
   font-family: var(--font-family-body);
-  color: var(--color-grey-600);
+  color: var(--color-text-secondary);
 }
 
 /* Specifications */
 .specificationsSection {
-  border-block-end: var(--border-width-2) solid var(--color-grey-200);
+  border-block-end: var(--border-width-2) solid var(--color-border-default);
   padding-block: var(--space-6);
 }
 
@@ -236,24 +236,24 @@
   font-family: var(--font-family-mono);
   font-size: var(--font-size-xs);
   text-transform: uppercase;
-  color: var(--color-grey-600);
+  color: var(--color-text-secondary);
 }
 
 .specValue {
   font-family: var(--font-family-body);
   font-size: var(--font-size-sm);
-  color: var(--color-grey-900);
+  color: var(--color-text-primary);
 }
 
 /* Quantity Section */
 .quantitySection {
-  border-block-end: var(--border-width-2) solid var(--color-grey-200);
+  border-block-end: var(--border-width-2) solid var(--color-border-default);
   padding-block: var(--space-6);
 }
 
 /* Modifiers Section */
 .modifiersSection {
-  border-block-end: var(--border-width-2) solid var(--color-grey-200);
+  border-block-end: var(--border-width-2) solid var(--color-border-default);
   padding-block: var(--space-6);
 }
 
@@ -278,19 +278,19 @@
 }
 
 .requiredBadge {
-  border: var(--border-width-2) solid var(--color-black);
-  background-color: var(--color-black);
+  border: var(--border-width-2) solid var(--color-text-primary);
+  background-color: var(--color-text-primary);
   padding-inline: var(--space-2);
   padding-block: var(--space-0-5);
   font-size: var(--font-size-xs);
-  color: var(--color-white);
+  color: var(--color-bg-primary);
 }
 
 .modifierDescription {
   margin-block-end: var(--space-3);
   font-family: var(--font-family-body);
   font-size: var(--font-size-xs);
-  color: var(--color-grey-600);
+  color: var(--color-text-secondary);
 }
 
 .optionsList {
@@ -322,13 +322,13 @@
 .optionPrice {
   font-family: var(--font-family-mono);
   font-size: var(--font-size-xs);
-  color: var(--color-grey-600);
+  color: var(--color-text-secondary);
 }
 
 .modifierInput {
   inline-size: 100%;
-  border: var(--border-width-3) solid var(--color-black);
-  background-color: var(--color-white);
+  border: var(--border-width-3) solid var(--color-text-primary);
+  background-color: var(--color-bg-primary);
   padding-inline: var(--space-4);
   padding-block: var(--space-3);
   font-family: var(--font-family-body);
@@ -337,19 +337,19 @@
 }
 
 .modifierInput:focus {
-  border-color: var(--color-grey-800);
+  border-color: var(--color-text-primary);
 }
 
 /* Notes Section */
 .notesSection {
-  border-block-end: var(--border-width-2) solid var(--color-grey-200);
+  border-block-end: var(--border-width-2) solid var(--color-border-default);
   padding-block: var(--space-6);
 }
 
 .textarea {
   inline-size: 100%;
-  border: var(--border-width-3) solid var(--color-black);
-  background-color: var(--color-white);
+  border: var(--border-width-3) solid var(--color-text-primary);
+  background-color: var(--color-bg-primary);
   padding-inline: var(--space-4);
   padding-block: var(--space-3);
   font-family: var(--font-family-body);
@@ -358,7 +358,7 @@
 }
 
 .textarea:focus {
-  border-color: var(--color-grey-800);
+  border-color: var(--color-text-primary);
 }
 
 /* Add to Cart */
@@ -372,7 +372,7 @@
   align-items: center;
   justify-content: center;
   gap: var(--space-3);
-  border: var(--border-width-3) solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-text-primary);
   padding-inline: var(--space-6);
   padding-block: var(--space-4);
   font-family: var(--font-family-heading);
@@ -383,19 +383,19 @@
 }
 
 .addButtonAvailable {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-text-primary);
+  color: var(--color-bg-primary);
 }
 
 .addButtonAvailable:hover {
-  background-color: var(--color-white);
-  color: var(--color-black);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
 }
 
 .addButtonDisabled {
-  border-color: var(--color-grey-400);
-  background-color: var(--color-grey-300);
-  color: var(--color-grey-600);
+  border-color: var(--color-text-tertiary);
+  background-color: var(--color-border-default);
+  color: var(--color-text-secondary);
   cursor: not-allowed;
 }
 
@@ -408,7 +408,7 @@
 }
 
 .tag {
-  border: var(--border-width-2) solid var(--color-black);
+  border: var(--border-width-2) solid var(--color-text-primary);
   padding-inline: var(--space-3);
   padding-block: var(--space-1);
   font-family: var(--font-family-mono);
@@ -418,39 +418,39 @@
 
 
 .bgBlack {
-  background-color: var(--color-black);
+  background-color: var(--color-text-primary);
 }
 
 .bgWhite {
-  background-color: var(--color-white);
+  background-color: var(--color-bg-primary);
 }
 
 .borderBlack {
-  border-color: var(--color-black);
+  border-color: var(--color-text-primary);
 }
 
 .emptyIcon {
   inline-size: var(--space-16);
   block-size: var(--space-16);
   margin-inline: auto;
-  color: var(--color-grey-600);
+  color: var(--color-text-secondary);
   margin-block-end: var(--space-4);
 }
 
 .textGrey600 {
-  color: var(--color-grey-600);
+  color: var(--color-text-secondary);
 }
 
 .textGrey700 {
-  color: var(--color-grey-700);
+  color: var(--color-text-secondary);
 }
 
 .textBlack {
-  color: var(--color-black);
+  color: var(--color-text-primary);
 }
 
 .textWhite {
-  color: var(--color-white);
+  color: var(--color-bg-primary);
 }
 
 .flexCenter {
@@ -522,4 +522,26 @@
 .grayscaleImage {
   object-fit: cover;
   filter: grayscale(100%);
+}
+
+/* DARK MODE */
+[data-theme="dark"] .container,
+[data-theme="dark"] .card,
+[data-theme="dark"] .content,
+[data-theme="dark"] .section {
+  background-color: var(--color-bg-primary);
+}
+
+[data-theme="dark"] .button,
+[data-theme="dark"] .input,
+[data-theme="dark"] .select,
+[data-theme="dark"] .textarea {
+  background-color: var(--color-bg-primary);
+  border-color: var(--color-border-strong);
+  color: var(--color-text-primary);
+}
+
+[data-theme="dark"] .button:hover {
+  background-color: var(--color-text-primary);
+  color: var(--color-text-inverse);
 }

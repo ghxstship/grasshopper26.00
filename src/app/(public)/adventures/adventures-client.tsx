@@ -139,7 +139,7 @@ export function AdventuresBrowseClient({ initialAdventures, initialSearch }: Adv
     >
       {loading ? (
         Array.from({ length: 6 }).map((_, i) => (
-          <Skeleton key={i} variant="rectangular" height="400px" />
+          <Skeleton key={i} variant="rectangular" height="25rem" />
         ))
       ) : paginatedAdventures.length > 0 ? (
         paginatedAdventures.map((adventure) => (

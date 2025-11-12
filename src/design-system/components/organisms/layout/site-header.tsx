@@ -3,7 +3,6 @@
 import * as React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { CartButton } from '../../molecules/CartButton';
 import { AuthButtons } from '../../molecules/AuthButtons';
 import { UserMenu } from '../../molecules/UserMenu';
 import { useAuth } from '@/hooks/use-auth';
@@ -208,41 +207,48 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
             </div>
           </nav>
 
-          {/* Actions - Search, Theme, Cart & Auth */}
+          {/* Actions - Search, Cart, Theme & Auth */}
           <div className={styles.actions}>
             {/* Search Toggle */}
             <button
-              className={styles.searchToggle}
+              className={styles.iconButton}
               onClick={() => setSearchOpen(!searchOpen)}
               aria-label="Toggle search"
               aria-expanded={searchOpen}
             >
-              <span className={styles.searchIcon} aria-hidden="true">
+              <span className={styles.iconContent} aria-hidden="true">
                 {searchOpen ? '✕' : '⌕'}
               </span>
             </button>
 
-            {/* Theme Toggle */}
-            {mounted && (
-              <button
-                className={styles.themeToggle}
-                onClick={cycleTheme}
-                aria-label={`Switch to ${theme === 'light' ? 'dark' : theme === 'dark' ? 'system' : 'light'} theme`}
-                title={`Current: ${theme || 'system'}`}
-              >
-                <span className={styles.themeIcon} aria-hidden="true">
-                  {theme === 'light' ? '☀' : theme === 'dark' ? '☾' : '◐'}
-                </span>
-              </button>
-            )}
-
             {/* Cart */}
             <div className={styles.cartWrapper}>
-              <CartButton itemCount={cartItemCount} />
+              <Link href="/cart" className={styles.iconButton} aria-label={`Shopping cart with ${cartItemCount} items`}>
+                <span className={styles.iconContent} aria-hidden="true">⊞</span>
+                {cartItemCount > 0 && (
+                  <span className={styles.cartBadge} aria-hidden="true">
+                    {cartItemCount > 99 ? '99+' : cartItemCount}
+                  </span>
+                )}
+              </Link>
               {cartItemCount > 0 && (
                 <span className={styles.cartPulse} aria-hidden="true" />
               )}
             </div>
+
+            {/* Theme Toggle */}
+            {mounted && (
+              <button
+                className={styles.iconButton}
+                onClick={cycleTheme}
+                aria-label={`Switch to ${theme === 'light' ? 'dark' : theme === 'dark' ? 'system' : 'light'} theme`}
+                title={`Current: ${theme || 'system'}`}
+              >
+                <span className={styles.iconContent} aria-hidden="true">
+                  {theme === 'light' ? '☀' : theme === 'dark' ? '☾' : '◐'}
+                </span>
+              </button>
+            )}
             
             {/* Auth */}
             {!authLoading && (

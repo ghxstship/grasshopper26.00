@@ -92,7 +92,7 @@ function EventsPageContent() {
     >
       {loading ? (
         Array.from({ length: 6 }).map((_, i) => (
-          <Skeleton key={i} variant="rectangular" height="400px" />
+          <Skeleton key={i} variant="rectangular" height="25rem" />
         ))
       ) : paginatedEvents.length > 0 ? (
         paginatedEvents.map((event) => {

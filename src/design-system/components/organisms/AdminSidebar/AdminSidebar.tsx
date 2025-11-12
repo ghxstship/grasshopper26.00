@@ -16,19 +16,28 @@ import {
   Package, 
   BarChart3,
   Settings,
-  Crown
+  Crown,
+  DollarSign,
+  FileText,
+  Wrench,
+  CheckSquare,
+  Megaphone
 } from 'lucide-react';
 import styles from './AdminSidebar.module.css';
 
 const navItems = [
-  { href: '/admin/dashboard', label: 'Dashboard', icon: LayoutDashboard },
-  { href: '/admin/events', label: 'Events', icon: Calendar },
-  { href: '/admin/users', label: 'Users', icon: Users },
-  { href: '/admin/orders', label: 'Orders', icon: Ticket },
-  { href: '/admin/products', label: 'Products', icon: Package },
-  { href: '/admin/analytics', label: 'Analytics', icon: BarChart3 },
-  { href: '/admin/roles', label: 'Roles', icon: Crown },
-  { href: '/admin/settings', label: 'Settings', icon: Settings },
+  { href: '/organization', label: 'Dashboard', icon: LayoutDashboard },
+  { href: '/organization/events', label: 'Events', icon: Calendar },
+  { href: '/organization/products', label: 'Products', icon: Package },
+  { href: '/organization/orders', label: 'Orders', icon: Ticket },
+  { href: '/organization/users', label: 'Users', icon: Users },
+  { href: '/organization/budgets', label: 'Budgets', icon: DollarSign },
+  { href: '/organization/contracts', label: 'Contracts', icon: FileText },
+  { href: '/organization/equipment', label: 'Equipment', icon: Wrench },
+  { href: '/organization/tasks', label: 'Tasks', icon: CheckSquare },
+  { href: '/organization/marketing', label: 'Marketing', icon: Megaphone },
+  { href: '/organization/roles', label: 'Roles', icon: Crown },
+  { href: '/organization/settings', label: 'Settings', icon: Settings },
 ];
 
 export const AdminSidebar: React.FC = () => {

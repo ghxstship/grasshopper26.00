@@ -1,0 +1,148 @@
+/* ========================================
+   DARK MODE SUPPORT - UNIVERSAL TEMPLATE
+   Apply to all CSS modules missing dark mode
+   ======================================== */
+
+/* Replace hardcoded colors with semantic tokens:
+   var(--color-black) → var(--color-text-primary)
+   var(--color-white) → var(--color-bg-primary) or var(--color-text-inverse)
+   var(--color-grey-50/100) → var(--color-bg-secondary)
+   var(--color-grey-200/300) → var(--color-border-default)
+   var(--color-grey-400/500/600/700) → var(--color-text-secondary/tertiary)
+   var(--color-grey-800/900) → var(--color-text-primary)
+*/
+
+/* Backgrounds */
+[data-theme="dark"] .container,
+[data-theme="dark"] .content,
+[data-theme="dark"] .wrapper {
+  background-color: var(--color-bg-primary);
+}
+
+/* Headers */
+[data-theme="dark"] .header,
+[data-theme="dark"] .headerBorder,
+[data-theme="dark"] .title,
+[data-theme="dark"] .heading {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  border-color: var(--color-border-strong);
+}
+
+/* Text */
+[data-theme="dark"] .subtitle,
+[data-theme="dark"] .description,
+[data-theme="dark"] .label,
+[data-theme="dark"] .text {
+  color: var(--color-text-secondary);
+}
+
+/* Cards */
+[data-theme="dark"] .card,
+[data-theme="dark"] .statCard {
+  background-color: var(--color-bg-secondary);
+  border-color: var(--color-border-strong);
+  color: var(--color-text-primary);
+}
+
+/* Tables */
+[data-theme="dark"] .table {
+  border-color: var(--color-border-strong);
+}
+
+[data-theme="dark"] .tableHead,
+[data-theme="dark"] .tableHeader {
+  background-color: var(--color-bg-secondary);
+  border-color: var(--color-border-default);
+  color: var(--color-text-primary);
+}
+
+[data-theme="dark"] .tableRow {
+  border-color: var(--color-border-default);
+}
+
+[data-theme="dark"] .tableRow:hover {
+  background-color: var(--color-bg-secondary);
+}
+
+[data-theme="dark"] .tableCell {
+  border-color: var(--color-border-default);
+  color: var(--color-text-primary);
+}
+
+/* Forms & Inputs */
+[data-theme="dark"] .input,
+[data-theme="dark"] .searchInput,
+[data-theme="dark"] .select,
+[data-theme="dark"] .textarea {
+  background-color: var(--color-bg-primary);
+  border-color: var(--color-border-strong);
+  color: var(--color-text-primary);
+}
+
+[data-theme="dark"] .input:focus,
+[data-theme="dark"] .searchInput:focus {
+  border-color: var(--color-text-primary);
+}
+
+/* Buttons */
+[data-theme="dark"] .button,
+[data-theme="dark"] .searchButton,
+[data-theme="dark"] .actionButton {
+  background-color: var(--color-text-primary);
+  border-color: var(--color-border-strong);
+  color: var(--color-text-inverse);
+}
+
+[data-theme="dark"] .button:hover,
+[data-theme="dark"] .searchButton:hover {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+
+/* Tabs */
+[data-theme="dark"] .tab {
+  background-color: var(--color-bg-primary);
+  border-color: var(--color-border-strong);
+  color: var(--color-text-primary);
+}
+
+[data-theme="dark"] .tab:hover {
+  background-color: var(--color-bg-secondary);
+}
+
+[data-theme="dark"] .tabActive {
+  background-color: var(--color-text-primary);
+  color: var(--color-text-inverse);
+}
+
+/* Links */
+[data-theme="dark"] .link,
+[data-theme="dark"] a {
+  color: var(--color-text-primary);
+}
+
+/* Borders & Dividers */
+[data-theme="dark"] .border,
+[data-theme="dark"] .divider,
+[data-theme="dark"] .separator {
+  border-color: var(--color-border-default);
+}
+
+/* Loading & Empty States */
+[data-theme="dark"] .spinner {
+  border-color: var(--color-border-strong);
+}
+
+[data-theme="dark"] .emptyIcon,
+[data-theme="dark"] .emptyText {
+  color: var(--color-text-secondary);
+}
+
+/* Badges & Status */
+[data-theme="dark"] .badge,
+[data-theme="dark"] .statusBadge {
+  background-color: var(--color-bg-secondary);
+  border-color: var(--color-border-strong);
+  color: var(--color-text-primary);
+}

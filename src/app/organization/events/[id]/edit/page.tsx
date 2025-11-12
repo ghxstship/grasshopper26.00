@@ -146,12 +146,12 @@ export default function EventEditPage({ params }: { params: Promise<{ id: string
       {loading ? (
         <Card>
           <CardHeader>
-            <Skeleton variant="text" height="32px" width="200px" />
+            <Skeleton variant="text" height="2rem" width="12.5rem" />
           </CardHeader>
           <CardContent>
             <div className={styles.skeletonForm}>
               {Array.from({ length: 6 }).map((_, i) => (
-                <Skeleton key={i} variant="rectangular" height="80px" />
+                <Skeleton key={i} variant="rectangular" height="5rem" />
               ))}
             </div>
           </CardContent>

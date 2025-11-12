@@ -116,7 +116,7 @@ export function NewsBrowseClient({ initialArticles, initialSearch }: { initialAr
     >
       {loading ? (
         Array.from({ length: 6 }).map((_, i) => (
-          <Skeleton key={i} variant="rectangular" height="400px" />
+          <Skeleton key={i} variant="rectangular" height="25rem" />
         ))
       ) : paginatedArticles.length > 0 ? (
         paginatedArticles.map(article => (

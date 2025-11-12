@@ -377,97 +377,149 @@
 }
 
 /* ========================================
-   ACTIONS - SEARCH, THEME, CART & AUTH
+   ACTIONS - SEARCH, CART, THEME & AUTH
    ======================================== */
 
 .actions {
   display: none;
   align-items: center;
-  gap: var(--space-4);
+  gap: var(--space-3);
   justify-self: end;
+}
+
+@media (min-width: 768px) {
+  .actions {
+    display: flex;
+    gap: var(--space-4);
+  }
 }
 
 @media (min-width: 1024px) {
   .actions {
-    display: flex;
+    gap: var(--space-5);
   }
 }
 
-/* Search Toggle */
-.searchToggle {
-  inline-size: var(--space-10);
-  block-size: var(--space-10);
+/* Unified Icon Button System */
+.iconButton {
+  inline-size: var(--space-11);
+  block-size: var(--space-11);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: none;
-  border: var(--border-width-2) solid var(--color-border-strong);
+  background-color: var(--color-bg-primary);
+  border: var(--border-width-3) solid var(--color-border-strong);
   cursor: pointer;
-  transition: 
-    background-color var(--duration-fast) var(--easing-out),
-    transform var(--duration-fast) var(--easing-out);
-}
-
-.searchToggle:hover {
-  background-color: var(--color-black);
-  transform: scale(1.05);
-}
-
-.searchToggle:hover .searchIcon {
-  color: var(--color-white);
-}
-
-.searchIcon {
-  font-size: var(--font-size-xl);
-  color: var(--color-black);
-  transition: color var(--duration-fast) var(--easing-out);
-}
-
-/* Theme Toggle */
-.themeToggle {
-  inline-size: var(--space-10);
-  block-size: var(--space-10);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: none;
-  border: var(--border-width-2) solid var(--color-border-strong);
-  cursor: pointer;
-  transition: 
-    background-color var(--duration-fast) var(--easing-out),
-    transform var(--duration-fast) var(--easing-out);
-}
-
-.themeToggle:hover {
-  background-color: var(--color-black);
-  transform: rotate(180deg) scale(1.05);
-}
-
-.themeToggle:hover .themeIcon {
-  color: var(--color-white);
-}
-
-.themeIcon {
-  font-size: var(--font-size-xl);
-  color: var(--color-black);
-  transition: color var(--duration-fast) var(--easing-out);
-}
-
-.cartWrapper,
-.userWrapper,
-.authWrapper {
   position: relative;
+  text-decoration: none;
+  transition: 
+    background-color var(--duration-fast) var(--easing-out),
+    border-color var(--duration-fast) var(--easing-out),
+    transform var(--duration-fast) var(--easing-out),
+    box-shadow var(--duration-fast) var(--easing-out);
+}
+
+.iconButton:hover {
+  background-color: var(--color-text-primary);
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--color-border-strong);
+}
+
+.iconButton:active {
+  transform: translate(0, 0);
+  box-shadow: 0 0 0 var(--color-border-strong);
+}
+
+.iconButton:hover .iconContent {
+  color: var(--color-text-inverse);
+}
+
+.iconContent {
+  font-size: var(--font-size-xl);
+  color: var(--color-text-primary);
+  line-height: 1;
+  transition: color var(--duration-fast) var(--easing-out);
+  user-select: none;
+}
+
+/* Dark Mode Support */
+[data-theme="dark"] .iconButton {
+  background-color: var(--color-bg-primary);
+  border-color: var(--color-border-strong);
+}
+
+[data-theme="dark"] .iconButton:hover {
+  background-color: var(--color-text-primary);
+  box-shadow: 4px 4px 0 var(--color-border-strong);
+}
+
+[data-theme="dark"] .iconContent {
+  color: var(--color-text-primary);
+}
+
+[data-theme="dark"] .iconButton:hover .iconContent {
+  color: var(--color-text-inverse);
+}
+
+/* Responsive Icon Sizing */
+@media (max-width: 767px) {
+  .iconButton {
+    inline-size: var(--space-10);
+    block-size: var(--space-10);
+  }
+  
+  .iconContent {
+    font-size: var(--font-size-lg);
+  }
+}
+
+/* Cart Specific Styles */
+.cartWrapper {
+  position: relative;
+}
+
+.cartBadge {
+  position: absolute;
+  inset-block-start: calc(-1 * var(--space-2));
+  inset-inline-end: calc(-1 * var(--space-2));
+  min-inline-size: var(--space-5);
+  block-size: var(--space-5);
+  padding-inline: var(--space-1-5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-text-primary);
+  color: var(--color-text-inverse);
+  font-family: var(--font-family-share-tech-mono);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  line-height: 1;
+  border: var(--border-width-3) solid var(--color-border-strong);
+  pointer-events: none;
+  z-index: 1;
+}
+
+[data-theme="dark"] .cartBadge {
+  background-color: var(--color-text-primary);
+  color: var(--color-text-inverse);
+  border-color: var(--color-border-strong);
 }
 
 .cartPulse {
   position: absolute;
-  inset-block-start: -4px;
-  inset-inline-end: -4px;
-  inline-size: var(--space-3);
-  block-size: var(--space-3);
-  background-color: var(--color-black);
+  inset-block-start: calc(-1 * var(--space-2));
+  inset-inline-end: calc(-1 * var(--space-2));
+  inline-size: var(--space-5);
+  block-size: var(--space-5);
+  background-color: var(--color-text-primary);
+  border: var(--border-width-3) solid var(--color-border-strong);
   animation: cartPulse 2s ease-in-out infinite;
   pointer-events: none;
+}
+
+[data-theme="dark"] .cartPulse {
+  background-color: var(--color-text-primary);
+  border-color: var(--color-border-strong);
 }
 
 @keyframes cartPulse {
@@ -478,6 +530,20 @@
   50% {
     transform: scale(1.5);
     opacity: 0;
+  }
+}
+
+/* Auth Wrappers */
+.userWrapper,
+.authWrapper {
+  position: relative;
+}
+
+@media (max-width: 767px) {
+  .cartBadge {
+    min-inline-size: var(--space-4);
+    block-size: var(--space-4);
+    font-size: calc(var(--font-size-xs) * 0.85);
   }
 }
 
@@ -574,23 +640,28 @@
 }
 
 /* ========================================
-   MOBILE MENU BUTTON - MORPHING GEOMETRIC
+   MOBILE MENU BUTTON - MORPHING HAMBURGER
    ======================================== */
 
 .mobileMenuButton {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: var(--space-1);
-  background: none;
-  border: var(--border-width-2) solid var(--color-border-strong);
+  inline-size: var(--space-12);
+  block-size: var(--space-12);
+  background-color: var(--color-bg-primary);
+  border: var(--border-width-3) solid var(--color-border-strong);
   padding: var(--space-2);
   cursor: pointer;
   z-index: calc(var(--z-modal) + 10);
   position: relative;
   transition: 
     transform var(--duration-fast) var(--easing-out),
-    border-color var(--duration-fast) var(--easing-out);
+    background-color var(--duration-fast) var(--easing-out),
+    border-color var(--duration-fast) var(--easing-out),
+    box-shadow var(--duration-fast) var(--easing-out);
 }
 
 @media (min-width: 1024px) {
@@ -600,30 +671,57 @@
 }
 
 .mobileMenuButton:hover {
-  transform: scale(1.05);
+  background-color: var(--color-text-primary);
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--color-border-strong);
+}
+
+.mobileMenuButton:hover .menuLine {
+  background-color: var(--color-text-inverse);
 }
 
 .mobileMenuButton:active {
-  transform: scale(0.95);
+  transform: translate(0, 0);
+  box-shadow: 0 0 0 var(--color-border-strong);
+}
+
+[data-theme="dark"] .mobileMenuButton {
+  background-color: var(--color-bg-primary);
+  border-color: var(--color-border-strong);
+}
+
+[data-theme="dark"] .mobileMenuButton:hover {
+  background-color: var(--color-text-primary);
+  box-shadow: 4px 4px 0 var(--color-border-strong);
+}
+
+[data-theme="dark"] .menuLine {
+  background-color: var(--color-text-primary);
+}
+
+[data-theme="dark"] .mobileMenuButton:hover .menuLine {
+  background-color: var(--color-text-inverse);
 }
 
 .menuGeometric {
   display: flex;
   flex-direction: column;
-  gap: var(--space-1);
+  gap: var(--space-1-5);
+  inline-size: var(--space-7);
 }
 
 .menuLine {
-  inline-size: var(--space-6);
-  block-size: var(--border-width-2);
-  background-color: var(--color-black);
+  inline-size: 100%;
+  block-size: var(--border-width-3);
+  background-color: var(--color-text-primary);
   transition: 
     transform var(--duration-base) var(--easing-out),
-    opacity var(--duration-base) var(--easing-out);
+    opacity var(--duration-base) var(--easing-out),
+    background-color var(--duration-fast) var(--easing-out);
 }
 
 .mobileMenuButton.open .menuLine:nth-child(1) {
-  transform: translateY(calc(var(--space-1) + var(--border-width-2))) rotate(45deg);
+  transform: translateY(calc(var(--space-1-5) + var(--border-width-3))) rotate(45deg);
 }
 
 .mobileMenuButton.open .menuLine:nth-child(2) {
@@ -632,16 +730,50 @@
 }
 
 .mobileMenuButton.open .menuLine:nth-child(3) {
-  transform: translateY(calc(-1 * (var(--space-1) + var(--border-width-2)))) rotate(-45deg);
+  transform: translateY(calc(-1 * (var(--space-1-5) + var(--border-width-3)))) rotate(-45deg);
 }
 
 .menuLabel {
-  font-family: var(--font-family-bebas);
+  font-family: var(--font-family-share-tech-mono);
   font-size: var(--font-size-xs);
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-wider);
   color: var(--color-text-primary);
-  margin-block-start: var(--space-1);
+  margin-block-start: var(--space-0-5);
+  line-height: 1;
+  transition: color var(--duration-fast) var(--easing-out);
+}
+
+.mobileMenuButton:hover .menuLabel {
+  color: var(--color-text-inverse);
+}
+
+[data-theme="dark"] .menuLabel {
+  color: var(--color-text-primary);
+}
+
+[data-theme="dark"] .mobileMenuButton:hover .menuLabel {
+  color: var(--color-text-inverse);
+}
+
+@media (max-width: 767px) {
+  .mobileMenuButton {
+    inline-size: var(--space-11);
+    block-size: var(--space-11);
+  }
+  
+  .menuGeometric {
+    gap: var(--space-1);
+    inline-size: var(--space-6);
+  }
+  
+  .menuLine {
+    block-size: var(--border-width-2);
+  }
+  
+  .menuLabel {
+    font-size: calc(var(--font-size-xs) * 0.85);
+  }
 }
 
 /* ========================================
@@ -651,9 +783,14 @@
 .mobileOverlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--color-bg-overlay);
   z-index: var(--z-modal);
   animation: fadeIn var(--duration-base) var(--easing-out);
+  backdrop-filter: blur(4px);
+}
+
+[data-theme="dark"] .mobileOverlay {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 @keyframes fadeIn {
@@ -671,10 +808,22 @@
   inset-inline-end: 0;
   inline-size: min(100%, 400px);
   block-size: 100vh;
-  background-color: var(--color-black);
+  background-color: var(--color-text-primary);
+  border-inline-start: var(--border-width-3) solid var(--color-border-strong);
   z-index: calc(var(--z-modal) + 1);
   animation: slideInRight var(--duration-base) var(--easing-out);
   overflow-y: auto;
+}
+
+[data-theme="dark"] .mobileMenu {
+  background-color: var(--color-text-primary);
+  border-inline-start-color: var(--color-border-strong);
+}
+
+@media (max-width: 767px) {
+  .mobileMenu {
+    inline-size: min(100%, 320px);
+  }
 }
 
 @keyframes slideInRight {
@@ -724,7 +873,7 @@
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-wide);
-  color: var(--color-white);
+  color: var(--color-text-inverse);
   text-decoration: none;
   padding-block: var(--space-3);
   padding-inline: var(--space-4);
@@ -738,6 +887,10 @@
     border-color var(--duration-fast) var(--easing-out),
     transform var(--duration-fast) var(--easing-out);
   animation: slideInStagger var(--duration-base) var(--easing-out) backwards;
+}
+
+[data-theme="dark"] .mobileNavLink {
+  color: var(--color-text-inverse);
 }
 
 @keyframes slideInStagger {
@@ -772,7 +925,7 @@
 }
 
 .mobileNavLink:hover {
-  border-inline-start-color: var(--color-white);
+  border-inline-start-color: var(--color-text-inverse);
   transform: translateX(var(--space-2));
 }
 
@@ -782,12 +935,20 @@
 }
 
 .mobileNavLink.active {
-  border-inline-start-color: var(--color-white);
+  border-inline-start-color: var(--color-text-inverse);
 }
 
 .mobileNavLink.active .mobileNavIcon {
   opacity: 1;
   transform: translateX(0);
+}
+
+[data-theme="dark"] .mobileNavLink:hover {
+  border-inline-start-color: var(--color-text-inverse);
+}
+
+[data-theme="dark"] .mobileNavLink.active {
+  border-inline-start-color: var(--color-text-inverse);
 }
 
 .mobileCtaSection {

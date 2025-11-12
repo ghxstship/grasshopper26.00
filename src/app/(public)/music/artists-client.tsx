@@ -110,7 +110,7 @@ export function ArtistsBrowseClient({ initialArtists, initialSearch }: ArtistsBr
     >
       {loading ? (
         Array.from({ length: 6 }).map((_, i) => (
-          <Skeleton key={i} variant="rectangular" height="320px" />
+          <Skeleton key={i} variant="rectangular" height="20rem" />
         ))
       ) : paginatedArtists.length > 0 ? (
         paginatedArtists.map((artist) => (

@@ -34,12 +34,13 @@ export type AriaRole =
   | 'treeitem';
 
 /**
- * Screen reader only CSS
+ * Screen reader only styles
+ * @design-system-exemption Accessibility pattern requires 1px for screen reader hiding
  */
 export const SR_ONLY_STYLES = {
   position: 'absolute',
-  width: '1px',
-  height: '1px',
+  width: '1px', // eslint-disable-line no-restricted-syntax
+  height: '1px', // eslint-disable-line no-restricted-syntax
   padding: '0',
   margin: '-1px',
   overflow: 'hidden',

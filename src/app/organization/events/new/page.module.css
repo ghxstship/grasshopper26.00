@@ -1,8 +1,8 @@
 /* New Event - Design System Compliant */
 .section{display:flex;flex-direction:column;gap:var(--space-6);padding-block:var(--space-8);padding-inline:var(--space-4);max-inline-size:80rem;margin-inline:auto}
 .row{display:flex;align-items:center;gap:var(--space-4);margin-block-end:var(--space-6)}
-.title{font-family:var(--font-anton);font-size:var(--font-size-3xl);text-transform:uppercase;color:var(--color-black)}
-.subtitle{color:var(--color-grey-600);margin-block-start:var(--space-1)}
+.title{font-family:var(--font-anton);font-size:var(--font-size-3xl);text-transform:uppercase;color:var(--color-text-primary)}
+.subtitle{color:var(--color-text-secondary);margin-block-start:var(--space-1)}
 .icon{block-size:var(--space-4);inline-size:var(--space-4)}
 .grid{display:grid;gap:var(--space-4);grid-template-columns:1fr}
 @media(min-width:40rem){.grid{grid-template-columns:repeat(2,1fr)}}
@@ -10,39 +10,39 @@
 
 
 .bgBlack {
-  background-color: var(--color-black);
+  background-color: var(--color-text-primary);
 }
 
 .bgWhite {
-  background-color: var(--color-white);
+  background-color: var(--color-bg-primary);
 }
 
 .borderBlack {
-  border-color: var(--color-black);
+  border-color: var(--color-text-primary);
 }
 
 .emptyIcon {
   inline-size: var(--space-16);
   block-size: var(--space-16);
   margin-inline: auto;
-  color: var(--color-grey-600);
+  color: var(--color-text-secondary);
   margin-block-end: var(--space-4);
 }
 
 .textGrey600 {
-  color: var(--color-grey-600);
+  color: var(--color-text-secondary);
 }
 
 .textGrey700 {
-  color: var(--color-grey-700);
+  color: var(--color-text-secondary);
 }
 
 .textBlack {
-  color: var(--color-black);
+  color: var(--color-text-primary);
 }
 
 .textWhite {
-  color: var(--color-white);
+  color: var(--color-bg-primary);
 }
 
 .flexCenter {
@@ -108,4 +108,25 @@
 
 .shadow {
   box-shadow: var(--shadow-lg);
+}
+
+/* DARK MODE */
+[data-theme="dark"] .container,
+[data-theme="dark"] .card,
+[data-theme="dark"] .content {
+  background-color: var(--color-bg-primary);
+}
+
+[data-theme="dark"] .button,
+[data-theme="dark"] .input,
+[data-theme="dark"] .select,
+[data-theme="dark"] .textarea {
+  background-color: var(--color-bg-primary);
+  border-color: var(--color-border-strong);
+  color: var(--color-text-primary);
+}
+
+[data-theme="dark"] .button:hover {
+  background-color: var(--color-text-primary);
+  color: var(--color-text-inverse);
 }

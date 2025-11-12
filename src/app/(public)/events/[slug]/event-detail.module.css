@@ -54,16 +54,16 @@
   display: flex;
   gap: var(--space-2);
   align-items: center;
-  color: var(--color-white);
+  color: var(--color-bg-primary);
 }
 
 .heroTitle {
-  color: var(--color-white);
+  color: var(--color-bg-primary);
   margin-block-end: var(--space-2);
 }
 
 .heroTagline {
-  color: var(--color-white);
+  color: var(--color-bg-primary);
   opacity: 0.9;
   margin-block-end: var(--space-4);
 }
@@ -261,4 +261,26 @@
   .stickyContent button {
     inline-size: 100%;
   }
+}
+
+/* DARK MODE */
+[data-theme="dark"] .container,
+[data-theme="dark"] .card,
+[data-theme="dark"] .content,
+[data-theme="dark"] .section {
+  background-color: var(--color-bg-primary);
+}
+
+[data-theme="dark"] .button,
+[data-theme="dark"] .input,
+[data-theme="dark"] .select,
+[data-theme="dark"] .textarea {
+  background-color: var(--color-bg-primary);
+  border-color: var(--color-border-strong);
+  color: var(--color-text-primary);
+}
+
+[data-theme="dark"] .button:hover {
+  background-color: var(--color-text-primary);
+  color: var(--color-text-inverse);
 }

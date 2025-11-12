@@ -48,7 +48,7 @@ export default function CartPage() {
             <div className={styles.loading}>
               {Array.from({ length: 3 }).map((_, i) => (
                 <div key={i} className={styles.skeletonItem}>
-                  <Skeleton variant="rectangular" height="120px" />
+                  <Skeleton variant="rectangular" height="7.5rem" />
                 </div>
               ))}
             </div>
@@ -135,9 +135,9 @@ export default function CartPage() {
           
           {loading ? (
             <div className={styles.summarySkeleton}>
-              <Skeleton variant="text" height="24px" />
-              <Skeleton variant="text" height="24px" />
-              <Skeleton variant="text" height="32px" />
+              <Skeleton variant="text" height="1.5rem" />
+              <Skeleton variant="text" height="1.5rem" />
+              <Skeleton variant="text" height="2rem" />
             </div>
           ) : (
             <>

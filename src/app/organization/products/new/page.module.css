@@ -70,25 +70,46 @@
 
 .button {
   padding: var(--space-3) var(--space-6);
-  border: var(--border-width-2) solid var(--color-black);
-  background-color: var(--color-white);
-  color: var(--color-black);
+  border: var(--border-width-2) solid var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
   font-weight: var(--font-weight-semibold);
   cursor: pointer;
   transition: all var(--duration-fast) var(--easing-out);
 }
 
 .buttonPrimary {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-text-primary);
+  color: var(--color-bg-primary);
 }
 
 .buttonPrimary:hover {
-  background-color: var(--color-grey-800);
+  background-color: var(--color-text-primary);
 }
 
 .error {
   color: var(--color-error);
   font-size: var(--font-size-sm);
   margin-block-start: var(--space-1);
+}
+
+/* DARK MODE */
+[data-theme="dark"] .container,
+[data-theme="dark"] .card,
+[data-theme="dark"] .content {
+  background-color: var(--color-bg-primary);
+}
+
+[data-theme="dark"] .button,
+[data-theme="dark"] .input,
+[data-theme="dark"] .select,
+[data-theme="dark"] .textarea {
+  background-color: var(--color-bg-primary);
+  border-color: var(--color-border-strong);
+  color: var(--color-text-primary);
+}
+
+[data-theme="dark"] .button:hover {
+  background-color: var(--color-text-primary);
+  color: var(--color-text-inverse);
 }

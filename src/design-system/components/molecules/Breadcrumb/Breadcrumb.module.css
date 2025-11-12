@@ -84,3 +84,20 @@
     transition: none;
   }
 }
+
+
+
+
+
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .breadcrumb {
+  /* Dark mode overrides inherit from tokens.css */
+  /* Add component-specific overrides here if needed */
+}
+

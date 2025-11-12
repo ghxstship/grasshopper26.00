@@ -165,3 +165,45 @@
     grid-column: span 12;
   }
 }
+
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .builder {
+  background-color: var(--color-black);
+}
+
+[data-theme="dark"] .toolbar {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+[data-theme="dark"] .widgetButton {
+  background-color: var(--color-black);
+}
+
+[data-theme="dark"] .saveButton {
+  background-color: var(--color-black);
+}
+
+[data-theme="dark"] .canvas {
+  background-color: var(--color-grey-800);
+}
+
+[data-theme="dark"] .widget {
+  background-color: var(--color-black);
+}
+
+[data-theme="dark"] .widgetHeader {
+  background-color: var(--color-grey-700);
+}
+
+[data-theme="dark"] .removeButton {
+  background-color: var(--color-grey-100);
+  color: var(--color-black);
+}
+

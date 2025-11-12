@@ -173,6 +173,22 @@
   gap: var(--space-6);
 }
 
+@media (max-width: 48rem) {
+  .benefitsGrid {
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  }
+}
+
+@media (max-width: 30rem) {
+  .benefitsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .heroFeatures {
+    flex-direction: column;
+  }
+}
+
 .benefitCard {
   border: var(--border-width-3) solid var(--color-text-primary);
   background-color: var(--color-bg-primary);
@@ -400,7 +416,7 @@
 }
 
 .rounded {
-  border-radius: var(--radius-none)(--radius-md);
+  border-radius: var(--radius-none);
 }
 
 .shadow {
@@ -408,23 +424,35 @@
 }
 
 /* DARK MODE */
-[data-theme="dark"] .container,
-[data-theme="dark"] .card,
-[data-theme="dark"] .content,
-[data-theme="dark"] .section {
+:global([data-theme="dark"]) .container,
+:global([data-theme="dark"]) .tierSection,
+:global([data-theme="dark"]) .faqSection {
   background-color: var(--color-bg-primary);
 }
 
-[data-theme="dark"] .button,
-[data-theme="dark"] .input,
-[data-theme="dark"] .select,
-[data-theme="dark"] .textarea {
+:global([data-theme="dark"]) .hero,
+:global([data-theme="dark"]) .ctaSection {
+  background-color: var(--color-text-primary);
+  border-color: var(--color-border-strong);
+}
+
+:global([data-theme="dark"]) .heroTitle,
+:global([data-theme="dark"]) .ctaTitle {
+  color: var(--color-text-inverse);
+}
+
+:global([data-theme="dark"]) .benefitsSection {
+  background-color: var(--color-bg-secondary);
+  border-color: var(--color-border-strong);
+}
+
+:global([data-theme="dark"]) .benefitCard,
+:global([data-theme="dark"]) .faqItem {
   background-color: var(--color-bg-primary);
   border-color: var(--color-border-strong);
-  color: var(--color-text-primary);
 }
 
-[data-theme="dark"] .button:hover {
-  background-color: var(--color-text-primary);
-  color: var(--color-text-inverse);
+:global([data-theme="dark"]) .spinner {
+  border-color: var(--color-text-primary);
+  border-block-end-color: transparent;
 }

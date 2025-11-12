@@ -738,7 +738,7 @@
 }
 
 .rounded {
-  border-radius: var(--radius-none)(--radius-md);
+  border-radius: var(--radius-none);
 }
 
 .shadow {
@@ -749,41 +749,41 @@
    DARK MODE SUPPORT
    ======================================== */
 
-[data-theme="dark"] .container,
-[data-theme="dark"] .card,
-[data-theme="dark"] .approvalCard,
-[data-theme="dark"] .headerBorder {
+:global([data-theme="dark"]) .container,
+:global([data-theme="dark"]) .card,
+:global([data-theme="dark"]) .approvalCard,
+:global([data-theme="dark"]) .headerBorder {
   background-color: var(--color-bg-primary);
 }
 
-[data-theme="dark"] .header,
-[data-theme="dark"] .headerBorder,
-[data-theme="dark"] .itemsTotal {
+:global([data-theme="dark"]) .header,
+:global([data-theme="dark"]) .headerBorder,
+:global([data-theme="dark"]) .itemsTotal {
   border-color: var(--color-border-strong);
 }
 
-[data-theme="dark"] .button,
-[data-theme="dark"] .emptyButton,
-[data-theme="dark"] .approveButton,
-[data-theme="dark"] .rejectButton {
+:global([data-theme="dark"]) .button,
+:global([data-theme="dark"]) .emptyButton,
+:global([data-theme="dark"]) .approveButton,
+:global([data-theme="dark"]) .rejectButton {
   background-color: var(--color-bg-primary);
   border-color: var(--color-border-strong);
   color: var(--color-text-primary);
 }
 
-[data-theme="dark"] .button:hover,
-[data-theme="dark"] .emptyButton:hover,
-[data-theme="dark"] .approveButton:hover,
-[data-theme="dark"] .rejectButton:hover {
+:global([data-theme="dark"]) .button:hover,
+:global([data-theme="dark"]) .emptyButton:hover,
+:global([data-theme="dark"]) .approveButton:hover,
+:global([data-theme="dark"]) .rejectButton:hover {
   background-color: var(--color-text-primary);
   color: var(--color-text-inverse);
 }
 
-[data-theme="dark"] .buttonPrimary {
+:global([data-theme="dark"]) .buttonPrimary {
   background-color: var(--color-text-primary);
   color: var(--color-text-inverse);
 }
 
-[data-theme="dark"] .spinner {
+:global([data-theme="dark"]) .spinner {
   border-color: var(--color-border-strong);
 }

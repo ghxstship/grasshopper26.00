@@ -81,3 +81,20 @@
   }
 }
 
+
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .footer {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+[data-theme="dark"] .tagline {
+  color: var(--color-black);
+}
+

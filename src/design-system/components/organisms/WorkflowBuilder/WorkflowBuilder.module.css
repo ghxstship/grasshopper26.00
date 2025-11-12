@@ -183,3 +183,61 @@
   font-size: var(--font-size-body);
   line-height: var(--line-height-relaxed);
 }
+
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up */
+}
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .builder {
+  background-color: var(--color-black);
+}
+
+[data-theme="dark"] .toolbar {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+[data-theme="dark"] .nodeButton {
+  background-color: var(--color-black);
+}
+
+[data-theme="dark"] .saveButton {
+  background-color: var(--color-black);
+}
+
+[data-theme="dark"] .canvas {
+  background-color: var(--color-grey-800);
+}
+
+[data-theme="dark"] .connection {
+  stroke: var(--color-white);
+}
+
+[data-theme="dark"] .node {
+  background-color: var(--color-black);
+}
+
+[data-theme="dark"] .nodeHeader {
+  background-color: var(--color-grey-700);
+}
+
+[data-theme="dark"] .deleteButton {
+  background-color: var(--color-grey-100);
+  color: var(--color-black);
+}
+

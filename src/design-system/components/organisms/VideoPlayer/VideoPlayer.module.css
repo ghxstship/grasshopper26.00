@@ -164,3 +164,35 @@
 .playOverlay:hover {
   transform: scale(1.1);
 }
+
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up */
+}
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .player {
+  background-color: var(--color-white);
+}
+
+[data-theme="dark"] .button {
+  color: var(--color-black);
+}
+
+[data-theme="dark"] .time {
+  color: var(--color-black);
+}
+

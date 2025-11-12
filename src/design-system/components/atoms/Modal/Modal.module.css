@@ -79,3 +79,27 @@
 .content {
   padding: var(--spacing-6);
 }
+
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up */
+}
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .modal {
+  background-color: var(--color-black);
+}
+

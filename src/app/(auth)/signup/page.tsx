@@ -10,6 +10,7 @@ import { AuthLayout } from '@/design-system/components/templates/AuthLayout/Auth
 import { Input } from '@/design-system/components/atoms/Input/Input';
 import { Button } from '@/design-system/components/atoms/Button/Button';
 import { Typography } from '@/design-system/components/atoms/Typography/Typography';
+import { Eye, EyeOff } from 'lucide-react';
 import { toast } from 'sonner';
 import styles from '../auth.module.css';
 
@@ -17,6 +18,8 @@ export default function SignupPage() {
   const router = useRouter();
   const supabase = createClient();
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -135,12 +138,22 @@ export default function SignupPage() {
             </label>
             <Input
               id="password"
-              type="password"
+              type={showPassword ? 'text' : 'password'}
               value={formData.password}
               onChange={(e) => setFormData({ ...formData, password: e.target.value })}
               required
               minLength={8}
               autoComplete="new-password"
+              iconAfter={
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className={styles.passwordToggle}
+                  aria-label={showPassword ? 'Hide password' : 'Show password'}
+                >
+                  {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                </button>
+              }
             />
             <p className={styles.helperText}>Must be at least 8 characters</p>
           </div>
@@ -151,11 +164,21 @@ export default function SignupPage() {
             </label>
             <Input
               id="confirmPassword"
-              type="password"
+              type={showConfirmPassword ? 'text' : 'password'}
               value={formData.confirmPassword}
               onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
               required
               autoComplete="new-password"
+              iconAfter={
+                <button
+                  type="button"
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  className={styles.passwordToggle}
+                  aria-label={showConfirmPassword ? 'Hide password' : 'Show password'}
+                >
+                  {showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                </button>
+              }
             />
           </div>
 

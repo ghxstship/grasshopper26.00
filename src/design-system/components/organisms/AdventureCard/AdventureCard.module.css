@@ -245,3 +245,16 @@
 .card.featured .title {
   font-size: var(--font-size-h2);
 }
+
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .badge {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+

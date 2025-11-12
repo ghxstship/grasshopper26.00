@@ -168,3 +168,58 @@
 .addGroup {
   inline-size: 100%;
 }
+
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up */
+}
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .container {
+  background-color: var(--color-black);
+}
+
+[data-theme="dark"] .clearButton {
+  background-color: var(--color-black);
+}
+
+[data-theme="dark"] .applyButton {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+[data-theme="dark"] .logicSelect {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+[data-theme="dark"] .conditionLogic {
+  background-color: var(--color-grey-600);
+}
+
+[data-theme="dark"] .valueInput {
+  background-color: var(--color-black);
+}
+
+[data-theme="dark"] .removeButton {
+  background-color: var(--color-grey-100);
+  color: var(--color-black);
+}
+
+[data-theme="dark"] .addGroup {
+  background-color: var(--color-black);
+}
+

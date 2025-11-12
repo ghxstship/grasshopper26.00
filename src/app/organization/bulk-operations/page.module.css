@@ -110,7 +110,7 @@
 }
 
 .rounded {
-  border-radius: var(--radius-none)(--radius-md);
+  border-radius: var(--radius-none);
 }
 
 .shadow {
@@ -121,61 +121,73 @@
    DARK MODE SUPPORT
    ======================================== */
 
-[data-theme="dark"] .section {
+:global([data-theme="dark"]) .section {
   background-color: var(--color-bg-primary);
 }
 
-[data-theme="dark"] .title {
+:global([data-theme="dark"]) .title {
   color: var(--color-text-primary);
 }
 
-[data-theme="dark"] .button {
+:global([data-theme="dark"]) .button {
   border-color: var(--color-border-strong);
 }
 
-[data-theme="dark"] .buttonActive {
+:global([data-theme="dark"]) .buttonActive {
   border-color: var(--color-text-primary);
   background-color: var(--color-text-primary);
 }
 
-[data-theme="dark"] .stat {
+:global([data-theme="dark"]) .stat {
   background-color: var(--color-bg-secondary);
   border-color: var(--color-border-strong);
 }
 
-[data-theme="dark"] .statLabel {
+:global([data-theme="dark"]) .statLabel {
   color: var(--color-text-secondary);
 }
 
-[data-theme="dark"] .errorText {
+:global([data-theme="dark"]) .errorText {
   color: var(--color-text-primary);
 }
 
-[data-theme="dark"] .bgBlack {
+:global([data-theme="dark"]) .bgBlack {
   background-color: var(--color-text-primary);
 }
 
-[data-theme="dark"] .bgWhite {
+:global([data-theme="dark"]) .bgWhite {
   background-color: var(--color-bg-primary);
 }
 
-[data-theme="dark"] .borderBlack {
+:global([data-theme="dark"]) .borderBlack {
   border-color: var(--color-border-strong);
 }
 
-[data-theme="dark"] .emptyIcon {
+:global([data-theme="dark"]) .emptyIcon {
   color: var(--color-text-secondary);
 }
 
-[data-theme="dark"] .textGrey600,
-[data-theme="dark"] .textGrey700 {
+:global([data-theme="dark"]) .textGrey600,
+:global([data-theme="dark"]) .textGrey700 {
   color: var(--color-text-secondary);
 }
 
-[data-theme="dark"] .textBlack {
+:global([data-theme="dark"]) .textBlack {
   color: var(--color-text-primary);
 }
 
-[data-theme="dark"] .textWhite {
+:global([data-theme="dark"]) .textWhite {
   color: var(--color-text-inverse);
+}
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up - add styles as needed */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up - add styles as needed */
 }

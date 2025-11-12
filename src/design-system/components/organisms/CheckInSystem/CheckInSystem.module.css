@@ -195,3 +195,52 @@
   font-size: var(--font-size-body);
   font-weight: 700;
 }
+
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up */
+}
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .system {
+  background-color: var(--color-black);
+}
+
+[data-theme="dark"] .progressBar {
+  background-color: var(--color-grey-700);
+}
+
+[data-theme="dark"] .progressFill {
+  background-color: var(--color-white);
+}
+
+[data-theme="dark"] .scanner {
+  background-color: var(--color-grey-800);
+}
+
+[data-theme="dark"] .scanInput {
+  background-color: var(--color-black);
+}
+
+[data-theme="dark"] .scanButton {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+[data-theme="dark"] .manualButton {
+  background-color: var(--color-black);
+}
+

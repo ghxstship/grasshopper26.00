@@ -58,8 +58,8 @@
 }
 
 .sm.triangle {
-  border-inline-start-width: 1.25rem;
-  border-inline-end-width: 1.25rem;
+  border-inline-start-width: var(--font-size-xl);
+  border-inline-end-width: var(--font-size-xl);
   border-block-end-width: 34.4rem;
 }
 

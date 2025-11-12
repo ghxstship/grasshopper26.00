@@ -133,3 +133,20 @@
     }
   }
 }
+
+
+
+
+
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .userMenu {
+  /* Dark mode overrides inherit from tokens.css */
+  /* Add component-specific overrides here if needed */
+}
+

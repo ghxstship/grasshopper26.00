@@ -41,3 +41,47 @@
 .general_admission {
   background-color: var(--color-bg-primary);
 }
+
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up */
+}
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .vip {
+  background-color: var(--color-grey-100);
+  color: var(--color-black);
+  border-color: var(--color-grey-100);
+}
+
+[data-theme="dark"] .reserved_seating {
+  background-color: var(--color-grey-100);
+  color: var(--color-black);
+  border-color: var(--color-grey-100);
+}
+
+[data-theme="dark"] .early_bird {
+  background-color: var(--color-grey-600);
+}
+
+[data-theme="dark"] .group {
+  background-color: var(--color-grey-700);
+}
+
+[data-theme="dark"] .comp {
+  background-color: var(--color-grey-800);
+}
+

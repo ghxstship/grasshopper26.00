@@ -10,3 +10,32 @@
   justify-content: center;
   inline-size: 100%;
 }
+
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up */
+}
+
+
+
+
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .center {
+  /* Dark mode overrides inherit from tokens.css */
+  /* Add component-specific overrides here if needed */
+}
+

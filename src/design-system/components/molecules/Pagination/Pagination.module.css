@@ -159,8 +159,8 @@
   }
   
   .pageButton {
-    min-width: 2.25rem;
-    height: 2.25rem;
+    min-width: var(--font-size-4xl);
+    height: var(--font-size-4xl);
   }
 }
 

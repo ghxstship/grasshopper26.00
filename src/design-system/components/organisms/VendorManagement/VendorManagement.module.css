@@ -247,3 +247,54 @@
   border: none;
   cursor: pointer;
 }
+
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up */
+}
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .management {
+  background-color: var(--color-black);
+}
+
+[data-theme="dark"] .addButton {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+[data-theme="dark"] .search {
+  background-color: var(--color-black);
+}
+
+[data-theme="dark"] .filterButton {
+  background-color: var(--color-black);
+}
+
+[data-theme="dark"] .card {
+  background-color: var(--color-black);
+}
+
+[data-theme="dark"] .preferred {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+[data-theme="dark"] .emptyButton {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+

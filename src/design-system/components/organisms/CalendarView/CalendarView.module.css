@@ -107,3 +107,50 @@
   border: none;
   cursor: pointer;
 }
+
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up */
+}
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .calendar {
+  background-color: var(--color-black);
+}
+
+[data-theme="dark"] .header {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+[data-theme="dark"] .navButton {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+[data-theme="dark"] .weekdays {
+  background-color: var(--color-grey-700);
+}
+
+[data-theme="dark"] .event {
+  background-color: var(--color-grey-700);
+}
+
+[data-theme="dark"] .addEventButton {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+

@@ -361,3 +361,16 @@
     border-width: var(--border-width-4);
   }
 }
+
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .cta {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+

@@ -92,3 +92,20 @@
     padding-inline: var(--space-8);
   }
 }
+
+
+
+
+
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .container {
+  /* Dark mode overrides inherit from tokens.css */
+  /* Add component-specific overrides here if needed */
+}
+

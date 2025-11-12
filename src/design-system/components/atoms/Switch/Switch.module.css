@@ -59,3 +59,31 @@
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up */
+}
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .switch {
+  background-color: var(--color-grey-600);
+}
+
+[data-theme="dark"] .thumb {
+  background-color: var(--color-black);
+}
+

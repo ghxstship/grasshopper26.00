@@ -10,6 +10,7 @@ import { AuthLayout } from '@/design-system/components/templates/AuthLayout/Auth
 import { Input } from '@/design-system/components/atoms/Input/Input';
 import { Button } from '@/design-system/components/atoms/Button/Button';
 import { Typography } from '@/design-system/components/atoms/Typography/Typography';
+import { Eye, EyeOff } from 'lucide-react';
 import { toast } from 'sonner';
 import styles from '../auth.module.css';
 
@@ -19,6 +20,7 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -148,11 +150,21 @@ export default function LoginPage() {
             </div>
             <Input
               id="password"
-              type="password"
+              type={showPassword ? 'text' : 'password'}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
               autoComplete="current-password"
+              iconAfter={
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className={styles.passwordToggle}
+                  aria-label={showPassword ? 'Hide password' : 'Show password'}
+                >
+                  {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                </button>
+              }
             />
           </div>
 

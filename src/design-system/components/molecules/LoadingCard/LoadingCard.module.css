@@ -65,7 +65,7 @@
 }
 
 .textBlock {
-  height: 1rem;
+  height: var(--font-size-base);
   width: 100%;
   background-color: var(--color-bg-tertiary);
   animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite 0.2s;
@@ -90,14 +90,14 @@
 .tagsBlock::before,
 .tagsBlock::after {
   content: '';
-  height: 1.5rem;
+  height: var(--font-size-2xl);
   width: 5rem;
   background-color: var(--color-bg-tertiary);
   animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite 0.2s;
 }
 
 .metaBlock {
-  height: 1rem;
+  height: var(--font-size-base);
   width: 12.5rem;
   background-color: var(--color-bg-tertiary);
   animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
@@ -111,7 +111,7 @@
 }
 
 .footerBlock {
-  height: 1.5rem;
+  height: var(--font-size-2xl);
   width: 9.375rem;
   background-color: var(--color-bg-tertiary);
   animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite 0.3s;
@@ -135,8 +135,8 @@
 }
 
 .square {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: var(--font-size-2xl);
+  height: var(--font-size-2xl);
   
   border: var(--border-width-3) solid var(--color-border-strong);
   border-radius: var(--radius-none)(--radius-none);

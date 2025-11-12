@@ -57,11 +57,35 @@
 }
 
 .navIcon {
-  width: 1.25rem;
-  height: 1.25rem;
+  width: var(--font-size-xl);
+  height: var(--font-size-xl);
   flex-shrink: 0;
 }
 
 .navLabel {
   flex: 1;
 }
+
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up */
+}
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .navItem {
+  color: var(--color-black);
+}
+

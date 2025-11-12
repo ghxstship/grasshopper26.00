@@ -160,3 +160,23 @@
     page-break-after: avoid;
   }
 }
+
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .hero {
+  color: var(--color-black);
+}
+
+[data-theme="dark"] .gallery {
+  color: var(--color-black);
+}
+
+[data-theme="dark"] .cta {
+  color: var(--color-black);
+}
+

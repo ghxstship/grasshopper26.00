@@ -3,6 +3,18 @@
 .row{display:flex;align-items:center;gap:var(--space-2)}
 .icon{block-size:var(--space-4);inline-size:var(--space-4)}
 .grid{display:grid;gap:var(--space-4);grid-template-columns:1fr}
+
+@media (min-width: var(--space-96)) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: var(--space-96)) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
 .label{font-family:var(--font-bebas);text-transform:uppercase;margin-block-end:var(--space-2)}
 .actions{display:flex;gap:var(--space-2);justify-content:flex-end}
 
@@ -101,7 +113,7 @@
 }
 
 .rounded {
-  border-radius: var(--radius-none)(--radius-md);
+  border-radius: var(--radius-none);
 }
 
 .shadow {
@@ -109,22 +121,22 @@
 }
 
 /* DARK MODE */
-[data-theme="dark"] .container,
-[data-theme="dark"] .card,
-[data-theme="dark"] .content {
+:global([data-theme="dark"]) .container,
+:global([data-theme="dark"]) .card,
+:global([data-theme="dark"]) .content {
   background-color: var(--color-bg-primary);
 }
 
-[data-theme="dark"] .button,
-[data-theme="dark"] .input,
-[data-theme="dark"] .select,
-[data-theme="dark"] .textarea {
+:global([data-theme="dark"]) .button,
+:global([data-theme="dark"]) .input,
+:global([data-theme="dark"]) .select,
+:global([data-theme="dark"]) .textarea {
   background-color: var(--color-bg-primary);
   border-color: var(--color-border-strong);
   color: var(--color-text-primary);
 }
 
-[data-theme="dark"] .button:hover {
+:global([data-theme="dark"]) .button:hover {
   background-color: var(--color-text-primary);
   color: var(--color-text-inverse);
 }

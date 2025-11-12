@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 /* eslint-disable no-magic-numbers */
 // CSRF token generation constants (byte lengths, TTL)
-import { cookies } from 'next/headers';
 
 const CSRF_TOKEN_NAME = 'csrf_token';
 const CSRF_HEADER_NAME = 'x-csrf-token';
@@ -97,8 +96,12 @@ export async function setCSRFTokenCookie(response: NextResponse): Promise<void> 
 
 /**
  * Get CSRF token for client-side use
+ * Note: This function should be called from Server Components or API routes, not middleware
  */
 export async function getCSRFToken(): Promise<string | undefined> {
+  // This function requires Node.js runtime (cookies from next/headers)
+  // Import dynamically to avoid breaking Edge Runtime
+  const { cookies } = await import('next/headers');
   const cookieStore = await cookies();
   return cookieStore.get(CSRF_TOKEN_NAME)?.value;
 }

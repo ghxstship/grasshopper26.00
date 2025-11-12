@@ -49,3 +49,15 @@
 [data-theme="dark"] .headliner {
   color: var(--color-accent);
 }
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up - add styles as needed */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up - add styles as needed */
+}

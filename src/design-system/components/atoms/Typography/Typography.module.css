@@ -252,3 +252,15 @@
     color: var(--color-text-primary);
   }
 }
+
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .color-inverse {
+  color: var(--color-black);
+}
+

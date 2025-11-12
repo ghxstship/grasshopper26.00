@@ -58,11 +58,11 @@
 }
 
 .md {
-  height: 1rem;
+  height: var(--font-size-base);
 }
 
 .lg {
-  height: 1.5rem;
+  height: var(--font-size-2xl);
 }
 
 /* ========================================

@@ -40,3 +40,32 @@
 .gap-md { gap: var(--spacing-4); }
 .gap-lg { gap: var(--spacing-6); }
 .gap-xl { gap: var(--spacing-8); }
+
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up */
+}
+
+
+
+
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .flex {
+  /* Dark mode overrides inherit from tokens.css */
+  /* Add component-specific overrides here if needed */
+}
+

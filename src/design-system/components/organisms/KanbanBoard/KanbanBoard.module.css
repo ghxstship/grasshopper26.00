@@ -176,3 +176,40 @@
   font-size: var(--font-size-meta);
   color: var(--color-text-secondary);
 }
+
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up */
+}
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .column {
+  background-color: var(--color-grey-800);
+}
+
+[data-theme="dark"] .addCardButton {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+[data-theme="dark"] .card {
+  background-color: var(--color-black);
+}
+
+[data-theme="dark"] .tag {
+  background-color: var(--color-grey-700);
+}
+

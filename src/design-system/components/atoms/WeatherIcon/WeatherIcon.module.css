@@ -28,8 +28,8 @@
 }
 
 .sm .icon {
-  width: 1rem;
-  height: 1rem;
+  width: var(--font-size-base);
+  height: var(--font-size-base);
 }
 
 .sm .temp {
@@ -37,8 +37,8 @@
 }
 
 .md .icon {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: var(--font-size-2xl);
+  height: var(--font-size-2xl);
 }
 
 .md .temp {
@@ -56,4 +56,16 @@
 
 [data-theme="dark"] .icon {
   color: var(--color-text-primary);
+}
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up - add styles as needed */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up - add styles as needed */
 }

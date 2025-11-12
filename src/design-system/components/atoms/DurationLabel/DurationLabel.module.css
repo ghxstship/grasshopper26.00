@@ -17,8 +17,8 @@
 }
 
 .icon {
-  width: 1rem;
-  height: 1rem;
+  width: var(--font-size-base);
+  height: var(--font-size-base);
   flex-shrink: 0;
 }
 
@@ -27,8 +27,8 @@
 }
 
 .sm .icon {
-  width: 0.75rem;
-  height: 0.75rem;
+  width: var(--font-size-xs);
+  height: var(--font-size-xs);
 }
 
 .md {
@@ -36,8 +36,8 @@
 }
 
 .md .icon {
-  width: 1rem;
-  height: 1rem;
+  width: var(--font-size-base);
+  height: var(--font-size-base);
 }
 
 .lg {
@@ -45,10 +45,22 @@
 }
 
 .lg .icon {
-  width: 1.25rem;
-  height: 1.25rem;
+  width: var(--font-size-xl);
+  height: var(--font-size-xl);
 }
 
 [data-theme="dark"] .duration {
   color: var(--color-text-secondary);
+}
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up - add styles as needed */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up - add styles as needed */
 }

@@ -59,3 +59,30 @@
 .panel {
   padding-block-start: var(--spacing-6);
 }
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+:global([data-theme="dark"]) .tabs {
+  /* Dark mode overrides inherit from tokens.css */
+}
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up */
+}
+
+
+
+
+
+
+
+
+
+

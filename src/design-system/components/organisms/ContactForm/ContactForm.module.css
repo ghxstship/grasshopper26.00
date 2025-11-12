@@ -212,3 +212,28 @@
   color: var(--color-text-secondary);
   margin-block-start: var(--space-2);
 }
+
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up */
+}
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .submitButton {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+

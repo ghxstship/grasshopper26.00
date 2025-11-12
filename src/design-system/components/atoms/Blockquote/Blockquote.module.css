@@ -25,3 +25,27 @@
   letter-spacing: var(--letter-spacing-wide);
   color: var(--color-text-secondary);
 }
+
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up */
+}
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .blockquote {
+  background-color: var(--color-grey-800);
+}
+

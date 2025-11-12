@@ -22,3 +22,32 @@
 .horizontal.xl { inline-size: var(--spacing-8); }
 .horizontal.\32xl { inline-size: var(--spacing-12); }
 .horizontal.\33xl { inline-size: var(--spacing-16); }
+
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up */
+}
+
+
+
+
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .spacer {
+  /* Dark mode overrides inherit from tokens.css */
+  /* Add component-specific overrides here if needed */
+}
+

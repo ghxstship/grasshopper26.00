@@ -64,6 +64,10 @@ module.exports = {
       files: [
         '**/design-system/tokens/**/*.ts',
         '**/design-system/tokens/**/*.js',
+        '**/design-system/utils/**/*.ts',
+        '**/design-system/utils/**/*.tsx',
+        '**/design-system/components/atoms/QRCode/**/*.tsx',
+        '**/design-system/components/atoms/Barcode/**/*.tsx',
       ],
       rules: {
         'no-restricted-syntax': 'off',
@@ -77,6 +81,7 @@ module.exports = {
         '**/lib/tickets/qr-generator.ts',
         '**/lib/tickets/pdf-generator.ts',
         '**/lib/email/**/*.ts',
+        '**/lib/services/report-export.service.tsx',
         '**/app/manifest.ts',
       ],
       rules: {
@@ -117,6 +122,9 @@ module.exports = {
         'next.config.js',
         'tailwind.config.ts',
         'public/sw.js',
+        'scripts/**/*.ts',
+        'scripts/**/*.mjs',
+        'scripts/**/*.js',
       ],
       rules: {
         'no-magic-numbers': 'off',

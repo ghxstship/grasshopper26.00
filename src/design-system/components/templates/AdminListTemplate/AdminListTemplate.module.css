@@ -293,3 +293,21 @@
     max-inline-size: none;
   }
 }
+
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .primaryButton {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+[data-theme="dark"] .emptyButton {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+

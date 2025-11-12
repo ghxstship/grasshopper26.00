@@ -66,8 +66,8 @@
 }
 
 .lg {
-  width: 3rem;
-  height: 3rem;
+  width: var(--font-size-5xl);
+  height: var(--font-size-5xl);
   padding: var(--space-2-5);
 }
 

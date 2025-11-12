@@ -187,3 +187,53 @@
   background-color: var(--color-black);
   align-self: center;
 }
+
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up */
+}
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .center {
+  background-color: var(--color-black);
+}
+
+[data-theme="dark"] .header {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+[data-theme="dark"] .badge {
+  background-color: var(--color-grey-200);
+}
+
+[data-theme="dark"] .actionButton {
+  background-color: var(--color-grey-200);
+  color: var(--color-black);
+}
+
+[data-theme="dark"] .filterButton {
+  background-color: var(--color-black);
+}
+
+[data-theme="dark"] .icon {
+  background-color: var(--color-grey-700);
+}
+
+[data-theme="dark"] .unreadDot {
+  background-color: var(--color-white);
+}
+

@@ -239,8 +239,8 @@
   align-items: center;
   justify-content: center;
   
-  width: 3rem;
-  height: 3rem;
+  width: var(--font-size-5xl);
+  height: var(--font-size-5xl);
   
   border: var(--border-width-3) solid var(--color-border-accent);
   border-radius: var(--radius-none)(--radius-none);

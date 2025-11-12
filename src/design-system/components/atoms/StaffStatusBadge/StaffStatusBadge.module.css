@@ -49,3 +49,54 @@
   background-color: var(--color-grey-300);
   color: var(--color-text-tertiary);
 }
+
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up */
+}
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .checked_in {
+  background-color: var(--color-grey-100);
+  color: var(--color-black);
+  border-color: var(--color-grey-100);
+}
+
+[data-theme="dark"] .on_break {
+  background-color: var(--color-grey-200);
+  color: var(--color-black);
+  border-color: var(--color-grey-200);
+}
+
+[data-theme="dark"] .checked_out {
+  background-color: var(--color-grey-500);
+  border-color: var(--color-grey-500);
+}
+
+[data-theme="dark"] .scheduled {
+  background-color: var(--color-grey-700);
+}
+
+[data-theme="dark"] .no_show {
+  background-color: var(--color-grey-100);
+  color: var(--color-black);
+  border-color: var(--color-grey-100);
+}
+
+[data-theme="dark"] .cancelled {
+  background-color: var(--color-grey-600);
+}
+

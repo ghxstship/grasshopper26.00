@@ -66,3 +66,41 @@
   background-color: var(--color-grey-900);
   color: var(--color-white);
 }
+
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up */
+}
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .alert {
+  border-color: var(--color-white);
+  background-color: var(--color-black);
+}
+
+[data-theme="dark"] .success {
+  background-color: var(--color-grey-800);
+}
+
+[data-theme="dark"] .warning {
+  background-color: var(--color-grey-700);
+}
+
+[data-theme="dark"] .error {
+  background-color: var(--color-grey-100);
+  color: var(--color-black);
+}
+

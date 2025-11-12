@@ -149,3 +149,48 @@
   background-color: var(--color-white);
   transition: width var(--transition-standard) var(--easing-standard);
 }
+
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up */
+}
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .timeline {
+  background-color: var(--color-black);
+}
+
+[data-theme="dark"] .header {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+[data-theme="dark"] .bar {
+  background-color: var(--color-grey-100);
+}
+
+[data-theme="dark"] .barTitle {
+  color: var(--color-black);
+}
+
+[data-theme="dark"] .progress {
+  background-color: var(--color-grey-300);
+}
+
+[data-theme="dark"] .progressFill {
+  background-color: var(--color-black);
+}
+

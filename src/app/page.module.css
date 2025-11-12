@@ -310,7 +310,7 @@
 }
 
 .rounded {
-  border-radius: var(--radius-none)(--radius-md);
+  border-radius: var(--radius-none);
 }
 
 .shadow {
@@ -318,23 +318,116 @@
 }
 
 /* DARK MODE */
-[data-theme="dark"] .container,
-[data-theme="dark"] .card,
-[data-theme="dark"] .content,
-[data-theme="dark"] .section {
+:global([data-theme="dark"]) .row {
   background-color: var(--color-bg-primary);
+  border-block-end-color: var(--color-border-strong);
 }
 
-[data-theme="dark"] .button,
-[data-theme="dark"] .input,
-[data-theme="dark"] .select,
-[data-theme="dark"] .textarea {
-  background-color: var(--color-bg-primary);
-  border-color: var(--color-border-strong);
+:global([data-theme="dark"]) .halftonePattern {
+  background-image: radial-gradient(circle, var(--color-text-primary) var(--space-px), transparent var(--space-px));
+}
+
+:global([data-theme="dark"]) .heroTitle,
+:global([data-theme="dark"]) .sectionTitle,
+:global([data-theme="dark"]) .featureTitle {
   color: var(--color-text-primary);
 }
 
-[data-theme="dark"] .button:hover {
+:global([data-theme="dark"]) .heroSubtitle,
+:global([data-theme="dark"]) .featureDescription {
+  color: var(--color-text-secondary);
+}
+
+:global([data-theme="dark"]) .featuresSection {
+  background-color: var(--color-bg-secondary);
+  border-block-end-color: var(--color-border-strong);
+}
+
+:global([data-theme="dark"]) .featureCard {
+  background-color: var(--color-bg-primary);
+  border-color: var(--color-border-strong);
+}
+
+:global([data-theme="dark"]) .featureCard:hover {
+  box-shadow: 0.5rem 0.5rem 0 0 var(--color-border-strong);
+}
+
+:global([data-theme="dark"]) .featureIcon {
+  color: var(--color-text-primary);
+}
+
+:global([data-theme="dark"]) .ctaSection {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+
+:global([data-theme="dark"]) .ctaTitle {
+  color: var(--color-text-primary);
+}
+
+:global([data-theme="dark"]) .ctaSubtitle {
+  color: var(--color-text-secondary);
+}
+
+:global([data-theme="dark"]) .buttonPrimary {
+  border-color: var(--color-border-strong);
   background-color: var(--color-text-primary);
+  color: var(--color-bg-primary);
+}
+
+:global([data-theme="dark"]) .buttonPrimary:hover {
+  background-color: var(--color-text-secondary);
+}
+
+:global([data-theme="dark"]) .buttonSecondary {
+  border-color: var(--color-border-strong);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+
+:global([data-theme="dark"]) .buttonSecondary:hover {
+  background-color: var(--color-bg-secondary);
+}
+
+:global([data-theme="dark"]) .buttonCta {
+  border-color: var(--color-border-strong);
+  background-color: var(--color-text-primary);
+  color: var(--color-bg-primary);
+}
+
+:global([data-theme="dark"]) .buttonCta:hover {
+  background-color: var(--color-text-secondary);
+}
+
+:global([data-theme="dark"]) .emptyIcon {
+  color: var(--color-text-tertiary);
+}
+
+:global([data-theme="dark"]) .textGrey600,
+:global([data-theme="dark"]) .textGrey700 {
+  color: var(--color-text-secondary);
+}
+
+:global([data-theme="dark"]) .textBlack {
+  color: var(--color-text-primary);
+}
+
+:global([data-theme="dark"]) .textWhite {
   color: var(--color-text-inverse);
+}
+
+:global([data-theme="dark"]) .bgBlack {
+  background-color: var(--color-bg-primary);
+}
+
+:global([data-theme="dark"]) .bgWhite {
+  background-color: var(--color-bg-secondary);
+}
+
+:global([data-theme="dark"]) .borderBlack {
+  border-color: var(--color-border-strong);
+}
+
+:global([data-theme="dark"]) .shadow {
+  box-shadow: var(--shadow-lg);
 }

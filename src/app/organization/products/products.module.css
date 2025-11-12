@@ -51,11 +51,23 @@
 }
 
 /* DARK MODE */
-[data-theme="dark"] .productRow {
+:global([data-theme="dark"]) .productRow {
   background-color: var(--color-bg-primary);
   border-color: var(--color-border-default);
 }
 
-[data-theme="dark"] .emptyIcon {
+:global([data-theme="dark"]) .emptyIcon {
   color: var(--color-text-secondary);
+}
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up - add styles as needed */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up - add styles as needed */
 }

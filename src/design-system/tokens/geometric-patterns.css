@@ -255,13 +255,13 @@
 
 /* Triangle pointing right */
 .shape-triangle-right {
-  border-width: 1.25rem 0 1.25rem 2.165rem;
+  border-width: var(--font-size-xl) 0 1.25rem 2.165rem;
   border-color: transparent transparent transparent var(--color-black);
 }
 
 /* Triangle pointing left */
 .shape-triangle-left {
-  border-width: 1.25rem 2.165rem 1.25rem 0;
+  border-width: var(--font-size-xl) 2.165rem 1.25rem 0;
   border-color: transparent var(--color-black) transparent transparent;
 }
 

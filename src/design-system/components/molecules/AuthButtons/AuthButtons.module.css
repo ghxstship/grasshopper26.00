@@ -33,3 +33,16 @@
     gap: var(--space-2);
   }
 }
+
+
+
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+:global([data-theme="dark"]) .authButtons {
+  /* Dark mode overrides inherit from tokens.css */
+}

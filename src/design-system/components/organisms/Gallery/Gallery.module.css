@@ -266,3 +266,60 @@
 .loadMoreButton:active {
   transform: scale(0.98);
 }
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .item {
+  background-color: var(--color-bg-secondary);
+  border-color: var(--color-border-strong);
+}
+
+[data-theme="dark"] .item:hover {
+  box-shadow: 0.5rem 0.5rem 0 var(--color-primary);
+}
+
+[data-theme="dark"] .overlay {
+  background-color: var(--color-bg-overlay);
+}
+
+[data-theme="dark"] .caption,
+[data-theme="dark"] .meta {
+  color: var(--color-text-inverse);
+}
+
+[data-theme="dark"] .videoIndicator {
+  background-color: var(--color-text-primary);
+  color: var(--color-text-inverse);
+  border-color: var(--color-border-accent);
+}
+
+[data-theme="dark"] .lightbox {
+  background-color: var(--color-bg-overlay-strong);
+}
+
+[data-theme="dark"] .lightboxContent {
+  border-color: var(--color-border-accent);
+}
+
+[data-theme="dark"] .lightboxClose,
+[data-theme="dark"] .lightboxNav {
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+  border-color: var(--color-border-accent);
+}
+
+[data-theme="dark"] .lightboxCaption {
+  color: var(--color-text-inverse);
+}
+
+[data-theme="dark"] .loadMoreButton {
+  border-color: var(--color-border-strong);
+  color: var(--color-text-primary);
+}
+
+[data-theme="dark"] .loadMoreButton:hover {
+  background-color: var(--color-text-primary);
+  color: var(--color-text-inverse);
+}

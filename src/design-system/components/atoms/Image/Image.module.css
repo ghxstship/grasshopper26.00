@@ -65,3 +65,15 @@
     radial-gradient(circle, var(--color-accent) 20%, transparent 20%),
     radial-gradient(circle, var(--color-accent) 20%, transparent 20%);
 }
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up - add styles as needed */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up - add styles as needed */
+}

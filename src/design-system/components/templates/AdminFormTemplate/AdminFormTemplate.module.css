@@ -237,3 +237,16 @@
     padding: var(--space-4);
   }
 }
+
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .primaryButton {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+

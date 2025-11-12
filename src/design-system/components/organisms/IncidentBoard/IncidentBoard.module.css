@@ -240,3 +240,40 @@
   font-family: var(--font-share-mono);
   font-size: var(--font-size-meta);
 }
+
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up */
+}
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .board {
+  background-color: var(--color-black);
+}
+
+[data-theme="dark"] .reportButton {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+[data-theme="dark"] .filterButton {
+  background-color: var(--color-black);
+}
+
+[data-theme="dark"] .card {
+  background-color: var(--color-black);
+}
+

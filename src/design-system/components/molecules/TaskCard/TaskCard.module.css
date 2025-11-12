@@ -168,3 +168,40 @@
   font-size: var(--font-size-meta);
   font-weight: 700;
 }
+
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up */
+}
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .card {
+  background-color: var(--color-black);
+}
+
+[data-theme="dark"] .overdue {
+  background-color: var(--color-grey-100);
+  color: var(--color-black);
+}
+
+[data-theme="dark"] .progressBar {
+  background-color: var(--color-grey-700);
+}
+
+[data-theme="dark"] .progressFill {
+  background-color: var(--color-white);
+}
+

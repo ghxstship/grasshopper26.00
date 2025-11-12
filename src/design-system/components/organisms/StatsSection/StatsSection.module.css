@@ -122,3 +122,16 @@
   opacity: 0.8;
   margin: 0;
 }
+
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .section {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+

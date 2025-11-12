@@ -119,3 +119,19 @@
     }
   }
 }
+
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .hero {
+  color: var(--color-black);
+}
+
+[data-theme="dark"] .sectionInverted {
+  color: var(--color-black);
+}
+

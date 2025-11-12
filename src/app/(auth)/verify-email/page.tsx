@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { CheckCircle, XCircle, Loader2, Mail } from 'lucide-react';
 import { Button } from '@/design-system/components/atoms/Button';
@@ -10,7 +10,7 @@ import { Label } from '@/design-system/components/atoms/Label';
 import Link from 'next/link';
 import styles from '../auth.module.css';
 
-export default function VerifyEmailPage() {
+function VerifyEmailContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [status, setStatus] = useState<'verifying' | 'success' | 'error' | 'resend'>('verifying');
@@ -145,5 +145,24 @@ export default function VerifyEmailPage() {
         </CardContent>
       </Card>
     </div>
+  );
+}
+
+export default function VerifyEmailPage() {
+  return (
+    <Suspense fallback={
+      <div className={styles.container}>
+        <Card className={styles.card}>
+          <CardContent className={styles.section}>
+            <div className={styles.textCenter}>
+              <Loader2 className={styles.loadingIcon} />
+              <h1 className={styles.subtitle}>Loading...</h1>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    }>
+      <VerifyEmailContent />
+    </Suspense>
   );
 }

@@ -277,3 +277,15 @@
     grid-template-columns: 1fr;
   }
 }
+
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .hero {
+  color: var(--color-black);
+}
+

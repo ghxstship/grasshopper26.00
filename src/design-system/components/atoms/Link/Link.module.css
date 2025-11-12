@@ -96,7 +96,7 @@
   border-radius: var(--radius-none)(--radius-none);
   background-color: transparent;
   
-  min-height: 3rem;
+  min-height: var(--font-size-5xl);
   
   transition: all var(--duration-fast) var(--easing-out);
 }
@@ -130,7 +130,7 @@
 }
 
 .md.button {
-  min-height: 3rem;
+  min-height: var(--font-size-5xl);
   padding-inline: var(--space-6);
   padding-block: var(--space-3);
 }

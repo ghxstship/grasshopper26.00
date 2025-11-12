@@ -100,3 +100,27 @@
   from { transform: translateY(100%); }
   to { transform: translateY(0); }
 }
+
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up */
+}
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .drawer {
+  background-color: var(--color-black);
+}
+

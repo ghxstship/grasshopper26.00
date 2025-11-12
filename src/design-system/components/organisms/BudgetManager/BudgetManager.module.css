@@ -263,3 +263,41 @@
   background-color: var(--color-black);
   color: var(--color-white);
 }
+
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up */
+}
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .manager {
+  background-color: var(--color-black);
+}
+
+[data-theme="dark"] .addButton {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+[data-theme="dark"] .filterButton {
+  background-color: var(--color-black);
+}
+
+[data-theme="dark"] .emptyButton {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+

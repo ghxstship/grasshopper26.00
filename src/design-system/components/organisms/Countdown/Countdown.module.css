@@ -74,3 +74,16 @@
   letter-spacing: 0.02em;
   margin: 0;
 }
+
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .countdown {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+

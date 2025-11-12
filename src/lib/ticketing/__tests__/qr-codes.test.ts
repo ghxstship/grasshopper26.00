@@ -5,16 +5,25 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { generateTicketCode, validateTicketQRCode, markTicketAsScanned } from '../qr-codes';
 
-// Create persistent query builder
-const mockQueryBuilder = {
-  select: vi.fn().mockReturnThis(),
-  update: vi.fn().mockReturnThis(),
-  eq: vi.fn().mockReturnThis(),
-  single: vi.fn(),
+// Create persistent query builder with proper chaining
+const createMockQueryBuilder = () => {
+  const builder: any = {};
+  builder.select = vi.fn().mockReturnValue(builder);
+  builder.update = vi.fn().mockReturnValue(builder);
+  builder.eq = vi.fn().mockReturnValue(builder);
+  builder.single = vi.fn().mockResolvedValue({ data: null, error: null });
+  // For queries that don't end with .single()
+  builder.then = vi.fn((resolve) => resolve({ data: null, error: null }));
+  return builder;
 };
 
+let mockQueryBuilder = createMockQueryBuilder();
+
 const mockSupabase = {
-  from: vi.fn(() => mockQueryBuilder),
+  from: vi.fn(() => {
+    mockQueryBuilder = createMockQueryBuilder();
+    return mockQueryBuilder;
+  }),
 };
 
 vi.mock('@/lib/supabase/server', () => ({

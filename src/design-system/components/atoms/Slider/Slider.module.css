@@ -40,7 +40,7 @@
 .track {
   position: relative;
   width: 100%;
-  height: 0.75rem;
+  height: var(--font-size-xs);
   
   background-color: var(--color-bg-secondary);
   border: var(--border-width-2) solid var(--color-border-default);
@@ -90,8 +90,8 @@
   appearance: none;
   -webkit-appearance: none;
   
-  width: 1.25rem;
-  height: 1.25rem;
+  width: var(--font-size-xl);
+  height: var(--font-size-xl);
   
   background-color: var(--color-black);
   border: var(--border-width-3) solid var(--color-border-strong);
@@ -103,8 +103,8 @@
 }
 
 .input::-moz-range-thumb {
-  width: 1.25rem;
-  height: 1.25rem;
+  width: var(--font-size-xl);
+  height: var(--font-size-xl);
   
   background-color: var(--color-black);
   border: var(--border-width-3) solid var(--color-border-strong);

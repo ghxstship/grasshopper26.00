@@ -92,3 +92,29 @@
   border-color: var(--color-grey-900);
   align-self: flex-start;
 }
+
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up */
+}
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .overdueIndicator {
+  background-color: var(--color-grey-100);
+  color: var(--color-black);
+  border-color: var(--color-grey-100);
+}
+

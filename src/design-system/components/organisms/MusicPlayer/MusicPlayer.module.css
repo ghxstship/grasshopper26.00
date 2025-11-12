@@ -246,3 +246,31 @@
   color: var(--color-white);
   opacity: 0.8;
 }
+
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up */
+}
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .progressFill {
+  background-color: var(--color-white);
+}
+
+[data-theme="dark"] .volumeFill {
+  background-color: var(--color-white);
+}
+

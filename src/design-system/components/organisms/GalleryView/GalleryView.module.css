@@ -150,3 +150,31 @@
     grid-template-columns: 1fr;
   }
 }
+
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .searchBar {
+  background-color: var(--color-black);
+}
+
+[data-theme="dark"] .searchInput {
+  background-color: var(--color-black);
+}
+
+[data-theme="dark"] .card {
+  background-color: var(--color-black);
+}
+
+[data-theme="dark"] .imageContainer {
+  background-color: var(--color-grey-700);
+}
+
+[data-theme="dark"] .tag {
+  background-color: var(--color-grey-700);
+}
+

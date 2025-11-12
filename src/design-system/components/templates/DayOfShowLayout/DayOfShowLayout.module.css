@@ -55,3 +55,23 @@
     grid-template-columns: 1fr;
   }
 }
+
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .layout {
+  background-color: var(--color-grey-800);
+}
+
+[data-theme="dark"] .header {
+  background-color: var(--color-black);
+}
+
+[data-theme="dark"] .footer {
+  background-color: var(--color-black);
+}
+

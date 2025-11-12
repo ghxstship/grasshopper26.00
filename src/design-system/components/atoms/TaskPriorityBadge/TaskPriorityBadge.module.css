@@ -35,3 +35,43 @@
   border-color: var(--color-border-subtle);
   color: var(--color-text-secondary);
 }
+
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up */
+}
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .critical {
+  background-color: var(--color-grey-100);
+  color: var(--color-black);
+  border-color: var(--color-grey-100);
+}
+
+[data-theme="dark"] .high {
+  background-color: var(--color-grey-100);
+  color: var(--color-black);
+  border-color: var(--color-grey-100);
+}
+
+[data-theme="dark"] .medium {
+  background-color: var(--color-grey-600);
+}
+
+[data-theme="dark"] .low {
+  background-color: var(--color-grey-800);
+}
+

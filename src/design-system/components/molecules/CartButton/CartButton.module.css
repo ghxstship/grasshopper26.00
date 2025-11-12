@@ -42,3 +42,16 @@
     font-size: calc(var(--font-size-meta) * 0.85);
   }
 }
+
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .badge {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+

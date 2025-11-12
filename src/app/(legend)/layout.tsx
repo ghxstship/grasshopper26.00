@@ -1,8 +1,9 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { Menu, X } from 'lucide-react';
 import styles from './layout.module.css';
 
 const LEGEND_NAV_ITEMS = [
@@ -40,9 +41,19 @@ export default function LegendDashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
     <div className={styles.container}>
-      <aside className={styles.sidebar}>
+      <button
+        className={styles.mobileMenuButton}
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        aria-label="Toggle menu"
+      >
+        {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+      </button>
+
+      <aside className={`${styles.sidebar} ${isMobileMenuOpen ? styles.open : ''}`}>
         <div className={styles.sidebarHeader}>
           <Link href="/" className={styles.logo}>
             GVTEWAY
@@ -51,6 +62,15 @@ export default function LegendDashboardLayout({
         </div>
         <LegendNav />
       </aside>
+
+      {isMobileMenuOpen && (
+        <button 
+          className={styles.overlay}
+          onClick={() => setIsMobileMenuOpen(false)}
+          aria-label="Close menu"
+        />
+      )}
+
       <main className={styles.main}>
         {children}
       </main>

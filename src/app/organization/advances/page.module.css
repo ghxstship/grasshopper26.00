@@ -5,7 +5,7 @@
   background-color: var(--color-bg-primary);
 }
 
-[data-theme="dark"] .container {
+:global([data-theme="dark"]) .container {
   background-color: var(--color-bg-primary);
 }
 
@@ -21,7 +21,7 @@
   background-color: var(--color-bg-primary);
 }
 
-[data-theme="dark"] .headerBorder {
+:global([data-theme="dark"]) .headerBorder {
   border-block-end-color: var(--color-border-strong);
   background-color: var(--color-bg-primary);
 }
@@ -40,7 +40,7 @@
   color: var(--color-text-primary);
 }
 
-[data-theme="dark"] .title {
+:global([data-theme="dark"]) .title {
   color: var(--color-text-primary);
 }
 
@@ -50,7 +50,7 @@
   color: var(--color-text-secondary);
 }
 
-[data-theme="dark"] .subtitle {
+:global([data-theme="dark"]) .subtitle {
   color: var(--color-text-secondary);
 }
 
@@ -68,7 +68,7 @@
   padding: var(--space-4);
 }
 
-[data-theme="dark"] .statCard {
+:global([data-theme="dark"]) .statCard {
   border-color: var(--color-border-strong);
   background-color: var(--color-bg-secondary);
 }
@@ -80,7 +80,7 @@
   color: var(--color-text-secondary);
 }
 
-[data-theme="dark"] .statLabel {
+:global([data-theme="dark"]) .statLabel {
   color: var(--color-text-secondary);
 }
 
@@ -91,7 +91,7 @@
   color: var(--color-text-primary);
 }
 
-[data-theme="dark"] .statValue {
+:global([data-theme="dark"]) .statValue {
   color: var(--color-text-primary);
 }
 
@@ -101,7 +101,7 @@
   background-color: var(--color-bg-secondary);
 }
 
-[data-theme="dark"] .tabsBorder {
+:global([data-theme="dark"]) .tabsBorder {
   border-block-end-color: var(--color-border-default);
   background-color: var(--color-bg-secondary);
 }
@@ -127,7 +127,7 @@
   color: var(--color-text-primary);
 }
 
-[data-theme="dark"] .tab {
+:global([data-theme="dark"]) .tab {
   border-color: var(--color-border-strong);
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
@@ -137,7 +137,7 @@
   background-color: var(--color-bg-secondary);
 }
 
-[data-theme="dark"] .tab:hover {
+:global([data-theme="dark"]) .tab:hover {
   background-color: var(--color-bg-secondary);
 }
 
@@ -146,7 +146,7 @@
   color: var(--color-text-inverse);
 }
 
-[data-theme="dark"] .tabActive {
+:global([data-theme="dark"]) .tabActive {
   background-color: var(--color-text-primary);
   color: var(--color-text-inverse);
   color: var(--color-text-inverse);
@@ -158,7 +158,7 @@
   background-color: var(--color-bg-primary);
 }
 
-[data-theme="dark"] .searchBorder {
+:global([data-theme="dark"]) .searchBorder {
   border-block-end-color: var(--color-border-default);
   background-color: var(--color-bg-primary);
 }
@@ -197,7 +197,7 @@
   color: var(--color-text-tertiary);
 }
 
-[data-theme="dark"] .searchIcon {
+:global([data-theme="dark"]) .searchIcon {
   color: var(--color-text-tertiary);
 }
 
@@ -213,7 +213,7 @@
   outline: none;
 }
 
-[data-theme="dark"] .searchInput {
+:global([data-theme="dark"]) .searchInput {
   border-color: var(--color-border-strong);
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
@@ -223,7 +223,7 @@
   border-color: var(--color-text-primary);
 }
 
-[data-theme="dark"] .searchInput:focus {
+:global([data-theme="dark"]) .searchInput:focus {
   border-color: var(--color-text-primary);
 }
 
@@ -243,7 +243,7 @@
   transition: all var(--duration-fast) var(--easing-out);
 }
 
-[data-theme="dark"] .searchButton {
+:global([data-theme="dark"]) .searchButton {
   border-color: var(--color-border-strong);
   background-color: var(--color-text-primary);
   color: var(--color-text-inverse);
@@ -254,7 +254,7 @@
   color: var(--color-text-primary);
 }
 
-[data-theme="dark"] .searchButton:hover {
+:global([data-theme="dark"]) .searchButton:hover {
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
 }
@@ -282,7 +282,7 @@
   border-radius: var(--radius-none);
 }
 
-[data-theme="dark"] .spinner {
+:global([data-theme="dark"]) .spinner {
   border-color: var(--color-border-strong);
 }
 
@@ -295,7 +295,7 @@
   color: var(--color-text-tertiary);
 }
 
-[data-theme="dark"] .emptyIcon {
+:global([data-theme="dark"]) .emptyIcon {
   color: var(--color-text-tertiary);
 }
 
@@ -305,7 +305,7 @@
   color: var(--color-text-secondary);
 }
 
-[data-theme="dark"] .emptyText {
+:global([data-theme="dark"]) .emptyText {
   color: var(--color-text-secondary);
 }
 
@@ -315,7 +315,7 @@
   color: var(--color-text-secondary);
 }
 
-[data-theme="dark"] .emptyHint {
+:global([data-theme="dark"]) .emptyHint {
   color: var(--color-text-secondary);
 }
 
@@ -332,7 +332,7 @@
   border: var(--border-width-3) solid var(--color-border-strong);
 }
 
-[data-theme="dark"] .table {
+:global([data-theme="dark"]) .table {
   border-color: var(--color-border-strong);
 }
 
@@ -341,7 +341,7 @@
   background-color: var(--color-bg-secondary);
 }
 
-[data-theme="dark"] .tableHead {
+:global([data-theme="dark"]) .tableHead {
   border-block-end-color: var(--color-border-strong);
   background-color: var(--color-bg-secondary);
 }
@@ -357,7 +357,7 @@
   color: var(--color-text-primary);
 }
 
-[data-theme="dark"] .tableHeader {
+:global([data-theme="dark"]) .tableHeader {
   border-inline-end-color: var(--color-border-default);
   color: var(--color-text-primary);
 }
@@ -371,7 +371,7 @@
   transition: background-color var(--duration-fast) var(--easing-out);
 }
 
-[data-theme="dark"] .tableRow {
+:global([data-theme="dark"]) .tableRow {
   border-block-end-color: var(--color-border-default);
 }
 
@@ -379,7 +379,7 @@
   background-color: var(--color-bg-secondary);
 }
 
-[data-theme="dark"] .tableRow:hover {
+:global([data-theme="dark"]) .tableRow:hover {
   background-color: var(--color-bg-secondary);
 }
 
@@ -387,7 +387,7 @@
   background-color: var(--color-bg-secondary);
 }
 
-[data-theme="dark"] .tableRowUrgent {
+:global([data-theme="dark"]) .tableRowUrgent {
   background-color: var(--color-bg-secondary);
 }
 
@@ -398,7 +398,7 @@
   color: var(--color-text-primary);
 }
 
-[data-theme="dark"] .tableCell {
+:global([data-theme="dark"]) .tableCell {
   border-inline-end-color: var(--color-border-default);
   color: var(--color-text-primary);
 }
@@ -418,7 +418,7 @@
   transition: text-decoration var(--duration-fast) var(--easing-out);
 }
 
-[data-theme="dark"] .advanceLink {
+:global([data-theme="dark"]) .advanceLink {
   color: var(--color-text-primary);
 }
 
@@ -436,7 +436,7 @@
   color: var(--color-text-primary);
 }
 
-[data-theme="dark"] .urgentBadge {
+:global([data-theme="dark"]) .urgentBadge {
   color: var(--color-text-primary);
 }
 
@@ -446,7 +446,7 @@
   color: var(--color-text-primary);
 }
 
-[data-theme="dark"] .eventName {
+:global([data-theme="dark"]) .eventName {
   color: var(--color-text-primary);
 }
 
@@ -456,7 +456,7 @@
   color: var(--color-text-primary);
 }
 
-[data-theme="dark"] .companyName {
+:global([data-theme="dark"]) .companyName {
   color: var(--color-text-primary);
 }
 
@@ -466,7 +466,7 @@
   color: var(--color-text-secondary);
 }
 
-[data-theme="dark"] .contactName {
+:global([data-theme="dark"]) .contactName {
   color: var(--color-text-secondary);
 }
 
@@ -476,7 +476,7 @@
   color: var(--color-text-primary);
 }
 
-[data-theme="dark"] .dateText {
+:global([data-theme="dark"]) .dateText {
   color: var(--color-text-primary);
 }
 
@@ -486,7 +486,7 @@
   color: var(--color-text-secondary);
 }
 
-[data-theme="dark"] .durationText {
+:global([data-theme="dark"]) .durationText {
   color: var(--color-text-secondary);
 }
 
@@ -496,7 +496,7 @@
   color: var(--color-text-primary);
 }
 
-[data-theme="dark"] .itemCount {
+:global([data-theme="dark"]) .itemCount {
   color: var(--color-text-primary);
 }
 
@@ -520,7 +520,7 @@
   transition: all var(--duration-fast) var(--easing-out);
 }
 
-[data-theme="dark"] .reviewLink {
+:global([data-theme="dark"]) .reviewLink {
   border-color: var(--color-border-strong);
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
@@ -530,7 +530,7 @@
   background-color: var(--color-bg-secondary);
 }
 
-[data-theme="dark"] .reviewLink:hover {
+:global([data-theme="dark"]) .reviewLink:hover {
   background-color: var(--color-bg-secondary);
 }
 
@@ -539,7 +539,7 @@
   background-color: var(--color-text-primary);
 }
 
-[data-theme="dark"] .bgBlack {
+:global([data-theme="dark"]) .bgBlack {
   background-color: var(--color-text-primary);
 }
 
@@ -547,7 +547,7 @@
   background-color: var(--color-bg-primary);
 }
 
-[data-theme="dark"] .bgWhite {
+:global([data-theme="dark"]) .bgWhite {
   background-color: var(--color-bg-primary);
 }
 
@@ -555,7 +555,7 @@
   border-color: var(--color-border-strong);
 }
 
-[data-theme="dark"] .borderBlack {
+:global([data-theme="dark"]) .borderBlack {
   border-color: var(--color-border-strong);
 }
 
@@ -567,7 +567,7 @@
   margin-block-end: var(--space-4);
 }
 
-[data-theme="dark"] .emptyIcon {
+:global([data-theme="dark"]) .emptyIcon {
   color: var(--color-text-secondary);
 }
 
@@ -575,7 +575,7 @@
   color: var(--color-text-secondary);
 }
 
-[data-theme="dark"] .textGrey600 {
+:global([data-theme="dark"]) .textGrey600 {
   color: var(--color-text-secondary);
 }
 
@@ -583,7 +583,7 @@
   color: var(--color-text-secondary);
 }
 
-[data-theme="dark"] .textGrey700 {
+:global([data-theme="dark"]) .textGrey700 {
   color: var(--color-text-secondary);
 }
 
@@ -591,7 +591,7 @@
   color: var(--color-text-primary);
 }
 
-[data-theme="dark"] .textBlack {
+:global([data-theme="dark"]) .textBlack {
   color: var(--color-text-primary);
 }
 
@@ -599,7 +599,7 @@
   color: var(--color-text-inverse);
 }
 
-[data-theme="dark"] .textWhite {
+:global([data-theme="dark"]) .textWhite {
   color: var(--color-text-inverse);
 }
 
@@ -661,7 +661,7 @@
 }
 
 .rounded {
-  border-radius: var(--radius-none)(--radius-md);
+  border-radius: var(--radius-none);
 }
 
 .shadow {

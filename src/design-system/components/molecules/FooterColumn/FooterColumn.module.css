@@ -39,3 +39,31 @@
   outline: var(--border-width-3) solid var(--color-accent);
   outline-offset: var(--space-1);
 }
+
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up */
+}
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .title {
+  color: var(--color-black);
+}
+
+[data-theme="dark"] .link {
+  color: var(--color-black);
+}
+

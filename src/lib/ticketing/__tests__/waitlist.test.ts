@@ -5,21 +5,30 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { joinWaitlist, getWaitlistPosition } from '../waitlist';
 
-// Create persistent query builder
-const mockQueryBuilder = {
-  select: vi.fn().mockReturnThis(),
-  insert: vi.fn().mockReturnThis(),
-  update: vi.fn().mockReturnThis(),
-  delete: vi.fn().mockReturnThis(),
-  eq: vi.fn().mockReturnThis(),
-  gt: vi.fn().mockReturnThis(),
-  single: vi.fn(),
-  order: vi.fn().mockReturnThis(),
-  limit: vi.fn().mockReturnThis(),
+// Create persistent query builder with proper chaining
+const createMockQueryBuilder = () => {
+  const builder: any = {};
+  builder.select = vi.fn().mockReturnValue(builder);
+  builder.insert = vi.fn().mockReturnValue(builder);
+  builder.update = vi.fn().mockReturnValue(builder);
+  builder.delete = vi.fn().mockReturnValue(builder);
+  builder.eq = vi.fn().mockReturnValue(builder);
+  builder.gt = vi.fn().mockReturnValue(builder);
+  builder.single = vi.fn().mockResolvedValue({ data: null, error: null });
+  builder.order = vi.fn().mockReturnValue(builder);
+  builder.limit = vi.fn().mockReturnValue(builder);
+  // For queries that don't end with .single()
+  builder.then = vi.fn((resolve) => resolve({ data: null, error: null }));
+  return builder;
 };
 
+let mockQueryBuilder = createMockQueryBuilder();
+
 const mockSupabase = {
-  from: vi.fn(() => mockQueryBuilder),
+  from: vi.fn(() => {
+    mockQueryBuilder = createMockQueryBuilder();
+    return mockQueryBuilder;
+  }),
 };
 
 vi.mock('@/lib/supabase/server', () => ({

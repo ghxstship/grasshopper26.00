@@ -123,3 +123,35 @@
   font-weight: 700;
   text-align: center;
 }
+
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up */
+}
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .monitor {
+  background-color: var(--color-black);
+}
+
+[data-theme="dark"] .progressBar {
+  background-color: var(--color-grey-700);
+}
+
+[data-theme="dark"] .progressFill {
+  background-color: var(--color-white);
+}
+

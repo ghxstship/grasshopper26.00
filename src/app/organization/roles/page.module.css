@@ -269,7 +269,7 @@
 }
 
 .rounded {
-  border-radius: var(--radius-none)(--radius-md);
+  border-radius: var(--radius-none);
 }
 
 .shadow {
@@ -280,99 +280,99 @@
    DARK MODE SUPPORT
    ======================================== */
 
-[data-theme="dark"] .container {
+:global([data-theme="dark"]) .container {
   background-color: var(--color-bg-primary);
 }
 
-[data-theme="dark"] .spinner {
+:global([data-theme="dark"]) .spinner {
   border-color: var(--color-border-strong);
 }
 
-[data-theme="dark"] .loadingText {
+:global([data-theme="dark"]) .loadingText {
   color: var(--color-text-secondary);
 }
 
-[data-theme="dark"] .title {
+:global([data-theme="dark"]) .title {
   color: var(--color-text-primary);
 }
 
-[data-theme="dark"] .message {
+:global([data-theme="dark"]) .message {
   border-color: var(--color-border-strong);
 }
 
-[data-theme="dark"] .messageSuccess,
-[data-theme="dark"] .messageError {
+:global([data-theme="dark"]) .messageSuccess,
+:global([data-theme="dark"]) .messageError {
   background-color: var(--color-bg-secondary);
   color: var(--color-text-primary);
 }
 
-[data-theme="dark"] .card {
+:global([data-theme="dark"]) .card {
   background-color: var(--color-bg-primary);
   border-color: var(--color-border-strong);
 }
 
-[data-theme="dark"] .label,
-[data-theme="dark"] .checkboxLabel {
+:global([data-theme="dark"]) .label,
+:global([data-theme="dark"]) .checkboxLabel {
   color: var(--color-text-secondary);
 }
 
-[data-theme="dark"] .input,
-[data-theme="dark"] .textarea {
+:global([data-theme="dark"]) .input,
+:global([data-theme="dark"]) .textarea {
   background-color: var(--color-bg-primary);
   border-color: var(--color-border-strong);
   color: var(--color-text-primary);
 }
 
-[data-theme="dark"] .input:focus,
-[data-theme="dark"] .textarea:focus {
+:global([data-theme="dark"]) .input:focus,
+:global([data-theme="dark"]) .textarea:focus {
   box-shadow: 0 0 0 0.125rem var(--color-border-strong);
 }
 
-[data-theme="dark"] .checkbox {
+:global([data-theme="dark"]) .checkbox {
   color: var(--color-text-primary);
   border-color: var(--color-border-default);
 }
 
-[data-theme="dark"] .checkbox:focus {
+:global([data-theme="dark"]) .checkbox:focus {
   box-shadow: 0 0 0 0.125rem var(--color-border-strong);
 }
 
-[data-theme="dark"] .button {
+:global([data-theme="dark"]) .button {
   background-color: var(--color-text-primary);
   color: var(--color-text-inverse);
   border-color: var(--color-border-strong);
 }
 
-[data-theme="dark"] .button:hover {
+:global([data-theme="dark"]) .button:hover {
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
 }
 
-[data-theme="dark"] .bgBlack {
+:global([data-theme="dark"]) .bgBlack {
   background-color: var(--color-text-primary);
 }
 
-[data-theme="dark"] .bgWhite {
+:global([data-theme="dark"]) .bgWhite {
   background-color: var(--color-bg-primary);
 }
 
-[data-theme="dark"] .borderBlack {
+:global([data-theme="dark"]) .borderBlack {
   border-color: var(--color-border-strong);
 }
 
-[data-theme="dark"] .emptyIcon {
+:global([data-theme="dark"]) .emptyIcon {
   color: var(--color-text-secondary);
 }
 
-[data-theme="dark"] .textGrey600,
-[data-theme="dark"] .textGrey700 {
+:global([data-theme="dark"]) .textGrey600,
+:global([data-theme="dark"]) .textGrey700 {
   color: var(--color-text-secondary);
 }
 
-[data-theme="dark"] .textBlack {
+:global([data-theme="dark"]) .textBlack {
   color: var(--color-text-primary);
 }
 
-[data-theme="dark"] .textWhite {
+:global([data-theme="dark"]) .textWhite {
   color: var(--color-text-inverse);
 }

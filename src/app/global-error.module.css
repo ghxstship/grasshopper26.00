@@ -139,7 +139,7 @@
 }
 
 .rounded {
-  border-radius: var(--radius-none)(--radius-md);
+  border-radius: var(--radius-none);
 }
 
 .shadow {
@@ -147,23 +147,53 @@
 }
 
 /* DARK MODE */
-[data-theme="dark"] .container,
-[data-theme="dark"] .card,
-[data-theme="dark"] .content,
-[data-theme="dark"] .section {
+:global([data-theme="dark"]) .container {
   background-color: var(--color-bg-primary);
-}
-
-[data-theme="dark"] .button,
-[data-theme="dark"] .input,
-[data-theme="dark"] .select,
-[data-theme="dark"] .textarea {
-  background-color: var(--color-bg-primary);
-  border-color: var(--color-border-strong);
   color: var(--color-text-primary);
 }
 
-[data-theme="dark"] .button:hover {
-  background-color: var(--color-text-primary);
+:global([data-theme="dark"]) .card {
+  background-color: var(--color-bg-secondary);
+  border-color: var(--color-border-strong);
+}
+
+:global([data-theme="dark"]) .title {
+  color: var(--color-text-primary);
+}
+
+:global([data-theme="dark"]) .message {
+  color: var(--color-text-secondary);
+}
+
+:global([data-theme="dark"]) .emptyIcon {
+  color: var(--color-text-tertiary);
+}
+
+:global([data-theme="dark"]) .textGrey600,
+:global([data-theme="dark"]) .textGrey700 {
+  color: var(--color-text-secondary);
+}
+
+:global([data-theme="dark"]) .textBlack {
+  color: var(--color-text-primary);
+}
+
+:global([data-theme="dark"]) .textWhite {
   color: var(--color-text-inverse);
+}
+
+:global([data-theme="dark"]) .bgBlack {
+  background-color: var(--color-bg-primary);
+}
+
+:global([data-theme="dark"]) .bgWhite {
+  background-color: var(--color-bg-secondary);
+}
+
+:global([data-theme="dark"]) .borderBlack {
+  border-color: var(--color-border-strong);
+}
+
+:global([data-theme="dark"]) .shadow {
+  box-shadow: var(--shadow-lg);
 }

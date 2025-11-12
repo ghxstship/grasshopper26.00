@@ -172,3 +172,24 @@
   color: var(--color-text-secondary);
   margin: 0;
 }
+
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .platform {
+  color: var(--color-black);
+  background-color: var(--color-white);
+}
+
+[data-theme="dark"] .caption {
+  color: var(--color-black);
+}
+
+[data-theme="dark"] .stat {
+  color: var(--color-black);
+}
+

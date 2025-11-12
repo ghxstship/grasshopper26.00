@@ -43,3 +43,31 @@
   inline-size: 100%;
   block-size: var(--scroll-progress);
 }
+
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up */
+}
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .indicator {
+  background-color: var(--color-grey-700);
+}
+
+[data-theme="dark"] .progress {
+  background-color: var(--color-white);
+}
+

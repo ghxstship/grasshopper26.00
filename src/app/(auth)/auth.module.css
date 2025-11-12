@@ -178,7 +178,7 @@
   font-family: var(--font-family-mono);
   font-size: var(--font-size-sm);
   line-height: var(--line-height-normal);
-  color: var(--color-bg-primary);
+  color: var(--color-text-inverse);
 }
 
 @media (min-width: 40rem) {
@@ -193,7 +193,7 @@
 .link {
   font-family: var(--font-family-mono);
   font-size: inherit;
-  color: var(--color-bg-primary);
+  color: var(--color-text-inverse);
   text-decoration: underline;
   text-decoration-thickness: 0.125rem;
   text-underline-offset: 0.125rem;
@@ -356,6 +356,36 @@
 }
 
 /* ========================================
+   PASSWORD TOGGLE
+   ======================================== */
+.passwordToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  transition: color var(--duration-fast) var(--easing-out);
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
+}
+
+.passwordToggle:hover {
+  color: var(--color-text-primary);
+}
+
+.passwordToggle:focus-visible {
+  outline: var(--border-width-2) solid var(--color-border-focus);
+  outline-offset: 0.125rem;
+}
+
+.passwordToggle:active {
+  transform: scale(0.95);
+}
+
+/* ========================================
    CHECKBOX SECTION
    ======================================== */
 .checkboxRow {
@@ -400,23 +430,100 @@
 }
 
 /* DARK MODE */
-[data-theme="dark"] .container,
-[data-theme="dark"] .card,
-[data-theme="dark"] .content,
-[data-theme="dark"] .section {
+:global([data-theme="dark"]) .container,
+:global([data-theme="dark"]) .card,
+:global([data-theme="dark"]) .content,
+:global([data-theme="dark"]) .section {
   background-color: var(--color-bg-primary);
 }
 
-[data-theme="dark"] .button,
-[data-theme="dark"] .input,
-[data-theme="dark"] .select,
-[data-theme="dark"] .textarea {
+:global([data-theme="dark"]) .button,
+:global([data-theme="dark"]) .input,
+:global([data-theme="dark"]) .select,
+:global([data-theme="dark"]) .textarea {
   background-color: var(--color-bg-primary);
   border-color: var(--color-border-strong);
   color: var(--color-text-primary);
 }
 
-[data-theme="dark"] .button:hover {
+:global([data-theme="dark"]) .button:hover {
   background-color: var(--color-text-primary);
   color: var(--color-text-inverse);
+}
+
+/* ========================================
+   VERIFY EMAIL PAGE
+   ======================================== */
+.container {
+  min-block-size: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  background-color: var(--color-bg-inverse);
+}
+
+.textCenter {
+  text-align: center;
+}
+
+.loadingIcon {
+  inline-size: var(--space-16);
+  block-size: var(--space-16);
+  margin-inline: auto;
+  margin-block-end: var(--space-4);
+  color: var(--color-text-secondary);
+  animation: spin 1s linear infinite;
+}
+
+.successIcon {
+  inline-size: var(--space-16);
+  block-size: var(--space-16);
+  margin-inline: auto;
+  margin-block-end: var(--space-4);
+  color: var(--color-text-primary);
+}
+
+.subtitle {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-normal);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-text-primary);
+  margin-block-end: var(--space-2);
+}
+
+.bodyText {
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  margin-block-end: var(--space-4);
+}
+
+.errorBox {
+  padding: var(--space-3);
+  background-color: var(--color-error-bg);
+  border: var(--border-width-3) solid var(--color-error-border);
+  margin-block-start: var(--space-2);
+}
+
+.errorText {
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  color: var(--color-error-text);
+  margin: 0;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+:global([data-theme="dark"]) .container {
+  background-color: var(--color-bg-primary);
 }

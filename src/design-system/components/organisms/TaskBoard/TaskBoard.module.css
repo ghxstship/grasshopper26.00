@@ -150,3 +150,44 @@
   border-color: var(--color-black);
   color: var(--color-text-primary);
 }
+
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up */
+}
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .board {
+  background-color: var(--color-grey-800);
+}
+
+[data-theme="dark"] .columnHeader {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+[data-theme="dark"] .columnContent {
+  background-color: var(--color-black);
+}
+
+[data-theme="dark"] .taskCard {
+  background-color: var(--color-black);
+}
+
+[data-theme="dark"] .addButton {
+  background-color: var(--color-black);
+}
+

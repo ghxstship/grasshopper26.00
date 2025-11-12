@@ -1,0 +1,539 @@
+/* Staff Dashboard - Design System Compliant */
+
+.container {
+  min-block-size: 100vh;
+  background-color: var(--color-bg-primary);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-block-size: 100vh;
+  padding-block: var(--space-8);
+  padding-inline: var(--space-4);
+}
+
+.title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+}
+
+.subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-block-start: var(--space-4);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding-block: var(--space-4);
+  padding-inline: var(--space-4);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.icon {
+  inline-size: var(--space-4);
+  block-size: var(--space-4);
+  margin-inline-end: var(--space-2);
+}
+
+.spinner {
+  inline-size: var(--space-12);
+  block-size: var(--space-12);
+  border-block-end: var(--border-width-2) solid var(--color-text-primary);
+  border-radius: var(--radius-none);
+  margin-inline: auto;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.emptyState {
+  text-align: center;
+  max-inline-size: 28rem;
+}
+
+.emoji {
+  font-size: var(--font-size-6xl);
+  margin-block-end: var(--space-4);
+}
+
+.stickyHeader {
+  background-color: var(--color-bg-primary);
+  border-block-end: var(--border-width-thin) solid var(--color-border-default);
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 10;
+}
+
+.pageTitle {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-secondary);
+}
+
+.selectorContainer {
+  padding-inline: var(--space-4);
+  padding-block-end: var(--space-4);
+}
+
+.select {
+  inline-size: 100%;
+  padding-block: var(--space-3);
+  padding-inline: var(--space-3);
+  border: var(--border-width-3) solid var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+  font-family: var(--font-share-tech);
+}
+
+.select:focus {
+  outline: var(--border-width-3) solid var(--color-text-primary);
+  outline-offset: 0.125rem;
+}
+
+.card {
+  background-color: var(--color-bg-primary);
+  border: var(--border-width-3) solid var(--color-text-primary);
+  box-shadow: var(--shadow-md);
+  padding-block: var(--space-4);
+  padding-inline: var(--space-4);
+}
+
+.cardTitle {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+  margin-block-end: var(--space-2);
+}
+
+.infoText {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+}
+
+.statsCard {
+  background-color: var(--color-text-primary);
+  border: var(--border-width-3) solid var(--color-text-primary);
+  box-shadow: var(--shadow-md);
+  padding-block: var(--space-4);
+  padding-inline: var(--space-4);
+}
+
+.refreshButton {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.refreshButton:hover {
+  color: var(--color-text-primary);
+}
+
+.progressSection {
+  margin-block-start: var(--space-4);
+}
+
+.progressHeader {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--font-size-sm);
+  margin-block-end: var(--space-1);
+}
+
+.progressLabel {
+  color: var(--color-text-primary);
+}
+
+.progressValue {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+}
+
+.progressBarBg {
+  inline-size: 100%;
+  background-color: var(--color-bg-secondary);
+  block-size: var(--space-3);
+  border-radius: var(--radius-none);
+}
+
+.progressBarFill {
+  block-size: var(--space-3);
+  background-color: var(--color-bg-secondary);
+  border-radius: var(--radius-none);
+  transition: width 0.3s ease;
+}
+
+.progressPercent {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  margin-block-start: var(--space-1);
+}
+
+.statBox {
+  background-color: var(--color-bg-primary);
+  border: var(--border-width-3) solid var(--color-text-primary);
+  padding-block: var(--space-3);
+  padding-inline: var(--space-3);
+  text-align: center;
+}
+
+.statValue {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+}
+
+.statLabel {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.warningBox {
+  margin-block-start: var(--space-3);
+  background-color: var(--color-bg-secondary);
+  border: var(--border-width-3) solid var(--color-text-primary);
+  padding-block: var(--space-3);
+  padding-inline: var(--space-3);
+}
+
+.warningTitle {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.warningText {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-primary);
+}
+
+.actionButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-block: var(--space-4);
+  padding-inline: var(--space-3);
+  border: var(--border-width-2) solid var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.actionButton:hover {
+  background-color: var(--color-bg-secondary);
+}
+
+.actionIcon {
+  font-size: var(--font-size-3xl);
+  margin-block-end: var(--space-2);
+}
+
+.actionLabel {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+
+.activityItem {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.activityIcon {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-lg);
+}
+
+.activityContent {
+  flex: 1;
+}
+
+.activityTitle {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+}
+
+.activityTime {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.helpButton {
+  inline-size: 100%;
+  text-align: start;
+  padding-block: var(--space-3);
+  padding-inline: var(--space-3);
+  background-color: var(--color-bg-secondary);
+  border: var(--border-width-3) solid var(--color-text-primary);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-family: var(--font-share-tech);
+}
+
+.helpButton:hover {
+  background-color: var(--color-bg-secondary);
+}
+
+.bottomPadding {
+  block-size: var(--space-16);
+}
+
+
+.bgBlack {
+  background-color: var(--color-text-primary);
+}
+
+.bgWhite {
+  background-color: var(--color-bg-primary);
+}
+
+.borderBlack {
+  border-color: var(--color-text-primary);
+}
+
+.emptyIcon {
+  inline-size: var(--space-16);
+  block-size: var(--space-16);
+  margin-inline: auto;
+  color: var(--color-text-secondary);
+  margin-block-end: var(--space-4);
+}
+
+.textGrey600 {
+  color: var(--color-text-secondary);
+}
+
+.textGrey700 {
+  color: var(--color-text-secondary);
+}
+
+.textBlack {
+  color: var(--color-text-primary);
+}
+
+.textWhite {
+  color: var(--color-bg-primary);
+}
+
+.flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flexBetween {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.gap2 {
+  gap: var(--space-2);
+}
+
+.gap4 {
+  gap: var(--space-4);
+}
+
+
+.fullWidth {
+  inline-size: 100%;
+}
+
+.fullHeight {
+  block-size: 100%;
+}
+
+.marginBottom {
+  margin-block-end: var(--space-4);
+}
+
+.marginTop {
+  margin-block-start: var(--space-4);
+}
+
+.textSmall {
+  font-size: var(--font-size-sm);
+}
+
+.textLarge {
+  font-size: var(--font-size-lg);
+}
+
+.fontBold {
+  font-weight: var(--font-weight-semibold);
+}
+
+.fontMedium {
+  font-weight: var(--font-weight-medium);
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.rounded {
+  border-radius: var(--radius-none);
+}
+
+.shadow {
+  box-shadow: var(--shadow-lg);
+}
+
+/* RESPONSIVE BREAKPOINTS */
+/* Mobile-first: Base styles above are for mobile */
+
+/* Small screens (640px+) - Tablets portrait */
+@media (min-width: var(--space-96)) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+  }
+
+  .section {
+    padding-block: var(--space-6);
+    padding-inline: var(--space-6);
+  }
+
+  .card {
+    padding-block: var(--space-6);
+    padding-inline: var(--space-6);
+  }
+
+  .pageTitle {
+    font-size: var(--font-size-2xl);
+  }
+
+  .title {
+    font-size: var(--font-size-3xl);
+  }
+}
+
+/* Medium screens (768px+) - Tablets landscape */
+@media (min-width: var(--space-96)) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+  }
+
+  .selectorContainer {
+    padding-inline: var(--space-6);
+  }
+
+  .actionButton {
+    padding-block: var(--space-5);
+    padding-inline: var(--space-4);
+  }
+}
+
+/* Large screens (1024px+) - Desktop */
+@media (min-width: var(--space-96)) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .section {
+    padding-block: var(--space-8);
+    padding-inline: var(--space-8);
+  }
+
+  .card {
+    padding-block: var(--space-8);
+    padding-inline: var(--space-8);
+  }
+
+  .pageTitle {
+    font-size: var(--font-size-3xl);
+  }
+
+  .title {
+    font-size: var(--font-size-4xl);
+  }
+}
+
+/* Extra large screens (1536px+) - Wide desktop */
+@media (min-width: var(--space-96)) {
+  .section {
+    padding-inline: var(--space-12);
+  }
+}
+
+/* DARK MODE */
+/* Theme tokens automatically handle most color switching */
+/* These overrides ensure proper contrast and visibility in dark mode */
+
+:global([data-theme="dark"]) .container,
+:global([data-theme="dark"]) .card,
+:global([data-theme="dark"]) .content,
+:global([data-theme="dark"]) .section {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+
+:global([data-theme="dark"]) .statsCard {
+  background-color: var(--color-bg-secondary);
+  border-color: var(--color-border-strong);
+}
+
+:global([data-theme="dark"]) .stickyHeader {
+  background-color: var(--color-bg-primary);
+  border-block-end-color: var(--color-border-strong);
+}
+
+:global([data-theme="dark"]) .button,
+:global([data-theme="dark"]) .input,
+:global([data-theme="dark"]) .select,
+:global([data-theme="dark"]) .textarea,
+:global([data-theme="dark"]) .helpButton {
+  background-color: var(--color-bg-primary);
+  border-color: var(--color-border-strong);
+  color: var(--color-text-primary);
+}
+
+:global([data-theme="dark"]) .button:hover,
+:global([data-theme="dark"]) .actionButton:hover,
+:global([data-theme="dark"]) .helpButton:hover {
+  background-color: var(--color-bg-secondary);
+}
+
+:global([data-theme="dark"]) .progressBarBg {
+  background-color: var(--color-bg-tertiary);
+}
+
+:global([data-theme="dark"]) .progressBarFill {
+  background-color: var(--color-text-primary);
+}
+
+:global([data-theme="dark"]) .warningBox {
+  background-color: var(--color-bg-secondary);
+  border-color: var(--color-border-strong);
+}
+
+:global([data-theme="dark"]) .statBox {
+  background-color: var(--color-bg-primary);
+  border-color: var(--color-border-strong);
+}

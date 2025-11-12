@@ -137,3 +137,21 @@
 .autoplayIndicator.paused {
   opacity: 0.6;
 }
+
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .navButton {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+[data-theme="dark"] .autoplayIndicator {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+

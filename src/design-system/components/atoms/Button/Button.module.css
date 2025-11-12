@@ -140,7 +140,7 @@
    ======================================== */
 
 .sm {
-  min-height: 2.25rem;
+  min-height: var(--font-size-4xl);
   padding-inline: var(--space-3);
   padding-block: var(--space-1-5);
   font-size: var(--font-size-xs);
@@ -156,7 +156,7 @@
 }
 
 .lg {
-  min-height: 3rem;
+  min-height: var(--font-size-5xl);
   padding-inline: var(--space-6);
   padding-block: var(--space-3);
   font-size: var(--font-size-base);
@@ -199,8 +199,8 @@
 
 .spinnerBlock {
   display: block;
-  width: 1rem;
-  height: 1rem;
+  width: var(--font-size-base);
+  height: var(--font-size-base);
   border: var(--border-width-2) solid var(--color-border-default);
   border-block-start-color: var(--color-border-strong);
   animation: spin var(--duration-slower) var(--easing-linear) infinite;

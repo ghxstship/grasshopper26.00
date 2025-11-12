@@ -226,3 +226,16 @@
   inset-inline-end: 10%;
   border-radius: var(--radius-none);
 }
+
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .featureIcon {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+

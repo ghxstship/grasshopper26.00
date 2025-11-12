@@ -153,3 +153,31 @@
 .actionButton.delete:hover {
   background-color: var(--color-grey-900);
 }
+
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up */
+}
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .lineItem {
+  background-color: var(--color-black);
+}
+
+[data-theme="dark"] .actionButton {
+  background-color: var(--color-black);
+}
+

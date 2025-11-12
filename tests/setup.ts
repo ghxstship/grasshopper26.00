@@ -38,61 +38,10 @@ vi.mock('next/headers', () => ({
 }));
 
 // Mock Supabase client with proper chain support
-vi.mock('@/lib/supabase/server', () => {
-  const createMockQueryBuilder = () => {
-    const builder = {
-      select: vi.fn().mockReturnThis(),
-      insert: vi.fn().mockReturnThis(),
-      update: vi.fn().mockReturnThis(),
-      delete: vi.fn().mockReturnThis(),
-      eq: vi.fn().mockReturnThis(),
-      neq: vi.fn().mockReturnThis(),
-      gt: vi.fn().mockReturnThis(),
-      gte: vi.fn().mockReturnThis(),
-      lt: vi.fn().mockReturnThis(),
-      lte: vi.fn().mockReturnThis(),
-      like: vi.fn().mockReturnThis(),
-      ilike: vi.fn().mockReturnThis(),
-      is: vi.fn().mockReturnThis(),
-      in: vi.fn().mockReturnThis(),
-      contains: vi.fn().mockReturnThis(),
-      match: vi.fn().mockReturnThis(),
-      not: vi.fn().mockReturnThis(),
-      or: vi.fn().mockReturnThis(),
-      filter: vi.fn().mockReturnThis(),
-      order: vi.fn().mockReturnThis(),
-      limit: vi.fn().mockReturnThis(),
-      range: vi.fn().mockReturnThis(),
-      single: vi.fn().mockResolvedValue({ data: null, error: null }),
-      maybeSingle: vi.fn().mockResolvedValue({ data: null, error: null }),
-      then: vi.fn((resolve) => resolve({ data: null, error: null })),
-    };
-    return builder;
-  };
-
+vi.mock('@/lib/supabase/server', async () => {
+  const { createMockSupabaseClient } = await import('./utils/supabase-mock');
   return {
-    createClient: vi.fn(() => ({
-      auth: {
-        getUser: vi.fn().mockResolvedValue({ data: { user: null }, error: null }),
-        getSession: vi.fn().mockResolvedValue({ data: { session: null }, error: null }),
-        signInWithPassword: vi.fn().mockResolvedValue({ data: null, error: null }),
-        signUp: vi.fn().mockResolvedValue({ data: null, error: null }),
-        signOut: vi.fn().mockResolvedValue({ error: null }),
-        resetPasswordForEmail: vi.fn().mockResolvedValue({ data: null, error: null }),
-        verifyOtp: vi.fn().mockResolvedValue({ data: null, error: null }),
-        updateUser: vi.fn().mockResolvedValue({ data: null, error: null }),
-        onAuthStateChange: vi.fn().mockReturnValue({ data: { subscription: { unsubscribe: vi.fn() } } }),
-      },
-      from: vi.fn(() => createMockQueryBuilder()),
-      storage: {
-        from: vi.fn(() => ({
-          upload: vi.fn().mockResolvedValue({ data: null, error: null }),
-          getPublicUrl: vi.fn().mockReturnValue({ data: { publicUrl: 'https://test.com/image.jpg' } }),
-          remove: vi.fn().mockResolvedValue({ data: null, error: null }),
-        })),
-      },
-      rpc: vi.fn().mockResolvedValue({ data: null, error: null }),
-    })),
+    createClient: vi.fn(() => createMockSupabaseClient()),
   };
 });
 

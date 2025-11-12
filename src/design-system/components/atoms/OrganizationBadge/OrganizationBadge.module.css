@@ -39,3 +39,31 @@
 .vendor {
   background-color: var(--color-bg-tertiary);
 }
+
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up */
+}
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .venue {
+  background-color: var(--color-grey-800);
+}
+
+[data-theme="dark"] .artist_management {
+  background-color: var(--color-grey-700);
+}
+

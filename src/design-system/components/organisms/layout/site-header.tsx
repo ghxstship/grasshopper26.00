@@ -46,6 +46,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
   const [scrollState, setScrollState] = React.useState<'top' | 'scrolling' | 'scrolled'>('top');
   const [scrollDirection, setScrollDirection] = React.useState<'up' | 'down'>('up');
+  const [scrollProgress, setScrollProgress] = React.useState(0);
   const [mousePosition, setMousePosition] = React.useState({ x: 0, y: 0 });
   const [searchOpen, setSearchOpen] = React.useState(false);
   const { theme, cycleTheme, mounted } = useTheme();
@@ -74,6 +75,11 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
           } else {
             setScrollState('scrolling');
           }
+          
+          // Calculate scroll progress
+          const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+          const progress = scrollHeight > 0 ? Math.min(currentScrollY / scrollHeight, 1) : 0;
+          setScrollProgress(progress);
           
           lastScrollY.current = currentScrollY;
           ticking = false;
@@ -288,7 +294,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
         <div 
           className={styles.scrollProgress} 
           style={{ 
-            transform: `scaleX(${Math.min(window.scrollY / (document.documentElement.scrollHeight - window.innerHeight), 1)})` 
+            transform: `scaleX(${scrollProgress})` 
           }}
           aria-hidden="true"
         />

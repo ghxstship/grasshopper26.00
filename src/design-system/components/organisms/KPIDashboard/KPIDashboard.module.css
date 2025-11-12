@@ -162,3 +162,31 @@
   color: var(--color-text-secondary);
   line-height: var(--line-height-relaxed);
 }
+
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up */
+}
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .dashboard {
+  background-color: var(--color-black);
+}
+
+[data-theme="dark"] .card {
+  background-color: var(--color-black);
+}
+

@@ -229,3 +229,16 @@
   background-color: transparent;
   color: var(--color-text-secondary);
 }
+
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .category {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+

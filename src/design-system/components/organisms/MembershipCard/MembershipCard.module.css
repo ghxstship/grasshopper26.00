@@ -23,8 +23,8 @@
 }
 
 .badge {
-  width: 3rem;
-  height: 3rem;
+  width: var(--font-size-5xl);
+  height: var(--font-size-5xl);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -69,3 +69,27 @@
   font-size: var(--font-size-meta);
   color: var(--color-text-primary);
 }
+
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up */
+}
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .card {
+  color: var(--color-black);
+}
+

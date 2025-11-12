@@ -95,8 +95,8 @@
   align-items: center;
   justify-content: center;
   
-  width: 1rem;
-  height: 1rem;
+  width: var(--font-size-base);
+  height: var(--font-size-base);
   padding: 0;
   
   border: none;

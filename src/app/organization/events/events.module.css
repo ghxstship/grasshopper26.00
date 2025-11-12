@@ -38,7 +38,19 @@
 }
 
 /* DARK MODE */
-[data-theme="dark"] .eventRow {
+:global([data-theme="dark"]) .eventRow {
   background-color: var(--color-bg-primary);
   border-color: var(--color-border-default);
+}
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up - add styles as needed */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up - add styles as needed */
 }

@@ -12,3 +12,28 @@
   color: var(--color-black);
   border: var(--border-width-thin) solid var(--color-grey-300);
 }
+
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up */
+}
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .code {
+  background-color: var(--color-grey-800);
+  color: var(--color-white);
+}
+

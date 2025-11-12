@@ -2,11 +2,23 @@ import { type NextRequest, NextResponse } from 'next/server'
 import { updateSession } from '@/lib/supabase/middleware'
 import { applySecurityHeaders } from '@/lib/security/headers'
 import { csrfProtection } from '@/lib/security/csrf'
-import { createClient } from '@/lib/supabase/server'
+import { createServerClient } from '@supabase/ssr'
 
 async function getUserRole(request: NextRequest): Promise<string | null> {
   try {
-    const supabase = await createClient();
+    const supabase = createServerClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      {
+        cookies: {
+          get(name: string) {
+            return request.cookies.get(name)?.value
+          },
+          set() {},
+          remove() {},
+        },
+      }
+    );
     const { data: { user } } = await supabase.auth.getUser();
     
     if (!user) return null;
@@ -55,8 +67,11 @@ export async function middleware(request: NextRequest) {
   const hostname = request.headers.get('host') || '';
   const url = request.nextUrl.clone();
   
+  // Skip subdomain routing in local development
+  const isLocalDev = hostname.includes('localhost') || hostname.includes('127.0.0.1');
+  
   // Subdomain routing: app.gvteway.xyz for authenticated dashboards
-  if (hostname.startsWith('app.')) {
+  if (!isLocalDev && hostname.startsWith('app.')) {
     // Role-based routing for root path on app subdomain
     if (url.pathname === '/') {
       const role = await getUserRole(request);
@@ -71,17 +86,17 @@ export async function middleware(request: NextRequest) {
       // Route based on role
       switch (role) {
         case 'platform_admin':
-          url.pathname = '/'; // Legend dashboard (route group, no prefix)
+          url.pathname = '/legend/dashboard';
           break;
         case 'org_admin':
-          url.pathname = '/organization';
+          url.pathname = '/organization/dashboard';
           break;
         case 'staff':
-          url.pathname = '/team/staff/dashboard';
+          url.pathname = '/team/dashboard';
           break;
         case 'member':
         default:
-          url.pathname = '/member/portal';
+          url.pathname = '/member/dashboard';
           break;
       }
       
@@ -95,9 +110,9 @@ export async function middleware(request: NextRequest) {
       url.host = hostname.replace('app.', '');
       return NextResponse.redirect(url);
     }
-  } else {
+  } else if (!isLocalDev) {
     // Main domain: block authenticated dashboard routes
-    const dashboardRoutes = ['/organization', '/member', '/team'];
+    const dashboardRoutes = ['/legend', '/organization', '/member', '/team'];
     if (dashboardRoutes.some(route => url.pathname.startsWith(route))) {
       // Redirect to app subdomain
       url.host = `app.${hostname}`;

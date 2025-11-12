@@ -124,3 +124,31 @@
   letter-spacing: var(--letter-spacing-wider);
   color: var(--color-text-secondary);
 }
+
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up */
+}
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .availabilityBar {
+  background-color: var(--color-grey-700);
+}
+
+[data-theme="dark"] .availabilityFill {
+  background-color: var(--color-grey-100);
+}
+

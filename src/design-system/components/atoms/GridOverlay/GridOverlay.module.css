@@ -46,3 +46,35 @@
 .grey {
   --grid-color: var(--color-grey-500);
 }
+
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up */
+}
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .black {
+  --grid-color: var(--color-white);
+}
+
+[data-theme="dark"] .white {
+  --grid-color: var(--color-black);
+}
+
+[data-theme="dark"] .grey {
+  --grid-color: var(--color-grey-400);
+}
+

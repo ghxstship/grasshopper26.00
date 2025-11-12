@@ -76,7 +76,7 @@
   line-height: var(--line-height-tight);
   letter-spacing: var(--letter-spacing-tight);
   text-transform: uppercase;
-  color: var(--color-white);
+  color: var(--color-text-inverse);
 }
 
 @media (min-width: 40rem) {
@@ -96,9 +96,9 @@
 
 .inverted .card {
   background-color: var(--color-bg-inverse);
-  border-color: var(--color-border-inverse);
+  border-color: var(--color-border-strong);
   box-shadow: var(--shadow-base);
-  color: var(--color-white);
+  color: var(--color-text-inverse);
 }
 
 /* Footer */
@@ -106,7 +106,7 @@
   text-align: center;
   font-family: var(--font-family-mono);
   font-size: var(--font-size-sm);
-  color: var(--color-white);
+  color: var(--color-text-inverse);
   padding-inline: var(--space-2);
   word-wrap: break-word;
   flex-shrink: 0;
@@ -152,4 +152,26 @@
       transform: translateY(0);
     }
   }
+}
+
+/* ========================================
+   DARK MODE
+   ======================================== */
+[data-theme="dark"] .layout {
+  background-color: var(--color-bg-primary);
+}
+
+[data-theme="dark"] .layout.inverted {
+  background-color: var(--color-bg-inverse);
+}
+
+[data-theme="dark"] .card {
+  background-color: var(--color-bg-primary);
+  border-color: var(--color-border-strong);
+  box-shadow: var(--shadow-base);
+}
+
+[data-theme="dark"] .inverted .card {
+  background-color: var(--color-bg-inverse);
+  border-color: var(--color-border-strong);
 }

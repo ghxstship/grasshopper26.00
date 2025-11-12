@@ -73,3 +73,40 @@
 .submitButton:hover {
   transform: scale(1.02);
 }
+
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up */
+}
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .form {
+  background-color: var(--color-black);
+}
+
+[data-theme="dark"] .required {
+  color: var(--color-grey-100);
+}
+
+[data-theme="dark"] .textarea {
+  background-color: var(--color-black);
+}
+
+[data-theme="dark"] .submitButton {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+

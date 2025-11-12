@@ -197,3 +197,61 @@
   gap: var(--spacing-2);
   margin-block-start: var(--spacing-2);
 }
+
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (min-width: var(--space-96)) {
+  /* Tablet and up */
+}
+
+@media (min-width: var(--space-96)) {
+  /* Desktop and up */
+}
+
+
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] .thread {
+  background-color: var(--color-black);
+}
+
+[data-theme="dark"] .header {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+[data-theme="dark"] .count {
+  background-color: var(--color-grey-200);
+}
+
+[data-theme="dark"] .replyInput {
+  background-color: var(--color-black);
+}
+
+[data-theme="dark"] .submitButton {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+[data-theme="dark"] .attachment {
+  color: var(--color-white);
+}
+
+[data-theme="dark"] .actionButton {
+  background-color: var(--color-black);
+}
+
+[data-theme="dark"] .replyBox {
+  background-color: var(--color-black);
+}
+
+[data-theme="dark"] .cancelButton {
+  background-color: var(--color-black);
+}
+

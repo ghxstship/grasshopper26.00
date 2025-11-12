@@ -1,0 +1,104 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  inline-size: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: var(--spacing-sm);
+  padding-inline: var(--spacing-md);
+  background-color: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.online {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  color: var(--color-success);
+  font-weight: var(--font-weight-medium);
+}
+
+.offline {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  color: var(--color-warning);
+  font-weight: var(--font-weight-medium);
+}
+
+.syncButton {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding-block: var(--spacing-sm);
+  padding-inline: var(--spacing-md);
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.syncButton:hover:not(:disabled) {
+  background-color: var(--color-primary-hover);
+}
+
+.syncButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.scanner {
+  position: relative;
+  inline-size: 100%;
+  aspect-ratio: 4 / 3;
+  background-color: var(--color-background);
+  border: var(--border-width) solid var(--color-border);
+  overflow: hidden;
+}
+
+.video {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+
+.placeholder {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.error {
+  padding-block: var(--spacing-md);
+  padding-inline: var(--spacing-md);
+  background-color: var(--color-error-surface);
+  color: var(--color-error);
+  border: var(--border-width) solid var(--color-error);
+  border-radius: var(--border-radius-sm);
+}
+
+.offlineNotice {
+  padding-block: var(--spacing-sm);
+  padding-inline: var(--spacing-md);
+  background-color: var(--color-warning-surface);
+  color: var(--color-warning);
+  border: var(--border-width) solid var(--color-warning);
+  border-radius: var(--border-radius-sm);
+  text-align: center;
+}

@@ -359,3 +359,70 @@ export async function sendVipVoucherEmail(data: {
     html: template.html,
   });
 }
+
+/**
+ * Send event cancellation notification
+ */
+export async function sendEventCancellationEmail(data: {
+  to: string;
+  eventName: string;
+  eventDate: string;
+  venueName: string;
+  reason: string;
+  ticketCount: number;
+}) {
+  const subject = `Event Cancelled: ${data.eventName}`;
+  
+  const html = `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <style>
+          body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+          .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+          .header { background: #000; color: #fff; padding: 20px; text-align: center; }
+          .content { padding: 20px; background: #f9f9f9; }
+          .details { background: #fff; padding: 15px; margin: 15px 0; border-left: 4px solid #000; }
+          .footer { text-align: center; padding: 20px; color: #666; font-size: 12px; }
+          .button { display: inline-block; padding: 12px 24px; background: #000; color: #fff; text-decoration: none; margin: 15px 0; }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <div class="header">
+            <h1>Event Cancelled</h1>
+          </div>
+          <div class="content">
+            <p>We regret to inform you that the following event has been cancelled:</p>
+            
+            <div class="details">
+              <h2>${data.eventName}</h2>
+              <p><strong>Original Date:</strong> ${new Date(data.eventDate).toLocaleDateString()}</p>
+              <p><strong>Venue:</strong> ${data.venueName}</p>
+              <p><strong>Your Tickets:</strong> ${data.ticketCount}</p>
+            </div>
+            
+            <p><strong>Reason for Cancellation:</strong></p>
+            <p>${data.reason}</p>
+            
+            <p>Your tickets will be automatically refunded to your original payment method within 5-10 business days.</p>
+            
+            <p>We sincerely apologize for any inconvenience this may cause. We hope to see you at future events.</p>
+            
+            <a href="${process.env.NEXT_PUBLIC_APP_URL}/events" class="button">Browse Upcoming Events</a>
+          </div>
+          <div class="footer">
+            <p>GVTEWAY | Event Management Platform</p>
+            <p>If you have any questions, please contact support@gvteway.com</p>
+          </div>
+        </div>
+      </body>
+    </html>
+  `;
+
+  return sendResendEmail({
+    to: data.to,
+    subject,
+    html,
+  });
+}

@@ -259,22 +259,82 @@ export class MFAService {
   }
 
   /**
-   * Encrypt sensitive data (basic implementation - use proper encryption in production)
-   * In production, use a proper encryption library with key management
+   * Encrypt sensitive data using AES-256-GCM
+   * Uses environment variable for encryption key
    */
   private encryptSecret(data: string): string {
-    // TODO: Implement proper encryption with AES-256-GCM
-    // For now, just base64 encode (NOT SECURE - replace in production)
-    return Buffer.from(data).toString('base64');
+    const crypto = require('crypto');
+    const algorithm = 'aes-256-gcm';
+    
+    // Get encryption key from environment (must be 32 bytes for AES-256)
+    const encryptionKey = process.env.MFA_ENCRYPTION_KEY;
+    if (!encryptionKey) {
+      throw new Error('MFA_ENCRYPTION_KEY environment variable not set');
+    }
+    
+    // Ensure key is exactly 32 bytes
+    const key = crypto.createHash('sha256').update(encryptionKey).digest();
+    
+    // Generate random IV (12 bytes for GCM)
+    const iv = crypto.randomBytes(12);
+    
+    // Create cipher
+    const cipher = crypto.createCipheriv(algorithm, key, iv);
+    
+    // Encrypt data
+    let encrypted = cipher.update(data, 'utf8', 'hex');
+    encrypted += cipher.final('hex');
+    
+    // Get auth tag
+    const authTag = cipher.getAuthTag();
+    
+    // Combine IV + authTag + encrypted data
+    const combined = Buffer.concat([
+      iv,
+      authTag,
+      Buffer.from(encrypted, 'hex')
+    ]);
+    
+    return combined.toString('base64');
   }
 
   /**
-   * Decrypt sensitive data
+   * Decrypt sensitive data using AES-256-GCM
    */
   private decryptSecret(encrypted: string): string {
-    // TODO: Implement proper decryption
-    // For now, just base64 decode (NOT SECURE - replace in production)
-    return Buffer.from(encrypted, 'base64').toString('utf-8');
+    const crypto = require('crypto');
+    const algorithm = 'aes-256-gcm';
+    
+    // Get encryption key from environment
+    const encryptionKey = process.env.MFA_ENCRYPTION_KEY;
+    if (!encryptionKey) {
+      throw new Error('MFA_ENCRYPTION_KEY environment variable not set');
+    }
+    
+    // Ensure key is exactly 32 bytes
+    const key = crypto.createHash('sha256').update(encryptionKey).digest();
+    
+    // Decode from base64
+    const combined = Buffer.from(encrypted, 'base64');
+    
+    // Extract IV (first 12 bytes)
+    const iv = combined.subarray(0, 12);
+    
+    // Extract auth tag (next 16 bytes)
+    const authTag = combined.subarray(12, 28);
+    
+    // Extract encrypted data (remaining bytes)
+    const encryptedData = combined.subarray(28);
+    
+    // Create decipher
+    const decipher = crypto.createDecipheriv(algorithm, key, iv);
+    decipher.setAuthTag(authTag);
+    
+    // Decrypt data
+    let decrypted = decipher.update(encryptedData.toString('hex'), 'hex', 'utf8');
+    decrypted += decipher.final('utf8');
+    
+    return decrypted;
   }
 }
 

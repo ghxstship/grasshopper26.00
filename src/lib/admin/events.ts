@@ -153,7 +153,44 @@ export async function cancelEvent(eventId: string, reason?: string): Promise<voi
     throw new Error(`Failed to cancel event: ${error.message}`);
   }
 
-  // TODO: Send cancellation emails to ticket holders
+  // Send cancellation emails to all ticket holders
+  const { data: orders } = await supabase
+    .from('orders')
+    .select(`
+      id,
+      user_id,
+      attendee_email,
+      tickets(id, ticket_type_id, attendee_name)
+    `)
+    .eq('event_id', eventId)
+    .eq('status', 'completed');
+
+  if (orders && orders.length > 0) {
+    const { data: event } = await supabase
+      .from('events')
+      .select('name, start_date, venue_name')
+      .eq('id', eventId)
+      .single();
+
+    // Send cancellation email to each ticket holder
+    for (const order of orders) {
+      try {
+        // Import dynamically to avoid circular dependencies
+        const { sendEventCancellationEmail } = await import('@/lib/email/send');
+        
+        await sendEventCancellationEmail({
+          to: order.attendee_email,
+          eventName: event?.name || 'Event',
+          eventDate: event?.start_date || '',
+          venueName: event?.venue_name || '',
+          reason: reason || 'unforeseen circumstances',
+          ticketCount: order.tickets?.length || 0,
+        });
+      } catch (emailError) {
+        console.error(`Failed to send cancellation email to ${order.attendee_email}:`, emailError);
+      }
+    }
+  }
 }
 
 /**

@@ -21,13 +21,14 @@ async function getUserRole(request: NextRequest): Promise<string | null> {
     if (profile?.is_platform_admin) return 'platform_admin';
     
     // Check for organization admin
-    const { data: brandUser } = await supabase
-      .from('brand_users')
-      .select('role')
+    const { data: brandAssignment } = await supabase
+      .from('brand_team_assignments')
+      .select('team_role')
       .eq('user_id', user.id)
+      .eq('is_active', true)
       .single();
     
-    if (brandUser && ['admin', 'super_admin'].includes(brandUser.role)) {
+    if (brandAssignment && ['super_admin', 'admin'].includes(brandAssignment.team_role)) {
       return 'org_admin';
     }
     

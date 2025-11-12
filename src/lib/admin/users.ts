@@ -320,7 +320,33 @@ export async function refundTicket(
     created_at: new Date().toISOString(),
   });
 
-  // TODO: Process actual refund through Stripe
+  // Process actual refund through Stripe
+  const { data: order } = await supabase
+    .from('orders')
+    .select('stripe_payment_intent_id, total_amount')
+    .eq('id', ticket.order_id)
+    .single();
+
+  if (order?.stripe_payment_intent_id) {
+    try {
+      const { stripe } = await import('@/lib/stripe/server');
+      
+      // Create refund in Stripe
+      await stripe.refunds.create({
+        payment_intent: order.stripe_payment_intent_id,
+        amount: Math.round(parseFloat(ticket.price) * 100), // Convert to cents
+        reason: 'requested_by_customer',
+        metadata: {
+          ticket_id: ticketId,
+          admin_id: adminId,
+          reason: reason || 'Admin refund',
+        },
+      });
+    } catch (stripeError) {
+      console.error('Stripe refund failed:', stripeError);
+      throw new Error('Failed to process Stripe refund');
+    }
+  }
 }
 
 /**

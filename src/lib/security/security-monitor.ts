@@ -206,30 +206,62 @@ class SecurityMonitor {
     window: number;
     events: SecurityEvent[];
   }): Promise<void> {
-    // TODO: Integrate with alerting system
-    // Examples:
-    // - Send to Slack webhook
-    // - Send to PagerDuty
-    // - Send email to security team
-    // - Create incident in ticketing system
+    const alertMessage = {
+      text: `🚨 Security Alert: ${alert.type}`,
+      severity: alert.severity,
+      count: alert.count,
+      window: `${alert.window / 1000}s`,
+      timestamp: new Date().toISOString(),
+      events: alert.events.slice(0, 5), // Include first 5 events
+    };
 
-    if (process.env.NODE_ENV === 'production') {
-      // Example: Slack webhook
-      // await fetch(process.env.SLACK_SECURITY_WEBHOOK!, {
-      //   method: 'POST',
-      //   body: JSON.stringify({
-      //     text: `🚨 Security Alert: ${alert.type}`,
-      //     attachments: [{
-      //       color: alert.severity === SecuritySeverity.CRITICAL ? 'danger' : 'warning',
-      //       fields: [
-      //         { title: 'Severity', value: alert.severity, short: true },
-      //         { title: 'Count', value: alert.count.toString(), short: true },
-      //         { title: 'Time Window', value: `${alert.window / 1000}s`, short: true },
-      //       ],
-      //     }],
-      //   }),
-      // });
+    // Send to Slack if webhook is configured
+    if (process.env.SLACK_SECURITY_WEBHOOK) {
+      try {
+        await fetch(process.env.SLACK_SECURITY_WEBHOOK, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            text: `🚨 Security Alert: ${alert.type}`,
+            attachments: [{
+              color: alert.severity === SecuritySeverity.CRITICAL ? 'danger' : 'warning',
+              fields: [
+                { title: 'Severity', value: alert.severity, short: true },
+                { title: 'Count', value: alert.count.toString(), short: true },
+                { title: 'Time Window', value: `${alert.window / 1000}s`, short: true },
+                { title: 'First Event', value: alert.events[0]?.userId || 'Unknown', short: true },
+              ],
+            }],
+          }),
+        });
+      } catch (error) {
+        console.error('Failed to send Slack alert:', error);
+      }
     }
+
+    // Send email to security team if configured
+    if (process.env.SECURITY_TEAM_EMAIL) {
+      try {
+        const { sendEmail } = await import('@/lib/email/client');
+        await sendEmail({
+          to: process.env.SECURITY_TEAM_EMAIL,
+          subject: `Security Alert: ${alert.type} (${alert.severity})`,
+          html: `
+            <h2>Security Alert</h2>
+            <p><strong>Type:</strong> ${alert.type}</p>
+            <p><strong>Severity:</strong> ${alert.severity}</p>
+            <p><strong>Count:</strong> ${alert.count} events</p>
+            <p><strong>Time Window:</strong> ${alert.window / 1000}s</p>
+            <p><strong>First Event User:</strong> ${alert.events[0]?.userId || 'Unknown'}</p>
+            <p><strong>First Event IP:</strong> ${alert.events[0]?.metadata?.ip || 'Unknown'}</p>
+          `,
+        });
+      } catch (error) {
+        console.error('Failed to send security email:', error);
+      }
+    }
+
+    console.warn('Security Alert:', alertMessage);
   }
 
   /**

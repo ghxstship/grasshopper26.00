@@ -109,12 +109,27 @@ export async function GET(request: NextRequest) {
           atRiskMembers.push(membership.id);
           atRiskCount++;
 
-          // TODO: Send engagement email
-          // This could include:
-          // - Reminder about unused credits
-          // - Upcoming events they might like
-          // - Special member-only offers
-          // - Survey about their experience
+          // Send engagement email
+          try {
+            const { sendEmail } = await import('@/lib/email/client');
+            const { data: user } = await supabase.auth.admin.getUserById(membership.user_id);
+            
+            if (user?.user?.email) {
+              await sendEmail({
+                to: user.user.email,
+                subject: `You have ${membership.ticket_credits_remaining} unused ticket credits!`,
+                html: `
+                  <h2>Hi ${user.user.user_metadata?.name || 'there'}!</h2>
+                  <p>We noticed you have <strong>${membership.ticket_credits_remaining} ticket credits</strong> remaining in your membership account.</p>
+                  <p>Don't let them go to waste! Check out our upcoming events and use your credits before they expire.</p>
+                  <a href="${process.env.NEXT_PUBLIC_APP_URL}/events" style="display: inline-block; padding: 12px 24px; background: #000; color: #fff; text-decoration: none; margin: 15px 0;">Browse Events</a>
+                  <p>Need help? Reply to this email and we'll be happy to assist!</p>
+                `,
+              });
+            }
+          } catch (emailError) {
+            console.error(`Failed to send engagement email to membership ${membership.id}:`, emailError);
+          }
         }
       } catch (error) {
         console.error(`[CRON] Error analyzing membership ${membership.id}:`, error);

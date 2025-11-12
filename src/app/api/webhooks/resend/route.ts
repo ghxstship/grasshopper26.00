@@ -31,22 +31,55 @@ export async function POST(req: NextRequest) {
 
       case 'email.bounced':
         console.error(`Email bounced for ${data.to}:`, data.bounce);
-        // TODO: Mark user email as invalid
+        // Mark user email as invalid
+        await supabase
+          .from('user_profiles')
+          .update({ 
+            email_valid: false,
+            email_bounce_reason: data.bounce?.type || 'unknown'
+          })
+          .eq('email', data.to);
         break;
 
       case 'email.complained':
         console.error(`Spam complaint from ${data.to}`);
-        // TODO: Unsubscribe user from emails
+        // Unsubscribe user from marketing emails
+        await supabase
+          .from('user_profiles')
+          .update({ 
+            email_notifications: false,
+            marketing_emails: false,
+            unsubscribed_at: new Date().toISOString()
+          })
+          .eq('email', data.to);
         break;
 
       case 'email.opened':
         console.log(`Email opened by ${data.to}`);
-        // TODO: Track email engagement
+        // Track email engagement
+        await supabase
+          .from('email_logs')
+          .update({ 
+            opened_at: new Date().toISOString(),
+            open_count: supabase.rpc('increment', { row_id: data.email_id })
+          })
+          .eq('email_id', data.email_id);
         break;
 
       case 'email.clicked':
         console.log(`Link clicked in email by ${data.to}`);
-        // TODO: Track link clicks
+        // Track link clicks
+        await supabase
+          .from('email_logs')
+          .update({ 
+            clicked_at: new Date().toISOString(),
+            click_count: supabase.rpc('increment', { row_id: data.email_id }),
+            clicked_links: supabase.rpc('array_append', { 
+              arr: 'clicked_links', 
+              elem: data.link 
+            })
+          })
+          .eq('email_id', data.email_id);
         break;
 
       default:

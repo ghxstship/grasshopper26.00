@@ -84,8 +84,29 @@ export async function POST(
         performed_by: (await supabase.auth.getUser()).data.user?.id,
       });
 
-    // TODO: Implement actual email sending
-    // Example with Resend:
+    // Send tickets via email
+    try {
+      const { sendTicketDeliveryEmail } = await import('@/lib/email/send');
+      
+      await sendTicketDeliveryEmail({
+        to: userEmail,
+        customerName: order.attendee_name || 'Customer',
+        eventName: order.events.name,
+        tickets: ticketsToResend.map((t: any) => ({
+          id: t.id,
+          qrCode: t.qr_code,
+          attendeeName: t.attendee_name,
+        })),
+      });
+    } catch (emailError) {
+      console.error('Failed to send ticket email:', emailError);
+      return NextResponse.json(
+        { error: 'Tickets resent but email delivery failed' },
+        { status: 500 }
+      );
+    }
+
+    // Original commented code for reference:
     // await resend.emails.send({
     //   from: 'tickets@gvteway.com',
     //   to: userEmail,

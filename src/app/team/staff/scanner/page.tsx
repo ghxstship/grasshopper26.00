@@ -234,6 +234,7 @@ function ScannerContent() {
         <div >
           <div className={styles.card}>
             <QRScanner
+              eventId={eventId || ''}
               onScan={(ticketId: string) => handleScan(ticketId)}
             />
           </div>

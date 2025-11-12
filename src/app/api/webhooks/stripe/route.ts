@@ -5,6 +5,7 @@ import { createClient } from '@/lib/supabase/server'
 import { generateTicketQRCode } from '@/lib/tickets/qr-generator'
 import { sendOrderConfirmationEmail } from '@/lib/email/send'
 import { syncTicketSalesToATLVS } from '@/lib/integrations/atlvs'
+import { processWebhookWithIdempotency } from '@/lib/webhooks/idempotency'
 import Stripe from 'stripe'
 
 export async function POST(req: Request) {
@@ -30,9 +31,14 @@ export async function POST(req: Request) {
 
   const supabase = await createClient()
 
-  try {
-    switch (event.type) {
-      case 'checkout.session.completed': {
+  // Check idempotency and process webhook
+  const result = await processWebhookWithIdempotency(
+    event.id,
+    event.type,
+    'stripe',
+    async () => {
+      switch (event.type) {
+        case 'checkout.session.completed': {
         const session = event.data.object as Stripe.Checkout.Session
         
         // Update order status
@@ -92,8 +98,8 @@ export async function POST(req: Request) {
                 to: userData.user.email,
                 customerName: userData.user.user_metadata?.name || 'Customer',
                 orderNumber: order.id.slice(0, 8).toUpperCase(),
-                eventName: 'Event', // TODO: Get actual event name from order
-                ticketCount: 1, // TODO: Get actual ticket count
+                eventName: order.events?.name || 'Event',
+                ticketCount: order.tickets?.length || 0,
                 totalAmount: parseFloat(order.total_amount),
               });
             }
@@ -155,16 +161,24 @@ export async function POST(req: Request) {
         break
       }
 
-      default:
-        console.log(`Unhandled event type: ${event.type}`)
+        default:
+          console.log(`Unhandled event type: ${event.type}`)
+      }
+      return { received: true }
     }
+  )
 
-    return NextResponse.json({ received: true })
-  } catch (error) {
-    console.error('Error processing webhook:', error)
+  if (result.skipped) {
+    return NextResponse.json({ received: true, skipped: true })
+  }
+
+  if (!result.success) {
+    console.error('Webhook processing failed:', result.error)
     return NextResponse.json(
       { error: 'Webhook processing failed' },
       { status: 500 }
     )
   }
+
+  return NextResponse.json({ received: true })
 }

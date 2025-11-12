@@ -95,8 +95,47 @@ export async function POST(req: NextRequest) {
       metadata: metadata || null,
     });
 
-    // TODO: Send push notification to recipient
-    // TODO: Send email notification if user has email notifications enabled
+    // Send notifications to recipient
+    const { data: recipient } = await supabase
+      .from('user_profiles')
+      .select('email, email_notifications, push_notifications')
+      .eq('id', recipientId)
+      .single();
+
+    // Send push notification if enabled
+    if (recipient?.push_notifications) {
+      try {
+        // Store notification in database for in-app display
+        await supabase.from('notifications').insert({
+          user_id: recipientId,
+          type: 'new_message',
+          title: 'New Message',
+          message: `You have a new message from ${user.user_metadata?.name || 'a user'}`,
+          metadata: { message_id: newMessage.id, sender_id: user.id },
+        });
+      } catch (notifError) {
+        console.error('Failed to create notification:', notifError);
+      }
+    }
+
+    // Send email notification if enabled
+    if (recipient?.email_notifications && recipient?.email) {
+      try {
+        const { sendEmail } = await import('@/lib/email/client');
+        await sendEmail({
+          to: recipient.email,
+          subject: 'New Message on GVTEWAY',
+          html: `
+            <h2>You have a new message!</h2>
+            <p><strong>From:</strong> ${user.user_metadata?.name || 'A user'}</p>
+            <p><strong>Message:</strong> ${message.substring(0, 200)}${message.length > 200 ? '...' : ''}</p>
+            <a href="${process.env.NEXT_PUBLIC_APP_URL}/messages" style="display: inline-block; padding: 12px 24px; background: #000; color: #fff; text-decoration: none; margin: 15px 0;">View Message</a>
+          `,
+        });
+      } catch (emailError) {
+        console.error('Failed to send message email:', emailError);
+      }
+    }
 
     return NextResponse.json({ message: newMessage }, { status: 201 });
   } catch (error) {

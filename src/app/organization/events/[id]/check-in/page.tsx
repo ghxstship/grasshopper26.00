@@ -252,6 +252,7 @@ export default function EventCheckInPage({ params }: { params: Promise<{ id: str
               </CardHeader>
               <CardContent>
                 <QRScanner
+                  eventId={id}
                   onScan={(ticketNumber) => {
                     handleSearch();
                   }}

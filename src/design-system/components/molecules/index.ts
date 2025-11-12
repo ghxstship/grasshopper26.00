@@ -20,6 +20,7 @@ export * from './Modal/Modal';
 export * from './NavigationItem';
 export * from './NewsCard/NewsCard';
 export * from './NotificationBadge/NotificationBadge';
+export * from './ProductCard/ProductCard';
 export { Pagination as PaginationControl } from './Pagination/Pagination';
 export type { PaginationProps as PaginationControlProps } from './Pagination/Pagination';
 export { PriceDisplay as PriceCard } from './PriceDisplay/PriceDisplay';

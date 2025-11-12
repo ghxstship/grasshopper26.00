@@ -286,7 +286,6 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
               <span className={styles.menuLine} />
               <span className={styles.menuLine} />
             </span>
-            <span className={styles.menuLabel}>{mobileMenuOpen ? 'CLOSE' : 'MENU'}</span>
           </button>
         </div>
 

@@ -219,7 +219,7 @@
   gap: var(--space-2);
 }
 
-@media (min-width: var(--space-96)) {
+@media (min-width: 64rem) {
   .nav {
     display: flex;
     align-items: center;
@@ -387,14 +387,14 @@
   justify-self: end;
 }
 
-@media (min-width: var(--space-96)) {
+@media (min-width: 64rem) {
   .actions {
     display: flex;
     gap: var(--space-4);
   }
 }
 
-@media (min-width: var(--space-96)) {
+@media (min-width: 80rem) {
   .actions {
     gap: var(--space-5);
   }
@@ -648,9 +648,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--space-1);
-  inline-size: var(--space-12);
-  block-size: var(--space-12);
+  gap: 0;
+  inline-size: var(--space-11);
+  block-size: var(--space-11);
   background-color: var(--color-bg-primary);
   border: var(--border-width-3) solid var(--color-border-strong);
   padding: var(--space-2);
@@ -664,7 +664,7 @@
     box-shadow var(--duration-fast) var(--easing-out);
 }
 
-@media (min-width: var(--space-96)) {
+@media (min-width: 64rem) {
   .mobileMenuButton {
     display: none;
   }
@@ -742,6 +742,7 @@
   margin-block-start: var(--space-0-5);
   line-height: 1;
   transition: color var(--duration-fast) var(--easing-out);
+  display: none;
 }
 
 .mobileMenuButton:hover .menuLabel {
@@ -756,10 +757,10 @@
   color: var(--color-text-inverse);
 }
 
-@media (max-width: var(--space-96)) {
+@media (max-width: 48rem) {
   .mobileMenuButton {
-    inline-size: var(--space-11);
-    block-size: var(--space-11);
+    inline-size: var(--space-10);
+    block-size: var(--space-10);
   }
   
   .menuGeometric {
@@ -769,10 +770,6 @@
   
   .menuLine {
     block-size: var(--border-width-2);
-  }
-  
-  .menuLabel {
-    font-size: calc(var(--font-size-xs) * 0.85);
   }
 }
 
@@ -820,7 +817,7 @@
   border-inline-start-color: var(--color-border-strong);
 }
 
-@media (max-width: var(--space-96)) {
+@media (max-width: 48rem) {
   .mobileMenu {
     inline-size: min(100%, 320px);
   }
@@ -953,8 +950,13 @@
 
 .mobileCtaSection {
   padding-block: var(--space-6);
-  border-block-start: var(--border-width-2) solid var(--color-grey-800);
-  border-block-end: var(--border-width-2) solid var(--color-grey-800);
+  border-block-start: var(--border-width-2) solid var(--color-border-default);
+  border-block-end: var(--border-width-2) solid var(--color-border-default);
+}
+
+[data-theme="dark"] .mobileCtaSection {
+  border-block-start-color: var(--color-grey-700);
+  border-block-end-color: var(--color-grey-700);
 }
 
 .mobileCta {
@@ -965,9 +967,9 @@
   letter-spacing: var(--letter-spacing-wider);
   padding-block: var(--space-4);
   padding-inline: var(--space-6);
-  border: var(--border-width-3) solid var(--color-white);
+  border: var(--border-width-3) solid var(--color-text-inverse);
   background-color: transparent;
-  color: var(--color-white);
+  color: var(--color-text-inverse);
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -984,7 +986,7 @@
 .mobileCtaGeometric {
   position: absolute;
   inset: 0;
-  background-color: var(--color-white);
+  background-color: var(--color-text-inverse);
   transform: translateX(-100%);
   transition: transform var(--duration-base) var(--easing-out);
   z-index: 0;
@@ -996,7 +998,7 @@
 }
 
 .mobileCta:hover {
-  color: var(--color-black);
+  color: var(--color-text-primary);
   transform: scale(1.02);
 }
 
@@ -1028,7 +1030,11 @@
   gap: var(--space-2);
   padding-block: var(--space-4);
   padding-inline: var(--space-4);
-  border: var(--border-width-2) solid var(--color-grey-800);
+  border: var(--border-width-2) solid var(--color-border-default);
+}
+
+[data-theme="dark"] .mobileUserInfo {
+  border-color: var(--color-grey-700);
 }
 
 .mobileUserLabel {
@@ -1042,7 +1048,7 @@
 .mobileUserEmail {
   font-family: var(--font-family-share);
   font-size: var(--font-size-sm);
-  color: var(--color-white);
+  color: var(--color-text-inverse);
 }
 
 .mobileUserLinks {
@@ -1056,7 +1062,7 @@
   font-size: var(--font-size-lg);
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-wider);
-  color: var(--color-white);
+  color: var(--color-text-inverse);
   text-decoration: none;
   padding-block: var(--space-3);
   padding-inline: var(--space-4);
@@ -1070,7 +1076,7 @@
 }
 
 .mobileUserLink:hover {
-  border-inline-start-color: var(--color-white);
+  border-inline-start-color: var(--color-text-inverse);
   transform: translateX(var(--space-2));
 }
 
@@ -1082,9 +1088,9 @@
   letter-spacing: var(--letter-spacing-wider);
   padding-block: var(--space-3);
   padding-inline: var(--space-6);
-  border: var(--border-width-2) solid var(--color-grey-700);
+  border: var(--border-width-2) solid var(--color-border-default);
   background-color: transparent;
-  color: var(--color-white);
+  color: var(--color-text-inverse);
   cursor: pointer;
   transition: 
     background-color var(--duration-fast) var(--easing-out),
@@ -1092,10 +1098,19 @@
     transform var(--duration-fast) var(--easing-out);
 }
 
+[data-theme="dark"] .mobileSignOut {
+  border-color: var(--color-grey-700);
+}
+
 .mobileSignOut:hover {
+  background-color: var(--color-bg-tertiary);
+  border-color: var(--color-text-inverse);
+  transform: scale(1.02);
+}
+
+[data-theme="dark"] .mobileSignOut:hover {
   background-color: var(--color-grey-900);
   border-color: var(--color-white);
-  transform: scale(1.02);
 }
 
 .mobileSignOut:active {

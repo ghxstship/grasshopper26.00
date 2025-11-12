@@ -1,10 +1,6 @@
-import { Metadata } from 'next';
 import { LegalPageTemplate } from '@/design-system/components/templates';
 
-export const metadata: Metadata = {
-  title: 'Privacy Policy | GVTEWAY',
-  description: 'GVTEWAY Privacy Policy and Data Protection',
-};
+export const dynamic = 'force-dynamic';
 
 export default function PrivacyPage() {
   const sections = [

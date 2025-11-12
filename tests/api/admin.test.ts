@@ -71,7 +71,7 @@ describe('Admin API Routes', () => {
         }),
       });
 
-      const response = await CreateEventPOST(request);
+      const response = await CreateEventPOST(request as any);
       expect(response.status).toBe(201);
       const data = await response.json();
       expect(data).toHaveProperty('eventId');
@@ -88,7 +88,7 @@ describe('Admin API Routes', () => {
         }),
       });
 
-      const response = await CreateEventPOST(request);
+      const response = await CreateEventPOST(request as any);
       expect(response.status).toBe(400);
     });
 
@@ -106,7 +106,7 @@ describe('Admin API Routes', () => {
         }),
       });
 
-      const response = await CreateEventPOST(request);
+      const response = await CreateEventPOST(request as any);
       expect(response.status).toBe(400);
     });
   });
@@ -157,7 +157,7 @@ describe('Admin API Routes', () => {
         }),
       });
 
-      const response = await RefundOrderPOST(request, { params: { id: 'order-123' } });
+      const response = await RefundOrderPOST(request as any, { params: { id: 'order-123' } } as any);
       expect(response.status).toBe(200);
       const data = await response.json();
       expect(data).toHaveProperty('refundId');
@@ -174,7 +174,7 @@ describe('Admin API Routes', () => {
         }),
       });
 
-      const response = await RefundOrderPOST(request, { params: { id: 'refunded-order' } });
+      const response = await RefundOrderPOST(request as any, { params: { id: 'refunded-order' } } as any);
       expect(response.status).toBe(409);
     });
 
@@ -190,7 +190,7 @@ describe('Admin API Routes', () => {
         }),
       });
 
-      const response = await RefundOrderPOST(request, { params: { id: 'order-123' } });
+      const response = await RefundOrderPOST(request as any, { params: { id: 'order-123' } } as any);
       expect(response.status).toBe(400);
     });
   });

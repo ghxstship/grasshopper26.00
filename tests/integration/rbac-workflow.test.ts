@@ -12,14 +12,19 @@ describe('RBAC Workflow Integration', () => {
 
   describe('User Role Assignment Workflow', () => {
     it('should assign member role to new user', async () => {
-      const user = {
+      const user: {
+        id: string;
+        email: string;
+        member_role: string | null;
+        team_role: string | null;
+      } = {
         id: 'user-123',
         email: 'test@example.com',
         member_role: null,
         team_role: null,
       };
 
-      const assignMemberRole = (userId: string, role: string) => {
+      const assignMemberRole = (userId: string, role: string | null) => {
         user.member_role = role;
       };
 

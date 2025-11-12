@@ -54,17 +54,17 @@ describe('ReferralsPage', () => {
         error: null,
       }),
     },
-    from: vi.fn(() => ({
-      select: vi.fn().mockReturnThis(),
-      eq: vi.fn().mockReturnThis(),
-      single: vi.fn().mockResolvedValue({
+    from: vi.fn((...args: any[]) => ({
+      select: vi.fn((...args: any[]) => mockSupabase.from(...args)),
+      eq: vi.fn((...args: any[]) => mockSupabase.from(...args)),
+      single: vi.fn(() => Promise.resolve({
         data: { referral_code: 'REF123' },
         error: null,
-      }),
-      order: vi.fn().mockResolvedValue({
+      })),
+      order: vi.fn((...args: any[]) => Promise.resolve({
         data: mockReferrals,
         error: null,
-      }),
+      })),
     })),
   };
 
@@ -92,7 +92,7 @@ describe('ReferralsPage', () => {
     });
 
     it('should fetch existing referral code from database', async () => {
-      const result = await mockSupabase.from('users').select('referral_code').eq('id', 'user-123').single();
+      const result: any = await (mockSupabase.from('users') as any).select('referral_code').eq('id', 'user-123').single();
       
       expect(result.data?.referral_code).toBe('REF123');
     });

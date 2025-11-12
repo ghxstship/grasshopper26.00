@@ -8,8 +8,8 @@ import { createClient } from '@/lib/supabase/server';
 import { ShopBrowseClient } from './shop-client';
 
 export const metadata: Metadata = {
-  title: 'Shop | GVTEWAY',
-  description: 'Official GVTEWAY merchandise and event products',
+  title: 'Shops | GVTEWAY',
+  description: 'Discover brands and merchandise',
 };
 
 interface ShopPageProps {

@@ -1,10 +1,6 @@
-import { Metadata } from 'next';
 import { LegalPageTemplate } from '@/design-system/components/templates';
 
-export const metadata: Metadata = {
-  title: 'Terms of Service | GVTEWAY',
-  description: 'GVTEWAY Terms of Service',
-};
+export const dynamic = 'force-dynamic';
 
 export default function TermsPage() {
   const sections = [

@@ -54,8 +54,13 @@ describe('Design Token System', () => {
   
   describe('Typography Tokens', () => {
     it('has font families defined', () => {
-      expect(typography.fontFamily.sans).toBeDefined();
-      expect(typography.fontFamily.serif).toBeDefined();
+      expect(typography.fontFamily.anton).toBeDefined();
+      expect(typography.fontFamily.bebas).toBeDefined();
+      expect(typography.fontFamily.share).toBeDefined();
+      expect(typography.fontFamily.shareMono).toBeDefined();
+      expect(typography.fontFamily.hero).toBeDefined();
+      expect(typography.fontFamily.heading).toBeDefined();
+      expect(typography.fontFamily.body).toBeDefined();
       expect(typography.fontFamily.mono).toBeDefined();
     });
     

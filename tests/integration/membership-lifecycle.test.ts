@@ -37,7 +37,7 @@ describe('Membership Lifecycle Integration', () => {
     expect(tiers).toBeDefined();
     expect(tiers!.length).toBeGreaterThan(0);
 
-    const premiumTier = tiers!.find(t => t.name === 'Premium');
+    const premiumTier = tiers!.find((t: any) => t.name === 'Premium');
     expect(premiumTier).toBeDefined();
 
     // Step 2: Create subscription

@@ -7,6 +7,9 @@ import { SiteHeader } from '@/design-system/components/organisms/layout/site-hea
 import { SiteFooter } from '@/design-system/components/organisms/layout/site-footer';
 import styles from './layout.module.css';
 
+// Force dynamic rendering for all public pages to avoid window errors during SSR
+export const dynamic = 'force-dynamic';
+
 export default function PublicLayout({
   children,
 }: {

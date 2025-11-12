@@ -8,6 +8,9 @@ import { SearchBar } from '@/design-system/components/molecules/SearchBar/Search
 import { Select } from '@/design-system/components/atoms/Select/Select';
 import { Typography } from '@/design-system/components/atoms/Typography/Typography';
 import { Skeleton } from '@/design-system/components/atoms/Skeleton/Skeleton';
+import { Pagination } from '@/design-system/components/molecules/Pagination/Pagination';
+
+const ITEMS_PER_PAGE = 12;
 
 interface Artist {
   id: string;
@@ -28,6 +31,7 @@ export function ArtistsBrowseClient({ initialArtists, initialSearch }: ArtistsBr
   const [searchQuery, setSearchQuery] = useState(initialSearch || '');
   const [sortBy, setSortBy] = useState('name-asc');
   const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
 
   // Filter and sort artists
   let filteredArtists = initialArtists.filter(artist => {
@@ -56,15 +60,32 @@ export function ArtistsBrowseClient({ initialArtists, initialSearch }: ArtistsBr
     { value: 'name-desc', label: 'Name (Z-A)' },
   ];
 
+  // Pagination
+  const totalPages = Math.ceil(filteredArtists.length / ITEMS_PER_PAGE);
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const endIndex = startIndex + ITEMS_PER_PAGE;
+  const paginatedArtists = filteredArtists.slice(startIndex, endIndex);
+
+  // Reset to page 1 when filters change
+  const handleSearchChange = (value: string) => {
+    setSearchQuery(value);
+    setCurrentPage(1);
+  };
+
+  const handleSortChange = (value: string) => {
+    setSortBy(value);
+    setCurrentPage(1);
+  };
+
   return (
     <GridLayout
-      title="Discover Artists"
-      description={`Discover the incredible talent performing at GVTEWAY events`}
+      title="Music"
+      description="Discover artists and live music"
       search={
         <SearchBar
           placeholder="Search artists..."
           value={searchQuery}
-          onChange={setSearchQuery}
+          onChange={handleSearchChange}
           fullWidth
         />
       }
@@ -72,18 +93,27 @@ export function ArtistsBrowseClient({ initialArtists, initialSearch }: ArtistsBr
         <Select
           options={sortOptions}
           value={sortBy}
-          onChange={(e) => setSortBy(e.target.value)}
+          onChange={(e) => handleSortChange(e.target.value)}
           selectSize="md"
         />
       }
       columns={4}
+      pagination={
+        totalPages > 1 ? (
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={setCurrentPage}
+          />
+        ) : undefined
+      }
     >
       {loading ? (
         Array.from({ length: 6 }).map((_, i) => (
           <Skeleton key={i} variant="rectangular" height="320px" />
         ))
-      ) : filteredArtists.length > 0 ? (
-        filteredArtists.map((artist) => (
+      ) : paginatedArtists.length > 0 ? (
+        paginatedArtists.map((artist) => (
           <ArtistCard
             key={artist.id}
             artist={{
@@ -92,7 +122,7 @@ export function ArtistsBrowseClient({ initialArtists, initialSearch }: ArtistsBr
               genre: artist.genre_tags || [],
               imageUrl: artist.profile_image_url || '/placeholder-artist.jpg',
             }}
-            onClick={() => router.push(`/artists/${artist.slug}`)}
+            onClick={() => router.push(`/music/${artist.slug}`)}
             variant="square"
           />
         ))

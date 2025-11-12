@@ -24,7 +24,7 @@ describe('Checkout API Routes', () => {
         }),
       });
 
-      const response = await CreateCheckoutPOST(request);
+      const response = await CreateCheckoutPOST(request as any);
       expect(response.status).toBe(200);
       const data = await response.json();
       expect(data).toHaveProperty('checkoutId');
@@ -40,7 +40,7 @@ describe('Checkout API Routes', () => {
         }),
       });
 
-      const response = await CreateCheckoutPOST(request);
+      const response = await CreateCheckoutPOST(request as any);
       expect(response.status).toBe(400);
     });
 
@@ -54,7 +54,7 @@ describe('Checkout API Routes', () => {
         }),
       });
 
-      const response = await CreateCheckoutPOST(request);
+      const response = await CreateCheckoutPOST(request as any);
       expect(response.status).toBe(409);
     });
 
@@ -68,7 +68,7 @@ describe('Checkout API Routes', () => {
         }),
       });
 
-      const response = await CreateCheckoutPOST(request);
+      const response = await CreateCheckoutPOST(request as any);
       expect(response.status).toBe(400);
     });
   });
@@ -82,7 +82,7 @@ describe('Checkout API Routes', () => {
         }),
       });
 
-      const response = await CreateSessionPOST(request);
+      const response = await CreateSessionPOST(request as any);
       expect(response.status).toBe(200);
       const data = await response.json();
       expect(data).toHaveProperty('sessionId');
@@ -97,7 +97,7 @@ describe('Checkout API Routes', () => {
         }),
       });
 
-      const response = await CreateSessionPOST(request);
+      const response = await CreateSessionPOST(request as any);
       expect(response.status).toBe(404);
     });
 
@@ -110,7 +110,7 @@ describe('Checkout API Routes', () => {
         }),
       });
 
-      const response = await CreateSessionPOST(request);
+      const response = await CreateSessionPOST(request as any);
       expect(response.status).toBe(200);
       const data = await response.json();
       expect(data.discount).toBeDefined();
@@ -126,7 +126,7 @@ describe('Checkout API Routes', () => {
         }),
       });
 
-      const response = await ConfirmPOST(request);
+      const response = await ConfirmPOST(request as any);
       expect(response.status).toBe(200);
       const data = await response.json();
       expect(data).toHaveProperty('orderId');
@@ -141,7 +141,7 @@ describe('Checkout API Routes', () => {
         }),
       });
 
-      const response = await ConfirmPOST(request);
+      const response = await ConfirmPOST(request as any);
       expect(response.status).toBe(402);
     });
 
@@ -153,7 +153,7 @@ describe('Checkout API Routes', () => {
         }),
       });
 
-      const response = await ConfirmPOST(request);
+      const response = await ConfirmPOST(request as any);
       expect(response.status).toBe(409);
     });
   });

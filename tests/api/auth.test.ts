@@ -25,7 +25,7 @@ describe('Authentication API Routes', () => {
         }),
       });
 
-      const response = await POST(request);
+      const response = await POST(request as any);
       expect(response.status).toBe(200);
     });
 
@@ -38,7 +38,7 @@ describe('Authentication API Routes', () => {
         }),
       });
 
-      const response = await POST(request);
+      const response = await POST(request as any);
       expect(response.status).toBe(401);
     });
 
@@ -51,7 +51,7 @@ describe('Authentication API Routes', () => {
         }),
       });
 
-      const response = await POST(request);
+      const response = await POST(request as any);
       expect(response.status).toBe(400);
     });
 
@@ -63,7 +63,7 @@ describe('Authentication API Routes', () => {
         }),
       });
 
-      const response = await POST(request);
+      const response = await POST(request as any);
       expect(response.status).toBe(400);
     });
   });
@@ -79,7 +79,7 @@ describe('Authentication API Routes', () => {
         }),
       });
 
-      const response = await RegisterPOST(request);
+      const response = await RegisterPOST(request as any);
       expect(response.status).toBe(201);
     });
 
@@ -93,7 +93,7 @@ describe('Authentication API Routes', () => {
         }),
       });
 
-      const response = await RegisterPOST(request);
+      const response = await RegisterPOST(request as any);
       expect(response.status).toBe(400);
     });
 
@@ -107,7 +107,7 @@ describe('Authentication API Routes', () => {
         }),
       });
 
-      const response = await RegisterPOST(request);
+      const response = await RegisterPOST(request as any);
       expect(response.status).toBe(409);
     });
   });
@@ -121,7 +121,7 @@ describe('Authentication API Routes', () => {
         }),
       });
 
-      const response = await ResetPasswordPOST(request);
+      const response = await ResetPasswordPOST(request as any);
       expect(response.status).toBe(200);
     });
 
@@ -133,7 +133,7 @@ describe('Authentication API Routes', () => {
         }),
       });
 
-      const response = await ResetPasswordPOST(request);
+      const response = await ResetPasswordPOST(request as any);
       expect(response.status).toBe(200);
     });
   });
@@ -147,7 +147,7 @@ describe('Authentication API Routes', () => {
         }),
       });
 
-      const response = await VerifyEmailPOST(request);
+      const response = await VerifyEmailPOST(request as any);
       expect(response.status).toBe(200);
     });
 
@@ -159,7 +159,7 @@ describe('Authentication API Routes', () => {
         }),
       });
 
-      const response = await VerifyEmailPOST(request);
+      const response = await VerifyEmailPOST(request as any);
       expect(response.status).toBe(400);
     });
   });
@@ -173,7 +173,7 @@ describe('Authentication API Routes', () => {
         },
       });
 
-      const response = await GetUserGET(request);
+      const response = await GetUserGET();
       expect(response.status).toBe(200);
     });
 
@@ -182,7 +182,7 @@ describe('Authentication API Routes', () => {
         method: 'GET',
       });
 
-      const response = await GetUserGET(request);
+      const response = await GetUserGET();
       expect(response.status).toBe(401);
     });
   });

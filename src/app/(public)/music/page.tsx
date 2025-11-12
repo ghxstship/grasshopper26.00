@@ -7,8 +7,8 @@ import { createClient } from '@/lib/supabase/server';
 import { ArtistsBrowseClient } from './artists-client';
 
 export const metadata: Metadata = {
-  title: 'Artists | GVTEWAY',
-  description: 'Discover artists performing at GVTEWAY events',
+  title: 'Music | GVTEWAY',
+  description: 'Discover artists and live music',
 };
 
 interface ArtistsPageProps {

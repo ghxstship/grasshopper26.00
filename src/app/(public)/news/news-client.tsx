@@ -8,6 +8,9 @@ import { SearchBar } from '@/design-system/components/molecules/SearchBar/Search
 import { Select } from '@/design-system/components/atoms/Select/Select';
 import { Typography } from '@/design-system/components/atoms/Typography/Typography';
 import { Skeleton } from '@/design-system/components/atoms/Skeleton/Skeleton';
+import { Pagination } from '@/design-system/components/molecules/Pagination/Pagination';
+
+const ITEMS_PER_PAGE = 12;
 
 interface NewsArticle {
   id: string;
@@ -25,6 +28,7 @@ export function NewsBrowseClient({ initialArticles, initialSearch }: { initialAr
   const [searchQuery, setSearchQuery] = useState(initialSearch || '');
   const [sortBy, setSortBy] = useState('date-desc');
   const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
 
   // Filter and sort articles
   let filteredArticles = initialArticles.filter(article => {
@@ -62,15 +66,32 @@ export function NewsBrowseClient({ initialArticles, initialSearch }: { initialAr
     { value: 'title-desc', label: 'Title (Z-A)' },
   ];
 
+  // Pagination
+  const totalPages = Math.ceil(filteredArticles.length / ITEMS_PER_PAGE);
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const endIndex = startIndex + ITEMS_PER_PAGE;
+  const paginatedArticles = filteredArticles.slice(startIndex, endIndex);
+
+  // Reset to page 1 when filters change
+  const handleSearchChange = (value: string) => {
+    setSearchQuery(value);
+    setCurrentPage(1);
+  };
+
+  const handleSortChange = (value: string) => {
+    setSortBy(value);
+    setCurrentPage(1);
+  };
+
   return (
     <GridLayout
-      title="Latest News"
-      description="Stay informed with the latest from GVTEWAY"
+      title="News"
+      description="Stay informed with the latest updates"
       search={
         <SearchBar
           placeholder="Search news..."
           value={searchQuery}
-          onChange={setSearchQuery}
+          onChange={handleSearchChange}
           fullWidth
         />
       }
@@ -78,18 +99,27 @@ export function NewsBrowseClient({ initialArticles, initialSearch }: { initialAr
         <Select
           options={sortOptions}
           value={sortBy}
-          onChange={(e) => setSortBy(e.target.value)}
+          onChange={(e) => handleSortChange(e.target.value)}
           selectSize="md"
         />
       }
       columns={3}
+      pagination={
+        totalPages > 1 ? (
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={setCurrentPage}
+          />
+        ) : undefined
+      }
     >
       {loading ? (
         Array.from({ length: 6 }).map((_, i) => (
           <Skeleton key={i} variant="rectangular" height="400px" />
         ))
-      ) : filteredArticles.length > 0 ? (
-        filteredArticles.map(article => (
+      ) : paginatedArticles.length > 0 ? (
+        paginatedArticles.map(article => (
           <NewsCard
             key={article.id}
             article={{

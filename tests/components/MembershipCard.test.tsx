@@ -8,96 +8,49 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { MembershipCard } from '@/design-system/components/organisms/MembershipCard/MembershipCard';
 
 describe('MembershipCard Component', () => {
-  const mockTier = {
-    id: 'premium',
-    name: 'Premium',
-    price: 2999,
-    interval: 'month' as const,
-    credits: 10,
-    benefits: [
-      'Priority access to tickets',
-      '10% discount on all purchases',
-      'Exclusive member events',
-    ],
-    popular: true,
+  const mockMembership = {
+    id: 'membership-123',
+    start_date: '2024-01-01',
+    membership_tiers: {
+      tier_level: 2,
+      display_name: 'Premium Member',
+    },
   };
 
-  it('should render tier information', () => {
-    render(<MembershipCard tier={mockTier} />);
+  const mockProfile = {
+    id: 'profile-123',
+    display_name: 'John Doe',
+  };
+
+  it('should render membership information', () => {
+    render(<MembershipCard membership={mockMembership} profile={mockProfile} />);
     
-    expect(screen.getByText('Premium')).toBeInTheDocument();
-    expect(screen.getByText('$29.99')).toBeInTheDocument();
-    expect(screen.getByText(/month/i)).toBeInTheDocument();
+    expect(screen.getByText('John Doe')).toBeInTheDocument();
+    expect(screen.getByText('Premium Member')).toBeInTheDocument();
   });
 
-  it('should display all benefits', () => {
-    render(<MembershipCard tier={mockTier} />);
+  it('should display member since year', () => {
+    render(<MembershipCard membership={mockMembership} profile={mockProfile} />);
     
-    mockTier.benefits.forEach(benefit => {
-      expect(screen.getByText(benefit)).toBeInTheDocument();
-    });
+    expect(screen.getByText(/Member Since 2024/i)).toBeInTheDocument();
   });
 
-  it('should show popular badge', () => {
-    render(<MembershipCard tier={mockTier} />);
+  it('should display tier level badge', () => {
+    render(<MembershipCard membership={mockMembership} profile={mockProfile} />);
     
-    expect(screen.getByText(/popular/i)).toBeInTheDocument();
+    expect(screen.getByText('2')).toBeInTheDocument();
   });
 
-  it('should not show popular badge for non-popular tiers', () => {
-    const nonPopularTier = { ...mockTier, popular: false };
-    render(<MembershipCard tier={nonPopularTier} />);
+  it('should show GVTEWAY branding', () => {
+    render(<MembershipCard membership={mockMembership} profile={mockProfile} />);
     
-    expect(screen.queryByText(/popular/i)).not.toBeInTheDocument();
+    expect(screen.getByText('GVTEWAY')).toBeInTheDocument();
   });
 
-  it('should display credits allocation', () => {
-    render(<MembershipCard tier={mockTier} />);
+  it('should render without membership (join prompt)', () => {
+    render(<MembershipCard membership={null} profile={mockProfile} />);
     
-    expect(screen.getByText(/10 credits/i)).toBeInTheDocument();
-  });
-
-  it('should call onSubscribe when button clicked', () => {
-    const handleSubscribe = vi.fn();
-    render(<MembershipCard tier={mockTier} onSubscribe={handleSubscribe} />);
-    
-    const subscribeButton = screen.getByRole('button', { name: /subscribe/i });
-    fireEvent.click(subscribeButton);
-    
-    expect(handleSubscribe).toHaveBeenCalledWith(mockTier.id);
-  });
-
-  it('should show current membership indicator', () => {
-    render(<MembershipCard tier={mockTier} isCurrent />);
-    
-    expect(screen.getByText(/current plan/i)).toBeInTheDocument();
-    expect(screen.queryByRole('button', { name: /subscribe/i })).not.toBeInTheDocument();
-  });
-
-  it('should disable button when loading', () => {
-    render(<MembershipCard tier={mockTier} loading />);
-    
-    const subscribeButton = screen.getByRole('button', { name: /subscribe/i });
-    expect(subscribeButton).toBeDisabled();
-  });
-
-  it('should show annual savings for yearly plans', () => {
-    const yearlyTier = { ...mockTier, interval: 'year' as const, price: 29999 };
-    render(<MembershipCard tier={yearlyTier} />);
-    
-    expect(screen.getByText(/save.*year/i)).toBeInTheDocument();
-  });
-
-  it('should be accessible', () => {
-    render(<MembershipCard tier={mockTier} />);
-    
-    const card = screen.getByRole('article');
-    expect(card).toHaveAttribute('aria-label', expect.stringContaining('Premium'));
-  });
-
-  it('should highlight recommended tier', () => {
-    render(<MembershipCard tier={mockTier} recommended />);
-    
-    expect(screen.getByText(/recommended/i)).toBeInTheDocument();
+    expect(screen.getByText(/Join GVTEWAY Membership/i)).toBeInTheDocument();
+    expect(screen.getByText(/Unlock exclusive benefits/i)).toBeInTheDocument();
   });
 });

@@ -9,8 +9,11 @@ import { useState } from 'react';
 import { GridLayout } from '@/design-system/components/templates/GridLayout/GridLayout';
 import { Input } from '@/design-system/components/atoms/Input/Input';
 import { Typography } from '@/design-system/components/atoms/Typography/Typography';
+import { Pagination } from '@/design-system/components/molecules/Pagination/Pagination';
 import { Package } from 'lucide-react';
 import styles from './shop-client.module.css';
+
+const ITEMS_PER_PAGE = 12;
 
 interface Product {
   id: string;
@@ -29,6 +32,7 @@ interface ShopBrowseClientProps {
 export function ShopBrowseClient({ initialProducts, initialSearch }: ShopBrowseClientProps) {
   const [searchQuery, setSearchQuery] = useState(initialSearch || '');
   const [sortBy, setSortBy] = useState('created-desc');
+  const [currentPage, setCurrentPage] = useState(1);
 
   // Filter and sort products
   const filteredProducts = initialProducts
@@ -52,22 +56,43 @@ export function ShopBrowseClient({ initialProducts, initialSearch }: ShopBrowseC
       }
     });
 
+  // Pagination
+  const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const endIndex = startIndex + ITEMS_PER_PAGE;
+  const paginatedProducts = filteredProducts.slice(startIndex, endIndex);
+
+  // Reset to page 1 when search changes
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
+    setCurrentPage(1);
+  };
+
   return (
     <GridLayout
-      title="Shop Brands"
-      description="Official GVTEWAY merchandise. Limited edition items, event exclusives, and more."
+      title="Shops"
+      description="Discover brands and merchandise"
       search={
         <Input
           type="search"
           placeholder="Search products..."
           value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
+          onChange={handleSearchChange}
         />
       }
       columns={4}
+      pagination={
+        totalPages > 1 ? (
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={setCurrentPage}
+          />
+        ) : undefined
+      }
     >
-      {filteredProducts.length > 0 ? (
-        filteredProducts.map(product => (
+      {paginatedProducts.length > 0 ? (
+        paginatedProducts.map(product => (
           <div key={product.id} className={styles.productCard}>
             <Typography variant="h4" as="div">{product.name}</Typography>
             <Typography variant="body" as="div">${product.price}</Typography>

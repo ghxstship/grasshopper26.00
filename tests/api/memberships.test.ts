@@ -20,7 +20,7 @@ describe('Membership API Routes', () => {
         method: 'GET',
       });
 
-      const response = await GetTiersGET(request);
+      const response = await GetTiersGET(request as any);
       expect(response.status).toBe(200);
       const data = await response.json();
       expect(Array.isArray(data.tiers)).toBe(true);
@@ -32,7 +32,7 @@ describe('Membership API Routes', () => {
         method: 'GET',
       });
 
-      const response = await GetTiersGET(request);
+      const response = await GetTiersGET(request as any);
       const data = await response.json();
       expect(data.tiers[0]).toHaveProperty('benefits');
       expect(data.tiers[0]).toHaveProperty('price');
@@ -50,7 +50,7 @@ describe('Membership API Routes', () => {
         }),
       });
 
-      const response = await SubscribePOST(request);
+      const response = await SubscribePOST(request as any);
       expect(response.status).toBe(200);
       const data = await response.json();
       expect(data).toHaveProperty('subscriptionId');
@@ -65,7 +65,7 @@ describe('Membership API Routes', () => {
         }),
       });
 
-      const response = await SubscribePOST(request);
+      const response = await SubscribePOST(request as any);
       expect(response.status).toBe(404);
     });
 
@@ -78,7 +78,7 @@ describe('Membership API Routes', () => {
         }),
       });
 
-      const response = await SubscribePOST(request);
+      const response = await SubscribePOST(request as any);
       expect(response.status).toBe(409);
     });
 
@@ -91,7 +91,7 @@ describe('Membership API Routes', () => {
         }),
       });
 
-      const response = await SubscribePOST(request);
+      const response = await SubscribePOST(request as any);
       const data = await response.json();
       expect(data).toHaveProperty('creditsAllocated');
       expect(data.creditsAllocated).toBeGreaterThan(0);
@@ -107,7 +107,7 @@ describe('Membership API Routes', () => {
         },
       });
 
-      const response = await GetCurrentGET(request);
+      const response = await GetCurrentGET(request as any);
       expect(response.status).toBe(200);
       const data = await response.json();
       expect(data).toHaveProperty('tier');
@@ -122,7 +122,7 @@ describe('Membership API Routes', () => {
         },
       });
 
-      const response = await GetCurrentGET(request);
+      const response = await GetCurrentGET(request as any);
       expect(response.status).toBe(404);
     });
   });
@@ -137,7 +137,7 @@ describe('Membership API Routes', () => {
         }),
       });
 
-      const response = await RedeemCreditsPOST(request);
+      const response = await RedeemCreditsPOST(request as any);
       expect(response.status).toBe(200);
       const data = await response.json();
       expect(data).toHaveProperty('creditsUsed');
@@ -153,7 +153,7 @@ describe('Membership API Routes', () => {
         }),
       });
 
-      const response = await RedeemCreditsPOST(request);
+      const response = await RedeemCreditsPOST(request as any);
       expect(response.status).toBe(402);
     });
 
@@ -166,7 +166,7 @@ describe('Membership API Routes', () => {
         }),
       });
 
-      const response = await RedeemCreditsPOST(request);
+      const response = await RedeemCreditsPOST(request as any);
       expect(response.status).toBe(200);
     });
   });

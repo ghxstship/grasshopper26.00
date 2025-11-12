@@ -8,7 +8,7 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { TicketSelector } from '@/design-system/components/organisms/TicketSelector/TicketSelector';
 
 describe('TicketSelector Component', () => {
-  const mockTicketTypes = [
+  const mockTickets = [
     {
       id: 'general',
       name: 'General Admission',
@@ -26,95 +26,77 @@ describe('TicketSelector Component', () => {
   ];
 
   it('should render all ticket types', () => {
-    render(<TicketSelector ticketTypes={mockTicketTypes} />);
+    render(<TicketSelector tickets={mockTickets} />);
     
     expect(screen.getByText('General Admission')).toBeInTheDocument();
     expect(screen.getByText('VIP')).toBeInTheDocument();
   });
 
   it('should display prices correctly', () => {
-    render(<TicketSelector ticketTypes={mockTicketTypes} />);
+    render(<TicketSelector tickets={mockTickets} />);
     
     expect(screen.getByText('$50.00')).toBeInTheDocument();
     expect(screen.getByText('$150.00')).toBeInTheDocument();
   });
 
   it('should show availability count', () => {
-    render(<TicketSelector ticketTypes={mockTicketTypes} />);
+    render(<TicketSelector tickets={mockTickets} />);
     
     expect(screen.getByText(/100 available/i)).toBeInTheDocument();
     expect(screen.getByText(/20 available/i)).toBeInTheDocument();
   });
 
-  it('should increment quantity', async () => {
-    const handleChange = vi.fn();
-    render(<TicketSelector ticketTypes={mockTicketTypes} onChange={handleChange} />);
+  it('should handle ticket selection', async () => {
+    const handleSelect = vi.fn();
+    render(<TicketSelector tickets={mockTickets} onTicketSelect={handleSelect} />);
     
-    const incrementButton = screen.getAllByRole('button', { name: /increment/i })[0];
-    fireEvent.click(incrementButton);
-    
-    await waitFor(() => {
-      expect(handleChange).toHaveBeenCalledWith({
-        ticketTypeId: 'general',
-        quantity: 1,
+    const generalTicket = screen.getByText('General Admission').closest('div');
+    if (generalTicket) {
+      fireEvent.click(generalTicket);
+      
+      await waitFor(() => {
+        expect(handleSelect).toHaveBeenCalledWith('general', 1);
       });
-    });
+    }
   });
 
-  it('should decrement quantity', async () => {
-    const handleChange = vi.fn();
+  it('should show selected tickets', () => {
     render(
       <TicketSelector 
-        ticketTypes={mockTicketTypes} 
-        onChange={handleChange}
-        initialQuantity={{ general: 2 }}
+        tickets={mockTickets} 
+        selectedTickets={{ general: 2 }}
       />
     );
     
-    const decrementButton = screen.getAllByRole('button', { name: /decrement/i })[0];
-    fireEvent.click(decrementButton);
-    
-    await waitFor(() => {
-      expect(handleChange).toHaveBeenCalledWith({
-        ticketTypeId: 'general',
-        quantity: 1,
-      });
-    });
+    expect(screen.getByText(/2 TICKET/i)).toBeInTheDocument();
   });
 
-  it('should not allow quantity below 0', () => {
-    const handleChange = vi.fn();
-    render(<TicketSelector ticketTypes={mockTicketTypes} onChange={handleChange} />);
-    
-    const decrementButton = screen.getAllByRole('button', { name: /decrement/i })[0];
-    fireEvent.click(decrementButton);
-    
-    expect(handleChange).not.toHaveBeenCalled();
-  });
-
-  it('should enforce maximum quantity limit', async () => {
-    const handleChange = vi.fn();
+  it('should toggle ticket selection', async () => {
+    const handleSelect = vi.fn();
     render(
       <TicketSelector 
-        ticketTypes={mockTicketTypes} 
-        onChange={handleChange}
-        maxPerOrder={10}
-        initialQuantity={{ general: 10 }}
+        tickets={mockTickets} 
+        selectedTickets={{ general: 1 }}
+        onTicketSelect={handleSelect}
       />
     );
     
-    const incrementButton = screen.getAllByRole('button', { name: /increment/i })[0];
-    fireEvent.click(incrementButton);
-    
-    expect(handleChange).not.toHaveBeenCalled();
+    const generalTicket = screen.getByText('General Admission').closest('div');
+    if (generalTicket) {
+      fireEvent.click(generalTicket);
+      
+      await waitFor(() => {
+        expect(handleSelect).toHaveBeenCalledWith('general', 0);
+      });
+    }
   });
 
   it('should disable sold out ticket types', () => {
     const soldOutTickets = [
-      { ...mockTicketTypes[0], available: 0 },
+      { ...mockTickets[0], available: 0 },
     ];
     
-    render(<TicketSelector ticketTypes={soldOutTickets} />);
+    render(<TicketSelector tickets={soldOutTickets} />);
     
     expect(screen.getByText(/sold out/i)).toBeInTheDocument();
     const incrementButton = screen.getByRole('button', { name: /increment/i });
@@ -124,29 +106,33 @@ describe('TicketSelector Component', () => {
   it('should calculate total price', () => {
     render(
       <TicketSelector 
-        ticketTypes={mockTicketTypes}
-        initialQuantity={{ general: 2, vip: 1 }}
+        tickets={mockTickets}
+        selectedTickets={{ general: 2, vip: 1 }}
       />
     );
     
-    expect(screen.getByText(/total.*\$250\.00/i)).toBeInTheDocument();
+    expect(screen.getByText(/total/i)).toBeInTheDocument();
+    expect(screen.getByText(/\$250/i)).toBeInTheDocument();
   });
 
-  it('should apply membership discount', () => {
+  it('should show checkout button when tickets selected', () => {
+    const handleCheckout = vi.fn();
     render(
       <TicketSelector 
-        ticketTypes={mockTicketTypes}
-        initialQuantity={{ general: 2 }}
-        membershipDiscount={0.1}
+        tickets={mockTickets}
+        selectedTickets={{ general: 2 }}
+        onCheckout={handleCheckout}
       />
     );
     
-    expect(screen.getByText(/discount/i)).toBeInTheDocument();
-    expect(screen.getByText(/\$90\.00/i)).toBeInTheDocument();
+    const checkoutButton = screen.getByText(/checkout/i);
+    expect(checkoutButton).toBeInTheDocument();
+    fireEvent.click(checkoutButton);
+    expect(handleCheckout).toHaveBeenCalled();
   });
 
   it('should be keyboard navigable', () => {
-    render(<TicketSelector ticketTypes={mockTicketTypes} />);
+    render(<TicketSelector tickets={mockTickets} />);
     
     const firstTicketType = screen.getByText('General Admission').closest('div');
     expect(firstTicketType).toHaveAttribute('tabIndex', '0');

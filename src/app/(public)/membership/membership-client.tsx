@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { MembershipLayout } from '@/design-system/components/templates/MembershipLayout/MembershipLayout';
+import { GridLayout } from '@/design-system/components/templates/GridLayout/GridLayout';
 import { MembershipTierCard } from '@/design-system/components/organisms/MembershipTierCard/MembershipTierCard';
 import { Typography } from '@/design-system/components/atoms/Typography/Typography';
 import { Button } from '@/design-system/components/atoms/Button/Button';
@@ -146,150 +146,153 @@ export function MembershipBrowseClient({ initialTiers }: MembershipBrowseClientP
   ];
 
   return (
-    <MembershipLayout
-      hero={
-        <div className={styles.hero}>
-          <Typography variant="h1" as="h1" className={styles.heroTitle}>
-            Join GVTEWAY
-          </Typography>
-          <Typography variant="h3" as="p" className={styles.heroSubtitle}>
-            Unlock exclusive access to the best events and experiences
-          </Typography>
-        </div>
-      }
-      billingToggle={
-        <div className={styles.billingToggle}>
-          <Typography variant="body" as="span" className={isAnnual ? styles.active : ''}>
-            Annual
-          </Typography>
-          <Toggle
-            checked={!isAnnual}
-            onChange={() => setIsAnnual(!isAnnual)}
-            aria-label="Toggle billing period"
-          />
-          <Typography variant="body" as="span" className={!isAnnual ? styles.active : ''}>
-            Monthly
-          </Typography>
-          {isAnnual && (
-            <span className={styles.savingsBadge}>Save 2 Months</span>
-          )}
-        </div>
-      }
-      tiers={
-        <div className={styles.tiersGrid}>
-          {tiersWithBenefits.length > 0 ? (
-            tiersWithBenefits.map((tier) => (
-              <MembershipTierCard
-                key={tier.id}
-                tier={tier}
-                onClick={() => router.push(`/membership/checkout?tier=${tier.id}`)}
-                isAnnual={isAnnual}
-              />
-            ))
-          ) : (
-            <div className={styles.emptyState}>
-              <Typography variant="h3" as="p">
-                No membership tiers available
-              </Typography>
+    <>
+      {/* Hero Section */}
+      <div className={styles.hero}>
+        <Typography variant="h1" as="h1" className={styles.heroTitle}>
+          Join GVTEWAY
+        </Typography>
+        <Typography variant="h3" as="p" className={styles.heroSubtitle}>
+          Unlock exclusive access to the best events and experiences
+        </Typography>
+      </div>
+
+      {/* Billing Toggle */}
+      <div className={styles.billingToggle}>
+        <Typography variant="body" as="span" className={isAnnual ? styles.active : ''}>
+          Annual
+        </Typography>
+        <Toggle
+          checked={!isAnnual}
+          onChange={() => setIsAnnual(!isAnnual)}
+          aria-label="Toggle billing period"
+        />
+        <Typography variant="body" as="span" className={!isAnnual ? styles.active : ''}>
+          Monthly
+        </Typography>
+        {isAnnual && (
+          <span className={styles.savingsBadge}>Save 2 Months</span>
+        )}
+      </div>
+
+      {/* Membership Tiers Grid */}
+      <GridLayout
+        title="Memberships"
+        description="Unlock exclusive benefits and experiences"
+        columns={3}
+      >
+        {tiersWithBenefits.length > 0 ? (
+          tiersWithBenefits.map((tier) => (
+            <MembershipTierCard
+              key={tier.id}
+              tier={tier}
+              onClick={() => router.push(`/membership/checkout?tier=${tier.id}`)}
+              isAnnual={isAnnual}
+            />
+          ))
+        ) : (
+          <div className={styles.emptyState}>
+            <Typography variant="h3" as="p">
+              No membership tiers available
+            </Typography>
+            <Typography variant="body" as="p">
+              Check back soon for membership options
+            </Typography>
+          </div>
+        )}
+      </GridLayout>
+
+      {/* Benefits Section */}
+      <div className={styles.benefitsSection}>
+        <Typography variant="h2" as="h2" className={styles.sectionTitle}>
+          Member Benefits
+        </Typography>
+        <div className={styles.benefitsGrid}>
+          {benefits.map((benefit, idx) => (
+            <div key={idx} className={styles.benefitItem}>
+              <Check className={styles.benefitIcon} />
               <Typography variant="body" as="p">
-                Check back soon for membership options
+                {benefit}
               </Typography>
             </div>
-          )}
+          ))}
         </div>
-      }
-      benefits={
-        <div className={styles.benefitsSection}>
-          <Typography variant="h2" as="h2" className={styles.sectionTitle}>
-            Member Benefits
-          </Typography>
-          <div className={styles.benefitsGrid}>
-            {benefits.map((benefit, idx) => (
-              <div key={idx} className={styles.benefitItem}>
-                <Check className={styles.benefitIcon} />
-                <Typography variant="body" as="p">
-                  {benefit}
-                </Typography>
-              </div>
-            ))}
-          </div>
+      </div>
+
+      {/* Special Discounts Section */}
+      <div className={styles.discountsSection}>
+        <Typography variant="h2" as="h2" className={styles.sectionTitle}>
+          Special Discounts
+        </Typography>
+        <div className={styles.discountsGrid}>
+          {specialDiscounts.map((discount, idx) => (
+            <div key={idx} className={styles.discountCard}>
+              <div className={styles.discountType}>{discount.type}</div>
+              <div className={styles.discountAmount}>{discount.discount}</div>
+              <div className={styles.discountDescription}>{discount.description}</div>
+            </div>
+          ))}
         </div>
-      }
-      discounts={
-        <div className={styles.discountsSection}>
-          <Typography variant="h2" as="h2" className={styles.sectionTitle}>
-            Special Discounts
-          </Typography>
-          <div className={styles.discountsGrid}>
-            {specialDiscounts.map((discount, idx) => (
-              <div key={idx} className={styles.discountCard}>
-                <div className={styles.discountType}>{discount.type}</div>
-                <div className={styles.discountAmount}>{discount.discount}</div>
-                <div className={styles.discountDescription}>{discount.description}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      }
-      corporate={
-        <div className={styles.corporateSection}>
-          <Typography variant="h2" as="h2">
-            Corporate Memberships
-          </Typography>
-          <Typography variant="body" as="p">
-            Custom packages available for businesses and organizations
-          </Typography>
-          <Button
-            variant="outlined"
-            size="lg"
-            onClick={() => window.location.href = 'mailto:support@gvteway.com?subject=Corporate%20Membership%20Inquiry'}
-          >
-            Contact Sales
-          </Button>
-        </div>
-      }
-      industry={
-        <div className={styles.industrySection}>
-          <Typography variant="h2" as="h2">
-            Industry Memberships
-          </Typography>
-          <Typography variant="body" as="p">
-            For Organizer Teams, Production Crews & Event Staff
-          </Typography>
-          <Button
-            variant="filled"
-            size="lg"
-            onClick={() => window.open('https://atlvs.one', '_blank')}
-          >
-            Explore ATLVS
-          </Button>
-        </div>
-      }
-      faq={
-        <div className={styles.faqSection}>
-          <Typography variant="h2" as="h2" className={styles.sectionTitle}>
-            Frequently Asked Questions
-          </Typography>
-          <FAQAccordion items={faqItems} />
-        </div>
-      }
-      cta={
-        <div className={styles.ctaSection}>
-          <Typography variant="h2" as="h2">
-            Ready to Join?
-          </Typography>
-          <Typography variant="body" as="p">
-            Start your membership today and never miss an event
-          </Typography>
-          <Button
-            variant="filled"
-            size="lg"
-            onClick={() => router.push('/membership/checkout')}
-          >
-            Get Started
-          </Button>
-        </div>
-      }
-    />
+      </div>
+
+      {/* Corporate Section */}
+      <div className={styles.corporateSection}>
+        <Typography variant="h2" as="h2">
+          Corporate Memberships
+        </Typography>
+        <Typography variant="body" as="p">
+          Custom packages available for businesses and organizations
+        </Typography>
+        <Button
+          variant="outlined"
+          size="lg"
+          onClick={() => window.location.href = 'mailto:support@gvteway.com?subject=Corporate%20Membership%20Inquiry'}
+        >
+          Contact Sales
+        </Button>
+      </div>
+
+      {/* Industry Section */}
+      <div className={styles.industrySection}>
+        <Typography variant="h2" as="h2">
+          Industry Memberships
+        </Typography>
+        <Typography variant="body" as="p">
+          For Organizer Teams, Production Crews & Event Staff
+        </Typography>
+        <Button
+          variant="filled"
+          size="lg"
+          onClick={() => window.open('https://atlvs.one', '_blank')}
+        >
+          Explore ATLVS
+        </Button>
+      </div>
+
+      {/* FAQ Section */}
+      <div className={styles.faqSection}>
+        <Typography variant="h2" as="h2" className={styles.sectionTitle}>
+          Frequently Asked Questions
+        </Typography>
+        <FAQAccordion items={faqItems} />
+      </div>
+
+      {/* CTA Section */}
+      <div className={styles.ctaSection}>
+        <Typography variant="h2" as="h2">
+          Ready to Join?
+        </Typography>
+        <Typography variant="body" as="p">
+          Start your membership today and never miss an event
+        </Typography>
+        <Button
+          variant="filled"
+          size="lg"
+          onClick={() => router.push('/membership/checkout')}
+        >
+          Get Started
+        </Button>
+      </div>
+    </>
   );
 }

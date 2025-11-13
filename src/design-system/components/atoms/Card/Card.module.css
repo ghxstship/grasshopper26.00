@@ -30,12 +30,10 @@
 .elevated {
   background-color: var(--color-bg-raised);
   border: var(--border-width-3) solid var(--color-border-strong);
-  box-shadow: var(--shadow-base);
 }
 
 .interactive {
   border: var(--border-width-3) solid var(--color-border-strong);
-  box-shadow: var(--shadow-base);
   cursor: pointer;
 }
 
@@ -43,17 +41,17 @@
   background-color: var(--color-black);
   border-color: var(--color-accent);
   transform: scale(1.02);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-hover-lg);
 }
 
 .interactive:active {
   transform: scale(0.99);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-active-sm);
 }
 
 .hoverable:hover {
   border-color: var(--color-border-strong);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-hover-md);
   transform: translateY(-0.125rem);
 }
 
@@ -87,7 +85,7 @@
 
 .clickable:active {
   transform: translateY(0);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-active-sm);
 }
 
 /* ========================================
@@ -127,20 +125,12 @@
    DARK THEME
    ======================================== */
 
-[data-theme="dark"] .elevated {
-  box-shadow: var(--shadow-white-md);
-}
-
 [data-theme="dark"] .hoverable:hover {
-  box-shadow: var(--shadow-white-lg);
-}
-
-[data-theme="dark"] .interactive {
-  box-shadow: var(--shadow-white-md);
+  box-shadow: var(--shadow-white-hover-lg);
 }
 
 [data-theme="dark"] .interactive:hover {
   background-color: var(--color-accent);
   color: var(--color-primary);
-  box-shadow: var(--shadow-white-lg);
+  box-shadow: var(--shadow-white-hover-lg);
 }

@@ -40,11 +40,8 @@
   position: absolute;
   inset: 0;
   
-  background-image: 
-    radial-gradient(circle, var(--color-black) 20%, transparent 20%),
-    radial-gradient(circle, var(--color-black) 20%, transparent 20%);
-  background-size: 0.5rem 0.5rem;
-  background-position: 0 0, 0.25rem 0.25rem;
+  /* Pattern background removed - use solid colors only */
+  background: none;
   
   opacity: 0.2;
   pointer-events: none;
@@ -172,8 +169,6 @@
   border: var(--border-width-3) solid var(--color-border-strong);
   border-radius: var(--radius-none)(--radius-none);
   
-  box-shadow: var(--shadow-lg);
-  
   cursor: pointer;
   transition: all var(--duration-base) var(--easing-out);
   
@@ -184,12 +179,12 @@
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
   transform: scale(1.05);
-  box-shadow: var(--shadow-xl);
+  box-shadow: var(--shadow-hover-lg);
 }
 
 .cta:active {
   transform: scale(0.98);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-active-md);
 }
 
 .cta:focus-visible {
@@ -284,9 +279,8 @@
 }
 
 .black .halftoneOverlay {
-  background-image: 
-    radial-gradient(circle, var(--color-white) 20%, transparent 20%),
-    radial-gradient(circle, var(--color-white) 20%, transparent 20%);
+  /* Pattern background removed - use solid colors only */
+  background: none;
 }
 
 .black .shape1,

@@ -27,12 +27,12 @@
   background-color: var(--color-text-inverse);
   border-color: var(--color-text-primary);
   transform: scale(1.05);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-hover-lg);
 }
 
 .card:active {
   transform: scale(0.98);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-active-sm);
 }
 
 .card:focus-visible {

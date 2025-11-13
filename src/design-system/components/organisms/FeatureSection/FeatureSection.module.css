@@ -184,14 +184,15 @@
 .halftoneOverlay {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle, var(--color-primary) var(--space-px), transparent var(--space-px));
-  background-size: 0.25rem 0.25rem;
+  /* Pattern background removed - use solid colors only */
+  background: none;
   opacity: 0.3;
   pointer-events: none;
 }
 
 .section.black .halftoneOverlay {
-  background-image: radial-gradient(circle, var(--color-accent) var(--space-px), transparent var(--space-px));
+  /* Pattern background removed - use solid colors only */
+  background: none;
 }
 
 .shapes {

@@ -42,7 +42,6 @@
   background-color: var(--color-black);
   color: var(--color-white);
   border-color: var(--color-black);
-  box-shadow: var(--shadow-base);
 }
 
 .filled:hover:not(:disabled) {
@@ -50,31 +49,29 @@
   color: var(--color-black);
   border-color: var(--color-border-strong);
   transform: scale(1.05);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-hover-lg);
 }
 
 .filled:active:not(:disabled) {
   transform: scale(0.98);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-active-sm);
 }
 
 .outlined {
   background-color: transparent;
   color: var(--color-black);
   border-color: var(--color-border-strong);
-  box-shadow: var(--shadow-sm);
 }
 
 .outlined:hover:not(:disabled) {
   background-color: var(--color-black);
   color: var(--color-white);
   transform: scale(1.05);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-hover-md);
 }
 
 .outlined:active:not(:disabled) {
   transform: scale(0.98);
-  box-shadow: var(--shadow-xs);
 }
 
 .ghost {
@@ -87,7 +84,7 @@
   background-color: var(--color-grey-100);
   color: var(--color-black);
   border-color: var(--color-border-default);
-  box-shadow: var(--shadow-xs);
+  box-shadow: var(--shadow-hover-xs);
 }
 
 .ghost:active:not(:disabled) {
@@ -98,26 +95,24 @@
   background-color: var(--color-error);
   color: var(--color-white);
   border-color: var(--color-error-border);
-  box-shadow: var(--shadow-base);
 }
 
 .danger:hover:not(:disabled) {
   background-color: var(--color-error-bg-strong);
   color: var(--color-error-text);
   transform: scale(1.05);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-hover-lg);
 }
 
 .danger:active:not(:disabled) {
   transform: scale(0.98);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-active-sm);
 }
 
 .cta {
   background-color: var(--color-black);
   color: var(--color-white);
   border-color: var(--color-black);
-  box-shadow: var(--shadow-lg);
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
 }
@@ -127,12 +122,12 @@
   color: var(--color-black);
   border-color: var(--color-border-strong);
   transform: scale(1.08);
-  box-shadow: var(--shadow-xl);
+  box-shadow: var(--shadow-hover-lg);
 }
 
 .cta:active:not(:disabled) {
   transform: scale(1.02);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-active-md);
 }
 
 /* ========================================
@@ -266,27 +261,25 @@
   background-color: var(--color-white);
   color: var(--color-black);
   border-color: var(--color-white);
-  box-shadow: var(--shadow-white-md);
 }
 
 [data-theme="dark"] .filled:hover:not(:disabled) {
   background-color: var(--color-black);
   color: var(--color-white);
   border-color: var(--color-white);
-  box-shadow: var(--shadow-white-lg);
+  box-shadow: var(--shadow-white-hover-lg);
 }
 
 [data-theme="dark"] .outlined {
   background-color: transparent;
   color: var(--color-white);
   border-color: var(--color-white);
-  box-shadow: var(--shadow-white-sm);
 }
 
 [data-theme="dark"] .outlined:hover:not(:disabled) {
   background-color: var(--color-white);
   color: var(--color-black);
-  box-shadow: var(--shadow-white-md);
+  box-shadow: var(--shadow-white-hover-md);
 }
 
 [data-theme="dark"] .ghost {

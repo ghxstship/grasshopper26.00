@@ -29,13 +29,11 @@
   position: absolute;
   inset: 0;
   
-  background-image: 
-    radial-gradient(circle, var(--color-primary) 20%, transparent 20%),
-    radial-gradient(circle, var(--color-primary) 20%, transparent 20%);
-  background-size: 0.25rem 0.25rem;
-  background-position: 0 0, 0.125rem 0.125rem;
+  /* Pattern background removed - use solid colors only */
+  background: none;
   
-  opacity: 0.2;
+  opacity: 0;
+  transition: opacity var(--duration-base) var(--easing-out);
   pointer-events: none;
 }
 
@@ -133,7 +131,6 @@
 }
 
 [data-theme="dark"] .halftoneOverlay {
-  background-image: 
-    radial-gradient(circle, var(--color-accent) 20%, transparent 20%),
-    radial-gradient(circle, var(--color-accent) 20%, transparent 20%);
+  /* Pattern background removed - use solid colors only */
+  background: none;
 }

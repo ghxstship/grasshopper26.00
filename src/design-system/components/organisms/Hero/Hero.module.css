@@ -56,11 +56,8 @@
   position: absolute;
   inset: 0;
   
-  background-image: 
-    radial-gradient(circle, var(--color-primary) 20%, transparent 20%),
-    radial-gradient(circle, var(--color-primary) 20%, transparent 20%);
-  background-size: 0.625rem 0.625rem;
-  background-position: 0 0, 0.3125rem 0.3125rem;
+  /* Pattern backgrounds removed - use solid colors only */
+  background: none;
   
   opacity: 0.2;
   pointer-events: none;
@@ -68,9 +65,8 @@
 
 .white .videoOverlay,
 .white .imageOverlay {
-  background-image: 
-    radial-gradient(circle, var(--color-bg-primary) 20%, transparent 20%),
-    radial-gradient(circle, var(--color-bg-primary) 20%, transparent 20%);
+  /* Pattern backgrounds removed - use solid colors only */
+  background: none;
 }
 
 /* ========================================
@@ -203,8 +199,6 @@
   color: inherit;
   cursor: pointer;
   
-  box-shadow: var(--shadow-md);
-  
   transition: all var(--duration-base) var(--easing-out);
 }
 
@@ -217,7 +211,7 @@
   background-color: var(--color-accent);
   color: var(--color-primary);
   transform: scale(1.05);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-hover-lg);
 }
 
 .white .cta {
@@ -229,12 +223,12 @@
   background-color: var(--color-black);
   color: var(--color-white);
   transform: scale(1.05);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-hover-lg);
 }
 
 .cta:active {
   transform: scale(0.98);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-active-sm);
 }
 
 .cta:focus-visible {

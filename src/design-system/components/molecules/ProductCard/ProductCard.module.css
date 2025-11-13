@@ -90,13 +90,8 @@
 .halftoneOverlay {
   position: absolute;
   inset: 0;
-  
-  background-image: 
-    radial-gradient(circle, var(--color-text-primary) 20%, transparent 20%),
-    radial-gradient(circle, var(--color-text-primary) 20%, transparent 20%);
-  background-size: 0.5rem 0.5rem;
-  background-position: 0 0, 0.25rem 0.25rem;
-  
+  /* Pattern background removed - use solid colors only */
+  background: none;
   opacity: 0;
   transition: opacity var(--duration-base) var(--easing-out);
   pointer-events: none;

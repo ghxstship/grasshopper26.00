@@ -95,18 +95,19 @@
   --color-text-info: #000000;
   --color-text-meta: #737373; /* For metadata/timestamps */
   
-  /* Surface Colors (Monochromatic only) */
+  /* Surface Colors (STRICT: White only for light theme) */
   --color-bg-primary: #FFFFFF;
-  --color-bg-secondary: #F5F5F5;
-  --color-bg-tertiary: #E5E5E5;
+  --color-bg-secondary: #FFFFFF;
+  --color-bg-tertiary: #FFFFFF;
   --color-bg-raised: #FFFFFF;
   --color-bg-overlay: rgba(0, 0, 0, 0.5);
   --color-bg-overlay-light: rgba(0, 0, 0, 0.3);
   --color-bg-overlay-strong: rgba(0, 0, 0, 0.7);
-  --color-bg-brand: #F5F5F5;
-  --color-bg-accent: #171717;
+  --color-bg-brand: #FFFFFF;
+  --color-bg-accent: #FFFFFF;
   --color-bg-black: #000000;
   --color-bg-white: #FFFFFF;
+  --color-bg-inverse: #000000;
   
   /* Border Colors (Monochromatic only) */
   --color-border-default: #E5E5E5;
@@ -143,11 +144,11 @@
   --color-info-border: #000000;
   --color-info-text: #000000;
   
-  /* Gradients (Monochromatic only - minimal use, prefer halftone patterns) */
-  --gradient-brand-primary: linear-gradient(135deg, #000000 0%, #171717 100%);
-  --gradient-brand-subtle: linear-gradient(135deg, #F5F5F5 0%, #FFFFFF 100%);
-  --gradient-brand-dark: linear-gradient(135deg, #000000 0%, #171717 100%);
-  --gradient-hero: linear-gradient(to bottom right, #000000, #171717, #000000);
+  /* Gradients REMOVED - Use solid colors only */
+  --gradient-brand-primary: none;
+  --gradient-brand-subtle: none;
+  --gradient-brand-dark: none;
+  --gradient-hero: none;
 
   /* ========================================
      TYPOGRAPHY TOKENS - ENTERTAINMENT PLATFORM
@@ -235,23 +236,37 @@
   --letter-spacing-meta: 0.05em;       /* SHARE TECH MONO - labels */
 
   /* ========================================
-     SHADOW TOKENS (GHXSTSHIP: Hard geometric shadows only, NO soft shadows)
+     SHADOW TOKENS (INTERACTION ONLY - No static shadows)
+     Use these ONLY on :hover, :focus, :active states
      ======================================== */
-  --shadow-xs: 2px 2px 0 #000000;
-  --shadow-sm: 3px 3px 0 #000000;
-  --shadow-base: 4px 4px 0 #000000;
-  --shadow-md: 6px 6px 0 #000000;
-  --shadow-lg: 8px 8px 0 #000000;
-  --shadow-xl: 12px 12px 0 #000000;
-  --shadow-2xl: 16px 16px 0 #000000;
+  --shadow-none: none;
+  --shadow-hover-xs: 2px 2px 0 #000000;
+  --shadow-hover-sm: 3px 3px 0 #000000;
+  --shadow-hover-base: 4px 4px 0 #000000;
+  --shadow-hover-md: 6px 6px 0 #000000;
+  --shadow-hover-lg: 8px 8px 0 #000000;
+  --shadow-active-sm: 2px 2px 0 #000000;
+  --shadow-active-md: 3px 3px 0 #000000;
   --shadow-inner: inset 3px 3px 0 #000000;
-  --shadow-glow: none; /* NO glows in GHXSTSHIP */
-  --shadow-glow-strong: none; /* NO glows in GHXSTSHIP */
   
-  /* White shadows for dark backgrounds */
-  --shadow-white-sm: 3px 3px 0 #FFFFFF;
-  --shadow-white-md: 6px 6px 0 #FFFFFF;
-  --shadow-white-lg: 8px 8px 0 #FFFFFF;
+  /* Legacy tokens - map to none for default state */
+  --shadow-xs: none;
+  --shadow-sm: none;
+  --shadow-base: none;
+  --shadow-md: none;
+  --shadow-lg: none;
+  --shadow-xl: none;
+  --shadow-2xl: none;
+  --shadow-glow: none;
+  --shadow-glow-strong: none;
+  
+  /* White shadows for dark backgrounds (interaction only) */
+  --shadow-white-hover-sm: 3px 3px 0 #FFFFFF;
+  --shadow-white-hover-md: 6px 6px 0 #FFFFFF;
+  --shadow-white-hover-lg: 8px 8px 0 #FFFFFF;
+  --shadow-white-sm: none;
+  --shadow-white-md: none;
+  --shadow-white-lg: none;
 
   /* ========================================
      BORDER RADIUS TOKENS (GHXSTSHIP: NO rounded corners - hard edges only)
@@ -421,18 +436,19 @@
   --color-text-info: #FFFFFF;
   --color-text-meta: #A3A3A3;
   
-  /* Surface Colors - Dark Mode */
+  /* Surface Colors - Dark Mode (STRICT: Black only) */
   --color-bg-primary: #000000;
-  --color-bg-secondary: #171717;
-  --color-bg-tertiary: #262626;
-  --color-bg-raised: #171717;
+  --color-bg-secondary: #000000;
+  --color-bg-tertiary: #000000;
+  --color-bg-raised: #000000;
   --color-bg-overlay: rgba(255, 255, 255, 0.5);
   --color-bg-overlay-light: rgba(255, 255, 255, 0.3);
   --color-bg-overlay-strong: rgba(255, 255, 255, 0.7);
-  --color-bg-brand: #171717;
-  --color-bg-accent: #FFFFFF;
+  --color-bg-brand: #000000;
+  --color-bg-accent: #000000;
   --color-bg-black: #000000;
   --color-bg-white: #FFFFFF;
+  --color-bg-inverse: #FFFFFF;
   
   /* Border Colors - Dark Mode */
   --color-border-default: #262626;
@@ -457,22 +473,34 @@
   --color-accent-active: #262626;
   --color-accent-subtle: #F5F5F5;
   
-  /* Shadows - Dark Mode (Hard geometric only, white on dark) */
-  --shadow-xs: 2px 2px 0 #FFFFFF;
-  --shadow-sm: 3px 3px 0 #FFFFFF;
-  --shadow-base: 4px 4px 0 #FFFFFF;
-  --shadow-md: 6px 6px 0 #FFFFFF;
-  --shadow-lg: 8px 8px 0 #FFFFFF;
-  --shadow-xl: 12px 12px 0 #FFFFFF;
-  --shadow-2xl: 16px 16px 0 #FFFFFF;
+  /* Shadows - Dark Mode (INTERACTION ONLY) */
+  --shadow-hover-xs: 2px 2px 0 #FFFFFF;
+  --shadow-hover-sm: 3px 3px 0 #FFFFFF;
+  --shadow-hover-base: 4px 4px 0 #FFFFFF;
+  --shadow-hover-md: 6px 6px 0 #FFFFFF;
+  --shadow-hover-lg: 8px 8px 0 #FFFFFF;
+  --shadow-active-sm: 2px 2px 0 #FFFFFF;
+  --shadow-active-md: 3px 3px 0 #FFFFFF;
   --shadow-inner: inset 3px 3px 0 #FFFFFF;
+  
+  /* Legacy tokens - map to none for default state */
+  --shadow-xs: none;
+  --shadow-sm: none;
+  --shadow-base: none;
+  --shadow-md: none;
+  --shadow-lg: none;
+  --shadow-xl: none;
+  --shadow-2xl: none;
   --shadow-glow: none;
   --shadow-glow-strong: none;
   
-  /* White shadows for light elements on dark backgrounds */
-  --shadow-white-sm: 3px 3px 0 #000000;
-  --shadow-white-md: 6px 6px 0 #000000;
-  --shadow-white-lg: 8px 8px 0 #000000;
+  /* White shadows for dark backgrounds (interaction only) */
+  --shadow-white-hover-sm: 3px 3px 0 #000000;
+  --shadow-white-hover-md: 6px 6px 0 #000000;
+  --shadow-white-hover-lg: 8px 8px 0 #000000;
+  --shadow-white-sm: none;
+  --shadow-white-md: none;
+  --shadow-white-lg: none;
 }
 
 /* ========================================

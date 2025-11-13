@@ -5,138 +5,50 @@
  */
 
 /* ========================================
-   HALFTONE PATTERNS
+   HALFTONE PATTERNS - REMOVED
+   Use solid colors only, no decorative patterns
    ======================================== */
 
-.halftone-sm {
-  background-image: 
-    radial-gradient(circle, var(--color-black) 20%, transparent 20%),
-    radial-gradient(circle, var(--color-black) 20%, transparent 20%);
-  background-size: 0.25rem 0.25rem;
-  background-position: 0 0, 0.125rem 0.125rem;
-}
-
-.halftone-md {
-  background-image: 
-    radial-gradient(circle, var(--color-black) 20%, transparent 20%),
-    radial-gradient(circle, var(--color-black) 20%, transparent 20%);
-  background-size: 0.375rem 0.375rem;
-  background-position: 0 0, 0.1875rem 0.1875rem;
-}
-
-.halftone-lg {
-  background-image: 
-    radial-gradient(circle, var(--color-black) 20%, transparent 20%),
-    radial-gradient(circle, var(--color-black) 20%, transparent 20%);
-  background-size: 0.5rem 0.5rem;
-  background-position: 0 0, 0.25rem 0.25rem;
-}
-
-.halftone-white-sm {
-  background-image: 
-    radial-gradient(circle, var(--color-white) 20%, transparent 20%),
-    radial-gradient(circle, var(--color-white) 20%, transparent 20%);
-  background-size: 0.25rem 0.25rem;
-  background-position: 0 0, 0.125rem 0.125rem;
-}
-
-.halftone-white-md {
-  background-image: 
-    radial-gradient(circle, var(--color-white) 20%, transparent 20%),
-    radial-gradient(circle, var(--color-white) 20%, transparent 20%);
-  background-size: 0.375rem 0.375rem;
-  background-position: 0 0, 0.1875rem 0.1875rem;
-}
+/* Pattern classes removed - use solid backgrounds */
 
 /* ========================================
-   DIAGONAL STRIPE PATTERNS
+   DIAGONAL STRIPE PATTERNS - REMOVED
+   Use solid colors only, no decorative patterns
    ======================================== */
 
-.stripe-pattern {
-  background-image: repeating-linear-gradient(
-    45deg,
-    var(--color-black),
-    var(--color-black) var(--border-width-3),
-    transparent var(--border-width-3),
-    transparent 0.625rem
-  );
-}
-
-.stripe-pattern-white {
-  background-image: repeating-linear-gradient(
-    45deg,
-    var(--color-white),
-    var(--color-white) var(--border-width-3),
-    transparent var(--border-width-3),
-    transparent 0.625rem
-  );
-}
-
-.stripe-pattern-vertical {
-  background-image: repeating-linear-gradient(
-    90deg,
-    var(--color-black),
-    var(--color-black) var(--border-width-3),
-    transparent var(--border-width-3),
-    transparent 0.625rem
-  );
-}
-
-.stripe-pattern-horizontal {
-  background-image: repeating-linear-gradient(
-    0deg,
-    var(--color-black),
-    var(--color-black) var(--border-width-3),
-    transparent var(--border-width-3),
-    transparent 0.625rem
-  );
-}
+/* Pattern classes removed - use solid backgrounds */
 
 /* ========================================
-   GRID OVERLAY PATTERNS
+   GRID OVERLAY PATTERNS - REMOVED
+   Use solid colors only, no decorative patterns
    ======================================== */
 
-.grid-overlay {
-  background-image: 
-    linear-gradient(var(--color-grey-200) var(--border-width-thin), transparent var(--border-width-thin)),
-    linear-gradient(90deg, var(--color-grey-200) var(--border-width-thin), transparent var(--border-width-thin));
-  background-size: 1.25rem 1.25rem;
-}
-
-.grid-overlay-bold {
-  background-image: 
-    linear-gradient(var(--color-black) var(--border-width-2), transparent var(--border-width-2)),
-    linear-gradient(90deg, var(--color-black) var(--border-width-2), transparent var(--border-width-2));
-  background-size: 1.25rem 1.25rem;
-}
+/* Pattern classes removed - use solid backgrounds */
 
 /* ========================================
-   GEOMETRIC SHADOWS
-   Hard offset shadows with no blur
+   GEOMETRIC SHADOWS - INTERACTION ONLY
+   Use these ONLY on :hover, :focus, :active states
    ======================================== */
 
-.shadow-geometric-sm {
-  box-shadow: var(--geometric-shadow-sm);
+/* Static shadow classes removed - apply shadows on interaction states only */
+.shadow-hover-sm:hover {
+  box-shadow: var(--shadow-hover-sm);
 }
 
-.shadow-geometric-md {
-  box-shadow: var(--geometric-shadow-md);
+.shadow-hover-md:hover {
+  box-shadow: var(--shadow-hover-md);
 }
 
-.shadow-geometric-lg {
-  box-shadow: var(--geometric-shadow-lg);
+.shadow-hover-lg:hover {
+  box-shadow: var(--shadow-hover-lg);
 }
 
-.shadow-geometric-white-sm {
-  box-shadow: 0.25rem 0.25rem 0 var(--color-white);
+.shadow-active-sm:active {
+  box-shadow: var(--shadow-active-sm);
 }
 
-.shadow-geometric-white-md {
-  box-shadow: 0.375rem 0.375rem 0 var(--color-white);
-}
-
-.shadow-geometric-white-lg {
-  box-shadow: 0.5rem 0.5rem 0 var(--color-white);
+.shadow-active-md:active {
+  box-shadow: var(--shadow-active-md);
 }
 
 /* ========================================

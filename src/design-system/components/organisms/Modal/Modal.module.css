@@ -32,7 +32,6 @@
   max-block-size: 90vh;
   background-color: var(--color-bg-primary);
   border: 0.25rem solid var(--color-border-strong);
-  box-shadow: 1rem 1rem 0 var(--color-primary);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -64,7 +63,7 @@
   justify-content: space-between;
   padding: var(--space-6);
   border-block-end: var(--border-width-3) solid var(--color-border-strong);
-  background-color: var(--color-bg-secondary);
+  background-color: var(--color-bg-primary);
 }
 
 .title {
@@ -116,7 +115,7 @@
   gap: var(--space-4);
   padding: var(--space-6);
   border-block-start: var(--border-width-3) solid var(--color-border-strong);
-  background-color: var(--color-bg-secondary);
+  background-color: var(--color-bg-primary);
 }
 
 
@@ -142,8 +141,4 @@
    DARK THEME
    ======================================== */
 
-[data-theme="dark"] .overlay {
-  /* Dark mode overrides inherit from tokens.css */
-  /* Add component-specific overrides here if needed */
-}
-
+/* Dark mode overrides inherit from tokens.css */

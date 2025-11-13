@@ -56,8 +56,8 @@
 .halftoneOverlay {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle, var(--color-primary) var(--space-px), transparent var(--space-px));
-  background-size: 0.25rem 0.25rem;
+  /* Pattern background removed - use solid colors only */
+  background: none;
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;

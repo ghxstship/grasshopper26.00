@@ -1,7 +1,7 @@
 /**
- * HalftoneOverlay Styles
+ * HalftoneOverlay Styles - DEPRECATED
  * GHXSTSHIP Entertainment Platform
- * Ben-Day dot patterns, diagonal stripes, grid overlays
+ * Pattern overlays removed - use solid colors only
  */
 
 .overlay {
@@ -9,134 +9,61 @@
   inset: 0;
   pointer-events: none;
   z-index: 1;
+  /* All pattern backgrounds removed - component deprecated */
+  background: none;
 }
 
 /* ========================================
-   PATTERN TYPES
+   PATTERN TYPES - REMOVED
+   Use solid colors only, no decorative patterns
    ======================================== */
 
 .dots {
-  background-image: 
-    radial-gradient(circle, var(--color-primary) 20%, transparent 20%),
-    radial-gradient(circle, var(--color-primary) 20%, transparent 20%);
-  background-position: 0 0, 0.25rem 0.25rem;
+  background: none;
 }
 
 .diagonal {
-  background-image: repeating-linear-gradient(
-    45deg,
-    var(--color-primary),
-    var(--color-primary) 0.125rem,
-    transparent 0.125rem,
-    transparent 0.625rem
-  );
+  background: none;
 }
 
 .grid {
-  background-image: 
-    linear-gradient(var(--color-primary) var(--space-px), transparent var(--space-px)),
-    linear-gradient(90deg, var(--color-primary) var(--space-px), transparent var(--space-px));
+  background: none;
 }
 
 .screen-print {
-  background-image: 
-    radial-gradient(circle, var(--color-primary) 30%, transparent 30%),
-    radial-gradient(circle, var(--color-primary) 30%, transparent 30%);
-  background-position: 0 0, 0.375rem 0.375rem;
+  background: none;
 }
 
 /* ========================================
-   SIZES
+   SIZES - REMOVED
+   All pattern backgrounds removed
    ======================================== */
 
-.sm.dots {
-  background-size: 0.25rem 0.25rem;
-  background-position: 0 0, 0.125rem 0.125rem;
-}
-
-.sm.diagonal {
-  background-size: 0.375rem 0.375rem;
-}
-
-.sm.grid {
-  background-size: 0.375rem 0.375rem;
-}
-
-.sm.screen-print {
-  background-size: 0.5rem 0.5rem;
-  background-position: 0 0, 0.25rem 0.25rem;
-}
-
-.md.dots {
-  background-size: 0.5rem 0.5rem;
-  background-position: 0 0, 0.25rem 0.25rem;
-}
-
-.md.diagonal {
-  background-size: 0.625rem 0.625rem;
-}
-
-.md.grid {
-  background-size: 0.625rem 0.625rem;
-}
-
-.md.screen-print {
-  background-size: 0.75rem 0.75rem;
-  background-position: 0 0, 0.375rem 0.375rem;
-}
-
-.lg.dots {
-  background-size: 0.75rem 0.75rem;
-  background-position: 0 0, 0.375rem 0.375rem;
-}
-
-.lg.diagonal {
-  background-size: 1rem 1rem;
-}
-
-.lg.grid {
-  background-size: 1rem 1rem;
-}
-
-.lg.screen-print {
-  background-size: 1.125rem 1.125rem;
-  background-position: 0 0, 0.5625rem 0.5625rem;
-}
+/* Size classes removed - no patterns */
 
 /* ========================================
-   DARK THEME
+   DARK THEME - REMOVED
+   All pattern backgrounds removed
    ======================================== */
 
 [data-theme="dark"] .overlay {
-  background-color: transparent;
+  background: none;
 }
 
 [data-theme="dark"] .dots {
-  background-image: 
-    radial-gradient(circle, var(--color-accent) 20%, transparent 20%),
-    radial-gradient(circle, var(--color-accent) 20%, transparent 20%);
+  background: none;
 }
 
 [data-theme="dark"] .diagonal {
-  background-image: repeating-linear-gradient(
-    45deg,
-    var(--color-accent),
-    var(--color-accent) 0.125rem,
-    transparent 0.125rem,
-    transparent 0.625rem
-  );
+  background: none;
 }
 
 [data-theme="dark"] .grid {
-  background-image: 
-    linear-gradient(var(--color-accent) var(--space-px), transparent var(--space-px)),
-    linear-gradient(90deg, var(--color-accent) var(--space-px), transparent var(--space-px));
+  background: none;
 }
 
 [data-theme="dark"] .screen-print {
-  background-image: 
-    radial-gradient(circle, var(--color-accent) 30%, transparent 30%),
-    radial-gradient(circle, var(--color-accent) 30%, transparent 30%);
+  background: none;
 }
 
 /* ========================================

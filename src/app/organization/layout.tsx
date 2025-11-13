@@ -19,13 +19,14 @@ export default async function AdminLayout({
   }
 
   // Check if user has admin role
-  const { data: brandUser, error: roleError } = await supabase
-    .from('brand_users')
-    .select('role')
+  const { data: orgAssignment, error: roleError } = await supabase
+    .from('brand_team_assignments')
+    .select('team_role')
     .eq('user_id', user.id)
-    .single();
+    .eq('is_active', true)
+    .maybeSingle();
 
-  if (roleError || !brandUser || !['admin', 'super_admin'].includes(brandUser.role)) {
+  if (roleError || !orgAssignment || !['admin', 'super_admin'].includes(orgAssignment.team_role)) {
     redirect('/');
   }
 

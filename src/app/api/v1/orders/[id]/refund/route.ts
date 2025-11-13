@@ -33,13 +33,14 @@ export async function POST(
     const { reason, amount, notes } = refundOrderSchema.parse(body);
 
     // Check if user has admin role (only admins can process refunds)
-    const { data: brandUser, error: roleError } = await supabase
-      .from('brand_users')
-      .select('role')
+    const { data: orgAssignment, error: roleError } = await supabase
+      .from('brand_team_assignments')
+      .select('team_role')
       .eq('user_id', user.id)
-      .single();
+      .eq('is_active', true)
+      .maybeSingle();
 
-    if (roleError || !brandUser || !['admin', 'super_admin'].includes(brandUser.role)) {
+    if (roleError || !orgAssignment || !['admin', 'super_admin'].includes(orgAssignment.team_role)) {
       throw ErrorResponses.forbidden('Only administrators can process refunds');
     }
 
@@ -291,13 +292,14 @@ export async function GET(
     }
 
     // Check ownership or admin access
-    const { data: brandUser } = await supabase
-      .from('brand_users')
-      .select('role')
+    const { data: orgAssignment } = await supabase
+      .from('brand_team_assignments')
+      .select('team_role')
       .eq('user_id', user.id)
-      .single();
+      .eq('is_active', true)
+      .maybeSingle();
 
-    const isAdmin = brandUser && ['admin', 'super_admin'].includes(brandUser.role);
+    const isAdmin = orgAssignment && ['admin', 'super_admin'].includes(orgAssignment.team_role);
     const isOwner = order.user_id === user.id;
 
     if (!isAdmin && !isOwner) {

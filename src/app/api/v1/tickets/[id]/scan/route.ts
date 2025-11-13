@@ -27,13 +27,14 @@ export async function POST(
     const { location, notes } = scanTicketSchema.parse(body);
 
     // Check if user has staff/admin role
-    const { data: brandUser, error: roleError } = await supabase
-      .from('brand_users')
-      .select('role')
+    const { data: orgAssignment, error: roleError } = await supabase
+      .from('brand_team_assignments')
+      .select('team_role')
       .eq('user_id', user.id)
-      .single();
+      .eq('is_active', true)
+      .maybeSingle();
 
-    if (roleError || !brandUser || !['admin', 'staff', 'super_admin'].includes(brandUser.role)) {
+    if (roleError || !orgAssignment || !['admin', 'staff', 'super_admin'].includes(orgAssignment.team_role)) {
       throw ErrorResponses.forbidden('Only staff members can scan tickets');
     }
 
@@ -203,13 +204,14 @@ export async function GET(
     const supabase = await createClient();
 
     // Check if user has staff/admin role
-    const { data: brandUser, error: roleError } = await supabase
-      .from('brand_users')
-      .select('role')
+    const { data: orgAssignment, error: roleError } = await supabase
+      .from('brand_team_assignments')
+      .select('team_role')
       .eq('user_id', user.id)
-      .single();
+      .eq('is_active', true)
+      .maybeSingle();
 
-    if (roleError || !brandUser || !['admin', 'staff', 'super_admin'].includes(brandUser.role)) {
+    if (roleError || !orgAssignment || !['admin', 'staff', 'super_admin'].includes(orgAssignment.team_role)) {
       throw ErrorResponses.forbidden('Only staff members can verify tickets');
     }
 

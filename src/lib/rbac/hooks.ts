@@ -13,7 +13,7 @@ import {
   isLegend,
   isSuperAdmin,
   canManageEvent,
-  canManageBrand,
+  canManageOrganization,
   hasActiveMembership,
   hasEventTicket,
   getUserTeamRole,
@@ -240,34 +240,34 @@ export function useCanManageEvent(eventId: string | undefined) {
 }
 
 /**
- * Hook to check if user can manage a brand
+ * Hook to check if user can manage an organization
  */
-export function useCanManageBrand(brandId: string | undefined) {
+export function useCanManageOrganization(organizationId: string | undefined) {
   const { user } = useAuth();
   const [canManage, setCanManage] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    async function checkBrandManagement() {
-      if (!user?.id || !brandId) {
+    async function checkOrganizationManagement() {
+      if (!user?.id || !organizationId) {
         setCanManage(false);
         setLoading(false);
         return;
       }
 
       try {
-        const result = await canManageBrand(user.id, brandId);
+        const result = await canManageOrganization(user.id, organizationId);
         setCanManage(result);
       } catch (error) {
-        console.error('Error checking brand management permission:', error);
+        console.error('Error checking organization management permission:', error);
         setCanManage(false);
       } finally {
         setLoading(false);
       }
     }
 
-    checkBrandManagement();
-  }, [user?.id, brandId]);
+    checkOrganizationManagement();
+  }, [user?.id, organizationId]);
 
   return { canManage, loading };
 }

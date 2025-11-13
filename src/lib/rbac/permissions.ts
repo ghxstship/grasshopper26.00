@@ -114,18 +114,18 @@ export async function canManageEvent(userId: string, eventId: string): Promise<b
 }
 
 /**
- * Check if user can manage a specific brand
+ * Check if user can manage a specific organization
  */
-export async function canManageBrand(userId: string, brandId: string): Promise<boolean> {
+export async function canManageOrganization(userId: string, organizationId: string): Promise<boolean> {
   const supabase = createClient();
 
   const { data, error } = await supabase.rpc('can_manage_brand', {
     p_user_id: userId,
-    p_brand_id: brandId
+    p_brand_id: organizationId
   });
 
   if (error) {
-    console.error('Error checking brand management permission:', error);
+    console.error('Error checking organization management permission:', error);
     return false;
   }
 
@@ -369,15 +369,15 @@ export async function removeFromEventTeam(eventId: string, userId: string) {
 }
 
 /**
- * Assign user to brand team
+ * Assign user to organization team
  */
-export async function assignToBrandTeam(
-  brandId: string,
+export async function assignToOrganizationTeam(
+  organizationId: string,
   userId: string,
   teamRole: TeamRole,
   assignedBy: string,
   department?: string,
-  canManageBrand: boolean = false,
+  canManageOrganization: boolean = false,
   canCreateEvents: boolean = false
 ) {
   const supabase = createClient();
@@ -385,11 +385,11 @@ export async function assignToBrandTeam(
   const { data, error } = await supabase
     .from('brand_team_assignments')
     .insert({
-      brand_id: brandId,
+      brand_id: organizationId,
       user_id: userId,
       team_role: teamRole,
       department,
-      can_manage_brand: canManageBrand,
+      can_manage_brand: canManageOrganization,
       can_create_events: canCreateEvents,
       assigned_by: assignedBy
     })
@@ -397,7 +397,7 @@ export async function assignToBrandTeam(
     .single();
 
   if (error) {
-    console.error('Error assigning to brand team:', error);
+    console.error('Error assigning to organization team:', error);
     throw error;
   }
 
@@ -405,21 +405,21 @@ export async function assignToBrandTeam(
 }
 
 /**
- * Remove user from brand team
+ * Remove user from organization team
  */
-export async function removeFromBrandTeam(brandId: string, userId: string) {
+export async function removeFromOrganizationTeam(organizationId: string, userId: string) {
   const supabase = createClient();
 
   const { data, error } = await supabase
     .from('brand_team_assignments')
     .update({ removed_at: new Date().toISOString() })
-    .eq('brand_id', brandId)
+    .eq('brand_id', organizationId)
     .eq('user_id', userId)
     .select()
     .single();
 
   if (error) {
-    console.error('Error removing from brand team:', error);
+    console.error('Error removing from organization team:', error);
     throw error;
   }
 

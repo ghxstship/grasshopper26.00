@@ -11,7 +11,7 @@ import {
   useIsTeamMember,
   useIsSuperAdmin,
   useCanManageEvent,
-  useCanManageBrand
+  useCanManageOrganization
 } from './hooks';
 import { PermissionAction } from './types';
 
@@ -131,23 +131,23 @@ export function EventManagerGate({
   return <>{children}</>;
 }
 
-interface BrandManagerGateProps {
+interface OrganizationManagerGateProps {
   children: ReactNode;
-  brandId: string;
+  organizationId: string;
   fallback?: ReactNode;
   loadingFallback?: ReactNode;
 }
 
 /**
- * Component that renders children only if user can manage the brand
+ * Component that renders children only if user can manage the organization
  */
-export function BrandManagerGate({
+export function OrganizationManagerGate({
   children,
-  brandId,
+  organizationId,
   fallback = null,
   loadingFallback = null
-}: BrandManagerGateProps) {
-  const { canManage, loading } = useCanManageBrand(brandId);
+}: OrganizationManagerGateProps) {
+  const { canManage, loading } = useCanManageOrganization(organizationId);
 
   if (loading) {
     return <>{loadingFallback}</>;

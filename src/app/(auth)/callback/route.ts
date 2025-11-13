@@ -10,6 +10,6 @@ export async function GET(request: NextRequest) {
     await supabase.auth.exchangeCodeForSession(code);
   }
 
-  // Redirect to profile or home page
-  return NextResponse.redirect(new URL('/profile', requestUrl.origin));
+  // Redirect to portal which will route to appropriate dashboard
+  return NextResponse.redirect(new URL('/portal', requestUrl.origin));
 }

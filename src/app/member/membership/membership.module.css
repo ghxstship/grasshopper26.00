@@ -3,28 +3,127 @@
  * GHXSTSHIP Monochromatic Design System
  */
 
-.hero {
+.loading,
+.error {
+  padding: var(--spacing-6);
   text-align: center;
-  padding: var(--space-12);
 }
 
-.heroSubtitle {
-  margin-block-start: var(--space-4);
-  opacity: 0.8;
+.errorText {
+  color: var(--color-text-error);
+}
+
+.currentMembership {
+  margin-block-end: var(--spacing-8);
+}
+
+.membershipHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-block-end: var(--spacing-6);
+}
+
+.tierBadge {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.tierIcon {
+  width: var(--spacing-8);
+  height: var(--spacing-8);
+}
+
+.status {
+  color: var(--color-text-secondary);
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: var(--spacing-4);
+  margin-block-end: var(--spacing-6);
+}
+
+.benefits {
+  margin-block-start: var(--spacing-6);
+}
+
+.benefitsTitle {
+  margin-block-end: var(--spacing-4);
+}
+
+.benefitsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.benefitItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) 0;
+}
+
+.checkIcon {
+  width: var(--spacing-4);
+  height: var(--spacing-4);
+  flex-shrink: 0;
+}
+
+.tiersSection {
+  margin-block-start: var(--spacing-8);
+}
+
+.sectionTitle {
+  margin-block-end: var(--spacing-6);
 }
 
 .tiersGrid {
   display: grid;
-  gap: var(--space-8);
+  gap: var(--spacing-6);
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-  max-width: 90rem;
-  margin-inline: auto;
 }
 
-.tierSkeleton {
-  height: 37.5rem;
-  background-color: var(--color-bg-secondary);
-  border: var(--border-width-3) solid var(--color-border-default);
+.tierCard {
+  display: flex;
+  flex-direction: column;
+}
+
+.tierPrice {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-2);
+  margin-block-end: var(--spacing-2);
+}
+
+.priceLabel {
+  color: var(--color-text-secondary);
+}
+
+.monthlyPrice {
+  color: var(--color-text-secondary);
+  margin-block-end: var(--spacing-4);
+}
+
+.tierBenefits {
+  list-style: none;
+  padding: 0;
+  margin: var(--spacing-4) 0;
+}
+
+.tierBenefit {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) 0;
+}
+
+.tierButton {
+  margin-block-start: auto;
+  width: 100%;
 }
 
 /* ========================================

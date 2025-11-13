@@ -434,11 +434,14 @@
 }
 
 .iconContent {
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-2xl);
   color: var(--color-text-primary);
   line-height: 1;
   transition: color var(--duration-fast) var(--easing-out);
   user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Dark Mode Support */
@@ -467,7 +470,7 @@
   }
   
   .iconContent {
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-xl);
   }
 }
 

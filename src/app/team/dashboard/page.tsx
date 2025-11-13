@@ -52,6 +52,12 @@ export default function StaffDashboardPage() {
     try {
       const supabase = createClient();
       
+      if (!user?.id) {
+        console.error('No user ID available');
+        setLoading(false);
+        return;
+      }
+      
       const { data, error } = await supabase
         .from('event_team_assignments')
         .select(`
@@ -66,12 +72,15 @@ export default function StaffDashboardPage() {
             capacity
           )
         `)
-        .eq('user_id', user?.id)
+        .eq('user_id', user.id)
         .is('removed_at', null)
         .gte('event.start_date', new Date().toISOString())
         .order('event.start_date', { ascending: true });
 
-      if (error) throw error;
+      if (error) {
+        console.error('Error loading assignments:', error);
+        throw error;
+      }
 
       setAssignments(data as any || []);
       

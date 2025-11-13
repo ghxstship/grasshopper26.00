@@ -48,6 +48,9 @@ export const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
 
     const formatPrice = (price: string | number): string => {
       const numPrice = typeof price === 'string' ? parseFloat(price) : price;
+      if (isNaN(numPrice) || numPrice === null || numPrice === undefined) {
+        return '$0.00';
+      }
       return `$${numPrice.toFixed(2)}`;
     };
 

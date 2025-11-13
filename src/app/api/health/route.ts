@@ -116,8 +116,8 @@ async function checkDatabase(): Promise<HealthCheck> {
   try {
     const supabase = await createClient();
     const { error } = await supabase
-      .from('users')
-      .select('count')
+      .from('user_profiles')
+      .select('id')
       .limit(1);
     
     const latency = Date.now() - start;

@@ -35,38 +35,62 @@ export default function LegendDashboardPage() {
       const supabase = createClient();
 
       // Get organization count
-      const { count: orgCount } = await supabase
+      const { count: orgCount, error: orgError } = await supabase
         .from('organizations')
         .select('*', { count: 'exact', head: true });
 
+      if (orgError) {
+        console.error('Error fetching organizations:', orgError);
+      }
+
       // Get venue count
-      const { count: venueCount } = await supabase
+      const { count: venueCount, error: venueError } = await supabase
         .from('venues')
         .select('*', { count: 'exact', head: true });
 
+      if (venueError) {
+        console.error('Error fetching venues:', venueError);
+      }
+
       // Get staff count
-      const { count: staffCount } = await supabase
+      const { count: staffCount, error: staffError } = await supabase
         .from('user_profiles')
         .select('*', { count: 'exact', head: true });
 
+      if (staffError) {
+        console.error('Error fetching staff:', staffError);
+      }
+
       // Get event count
-      const { count: eventCount } = await supabase
+      const { count: eventCount, error: eventError } = await supabase
         .from('events')
         .select('*', { count: 'exact', head: true });
 
+      if (eventError) {
+        console.error('Error fetching events:', eventError);
+      }
+
       // Get total revenue
-      const { data: revenueData } = await supabase
+      const { data: revenueData, error: revenueError } = await supabase
         .from('orders')
         .select('total_amount')
         .eq('status', 'completed');
 
+      if (revenueError) {
+        console.error('Error fetching revenue:', revenueError);
+      }
+
       const totalRevenue = revenueData?.reduce((sum: number, order: any) => sum + (order.total_amount || 0), 0) || 0;
 
       // Get active organizations (with recent events)
-      const { count: activeOrgCount } = await supabase
+      const { count: activeOrgCount, error: activeOrgError } = await supabase
         .from('organizations')
         .select('*, events!inner(*)', { count: 'exact', head: true })
         .gte('events.start_date', new Date(Date.now() - 90 * 24 * 60 * 60 * 1000).toISOString());
+
+      if (activeOrgError) {
+        console.error('Error fetching active organizations:', activeOrgError);
+      }
 
       setStats({
         totalOrganizations: orgCount || 0,

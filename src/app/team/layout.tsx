@@ -28,7 +28,12 @@ export default async function TeamLayout({
     .is('removed_at', null)
     .limit(1);
 
-  if (assignmentError || !assignments || assignments.length === 0) {
+  if (assignmentError) {
+    console.error('Error checking staff assignment:', assignmentError);
+    redirect('/');
+  }
+
+  if (!assignments || assignments.length === 0) {
     redirect('/');
   }
 

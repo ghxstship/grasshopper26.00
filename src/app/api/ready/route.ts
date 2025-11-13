@@ -30,21 +30,36 @@ async function checkReadiness(): Promise<boolean> {
 }
 
 function checkEnvironmentVariables(): boolean {
+  // Core required variables
   const required = [
     'NEXT_PUBLIC_SUPABASE_URL',
     'NEXT_PUBLIC_SUPABASE_ANON_KEY',
-    'STRIPE_SECRET_KEY',
-    'STRIPE_PUBLISHABLE_KEY'
   ];
   
-  return required.every(key => !!process.env[key]);
+  // Optional in development
+  const optionalInDev = [
+    'STRIPE_SECRET_KEY',
+    'NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY'
+  ];
+  
+  const isDevelopment = process.env.NODE_ENV === 'development';
+  
+  // Check required variables
+  const hasRequired = required.every(key => !!process.env[key]);
+  
+  // In production, also check optional variables
+  if (!isDevelopment) {
+    return hasRequired && optionalInDev.every(key => !!process.env[key]);
+  }
+  
+  return hasRequired;
 }
 
 async function checkDatabaseConnection(): Promise<boolean> {
   try {
     const { createClient } = await import('@/lib/supabase/server');
     const supabase = await createClient();
-    const { error } = await supabase.from('users').select('count').limit(1);
+    const { error } = await supabase.from('user_profiles').select('id').limit(1);
     return !error;
   } catch {
     return false;

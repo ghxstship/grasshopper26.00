@@ -18,36 +18,48 @@ export default async function PortalPage() {
   
   try {
     // Check for platform admin (Legend access)
-    const { data: profile } = await supabase
+    const { data: profile, error: profileError } = await supabase
       .from('user_profiles')
       .select('is_platform_admin')
       .eq('id', user.id)
-      .single();
+      .maybeSingle();
+    
+    if (profileError) {
+      console.error('Error fetching user profile:', profileError);
+    }
     
     if (profile?.is_platform_admin) {
       redirect('/legend/dashboard');
     }
     
     // Check for organization admin
-    const { data: orgAssignment } = await supabase
+    const { data: orgAssignment, error: orgError } = await supabase
       .from('brand_team_assignments')
       .select('team_role')
       .eq('user_id', user.id)
       .eq('is_active', true)
       .maybeSingle();
     
+    if (orgError) {
+      console.error('Error fetching organization assignment:', orgError);
+    }
+    
     if (orgAssignment && ['super_admin', 'admin'].includes(orgAssignment.team_role)) {
       redirect('/organization/dashboard');
     }
     
     // Check for event staff
-    const { data: staffAssignment } = await supabase
+    const { data: staffAssignment, error: staffError } = await supabase
       .from('event_team_assignments')
       .select('id')
       .eq('user_id', user.id)
       .is('removed_at', null)
       .limit(1)
       .maybeSingle();
+    
+    if (staffError) {
+      console.error('Error fetching staff assignment:', staffError);
+    }
     
     if (staffAssignment) {
       redirect('/team/dashboard');

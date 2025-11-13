@@ -14,12 +14,17 @@ import {
 export default async function AdminDashboard() {
   const supabase = await createClient();
 
-  // Fetch dashboard KPIs
-  const { data: kpis } = await supabase.rpc('get_dashboard_kpis');
-  const dashboardData = kpis?.[0] || {};
+  // Fetch dashboard KPIs - function returns a single JSONB object, not an array
+  const { data: kpis, error: kpisError } = await supabase.rpc('get_dashboard_kpis');
+  
+  if (kpisError) {
+    console.error('Error fetching dashboard KPIs:', kpisError);
+  }
+  
+  const dashboardData = kpis || {};
 
   // Fetch recent orders
-  const { data: recentOrders } = await supabase
+  const { data: recentOrders, error: ordersError } = await supabase
     .from('orders')
     .select(`
       id,
@@ -33,11 +38,17 @@ export default async function AdminDashboard() {
     .order('created_at', { ascending: false })
     .limit(5);
 
-  // Calculate stats
-  const totalRevenue = parseFloat(dashboardData.total_revenue || '0');
+  if (ordersError) {
+    console.error('Error fetching recent orders:', ordersError);
+  }
+
+  // Calculate stats - handle both numeric and string values
+  const totalRevenue = typeof dashboardData.total_revenue === 'number' 
+    ? dashboardData.total_revenue 
+    : parseFloat(dashboardData.total_revenue || '0');
   const totalOrders = dashboardData.total_orders || 0;
-  const totalEvents = dashboardData.total_events || 0;
-  const totalUsers = dashboardData.total_users || 0;
+  const totalEvents = dashboardData.active_events || 0;
+  const totalUsers = dashboardData.new_users || 0;
 
   return (
     <AdminLayout

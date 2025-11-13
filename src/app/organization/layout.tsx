@@ -26,7 +26,12 @@ export default async function AdminLayout({
     .eq('is_active', true)
     .maybeSingle();
 
-  if (roleError || !orgAssignment || !['admin', 'super_admin'].includes(orgAssignment.team_role)) {
+  if (roleError) {
+    console.error('Error checking organization role:', roleError);
+    redirect('/');
+  }
+
+  if (!orgAssignment || !['admin', 'super_admin'].includes(orgAssignment.team_role)) {
     redirect('/');
   }
 

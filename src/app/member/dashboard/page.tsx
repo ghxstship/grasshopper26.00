@@ -26,38 +26,81 @@ export default function MemberPortalPage() {
   async function loadStats() {
     try {
       const supabase = createClient();
-      const { data: { user } } = await supabase.auth.getUser();
+      const { data: { user }, error: authError } = await supabase.auth.getUser();
       
-      if (!user) return;
+      if (authError) {
+        console.error('Auth error:', authError);
+        return;
+      }
+      
+      if (!user) {
+        console.error('No user found');
+        return;
+      }
 
-      const { count: ordersCount } = await supabase
+      const { count: ordersCount, error: ordersError } = await supabase
         .from('orders')
         .select('*', { count: 'exact', head: true })
         .eq('user_id', user.id);
 
-      const { data: credits } = await supabase
-        .from('user_credits')
-        .select('amount')
+      if (ordersError) {
+        console.error('Error fetching orders count:', ordersError);
+      }
+
+      // Get membership credits from user_memberships table
+      const { data: membership, error: creditsError } = await supabase
+        .from('user_memberships')
+        .select('ticket_credits_remaining')
         .eq('user_id', user.id)
-        .is('used', false);
+        .eq('status', 'active')
+        .maybeSingle();
 
-      const totalCredits = credits?.reduce((sum: number, c: any) => sum + (c.amount || 0), 0) || 0;
+      if (creditsError) {
+        console.error('Error fetching credits:', creditsError);
+      }
 
-      const { count: eventsCount } = await supabase
+      const totalCredits = membership?.ticket_credits_remaining || 0;
+
+      // Simplified query for upcoming events - avoid complex joins that might fail
+      const { data: userTickets, error: ticketsError } = await supabase
         .from('tickets')
-        .select('*, orders!inner(event_id, events!inner(start_date))', { count: 'exact', head: true })
-        .eq('user_id', user.id)
-        .gte('orders.events.start_date', new Date().toISOString());
+        .select('order_id')
+        .eq('user_id', user.id);
 
-      const { count: referralsCount } = await supabase
-        .from('referrals')
+      if (ticketsError) {
+        console.error('Error fetching tickets:', ticketsError);
+      }
+
+      let upcomingEventsCount = 0;
+      if (userTickets && userTickets.length > 0) {
+        const orderIds = userTickets.map((t: { order_id: string }) => t.order_id);
+        const { data: orders, error: ordersEventsError } = await supabase
+          .from('orders')
+          .select('event_id, events!inner(start_date)')
+          .in('id', orderIds)
+          .gte('events.start_date', new Date().toISOString());
+
+        if (ordersEventsError) {
+          console.error('Error fetching upcoming events:', ordersEventsError);
+        } else {
+          upcomingEventsCount = orders?.length || 0;
+        }
+      }
+
+      // Get referral count from referral_usage table
+      const { count: referralsCount, error: referralsError } = await supabase
+        .from('referral_usage')
         .select('*', { count: 'exact', head: true })
-        .eq('referrer_id', user.id);
+        .eq('referrer_user_id', user.id);
+
+      if (referralsError) {
+        console.error('Error fetching referrals:', referralsError);
+      }
 
       setStats({
         orders: ordersCount || 0,
         credits: totalCredits,
-        upcomingEvents: eventsCount || 0,
+        upcomingEvents: upcomingEventsCount,
         referrals: referralsCount || 0,
       });
     } catch (error) {

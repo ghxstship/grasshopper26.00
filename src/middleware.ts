@@ -19,39 +19,56 @@ async function getUserRole(request: NextRequest): Promise<string | null> {
         },
       }
     );
-    const { data: { user } } = await supabase.auth.getUser();
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    
+    if (authError) {
+      console.error('Auth error in middleware:', authError);
+      return null;
+    }
     
     if (!user) return null;
     
     // Check for platform admin (Legend access)
-    const { data: profile } = await supabase
+    const { data: profile, error: profileError } = await supabase
       .from('user_profiles')
       .select('is_platform_admin')
       .eq('id', user.id)
-      .single();
+      .maybeSingle();
+    
+    if (profileError) {
+      console.error('Error fetching profile in middleware:', profileError);
+    }
     
     if (profile?.is_platform_admin) return 'platform_admin';
     
     // Check for organization admin
-    const { data: orgAssignment } = await supabase
+    const { data: orgAssignment, error: orgError } = await supabase
       .from('brand_team_assignments')
       .select('team_role')
       .eq('user_id', user.id)
       .eq('is_active', true)
-      .single();
+      .maybeSingle();
+    
+    if (orgError) {
+      console.error('Error fetching org assignment in middleware:', orgError);
+    }
     
     if (orgAssignment && ['super_admin', 'admin'].includes(orgAssignment.team_role)) {
       return 'org_admin';
     }
     
     // Check for event staff
-    const { data: staffAssignment } = await supabase
+    const { data: staffAssignment, error: staffError } = await supabase
       .from('event_team_assignments')
       .select('id')
       .eq('user_id', user.id)
       .is('removed_at', null)
       .limit(1)
-      .single();
+      .maybeSingle();
+    
+    if (staffError) {
+      console.error('Error fetching staff assignment in middleware:', staffError);
+    }
     
     if (staffAssignment) return 'staff';
     

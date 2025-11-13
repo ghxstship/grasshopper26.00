@@ -211,18 +211,40 @@ USING (
 -- ============================================================================
 -- COMMENTS
 -- ============================================================================
+-- Note: Comments on storage.objects policies may fail in local development
+-- These are informational only and safe to skip
 
-COMMENT ON POLICY "Users can upload event images if authorized" ON storage.objects IS 
-  'Allows authenticated users to upload images to events they can manage';
+DO $$ 
+BEGIN
+  EXECUTE 'COMMENT ON POLICY "Users can upload event images if authorized" ON storage.objects IS ''Allows authenticated users to upload images to events they can manage''';
+EXCEPTION WHEN insufficient_privilege THEN
+  RAISE NOTICE 'Skipping comment on storage policy (insufficient privileges)';
+END $$;
 
-COMMENT ON POLICY "Public read access for event images" ON storage.objects IS 
-  'Allows public access to view event images';
+DO $$ 
+BEGIN
+  EXECUTE 'COMMENT ON POLICY "Public read access for event images" ON storage.objects IS ''Allows public access to view event images''';
+EXCEPTION WHEN insufficient_privilege THEN
+  RAISE NOTICE 'Skipping comment on storage policy (insufficient privileges)';
+END $$;
 
-COMMENT ON POLICY "Team members can upload artist images" ON storage.objects IS 
-  'Allows team members to upload artist profile images';
+DO $$ 
+BEGIN
+  EXECUTE 'COMMENT ON POLICY "Team members can upload artist images" ON storage.objects IS ''Allows team members to upload artist profile images''';
+EXCEPTION WHEN insufficient_privilege THEN
+  RAISE NOTICE 'Skipping comment on storage policy (insufficient privileges)';
+END $$;
 
-COMMENT ON POLICY "Users can upload their own avatar" ON storage.objects IS 
-  'Allows users to upload and manage their own profile avatar';
+DO $$ 
+BEGIN
+  EXECUTE 'COMMENT ON POLICY "Users can upload their own avatar" ON storage.objects IS ''Allows users to upload and manage their own profile avatar''';
+EXCEPTION WHEN insufficient_privilege THEN
+  RAISE NOTICE 'Skipping comment on storage policy (insufficient privileges)';
+END $$;
 
-COMMENT ON POLICY "Team members can upload documents" ON storage.objects IS 
-  'Allows team members to upload contracts, riders, and other documents';
+DO $$ 
+BEGIN
+  EXECUTE 'COMMENT ON POLICY "Team members can upload documents" ON storage.objects IS ''Allows team members to upload contracts, riders, and other documents''';
+EXCEPTION WHEN insufficient_privilege THEN
+  RAISE NOTICE 'Skipping comment on storage policy (insufficient privileges)';
+END $$;

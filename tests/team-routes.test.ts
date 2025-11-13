@@ -32,7 +32,7 @@ describe('Team Routes', () => {
     authToken = authData.session?.access_token || '';
 
     // Create test event
-    const { data: eventData, error: eventError } = await supabase
+    const { data: eventData, error: eventError } = await (supabase
       .from('events')
       .insert({
         title: 'Test Event for Staff',
@@ -40,9 +40,9 @@ describe('Team Routes', () => {
         venue_name: 'Test Venue',
         capacity: 1000,
         status: 'published',
-      })
+      } as any)
       .select()
-      .single();
+      .single() as any);
 
     if (eventError || !eventData) {
       throw new Error('Failed to create test event');
@@ -57,7 +57,7 @@ describe('Team Routes', () => {
         user_id: testUserId,
         event_id: testEventId,
         event_role_type: 'event_staff',
-      });
+      } as any);
 
     if (assignmentError) {
       throw new Error('Failed to create staff assignment');
@@ -201,11 +201,11 @@ describe('Team Routes', () => {
     });
 
     it('should fetch event stats correctly', async () => {
-      const { data: event, error: eventError } = await supabase
+      const { data: event, error: eventError } = await (supabase
         .from('events')
         .select('capacity')
         .eq('id', testEventId)
-        .single();
+        .single() as any);
 
       expect(eventError).toBeNull();
       expect(event).toBeDefined();

@@ -44,7 +44,7 @@ CREATE POLICY "Staff can view event issues"
       SELECT 1 FROM event_team_assignments
       WHERE event_team_assignments.event_id = event_issues.event_id
         AND event_team_assignments.user_id = auth.uid()
-        AND event_team_assignments.removed_at IS NULL
+        AND event_team_assignments.status IN ('active', 'accepted')
     )
   );
 
@@ -56,7 +56,7 @@ CREATE POLICY "Staff can create event issues"
       SELECT 1 FROM event_team_assignments
       WHERE event_team_assignments.event_id = event_issues.event_id
         AND event_team_assignments.user_id = auth.uid()
-        AND event_team_assignments.removed_at IS NULL
+        AND event_team_assignments.status IN ('active', 'accepted')
     )
   );
 
@@ -73,8 +73,8 @@ CREATE POLICY "Event leads can update event issues"
       SELECT 1 FROM event_team_assignments
       WHERE event_team_assignments.event_id = event_issues.event_id
         AND event_team_assignments.user_id = auth.uid()
-        AND event_team_assignments.event_role_type = 'event_lead'
-        AND event_team_assignments.removed_at IS NULL
+        AND event_team_assignments.team_role = 'lead'
+        AND event_team_assignments.status IN ('active', 'accepted')
     )
   );
 
@@ -89,7 +89,7 @@ CREATE POLICY "Staff can view event notes"
       SELECT 1 FROM event_team_assignments
       WHERE event_team_assignments.event_id = event_notes.event_id
         AND event_team_assignments.user_id = auth.uid()
-        AND event_team_assignments.removed_at IS NULL
+        AND event_team_assignments.status IN ('active', 'accepted')
     )
   );
 
@@ -101,7 +101,7 @@ CREATE POLICY "Staff can create event notes"
       SELECT 1 FROM event_team_assignments
       WHERE event_team_assignments.event_id = event_notes.event_id
         AND event_team_assignments.user_id = auth.uid()
-        AND event_team_assignments.removed_at IS NULL
+        AND event_team_assignments.status IN ('active', 'accepted')
     )
   );
 

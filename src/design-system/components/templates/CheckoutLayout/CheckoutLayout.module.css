@@ -80,7 +80,7 @@
 /* Summary Section */
 .summarySection {
   background-color: var(--color-bg-inverse);
-  color: var(--color-white);
+  color: var(--color-text-inverse);
   border-block-start: var(--border-width-3) solid var(--color-border-inverse);
   padding: var(--space-6);
 }
@@ -195,6 +195,6 @@
    ======================================== */
 
 [data-theme="dark"] .summarySection {
-  color: var(--color-black);
+  color: var(--color-interactive-default);
 }
 

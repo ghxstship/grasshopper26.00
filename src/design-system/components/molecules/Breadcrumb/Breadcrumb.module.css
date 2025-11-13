@@ -26,7 +26,7 @@
 
 .link,
 .current {
-  font-family: var(--font-mono);
+  font-family: var(--font-share-mono);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-normal);
   letter-spacing: var(--letter-spacing-meta);
@@ -57,7 +57,7 @@
 }
 
 .separator {
-  font-family: var(--font-mono);
+  font-family: var(--font-share-mono);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-bold);
   color: var(--color-text-tertiary);

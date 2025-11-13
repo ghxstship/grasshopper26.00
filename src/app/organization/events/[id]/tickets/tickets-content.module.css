@@ -1,43 +1,43 @@
 /* Tickets Content Styles */
 
 .formCard {
-  margin-block-end: var(--spacing-xl);
+  margin-block-end: var(--space-xl);
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-lg);
+  gap: var(--space-lg);
 }
 
 .formGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--spacing-md);
+  gap: var(--space-md);
 }
 
 .formField {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-xs);
+  gap: var(--space-xs);
 }
 
 .formFieldFull {
   grid-column: 1 / -1;
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-xs);
+  gap: var(--space-xs);
 }
 
 .formActions {
   display: flex;
-  gap: var(--spacing-sm);
+  gap: var(--space-sm);
 }
 
 .ticketsList {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(21.875rem, 1fr));
-  gap: var(--spacing-lg);
+  gap: var(--space-lg);
 }
 
 .ticketCard {
@@ -49,21 +49,21 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: var(--spacing-md);
+  gap: var(--space-md);
   inline-size: 100%;
 }
 
 .ticketTitleRow {
   display: flex;
   align-items: center;
-  gap: var(--spacing-sm);
+  gap: var(--space-sm);
   flex: 1;
 }
 
 .iconInline {
   inline-size: var(--icon-size-md);
   block-size: var(--icon-size-md);
-  color: var(--color-primary);
+  color: var(--color-interactive-default);
 }
 
 .iconSmall {
@@ -73,21 +73,21 @@
 
 .ticketActions {
   display: flex;
-  gap: var(--spacing-xs);
+  gap: var(--space-xs);
   flex-shrink: 0;
 }
 
 .ticketDetails {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--spacing-md);
-  margin-block-end: var(--spacing-md);
+  gap: var(--space-md);
+  margin-block-end: var(--space-md);
 }
 
 .ticketDetail {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-xs);
+  gap: var(--space-xs);
 }
 
 .label {
@@ -106,8 +106,8 @@
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
   margin: 0;
-  padding-block-start: var(--spacing-md);
-  border-block-start: var(--border-width-thin) solid var(--color-border);
+  padding-block-start: var(--space-md);
+  border-block-start: var(--border-width-1) solid var(--color-border);
 }
 
 @media (max-width: 48rem) {

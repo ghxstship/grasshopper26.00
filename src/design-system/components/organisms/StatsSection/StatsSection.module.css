@@ -7,8 +7,8 @@
 .section {
   inline-size: 100%;
   padding-block: var(--space-16);
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
   border-block: var(--border-width-3) solid var(--color-border-strong);
 }
 
@@ -71,11 +71,11 @@
 
 .stat:hover {
   transform: translateY(calc(-1 * var(--space-2)));
-  box-shadow: 0.5rem 0.5rem 0 var(--color-accent);
+  box-shadow: 0.5rem 0.5rem 0 var(--color-text-inverse);
 }
 
 .section.white .stat:hover {
-  box-shadow: 0.5rem 0.5rem 0 var(--color-primary);
+  box-shadow: 0.5rem 0.5rem 0 var(--color-interactive-default);
 }
 
 .value {
@@ -131,7 +131,7 @@
    ======================================== */
 
 [data-theme="dark"] .section {
-  background-color: var(--color-white);
-  color: var(--color-black);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
 }
 

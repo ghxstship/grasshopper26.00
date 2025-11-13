@@ -23,7 +23,7 @@
    ======================================== */
 
 .label {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-wider);
@@ -51,7 +51,7 @@
   justify-content: center;
   
   border: var(--border-width-2) solid var(--color-border-strong);
-  border-radius: var(--radius-none);
+  border-radius: var(--border-radius-none);
   background-color: var(--color-bg-primary);
   
   color: var(--color-text-primary);
@@ -62,8 +62,8 @@
 }
 
 .button:hover {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
   transform: scale(1.1);
 }
 
@@ -77,8 +77,8 @@
 }
 
 .button.copied {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
 }
 
 /* ========================================
@@ -157,6 +157,6 @@
 
 [data-theme="dark"] .button:hover,
 [data-theme="dark"] .button.copied {
-  background-color: var(--color-accent);
-  color: var(--color-primary);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
 }

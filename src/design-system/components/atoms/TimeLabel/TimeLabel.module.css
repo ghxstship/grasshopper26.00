@@ -5,7 +5,7 @@
  */
 
 .time {
-  font-family: var(--font-mono);
+  font-family: var(--font-share-mono);
   font-weight: var(--font-weight-bold);
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-wider);

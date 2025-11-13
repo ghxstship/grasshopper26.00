@@ -5,8 +5,8 @@
 
 .board {
   display: flex;
-  gap: var(--spacing-4);
-  padding: var(--spacing-4);
+  gap: var(--space-4);
+  padding: var(--space-4);
   overflow-x: auto;
   min-block-size: 37.5rem;
 }
@@ -14,26 +14,26 @@
 .column {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-3);
+  gap: var(--space-3);
   min-inline-size: 20rem;
   max-inline-size: 20rem;
-  padding: var(--spacing-4);
-  border: var(--border-width-thick) solid var(--color-black);
-  background-color: var(--color-grey-100);
+  padding: var(--space-4);
+  border: var(--border-width-3) solid var(--color-interactive-default);
+  background-color: var(--color-bg-tertiary);
 }
 
 .columnHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-block-end: var(--spacing-3);
-  border-block-end: var(--border-width-thick) solid var(--color-black);
+  padding-block-end: var(--space-3);
+  border-block-end: var(--border-width-3) solid var(--color-interactive-default);
 }
 
 .columnTitle {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-1);
+  gap: var(--space-1);
 }
 
 .columnName {
@@ -54,11 +54,11 @@
   block-size: 2rem;
   font-family: var(--font-bebas);
   font-size: var(--font-size-h4);
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
   border: none;
   cursor: pointer;
-  transition: transform var(--transition-fast) var(--easing-standard);
+  transition: transform var(--duration-fast) var(--easing-out);
 }
 
 .addCardButton:hover {
@@ -68,7 +68,7 @@
 .cardList {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-3);
+  gap: var(--space-3);
   flex: 1;
   overflow-y: auto;
 }
@@ -76,17 +76,17 @@
 .card {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-2);
-  padding: var(--spacing-3);
-  border: var(--border-width-thick) solid var(--color-black);
-  background-color: var(--color-white);
+  gap: var(--space-2);
+  padding: var(--space-3);
+  border: var(--border-width-3) solid var(--color-interactive-default);
+  background-color: var(--color-text-inverse);
   cursor: grab;
-  transition: all var(--transition-fast) var(--easing-standard);
+  transition: all var(--duration-fast) var(--easing-out);
 }
 
 .card:hover {
   transform: translateY(-0.125rem);
-  box-shadow: 0.25rem 0.25rem 0 0 var(--color-black);
+  box-shadow: 0.25rem 0.25rem 0 0 var(--color-interactive-default);
 }
 
 .card:active {
@@ -97,7 +97,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: var(--spacing-2);
+  gap: var(--space-2);
 }
 
 .cardTitle {
@@ -110,29 +110,29 @@
 }
 
 .priority {
-  padding: var(--spacing-1) var(--spacing-2);
+  padding: var(--space-1) var(--space-2);
   font-family: var(--font-bebas);
   font-size: var(--font-size-meta);
   text-transform: uppercase;
-  border: var(--space-px) solid var(--color-black);
+  border: var(--space-px) solid var(--color-interactive-default);
 }
 
 .priority.low {
-  background-color: var(--color-grey-200);
+  background-color: var(--color-border-default);
 }
 
 .priority.medium {
-  background-color: var(--color-grey-400);
+  background-color: var(--color-text-disabled);
 }
 
 .priority.high {
-  background-color: var(--color-grey-700);
-  color: var(--color-white);
+  background-color: var(--color-text-secondary);
+  color: var(--color-text-inverse);
 }
 
 .priority.urgent {
-  background-color: var(--color-grey-900);
-  color: var(--color-white);
+  background-color: var(--color-interactive-hover);
+  color: var(--color-text-inverse);
 }
 
 .cardDescription {
@@ -146,24 +146,24 @@
 .tags {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--spacing-1);
+  gap: var(--space-1);
 }
 
 .tag {
-  padding: var(--spacing-1) var(--spacing-2);
+  padding: var(--space-1) var(--space-2);
   font-family: var(--font-share-mono);
   font-size: var(--font-size-meta);
   text-transform: uppercase;
-  background-color: var(--color-grey-200);
-  border: var(--space-px) solid var(--color-grey-400);
+  background-color: var(--color-border-default);
+  border: var(--space-px) solid var(--color-text-disabled);
 }
 
 .cardFooter {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-block-start: var(--spacing-2);
-  border-block-start: var(--space-px) solid var(--color-grey-300);
+  padding-block-start: var(--space-2);
+  border-block-start: var(--space-px) solid var(--color-border-default);
 }
 
 .assignee {
@@ -197,19 +197,19 @@
    ======================================== */
 
 [data-theme="dark"] .column {
-  background-color: var(--color-grey-800);
+  background-color: var(--color-border-default);
 }
 
 [data-theme="dark"] .addCardButton {
-  background-color: var(--color-white);
-  color: var(--color-black);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .card {
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .tag {
-  background-color: var(--color-grey-700);
+  background-color: var(--color-text-secondary);
 }
 

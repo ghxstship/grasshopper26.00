@@ -3,7 +3,7 @@
 .vendorsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(21.875rem, 1fr));
-  gap: var(--spacing-lg);
+  gap: var(--space-lg);
 }
 
 .vendorHeader {
@@ -15,7 +15,7 @@
 .vendorDetails {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-sm);
+  gap: var(--space-sm);
 }
 
 .vendorDetail {
@@ -28,8 +28,8 @@
   margin: 0;
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
-  padding-block-start: var(--spacing-sm);
-  border-block-start: var(--border-width-thin) solid var(--color-border);
+  padding-block-start: var(--space-sm);
+  border-block-start: var(--border-width-1) solid var(--color-border);
 }
 
 @media (max-width: 48rem) {

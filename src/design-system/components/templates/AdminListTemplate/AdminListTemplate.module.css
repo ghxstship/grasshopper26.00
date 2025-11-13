@@ -12,7 +12,7 @@
 .sidebar {
   inline-size: 15.625rem;
   background-color: var(--color-bg-secondary);
-  border-inline-end: var(--border-width-default) solid var(--color-border-default);
+  border-inline-end: var(--border-width-2) solid var(--color-border-default);
   position: sticky;
   inset-block-start: 0;
   block-size: 100vh;
@@ -28,7 +28,7 @@
 /* Page Header */
 .pageHeader {
   padding: var(--space-6);
-  border-block-end: var(--border-width-default) solid var(--color-border-default);
+  border-block-end: var(--border-width-2) solid var(--color-border-default);
   background-color: var(--color-bg-primary);
 }
 
@@ -47,11 +47,11 @@
   margin-block-end: var(--space-2);
   color: var(--color-text-secondary);
   font-size: var(--font-size-sm);
-  font-family: var(--font-body);
+  font-family: var(--font-share);
 }
 
 .title {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-h2);
   font-weight: var(--font-weight-bold);
   color: var(--color-text-primary);
@@ -60,7 +60,7 @@
 }
 
 .description {
-  font-family: var(--font-body);
+  font-family: var(--font-share);
   font-size: var(--font-size-base);
   color: var(--color-text-secondary);
   margin-block-start: var(--space-2);
@@ -77,10 +77,10 @@
   align-items: center;
   gap: var(--space-2);
   padding: var(--space-3) var(--space-6);
-  background-color: var(--color-black);
-  color: var(--color-white);
-  border: var(--border-width-default) solid var(--color-border-strong);
-  font-family: var(--font-heading);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
+  border: var(--border-width-2) solid var(--color-border-strong);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-base);
   cursor: pointer;
   text-decoration: none;
@@ -88,8 +88,8 @@
 }
 
 .primaryButton:hover {
-  background-color: var(--color-primary-hover);
-  box-shadow: var(--shadow-md);
+  background-color: var(--color-interactive-hover);
+  box-shadow: var(--shadow-card);
 }
 
 /* Stats Grid */
@@ -103,7 +103,7 @@
 .statCard {
   padding: var(--space-4);
   background-color: var(--color-bg-secondary);
-  border: var(--border-width-default) solid var(--color-border-default);
+  border: var(--border-width-2) solid var(--color-border-default);
 }
 
 .statHeader {
@@ -114,7 +114,7 @@
 }
 
 .statLabel {
-  font-family: var(--font-body);
+  font-family: var(--font-share);
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
   text-transform: uppercase;
@@ -128,7 +128,7 @@
 }
 
 .statValue {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-3xl);
   font-weight: var(--font-weight-bold);
   color: var(--color-text-primary);
@@ -136,7 +136,7 @@
 }
 
 .statChange {
-  font-family: var(--font-mono);
+  font-family: var(--font-share-mono);
   font-size: var(--font-size-xs);
   color: var(--color-text-tertiary);
   margin-block-start: var(--space-1);
@@ -149,7 +149,7 @@
   gap: var(--space-4);
   padding: var(--space-4) var(--space-6);
   background-color: var(--color-bg-secondary);
-  border-block-end: var(--border-width-default) solid var(--color-border-default);
+  border-block-end: var(--border-width-2) solid var(--color-border-default);
 }
 
 .searchContainer {
@@ -161,8 +161,8 @@
   inline-size: 100%;
   padding: var(--space-3) var(--space-4);
   background-color: var(--color-bg-primary);
-  border: var(--border-width-default) solid var(--color-border-default);
-  font-family: var(--font-body);
+  border: var(--border-width-2) solid var(--color-border-default);
+  font-family: var(--font-share);
   font-size: var(--font-size-base);
   color: var(--color-text-primary);
   transition: border-color var(--duration-fast) var(--easing-out);
@@ -197,9 +197,9 @@
 .spinner {
   inline-size: 2.5rem;
   block-size: 2.5rem;
-  border: var(--border-width-thick) solid var(--color-border-default);
-  border-block-start-color: var(--color-primary);
-  border-radius: var(--radius-none);
+  border: var(--border-width-3) solid var(--color-border-default);
+  border-block-start-color: var(--color-interactive-default);
+  border-radius: var(--border-radius-none);
   animation: spin 1s linear infinite;
 }
 
@@ -227,14 +227,14 @@
 }
 
 .emptyTitle {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-2xl);
   color: var(--color-text-primary);
   margin: 0 0 var(--space-2) 0;
 }
 
 .emptyDescription {
-  font-family: var(--font-body);
+  font-family: var(--font-share);
   font-size: var(--font-size-base);
   color: var(--color-text-secondary);
   margin: 0 0 var(--space-6) 0;
@@ -243,10 +243,10 @@
 
 .emptyButton {
   padding: var(--space-3) var(--space-6);
-  background-color: var(--color-black);
-  color: var(--color-white);
-  border: var(--border-width-default) solid var(--color-border-strong);
-  font-family: var(--font-heading);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
+  border: var(--border-width-2) solid var(--color-border-strong);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-base);
   cursor: pointer;
   text-decoration: none;
@@ -254,14 +254,14 @@
 }
 
 .emptyButton:hover {
-  background-color: var(--color-primary-hover);
-  box-shadow: var(--shadow-md);
+  background-color: var(--color-interactive-hover);
+  box-shadow: var(--shadow-card);
 }
 
 /* Pagination */
 .pagination {
   padding: var(--space-4) var(--space-6);
-  border-block-start: var(--border-width-default) solid var(--color-border-default);
+  border-block-start: var(--border-width-2) solid var(--color-border-default);
   background-color: var(--color-bg-secondary);
 }
 
@@ -302,12 +302,12 @@
    ======================================== */
 
 [data-theme="dark"] .primaryButton {
-  background-color: var(--color-white);
-  color: var(--color-black);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .emptyButton {
-  background-color: var(--color-white);
-  color: var(--color-black);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
 }
 

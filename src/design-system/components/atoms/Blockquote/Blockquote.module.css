@@ -4,21 +4,21 @@
  */
 
 .blockquote {
-  margin: var(--spacing-6) 0;
-  padding: var(--spacing-6);
-  border-inline-start: var(--border-width-thick) solid var(--color-black);
-  background-color: var(--color-grey-100);
+  margin: var(--space-6) 0;
+  padding: var(--space-6);
+  border-inline-start: var(--border-width-3) solid var(--color-interactive-default);
+  background-color: var(--color-bg-tertiary);
 }
 
 .content {
   font-family: var(--font-share);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-base);
   line-height: var(--line-height-relaxed);
   color: var(--color-text-primary);
 }
 
 .footer {
-  margin-block-start: var(--spacing-4);
+  margin-block-start: var(--space-4);
   font-family: var(--font-share-mono);
   font-size: var(--font-size-meta);
   text-transform: uppercase;
@@ -46,6 +46,6 @@
    ======================================== */
 
 [data-theme="dark"] .blockquote {
-  background-color: var(--color-grey-800);
+  background-color: var(--color-border-default);
 }
 

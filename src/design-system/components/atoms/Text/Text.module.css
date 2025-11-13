@@ -16,7 +16,7 @@
 }
 
 .md {
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-base);
 }
 
 .lg {

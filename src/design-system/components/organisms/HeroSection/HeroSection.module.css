@@ -163,11 +163,11 @@
   text-transform: uppercase;
   text-decoration: none;
   
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
   
   border: var(--border-width-3) solid var(--color-border-strong);
-  border-radius: var(--radius-none)(--radius-none);
+  border-radius: var(--border-radius-none)(--radius-none);
   
   cursor: pointer;
   transition: all var(--duration-base) var(--easing-out);
@@ -179,7 +179,7 @@
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
   transform: scale(1.05);
-  box-shadow: var(--shadow-hover-lg);
+  box-shadow: var(--shadow-button-hover);
 }
 
 .cta:active {
@@ -268,14 +268,14 @@
 }
 
 .black .title {
-  color: var(--color-white);
+  color: var(--color-text-inverse);
   text-shadow: 
     0.25rem 0.25rem 0 var(--color-bg-tertiary),
     0.5rem 0.5rem 0 var(--color-border-accent);
 }
 
 .black .tagline {
-  color: var(--color-grey-300);
+  color: var(--color-border-default);
 }
 
 .black .halftoneOverlay {
@@ -290,7 +290,7 @@
 }
 
 .black .scrollArrow {
-  color: var(--color-white);
+  color: var(--color-text-inverse);
   border-color: var(--color-border-accent);
   background-color: var(--color-bg-tertiary);
 }
@@ -352,7 +352,7 @@
   }
   
   .cta {
-    border-width: var(--border-width-4);
+    border-width: var(--border-width-3);
   }
 }
 
@@ -364,7 +364,7 @@
    ======================================== */
 
 [data-theme="dark"] .cta {
-  background-color: var(--color-white);
-  color: var(--color-black);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
 }
 

@@ -11,14 +11,14 @@
   justify-content: center;
   gap: var(--space-2);
   
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-weight: var(--font-weight-normal);
   letter-spacing: var(--letter-spacing-wider);
   text-transform: uppercase;
   line-height: var(--line-height-tight);
   
   border: var(--border-width-3) solid var(--color-border-strong);
-  border-radius: var(--radius-none)(--radius-none);
+  border-radius: var(--border-radius-none)(--radius-none);
   
   cursor: pointer;
   user-select: none;
@@ -56,44 +56,44 @@
 .outlined {
   border-color: var(--color-border-strong);
   background-color: transparent;
-  color: var(--color-black);
+  color: var(--color-interactive-default);
 }
 
 .outlined:hover:not(:disabled) {
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
   border-color: var(--color-border-strong);
-  color: var(--color-white);
+  color: var(--color-text-inverse);
 }
 
 .outlined .arrow {
-  color: var(--color-black);
+  color: var(--color-interactive-default);
   transition: color var(--duration-base) var(--easing-out);
 }
 
 .outlined:hover:not(:disabled) .arrow {
-  color: var(--color-white);
+  color: var(--color-text-inverse);
 }
 
 /* Filled variant */
 .filled {
   border-color: var(--color-border-strong);
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
 }
 
 .filled:hover:not(:disabled) {
-  background-color: var(--color-white);
+  background-color: var(--color-text-inverse);
   border-color: var(--color-border-strong);
-  color: var(--color-black);
+  color: var(--color-interactive-default);
 }
 
 .filled .arrow {
-  color: var(--color-white);
+  color: var(--color-text-inverse);
   transition: color var(--duration-base) var(--easing-out);
 }
 
 .filled:hover:not(:disabled) .arrow {
-  color: var(--color-black);
+  color: var(--color-interactive-default);
 }
 
 /* ========================================
@@ -165,7 +165,7 @@
 
 @media (prefers-contrast: high) {
   .button {
-    border-width: var(--border-width-4);
+    border-width: var(--border-width-3);
   }
 }
 
@@ -174,31 +174,31 @@
    ======================================== */
 
 [data-theme="dark"] .outlined {
-  border-color: var(--color-white);
-  color: var(--color-white);
+  border-color: var(--color-text-inverse);
+  color: var(--color-text-inverse);
 }
 
 [data-theme="dark"] .outlined:hover:not(:disabled) {
-  background-color: var(--color-white);
-  color: var(--color-black);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .outlined:hover:not(:disabled) .arrow {
-  color: var(--color-black);
+  color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .filled {
-  background-color: var(--color-white);
-  color: var(--color-black);
-  border-color: var(--color-white);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
+  border-color: var(--color-text-inverse);
 }
 
 [data-theme="dark"] .filled:hover:not(:disabled) {
-  background-color: var(--color-black);
-  color: var(--color-white);
-  border-color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
+  border-color: var(--color-text-inverse);
 }
 
 [data-theme="dark"] .filled:hover:not(:disabled) .arrow {
-  color: var(--color-white);
+  color: var(--color-text-inverse);
 }

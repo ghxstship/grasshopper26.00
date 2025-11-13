@@ -11,7 +11,7 @@
   min-width: 17.5rem;
   
   border: var(--border-width-3) solid var(--color-border-strong);
-  border-radius: var(--radius-none);
+  border-radius: var(--border-radius-none);
   background-color: var(--color-bg-primary);
   
   overflow: hidden;
@@ -50,7 +50,7 @@
 }
 
 .eventName {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
   text-transform: uppercase;
@@ -73,7 +73,7 @@
 }
 
 .label {
-  font-family: var(--font-mono);
+  font-family: var(--font-share-mono);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-normal);
   text-transform: uppercase;
@@ -82,7 +82,7 @@
 }
 
 .value {
-  font-family: var(--font-body);
+  font-family: var(--font-share);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
   color: var(--color-text-primary);
@@ -94,12 +94,12 @@
    ======================================== */
 
 .vip {
-  border-color: var(--color-primary);
-  border-width: var(--border-width-4);
+  border-color: var(--color-interactive-default);
+  border-width: var(--border-width-3);
 }
 
 .vip .eventName {
-  color: var(--color-primary);
+  color: var(--color-interactive-default);
 }
 
 .ga {
@@ -116,11 +116,11 @@
 }
 
 [data-theme="dark"] .vip {
-  border-color: var(--color-accent);
+  border-color: var(--color-text-inverse);
 }
 
 [data-theme="dark"] .vip .eventName {
-  color: var(--color-accent);
+  color: var(--color-text-inverse);
 }
 
 [data-theme="dark"] .perforation {

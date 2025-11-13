@@ -20,7 +20,7 @@
   padding: var(--space-4);
   
   border: var(--border-width-3) solid var(--color-border-strong);
-  border-radius: var(--radius-none)(--radius-none);
+  border-radius: var(--border-radius-none)(--radius-none);
   background-color: var(--color-bg-primary);
   
   min-width: 5rem;
@@ -37,7 +37,7 @@
 }
 
 .label {
-  font-family: var(--font-mono);
+  font-family: var(--font-share-mono);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-normal);
   text-transform: uppercase;

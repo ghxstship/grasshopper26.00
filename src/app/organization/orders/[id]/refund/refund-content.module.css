@@ -1,26 +1,26 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-lg);
+  gap: var(--space-lg);
 }
 
 .field {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-xs);
+  gap: var(--space-xs);
 }
 
 .select {
-  padding: var(--spacing-sm);
-  border-radius: var(--radius-none);
-  border: var(--border-width-thin) solid var(--color-border);
+  padding: var(--space-sm);
+  border-radius: var(--border-radius-none);
+  border: var(--border-width-1) solid var(--color-border);
   background-color: var(--color-background);
   color: var(--color-text-primary);
 }
 
 .actions {
   display: flex;
-  gap: var(--spacing-sm);
+  gap: var(--space-sm);
 }
 
 /* DARK MODE */

@@ -240,7 +240,7 @@ export default function CredentialDetailPage({
             </Button>
           )}
           {!credential.revoked && (
-            <Button variant="danger" onClick={handleRevoke}>
+            <Button variant="outlined" onClick={handleRevoke}>
               <XCircle className={styles.icon} />
               Revoke
             </Button>

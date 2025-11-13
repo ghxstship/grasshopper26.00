@@ -1,13 +1,13 @@
 .container {
   min-block-size: 100vh;
-  padding-block: var(--spacing-xl);
-  padding-inline: var(--spacing-xl);
+  padding-block: var(--space-xl);
+  padding-inline: var(--space-xl);
 }
 
 .header {
-  margin-block-end: var(--spacing-xl);
-  padding-block-end: var(--spacing-lg);
-  border-block-end: var(--border-width-default) solid var(--color-border);
+  margin-block-end: var(--space-xl);
+  padding-block-end: var(--space-lg);
+  border-block-end: var(--border-width-2) solid var(--color-border);
 }
 
 .title {
@@ -22,33 +22,33 @@
 .content {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-2xl);
+  gap: var(--space-2xl);
 }
 
 .infoGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
-  gap: var(--spacing-lg);
-  padding-block: var(--spacing-lg);
-  padding-inline: var(--spacing-lg);
-  border: var(--border-width-default) solid var(--color-border);
+  gap: var(--space-lg);
+  padding-block: var(--space-lg);
+  padding-inline: var(--space-lg);
+  border: var(--border-width-2) solid var(--color-border);
 }
 
 .infoItem {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-xs);
+  gap: var(--space-xs);
 }
 
 .label {
-  font-family: var(--font-mono);
+  font-family: var(--font-share-mono);
   font-size: var(--font-size-xs);
   color: var(--color-text-secondary);
   text-transform: uppercase;
 }
 
 .value {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
 }
@@ -73,11 +73,11 @@
 .section {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-md);
+  gap: var(--space-md);
 }
 
 .sectionTitle {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
   margin: 0;
@@ -85,7 +85,7 @@
 }
 
 .description {
-  font-family: var(--font-body);
+  font-family: var(--font-share);
   font-size: var(--font-size-md);
   line-height: var(--line-height-relaxed);
   margin: 0;
@@ -94,19 +94,19 @@
 .detailsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(15.625rem, 1fr));
-  gap: var(--spacing-md);
+  gap: var(--space-md);
 }
 
 .detailItem {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-xs);
+  gap: var(--space-xs);
 }
 
 @media (max-width: 48rem) {
   .container {
-    padding-block: var(--spacing-lg);
-    padding-inline: var(--spacing-md);
+    padding-block: var(--space-lg);
+    padding-inline: var(--space-md);
   }
 
   .title {

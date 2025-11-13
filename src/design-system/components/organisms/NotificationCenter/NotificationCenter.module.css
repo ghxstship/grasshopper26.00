@@ -8,24 +8,24 @@
   flex-direction: column;
   inline-size: 25rem;
   max-block-size: 37.5rem;
-  border: var(--border-width-thick) solid var(--color-black);
-  background-color: var(--color-white);
+  border: var(--border-width-3) solid var(--color-interactive-default);
+  background-color: var(--color-text-inverse);
 }
 
 .header {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-2);
-  padding: var(--spacing-4);
-  border-block-end: var(--border-width-thick) solid var(--color-black);
-  background-color: var(--color-black);
-  color: var(--color-white);
+  gap: var(--space-2);
+  padding: var(--space-4);
+  border-block-end: var(--border-width-3) solid var(--color-interactive-default);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
 }
 
 .titleRow {
   display: flex;
   align-items: center;
-  gap: var(--spacing-2);
+  gap: var(--space-2);
 }
 
 .title {
@@ -36,54 +36,54 @@
 }
 
 .badge {
-  padding: var(--spacing-1) var(--spacing-2);
+  padding: var(--space-1) var(--space-2);
   font-family: var(--font-share-mono);
   font-size: var(--font-size-meta);
   font-weight: 700;
-  background-color: var(--color-grey-700);
+  background-color: var(--color-text-secondary);
 }
 
 .actions {
   display: flex;
-  gap: var(--spacing-2);
+  gap: var(--space-2);
 }
 
 .actionButton {
-  padding: var(--spacing-1) var(--spacing-2);
+  padding: var(--space-1) var(--space-2);
   font-family: var(--font-bebas);
   font-size: var(--font-size-meta);
   text-transform: uppercase;
-  background-color: var(--color-grey-700);
-  color: var(--color-white);
+  background-color: var(--color-text-secondary);
+  color: var(--color-text-inverse);
   border: none;
   cursor: pointer;
 }
 
 .actionButton:hover {
-  background-color: var(--color-grey-600);
+  background-color: var(--color-text-secondary);
 }
 
 .filters {
   display: flex;
-  gap: var(--spacing-2);
-  padding: var(--spacing-3) var(--spacing-4);
-  border-block-end: var(--space-px) solid var(--color-grey-300);
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border-block-end: var(--space-px) solid var(--color-border-default);
 }
 
 .filterButton {
-  padding: var(--spacing-2) var(--spacing-3);
+  padding: var(--space-2) var(--space-3);
   font-family: var(--font-bebas);
   font-size: var(--font-size-h6);
   text-transform: uppercase;
-  background-color: var(--color-white);
-  border: var(--space-px) solid var(--color-grey-400);
+  background-color: var(--color-text-inverse);
+  border: var(--space-px) solid var(--color-text-disabled);
   cursor: pointer;
 }
 
 .filterButton.active {
-  background-color: var(--color-black);
-  color: var(--color-white);
-  border-color: var(--color-black);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
+  border-color: var(--color-interactive-default);
 }
 
 .list {
@@ -92,10 +92,10 @@
 }
 
 .empty {
-  padding: var(--spacing-6);
+  padding: var(--space-6);
   text-align: center;
   font-family: var(--font-share-mono);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-base);
   color: var(--color-text-secondary);
 }
 
@@ -103,19 +103,19 @@
   position: relative;
   display: grid;
   grid-template-columns: auto 1fr auto;
-  gap: var(--spacing-3);
-  padding: var(--spacing-3) var(--spacing-4);
-  border-block-end: var(--space-px) solid var(--color-grey-300);
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-block-end: var(--space-px) solid var(--color-border-default);
   cursor: pointer;
-  transition: background-color var(--transition-fast) var(--easing-standard);
+  transition: background-color var(--duration-fast) var(--easing-out);
 }
 
 .notification:hover {
-  background-color: var(--color-grey-100);
+  background-color: var(--color-bg-tertiary);
 }
 
 .notification.unread {
-  background-color: var(--color-grey-50);
+  background-color: var(--color-bg-secondary);
 }
 
 .icon {
@@ -125,39 +125,39 @@
   inline-size: 2rem;
   block-size: 2rem;
   font-size: var(--font-size-h5);
-  background-color: var(--color-grey-200);
-  border: var(--space-px) solid var(--color-black);
+  background-color: var(--color-border-default);
+  border: var(--space-px) solid var(--color-interactive-default);
 }
 
 .icon.mention {
-  background-color: var(--color-grey-400);
+  background-color: var(--color-text-disabled);
 }
 
 .icon.assignment {
-  background-color: var(--color-grey-300);
+  background-color: var(--color-border-default);
 }
 
 .icon.comment {
-  background-color: var(--color-grey-200);
+  background-color: var(--color-border-default);
 }
 
 .icon.update {
-  background-color: var(--color-grey-500);
+  background-color: var(--color-text-tertiary);
 }
 
 .icon.deadline {
-  background-color: var(--color-grey-600);
-  color: var(--color-white);
+  background-color: var(--color-text-secondary);
+  color: var(--color-text-inverse);
 }
 
 .icon.system {
-  background-color: var(--color-grey-300);
+  background-color: var(--color-border-default);
 }
 
 .content {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-1);
+  gap: var(--space-1);
 }
 
 .notificationTitle {
@@ -184,7 +184,7 @@
 .unreadDot {
   inline-size: 0.5rem;
   block-size: 0.5rem;
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
   align-self: center;
 }
 
@@ -208,32 +208,32 @@
    ======================================== */
 
 [data-theme="dark"] .center {
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .header {
-  background-color: var(--color-white);
-  color: var(--color-black);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .badge {
-  background-color: var(--color-grey-200);
+  background-color: var(--color-border-default);
 }
 
 [data-theme="dark"] .actionButton {
-  background-color: var(--color-grey-200);
-  color: var(--color-black);
+  background-color: var(--color-border-default);
+  color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .filterButton {
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .icon {
-  background-color: var(--color-grey-700);
+  background-color: var(--color-text-secondary);
 }
 
 [data-theme="dark"] .unreadDot {
-  background-color: var(--color-white);
+  background-color: var(--color-text-inverse);
 }
 

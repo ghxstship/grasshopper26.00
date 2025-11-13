@@ -29,13 +29,13 @@
 }
 
 .venue {
-  font-family: var(--font-body);
+  font-family: var(--font-share);
   font-weight: var(--font-weight-medium);
   color: var(--color-text-primary);
 }
 
 .location {
-  font-family: var(--font-mono);
+  font-family: var(--font-share-mono);
   font-weight: var(--font-weight-normal);
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-wide);

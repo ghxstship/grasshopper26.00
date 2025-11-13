@@ -27,7 +27,7 @@
   align-items: center;
   justify-content: center;
   background-color: var(--color-bg-inverse);
-  color: var(--color-white);
+  color: var(--color-text-inverse);
   overflow: hidden;
 }
 
@@ -41,7 +41,7 @@
 
 .sectionInverted {
   background-color: var(--color-bg-inverse);
-  color: var(--color-white);
+  color: var(--color-text-inverse);
   border-block-end-color: var(--color-border-inverse);
 }
 
@@ -128,10 +128,10 @@
    ======================================== */
 
 [data-theme="dark"] .hero {
-  color: var(--color-black);
+  color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .sectionInverted {
-  color: var(--color-black);
+  color: var(--color-interactive-default);
 }
 

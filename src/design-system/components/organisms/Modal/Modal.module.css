@@ -93,8 +93,8 @@
 }
 
 .closeButton:hover {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
   transform: scale(1.1);
 }
 

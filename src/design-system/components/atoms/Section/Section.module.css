@@ -9,23 +9,23 @@
 
 /* Background variants */
 .black {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
 }
 
 .white {
-  background-color: var(--color-white);
-  color: var(--color-black);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
 }
 
 .grey-light {
-  background-color: var(--color-grey-100);
-  color: var(--color-black);
+  background-color: var(--color-bg-tertiary);
+  color: var(--color-interactive-default);
 }
 
 .grey-dark {
-  background-color: var(--color-grey-900);
-  color: var(--color-white);
+  background-color: var(--color-interactive-hover);
+  color: var(--color-text-inverse);
 }
 
 /* Padding variants */
@@ -34,36 +34,36 @@
 }
 
 .padding-sm {
-  padding-block: var(--spacing-8);
+  padding-block: var(--space-8);
 }
 
 .padding-md {
-  padding-block: var(--spacing-12);
+  padding-block: var(--space-12);
 }
 
 .padding-lg {
-  padding-block: var(--spacing-16);
+  padding-block: var(--space-16);
 }
 
 .padding-xl {
-  padding-block: var(--spacing-24);
+  padding-block: var(--space-24);
 }
 
 @media (min-width: 48rem) {
   .padding-sm {
-    padding-block: var(--spacing-12);
+    padding-block: var(--space-12);
   }
 
   .padding-md {
-    padding-block: var(--spacing-16);
+    padding-block: var(--space-16);
   }
 
   .padding-lg {
-    padding-block: var(--spacing-24);
+    padding-block: var(--space-24);
   }
 
   .padding-xl {
-    padding-block: var(--spacing-32);
+    padding-block: var(--space-32);
   }
 }
 
@@ -75,22 +75,22 @@
    ======================================== */
 
 [data-theme="dark"] .black {
-  background-color: var(--color-white);
-  color: var(--color-black);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .white {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
 }
 
 [data-theme="dark"] .grey-light {
-  background-color: var(--color-grey-800);
-  color: var(--color-white);
+  background-color: var(--color-border-default);
+  color: var(--color-text-inverse);
 }
 
 [data-theme="dark"] .grey-dark {
-  background-color: var(--color-grey-100);
-  color: var(--color-black);
+  background-color: var(--color-bg-tertiary);
+  color: var(--color-interactive-default);
 }
 

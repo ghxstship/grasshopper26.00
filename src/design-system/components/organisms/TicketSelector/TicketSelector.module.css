@@ -27,7 +27,7 @@
 }
 
 .title {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-3xl);
   font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-wide);
@@ -40,7 +40,7 @@
 }
 
 .selectedCount {
-  font-family: var(--font-mono);
+  font-family: var(--font-share-mono);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-widest);
@@ -50,10 +50,10 @@
   padding-block: var(--space-2);
   
   border: var(--border-width-2) solid var(--color-border-strong);
-  border-radius: var(--radius-none);
-  background-color: var(--color-black);
+  border-radius: var(--border-radius-none);
+  background-color: var(--color-interactive-default);
   
-  color: var(--color-white);
+  color: var(--color-text-inverse);
 }
 
 /* ========================================
@@ -82,9 +82,9 @@
   border-block-start: var(--border-width-3) solid var(--color-border-strong);
   background-color: var(--color-bg-primary);
   
-  box-shadow: 0 -0.5rem 0 var(--color-black);
+  box-shadow: 0 -0.5rem 0 var(--color-interactive-default);
   
-  z-index: var(--z-sticky);
+  z-index: var(--z-fixed);
 }
 
 .summaryContent {
@@ -150,7 +150,7 @@
 
 @media (prefers-contrast: high) {
   .header {
-    border-block-end-width: var(--border-width-4);
+    border-block-end-width: var(--border-width-3);
   }
   
   .selectedCount,
@@ -164,10 +164,10 @@
    ======================================== */
 
 [data-theme="dark"] .selectedCount {
-  background-color: var(--color-accent);
-  color: var(--color-primary);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .summary {
-  box-shadow: 0 -0.5rem 0 var(--color-white);
+  box-shadow: 0 -0.5rem 0 var(--color-text-inverse);
 }

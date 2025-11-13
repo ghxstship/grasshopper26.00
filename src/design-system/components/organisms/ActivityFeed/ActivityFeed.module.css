@@ -6,15 +6,15 @@
 .feed {
   display: flex;
   flex-direction: column;
-  border: var(--border-width-thick) solid var(--color-black);
-  background-color: var(--color-white);
+  border: var(--border-width-3) solid var(--color-interactive-default);
+  background-color: var(--color-text-inverse);
 }
 
 .header {
-  padding: var(--spacing-4);
-  border-block-end: var(--border-width-thick) solid var(--color-black);
-  background-color: var(--color-black);
-  color: var(--color-white);
+  padding: var(--space-4);
+  border-block-end: var(--border-width-3) solid var(--color-interactive-default);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
 }
 
 .title {
@@ -35,15 +35,15 @@
 .activity {
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: var(--spacing-3);
-  padding: var(--spacing-3) var(--spacing-4);
-  border-block-end: var(--space-px) solid var(--color-grey-300);
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-block-end: var(--space-px) solid var(--color-border-default);
   cursor: pointer;
-  transition: background-color var(--transition-fast) var(--easing-standard);
+  transition: background-color var(--duration-fast) var(--easing-out);
 }
 
 .activity:hover {
-  background-color: var(--color-grey-100);
+  background-color: var(--color-bg-tertiary);
 }
 
 .icon {
@@ -53,47 +53,47 @@
   inline-size: 2rem;
   block-size: 2rem;
   font-size: var(--font-size-h5);
-  background-color: var(--color-grey-200);
-  border: var(--space-px) solid var(--color-black);
+  background-color: var(--color-border-default);
+  border: var(--space-px) solid var(--color-interactive-default);
 }
 
 .icon.create {
-  background-color: var(--color-grey-300);
+  background-color: var(--color-border-default);
 }
 
 .icon.update {
-  background-color: var(--color-grey-400);
+  background-color: var(--color-text-disabled);
 }
 
 .icon.delete {
-  background-color: var(--color-grey-900);
-  color: var(--color-white);
+  background-color: var(--color-interactive-hover);
+  color: var(--color-text-inverse);
 }
 
 .icon.comment {
-  background-color: var(--color-grey-200);
+  background-color: var(--color-border-default);
 }
 
 .icon.assign {
-  background-color: var(--color-grey-300);
+  background-color: var(--color-border-default);
 }
 
 .icon.status_change {
-  background-color: var(--color-grey-500);
+  background-color: var(--color-text-tertiary);
 }
 
 .content {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-1);
+  gap: var(--space-1);
 }
 
 .action {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--spacing-1);
+  gap: var(--space-1);
   font-family: var(--font-share);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-base);
 }
 
 .user {
@@ -110,7 +110,7 @@
 
 .meta {
   display: flex;
-  gap: var(--spacing-2);
+  gap: var(--space-2);
 }
 
 .timestamp {
@@ -139,15 +139,15 @@
    ======================================== */
 
 [data-theme="dark"] .feed {
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .header {
-  background-color: var(--color-white);
-  color: var(--color-black);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .icon {
-  background-color: var(--color-grey-700);
+  background-color: var(--color-text-secondary);
 }
 

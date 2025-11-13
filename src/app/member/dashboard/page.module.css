@@ -70,7 +70,7 @@
 .actionLink:hover {
   background-color: var(--color-text-primary);
   color: var(--color-text-inverse);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-card);
 }
 
 /* DARK MODE */
@@ -92,5 +92,5 @@
 :global([data-theme="dark"]) .actionLink:hover {
   background-color: var(--color-text-primary);
   color: var(--color-text-inverse);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-card);
 }

@@ -1,5 +1,5 @@
 .container {
-  padding: var(--spacing-xl);
+  padding: var(--space-xl);
   max-width: var(--space-96);
   margin: 0 auto;
 }
@@ -8,11 +8,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-block-end: var(--spacing-xl);
+  margin-block-end: var(--space-xl);
 }
 
 .title {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-bold);
   color: var(--color-text-primary);
@@ -20,11 +20,11 @@
 }
 
 .primaryButton {
-  padding: var(--spacing-md) var(--spacing-xl);
+  padding: var(--space-md) var(--space-xl);
   background-color: var(--color-text-primary);
   color: var(--color-text-inverse);
   border: none;
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-bold);
   cursor: pointer;
@@ -38,21 +38,21 @@
 .form {
   background-color: var(--color-bg-secondary);
   border: var(--border-width-standard) solid var(--color-border-primary);
-  padding: var(--spacing-xl);
-  margin-block-end: var(--spacing-xl);
+  padding: var(--space-xl);
+  margin-block-end: var(--space-xl);
 }
 
 .formGroup {
-  margin-block-end: var(--spacing-lg);
+  margin-block-end: var(--space-lg);
 }
 
 .label {
   display: block;
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-bold);
   color: var(--color-text-primary);
-  margin-block-end: var(--spacing-sm);
+  margin-block-end: var(--space-sm);
   text-transform: uppercase;
 }
 
@@ -60,11 +60,11 @@
 .textarea,
 .select {
   width: 100%;
-  padding: var(--spacing-md);
+  padding: var(--space-md);
   background-color: var(--color-bg-primary);
   border: var(--border-width-standard) solid var(--color-border-primary);
   color: var(--color-text-primary);
-  font-family: var(--font-body);
+  font-family: var(--font-share);
   font-size: var(--font-size-base);
 }
 
@@ -81,11 +81,11 @@
 }
 
 .submitButton {
-  padding: var(--spacing-md) var(--spacing-xl);
+  padding: var(--space-md) var(--space-xl);
   background-color: var(--color-text-primary);
   color: var(--color-text-inverse);
   border: none;
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-bold);
   cursor: pointer;
@@ -100,24 +100,24 @@
 .issuesList {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-lg);
+  gap: var(--space-lg);
 }
 
 .issueCard {
   background-color: var(--color-bg-secondary);
   border: var(--border-width-standard) solid var(--color-border-primary);
-  padding: var(--spacing-xl);
+  padding: var(--space-xl);
 }
 
 .issueHeader {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-block-end: var(--spacing-md);
+  margin-block-end: var(--space-md);
 }
 
 .issueTitle {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
   color: var(--color-text-primary);
@@ -125,10 +125,10 @@
 }
 
 .issueDescription {
-  font-family: var(--font-body);
+  font-family: var(--font-share);
   font-size: var(--font-size-base);
   color: var(--color-text-secondary);
-  margin-block-end: var(--spacing-lg);
+  margin-block-end: var(--space-lg);
   line-height: var(--line-height-relaxed);
 }
 
@@ -139,8 +139,8 @@
 }
 
 .badge {
-  padding: var(--spacing-xs) var(--spacing-md);
-  font-family: var(--font-mono);
+  padding: var(--space-xs) var(--space-md);
+  font-family: var(--font-share-mono);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-bold);
   text-transform: uppercase;
@@ -178,8 +178,8 @@
 }
 
 .statusBadge {
-  padding: var(--spacing-xs) var(--spacing-md);
-  font-family: var(--font-mono);
+  padding: var(--space-xs) var(--space-md);
+  font-family: var(--font-share-mono);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-bold);
   text-transform: uppercase;
@@ -202,25 +202,25 @@
 }
 
 .issueDate {
-  font-family: var(--font-mono);
+  font-family: var(--font-share-mono);
   font-size: var(--font-size-xs);
   color: var(--color-text-tertiary);
 }
 
 .emptyState {
   text-align: center;
-  padding: var(--spacing-2xl);
+  padding: var(--space-2xl);
 }
 
 .emptyText {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-lg);
   color: var(--color-text-secondary);
-  margin-block-end: var(--spacing-sm);
+  margin-block-end: var(--space-sm);
 }
 
 .emptySubtext {
-  font-family: var(--font-body);
+  font-family: var(--font-share);
   font-size: var(--font-size-base);
   color: var(--color-text-tertiary);
 }
@@ -230,8 +230,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: var(--spacing-2xl);
-  gap: var(--spacing-lg);
+  padding: var(--space-2xl);
+  gap: var(--space-lg);
 }
 
 .spinner {
@@ -239,7 +239,7 @@
   height: var(--space-10);
   border: var(--border-width-standard) solid var(--color-border-primary);
   border-top-color: var(--color-text-primary);
-  border-radius: 50%;
+  border-radius: var(--border-radius-full);
   animation: spin 1s linear infinite;
 }
 
@@ -250,7 +250,7 @@
 }
 
 .loadingText {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-base);
   color: var(--color-text-secondary);
 }
@@ -277,10 +277,10 @@
    RESPONSIVE BREAKPOINTS
    ======================================== */
 
-@media (min-width: 768px) {
+@media (min-width: var(--breakpoint-md)) {
   /* Tablet and up - add styles as needed */
 }
 
-@media (min-width: 1024px) {
+@media (min-width: var(--breakpoint-lg)) {
   /* Desktop and up - add styles as needed */
 }

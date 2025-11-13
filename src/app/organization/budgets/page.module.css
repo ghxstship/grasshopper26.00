@@ -1,16 +1,16 @@
 .container {
   min-block-size: 100vh;
-  padding-block: var(--spacing-xl);
-  padding-inline: var(--spacing-xl);
+  padding-block: var(--space-xl);
+  padding-inline: var(--space-xl);
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-block-end: var(--spacing-xl);
-  padding-block-end: var(--spacing-lg);
-  border-block-end: var(--border-width-default) solid var(--color-border);
+  margin-block-end: var(--space-xl);
+  padding-block-end: var(--space-lg);
+  border-block-end: var(--border-width-2) solid var(--color-border);
 }
 
 .title {
@@ -23,14 +23,14 @@
 }
 
 .createButton {
-  font-family: var(--font-mono);
+  font-family: var(--font-share-mono);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-bold);
-  padding-block: var(--spacing-sm);
-  padding-inline: var(--spacing-md);
+  padding-block: var(--space-sm);
+  padding-inline: var(--space-md);
   background: var(--color-text);
   color: var(--color-background);
-  border: var(--border-width-default) solid var(--color-border);
+  border: var(--border-width-2) solid var(--color-border);
   text-decoration: none;
   text-transform: uppercase;
   transition: transform 0.2s ease;
@@ -44,17 +44,17 @@
 .content {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-2xl);
+  gap: var(--space-2xl);
 }
 
 .section {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-lg);
+  gap: var(--space-lg);
 }
 
 .sectionTitle {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
   margin: 0;
@@ -64,7 +64,7 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 25rem), 1fr));
-  gap: var(--spacing-lg);
+  gap: var(--space-lg);
 }
 
 .empty {
@@ -73,11 +73,11 @@
   align-items: center;
   justify-content: center;
   min-block-size: 50vh;
-  gap: var(--spacing-lg);
+  gap: var(--space-lg);
 }
 
 .emptyText {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-2xl);
   color: var(--color-text-secondary);
   margin: 0;
@@ -85,14 +85,14 @@
 
 @media (max-width: 48rem) {
   .container {
-    padding-block: var(--spacing-lg);
-    padding-inline: var(--spacing-md);
+    padding-block: var(--space-lg);
+    padding-inline: var(--space-md);
   }
 
   .header {
     flex-direction: column;
     align-items: flex-start;
-    gap: var(--spacing-md);
+    gap: var(--space-md);
   }
 
   .title {

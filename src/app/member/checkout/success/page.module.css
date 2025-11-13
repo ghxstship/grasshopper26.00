@@ -264,7 +264,7 @@
 }
 
 .fontMono {
-  font-family: var(--font-mono);
+  font-family: var(--font-share-mono);
 }
 
 .fontBold {
@@ -406,11 +406,11 @@
 }
 
 .rounded {
-  border-radius: var(--radius-none);
+  border-radius: var(--border-radius-none);
 }
 
 .shadow {
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-card);
 }
 
 /* DARK MODE */

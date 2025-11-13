@@ -1,7 +1,5 @@
 /**
- * Avatar Styles
- * GHXSTSHIP Entertainment Platform
- * Geometric square frames, B&W images with halftone
+ * Avatar Styles - GHXSTSHIP
  */
 
 .avatar {
@@ -12,8 +10,8 @@
   
   overflow: hidden;
   
-  border: var(--border-width-3) solid var(--color-border-strong);
-  border-radius: var(--radius-none)(--radius-none);
+  border: var(--border-width-2) solid var(--color-border-strong);
+  border-radius: var(--border-radius-none);
   background-color: var(--color-bg-secondary);
   
   flex-shrink: 0;
@@ -21,19 +19,14 @@
 
 .image {
   object-fit: cover;
-  
   filter: grayscale(100%) contrast(1.2);
 }
 
 .halftoneOverlay {
   position: absolute;
   inset: 0;
-  
-  /* Pattern background removed - use solid colors only */
   background: none;
-  
   opacity: 0;
-  transition: opacity var(--duration-base) var(--easing-out);
   pointer-events: none;
 }
 
@@ -42,24 +35,20 @@
   align-items: center;
   justify-content: center;
   
-  width: 100%;
-  height: 100%;
+  inline-size: 100%;
+  block-size: 100%;
   
-  font-family: var(--font-heading);
-  font-weight: var(--font-weight-bold);
+  font-family: var(--font-bebas);
   text-transform: uppercase;
   
   color: var(--color-text-secondary);
   background-color: var(--color-bg-secondary);
 }
 
-/* ========================================
-   SIZES
-   ======================================== */
-
+/* Sizes */
 .xs {
-  width: var(--font-size-2xl);
-  height: var(--font-size-2xl);
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
 }
 
 .xs .fallback {
@@ -67,8 +56,8 @@
 }
 
 .sm {
-  width: 2rem;
-  height: 2rem;
+  inline-size: 2rem;
+  block-size: 2rem;
 }
 
 .sm .fallback {
@@ -76,8 +65,8 @@
 }
 
 .md {
-  width: 2.5rem;
-  height: 2.5rem;
+  inline-size: 2.5rem;
+  block-size: 2.5rem;
 }
 
 .md .fallback {
@@ -85,8 +74,8 @@
 }
 
 .lg {
-  width: 3.5rem;
-  height: 3.5rem;
+  inline-size: 3.5rem;
+  block-size: 3.5rem;
 }
 
 .lg .fallback {
@@ -94,43 +83,26 @@
 }
 
 .xl {
-  width: 5rem;
-  height: 5rem;
+  inline-size: 5rem;
+  block-size: 5rem;
 }
 
 .xl .fallback {
   font-size: var(--font-size-xl);
 }
 
-.xxl {
-  width: 7.5rem;
-  height: 7.5rem;
+.\32xl {
+  inline-size: 7.5rem;
+  block-size: 7.5rem;
 }
 
-.xxl .fallback {
+.\32xl .fallback {
   font-size: var(--font-size-2xl);
 }
 
-/* ========================================
-   ACCESSIBILITY
-   ======================================== */
-
+/* Accessibility */
 @media (prefers-contrast: high) {
   .avatar {
-    border-width: var(--border-width-4);
+    border-width: var(--border-width-3);
   }
-}
-
-/* ========================================
-   DARK THEME
-   ======================================== */
-
-[data-theme="dark"] .avatar {
-  border-color: var(--color-border-strong);
-  background-color: var(--color-bg-tertiary);
-}
-
-[data-theme="dark"] .halftoneOverlay {
-  /* Pattern background removed - use solid colors only */
-  background: none;
 }

@@ -1,6 +1,6 @@
 /**
  * GVTEWAY Design System
- * Central export for all design system components, tokens, and utilities
+ * Central export for all design system components, tokens, utilities, hooks, and providers
  * Following Atomic Design Principles:
  * - Atoms: Basic building blocks (buttons, inputs, icons)
  * - Molecules: Simple combinations of atoms (form fields, cards)
@@ -19,6 +19,13 @@ export * from './components/templates';
 
 // Export design tokens
 export * from './tokens';
+export { default as tokens } from './tokens';
+
+// Export hooks
+export * from './hooks';
+
+// Export providers
+export { ThemeProvider, useThemeContext } from './providers/ThemeProvider';
 
 // Export utils
 export { 

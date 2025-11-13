@@ -56,7 +56,7 @@
 
 .item:hover {
   transform: scale(1.02);
-  box-shadow: 0.5rem 0.5rem 0 var(--color-primary);
+  box-shadow: 0.5rem 0.5rem 0 var(--color-interactive-default);
   z-index: 10;
 }
 
@@ -80,7 +80,7 @@
 .overlay {
   position: absolute;
   inset: 0;
-  background-color: var(--color-bg-overlay);
+  background-color: var(--color-bg-tertiary);
   opacity: 0;
   transition: opacity 0.3s ease;
   display: flex;
@@ -101,7 +101,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.02em;
-  color: var(--color-white);
+  color: var(--color-text-inverse);
   text-align: center;
   margin: 0;
 }
@@ -111,7 +111,7 @@
   font-size: var(--font-size-meta);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--color-white);
+  color: var(--color-text-inverse);
   opacity: 0.8;
 }
 
@@ -124,8 +124,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
   border: var(--border-width-3) solid var(--color-border-accent);
   font-size: var(--font-size-h4);
   z-index: 5;
@@ -171,8 +171,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-accent);
-  color: var(--color-primary);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
   border: var(--border-width-3) solid var(--color-border-accent);
   font-family: var(--font-family-bebas);
   font-size: var(--font-size-h4);
@@ -197,8 +197,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-accent);
-  color: var(--color-primary);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
   border: var(--border-width-3) solid var(--color-border-accent);
   font-family: var(--font-family-bebas);
   font-size: var(--font-size-h3);
@@ -232,7 +232,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.02em;
-  color: var(--color-white);
+  color: var(--color-text-inverse);
   text-align: center;
   padding: var(--space-4);
 }
@@ -258,8 +258,8 @@
 }
 
 .loadMoreButton:hover {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
   transform: scale(1.05);
 }
 
@@ -277,11 +277,11 @@
 }
 
 [data-theme="dark"] .item:hover {
-  box-shadow: 0.5rem 0.5rem 0 var(--color-primary);
+  box-shadow: 0.5rem 0.5rem 0 var(--color-interactive-default);
 }
 
 [data-theme="dark"] .overlay {
-  background-color: var(--color-bg-overlay);
+  background-color: var(--color-bg-tertiary);
 }
 
 [data-theme="dark"] .caption,
@@ -305,8 +305,8 @@
 
 [data-theme="dark"] .lightboxClose,
 [data-theme="dark"] .lightboxNav {
-  background-color: var(--color-accent);
-  color: var(--color-primary);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
   border-color: var(--color-border-accent);
 }
 

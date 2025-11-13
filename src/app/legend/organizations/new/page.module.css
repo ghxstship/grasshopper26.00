@@ -8,7 +8,7 @@
 
 .header {
   padding-block-end: var(--space-6);
-  border-block-end: var(--border-width-thick) solid var(--color-border-strong);
+  border-block-end: var(--border-width-3) solid var(--color-border-strong);
 }
 
 .title {

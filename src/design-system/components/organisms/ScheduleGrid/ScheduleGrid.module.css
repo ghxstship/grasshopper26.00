@@ -9,7 +9,7 @@
   overflow-x: auto;
   
   border: var(--border-width-3) solid var(--color-border-strong);
-  border-radius: var(--radius-none)(--radius-none);
+  border-radius: var(--border-radius-none)(--radius-none);
   background-color: var(--color-bg-primary);
 }
 
@@ -32,7 +32,7 @@
   grid-template-columns: 7.5rem repeat(auto-fit, minmax(12.5rem, 1fr));
   
   border-block-end: var(--border-width-3) solid var(--color-border-strong);
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
 }
 
 .timeHeader,
@@ -43,14 +43,14 @@
   
   padding: var(--space-4);
   
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-wider);
   text-transform: uppercase;
   text-align: center;
   
-  color: var(--color-white);
+  color: var(--color-text-inverse);
   
   border-inline-end: var(--border-width-2) solid var(--color-border-accent);
 }
@@ -98,7 +98,7 @@
   
   padding: var(--space-3);
   
-  font-family: var(--font-mono);
+  font-family: var(--font-share-mono);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-widest);
@@ -134,11 +134,11 @@
 }
 
 .slotCellFilled:hover {
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
   border-color: var(--color-border-accent);
   transform: scale(1.02);
   z-index: 1;
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-card);
 }
 
 .slotCellFilled:active {
@@ -156,7 +156,7 @@
    ======================================== */
 
 .artistName {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-wide);
@@ -169,11 +169,11 @@
 }
 
 .slotCellFilled:hover .artistName {
-  color: var(--color-white);
+  color: var(--color-text-inverse);
 }
 
 .timeRange {
-  font-family: var(--font-mono);
+  font-family: var(--font-share-mono);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-normal);
   letter-spacing: var(--letter-spacing-wider);
@@ -189,7 +189,7 @@
 }
 
 .notes {
-  font-family: var(--font-body);
+  font-family: var(--font-share);
   font-size: var(--font-size-xs);
   line-height: var(--line-height-snug);
   
@@ -259,7 +259,7 @@
 
 @media (prefers-contrast: high) {
   .scheduleGrid {
-    border-width: var(--border-width-4);
+    border-width: var(--border-width-3);
   }
   
   .headerRow,
@@ -282,7 +282,7 @@
 }
 
 [data-theme="dark"] .headerRow {
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .slotCellFilled:hover {

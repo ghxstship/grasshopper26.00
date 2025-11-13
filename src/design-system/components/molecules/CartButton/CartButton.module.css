@@ -24,8 +24,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
   font-family: var(--font-family-share-tech-mono);
   font-size: var(--font-size-meta);
   font-weight: 700;
@@ -51,7 +51,7 @@
    ======================================== */
 
 [data-theme="dark"] .badge {
-  background-color: var(--color-white);
-  color: var(--color-black);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
 }
 

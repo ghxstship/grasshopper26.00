@@ -6,7 +6,7 @@
   font-size: var(--font-size-xs);
   letter-spacing: var(--letter-spacing-meta);
   line-height: var(--line-height-tight);
-  border-width: var(--border-width-default);
+  border-width: var(--border-width-2);
   border-style: solid;
   border-color: var(--color-border-strong);
   background-color: var(--color-bg-primary);
@@ -14,24 +14,24 @@
 }
 
 .critical {
-  background-color: var(--color-grey-900);
-  color: var(--color-white);
-  border-color: var(--color-grey-900);
+  background-color: var(--color-interactive-hover);
+  color: var(--color-text-inverse);
+  border-color: var(--color-interactive-hover);
 }
 
 .high {
-  background-color: var(--color-grey-800);
-  color: var(--color-white);
-  border-color: var(--color-grey-800);
+  background-color: var(--color-border-default);
+  color: var(--color-text-inverse);
+  border-color: var(--color-border-default);
 }
 
 .medium {
-  background-color: var(--color-grey-300);
+  background-color: var(--color-border-default);
   border-color: var(--color-border-default);
 }
 
 .low {
-  background-color: var(--color-grey-100);
+  background-color: var(--color-bg-tertiary);
   border-color: var(--color-border-subtle);
   color: var(--color-text-secondary);
 }
@@ -56,22 +56,22 @@
    ======================================== */
 
 [data-theme="dark"] .critical {
-  background-color: var(--color-grey-100);
-  color: var(--color-black);
-  border-color: var(--color-grey-100);
+  background-color: var(--color-bg-tertiary);
+  color: var(--color-interactive-default);
+  border-color: var(--color-bg-tertiary);
 }
 
 [data-theme="dark"] .high {
-  background-color: var(--color-grey-100);
-  color: var(--color-black);
-  border-color: var(--color-grey-100);
+  background-color: var(--color-bg-tertiary);
+  color: var(--color-interactive-default);
+  border-color: var(--color-bg-tertiary);
 }
 
 [data-theme="dark"] .medium {
-  background-color: var(--color-grey-600);
+  background-color: var(--color-text-secondary);
 }
 
 [data-theme="dark"] .low {
-  background-color: var(--color-grey-800);
+  background-color: var(--color-border-default);
 }
 

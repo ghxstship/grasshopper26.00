@@ -1,24 +1,24 @@
 .container {
-  padding: var(--spacing-xl);
-  max-width: 1400px;
+  padding: var(--space-xl);
+  max-width: var(--container-lg);
   margin: 0 auto;
 }
 
 .header {
-  margin-block-end: var(--spacing-2xl);
+  margin-block-end: var(--space-2xl);
 }
 
 .title {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-3xl);
   font-weight: var(--font-weight-bold);
   color: var(--color-text-primary);
-  margin: 0 0 var(--spacing-sm) 0;
+  margin: 0 0 var(--space-sm) 0;
   text-transform: uppercase;
 }
 
 .subtitle {
-  font-family: var(--font-mono);
+  font-family: var(--font-share-mono);
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
   margin: 0;
@@ -27,19 +27,19 @@
 
 .statsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: var(--spacing-lg);
-  margin-block-end: var(--spacing-2xl);
+  grid-template-columns: repeat(auto-fit, minmax(var(--space-64), 1fr));
+  gap: var(--space-lg);
+  margin-block-end: var(--space-2xl);
 }
 
 .quickActions {
-  margin-block-end: var(--spacing-2xl);
+  margin-block-end: var(--space-2xl);
 }
 
 .actionGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--spacing-lg);
+  grid-template-columns: repeat(auto-fit, minmax(var(--space-52), 1fr));
+  gap: var(--space-lg);
 }
 
 .actionButton {
@@ -47,12 +47,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--spacing-md);
-  padding: var(--spacing-xl);
+  gap: var(--space-md);
+  padding: var(--space-xl);
   background-color: var(--color-bg-secondary);
   border: var(--border-width-standard) solid var(--color-border-primary);
   color: var(--color-text-primary);
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-bold);
   text-transform: uppercase;
@@ -63,7 +63,7 @@
 .actionButton:hover {
   background-color: var(--color-text-primary);
   color: var(--color-text-inverse);
-  transform: translateY(-2px);
+  transform: translateY(calc(-1 * var(--space-0-5)));
 }
 
 .loadingState {
@@ -71,18 +71,18 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: var(--spacing-2xl);
-  gap: var(--spacing-lg);
-  min-height: 400px;
+  padding: var(--space-2xl);
+  gap: var(--space-lg);
+  min-height: var(--space-96);
 }
 
 .spinner {
-  width: 40px;
-  height: 40px;
+  width: var(--space-10);
+  height: var(--space-10);
   border: var(--border-width-standard) solid var(--color-border-primary);
   border-top-color: var(--color-text-primary);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
+  border-radius: var(--border-radius-full);
+  animation: spin var(--duration-base) linear infinite;
 }
 
 @keyframes spin {
@@ -92,7 +92,7 @@
 }
 
 .loadingText {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-base);
   color: var(--color-text-secondary);
   text-transform: uppercase;

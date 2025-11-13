@@ -62,7 +62,7 @@
 }
 
 .color-inverse {
-  color: var(--color-white);
+  color: var(--color-text-inverse);
 }
 
 .color-brand {
@@ -74,11 +74,11 @@
 }
 
 .color-error {
-  color: var(--color-error-text);
+  color: var(--color-text-primary);
 }
 
 .color-success {
-  color: var(--color-success-text);
+  color: var(--color-text-primary);
 }
 
 
@@ -101,6 +101,6 @@
    ======================================== */
 
 [data-theme="dark"] .color-inverse {
-  color: var(--color-black);
+  color: var(--color-interactive-default);
 }
 

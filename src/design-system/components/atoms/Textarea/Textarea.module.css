@@ -15,7 +15,7 @@
 }
 
 .label {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-normal);
   color: var(--color-text-primary);
@@ -24,13 +24,13 @@
 }
 
 .required {
-  color: var(--color-error);
+  color: var(--color-text-primary);
   margin-inline-start: var(--space-1);
 }
 
 .textarea {
   width: 100%;
-  font-family: var(--font-body);
+  font-family: var(--font-share);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
   line-height: var(--line-height-relaxed);
@@ -40,7 +40,7 @@
   
   background-color: var(--color-bg-primary);
   border: var(--border-width-3) solid var(--color-border-default);
-  border-radius: var(--radius-none)(--radius-none);
+  border-radius: var(--border-radius-none);
   
   transition: all var(--duration-fast) var(--easing-out);
   
@@ -58,7 +58,7 @@
 .textarea:focus {
   outline: none;
   border-color: var(--color-border-focus);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-button-hover);
 }
 
 .textarea:disabled {
@@ -68,11 +68,11 @@
 }
 
 .textarea.error {
-  border-color: var(--color-error-border);
+  border-color: var(--color-border-strong);
 }
 
 .textarea.error:focus {
-  border-color: var(--color-error-border);
+  border-color: var(--color-border-strong);
 }
 
 /* ========================================
@@ -123,7 +123,7 @@
 
 .helperText,
 .errorText {
-  font-family: var(--font-mono);
+  font-family: var(--font-share-mono);
   font-size: var(--font-size-xs);
   letter-spacing: var(--letter-spacing-wide);
   text-transform: uppercase;
@@ -134,7 +134,7 @@
 }
 
 .errorText {
-  color: var(--color-error-text);
+  color: var(--color-text-primary);
 }
 
 /* ========================================
@@ -149,7 +149,7 @@
 
 @media (prefers-contrast: high) {
   .textarea {
-    border-width: var(--border-width-4);
+    border-width: var(--border-width-3);
   }
   
   .textarea:focus {
@@ -167,5 +167,5 @@
 }
 
 [data-theme="dark"] .textarea:focus {
-  box-shadow: var(--shadow-white-sm);
+  box-shadow: var(--shadow-card);
 }

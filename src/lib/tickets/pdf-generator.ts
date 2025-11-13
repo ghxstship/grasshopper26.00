@@ -2,7 +2,7 @@
 // PDF positioning coordinates are required for jsPDF layout and cannot be tokenized
 import { jsPDF } from 'jspdf';
 import QRCode from 'qrcode';
-import { primitiveColors } from '@/design-system/tokens/primitives/colors';
+import { primitives } from '@/design-system/tokens/primitives';
 
 interface TicketData {
   id: string;
@@ -37,33 +37,35 @@ export async function generateTicketPDF(ticket: TicketData): Promise<Blob> {
   });
 
   // Set up colors from design tokens
-  const primaryRgb = hexToRgb(primitiveColors.brand[600]);
-  const secondaryRgb = hexToRgb(primitiveColors.accent[500]);
-  const textColorRgb = hexToRgb(primitiveColors.neutral[0]);
-  const bgColorRgb = hexToRgb(primitiveColors.neutral[900]);
+  const colors = {
+    primary: hexToRgb(primitives.color.black),
+    secondary: hexToRgb(primitives.color.grey[600]),
+    background: hexToRgb(primitives.color.white),
+    text: hexToRgb(primitives.color.black),
+  };
 
   // Background
-  doc.setFillColor(bgColorRgb.r, bgColorRgb.g, bgColorRgb.b);
+  doc.setFillColor(colors.background.r, colors.background.g, colors.background.b);
   doc.rect(0, 0, 210, 297, 'F');
 
   // Header gradient effect (simulated with rectangles)
   for (let i = 0; i < 50; i++) {
     const alpha = i / 50;
-    const r = primaryRgb.r + (secondaryRgb.r - primaryRgb.r) * alpha;
-    const g = primaryRgb.g + (secondaryRgb.g - primaryRgb.g) * alpha;
-    const b = primaryRgb.b + (secondaryRgb.b - primaryRgb.b) * alpha;
+    const r = colors.primary.r + (colors.secondary.r - colors.primary.r) * alpha;
+    const g = colors.primary.g + (colors.secondary.g - colors.primary.g) * alpha;
+    const b = colors.primary.b + (colors.secondary.b - colors.primary.b) * alpha;
     doc.setFillColor(r, g, b);
     doc.rect(0, i, 210, 1, 'F');
   }
 
   // Logo/Brand
-  doc.setTextColor(textColorRgb.r, textColorRgb.g, textColorRgb.b);
+  doc.setTextColor(colors.text.r, colors.text.g, colors.text.b);
   doc.setFontSize(32);
   doc.setFont('helvetica', 'bold');
   doc.text('GVTEWAY', 105, 25, { align: 'center' });
 
   // Ticket Type Badge
-  doc.setFillColor(primaryRgb.r, primaryRgb.g, primaryRgb.b);
+  doc.setFillColor(colors.primary.r, colors.primary.g, colors.primary.b);
   doc.roundedRect(15, 60, 180, 15, 3, 3, 'F');
   doc.setFontSize(14);
   doc.setFont('helvetica', 'bold');
@@ -86,7 +88,7 @@ export async function generateTicketPDF(ticket: TicketData): Promise<Blob> {
   // Date
   doc.text('DATE & TIME', 25, 125);
   doc.setFont('helvetica', 'bold');
-  doc.setTextColor(textColorRgb.r, textColorRgb.g, textColorRgb.b);
+  doc.setTextColor(colors.text.r, colors.text.g, colors.text.b);
   const eventDate = new Date(ticket.eventDate);
   doc.text(
     eventDate.toLocaleDateString('en-US', {
@@ -112,7 +114,7 @@ export async function generateTicketPDF(ticket: TicketData): Promise<Blob> {
   doc.setTextColor(200, 200, 200);
   doc.text('VENUE', 25, 155);
   doc.setFont('helvetica', 'bold');
-  doc.setTextColor(textColorRgb.r, textColorRgb.g, textColorRgb.b);
+  doc.setTextColor(colors.text.r, colors.text.g, colors.text.b);
   const venueLines = doc.splitTextToSize(ticket.venue, 160);
   doc.text(venueLines, 25, 163);
 
@@ -139,7 +141,7 @@ export async function generateTicketPDF(ticket: TicketData): Promise<Blob> {
   doc.roundedRect(15, 270, 180, 15, 3, 3, 'F');
   doc.setFontSize(11);
   doc.setFont('helvetica', 'bold');
-  doc.setTextColor(textColorRgb.r, textColorRgb.g, textColorRgb.b);
+  doc.setTextColor(colors.text.r, colors.text.g, colors.text.b);
   doc.text(`ATTENDEE: ${ticket.attendeeName}`, 25, 279);
 
   // Footer
@@ -175,29 +177,29 @@ export async function generateMultipleTicketsPDF(tickets: TicketData[]): Promise
     }
 
     const ticket = tickets[i];
-
-    // Set up colors from design tokens
-    const primaryRgb = hexToRgb(primitiveColors.brand[600]);
-    const secondaryRgb = hexToRgb(primitiveColors.accent[500]);
-    const textColorRgb = hexToRgb(primitiveColors.neutral[0]);
-    const bgColorRgb = hexToRgb(primitiveColors.neutral[900]);
+    const colors = {
+      primary: hexToRgb(primitives.color.black),
+      secondary: hexToRgb(primitives.color.grey[600]),
+      background: hexToRgb(primitives.color.grey[900]),
+      text: hexToRgb(primitives.color.white),
+    };
 
     // Background
-    doc.setFillColor(bgColorRgb.r, bgColorRgb.g, bgColorRgb.b);
+    doc.setFillColor(colors.background.r, colors.background.g, colors.background.b);
     doc.rect(0, 0, 210, 297, 'F');
 
     // Header gradient
     for (let j = 0; j < 50; j++) {
       const alpha = j / 50;
-      const r = primaryRgb.r + (secondaryRgb.r - primaryRgb.r) * alpha;
-      const g = primaryRgb.g + (secondaryRgb.g - primaryRgb.g) * alpha;
-      const b = primaryRgb.b + (secondaryRgb.b - primaryRgb.b) * alpha;
+      const r = colors.primary.r + (colors.secondary.r - colors.primary.r) * alpha;
+      const g = colors.primary.g + (colors.secondary.g - colors.primary.g) * alpha;
+      const b = colors.primary.b + (colors.secondary.b - colors.primary.b) * alpha;
       doc.setFillColor(r, g, b);
       doc.rect(0, j, 210, 1, 'F');
     }
 
     // Logo
-    doc.setTextColor(textColorRgb.r, textColorRgb.g, textColorRgb.b);
+    doc.setTextColor(colors.text.r, colors.text.g, colors.text.b);
     doc.setFontSize(32);
     doc.setFont('helvetica', 'bold');
     doc.text('GVTEWAY', 105, 25, { align: 'center' });
@@ -208,7 +210,7 @@ export async function generateMultipleTicketsPDF(tickets: TicketData[]): Promise
     doc.text(`Ticket ${i + 1} of ${tickets.length}`, 105, 35, { align: 'center' });
 
     // Ticket Type Badge
-    doc.setFillColor(primaryRgb.r, primaryRgb.g, primaryRgb.b);
+    doc.setFillColor(colors.primary.r, colors.primary.g, colors.primary.b);
     doc.roundedRect(15, 60, 180, 15, 3, 3, 'F');
     doc.setFontSize(14);
     doc.setFont('helvetica', 'bold');
@@ -230,7 +232,7 @@ export async function generateMultipleTicketsPDF(tickets: TicketData[]): Promise
 
     doc.text('DATE & TIME', 25, 125);
     doc.setFont('helvetica', 'bold');
-    doc.setTextColor(textColorRgb.r, textColorRgb.g, textColorRgb.b);
+    doc.setTextColor(colors.text.r, colors.text.g, colors.text.b);
     const eventDate = new Date(ticket.eventDate);
     doc.text(
       eventDate.toLocaleDateString('en-US', {
@@ -247,7 +249,7 @@ export async function generateMultipleTicketsPDF(tickets: TicketData[]): Promise
     doc.setTextColor(200, 200, 200);
     doc.text('VENUE', 25, 155);
     doc.setFont('helvetica', 'bold');
-    doc.setTextColor(textColorRgb.r, textColorRgb.g, textColorRgb.b);
+    doc.setTextColor(colors.text.r, colors.text.g, colors.text.b);
     const venueLines = doc.splitTextToSize(ticket.venue, 160);
     doc.text(venueLines, 25, 163);
 
@@ -269,7 +271,7 @@ export async function generateMultipleTicketsPDF(tickets: TicketData[]): Promise
     doc.roundedRect(15, 270, 180, 15, 3, 3, 'F');
     doc.setFontSize(11);
     doc.setFont('helvetica', 'bold');
-    doc.setTextColor(textColorRgb.r, textColorRgb.g, textColorRgb.b);
+    doc.setTextColor(colors.text.r, colors.text.g, colors.text.b);
     doc.text(`ATTENDEE: ${ticket.attendeeName}`, 25, 279);
 
     // Footer

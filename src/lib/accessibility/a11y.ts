@@ -4,7 +4,7 @@
 
 /* eslint-disable no-magic-numbers */
 // WCAG standard constants (contrast ratios, luminance calculations) cannot be tokenized
-import { primitiveColors } from '@/design-system/tokens/primitives/colors';
+import { primitives } from '@/design-system/tokens/primitives';
 
 /**
  * Check if color contrast meets WCAG AA standards
@@ -222,8 +222,8 @@ export function addSkipLink() {
     position: absolute;
     top: -40px;
     left: 0;
-    background: ${primitiveColors.neutral[900]};
-    color: ${primitiveColors.neutral[0]};
+    background: ${primitives.color.grey[900]};
+    color: ${primitives.color.white};
     padding: 8px;
     text-decoration: none;
     z-index: 100;

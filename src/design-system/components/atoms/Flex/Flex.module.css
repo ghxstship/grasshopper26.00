@@ -35,11 +35,11 @@
 
 /* Gap */
 .gap-none { gap: 0; }
-.gap-xs { gap: var(--spacing-1); }
-.gap-sm { gap: var(--spacing-2); }
-.gap-md { gap: var(--spacing-4); }
-.gap-lg { gap: var(--spacing-6); }
-.gap-xl { gap: var(--spacing-8); }
+.gap-xs { gap: var(--space-1); }
+.gap-sm { gap: var(--space-2); }
+.gap-md { gap: var(--space-4); }
+.gap-lg { gap: var(--space-6); }
+.gap-xl { gap: var(--space-8); }
 
 
 /* ========================================

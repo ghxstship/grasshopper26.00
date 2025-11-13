@@ -11,7 +11,7 @@
   padding-block: var(--space-4);
   padding-inline: var(--space-6);
   background: var(--color-bg-primary);
-  border-block-end: var(--border-width-default) solid var(--color-border);
+  border-block-end: var(--border-width-2) solid var(--color-border);
 }
 
 /* Hero Section */
@@ -123,14 +123,14 @@
   align-items: center;
   padding-block: var(--space-4);
   padding-inline: var(--space-4);
-  border: var(--border-width-default) solid var(--color-border);
+  border: var(--border-width-2) solid var(--color-border);
 }
 
 .artistImage {
   inline-size: 5rem;
   block-size: 5rem;
   object-fit: cover;
-  border: var(--border-width-default) solid var(--color-border);
+  border: var(--border-width-2) solid var(--color-border);
 }
 
 .artistGenres {
@@ -147,7 +147,7 @@
 
 .infoCard {
   background: var(--color-bg-secondary);
-  border: var(--border-width-default) solid var(--color-border);
+  border: var(--border-width-2) solid var(--color-border);
   padding-block: var(--space-6);
   padding-inline: var(--space-6);
   display: flex;
@@ -167,7 +167,7 @@
 }
 
 .infoLabel {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-bold);
   text-transform: uppercase;
@@ -182,7 +182,7 @@
 
 .priceSection {
   padding-block-start: var(--space-4);
-  border-block-start: var(--border-width-default) solid var(--color-border);
+  border-block-start: var(--border-width-2) solid var(--color-border);
 }
 
 /* Gallery Section */
@@ -204,8 +204,8 @@
   inset-inline: 0;
   z-index: 100;
   background: var(--color-bg-primary);
-  border-block-start: var(--border-width-default) solid var(--color-border);
-  box-shadow: var(--shadow-lg);
+  border-block-start: var(--border-width-2) solid var(--color-border);
+  box-shadow: var(--shadow-card);
 }
 
 .stickyContent {

@@ -56,7 +56,7 @@
   inline-size: var(--space-12);
   block-size: var(--space-12);
   border-block-end: var(--border-width-2) solid var(--color-text-primary);
-  border-radius: var(--radius-none);
+  border-radius: var(--border-radius-none);
   margin-inline: auto;
   animation: spin 1s linear infinite;
 }
@@ -77,7 +77,7 @@
 
 .stickyHeader {
   background-color: var(--color-bg-primary);
-  border-block-end: var(--border-width-thin) solid var(--color-border-default);
+  border-block-end: var(--border-width-1) solid var(--color-border-default);
   position: sticky;
   inset-block-start: 0;
   z-index: 10;
@@ -105,13 +105,13 @@
 
 .select:focus {
   outline: var(--border-width-3) solid var(--color-text-primary);
-  outline-offset: 0.125rem;
+  outline-offset: var(--space-0-5);
 }
 
 .card {
   background-color: var(--color-bg-primary);
   border: var(--border-width-3) solid var(--color-text-primary);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-card);
   padding-block: var(--space-4);
   padding-inline: var(--space-4);
 }
@@ -131,7 +131,7 @@
 .statsCard {
   background-color: var(--color-text-primary);
   border: var(--border-width-3) solid var(--color-text-primary);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-card);
   padding-block: var(--space-4);
   padding-inline: var(--space-4);
 }
@@ -173,14 +173,14 @@
   inline-size: 100%;
   background-color: var(--color-bg-secondary);
   block-size: var(--space-3);
-  border-radius: var(--radius-none);
+  border-radius: var(--border-radius-none);
 }
 
 .progressBarFill {
   block-size: var(--space-3);
   background-color: var(--color-bg-secondary);
-  border-radius: var(--radius-none);
-  transition: width 0.3s ease;
+  border-radius: var(--border-radius-none);
+  transition: width var(--duration-base) var(--easing-out);
 }
 
 .progressPercent {
@@ -245,6 +245,20 @@
   background-color: var(--color-bg-secondary);
 }
 
+.actionButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-block: var(--space-4);
+  padding-inline: var(--space-3);
+  border: var(--border-width-2) solid var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color var(--duration-fast) var(--easing-out);
+}
+
 .actionIcon {
   font-size: var(--font-size-3xl);
   margin-block-end: var(--space-2);
@@ -291,6 +305,18 @@
   border: var(--border-width-3) solid var(--color-text-primary);
   cursor: pointer;
   transition: background-color 0.2s ease;
+  font-family: var(--font-share-tech);
+}
+
+.helpButton {
+  inline-size: 100%;
+  text-align: start;
+  padding-block: var(--space-3);
+  padding-inline: var(--space-3);
+  background-color: var(--color-bg-secondary);
+  border: var(--border-width-3) solid var(--color-text-primary);
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--easing-out);
   font-family: var(--font-share-tech);
 }
 
@@ -397,17 +423,17 @@
 }
 
 .rounded {
-  border-radius: var(--radius-none);
+  border-radius: var(--border-radius-none);
 }
 
 .shadow {
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-card);
 }
 
 /* RESPONSIVE BREAKPOINTS */
 /* Mobile-first: Base styles above are for mobile */
 
-/* Small screens (640px+) - Tablets portrait */
+/* Small screens (sm) - Tablets portrait */
 @media (min-width: var(--space-96)) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
@@ -433,7 +459,7 @@
   }
 }
 
-/* Medium screens (768px+) - Tablets landscape */
+/* Medium screens (md) - Tablets landscape */
 @media (min-width: var(--space-96)) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
@@ -450,7 +476,7 @@
   }
 }
 
-/* Large screens (1024px+) - Desktop */
+/* Large screens (lg) - Desktop */
 @media (min-width: var(--space-96)) {
   .grid {
     grid-template-columns: repeat(4, 1fr);
@@ -475,7 +501,7 @@
   }
 }
 
-/* Extra large screens (1536px+) - Wide desktop */
+/* Extra large screens (xl) - Wide desktop */
 @media (min-width: var(--space-96)) {
   .section {
     padding-inline: var(--space-12);

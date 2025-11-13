@@ -8,7 +8,7 @@
   position: fixed;
   inset: 0;
   z-index: var(--z-modal-backdrop);
-  background-color: var(--color-bg-overlay);
+  background-color: var(--color-bg-tertiary);
   animation: fadeIn var(--duration-base) var(--easing-out);
 }
 
@@ -21,13 +21,13 @@
   position: fixed;
   inset-inline-start: 50%;
   inset-block-start: 50%;
-  z-index: var(--z-modal);
+  z-index: var(--z-modal-backdrop);
   display: grid;
   width: 100%;
   max-width: 32rem;
   gap: var(--space-4);
   border: var(--border-width-3) solid var(--color-border-strong);
-  border-radius: var(--radius-none)(--radius-none);
+  border-radius: var(--border-radius-none);
   background-color: var(--color-bg-primary);
   padding: var(--space-6);
   box-shadow: var(--shadow-xl);
@@ -73,7 +73,7 @@
 }
 
 .title {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-normal);
   text-transform: uppercase;
@@ -82,7 +82,7 @@
 }
 
 .description {
-  font-family: var(--font-body);
+  font-family: var(--font-share);
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
 }

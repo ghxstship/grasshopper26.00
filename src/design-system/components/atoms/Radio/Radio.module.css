@@ -1,7 +1,5 @@
 /**
- * Radio Styles
- * GHXSTSHIP Entertainment Platform
- * Bold outlined radios, geometric selection (square instead of circle)
+ * Radio Styles - GHXSTSHIP
  */
 
 .container {
@@ -16,42 +14,37 @@
   gap: var(--space-3);
 }
 
-/* ========================================
-   RADIO INPUT
-   ======================================== */
-
+/* Radio */
 .radio {
   position: relative;
   appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   
-  width: var(--font-size-2xl);
-  height: var(--font-size-2xl);
+  inline-size: var(--space-6);
+  block-size: var(--space-6);
   flex-shrink: 0;
   
-  border: var(--border-width-3) solid var(--color-border-strong);
-  border-radius: var(--radius-none)(--radius-none);
+  border: var(--border-width-2) solid var(--color-border-strong);
+  border-radius: var(--border-radius-none);
   background-color: var(--color-bg-primary);
   
   cursor: pointer;
   
-  transition: all var(--duration-fast) var(--easing-out);
+  transition: border-color var(--duration-fast) var(--easing-out);
 }
 
 .radio:hover:not(:disabled) {
-  border-color: var(--color-primary);
+  border-color: var(--color-interactive-hover);
   background-color: var(--color-bg-secondary);
 }
 
 .radio:focus-visible {
-  outline: var(--border-width-2) solid var(--color-border-focus);
-  outline-offset: 0.125rem;
+  outline: var(--border-width-3) solid var(--color-border-focus);
+  outline-offset: var(--space-1);
 }
 
 .radio:checked {
-  background-color: var(--color-black);
-  border-color: var(--color-primary);
+  background-color: var(--color-interactive-default);
+  border-color: var(--color-interactive-default);
 }
 
 .radio:checked::after {
@@ -61,11 +54,11 @@
   inset-inline-start: 50%;
   transform: translate(-50%, -50%);
   
-  width: 0.625rem;
-  height: 0.625rem;
+  inline-size: var(--space-2);
+  block-size: var(--space-2);
   
-  background-color: var(--color-accent);
-  border-radius: var(--radius-none)(--radius-none);
+  background-color: var(--color-text-inverse);
+  border-radius: var(--border-radius-none);
 }
 
 .radio:disabled {
@@ -74,49 +67,43 @@
 }
 
 .radio.error {
-  border-color: var(--color-error-border);
+  border-color: var(--color-border-strong);
 }
 
-/* ========================================
-   SIZES
-   ======================================== */
-
+/* Sizes */
 .sm {
-  width: var(--font-size-xl);
-  height: var(--font-size-xl);
+  inline-size: var(--space-5);
+  block-size: var(--space-5);
 }
 
 .sm:checked::after {
-  width: 0.5rem;
-  height: 0.5rem;
+  inline-size: var(--space-2);
+  block-size: var(--space-2);
 }
 
 .md {
-  width: var(--font-size-2xl);
-  height: var(--font-size-2xl);
+  inline-size: var(--space-6);
+  block-size: var(--space-6);
 }
 
 .md:checked::after {
-  width: 0.625rem;
-  height: 0.625rem;
+  inline-size: var(--space-2);
+  block-size: var(--space-2);
 }
 
 .lg {
-  width: 1.75rem;
-  height: 1.75rem;
+  inline-size: var(--space-8);
+  block-size: var(--space-8);
 }
 
 .lg:checked::after {
-  width: var(--font-size-xs);
-  height: var(--font-size-xs);
+  inline-size: var(--space-3);
+  block-size: var(--space-3);
 }
 
-/* ========================================
-   LABEL
-   ======================================== */
-
+/* Label */
 .label {
-  font-family: var(--font-body);
+  font-family: var(--font-share);
   font-size: var(--font-size-base);
   line-height: var(--line-height-normal);
   
@@ -131,34 +118,26 @@
   cursor: not-allowed;
 }
 
-/* ========================================
-   HELPER & ERROR TEXT
-   ======================================== */
-
+/* Helper Text */
 .helperText {
-  font-family: var(--font-body);
-  font-size: var(--font-size-sm);
-  line-height: var(--line-height-normal);
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-xs);
   
   color: var(--color-text-secondary);
   
-  margin-inline-start: calc(1.5rem + var(--space-3));
+  margin-inline-start: calc(var(--space-6) + var(--space-3));
 }
 
 .errorText {
-  font-family: var(--font-body);
-  font-size: var(--font-size-sm);
-  line-height: var(--line-height-normal);
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-xs);
   
-  color: var(--color-error-text);
+  color: var(--color-text-primary);
   
-  margin-inline-start: calc(1.5rem + var(--space-3));
+  margin-inline-start: calc(var(--space-6) + var(--space-3));
 }
 
-/* ========================================
-   ACCESSIBILITY
-   ======================================== */
-
+/* Accessibility */
 @media (prefers-reduced-motion: reduce) {
   .radio {
     transition: none;
@@ -167,24 +146,6 @@
 
 @media (prefers-contrast: high) {
   .radio {
-    border-width: var(--border-width-4);
+    border-width: var(--border-width-3);
   }
-}
-
-/* ========================================
-   DARK THEME
-   ======================================== */
-
-[data-theme="dark"] .radio {
-  border-color: var(--color-border-strong);
-  background-color: var(--color-bg-primary);
-}
-
-[data-theme="dark"] .radio:checked {
-  background-color: var(--color-accent);
-  border-color: var(--color-accent);
-}
-
-[data-theme="dark"] .radio:checked::after {
-  background-color: var(--color-black);
 }

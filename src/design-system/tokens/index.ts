@@ -1,19 +1,19 @@
 /**
- * Design Tokens Central Export
- * All design tokens for the application
+ * Design System - Token System
  */
 
-export * from './primitives';
-export * from './semantic';
-export * from './themes';
-
-// Default export for convenience
-import { lightTheme } from './themes/light';
-import { darkTheme } from './themes/dark';
+export { primitives } from './primitives';
+export { semantic } from './semantic';
+export { themes, lightTheme, darkTheme } from './themes';
 
 export const tokens = {
-  light: lightTheme,
-  dark: darkTheme,
+  primitives,
+  semantic,
+  themes,
 };
 
-export type Tokens = typeof tokens;
+import { primitives } from './primitives';
+import { semantic } from './semantic';
+import { themes } from './themes';
+
+export default tokens;

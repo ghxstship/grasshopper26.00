@@ -6,7 +6,7 @@
   font-size: var(--font-size-sm);
   letter-spacing: var(--letter-spacing-wider);
   line-height: var(--line-height-tight);
-  border-width: var(--border-width-default);
+  border-width: var(--border-width-2);
   border-style: solid;
   border-color: var(--color-border-strong);
   background-color: var(--color-bg-primary);
@@ -14,27 +14,27 @@
 }
 
 .vip {
-  background-color: var(--color-grey-900);
-  color: var(--color-white);
-  border-color: var(--color-grey-900);
+  background-color: var(--color-interactive-hover);
+  color: var(--color-text-inverse);
+  border-color: var(--color-interactive-hover);
 }
 
 .reserved_seating {
-  background-color: var(--color-grey-800);
-  color: var(--color-white);
-  border-color: var(--color-grey-800);
+  background-color: var(--color-border-default);
+  color: var(--color-text-inverse);
+  border-color: var(--color-border-default);
 }
 
 .early_bird {
-  background-color: var(--color-grey-300);
+  background-color: var(--color-border-default);
 }
 
 .group {
-  background-color: var(--color-grey-200);
+  background-color: var(--color-border-default);
 }
 
 .comp {
-  background-color: var(--color-grey-100);
+  background-color: var(--color-bg-tertiary);
   color: var(--color-text-secondary);
 }
 
@@ -62,26 +62,26 @@
    ======================================== */
 
 [data-theme="dark"] .vip {
-  background-color: var(--color-grey-100);
-  color: var(--color-black);
-  border-color: var(--color-grey-100);
+  background-color: var(--color-bg-tertiary);
+  color: var(--color-interactive-default);
+  border-color: var(--color-bg-tertiary);
 }
 
 [data-theme="dark"] .reserved_seating {
-  background-color: var(--color-grey-100);
-  color: var(--color-black);
-  border-color: var(--color-grey-100);
+  background-color: var(--color-bg-tertiary);
+  color: var(--color-interactive-default);
+  border-color: var(--color-bg-tertiary);
 }
 
 [data-theme="dark"] .early_bird {
-  background-color: var(--color-grey-600);
+  background-color: var(--color-text-secondary);
 }
 
 [data-theme="dark"] .group {
-  background-color: var(--color-grey-700);
+  background-color: var(--color-text-secondary);
 }
 
 [data-theme="dark"] .comp {
-  background-color: var(--color-grey-800);
+  background-color: var(--color-border-default);
 }
 

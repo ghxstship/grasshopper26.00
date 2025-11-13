@@ -18,7 +18,7 @@
 
 .layout[data-variant="inverse"] {
   background-color: var(--color-bg-inverse);
-  color: var(--color-white);
+  color: var(--color-text-inverse);
 }
 
 .layout[data-variant="secondary"] {

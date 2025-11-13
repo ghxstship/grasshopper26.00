@@ -7,7 +7,7 @@ import { Variants } from 'framer-motion';
  * Reusable animation configurations for consistent motion design
  */
 
-import { primitiveColors } from '@/design-system/tokens/primitives/colors';
+import { primitives } from '@/design-system/tokens/primitives';
 
 // Fade animations
 export const fadeIn: Variants = {

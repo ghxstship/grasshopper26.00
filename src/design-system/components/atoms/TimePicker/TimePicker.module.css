@@ -6,7 +6,7 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-2);
+  gap: var(--space-2);
 }
 
 .label {
@@ -19,42 +19,42 @@
 
 .input {
   inline-size: 100%;
-  padding: var(--spacing-3) var(--spacing-4);
+  padding: var(--space-3) var(--space-4);
   font-family: var(--font-share-mono);
-  font-size: var(--font-size-body);
-  background-color: var(--color-white);
-  border: var(--border-width-thick) solid var(--color-black);
+  font-size: var(--font-size-base);
+  background-color: var(--color-text-inverse);
+  border: var(--border-width-3) solid var(--color-interactive-default);
   color: var(--color-text-primary);
-  transition: all var(--transition-fast) var(--easing-standard);
+  transition: all var(--duration-fast) var(--easing-out);
 }
 
 .input:hover:not(:disabled) {
-  background-color: var(--color-grey-100);
+  background-color: var(--color-bg-tertiary);
 }
 
 .input:focus {
   outline: none;
-  background-color: var(--color-white);
-  box-shadow: 0 0 0 var(--border-width-thick) var(--color-black);
+  background-color: var(--color-text-inverse);
+  box-shadow: 0 0 0 var(--border-width-3) var(--color-interactive-default);
 }
 
 .input:disabled {
-  opacity: 0.5;
+  opacity: var(--opacity-50);
   cursor: not-allowed;
 }
 
 .input.error {
-  border-color: var(--color-black);
-  background-color: var(--color-grey-900);
-  color: var(--color-white);
+  border-color: var(--color-interactive-default);
+  background-color: var(--color-interactive-hover);
+  color: var(--color-text-inverse);
 }
 
 .errorText {
   font-family: var(--font-share);
   font-size: var(--font-size-meta);
   color: var(--color-text-primary);
-  background-color: var(--color-grey-900);
-  padding: var(--spacing-2);
+  background-color: var(--color-interactive-hover);
+  padding: var(--space-2);
 }
 
 
@@ -77,10 +77,10 @@
    ======================================== */
 
 [data-theme="dark"] .input {
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .errorText {
-  background-color: var(--color-grey-100);
+  background-color: var(--color-bg-tertiary);
 }
 

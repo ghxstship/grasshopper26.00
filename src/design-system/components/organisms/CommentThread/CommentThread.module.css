@@ -6,19 +6,19 @@
 .thread {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-4);
-  border: var(--border-width-thick) solid var(--color-black);
-  background-color: var(--color-white);
+  gap: var(--space-4);
+  border: var(--border-width-3) solid var(--color-interactive-default);
+  background-color: var(--color-text-inverse);
 }
 
 .header {
   display: flex;
   align-items: center;
-  gap: var(--spacing-2);
-  padding: var(--spacing-4);
-  border-block-end: var(--border-width-thick) solid var(--color-black);
-  background-color: var(--color-black);
-  color: var(--color-white);
+  gap: var(--space-2);
+  padding: var(--space-4);
+  border-block-end: var(--border-width-3) solid var(--color-interactive-default);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
 }
 
 .title {
@@ -29,47 +29,47 @@
 }
 
 .count {
-  padding: var(--spacing-1) var(--spacing-2);
+  padding: var(--space-1) var(--space-2);
   font-family: var(--font-share-mono);
   font-size: var(--font-size-meta);
-  background-color: var(--color-grey-700);
+  background-color: var(--color-text-secondary);
 }
 
 .newComment {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-2);
-  padding: var(--spacing-4);
-  border-block-end: var(--space-px) solid var(--color-grey-300);
+  gap: var(--space-2);
+  padding: var(--space-4);
+  border-block-end: var(--space-px) solid var(--color-border-default);
 }
 
 .commentInput,
 .replyInput {
-  padding: var(--spacing-3);
+  padding: var(--space-3);
   font-family: var(--font-share);
-  font-size: var(--font-size-body);
-  border: var(--border-width-thick) solid var(--color-black);
-  background-color: var(--color-white);
+  font-size: var(--font-size-base);
+  border: var(--border-width-3) solid var(--color-interactive-default);
+  background-color: var(--color-text-inverse);
   resize: vertical;
 }
 
 .commentInput:focus,
 .replyInput:focus {
   outline: none;
-  box-shadow: 0 0 0 var(--border-width-thick) var(--color-black);
+  box-shadow: 0 0 0 var(--border-width-3) var(--color-interactive-default);
 }
 
 .submitButton {
   align-self: flex-end;
-  padding: var(--spacing-2) var(--spacing-4);
+  padding: var(--space-2) var(--space-4);
   font-family: var(--font-bebas);
   font-size: var(--font-size-h6);
   text-transform: uppercase;
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
   border: none;
   cursor: pointer;
-  transition: transform var(--transition-fast) var(--easing-standard);
+  transition: transform var(--duration-fast) var(--easing-out);
 }
 
 .submitButton:hover {
@@ -79,22 +79,22 @@
 .comments {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-3);
-  padding: var(--spacing-4);
+  gap: var(--space-3);
+  padding: var(--space-4);
 }
 
 .comment {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-2);
-  padding: var(--spacing-3);
-  border: var(--space-px) solid var(--color-grey-300);
-  background-color: var(--color-grey-50);
+  gap: var(--space-2);
+  padding: var(--space-3);
+  border: var(--space-px) solid var(--color-border-default);
+  background-color: var(--color-bg-secondary);
 }
 
 .comment.reply {
-  margin-inline-start: var(--spacing-6);
-  background-color: var(--color-white);
+  margin-inline-start: var(--space-6);
+  background-color: var(--color-text-inverse);
 }
 
 .commentHeader {
@@ -105,7 +105,7 @@
 
 .author {
   font-family: var(--font-share);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-base);
   font-weight: 700;
 }
 
@@ -118,26 +118,26 @@
 .commentContent {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-2);
+  gap: var(--space-2);
 }
 
 .content {
   margin: 0;
   font-family: var(--font-share);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-base);
   line-height: var(--line-height-relaxed);
 }
 
 .attachments {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-1);
+  gap: var(--space-1);
 }
 
 .attachment {
   font-family: var(--font-share-mono);
   font-size: var(--font-size-meta);
-  color: var(--color-black);
+  color: var(--color-interactive-default);
   text-decoration: none;
 }
 
@@ -147,55 +147,55 @@
 
 .commentActions {
   display: flex;
-  gap: var(--spacing-2);
+  gap: var(--space-2);
 }
 
 .actionButton {
-  padding: var(--spacing-1) var(--spacing-2);
+  padding: var(--space-1) var(--space-2);
   font-family: var(--font-bebas);
   font-size: var(--font-size-meta);
   text-transform: uppercase;
-  background-color: var(--color-white);
-  border: var(--space-px) solid var(--color-grey-400);
+  background-color: var(--color-text-inverse);
+  border: var(--space-px) solid var(--color-text-disabled);
   cursor: pointer;
-  transition: background-color var(--transition-fast) var(--easing-standard);
+  transition: background-color var(--duration-fast) var(--easing-out);
 }
 
 .actionButton:hover {
-  background-color: var(--color-grey-200);
+  background-color: var(--color-border-default);
 }
 
 .replyBox {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-2);
-  margin-block-start: var(--spacing-2);
-  padding: var(--spacing-3);
-  border: var(--space-px) solid var(--color-grey-400);
-  background-color: var(--color-white);
+  gap: var(--space-2);
+  margin-block-start: var(--space-2);
+  padding: var(--space-3);
+  border: var(--space-px) solid var(--color-text-disabled);
+  background-color: var(--color-text-inverse);
 }
 
 .replyActions {
   display: flex;
-  gap: var(--spacing-2);
+  gap: var(--space-2);
   justify-content: flex-end;
 }
 
 .cancelButton {
-  padding: var(--spacing-2) var(--spacing-3);
+  padding: var(--space-2) var(--space-3);
   font-family: var(--font-bebas);
   font-size: var(--font-size-meta);
   text-transform: uppercase;
-  background-color: var(--color-white);
-  border: var(--space-px) solid var(--color-grey-400);
+  background-color: var(--color-text-inverse);
+  border: var(--space-px) solid var(--color-text-disabled);
   cursor: pointer;
 }
 
 .replies {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-2);
-  margin-block-start: var(--spacing-2);
+  gap: var(--space-2);
+  margin-block-start: var(--space-2);
 }
 
 
@@ -218,40 +218,40 @@
    ======================================== */
 
 [data-theme="dark"] .thread {
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .header {
-  background-color: var(--color-white);
-  color: var(--color-black);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .count {
-  background-color: var(--color-grey-200);
+  background-color: var(--color-border-default);
 }
 
 [data-theme="dark"] .replyInput {
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .submitButton {
-  background-color: var(--color-white);
-  color: var(--color-black);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .attachment {
-  color: var(--color-white);
+  color: var(--color-text-inverse);
 }
 
 [data-theme="dark"] .actionButton {
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .replyBox {
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .cancelButton {
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
 }
 

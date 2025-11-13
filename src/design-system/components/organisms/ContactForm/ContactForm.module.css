@@ -41,7 +41,7 @@
 .textarea,
 .select {
   font-family: var(--font-family-share);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-base);
   padding-block: var(--space-4);
   padding-inline: var(--space-4);
   border: var(--border-width-3) solid var(--color-border-strong);
@@ -60,8 +60,8 @@
 .input:focus,
 .textarea:focus,
 .select:focus {
-  border-color: var(--color-primary);
-  box-shadow: 0.25rem 0.25rem 0 var(--color-primary);
+  border-color: var(--color-interactive-default);
+  box-shadow: 0.25rem 0.25rem 0 var(--color-interactive-default);
 }
 
 .input:disabled,
@@ -117,7 +117,7 @@
   gap: var(--space-3);
   cursor: pointer;
   font-family: var(--font-family-share);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-base);
   color: var(--color-text-primary);
 }
 
@@ -133,8 +133,8 @@
 }
 
 .checkbox:checked {
-  background-color: var(--color-black);
-  border-color: var(--color-primary);
+  background-color: var(--color-interactive-default);
+  border-color: var(--color-interactive-default);
 }
 
 .checkbox:checked::after {
@@ -143,9 +143,9 @@
   inset-block-start: 50%;
   inset-inline-start: 50%;
   transform: translate(-50%, -50%);
-  color: var(--color-white);
+  color: var(--color-text-inverse);
   font-family: var(--font-family-bebas);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-base);
   font-weight: 700;
 }
 
@@ -164,17 +164,17 @@
   padding-block: var(--space-5);
   padding-inline: var(--space-8);
   border: var(--border-width-3) solid var(--color-border-strong);
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
   cursor: pointer;
   transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
 }
 
 .submitButton:hover {
-  background-color: var(--color-accent);
-  color: var(--color-primary);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
   transform: scale(1.02);
-  box-shadow: 0.5rem 0.5rem 0 var(--color-primary);
+  box-shadow: 0.5rem 0.5rem 0 var(--color-interactive-default);
 }
 
 .submitButton:active {
@@ -187,8 +187,8 @@
 }
 
 .submitButton:disabled:hover {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
   transform: none;
   box-shadow: none;
 }
@@ -233,7 +233,7 @@
    ======================================== */
 
 [data-theme="dark"] .submitButton {
-  background-color: var(--color-white);
-  color: var(--color-black);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
 }
 

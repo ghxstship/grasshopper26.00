@@ -19,14 +19,14 @@
   justify-content: center;
   
   border: var(--border-width-2) solid var(--color-bg-primary);
-  border-radius: var(--radius-none);
-  background-color: var(--color-black);
+  border-radius: var(--border-radius-none);
+  background-color: var(--color-interactive-default);
   
-  font-family: var(--font-mono);
+  font-family: var(--font-share-mono);
   font-weight: var(--font-weight-bold);
   line-height: 1;
   
-  color: var(--color-white);
+  color: var(--color-text-inverse);
   
   z-index: var(--z-badge);
 }
@@ -105,6 +105,6 @@
    ======================================== */
 
 [data-theme="dark"] .badge {
-  background-color: var(--color-accent);
-  color: var(--color-primary);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
 }

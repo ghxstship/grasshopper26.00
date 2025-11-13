@@ -18,11 +18,11 @@
 
 /* Spacing */
 .spacing-none { gap: 0; }
-.spacing-xs { gap: var(--spacing-1); }
-.spacing-sm { gap: var(--spacing-2); }
-.spacing-md { gap: var(--spacing-4); }
-.spacing-lg { gap: var(--spacing-6); }
-.spacing-xl { gap: var(--spacing-8); }
+.spacing-xs { gap: var(--space-1); }
+.spacing-sm { gap: var(--space-2); }
+.spacing-md { gap: var(--space-4); }
+.spacing-lg { gap: var(--space-6); }
+.spacing-xl { gap: var(--space-8); }
 
 /* Align */
 .align-start { align-items: flex-start; }

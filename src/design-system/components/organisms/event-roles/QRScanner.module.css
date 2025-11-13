@@ -1,7 +1,7 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-md);
+  gap: var(--space-md);
   inline-size: 100%;
 }
 
@@ -9,8 +9,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-block: var(--spacing-sm);
-  padding-inline: var(--spacing-md);
+  padding-block: var(--space-sm);
+  padding-inline: var(--space-md);
   background-color: var(--color-surface);
   border: var(--border-width) solid var(--color-border);
 }
@@ -18,42 +18,42 @@
 .status {
   display: flex;
   align-items: center;
-  gap: var(--spacing-xs);
+  gap: var(--space-xs);
 }
 
 .online {
   display: flex;
   align-items: center;
-  gap: var(--spacing-xs);
-  color: var(--color-success);
+  gap: var(--space-xs);
+  color: var(--color-text-primary);
   font-weight: var(--font-weight-medium);
 }
 
 .offline {
   display: flex;
   align-items: center;
-  gap: var(--spacing-xs);
-  color: var(--color-warning);
+  gap: var(--space-xs);
+  color: var(--color-text-primary);
   font-weight: var(--font-weight-medium);
 }
 
 .syncButton {
   display: flex;
   align-items: center;
-  gap: var(--spacing-xs);
-  padding-block: var(--spacing-sm);
-  padding-inline: var(--spacing-md);
-  background-color: var(--color-primary);
+  gap: var(--space-xs);
+  padding-block: var(--space-sm);
+  padding-inline: var(--space-md);
+  background-color: var(--color-interactive-default);
   color: var(--color-on-primary);
   border: none;
   border-radius: var(--border-radius-sm);
   font-weight: var(--font-weight-medium);
   cursor: pointer;
-  transition: background-color var(--transition-fast);
+  transition: background-color var(--duration-fast);
 }
 
 .syncButton:hover:not(:disabled) {
-  background-color: var(--color-primary-hover);
+  background-color: var(--color-interactive-hover);
 }
 
 .syncButton:disabled {
@@ -85,20 +85,20 @@
 }
 
 .error {
-  padding-block: var(--spacing-md);
-  padding-inline: var(--spacing-md);
+  padding-block: var(--space-md);
+  padding-inline: var(--space-md);
   background-color: var(--color-error-surface);
-  color: var(--color-error);
-  border: var(--border-width) solid var(--color-error);
+  color: var(--color-text-primary);
+  border: var(--border-width) solid var(--color-text-primary);
   border-radius: var(--border-radius-sm);
 }
 
 .offlineNotice {
-  padding-block: var(--spacing-sm);
-  padding-inline: var(--spacing-md);
+  padding-block: var(--space-sm);
+  padding-inline: var(--space-md);
   background-color: var(--color-warning-surface);
-  color: var(--color-warning);
-  border: var(--border-width) solid var(--color-warning);
+  color: var(--color-text-primary);
+  border: var(--border-width) solid var(--color-text-primary);
   border-radius: var(--border-radius-sm);
   text-align: center;
 }

@@ -19,7 +19,7 @@
 }
 
 .item.open {
-  box-shadow: 0.5rem 0.5rem 0 var(--color-primary);
+  box-shadow: 0.5rem 0.5rem 0 var(--color-interactive-default);
 }
 
 .header {
@@ -41,8 +41,8 @@
 }
 
 .item.open .header {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
 }
 
 .question {
@@ -72,8 +72,8 @@
 
 .item.open .icon {
   transform: rotate(45deg);
-  background-color: var(--color-accent);
-  color: var(--color-primary);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
   border-color: var(--color-border-accent);
 }
 
@@ -90,7 +90,7 @@
 
 .answer {
   font-family: var(--font-family-share);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-base);
   line-height: 1.6;
   color: var(--color-text-primary);
   margin: 0;
@@ -112,8 +112,8 @@
 }
 
 .item.open .category {
-  background-color: var(--color-accent);
-  color: var(--color-primary);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
   border-color: var(--color-border-accent);
 }
 

@@ -16,7 +16,7 @@
    ======================================== */
 
 .label {
-  font-family: var(--font-mono);
+  font-family: var(--font-share-mono);
   font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-widest);
   text-transform: uppercase;
@@ -68,9 +68,9 @@
 .highlighted {
   padding: var(--space-4);
   border: var(--border-width-3) solid var(--color-border-strong);
-  border-radius: var(--radius-none)(--radius-none);
-  background-color: var(--color-black);
-  box-shadow: var(--shadow-base);
+  border-radius: var(--border-radius-none)(--radius-none);
+  background-color: var(--color-interactive-default);
+  box-shadow: var(--shadow-card);
 }
 
 .highlighted .label {
@@ -78,7 +78,7 @@
 }
 
 .highlighted .price {
-  color: var(--color-white);
+  color: var(--color-text-inverse);
 }
 
 /* ========================================
@@ -87,7 +87,7 @@
 
 @media (prefers-contrast: high) {
   .highlighted {
-    border-width: var(--border-width-4);
+    border-width: var(--border-width-3);
   }
 }
 
@@ -96,10 +96,10 @@
    ======================================== */
 
 [data-theme="dark"] .highlighted {
-  background-color: var(--color-accent);
+  background-color: var(--color-text-inverse);
   box-shadow: var(--shadow-white-md);
 }
 
 [data-theme="dark"] .highlighted .price {
-  color: var(--color-primary);
+  color: var(--color-interactive-default);
 }

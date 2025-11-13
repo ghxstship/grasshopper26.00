@@ -4,39 +4,35 @@
  * Uses design system tokens for consistency
  */
 
-import { primitiveColors } from '@/design-system/tokens/primitives/colors';
-import { semanticColors } from '@/design-system/tokens/semantic/colors';
+import { primitives } from '@/design-system/tokens/primitives';
+import { semantic } from '@/design-system/tokens/semantic';
 
 export const emailTokens = {
   colors: {
-    // Brand colors
-    brandPrimary: primitiveColors.brand[600],
-    brandSecondary: primitiveColors.accent[500],
+    // Brand colors - monochromatic
+    brandPrimary: primitives.color.black,
+    brandSecondary: primitives.color.white,
     
     // Text colors
-    textPrimary: primitiveColors.neutral[900],
-    textSecondary: primitiveColors.neutral[600],
-    textTertiary: primitiveColors.neutral[500],
-    textInverse: primitiveColors.neutral[0],
+    textPrimary: primitives.color.black,
+    textSecondary: primitives.color.grey[600],
+    textTertiary: primitives.color.grey[500],
+    textInverse: primitives.color.white,
     
     // Background colors
-    bgPrimary: primitiveColors.neutral[0],
-    bgSecondary: primitiveColors.neutral[50],
-    bgTertiary: primitiveColors.neutral[100],
+    bgPrimary: primitives.color.white,
+    bgSecondary: primitives.color.grey[50],
+    bgTertiary: primitives.color.grey[100],
     
     // Border colors
-    borderDefault: primitiveColors.neutral[200],
-    borderStrong: primitiveColors.neutral[300],
+    borderDefault: primitives.color.grey[200],
+    borderStrong: primitives.color.black,
     
-    // Status colors
-    success: primitiveColors.success[500],
-    error: primitiveColors.error[500],
-    warning: primitiveColors.warning[500],
-    info: primitiveColors.info[500],
-  },
-  
-  gradients: {
-    brandPrimary: semanticColors.gradients.brandPrimary,
+    // Status colors - monochromatic
+    success: primitives.color.black,
+    error: primitives.color.black,
+    warning: primitives.color.grey[600],
+    info: primitives.color.grey[600],
   },
   
   spacing: {
@@ -94,11 +90,11 @@ export const emailStyles = {
   `,
   
   header: `
-    background: ${emailTokens.gradients.brandPrimary};
+    background: ${emailTokens.colors.brandPrimary};
     color: ${emailTokens.colors.textInverse};
     padding: ${emailTokens.spacing['2xl']};
     text-align: center;
-    border-radius: ${emailTokens.borderRadius.lg} ${emailTokens.borderRadius.lg} 0 0;
+    border-radius: 0;
   `,
   
   content: `
@@ -117,11 +113,12 @@ export const emailStyles = {
   
   button: `
     display: inline-block;
-    background: ${emailTokens.gradients.brandPrimary};
+    background: ${emailTokens.colors.brandPrimary};
     color: ${emailTokens.colors.textInverse};
     padding: ${emailTokens.spacing.sm} ${emailTokens.spacing['2xl']};
     text-decoration: none;
-    border-radius: ${emailTokens.borderRadius.md};
+    border-radius: 0;
+    border: 2px solid ${emailTokens.colors.borderStrong};
     margin: ${emailTokens.spacing.lg} 0;
     font-weight: 600;
   `,

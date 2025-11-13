@@ -9,7 +9,7 @@
   justify-content: center;
   min-height: 100vh;
   background-color: var(--color-bg-inverse);
-  color: var(--color-white);
+  color: var(--color-text-inverse);
   position: relative;
   overflow: hidden;
   padding: var(--space-6);
@@ -63,7 +63,7 @@
   margin-block-end: var(--space-6);
   text-shadow: 
     0.5rem 0.5rem 0 var(--color-bg-primary),
-    1rem 1rem 0 var(--color-grey-100);
+    1rem 1rem 0 var(--color-bg-tertiary);
 }
 
 /* Title */
@@ -83,7 +83,7 @@
   font-family: var(--font-family-body);
   font-size: var(--font-size-h4);
   line-height: 1.5;
-  color: var(--color-white);
+  color: var(--color-text-inverse);
   opacity: 0.8;
   margin: 0;
   margin-block-end: var(--space-8);

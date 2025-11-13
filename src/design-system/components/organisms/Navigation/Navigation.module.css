@@ -24,7 +24,7 @@
 
 .black {
   background-color: var(--color-bg-black);
-  color: var(--color-white);
+  color: var(--color-text-inverse);
   opacity: 0.95;
 }
 
@@ -102,7 +102,7 @@
   height: var(--font-size-5xl);
   
   border: var(--border-width-2) solid currentColor;
-  border-radius: var(--radius-none)(--radius-none);
+  border-radius: var(--border-radius-none)(--radius-none);
   background-color: transparent;
   
   color: inherit;
@@ -116,11 +116,11 @@
 }
 
 .black .mobileMenuButton:hover {
-  background-color: var(--color-accent);
+  background-color: var(--color-text-inverse);
 }
 
 .white .mobileMenuButton:hover {
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
 }
 
 .mobileMenuButton:active {
@@ -149,11 +149,11 @@
 }
 
 .black .mobileMenuButton:hover .hamburgerLine {
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
 }
 
 .white .mobileMenuButton:hover .hamburgerLine {
-  background-color: var(--color-accent);
+  background-color: var(--color-text-inverse);
 }
 
 .hamburgerOpen .hamburgerLine:nth-child(1) {
@@ -196,7 +196,7 @@
   position: relative;
   display: inline-block;
   
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-normal);
   letter-spacing: var(--letter-spacing-wider);
@@ -249,7 +249,7 @@
   align-items: center;
   justify-content: center;
   
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-wider);
@@ -262,7 +262,7 @@
   min-height: var(--font-size-5xl);
   
   border: var(--border-width-3) solid currentColor;
-  border-radius: var(--radius-none)(--radius-none);
+  border-radius: var(--border-radius-none)(--radius-none);
   background-color: transparent;
   
   color: inherit;
@@ -272,22 +272,22 @@
 }
 
 .black .cta {
-  border-color: var(--color-accent);
+  border-color: var(--color-text-inverse);
 }
 
 .black .cta:hover {
-  background-color: var(--color-accent);
-  color: var(--color-primary);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
   transform: scale(1.05);
 }
 
 .white .cta {
-  border-color: var(--color-primary);
+  border-color: var(--color-interactive-default);
 }
 
 .white .cta:hover {
-  background-color: var(--color-black);
-  color: var(--color-accent);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
   transform: scale(1.05);
 }
 
@@ -393,12 +393,12 @@
 
 @media (prefers-contrast: high) {
   .navigation {
-    border-block-end-width: var(--border-width-4);
+    border-block-end-width: var(--border-width-3);
   }
   
   .mobileMenuButton,
   .cta {
-    border-width: var(--border-width-4);
+    border-width: var(--border-width-3);
   }
 }
 
@@ -412,6 +412,6 @@
 }
 
 [data-theme="dark"] .white {
-  background-color: var(--color-grey-900);
+  background-color: var(--color-interactive-hover);
   opacity: 0.95;
 }

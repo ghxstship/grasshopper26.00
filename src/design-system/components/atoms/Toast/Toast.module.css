@@ -14,14 +14,14 @@
   max-inline-size: 31.25rem;
   padding: var(--space-4);
   background-color: var(--color-bg-primary);
-  border: var(--border-width-thick) solid var(--color-border-strong);
-  box-shadow: var(--shadow-base);
+  border: var(--border-width-3) solid var(--color-border-strong);
+  box-shadow: var(--shadow-card);
   animation: slideIn var(--duration-base) var(--easing-out);
 }
 
 .message {
   flex: 1;
-  font-family: var(--font-body);
+  font-family: var(--font-share);
   font-size: var(--font-size-base);
   line-height: var(--line-height-normal);
   color: var(--color-text-primary);
@@ -29,10 +29,10 @@
 
 .close {
   padding: var(--space-2);
-  font-family: var(--font-mono);
+  font-family: var(--font-share-mono);
   font-size: var(--font-size-lg);
   background: transparent;
-  border: var(--border-width-thick) solid var(--color-border-strong);
+  border: var(--border-width-3) solid var(--color-border-strong);
   color: var(--color-text-primary);
   cursor: pointer;
   transition: all var(--duration-fast) var(--easing-out);
@@ -44,10 +44,10 @@
 }
 
 .close:hover {
-  background: var(--color-black);
-  color: var(--color-white);
+  background: var(--color-interactive-default);
+  color: var(--color-text-inverse);
   transform: translate(calc(var(--space-1) * -1), calc(var(--space-1) * -1));
-  box-shadow: var(--shadow-base);
+  box-shadow: var(--shadow-card);
 }
 
 .close:active {
@@ -78,16 +78,16 @@
 
 /* Variant styles */
 .success {
-  background-color: var(--color-grey-100);
+  background-color: var(--color-bg-tertiary);
 }
 
 .warning {
-  background-color: var(--color-grey-200);
+  background-color: var(--color-border-default);
 }
 
 .error {
-  background-color: var(--color-grey-900);
-  color: var(--color-white);
+  background-color: var(--color-interactive-hover);
+  color: var(--color-text-inverse);
 }
 
 @keyframes slideIn {
@@ -121,15 +121,15 @@
    ======================================== */
 
 [data-theme="dark"] .success {
-  background-color: var(--color-grey-800);
+  background-color: var(--color-border-default);
 }
 
 [data-theme="dark"] .warning {
-  background-color: var(--color-grey-700);
+  background-color: var(--color-text-secondary);
 }
 
 [data-theme="dark"] .error {
-  background-color: var(--color-grey-100);
-  color: var(--color-black);
+  background-color: var(--color-bg-tertiary);
+  color: var(--color-interactive-default);
 }
 

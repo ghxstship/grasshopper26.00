@@ -1,12 +1,11 @@
 /**
- * Switch Component Styles
- * GHXSTSHIP Monochromatic Design System
+ * Switch Styles - GHXSTSHIP
  */
 
 .container {
   display: flex;
   align-items: center;
-  gap: var(--spacing-3);
+  gap: var(--space-3);
 }
 
 .switch {
@@ -14,18 +13,19 @@
   inline-size: 3rem;
   block-size: 1.5rem;
   padding: 0;
-  background-color: var(--color-grey-300);
-  border: var(--border-width-thick) solid var(--color-black);
+  background-color: var(--color-bg-secondary);
+  border: var(--border-width-2) solid var(--color-border-strong);
+  border-radius: var(--border-radius-none);
   cursor: pointer;
-  transition: background-color var(--transition-fast) var(--easing-standard);
+  transition: background-color var(--duration-fast) var(--easing-out);
 }
 
 .switch:hover:not(.disabled) {
-  background-color: var(--color-grey-400);
+  background-color: var(--color-bg-tertiary);
 }
 
 .switch.checked {
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
 }
 
 .thumb {
@@ -34,56 +34,39 @@
   inset-inline-start: 0.125rem;
   inline-size: 1rem;
   block-size: 1rem;
-  background-color: var(--color-white);
-  border: var(--border-width-thick) solid var(--color-black);
-  transition: transform var(--transition-fast) var(--easing-standard);
+  background-color: var(--color-bg-primary);
+  border: var(--border-width-2) solid var(--color-border-strong);
+  border-radius: var(--border-radius-none);
+  transition: transform var(--duration-fast) var(--easing-out);
 }
 
 .checked .thumb {
   transform: translateX(1.5rem);
+  background-color: var(--color-text-inverse);
 }
 
 .disabled {
-  opacity: 0.5;
+  opacity: var(--opacity-50);
   cursor: not-allowed;
 }
 
 .label {
   font-family: var(--font-share);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-base);
   color: var(--color-text-primary);
   cursor: pointer;
 }
 
 .disabled + .label {
-  opacity: 0.5;
+  opacity: var(--opacity-50);
   cursor: not-allowed;
 }
 
-
-/* ========================================
-   RESPONSIVE BREAKPOINTS
-   ======================================== */
-
-@media (min-width: var(--space-96)) {
-  /* Tablet and up */
-}
-
-@media (min-width: var(--space-96)) {
-  /* Desktop and up */
-}
-
-
-
-/* ========================================
-   DARK THEME
-   ======================================== */
-
-[data-theme="dark"] .switch {
-  background-color: var(--color-grey-600);
-}
-
-[data-theme="dark"] .thumb {
-  background-color: var(--color-black);
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .switch,
+  .thumb {
+    transition: none;
+  }
 }
 

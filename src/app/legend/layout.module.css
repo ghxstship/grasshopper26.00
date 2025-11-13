@@ -8,7 +8,7 @@
 .sidebar {
   display: flex;
   flex-direction: column;
-  border-inline-end: var(--border-width-thick) solid var(--color-border-strong);
+  border-inline-end: var(--border-width-3) solid var(--color-border-strong);
   background-color: var(--color-bg-primary);
   position: sticky;
   inset-block-start: 0;
@@ -22,7 +22,7 @@
   gap: var(--space-2);
   padding-block: var(--space-8);
   padding-inline: var(--space-6);
-  border-block-end: var(--border-width-thick) solid var(--color-border-strong);
+  border-block-end: var(--border-width-3) solid var(--color-border-strong);
 }
 
 .logo {
@@ -61,7 +61,7 @@
   letter-spacing: var(--letter-spacing-wide);
   color: var(--color-text-secondary);
   text-decoration: none;
-  border-inline-start: var(--border-width-thick) solid transparent;
+  border-inline-start: var(--border-width-3) solid transparent;
   transition: all var(--duration-fast) var(--easing-out);
 }
 
@@ -91,7 +91,7 @@
   z-index: 110;
   padding: var(--space-2);
   background-color: var(--color-bg-primary);
-  border: var(--border-width-thick) solid var(--color-border-strong);
+  border: var(--border-width-3) solid var(--color-border-strong);
   color: var(--color-text-primary);
   cursor: pointer;
   transition: all var(--duration-fast) var(--easing-out);
@@ -124,14 +124,14 @@
 
   .sidebar.open {
     inset-inline-start: 0;
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow-card);
   }
 
   .overlay {
     display: block;
     position: fixed;
     inset: 0;
-    background-color: var(--color-bg-overlay);
+    background-color: var(--color-bg-tertiary);
     z-index: 90;
   }
 

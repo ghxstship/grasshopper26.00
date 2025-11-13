@@ -7,54 +7,54 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: var(--spacing-1) var(--spacing-2);
+  padding: var(--space-1) var(--space-2);
   font-family: var(--font-bebas);
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-wide);
-  border: var(--space-px) solid var(--color-black);
+  border: var(--space-px) solid var(--color-interactive-default);
   inline-size: fit-content;
 }
 
 .pill.small {
   font-size: var(--font-size-meta);
-  padding: var(--spacing-1) var(--spacing-2);
+  padding: var(--space-1) var(--space-2);
 }
 
 .pill.medium {
-  font-size: var(--font-size-body);
-  padding: var(--spacing-2) var(--spacing-3);
+  font-size: var(--font-size-base);
+  padding: var(--space-2) var(--space-3);
 }
 
 .pill.large {
   font-size: var(--font-size-h6);
-  padding: var(--spacing-2) var(--spacing-4);
+  padding: var(--space-2) var(--space-4);
 }
 
 .pill.active {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
 }
 
 .pill.pending {
-  background-color: var(--color-grey-300);
+  background-color: var(--color-border-default);
 }
 
 .pill.completed {
-  background-color: var(--color-grey-200);
+  background-color: var(--color-border-default);
 }
 
 .pill.cancelled {
-  background-color: var(--color-grey-500);
-  color: var(--color-white);
+  background-color: var(--color-text-tertiary);
+  color: var(--color-text-inverse);
 }
 
 .pill.error {
-  background-color: var(--color-grey-900);
-  color: var(--color-white);
+  background-color: var(--color-interactive-hover);
+  color: var(--color-text-inverse);
 }
 
 .pill.warning {
-  background-color: var(--color-grey-400);
+  background-color: var(--color-text-disabled);
 }
 
 

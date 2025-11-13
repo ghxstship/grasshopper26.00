@@ -7,7 +7,7 @@
   aspect-ratio: 375 / 240;
   max-width: 23.4375rem;
   background-color: var(--color-bg-inverse);
-  color: var(--color-white);
+  color: var(--color-text-inverse);
   border: var(--border-width-3) solid var(--color-border-inverse);
   box-shadow: var(--shadow-geometric-white);
   padding: var(--space-6);
@@ -90,6 +90,6 @@
    ======================================== */
 
 [data-theme="dark"] .card {
-  color: var(--color-black);
+  color: var(--color-interactive-default);
 }
 

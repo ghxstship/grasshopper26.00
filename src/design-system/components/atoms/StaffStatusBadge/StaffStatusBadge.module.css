@@ -6,7 +6,7 @@
   font-size: var(--font-size-xs);
   letter-spacing: var(--letter-spacing-meta);
   line-height: var(--line-height-tight);
-  border-width: var(--border-width-default);
+  border-width: var(--border-width-2);
   border-style: solid;
   border-color: var(--color-border-default);
   background-color: var(--color-bg-secondary);
@@ -14,20 +14,20 @@
 }
 
 .checked_in {
-  background-color: var(--color-grey-900);
-  color: var(--color-white);
-  border-color: var(--color-grey-900);
+  background-color: var(--color-interactive-hover);
+  color: var(--color-text-inverse);
+  border-color: var(--color-interactive-hover);
 }
 
 .on_break {
-  background-color: var(--color-grey-700);
-  color: var(--color-white);
-  border-color: var(--color-grey-700);
+  background-color: var(--color-text-secondary);
+  color: var(--color-text-inverse);
+  border-color: var(--color-text-secondary);
 }
 
 .checked_out {
-  background-color: var(--color-grey-400);
-  border-color: var(--color-grey-400);
+  background-color: var(--color-text-disabled);
+  border-color: var(--color-text-disabled);
 }
 
 .confirmed {
@@ -36,17 +36,17 @@
 }
 
 .scheduled {
-  background-color: var(--color-grey-200);
+  background-color: var(--color-border-default);
 }
 
 .no_show {
-  background-color: var(--color-grey-800);
-  color: var(--color-white);
-  border-color: var(--color-grey-800);
+  background-color: var(--color-border-default);
+  color: var(--color-text-inverse);
+  border-color: var(--color-border-default);
 }
 
 .cancelled {
-  background-color: var(--color-grey-300);
+  background-color: var(--color-border-default);
   color: var(--color-text-tertiary);
 }
 
@@ -70,33 +70,33 @@
    ======================================== */
 
 [data-theme="dark"] .checked_in {
-  background-color: var(--color-grey-100);
-  color: var(--color-black);
-  border-color: var(--color-grey-100);
+  background-color: var(--color-bg-tertiary);
+  color: var(--color-interactive-default);
+  border-color: var(--color-bg-tertiary);
 }
 
 [data-theme="dark"] .on_break {
-  background-color: var(--color-grey-200);
-  color: var(--color-black);
-  border-color: var(--color-grey-200);
+  background-color: var(--color-border-default);
+  color: var(--color-interactive-default);
+  border-color: var(--color-border-default);
 }
 
 [data-theme="dark"] .checked_out {
-  background-color: var(--color-grey-500);
-  border-color: var(--color-grey-500);
+  background-color: var(--color-text-tertiary);
+  border-color: var(--color-text-tertiary);
 }
 
 [data-theme="dark"] .scheduled {
-  background-color: var(--color-grey-700);
+  background-color: var(--color-text-secondary);
 }
 
 [data-theme="dark"] .no_show {
-  background-color: var(--color-grey-100);
-  color: var(--color-black);
-  border-color: var(--color-grey-100);
+  background-color: var(--color-bg-tertiary);
+  color: var(--color-interactive-default);
+  border-color: var(--color-bg-tertiary);
 }
 
 [data-theme="dark"] .cancelled {
-  background-color: var(--color-grey-600);
+  background-color: var(--color-text-secondary);
 }
 

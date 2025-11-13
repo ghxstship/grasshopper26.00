@@ -1,9 +1,9 @@
 .card {
   display: block;
   background: var(--color-background);
-  border: var(--border-width-default) solid var(--color-border);
-  padding-block: var(--spacing-lg);
-  padding-inline: var(--spacing-lg);
+  border: var(--border-width-2) solid var(--color-border);
+  padding-block: var(--space-lg);
+  padding-inline: var(--space-lg);
   text-decoration: none;
   color: inherit;
   transition: transform 0.2s ease;
@@ -18,12 +18,12 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-block-end: var(--spacing-md);
-  gap: var(--spacing-md);
+  margin-block-end: var(--space-md);
+  gap: var(--space-md);
 }
 
 .title {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
@@ -32,12 +32,12 @@
 }
 
 .status {
-  font-family: var(--font-mono);
+  font-family: var(--font-share-mono);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-bold);
-  padding-block: var(--spacing-xs);
-  padding-inline: var(--spacing-sm);
-  border: var(--border-width-default) solid var(--color-border);
+  padding-block: var(--space-xs);
+  padding-inline: var(--space-sm);
+  border: var(--border-width-2) solid var(--color-border);
   white-space: nowrap;
 }
 
@@ -56,27 +56,27 @@
 .info {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--spacing-md);
-  margin-block-end: var(--spacing-md);
-  padding-block-end: var(--spacing-md);
-  border-block-end: var(--border-width-default) solid var(--color-border);
+  gap: var(--space-md);
+  margin-block-end: var(--space-md);
+  padding-block-end: var(--space-md);
+  border-block-end: var(--border-width-2) solid var(--color-border);
 }
 
 .infoItem {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-xs);
+  gap: var(--space-xs);
 }
 
 .label {
-  font-family: var(--font-mono);
+  font-family: var(--font-share-mono);
   font-size: var(--font-size-xs);
   color: var(--color-text-secondary);
   text-transform: uppercase;
 }
 
 .value {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
 }
@@ -84,11 +84,11 @@
 .vendor {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-xs);
+  gap: var(--space-xs);
 }
 
 .vendorName {
-  font-family: var(--font-mono);
+  font-family: var(--font-share-mono);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-bold);
 }

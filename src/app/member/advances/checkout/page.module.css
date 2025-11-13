@@ -465,7 +465,7 @@
   justify-content: space-between;
   align-items: center;
   padding-block: var(--space-3);
-  border-block-end: var(--border-width-thin) solid var(--color-text-primary);
+  border-block-end: var(--border-width-1) solid var(--color-text-primary);
 }
 
 .summaryRow:last-child {
@@ -488,7 +488,7 @@
 .loadingOverlay {
   position: fixed;
   inset: 0;
-  background-color: var(--color-bg-overlay);
+  background-color: var(--color-bg-tertiary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -678,11 +678,11 @@
 }
 
 .rounded {
-  border-radius: var(--radius-none);
+  border-radius: var(--border-radius-none);
 }
 
 .shadow {
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-card);
 }
 
 /* DARK MODE */

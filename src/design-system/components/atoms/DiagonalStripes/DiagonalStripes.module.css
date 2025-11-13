@@ -73,15 +73,15 @@
 
 /* Color variants */
 .black {
-  --stripe-color: var(--color-black);
+  --stripe-color: var(--color-interactive-default);
 }
 
 .white {
-  --stripe-color: var(--color-white);
+  --stripe-color: var(--color-text-inverse);
 }
 
 .grey {
-  --stripe-color: var(--color-grey-500);
+  --stripe-color: var(--color-text-tertiary);
 }
 
 
@@ -104,14 +104,14 @@
    ======================================== */
 
 [data-theme="dark"] .black {
-  --stripe-color: var(--color-white);
+  --stripe-color: var(--color-text-inverse);
 }
 
 [data-theme="dark"] .white {
-  --stripe-color: var(--color-black);
+  --stripe-color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .grey {
-  --stripe-color: var(--color-grey-400);
+  --stripe-color: var(--color-text-disabled);
 }
 

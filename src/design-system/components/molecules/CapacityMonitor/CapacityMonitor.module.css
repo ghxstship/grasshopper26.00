@@ -6,21 +6,21 @@
 .monitor {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-3);
-  padding: var(--spacing-4);
-  border: var(--border-width-thick) solid var(--color-black);
-  background-color: var(--color-white);
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: var(--border-width-3) solid var(--color-interactive-default);
+  background-color: var(--color-text-inverse);
 }
 
 .monitor.warning {
-  border-inline-start-width: calc(var(--border-width-thick) * 2);
-  background-color: var(--color-grey-100);
+  border-inline-start-width: calc(var(--border-width-3) * 2);
+  background-color: var(--color-bg-tertiary);
 }
 
 .monitor.critical {
-  border-inline-start-width: calc(var(--border-width-thick) * 3);
-  background-color: var(--color-grey-900);
-  color: var(--color-white);
+  border-inline-start-width: calc(var(--border-width-3) * 3);
+  background-color: var(--color-interactive-hover);
+  color: var(--color-text-inverse);
 }
 
 .header {
@@ -37,36 +37,36 @@
 }
 
 .statusBadge {
-  padding: var(--spacing-1) var(--spacing-2);
+  padding: var(--space-1) var(--space-2);
   font-family: var(--font-bebas);
   font-size: var(--font-size-meta);
   text-transform: uppercase;
-  border: var(--space-px) solid var(--color-black);
+  border: var(--space-px) solid var(--color-interactive-default);
 }
 
 .statusBadge.normal {
-  background-color: var(--color-white);
+  background-color: var(--color-text-inverse);
 }
 
 .statusBadge.warning {
-  background-color: var(--color-grey-400);
+  background-color: var(--color-text-disabled);
 }
 
 .statusBadge.critical {
-  background-color: var(--color-grey-900);
-  color: var(--color-white);
+  background-color: var(--color-interactive-hover);
+  color: var(--color-text-inverse);
 }
 
 .numbers {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--spacing-3);
+  gap: var(--space-3);
 }
 
 .numberGroup {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-1);
+  gap: var(--space-1);
 }
 
 .label {
@@ -77,7 +77,7 @@
 }
 
 .monitor.critical .label {
-  color: var(--color-grey-400);
+  color: var(--color-text-disabled);
 }
 
 .value {
@@ -89,37 +89,37 @@
 .progress {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-1);
+  gap: var(--space-1);
 }
 
 .progressBar {
   block-size: 0.75rem;
-  background-color: var(--color-grey-200);
-  border: var(--space-px) solid var(--color-black);
+  background-color: var(--color-border-default);
+  border: var(--space-px) solid var(--color-interactive-default);
   overflow: hidden;
 }
 
 .monitor.critical .progressBar {
-  background-color: var(--color-grey-700);
+  background-color: var(--color-text-secondary);
 }
 
 .progressFill {
   block-size: 100%;
-  background-color: var(--color-black);
-  transition: width var(--transition-standard) var(--easing-standard);
+  background-color: var(--color-interactive-default);
+  transition: width var(--transition-standard) var(--easing-out);
 }
 
 .progressFill.warning {
-  background-color: var(--color-grey-600);
+  background-color: var(--color-text-secondary);
 }
 
 .progressFill.critical {
-  background-color: var(--color-white);
+  background-color: var(--color-text-inverse);
 }
 
 .percentage {
   font-family: var(--font-share-mono);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-base);
   font-weight: 700;
   text-align: center;
 }
@@ -144,14 +144,14 @@
    ======================================== */
 
 [data-theme="dark"] .monitor {
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .progressBar {
-  background-color: var(--color-grey-700);
+  background-color: var(--color-text-secondary);
 }
 
 [data-theme="dark"] .progressFill {
-  background-color: var(--color-white);
+  background-color: var(--color-text-inverse);
 }
 

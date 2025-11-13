@@ -21,7 +21,7 @@
 }
 
 .navItem:hover {
-  transform: translateY(-0.125rem);
+  transform: translateY(calc(var(--space-px) * -2));
 }
 
 .navItem:active {
@@ -30,7 +30,7 @@
 
 .navItem:focus-visible {
   outline: var(--border-width-2) solid var(--color-border-focus);
-  outline-offset: 0.125rem;
+  outline-offset: var(--space-px);
 }
 
 /* ========================================
@@ -38,7 +38,7 @@
    ======================================== */
 
 .label {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-normal);
   letter-spacing: var(--letter-spacing-wider);
@@ -100,7 +100,7 @@
 
 @media (prefers-contrast: high) {
   .underline {
-    height: var(--border-width-4);
+    height: var(--border-width-3);
   }
 }
 

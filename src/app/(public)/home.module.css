@@ -17,7 +17,7 @@
    SECTION TITLE
    ======================================== */
 .sectionTitle {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-3xl);
   font-weight: var(--font-weight-normal);
   line-height: var(--line-height-tight);
@@ -58,7 +58,7 @@
    SECTION DESCRIPTION
    ======================================== */
 .sectionDescription {
-  font-family: var(--font-body);
+  font-family: var(--font-share);
   font-size: var(--font-size-base);
   line-height: var(--line-height-normal);
   text-align: center;
@@ -100,7 +100,7 @@
 }
 
 .newsletterTitle {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-3xl);
   font-weight: var(--font-weight-normal);
   line-height: var(--line-height-tight);
@@ -118,7 +118,7 @@
 }
 
 .newsletterDescription {
-  font-family: var(--font-body);
+  font-family: var(--font-share);
   font-size: var(--font-size-base);
   line-height: var(--line-height-normal);
   max-inline-size: 37.5rem;

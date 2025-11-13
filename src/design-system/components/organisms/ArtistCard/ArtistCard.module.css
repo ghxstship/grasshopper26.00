@@ -33,11 +33,11 @@
 }
 
 .imageContainer.circular {
-  border-radius: var(--radius-none);
+  border-radius: var(--border-radius-none);
 }
 
 .imageContainer.square {
-  border-radius: var(--radius-none);
+  border-radius: var(--border-radius-none);
 }
 
 .image {
@@ -116,8 +116,8 @@
 }
 
 .socialLink:hover {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
   transform: scale(1.1);
 }
 
@@ -136,15 +136,15 @@
   letter-spacing: 0.02em;
   padding-block: var(--space-1);
   padding-inline: var(--space-2);
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
   border: var(--border-width-2) solid var(--color-border-strong);
   z-index: 10;
 }
 
 .bio {
   font-family: var(--font-family-share);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-base);
   line-height: 1.6;
   color: var(--color-text-primary);
   margin-block-start: var(--space-3);
@@ -240,7 +240,7 @@
    ======================================== */
 
 [data-theme="dark"] .badge {
-  background-color: var(--color-white);
-  color: var(--color-black);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
 }
 

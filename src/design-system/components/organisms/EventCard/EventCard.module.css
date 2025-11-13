@@ -17,7 +17,7 @@
 
 .card:hover {
   transform: scale(1.05);
-  box-shadow: 0.5rem 0.5rem 0 var(--color-primary);
+  box-shadow: 0.5rem 0.5rem 0 var(--color-interactive-default);
 }
 
 .card:active {
@@ -56,20 +56,20 @@
   letter-spacing: 0.02em;
   padding-block: var(--space-2);
   padding-inline: var(--space-4);
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
   border: var(--border-width-3) solid var(--color-border-strong);
   z-index: 10;
 }
 
 .badge.soldOut {
   background-color: var(--color-bg-primary);
-  color: var(--color-primary);
+  color: var(--color-interactive-default);
 }
 
 .badge.onSale {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
 }
 
 .content {
@@ -110,7 +110,7 @@
 
 .description {
   font-family: var(--font-family-share);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-base);
   line-height: 1.6;
   color: var(--color-text-primary);
   margin: 0;
@@ -167,8 +167,8 @@
 }
 
 .button:hover {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
   transform: scale(1.05);
 }
 
@@ -238,7 +238,7 @@
    ======================================== */
 
 [data-theme="dark"] .badge {
-  background-color: var(--color-white);
-  color: var(--color-black);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
 }
 

@@ -23,12 +23,12 @@
   padding: var(--space-6);
   
   border: var(--border-width-3) solid var(--color-border-strong);
-  border-radius: var(--radius-none)(--radius-none);
+  border-radius: var(--border-radius-none)(--radius-none);
   background-color: var(--color-bg-primary);
 }
 
 .filtersLabel {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-wider);
@@ -44,7 +44,7 @@
 }
 
 .filterButton {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
   letter-spacing: var(--letter-spacing-wide);
@@ -54,7 +54,7 @@
   padding-block: var(--space-2-5);
   
   border: var(--border-width-2) solid var(--color-border-strong);
-  border-radius: var(--radius-none)(--radius-none);
+  border-radius: var(--border-radius-none)(--radius-none);
   background-color: transparent;
   
   color: var(--color-text-primary);
@@ -64,8 +64,8 @@
 }
 
 .filterButton:hover {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
   transform: scale(1.05);
 }
 
@@ -79,8 +79,8 @@
 }
 
 .filterButtonActive {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
   border-color: var(--color-border-strong);
 }
 
@@ -152,7 +152,7 @@
   padding: var(--space-16);
   
   border: var(--border-width-3) solid var(--color-border-default);
-  border-radius: var(--radius-none)(--radius-none);
+  border-radius: var(--border-radius-none)(--radius-none);
   background-color: var(--color-bg-secondary);
 }
 
@@ -164,7 +164,7 @@
 }
 
 .emptyText {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-xl);
   letter-spacing: var(--letter-spacing-wider);
   text-transform: uppercase;
@@ -255,7 +255,7 @@
 
 @media (prefers-contrast: high) {
   .filters {
-    border-width: var(--border-width-4);
+    border-width: var(--border-width-3);
   }
   
   .filterButton {

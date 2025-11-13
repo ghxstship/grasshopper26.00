@@ -26,7 +26,7 @@
 
 .message {
   font-family: var(--font-share);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-base);
   margin-block-end: var(--space-6);
 }
 
@@ -139,11 +139,11 @@
 }
 
 .rounded {
-  border-radius: var(--radius-none);
+  border-radius: var(--border-radius-none);
 }
 
 .shadow {
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-card);
 }
 
 /* DARK MODE */
@@ -195,5 +195,5 @@
 }
 
 :global([data-theme="dark"]) .shadow {
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-card);
 }

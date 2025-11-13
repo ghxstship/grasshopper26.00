@@ -6,26 +6,26 @@
 .container {
   display: flex;
   align-items: center;
-  gap: var(--spacing-3);
+  gap: var(--space-3);
 }
 
 .progressBar {
   position: relative;
   inline-size: 100%;
-  background-color: var(--color-grey-200);
-  border: var(--border-width-thick) solid var(--color-black);
+  background-color: var(--color-border-default);
+  border: var(--border-width-3) solid var(--color-interactive-default);
   overflow: hidden;
 }
 
 .fill {
   block-size: 100%;
-  background-color: var(--color-black);
-  transition: width var(--transition-standard) var(--easing-standard);
+  background-color: var(--color-interactive-default);
+  transition: width var(--duration-base) var(--easing-out);
 }
 
 .label {
   font-family: var(--font-share-mono);
-  font-size: var(--font-size-meta);
+  font-size: var(--font-size-xs);
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-wide);
   color: var(--color-text-primary);
@@ -65,10 +65,10 @@
    ======================================== */
 
 [data-theme="dark"] .progressBar {
-  background-color: var(--color-grey-700);
+  background-color: var(--color-text-secondary);
 }
 
 [data-theme="dark"] .fill {
-  background-color: var(--color-white);
+  background-color: var(--color-text-inverse);
 }
 

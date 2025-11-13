@@ -3,22 +3,22 @@
 .contentGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--spacing-lg);
+  gap: var(--space-lg);
 }
 
 .eventDetails,
 .paymentDetails {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-md);
+  gap: var(--space-md);
 }
 
 .detailRow {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-block: var(--spacing-sm);
-  border-block-end: var(--border-width-thin) solid var(--color-border);
+  padding-block: var(--space-sm);
+  border-block-end: var(--border-width-1) solid var(--color-border);
 }
 
 .detailRow:last-child {
@@ -38,30 +38,30 @@
 
 .valueHighlight {
   font-size: var(--font-size-lg);
-  color: var(--color-primary);
+  color: var(--color-interactive-default);
   font-weight: var(--font-weight-semibold);
 }
 
 .ticketsList {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-sm);
+  gap: var(--space-sm);
 }
 
 .ticketItem {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--spacing-md);
+  padding: var(--space-md);
   background-color: var(--color-surface);
-  border-radius: var(--radius-none);
-  border: var(--border-width-thin) solid var(--color-border);
+  border-radius: var(--border-radius-none);
+  border: var(--border-width-1) solid var(--color-border);
 }
 
 .ticketInfo {
   display: flex;
   align-items: center;
-  gap: var(--spacing-sm);
+  gap: var(--space-sm);
   flex: 1;
 }
 

@@ -24,7 +24,7 @@
 }
 
 .title {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-normal);
   line-height: var(--line-height-tight);
@@ -41,7 +41,7 @@
 }
 
 .description {
-  font-family: var(--font-body);
+  font-family: var(--font-share);
   font-size: var(--font-size-sm);
   line-height: var(--line-height-normal);
   color: var(--color-text-secondary);
@@ -70,7 +70,7 @@
 }
 
 .label {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-normal);
   text-transform: uppercase;
@@ -407,7 +407,7 @@
 }
 
 .checkboxLabel {
-  font-family: var(--font-body);
+  font-family: var(--font-share);
   font-size: var(--font-size-xs);
   color: var(--color-text-secondary);
   line-height: var(--line-height-normal);
@@ -485,7 +485,7 @@
 }
 
 .subtitle {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-normal);
   text-transform: uppercase;
@@ -495,7 +495,7 @@
 }
 
 .bodyText {
-  font-family: var(--font-body);
+  font-family: var(--font-share);
   font-size: var(--font-size-base);
   color: var(--color-text-secondary);
   margin-block-end: var(--space-4);
@@ -504,14 +504,14 @@
 .errorBox {
   padding: var(--space-3);
   background-color: var(--color-error-bg);
-  border: var(--border-width-3) solid var(--color-error-border);
+  border: var(--border-width-3) solid var(--color-border-strong);
   margin-block-start: var(--space-2);
 }
 
 .errorText {
-  font-family: var(--font-body);
+  font-family: var(--font-share);
   font-size: var(--font-size-sm);
-  color: var(--color-error-text);
+  color: var(--color-text-primary);
   margin: 0;
 }
 

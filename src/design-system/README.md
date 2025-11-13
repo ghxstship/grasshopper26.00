@@ -56,48 +56,49 @@ function MyComponent() {
 
 ### Color Tokens
 ```css
+/* Primitive Colors (Monochromatic) */
+var(--color-black)      /* #000000 */
+var(--color-white)      /* #FFFFFF */
+var(--color-grey-50)    /* Lightest grey */
+var(--color-grey-900)   /* Darkest grey */
+
 /* Interactive Colors */
-var(--color-primary)
-var(--color-primary-hover)
-var(--color-primary-active)
-var(--color-secondary)
-var(--color-accent)
+var(--color-interactive-default)
+var(--color-interactive-hover)
+var(--color-interactive-active)
+var(--color-interactive-disabled)
 
 /* Text Colors */
 var(--color-text-primary)
 var(--color-text-secondary)
 var(--color-text-tertiary)
 var(--color-text-inverse)
+var(--color-text-brand)
+var(--color-text-accent)
 
 /* Background Colors */
 var(--color-bg-primary)
 var(--color-bg-secondary)
 var(--color-bg-tertiary)
 
-/* Status Colors */
-var(--color-success)
-var(--color-error)
-var(--color-warning)
-var(--color-info)
-
 /* Border Colors */
 var(--color-border-default)
 var(--color-border-strong)
-var(--color-border-focus)
 ```
 
 ### Spacing Tokens
 ```css
-/* Based on 4px grid system */
+/* Fluid spacing with clamp() */
 var(--space-0)    /* 0 */
-var(--space-1)    /* 4px */
-var(--space-2)    /* 8px */
-var(--space-3)    /* 12px */
-var(--space-4)    /* 16px */
-var(--space-6)    /* 24px */
-var(--space-8)    /* 32px */
-var(--space-12)   /* 48px */
-var(--space-16)   /* 64px */
+var(--space-px)   /* 1px */
+var(--space-1)    /* clamp(0.25rem, 0.2rem + 0.25vw, 0.375rem) */
+var(--space-2)    /* clamp(0.5rem, 0.4rem + 0.5vw, 0.75rem) */
+var(--space-3)    /* clamp(0.75rem, 0.6rem + 0.75vw, 1.125rem) */
+var(--space-4)    /* clamp(1rem, 0.8rem + 1vw, 1.5rem) */
+var(--space-6)    /* clamp(1.5rem, 1.2rem + 1.5vw, 2.25rem) */
+var(--space-8)    /* clamp(2rem, 1.6rem + 2vw, 3rem) */
+var(--space-12)   /* clamp(3rem, 2.4rem + 3vw, 4.5rem) */
+var(--space-16)   /* clamp(4rem, 3.2rem + 4vw, 6rem) */
 ```
 
 ### Typography Tokens
@@ -125,24 +126,27 @@ var(--line-height-relaxed) /* 1.625 */
 
 ### Other Tokens
 ```css
-/* Border Radius */
-var(--radius-sm)    /* 2px */
-var(--radius-md)    /* 6px */
-var(--radius-lg)    /* 8px */
-var(--radius-xl)    /* 12px */
-var(--radius-full)  /* 9999px */
+/* Border Radius (GHXSTSHIP: Hard geometric edges) */
+var(--border-radius-none)  /* 0 - All components use hard edges */
 
-/* Shadows */
-var(--shadow-sm)
-var(--shadow-md)
-var(--shadow-lg)
-var(--shadow-xl)
+/* Border Width */
+var(--border-width-0)  /* 0 */
+var(--border-width-1)  /* 1px */
+var(--border-width-2)  /* 2px */
+var(--border-width-3)  /* 3px - Standard GHXSTSHIP border */
+
+/* Shadows (Hard geometric shadows) */
+var(--shadow-button-hover)   /* 4px 4px 0 var(--color-black) */
+var(--shadow-button-active)  /* 2px 2px 0 var(--color-black) */
+var(--shadow-card)           /* 6px 6px 0 var(--color-black) */
 
 /* Transitions */
-var(--duration-fast)  /* 150ms */
-var(--duration-base)  /* 250ms */
-var(--duration-slow)  /* 350ms */
+var(--duration-instant)  /* 0ms */
+var(--duration-fast)     /* 150ms */
+var(--duration-base)     /* 250ms */
+var(--duration-slow)     /* 350ms */
 
+var(--easing-linear)
 var(--easing-in)
 var(--easing-out)
 var(--easing-in-out)

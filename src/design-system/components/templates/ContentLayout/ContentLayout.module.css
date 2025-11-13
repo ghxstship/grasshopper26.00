@@ -24,7 +24,7 @@
   position: relative;
   min-height: 40vh;
   background-color: var(--color-bg-inverse);
-  color: var(--color-white);
+  color: var(--color-text-inverse);
   overflow: hidden;
 }
 
@@ -88,7 +88,7 @@
   max-width: 50rem;
   width: 100%;
   font-family: var(--font-family-body);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-base);
   line-height: 1.7;
   color: var(--color-text-primary);
 }
@@ -228,12 +228,12 @@
   font-size: var(--font-size-sm);
   background-color: var(--color-bg-secondary);
   padding: var(--space-0-5) var(--space-1-5);
-  border: var(--border-width-thin) solid var(--color-border-default);
+  border: var(--border-width-1) solid var(--color-border-default);
 }
 
 .article :global(pre) {
   background-color: var(--color-bg-inverse);
-  color: var(--color-white);
+  color: var(--color-text-inverse);
   border: var(--border-width-3) solid var(--color-border-inverse);
   padding: var(--space-6);
   overflow-x: auto;
@@ -286,6 +286,6 @@
    ======================================== */
 
 [data-theme="dark"] .hero {
-  color: var(--color-black);
+  color: var(--color-interactive-default);
 }
 

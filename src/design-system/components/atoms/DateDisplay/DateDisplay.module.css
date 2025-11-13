@@ -11,7 +11,7 @@
 }
 
 .date {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-weight: var(--font-weight-normal);
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-wide);
@@ -19,7 +19,7 @@
 }
 
 .time {
-  font-family: var(--font-mono);
+  font-family: var(--font-share-mono);
   font-weight: var(--font-weight-normal);
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-wider);

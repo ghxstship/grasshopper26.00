@@ -23,28 +23,28 @@
 
 /* Size variants */
 .small {
-  --grid-size: 1rem;
+  --grid-size: var(--space-4);
 }
 
 .medium {
-  --grid-size: 2rem;
+  --grid-size: var(--space-8);
 }
 
 .large {
-  --grid-size: 4rem;
+  --grid-size: var(--space-16);
 }
 
 /* Color variants */
 .black {
-  --grid-color: var(--color-black);
+  --grid-color: var(--color-interactive-default);
 }
 
 .white {
-  --grid-color: var(--color-white);
+  --grid-color: var(--color-text-inverse);
 }
 
 .grey {
-  --grid-color: var(--color-grey-500);
+  --grid-color: var(--color-text-tertiary);
 }
 
 
@@ -67,14 +67,14 @@
    ======================================== */
 
 [data-theme="dark"] .black {
-  --grid-color: var(--color-white);
+  --grid-color: var(--color-text-inverse);
 }
 
 [data-theme="dark"] .white {
-  --grid-color: var(--color-black);
+  --grid-color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .grey {
-  --grid-color: var(--color-grey-400);
+  --grid-color: var(--color-text-disabled);
 }
 

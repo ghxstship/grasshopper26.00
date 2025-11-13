@@ -9,7 +9,7 @@
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-wide);
   color: var(--color-text-primary);
-  margin-block-end: var(--spacing-2);
+  margin-block-end: var(--space-2);
 }
 
 .sm {
@@ -26,7 +26,7 @@
 
 .required {
   color: var(--color-text-primary);
-  margin-inline-start: var(--spacing-1);
+  margin-inline-start: var(--space-1);
 }
 
 .disabled {

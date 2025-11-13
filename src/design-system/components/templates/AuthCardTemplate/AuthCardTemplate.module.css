@@ -18,7 +18,7 @@
   padding: var(--space-8);
   background-color: var(--color-bg-primary);
   border: var(--border-width-3) solid var(--color-border-strong);
-  box-shadow: var(--shadow-base);
+  box-shadow: var(--shadow-card);
 }
 
 .header {
@@ -52,7 +52,7 @@
 
 .footerLink {
   color: var(--color-text-primary);
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-sm);
   text-decoration: underline;
   text-decoration-thickness: 0.125rem;
@@ -92,5 +92,5 @@
 [data-theme="dark"] .card {
   background-color: var(--color-bg-primary);
   border-color: var(--color-border-strong);
-  box-shadow: var(--shadow-base);
+  box-shadow: var(--shadow-card);
 }

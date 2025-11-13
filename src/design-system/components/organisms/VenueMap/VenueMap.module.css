@@ -21,7 +21,7 @@
   aspect-ratio: 16 / 9;
   
   border: var(--border-width-3) solid var(--color-border-strong);
-  border-radius: var(--radius-none)(--radius-none);
+  border-radius: var(--border-radius-none)(--radius-none);
   background-color: var(--color-bg-tertiary);
   
   overflow: hidden;
@@ -87,7 +87,7 @@
   block-size: 1.5rem;
   
   border: var(--border-width-3) solid var(--color-border-strong);
-  border-radius: var(--radius-none)(--radius-none);
+  border-radius: var(--border-radius-none)(--radius-none);
   background-color: var(--color-bg-primary);
   
   transition: all var(--duration-fast) var(--easing-out);
@@ -96,7 +96,7 @@
 .stage.main .stageMarker {
   inline-size: 2rem;
   block-size: 2rem;
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
 }
 
 .stage.underground .stageMarker {
@@ -105,12 +105,12 @@
 
 .stage:hover .stageMarker,
 .stage.selected .stageMarker {
-  background-color: var(--color-black);
-  box-shadow: var(--shadow-base);
+  background-color: var(--color-interactive-default);
+  box-shadow: var(--shadow-card);
 }
 
 .stageName {
-  font-family: var(--font-mono);
+  font-family: var(--font-share-mono);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-meta);
@@ -121,7 +121,7 @@
   padding-block: var(--space-1);
   
   border: var(--border-width-2) solid var(--color-border-strong);
-  border-radius: var(--radius-none)(--radius-none);
+  border-radius: var(--border-radius-none)(--radius-none);
   background-color: var(--color-bg-primary);
   
   color: var(--color-text-primary);
@@ -149,12 +149,12 @@
   padding: var(--space-4);
   
   border: var(--border-width-3) solid var(--color-border-strong);
-  border-radius: var(--radius-none)(--radius-none);
+  border-radius: var(--border-radius-none)(--radius-none);
   background-color: var(--color-bg-primary);
 }
 
 .legendTitle {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-wider);
@@ -178,7 +178,7 @@
   padding-block: var(--space-2);
   
   border: var(--border-width-2) solid var(--color-border-default);
-  border-radius: var(--radius-none)(--radius-none);
+  border-radius: var(--border-radius-none)(--radius-none);
   background-color: var(--color-bg-secondary);
   
   cursor: pointer;
@@ -198,7 +198,7 @@
 
 .legendItem.legendItemActive {
   border-color: var(--color-border-strong);
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
 }
 
 .legendMarker {
@@ -207,7 +207,7 @@
   block-size: 1rem;
   
   border: var(--border-width-2) solid var(--color-border-strong);
-  border-radius: var(--radius-none)(--radius-none);
+  border-radius: var(--border-radius-none)(--radius-none);
   background-color: var(--color-bg-primary);
   
   transition: background-color var(--duration-fast) var(--easing-out);
@@ -216,7 +216,7 @@
 .legendMarker.main {
   inline-size: 1.25rem;
   block-size: 1.25rem;
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
 }
 
 .legendMarker.underground {
@@ -224,11 +224,11 @@
 }
 
 .legendItem.legendItemActive .legendMarker {
-  background-color: var(--color-accent);
+  background-color: var(--color-text-inverse);
 }
 
 .legendLabel {
-  font-family: var(--font-mono);
+  font-family: var(--font-share-mono);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-normal);
   letter-spacing: var(--letter-spacing-meta);
@@ -240,7 +240,7 @@
 }
 
 .legendItem.legendItemActive .legendLabel {
-  color: var(--color-white);
+  color: var(--color-text-inverse);
 }
 
 /* ========================================
@@ -302,7 +302,7 @@
 @media (prefers-contrast: high) {
   .mapContainer,
   .legend {
-    border-width: var(--border-width-4);
+    border-width: var(--border-width-3);
   }
   
   .stageMarker,
@@ -317,27 +317,27 @@
    ======================================== */
 
 [data-theme="dark"] .stage.main .stageMarker {
-  background-color: var(--color-accent);
+  background-color: var(--color-text-inverse);
 }
 
 [data-theme="dark"] .stage:hover .stageMarker,
 [data-theme="dark"] .stage.selected .stageMarker {
-  background-color: var(--color-accent);
+  background-color: var(--color-text-inverse);
   box-shadow: var(--shadow-white-md);
 }
 
 [data-theme="dark"] .legendMarker.main {
-  background-color: var(--color-accent);
+  background-color: var(--color-text-inverse);
 }
 
 [data-theme="dark"] .legendItem.legendItemActive {
-  background-color: var(--color-accent);
+  background-color: var(--color-text-inverse);
 }
 
 [data-theme="dark"] .legendItem.legendItemActive .legendMarker {
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .legendItem.legendItemActive .legendLabel {
-  color: var(--color-primary);
+  color: var(--color-interactive-default);
 }

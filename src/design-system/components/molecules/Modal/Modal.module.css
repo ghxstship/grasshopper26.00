@@ -6,13 +6,13 @@
 .overlay {
   position: fixed;
   inset: 0;
-  z-index: var(--z-modal);
+  z-index: var(--z-modal-backdrop);
   
   display: flex;
   align-items: center;
   justify-content: center;
   
-  background-color: var(--color-bg-overlay);
+  background-color: var(--color-bg-tertiary);
   
   padding: var(--space-4);
   
@@ -39,7 +39,7 @@
   overflow-y: auto;
   
   border: var(--border-width-3) solid var(--color-border-strong);
-  border-radius: var(--radius-none);
+  border-radius: var(--border-radius-none);
   background-color: var(--color-bg-primary);
   
   box-shadow: var(--shadow-xl);
@@ -98,7 +98,7 @@
 }
 
 .title {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-wide);
@@ -124,7 +124,7 @@
   padding: 0;
   
   border: var(--border-width-2) solid var(--color-border-strong);
-  border-radius: var(--radius-none);
+  border-radius: var(--border-radius-none);
   background-color: var(--color-bg-primary);
   
   cursor: pointer;
@@ -133,7 +133,7 @@
 }
 
 .closeButton:hover {
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
   transform: scale(1.1);
 }
 
@@ -155,7 +155,7 @@
 }
 
 .closeButton:hover .closeIcon {
-  color: var(--color-white);
+  color: var(--color-text-inverse);
 }
 
 /* ========================================
@@ -213,7 +213,7 @@
 @media (prefers-contrast: high) {
   .modal,
   .header {
-    border-width: var(--border-width-4);
+    border-width: var(--border-width-3);
   }
   
   .closeButton {
@@ -230,9 +230,9 @@
 }
 
 [data-theme="dark"] .closeButton:hover {
-  background-color: var(--color-accent);
+  background-color: var(--color-text-inverse);
 }
 
 [data-theme="dark"] .closeButton:hover .closeIcon {
-  color: var(--color-primary);
+  color: var(--color-interactive-default);
 }

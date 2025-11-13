@@ -12,10 +12,10 @@
   padding: var(--space-6);
   
   border: var(--border-width-3) solid var(--color-border-strong);
-  border-radius: var(--radius-none)(--radius-none);
+  border-radius: var(--border-radius-none)(--radius-none);
   background-color: var(--color-bg-primary);
   
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-button-hover);
 }
 
 .compact {
@@ -28,7 +28,7 @@
    ======================================== */
 
 .venueName {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-wide);
@@ -53,7 +53,7 @@
 }
 
 .addressLine {
-  font-family: var(--font-body);
+  font-family: var(--font-share);
   font-size: var(--font-size-base);
   line-height: var(--line-height-normal);
   
@@ -65,7 +65,7 @@
    ======================================== */
 
 .location {
-  font-family: var(--font-mono);
+  font-family: var(--font-share-mono);
   font-size: var(--font-size-xs);
   letter-spacing: var(--letter-spacing-meta);
   text-transform: uppercase;
@@ -93,7 +93,7 @@
 }
 
 .detailLabel {
-  font-family: var(--font-mono);
+  font-family: var(--font-share-mono);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-widest);
@@ -103,7 +103,7 @@
 }
 
 .detailValue {
-  font-family: var(--font-mono);
+  font-family: var(--font-share-mono);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-meta);
@@ -117,7 +117,7 @@
 
 @media (prefers-contrast: high) {
   .container {
-    border-width: var(--border-width-4);
+    border-width: var(--border-width-3);
   }
   
   .details {
@@ -145,5 +145,5 @@
    ======================================== */
 
 [data-theme="dark"] .container {
-  box-shadow: var(--shadow-white-sm);
+  box-shadow: var(--shadow-card);
 }

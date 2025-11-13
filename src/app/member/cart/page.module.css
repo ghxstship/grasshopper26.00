@@ -78,7 +78,7 @@
 .emptyText {
   margin-block-end: var(--space-8);
   font-family: var(--font-share);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-base);
   color: var(--color-text-secondary);
 }
 

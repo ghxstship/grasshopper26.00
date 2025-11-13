@@ -44,7 +44,7 @@
 
 .right {
   background-color: var(--color-bg-inverse);
-  color: var(--color-white);
+  color: var(--color-text-inverse);
 }
 
 .sticky {
@@ -136,6 +136,6 @@
    ======================================== */
 
 [data-theme="dark"] .right {
-  color: var(--color-black);
+  color: var(--color-interactive-default);
 }
 

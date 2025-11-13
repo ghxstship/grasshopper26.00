@@ -5,7 +5,7 @@
  */
 
 .name {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-weight: var(--font-weight-normal);
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-wide);
@@ -15,7 +15,7 @@
 
 .headliner {
   font-weight: var(--font-weight-bold);
-  color: var(--color-primary);
+  color: var(--color-interactive-default);
 }
 
 /* ========================================
@@ -47,7 +47,7 @@
 }
 
 [data-theme="dark"] .headliner {
-  color: var(--color-accent);
+  color: var(--color-text-inverse);
 }
 
 /* ========================================

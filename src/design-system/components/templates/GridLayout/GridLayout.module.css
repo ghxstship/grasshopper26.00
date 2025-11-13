@@ -42,7 +42,7 @@
 
 .description {
   font-family: var(--font-family-body);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-base);
   color: var(--color-text-secondary);
   margin: 0;
 }
@@ -81,7 +81,7 @@
 .overlay {
   position: fixed;
   inset: 0;
-  background-color: var(--color-bg-overlay);
+  background-color: var(--color-bg-tertiary);
   z-index: 150;
 }
 

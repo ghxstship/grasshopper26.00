@@ -19,7 +19,7 @@
   align-items: center;
   justify-content: center;
   font-family: var(--font-family-bebas);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-base);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.02em;
@@ -31,8 +31,8 @@
 }
 
 .button:hover:not(:disabled) {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
   transform: scale(1.1);
 }
 
@@ -46,8 +46,8 @@
 }
 
 .button.active {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
 }
 
 .ellipsis {
@@ -57,7 +57,7 @@
   align-items: center;
   justify-content: center;
   font-family: var(--font-family-bebas);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-base);
   color: var(--color-text-secondary);
 }
 

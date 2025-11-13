@@ -55,14 +55,14 @@
   gap: var(--space-4);
   padding-block: var(--space-4);
   padding-inline: var(--space-4);
-  border: var(--border-width-default) solid var(--color-border);
+  border: var(--border-width-2) solid var(--color-border);
 }
 
 .itemImage {
   inline-size: 6.25rem;
   block-size: 6.25rem;
   overflow: hidden;
-  border: var(--border-width-default) solid var(--color-border);
+  border: var(--border-width-2) solid var(--color-border);
 }
 
 .itemImage img {
@@ -98,7 +98,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-2);
-  border: var(--border-width-default) solid var(--color-border);
+  border: var(--border-width-2) solid var(--color-border);
 }
 
 .quantityButton {
@@ -109,7 +109,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background var(--transition-fast);
+  transition: background var(--duration-fast);
 }
 
 .quantityButton:hover:not(:disabled) {
@@ -124,18 +124,18 @@
 .quantity {
   min-inline-size: 2.5rem;
   text-align: center;
-  font-family: var(--font-mono);
+  font-family: var(--font-share-mono);
 }
 
 .removeButton {
   padding: var(--space-2);
   background: transparent;
-  border: var(--border-width-default) solid var(--color-border);
+  border: var(--border-width-2) solid var(--color-border);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all var(--transition-fast);
+  transition: all var(--duration-fast);
 }
 
 .removeButton:hover {
@@ -147,7 +147,7 @@
   padding-block: var(--space-8);
   padding-inline: var(--space-6);
   background: var(--color-bg-secondary);
-  border-inline-start: var(--border-width-default) solid var(--color-border);
+  border-inline-start: var(--border-width-2) solid var(--color-border);
   display: flex;
   flex-direction: column;
   gap: var(--space-4);

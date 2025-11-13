@@ -6,32 +6,32 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-4);
+  gap: var(--space-4);
 }
 
 .searchBar {
-  padding: var(--spacing-4);
-  border: var(--border-width-thick) solid var(--color-black);
-  background-color: var(--color-white);
+  padding: var(--space-4);
+  border: var(--border-width-3) solid var(--color-interactive-default);
+  background-color: var(--color-text-inverse);
 }
 
 .searchInput {
   inline-size: 100%;
-  padding: var(--spacing-3);
+  padding: var(--space-3);
   font-family: var(--font-share);
-  font-size: var(--font-size-body);
-  border: var(--border-width-thick) solid var(--color-black);
-  background-color: var(--color-white);
+  font-size: var(--font-size-base);
+  border: var(--border-width-3) solid var(--color-interactive-default);
+  background-color: var(--color-text-inverse);
 }
 
 .searchInput:focus {
   outline: none;
-  box-shadow: 0 0 0 var(--border-width-thick) var(--color-black);
+  box-shadow: 0 0 0 var(--border-width-3) var(--color-interactive-default);
 }
 
 .grid {
   display: grid;
-  gap: var(--spacing-4);
+  gap: var(--space-4);
 }
 
 .grid.columns2 {
@@ -53,23 +53,23 @@
 .card {
   display: flex;
   flex-direction: column;
-  border: var(--border-width-thick) solid var(--color-black);
-  background-color: var(--color-white);
+  border: var(--border-width-3) solid var(--color-interactive-default);
+  background-color: var(--color-text-inverse);
   cursor: pointer;
-  transition: all var(--transition-fast) var(--easing-standard);
+  transition: all var(--duration-fast) var(--easing-out);
 }
 
 .card:hover {
   transform: translateY(-0.25rem);
-  box-shadow: 0.5rem 0.5rem 0 0 var(--color-black);
+  box-shadow: 0.5rem 0.5rem 0 0 var(--color-interactive-default);
 }
 
 .imageContainer {
   inline-size: 100%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  border-block-end: var(--border-width-thick) solid var(--color-black);
-  background-color: var(--color-grey-200);
+  border-block-end: var(--border-width-3) solid var(--color-interactive-default);
+  background-color: var(--color-border-default);
 }
 
 .image {
@@ -81,8 +81,8 @@
 .content {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-2);
-  padding: var(--spacing-4);
+  gap: var(--space-2);
+  padding: var(--space-4);
 }
 
 .title {
@@ -104,24 +104,24 @@
 .tags {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--spacing-1);
+  gap: var(--space-1);
 }
 
 .tag {
-  padding: var(--spacing-1) var(--spacing-2);
+  padding: var(--space-1) var(--space-2);
   font-family: var(--font-share-mono);
   font-size: var(--font-size-meta);
   text-transform: uppercase;
-  background-color: var(--color-grey-200);
-  border: var(--space-px) solid var(--color-grey-400);
+  background-color: var(--color-border-default);
+  border: var(--space-px) solid var(--color-text-disabled);
 }
 
 .metadata {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-1);
-  padding-block-start: var(--spacing-2);
-  border-block-start: var(--space-px) solid var(--color-grey-300);
+  gap: var(--space-1);
+  padding-block-start: var(--space-2);
+  border-block-start: var(--space-px) solid var(--color-border-default);
 }
 
 .metaItem {
@@ -159,22 +159,22 @@
    ======================================== */
 
 [data-theme="dark"] .searchBar {
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .searchInput {
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .card {
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .imageContainer {
-  background-color: var(--color-grey-700);
+  background-color: var(--color-text-secondary);
 }
 
 [data-theme="dark"] .tag {
-  background-color: var(--color-grey-700);
+  background-color: var(--color-text-secondary);
 }
 

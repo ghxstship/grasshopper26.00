@@ -1,6 +1,5 @@
 /**
- * Spinner Component Styles
- * GHXSTSHIP Monochromatic Design System
+ * Spinner Styles - GHXSTSHIP
  */
 
 .spinner {
@@ -10,24 +9,24 @@
 
 .visuallyHidden {
   position: absolute;
-  inline-size: var(--space-px);
-  block-size: var(--space-px);
+  inline-size: var(--border-width-1);
+  block-size: var(--border-width-1);
   padding: 0;
-  margin: -var(--space-px);
+  margin: calc(-1 * var(--border-width-1));
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
 }
 
-/* Square spinner */
+/* Square */
 .square {
-  border: var(--border-width-thick) solid var(--color-grey-300);
-  border-block-start-color: var(--color-black);
+  border: var(--border-width-2) solid var(--color-border-default);
+  border-block-start-color: var(--color-interactive-default);
   animation: spin 0.8s linear infinite;
 }
 
-/* Triangle spinner */
+/* Triangle */
 .triangle::before {
   content: '';
   display: block;
@@ -38,11 +37,11 @@
   border-inline-end-width: calc(var(--spinner-size) / 2);
   border-block-end-width: var(--spinner-size);
   border-block-start-width: 0;
-  border-color: transparent transparent var(--color-black) transparent;
+  border-color: transparent transparent var(--color-interactive-default) transparent;
   animation: spin 0.8s linear infinite;
 }
 
-/* Bars spinner */
+/* Bars */
 .bars {
   display: flex;
   gap: calc(var(--spinner-size) / 8);
@@ -53,7 +52,7 @@
   content: '';
   inline-size: calc(var(--spinner-size) / 4);
   block-size: var(--spinner-size);
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
   animation: pulse 0.8s ease-in-out infinite;
 }
 
@@ -61,21 +60,21 @@
   animation-delay: 0.4s;
 }
 
-/* Size variants */
+/* Sizes */
 .sm {
-  --spinner-size: 1rem;
+  --spinner-size: var(--space-4);
 }
 
 .md {
-  --spinner-size: 1.5rem;
+  --spinner-size: var(--space-6);
 }
 
 .lg {
-  --spinner-size: 2rem;
+  --spinner-size: var(--space-8);
 }
 
 .xl {
-  --spinner-size: 3rem;
+  --spinner-size: var(--space-12);
 }
 
 .square.sm,
@@ -101,26 +100,13 @@
   }
 }
 
-
-/* ========================================
-   RESPONSIVE BREAKPOINTS
-   ======================================== */
-
-@media (min-width: var(--space-96)) {
-  /* Tablet and up */
-}
-
-@media (min-width: var(--space-96)) {
-  /* Desktop and up */
-}
-
-
-
-/* ========================================
-   DARK THEME
-   ======================================== */
-
-[data-theme="dark"] .square {
-  border-block-start-color: var(--color-white);
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .square,
+  .triangle::before,
+  .bars::before,
+  .bars::after {
+    animation: none;
+  }
 }
 

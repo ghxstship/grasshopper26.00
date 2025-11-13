@@ -3,7 +3,7 @@
 .cardTitle {
   display: flex;
   align-items: center;
-  gap: var(--spacing-sm);
+  gap: var(--space-sm);
 }
 
 .iconInline {
@@ -19,20 +19,20 @@
 .emptyText {
   color: var(--color-text-secondary);
   text-align: center;
-  padding-block: var(--spacing-xl);
+  padding-block: var(--space-xl);
 }
 
 .artistsList {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-md);
+  gap: var(--space-md);
 }
 
 .artistItem {
-  padding: var(--spacing-md);
-  border: var(--border-width-thin) solid var(--color-border);
-  border-radius: var(--radius-none);
-  transition: background-color var(--transition-fast);
+  padding: var(--space-md);
+  border: var(--border-width-1) solid var(--color-border);
+  border-radius: var(--border-radius-none);
+  transition: background-color var(--duration-fast);
 }
 
 .artistItem:hover {
@@ -41,7 +41,7 @@
 
 .artistContent {
   display: flex;
-  gap: var(--spacing-md);
+  gap: var(--space-md);
   align-items: center;
 }
 
@@ -50,7 +50,7 @@
 }
 
 .artistImage {
-  border-radius: var(--radius-none);
+  border-radius: var(--border-radius-none);
   object-fit: cover;
 }
 
@@ -61,7 +61,7 @@
   align-items: center;
   justify-content: center;
   background-color: var(--color-surface);
-  border-radius: var(--radius-none);
+  border-radius: var(--border-radius-none);
   color: var(--color-text-secondary);
 }
 
@@ -73,8 +73,8 @@
 .artistHeader {
   display: flex;
   align-items: center;
-  gap: var(--spacing-sm);
-  margin-block-end: var(--spacing-xs);
+  gap: var(--space-sm);
+  margin-block-end: var(--space-xs);
 }
 
 .artistName {
@@ -92,18 +92,18 @@
 
 .artistActions {
   display: flex;
-  gap: var(--spacing-sm);
+  gap: var(--space-sm);
   flex-shrink: 0;
 }
 
 .searchWrapper {
   position: relative;
-  margin-block-end: var(--spacing-md);
+  margin-block-end: var(--space-md);
 }
 
 .searchIcon {
   position: absolute;
-  inset-inline-start: var(--spacing-md);
+  inset-inline-start: var(--space-md);
   inset-block-start: 50%;
   transform: translateY(-50%);
   inline-size: var(--icon-size-sm);
@@ -113,32 +113,32 @@
 }
 
 .searchInput {
-  padding-inline-start: var(--spacing-2xl);
+  padding-inline-start: var(--space-2xl);
 }
 
 .addForm {
-  padding: var(--spacing-md);
+  padding: var(--space-md);
   background-color: var(--color-surface);
-  border-radius: var(--radius-none);
-  margin-block-end: var(--spacing-md);
+  border-radius: var(--border-radius-none);
+  margin-block-end: var(--space-md);
 }
 
 .formTitle {
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-semibold);
-  margin-block-end: var(--spacing-md);
+  margin-block-end: var(--space-md);
 }
 
 .formFields {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-md);
+  gap: var(--space-md);
 }
 
 .select {
-  padding: var(--spacing-sm) var(--spacing-md);
-  border: var(--border-width-thin) solid var(--color-border);
-  border-radius: var(--radius-none);
+  padding: var(--space-sm) var(--space-md);
+  border: var(--border-width-1) solid var(--color-border);
+  border-radius: var(--border-radius-none);
   background-color: var(--color-background);
   color: var(--color-text-primary);
   font-size: var(--font-size-md);
@@ -147,12 +147,12 @@
 .checkboxGroup {
   display: flex;
   align-items: center;
-  gap: var(--spacing-sm);
+  gap: var(--space-sm);
 }
 
 .checkbox {
-  inline-size: var(--spacing-lg);
-  block-size: var(--spacing-lg);
+  inline-size: var(--space-lg);
+  block-size: var(--space-lg);
 }
 
 .checkboxLabel {
@@ -162,12 +162,12 @@
 
 .formActions {
   display: flex;
-  gap: var(--spacing-sm);
+  gap: var(--space-sm);
 }
 
 .addButton {
   inline-size: 100%;
-  margin-block-end: var(--spacing-md);
+  margin-block-end: var(--space-md);
 }
 
 @media (max-width: 48rem) {

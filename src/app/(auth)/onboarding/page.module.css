@@ -422,7 +422,7 @@
 }
 
 .shadow {
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-card);
 }
 
 /* DARK MODE */

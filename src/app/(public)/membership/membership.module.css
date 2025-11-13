@@ -36,13 +36,13 @@
 }
 
 .billingToggle span {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-bold);
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-wide);
   color: var(--color-text-secondary);
-  transition: color var(--transition-fast);
+  transition: color var(--duration-fast);
 }
 
 .billingToggle span.active {
@@ -58,7 +58,7 @@
   padding-inline: var(--space-2);
   background: var(--color-bg-primary);
   border: var(--border-width-3) solid var(--color-border);
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-bold);
   text-transform: uppercase;
@@ -146,7 +146,7 @@
 }
 
 .discountType {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
   text-transform: uppercase;
@@ -155,7 +155,7 @@
 }
 
 .discountAmount {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-bold);
   margin-block-end: var(--space-2);

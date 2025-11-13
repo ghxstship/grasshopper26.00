@@ -46,11 +46,11 @@
 }
 
 .thick.horizontal {
-  height: var(--border-width-4);
+  height: var(--border-width-3);
 }
 
 .thick.vertical {
-  width: var(--border-width-4);
+  width: var(--border-width-3);
 }
 
 /* ========================================

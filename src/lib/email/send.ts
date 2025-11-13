@@ -63,7 +63,7 @@ export async function sendTicketDeliveryEmail(data: {
         <title>Your Tickets</title>
       </head>
       <body style="font-family: Arial, sans-serif; line-height: 1.6; color: ${emailTokens.colors.textPrimary}; max-width: 600px; margin: 0 auto; padding: ${emailTokens.spacing.lg};">
-        <div style="background: ${emailTokens.gradients.brandPrimary}; color: ${emailTokens.colors.textInverse}; padding: ${emailTokens.spacing['2xl']}; border-radius: ${emailTokens.borderRadius.md} ${emailTokens.borderRadius.md} 0 0;">
+        <div style="background: ${emailTokens.colors.brandPrimary}; color: ${emailTokens.colors.textInverse}; padding: ${emailTokens.spacing['2xl']}; border-radius: ${emailTokens.borderRadius.md} ${emailTokens.borderRadius.md} 0 0;">
           <h1 style="margin: 0;">Your Tickets Are Ready!</h1>
         </div>
         <div style="background: ${emailTokens.colors.bgPrimary}; padding: ${emailTokens.spacing['2xl']}; border: 1px solid ${emailTokens.colors.borderDefault}; border-top: none; border-radius: 0 0 ${emailTokens.borderRadius.md} ${emailTokens.borderRadius.md};">
@@ -186,7 +186,7 @@ export async function sendNewsletterConfirmationEmail(data: {
         <title>Welcome to Our Newsletter</title>
       </head>
       <body style="font-family: Arial, sans-serif; line-height: 1.6; color: ${emailTokens.colors.textPrimary}; max-width: 600px; margin: 0 auto; padding: ${emailTokens.spacing.lg};">
-        <div style="background: ${emailTokens.gradients.brandPrimary}; color: ${emailTokens.colors.textInverse}; padding: ${emailTokens.spacing['2xl']}; border-radius: ${emailTokens.borderRadius.md} ${emailTokens.borderRadius.md} 0 0;">
+        <div style="background: ${emailTokens.colors.brandPrimary}; color: ${emailTokens.colors.textInverse}; padding: ${emailTokens.spacing['2xl']}; border-radius: ${emailTokens.borderRadius.md} ${emailTokens.borderRadius.md} 0 0;">
           <h1 style="margin: 0;">Welcome!</h1>
         </div>
         <div style="background: ${emailTokens.colors.bgPrimary}; padding: ${emailTokens.spacing['2xl']}; border: 1px solid ${emailTokens.colors.borderDefault}; border-top: none; border-radius: 0 0 ${emailTokens.borderRadius.md} ${emailTokens.borderRadius.md};">
@@ -234,7 +234,7 @@ export async function sendWaitlistNotificationEmail(data: {
         <title>Tickets Available!</title>
       </head>
       <body style="font-family: Arial, sans-serif; line-height: 1.6; color: ${emailTokens.colors.textPrimary}; max-width: 600px; margin: 0 auto; padding: ${emailTokens.spacing.lg};">
-        <div style="background: ${emailTokens.gradients.brandPrimary}; color: ${emailTokens.colors.textInverse}; padding: ${emailTokens.spacing['2xl']}; border-radius: ${emailTokens.borderRadius.md} ${emailTokens.borderRadius.md} 0 0;">
+        <div style="background: ${emailTokens.colors.brandPrimary}; color: ${emailTokens.colors.textInverse}; padding: ${emailTokens.spacing['2xl']}; border-radius: ${emailTokens.borderRadius.md} ${emailTokens.borderRadius.md} 0 0;">
           <h1 style="margin: 0;">🎉 Tickets Available!</h1>
         </div>
         <div style="background: ${emailTokens.colors.bgPrimary}; padding: ${emailTokens.spacing['2xl']}; border: 1px solid ${emailTokens.colors.borderDefault}; border-top: none; border-radius: 0 0 ${emailTokens.borderRadius.md} ${emailTokens.borderRadius.md};">

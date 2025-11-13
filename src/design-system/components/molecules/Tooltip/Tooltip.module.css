@@ -20,15 +20,15 @@
   padding-block: var(--space-2);
   
   border: var(--border-width-2) solid var(--color-border-strong);
-  border-radius: var(--radius-none);
-  background-color: var(--color-black);
-  box-shadow: var(--shadow-lg);
+  border-radius: var(--border-radius-none);
+  background-color: var(--color-interactive-default);
+  box-shadow: var(--shadow-card);
   
-  font-family: var(--font-body);
+  font-family: var(--font-share);
   font-size: var(--font-size-sm);
   line-height: var(--line-height-normal);
   
-  color: var(--color-white);
+  color: var(--color-text-inverse);
   
   white-space: nowrap;
   
@@ -79,7 +79,7 @@
   position: absolute;
   width: 0.5rem;
   height: 0.5rem;
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
   border: var(--border-width-2) solid var(--color-border-strong);
   transform: rotate(45deg);
 }
@@ -139,10 +139,10 @@
 
 [data-theme="dark"] .tooltip,
 [data-theme="dark"] .arrow {
-  background-color: var(--color-accent);
+  background-color: var(--color-text-inverse);
   box-shadow: var(--shadow-white-lg);
 }
 
 [data-theme="dark"] .tooltip {
-  color: var(--color-primary);
+  color: var(--color-interactive-default);
 }

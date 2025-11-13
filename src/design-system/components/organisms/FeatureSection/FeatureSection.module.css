@@ -15,8 +15,8 @@
 }
 
 .section.black {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
 }
 
 .section.white {
@@ -72,7 +72,7 @@
 
 .description {
   font-family: var(--font-family-share);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-base);
   line-height: 1.6;
   margin: 0;
 }
@@ -98,27 +98,27 @@
   align-items: center;
   justify-content: center;
   border: var(--border-width-3) solid var(--color-border-strong);
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
   font-family: var(--font-family-bebas);
   font-size: var(--font-size-h6);
   font-weight: 700;
 }
 
 .section.white .featureIcon {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
 }
 
 .section.black .featureIcon {
-  background-color: var(--color-accent);
-  color: var(--color-primary);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
   border-color: var(--color-border-accent);
 }
 
 .featureText {
   font-family: var(--font-family-share);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-base);
   line-height: 1.6;
 }
 
@@ -144,8 +144,8 @@
 }
 
 .ctaButton:hover {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
   transform: scale(1.05);
 }
 
@@ -154,8 +154,8 @@
 }
 
 .section.black .ctaButton:hover {
-  background-color: var(--color-accent);
-  color: var(--color-primary);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
 }
 
 .ctaButton:active {
@@ -225,7 +225,7 @@
   block-size: 9.375rem;
   inset-block-end: 15%;
   inset-inline-end: 10%;
-  border-radius: var(--radius-none);
+  border-radius: var(--border-radius-none);
 }
 
 
@@ -236,7 +236,7 @@
    ======================================== */
 
 [data-theme="dark"] .featureIcon {
-  background-color: var(--color-white);
-  color: var(--color-black);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
 }
 

@@ -8,7 +8,7 @@
   align-items: center;
   gap: var(--space-2);
   border: var(--border-width-3) solid var(--color-border-strong);
-  border-radius: var(--radius-none)(--radius-none);
+  border-radius: var(--border-radius-none);
   background-color: var(--color-bg-primary);
 }
 
@@ -24,8 +24,8 @@
 }
 
 .button:hover:not(:disabled) {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
 }
 
 .button:disabled {
@@ -38,7 +38,7 @@
   background: transparent;
   border: none;
   text-align: center;
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-weight: var(--font-weight-normal);
   color: var(--color-text-primary);
   outline: none;
@@ -82,24 +82,24 @@
    ======================================== */
 
 [data-theme="dark"] .filled {
-  background-color: var(--color-white);
-  color: var(--color-black);
-  border-color: var(--color-white);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
+  border-color: var(--color-text-inverse);
 }
 
 [data-theme="dark"] .outlined {
-  color: var(--color-white);
-  border-color: var(--color-white);
+  color: var(--color-text-inverse);
+  border-color: var(--color-text-inverse);
 }
 
 [data-theme="dark"] .outlined:hover {
-  background-color: var(--color-white);
-  color: var(--color-black);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .active {
-  background-color: var(--color-white);
-  color: var(--color-black);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
 }
 
 /* ========================================

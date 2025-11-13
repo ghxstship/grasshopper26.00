@@ -44,7 +44,7 @@
 
 .post:hover {
   transform: scale(1.03);
-  box-shadow: 0.5rem 0.5rem 0 var(--color-primary);
+  box-shadow: 0.5rem 0.5rem 0 var(--color-interactive-default);
   z-index: 10;
 }
 
@@ -68,7 +68,7 @@
 .overlay {
   position: absolute;
   inset: 0;
-  background-color: var(--color-bg-overlay);
+  background-color: var(--color-bg-tertiary);
   opacity: 0;
   transition: opacity 0.3s ease;
   display: flex;
@@ -87,10 +87,10 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.02em;
-  color: var(--color-white);
+  color: var(--color-text-inverse);
   padding-block: var(--space-1);
   padding-inline: var(--space-2);
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
   border: var(--border-width-2) solid var(--color-border-accent);
   display: inline-block;
   margin-block-end: var(--space-2);
@@ -99,9 +99,9 @@
 
 .caption {
   font-family: var(--font-family-share);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-base);
   line-height: 1.4;
-  color: var(--color-white);
+  color: var(--color-text-inverse);
   margin: 0;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -121,7 +121,7 @@
   font-size: var(--font-size-meta);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--color-white);
+  color: var(--color-text-inverse);
   display: flex;
   align-items: center;
   gap: var(--space-1);
@@ -148,8 +148,8 @@
 }
 
 .loadMoreButton:hover {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
   transform: scale(1.05);
 }
 
@@ -181,15 +181,15 @@
    ======================================== */
 
 [data-theme="dark"] .platform {
-  color: var(--color-black);
-  background-color: var(--color-white);
+  color: var(--color-interactive-default);
+  background-color: var(--color-text-inverse);
 }
 
 [data-theme="dark"] .caption {
-  color: var(--color-black);
+  color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .stat {
-  color: var(--color-black);
+  color: var(--color-interactive-default);
 }
 

@@ -5,8 +5,8 @@
  */
 
 .footer {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
   border-block-start: var(--border-width-3) solid var(--color-border-strong);
   padding-block: var(--space-6);
 }
@@ -64,7 +64,7 @@
 .tagline {
   font-family: var(--font-family-share);
   font-size: var(--font-size-meta);
-  color: var(--color-white);
+  color: var(--color-text-inverse);
   max-inline-size: 50ch;
 }
 
@@ -90,11 +90,11 @@
    ======================================== */
 
 [data-theme="dark"] .footer {
-  background-color: var(--color-white);
-  color: var(--color-black);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .tagline {
-  color: var(--color-black);
+  color: var(--color-interactive-default);
 }
 

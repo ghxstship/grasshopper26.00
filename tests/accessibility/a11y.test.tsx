@@ -5,6 +5,7 @@
 
 import { render } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
+import { vi } from 'vitest';
 import { Button } from '@/design-system/components/atoms/Button';
 import { Input } from '@/design-system/components/atoms/Input';
 // Dialog component tests temporarily disabled - component needs to be created
@@ -241,15 +242,15 @@ describe('Accessibility Tests - WCAG 2.2 AAA', () => {
       // Mock matchMedia
       Object.defineProperty(window, 'matchMedia', {
         writable: true,
-        value: jest.fn().mockImplementation(query => ({
+        value: vi.fn().mockImplementation(query => ({
           matches: query === '(prefers-reduced-motion: reduce)',
           media: query,
           onchange: null,
-          addListener: jest.fn(),
-          removeListener: jest.fn(),
-          addEventListener: jest.fn(),
-          removeEventListener: jest.fn(),
-          dispatchEvent: jest.fn(),
+          addListener: vi.fn(),
+          removeListener: vi.fn(),
+          addEventListener: vi.fn(),
+          removeEventListener: vi.fn(),
+          dispatchEvent: vi.fn(),
         })),
       });
       

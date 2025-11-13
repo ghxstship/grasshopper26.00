@@ -7,7 +7,7 @@
 .container {
   position: relative;
   width: 100%;
-  max-width: 37.5rem;
+  max-width: var(--space-96);
 }
 
 .container.fullWidth {
@@ -15,7 +15,7 @@
 }
 
 .input {
-  font-family: var(--font-mono);
+  font-family: var(--font-share-mono);
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-wide);
 }
@@ -44,11 +44,11 @@
   align-items: center;
   justify-content: center;
   
-  width: 2rem;
-  height: 2rem;
+  width: var(--space-8);
+  height: var(--space-8);
   
   border: var(--border-width-2) solid var(--color-border-default);
-  border-radius: var(--radius-none)(--radius-none);
+  border-radius: var(--border-radius-none);
   background-color: var(--color-bg-secondary);
   
   color: var(--color-text-secondary);
@@ -58,10 +58,10 @@
 }
 
 .clearButton:hover {
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
   border-color: var(--color-border-strong);
-  color: var(--color-white);
-  transform: scale(1.1);
+  color: var(--color-text-inverse);
+  transform: scale(1.05);
 }
 
 .clearButton:active {
@@ -70,7 +70,7 @@
 
 .clearButton:focus-visible {
   outline: var(--border-width-2) solid var(--color-border-focus);
-  outline-offset: 0.125rem;
+  outline-offset: var(--space-px);
 }
 
 .clearIcon {
@@ -102,6 +102,6 @@
    ======================================== */
 
 [data-theme="dark"] .clearButton:hover {
-  background-color: var(--color-accent);
-  color: var(--color-primary);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
 }

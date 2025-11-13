@@ -6,15 +6,15 @@
 .system {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-6);
-  padding: var(--spacing-6);
-  border: var(--border-width-thick) solid var(--color-black);
-  background-color: var(--color-white);
+  gap: var(--space-6);
+  padding: var(--space-6);
+  border: var(--border-width-3) solid var(--color-interactive-default);
+  background-color: var(--color-text-inverse);
 }
 
 .header {
-  padding-block-end: var(--spacing-4);
-  border-block-end: var(--border-width-thick) solid var(--color-black);
+  padding-block-end: var(--space-4);
+  border-block-end: var(--border-width-3) solid var(--color-interactive-default);
 }
 
 .title {
@@ -28,15 +28,15 @@
 .stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: var(--spacing-4);
+  gap: var(--space-4);
 }
 
 .statCard {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-2);
-  padding: var(--spacing-4);
-  border: var(--border-width-thick) solid var(--color-black);
+  gap: var(--space-2);
+  padding: var(--space-4);
+  border: var(--border-width-3) solid var(--color-interactive-default);
 }
 
 .statLabel {
@@ -55,20 +55,20 @@
 .progress {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-2);
+  gap: var(--space-2);
 }
 
 .progressBar {
   block-size: 1.5rem;
-  background-color: var(--color-grey-200);
-  border: var(--border-width-thick) solid var(--color-black);
+  background-color: var(--color-border-default);
+  border: var(--border-width-3) solid var(--color-interactive-default);
   overflow: hidden;
 }
 
 .progressFill {
   block-size: 100%;
-  background-color: var(--color-black);
-  transition: width var(--transition-standard) var(--easing-standard);
+  background-color: var(--color-interactive-default);
+  transition: width var(--transition-standard) var(--easing-out);
 }
 
 .progressLabel {
@@ -80,42 +80,42 @@
 
 .scanner {
   display: flex;
-  gap: var(--spacing-3);
-  padding: var(--spacing-6);
-  border: var(--border-width-thick) solid var(--color-black);
-  background-color: var(--color-grey-100);
+  gap: var(--space-3);
+  padding: var(--space-6);
+  border: var(--border-width-3) solid var(--color-interactive-default);
+  background-color: var(--color-bg-tertiary);
 }
 
 .scanForm {
   display: flex;
-  gap: var(--spacing-3);
+  gap: var(--space-3);
   flex: 1;
 }
 
 .scanInput {
   flex: 1;
-  padding: var(--spacing-3) var(--spacing-4);
+  padding: var(--space-3) var(--space-4);
   font-family: var(--font-share-mono);
   font-size: var(--font-size-h5);
-  background-color: var(--color-white);
-  border: var(--border-width-thick) solid var(--color-black);
+  background-color: var(--color-text-inverse);
+  border: var(--border-width-3) solid var(--color-interactive-default);
 }
 
 .scanInput:focus {
   outline: none;
-  box-shadow: 0 0 0 var(--border-width-thick) var(--color-black);
+  box-shadow: 0 0 0 var(--border-width-3) var(--color-interactive-default);
 }
 
 .scanButton {
-  padding: var(--spacing-3) var(--spacing-6);
+  padding: var(--space-3) var(--space-6);
   font-family: var(--font-bebas);
   font-size: var(--font-size-h4);
   text-transform: uppercase;
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
   border: none;
   cursor: pointer;
-  transition: transform var(--transition-fast) var(--easing-standard);
+  transition: transform var(--duration-fast) var(--easing-out);
 }
 
 .scanButton:hover {
@@ -123,24 +123,24 @@
 }
 
 .manualButton {
-  padding: var(--spacing-3) var(--spacing-4);
+  padding: var(--space-3) var(--space-4);
   font-family: var(--font-bebas);
   font-size: var(--font-size-h5);
   text-transform: uppercase;
-  background-color: var(--color-white);
-  border: var(--border-width-thick) solid var(--color-black);
+  background-color: var(--color-text-inverse);
+  border: var(--border-width-3) solid var(--color-interactive-default);
   cursor: pointer;
-  transition: all var(--transition-fast) var(--easing-standard);
+  transition: all var(--duration-fast) var(--easing-out);
 }
 
 .manualButton:hover {
-  background-color: var(--color-grey-200);
+  background-color: var(--color-border-default);
 }
 
 .recent {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-3);
+  gap: var(--space-3);
 }
 
 .recentTitle {
@@ -154,27 +154,27 @@
 .recentList {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-2);
+  gap: var(--space-2);
 }
 
 .recentItem {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--spacing-3);
-  border: var(--space-px) solid var(--color-grey-300);
-  background-color: var(--color-grey-50);
+  padding: var(--space-3);
+  border: var(--space-px) solid var(--color-border-default);
+  background-color: var(--color-bg-secondary);
 }
 
 .recentInfo {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-1);
+  gap: var(--space-1);
 }
 
 .recentName {
   font-family: var(--font-share);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-base);
   font-weight: 700;
 }
 
@@ -192,7 +192,7 @@
 
 .recentTime {
   font-family: var(--font-share-mono);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-base);
   font-weight: 700;
 }
 
@@ -216,31 +216,31 @@
    ======================================== */
 
 [data-theme="dark"] .system {
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .progressBar {
-  background-color: var(--color-grey-700);
+  background-color: var(--color-text-secondary);
 }
 
 [data-theme="dark"] .progressFill {
-  background-color: var(--color-white);
+  background-color: var(--color-text-inverse);
 }
 
 [data-theme="dark"] .scanner {
-  background-color: var(--color-grey-800);
+  background-color: var(--color-border-default);
 }
 
 [data-theme="dark"] .scanInput {
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .scanButton {
-  background-color: var(--color-white);
-  color: var(--color-black);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .manualButton {
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
 }
 

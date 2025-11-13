@@ -8,8 +8,8 @@
   inline-size: 100%;
   padding: var(--space-8);
   border: 0.25rem solid var(--color-border-strong);
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
 }
 
 .title {
@@ -83,7 +83,7 @@
    ======================================== */
 
 [data-theme="dark"] .countdown {
-  background-color: var(--color-white);
-  color: var(--color-black);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
 }
 

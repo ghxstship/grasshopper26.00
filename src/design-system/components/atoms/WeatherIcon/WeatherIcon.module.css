@@ -22,7 +22,7 @@
 }
 
 .temp {
-  font-family: var(--font-mono);
+  font-family: var(--font-share-mono);
   font-weight: var(--font-weight-bold);
   color: var(--color-text-secondary);
 }

@@ -107,7 +107,7 @@
 
 .genreTag {
   font-family: var(--font-share-mono);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-base);
   padding-inline: var(--space-3);
   padding-block: var(--space-1);
   border: var(--border-width-2) solid var(--color-text-primary);
@@ -115,7 +115,7 @@
 
 .artistBio {
   font-family: var(--font-share);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-base);
   margin-block-end: var(--space-6);
   white-space: pre-line;
   line-height: var(--line-height-normal);
@@ -130,7 +130,7 @@
 
 .socialLink {
   font-family: var(--font-bebas);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-base);
   text-transform: uppercase;
   text-decoration: underline;
   color: var(--color-text-primary);
@@ -205,7 +205,7 @@
 
 .eventVenue {
   font-family: var(--font-share);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-base);
   color: var(--color-text-secondary);
 }
 
@@ -308,11 +308,11 @@
 }
 
 .rounded {
-  border-radius: var(--radius-none);
+  border-radius: var(--border-radius-none);
 }
 
 .shadow {
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-card);
 }
 
 /* DARK MODE */

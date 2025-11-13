@@ -6,27 +6,27 @@
 .lineItem {
   display: flex;
   flex-direction: column;
-  padding: var(--spacing-4);
-  border: var(--border-width-thick) solid var(--color-black);
-  background-color: var(--color-white);
-  transition: background-color var(--transition-fast) var(--easing-standard);
+  padding: var(--space-4);
+  border: var(--border-width-3) solid var(--color-interactive-default);
+  background-color: var(--color-text-inverse);
+  transition: background-color var(--duration-fast) var(--easing-out);
 }
 
 .lineItem:hover {
-  background-color: var(--color-grey-100);
+  background-color: var(--color-bg-tertiary);
 }
 
 .main {
   display: grid;
   grid-template-columns: 2fr 3fr 1fr;
-  gap: var(--spacing-4);
+  gap: var(--space-4);
   align-items: center;
 }
 
 .info {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-1);
+  gap: var(--space-1);
 }
 
 .name {
@@ -52,13 +52,13 @@
 .amounts {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--spacing-4);
+  gap: var(--space-4);
 }
 
 .amountGroup {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-1);
+  gap: var(--space-1);
 }
 
 .label {
@@ -70,19 +70,19 @@
 
 .amount {
   font-family: var(--font-share-mono);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-base);
   font-weight: 700;
 }
 
 .variance .amount.over {
-  background-color: var(--color-grey-900);
-  color: var(--color-white);
-  padding: var(--spacing-1) var(--spacing-2);
+  background-color: var(--color-interactive-hover);
+  color: var(--color-text-inverse);
+  padding: var(--space-1) var(--space-2);
 }
 
 .variance .amount.under {
-  background-color: var(--color-grey-200);
-  padding: var(--spacing-1) var(--spacing-2);
+  background-color: var(--color-border-default);
+  padding: var(--space-1) var(--space-2);
 }
 
 .status {
@@ -91,67 +91,67 @@
 }
 
 .statusBadge {
-  padding: var(--spacing-2) var(--spacing-3);
+  padding: var(--space-2) var(--space-3);
   font-family: var(--font-bebas);
   font-size: var(--font-size-meta);
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-wide);
-  border: var(--border-width-thin) solid var(--color-black);
+  border: var(--border-width-1) solid var(--color-interactive-default);
 }
 
 .statusBadge.planned {
-  background-color: var(--color-white);
+  background-color: var(--color-text-inverse);
 }
 
 .statusBadge.approved {
-  background-color: var(--color-grey-200);
+  background-color: var(--color-border-default);
 }
 
 .statusBadge.committed {
-  background-color: var(--color-grey-300);
+  background-color: var(--color-border-default);
 }
 
 .statusBadge.invoiced {
-  background-color: var(--color-grey-400);
+  background-color: var(--color-text-disabled);
 }
 
 .statusBadge.paid {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
 }
 
 .statusBadge.cancelled {
-  background-color: var(--color-grey-900);
-  color: var(--color-white);
+  background-color: var(--color-interactive-hover);
+  color: var(--color-text-inverse);
   text-decoration: line-through;
 }
 
 .actions {
   display: flex;
-  gap: var(--spacing-2);
-  margin-block-start: var(--spacing-3);
-  padding-block-start: var(--spacing-3);
-  border-block-start: var(--border-width-thin) solid var(--color-grey-300);
+  gap: var(--space-2);
+  margin-block-start: var(--space-3);
+  padding-block-start: var(--space-3);
+  border-block-start: var(--border-width-1) solid var(--color-border-default);
 }
 
 .actionButton {
-  padding: var(--spacing-2) var(--spacing-3);
+  padding: var(--space-2) var(--space-3);
   font-family: var(--font-bebas);
   font-size: var(--font-size-meta);
   text-transform: uppercase;
-  background-color: var(--color-white);
-  border: var(--border-width-thick) solid var(--color-black);
+  background-color: var(--color-text-inverse);
+  border: var(--border-width-3) solid var(--color-interactive-default);
   cursor: pointer;
-  transition: all var(--transition-fast) var(--easing-standard);
+  transition: all var(--duration-fast) var(--easing-out);
 }
 
 .actionButton:hover {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
 }
 
 .actionButton.delete:hover {
-  background-color: var(--color-grey-900);
+  background-color: var(--color-interactive-hover);
 }
 
 
@@ -174,10 +174,10 @@
    ======================================== */
 
 [data-theme="dark"] .lineItem {
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .actionButton {
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
 }
 

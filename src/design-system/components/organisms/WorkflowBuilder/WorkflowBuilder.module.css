@@ -7,18 +7,18 @@
   display: flex;
   flex-direction: column;
   block-size: 100%;
-  border: var(--border-width-thick) solid var(--color-black);
-  background-color: var(--color-white);
+  border: var(--border-width-3) solid var(--color-interactive-default);
+  background-color: var(--color-text-inverse);
 }
 
 .toolbar {
   display: flex;
   align-items: center;
-  gap: var(--spacing-4);
-  padding: var(--spacing-4);
-  border-block-end: var(--border-width-thick) solid var(--color-black);
-  background-color: var(--color-black);
-  color: var(--color-white);
+  gap: var(--space-4);
+  padding: var(--space-4);
+  border-block-end: var(--border-width-3) solid var(--color-interactive-default);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
 }
 
 .title {
@@ -30,19 +30,19 @@
 
 .nodeTypes {
   display: flex;
-  gap: var(--spacing-2);
+  gap: var(--space-2);
   flex: 1;
 }
 
 .nodeButton {
-  padding: var(--spacing-2) var(--spacing-3);
+  padding: var(--space-2) var(--space-3);
   font-family: var(--font-bebas);
   font-size: var(--font-size-h6);
   text-transform: uppercase;
-  background-color: var(--color-white);
+  background-color: var(--color-text-inverse);
   border: none;
   cursor: pointer;
-  transition: transform var(--transition-fast) var(--easing-standard);
+  transition: transform var(--duration-fast) var(--easing-out);
 }
 
 .nodeButton:hover {
@@ -50,28 +50,28 @@
 }
 
 .nodeButton.trigger {
-  background-color: var(--color-grey-300);
+  background-color: var(--color-border-default);
 }
 
 .nodeButton.condition {
-  background-color: var(--color-grey-400);
+  background-color: var(--color-text-disabled);
 }
 
 .nodeButton.action {
-  background-color: var(--color-grey-500);
+  background-color: var(--color-text-tertiary);
 }
 
 .nodeButton.delay {
-  background-color: var(--color-grey-600);
-  color: var(--color-white);
+  background-color: var(--color-text-secondary);
+  color: var(--color-text-inverse);
 }
 
 .saveButton {
-  padding: var(--spacing-2) var(--spacing-4);
+  padding: var(--space-2) var(--space-4);
   font-family: var(--font-bebas);
   font-size: var(--font-size-h6);
   text-transform: uppercase;
-  background-color: var(--color-white);
+  background-color: var(--color-text-inverse);
   border: none;
   cursor: pointer;
 }
@@ -79,10 +79,10 @@
 .canvas {
   position: relative;
   flex: 1;
-  background-color: var(--color-grey-100);
+  background-color: var(--color-bg-tertiary);
   background-image: 
-    linear-gradient(var(--color-grey-300) var(--space-px), transparent var(--space-px)),
-    linear-gradient(90deg, var(--color-grey-300) var(--space-px), transparent var(--space-px));
+    linear-gradient(var(--color-border-default) var(--space-px), transparent var(--space-px)),
+    linear-gradient(90deg, var(--color-border-default) var(--space-px), transparent var(--space-px));
   background-size: 1.25rem 1.25rem;
   overflow: auto;
 }
@@ -96,7 +96,7 @@
 }
 
 .connection {
-  stroke: var(--color-black);
+  stroke: var(--color-interactive-default);
   stroke-width: 0.1875rem;
   fill: none;
 }
@@ -112,44 +112,44 @@
 .node {
   position: absolute;
   inline-size: 12.5rem;
-  border: var(--border-width-thick) solid var(--color-black);
-  background-color: var(--color-white);
+  border: var(--border-width-3) solid var(--color-interactive-default);
+  background-color: var(--color-text-inverse);
   cursor: pointer;
-  transition: all var(--transition-fast) var(--easing-standard);
+  transition: all var(--duration-fast) var(--easing-out);
 }
 
 .node:hover {
   transform: translateY(-0.125rem);
-  box-shadow: 0.25rem 0.25rem 0 0 var(--color-black);
+  box-shadow: 0.25rem 0.25rem 0 0 var(--color-interactive-default);
 }
 
 .node.selected {
-  box-shadow: 0.5rem 0.5rem 0 0 var(--color-black);
+  box-shadow: 0.5rem 0.5rem 0 0 var(--color-interactive-default);
 }
 
 .node.trigger {
-  border-color: var(--color-grey-700);
+  border-color: var(--color-text-secondary);
 }
 
 .node.condition {
-  border-color: var(--color-grey-600);
+  border-color: var(--color-text-secondary);
 }
 
 .node.action {
-  border-color: var(--color-grey-800);
+  border-color: var(--color-border-default);
 }
 
 .node.delay {
-  border-color: var(--color-grey-500);
+  border-color: var(--color-text-tertiary);
 }
 
 .nodeHeader {
   display: flex;
   align-items: center;
-  gap: var(--spacing-2);
-  padding: var(--spacing-2) var(--spacing-3);
-  background-color: var(--color-grey-200);
-  border-block-end: var(--space-px) solid var(--color-black);
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background-color: var(--color-border-default);
+  border-block-end: var(--space-px) solid var(--color-interactive-default);
 }
 
 .nodeIcon {
@@ -168,19 +168,19 @@
   block-size: 1.5rem;
   font-family: var(--font-bebas);
   font-size: var(--font-size-h5);
-  background-color: var(--color-grey-900);
-  color: var(--color-white);
+  background-color: var(--color-interactive-hover);
+  color: var(--color-text-inverse);
   border: none;
   cursor: pointer;
 }
 
 .nodeContent {
-  padding: var(--spacing-3);
+  padding: var(--space-3);
 }
 
 .nodeLabel {
   font-family: var(--font-share);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-base);
   line-height: var(--line-height-relaxed);
 }
 
@@ -204,40 +204,40 @@
    ======================================== */
 
 [data-theme="dark"] .builder {
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .toolbar {
-  background-color: var(--color-white);
-  color: var(--color-black);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .nodeButton {
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .saveButton {
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .canvas {
-  background-color: var(--color-grey-800);
+  background-color: var(--color-border-default);
 }
 
 [data-theme="dark"] .connection {
-  stroke: var(--color-white);
+  stroke: var(--color-text-inverse);
 }
 
 [data-theme="dark"] .node {
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .nodeHeader {
-  background-color: var(--color-grey-700);
+  background-color: var(--color-text-secondary);
 }
 
 [data-theme="dark"] .deleteButton {
-  background-color: var(--color-grey-100);
-  color: var(--color-black);
+  background-color: var(--color-bg-tertiary);
+  color: var(--color-interactive-default);
 }
 

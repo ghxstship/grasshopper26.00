@@ -6,18 +6,18 @@
 .dashboard {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-6);
-  padding: var(--spacing-6);
-  border: var(--border-width-thick) solid var(--color-black);
-  background-color: var(--color-white);
+  gap: var(--space-6);
+  padding: var(--space-6);
+  border: var(--border-width-3) solid var(--color-interactive-default);
+  background-color: var(--color-text-inverse);
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-block-end: var(--spacing-4);
-  border-block-end: var(--border-width-thick) solid var(--color-black);
+  padding-block-end: var(--space-4);
+  border-block-end: var(--border-width-3) solid var(--color-interactive-default);
 }
 
 .title {
@@ -38,29 +38,29 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr));
-  gap: var(--spacing-4);
+  gap: var(--space-4);
 }
 
 .card {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-3);
-  padding: var(--spacing-6);
-  border: var(--border-width-thick) solid var(--color-black);
-  background-color: var(--color-white);
+  gap: var(--space-3);
+  padding: var(--space-6);
+  border: var(--border-width-3) solid var(--color-interactive-default);
+  background-color: var(--color-text-inverse);
 }
 
 .card.good {
-  border-inline-start-width: calc(var(--border-width-thick) * 3);
+  border-inline-start-width: calc(var(--border-width-3) * 3);
 }
 
 .card.warning {
-  background-color: var(--color-grey-200);
+  background-color: var(--color-border-default);
 }
 
 .card.critical {
-  background-color: var(--color-grey-900);
-  color: var(--color-white);
+  background-color: var(--color-interactive-hover);
+  color: var(--color-text-inverse);
 }
 
 .cardHeader {
@@ -80,25 +80,25 @@
 .statusIndicator {
   inline-size: 0.75rem;
   block-size: 0.75rem;
-  border: var(--border-width-thick) solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-interactive-default);
 }
 
 .statusIndicator.good {
-  background-color: var(--color-white);
+  background-color: var(--color-text-inverse);
 }
 
 .statusIndicator.warning {
-  background-color: var(--color-grey-500);
+  background-color: var(--color-text-tertiary);
 }
 
 .statusIndicator.critical {
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
 }
 
 .value {
   display: flex;
   align-items: baseline;
-  gap: var(--spacing-2);
+  gap: var(--space-2);
 }
 
 .valueNumber {
@@ -115,7 +115,7 @@
 
 .target {
   display: flex;
-  gap: var(--spacing-2);
+  gap: var(--space-2);
   font-family: var(--font-share-mono);
   font-size: var(--font-size-meta);
 }
@@ -128,7 +128,7 @@
 .change {
   display: flex;
   align-items: baseline;
-  gap: var(--spacing-2);
+  gap: var(--space-2);
 }
 
 .changeValue {
@@ -138,14 +138,14 @@
 }
 
 .changeValue.positive {
-  background-color: var(--color-grey-200);
-  padding: var(--spacing-1) var(--spacing-2);
+  background-color: var(--color-border-default);
+  padding: var(--space-1) var(--space-2);
 }
 
 .changeValue.negative {
-  background-color: var(--color-grey-900);
-  color: var(--color-white);
-  padding: var(--spacing-1) var(--spacing-2);
+  background-color: var(--color-interactive-hover);
+  color: var(--color-text-inverse);
+  padding: var(--space-1) var(--space-2);
 }
 
 .changeLabel {
@@ -183,10 +183,10 @@
    ======================================== */
 
 [data-theme="dark"] .dashboard {
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .card {
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
 }
 

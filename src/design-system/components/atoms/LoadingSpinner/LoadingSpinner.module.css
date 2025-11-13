@@ -34,9 +34,9 @@
 .block {
   width: var(--font-size-xs);
   height: var(--font-size-xs);
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
   border: var(--border-width-2) solid var(--color-border-strong);
-  border-radius: var(--radius-none);
+  border-radius: var(--border-radius-none);
   
   animation: blockPulse 1.2s ease-in-out infinite;
 }
@@ -79,8 +79,8 @@
 .bar {
   width: 0.25rem;
   height: var(--font-size-2xl);
-  background-color: var(--color-black);
-  border-radius: var(--radius-none);
+  background-color: var(--color-interactive-default);
+  border-radius: var(--border-radius-none);
   
   animation: barStretch 1s ease-in-out infinite;
 }
@@ -117,9 +117,9 @@
 .pulseShape {
   width: 2.5rem;
   height: 2.5rem;
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
   border: var(--border-width-3) solid var(--color-border-strong);
-  border-radius: var(--radius-none);
+  border-radius: var(--border-radius-none);
   
   animation: shapePulse 1.5s ease-in-out infinite;
 }
@@ -203,15 +203,15 @@
    ======================================== */
 
 [data-theme="dark"] .block {
-  background-color: var(--color-accent);
+  background-color: var(--color-text-inverse);
   border-color: var(--color-border-strong);
 }
 
 [data-theme="dark"] .bar {
-  background-color: var(--color-accent);
+  background-color: var(--color-text-inverse);
 }
 
 [data-theme="dark"] .pulseShape {
-  background-color: var(--color-accent);
+  background-color: var(--color-text-inverse);
   border-color: var(--color-border-strong);
 }

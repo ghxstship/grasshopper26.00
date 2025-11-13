@@ -13,7 +13,7 @@
   color: var(--color-text-primary);
   
   border: var(--border-width-2) solid var(--color-border-strong);
-  border-radius: var(--radius-none);
+  border-radius: var(--border-radius-none);
   
   cursor: pointer;
   
@@ -42,9 +42,9 @@
 }
 
 .active {
-  background-color: var(--color-black);
-  color: var(--color-white);
-  border-color: var(--color-primary);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
+  border-color: var(--color-interactive-default);
 }
 
 .active:hover {
@@ -87,9 +87,9 @@
 }
 
 [data-theme="dark"] .active {
-  background-color: var(--color-accent);
-  color: var(--color-primary);
-  border-color: var(--color-accent);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
+  border-color: var(--color-text-inverse);
 }
 
 [data-theme="dark"] .active:hover {

@@ -6,21 +6,21 @@
 .card {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-3);
-  padding: var(--spacing-4);
-  border: var(--border-width-thick) solid var(--color-black);
-  background-color: var(--color-white);
-  transition: all var(--transition-fast) var(--easing-standard);
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: var(--border-width-3) solid var(--color-interactive-default);
+  background-color: var(--color-text-inverse);
+  transition: all var(--duration-fast) var(--easing-out);
 }
 
 .card.critical {
-  border-inline-start-width: calc(var(--border-width-thick) * 3);
-  background-color: var(--color-grey-900);
-  color: var(--color-white);
+  border-inline-start-width: calc(var(--border-width-3) * 3);
+  background-color: var(--color-interactive-hover);
+  color: var(--color-text-inverse);
 }
 
 .card.high {
-  border-inline-start-width: calc(var(--border-width-thick) * 2);
+  border-inline-start-width: calc(var(--border-width-3) * 2);
 }
 
 .card.clickable {
@@ -28,13 +28,13 @@
 }
 
 .card.clickable:hover {
-  background-color: var(--color-grey-100);
+  background-color: var(--color-bg-tertiary);
   transform: translateY(-0.125rem);
-  box-shadow: 0.25rem 0.25rem 0 0 var(--color-black);
+  box-shadow: 0.25rem 0.25rem 0 0 var(--color-interactive-default);
 }
 
 .card.critical.clickable:hover {
-  background-color: var(--color-grey-800);
+  background-color: var(--color-border-default);
 }
 
 .header {
@@ -45,12 +45,12 @@
 
 .badges {
   display: flex;
-  gap: var(--spacing-2);
+  gap: var(--space-2);
 }
 
 .severity,
 .type {
-  padding: var(--spacing-1) var(--spacing-2);
+  padding: var(--space-1) var(--space-2);
   font-family: var(--font-bebas);
   font-size: var(--font-size-meta);
   text-transform: uppercase;
@@ -58,87 +58,87 @@
 }
 
 .severity.critical {
-  background-color: var(--color-grey-900);
-  color: var(--color-white);
+  background-color: var(--color-interactive-hover);
+  color: var(--color-text-inverse);
 }
 
 .severity.high {
-  background-color: var(--color-grey-700);
-  color: var(--color-white);
+  background-color: var(--color-text-secondary);
+  color: var(--color-text-inverse);
 }
 
 .severity.medium {
-  background-color: var(--color-grey-400);
+  background-color: var(--color-text-disabled);
 }
 
 .severity.low {
-  background-color: var(--color-grey-200);
+  background-color: var(--color-border-default);
 }
 
 .type {
-  border: var(--space-px) solid var(--color-black);
+  border: var(--space-px) solid var(--color-interactive-default);
 }
 
 .status {
-  padding: var(--spacing-1) var(--spacing-2);
+  padding: var(--space-1) var(--space-2);
   font-family: var(--font-bebas);
   font-size: var(--font-size-meta);
   text-transform: uppercase;
-  border: var(--space-px) solid var(--color-black);
+  border: var(--space-px) solid var(--color-interactive-default);
 }
 
 .status.reported {
-  background-color: var(--color-grey-200);
+  background-color: var(--color-border-default);
 }
 
 .status.investigating {
-  background-color: var(--color-grey-400);
+  background-color: var(--color-text-disabled);
 }
 
 .status.resolved {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
 }
 
 .status.escalated {
-  background-color: var(--color-grey-900);
-  color: var(--color-white);
+  background-color: var(--color-interactive-hover);
+  color: var(--color-text-inverse);
 }
 
 .content {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-2);
+  gap: var(--space-2);
 }
 
 .incidentNumber {
   font-family: var(--font-share-mono);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-base);
   font-weight: 700;
 }
 
 .description {
   margin: 0;
   font-family: var(--font-share);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-base);
   line-height: var(--line-height-relaxed);
 }
 
 .meta {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-1);
-  padding-block-start: var(--spacing-2);
-  border-block-start: var(--space-px) solid var(--color-grey-300);
+  gap: var(--space-1);
+  padding-block-start: var(--space-2);
+  border-block-start: var(--space-px) solid var(--color-border-default);
 }
 
 .card.critical .meta {
-  border-block-start-color: var(--color-grey-700);
+  border-block-start-color: var(--color-text-secondary);
 }
 
 .metaItem {
   display: flex;
-  gap: var(--spacing-2);
+  gap: var(--space-2);
 }
 
 .metaLabel {
@@ -149,7 +149,7 @@
 }
 
 .card.critical .metaLabel {
-  color: var(--color-grey-400);
+  color: var(--color-text-disabled);
 }
 
 .metaValue {
@@ -177,6 +177,6 @@
    ======================================== */
 
 [data-theme="dark"] .card {
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
 }
 

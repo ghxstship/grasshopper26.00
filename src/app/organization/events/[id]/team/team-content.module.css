@@ -3,13 +3,13 @@
 .teamGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(18.75rem, 1fr));
-  gap: var(--spacing-lg);
+  gap: var(--space-lg);
 }
 
 .memberDetails {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-sm);
+  gap: var(--space-sm);
 }
 
 .memberEmail {

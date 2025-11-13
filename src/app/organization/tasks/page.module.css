@@ -11,7 +11,7 @@
   justify-content: space-between;
   align-items: center;
   padding-block-end: var(--space-6);
-  border-block-end: var(--border-width-thick) solid var(--color-border-strong);
+  border-block-end: var(--border-width-3) solid var(--color-border-strong);
 }
 
 .title {
@@ -43,7 +43,7 @@
   color: var(--color-text-primary);
   margin-block: 0;
   padding-block-end: var(--space-3);
-  border-block-end: var(--border-width-default) solid var(--color-border-default);
+  border-block-end: var(--border-width-2) solid var(--color-border-default);
 }
 
 .taskList {
@@ -59,7 +59,7 @@
   justify-content: center;
   padding-block: var(--space-16);
   padding-inline: var(--space-8);
-  border-width: var(--border-width-thick);
+  border-width: var(--border-width-3);
   border-style: solid;
   border-color: var(--color-border-default);
   background-color: var(--color-bg-secondary);

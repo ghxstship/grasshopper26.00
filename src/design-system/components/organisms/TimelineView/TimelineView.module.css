@@ -6,25 +6,25 @@
 .timeline {
   display: flex;
   flex-direction: column;
-  border: var(--border-width-thick) solid var(--color-black);
-  background-color: var(--color-white);
+  border: var(--border-width-3) solid var(--color-interactive-default);
+  background-color: var(--color-text-inverse);
   overflow-x: auto;
 }
 
 .header {
   display: grid;
   grid-template-columns: 15.625rem 1fr;
-  border-block-end: var(--border-width-thick) solid var(--color-black);
-  background-color: var(--color-black);
-  color: var(--color-white);
+  border-block-end: var(--border-width-3) solid var(--color-interactive-default);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
 }
 
 .taskColumn {
-  padding: var(--spacing-3) var(--spacing-4);
+  padding: var(--space-3) var(--space-4);
   font-family: var(--font-bebas);
   font-size: var(--font-size-h6);
   text-transform: uppercase;
-  border-inline-end: var(--border-width-thick) solid var(--color-white);
+  border-inline-end: var(--border-width-3) solid var(--color-text-inverse);
 }
 
 .chartColumn {
@@ -41,8 +41,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: var(--spacing-2);
-  border-inline-end: var(--space-px) solid var(--color-grey-700);
+  padding: var(--space-2);
+  border-inline-end: var(--space-px) solid var(--color-text-secondary);
 }
 
 .dateDay {
@@ -64,16 +64,16 @@
 .row {
   display: grid;
   grid-template-columns: 15.625rem 1fr;
-  border-block-end: var(--space-px) solid var(--color-grey-300);
+  border-block-end: var(--space-px) solid var(--color-border-default);
   min-block-size: 3.75rem;
 }
 
 .taskInfo {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-1);
-  padding: var(--spacing-3) var(--spacing-4);
-  border-inline-end: var(--space-px) solid var(--color-grey-300);
+  gap: var(--space-1);
+  padding: var(--space-3) var(--space-4);
+  border-inline-end: var(--space-px) solid var(--color-border-default);
 }
 
 .taskTitle {
@@ -102,29 +102,29 @@
 
 .gridLine {
   flex: 1;
-  border-inline-end: var(--space-px) solid var(--color-grey-200);
+  border-inline-end: var(--space-px) solid var(--color-border-default);
 }
 
 .bar {
   position: absolute;
   inset-block: 0.5rem;
-  background-color: var(--color-grey-800);
-  border: var(--border-width-thick) solid var(--color-black);
+  background-color: var(--color-border-default);
+  border: var(--border-width-3) solid var(--color-interactive-default);
   cursor: pointer;
-  transition: all var(--transition-fast) var(--easing-standard);
+  transition: all var(--duration-fast) var(--easing-out);
 }
 
 .bar:hover {
-  background-color: var(--color-grey-900);
+  background-color: var(--color-interactive-hover);
   transform: translateY(-0.125rem);
-  box-shadow: 0 0.25rem 0 0 var(--color-black);
+  box-shadow: 0 0.25rem 0 0 var(--color-interactive-default);
 }
 
 .barContent {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-1);
-  padding: var(--spacing-2);
+  gap: var(--space-1);
+  padding: var(--space-2);
   block-size: 100%;
 }
 
@@ -132,7 +132,7 @@
   font-family: var(--font-bebas);
   font-size: var(--font-size-meta);
   text-transform: uppercase;
-  color: var(--color-white);
+  color: var(--color-text-inverse);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -140,14 +140,14 @@
 
 .progress {
   block-size: 0.25rem;
-  background-color: var(--color-grey-600);
+  background-color: var(--color-text-secondary);
   margin-block-start: auto;
 }
 
 .progressFill {
   block-size: 100%;
-  background-color: var(--color-white);
-  transition: width var(--transition-standard) var(--easing-standard);
+  background-color: var(--color-text-inverse);
+  transition: width var(--transition-standard) var(--easing-out);
 }
 
 
@@ -170,27 +170,27 @@
    ======================================== */
 
 [data-theme="dark"] .timeline {
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .header {
-  background-color: var(--color-white);
-  color: var(--color-black);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .bar {
-  background-color: var(--color-grey-100);
+  background-color: var(--color-bg-tertiary);
 }
 
 [data-theme="dark"] .barTitle {
-  color: var(--color-black);
+  color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .progress {
-  background-color: var(--color-grey-300);
+  background-color: var(--color-border-default);
 }
 
 [data-theme="dark"] .progressFill {
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
 }
 

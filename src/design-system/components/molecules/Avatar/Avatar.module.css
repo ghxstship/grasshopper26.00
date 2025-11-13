@@ -21,11 +21,11 @@
 
 /* GHXSTSHIP: NO rounded corners - use square avatars */
 .circle {
-  border-radius: var(--radius-none);
+  border-radius: var(--border-radius-none);
 }
 
 .square {
-  border-radius: var(--radius-none);
+  border-radius: var(--border-radius-none);
 }
 
 /* ========================================
@@ -80,7 +80,7 @@
 }
 
 .initials {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-tight);
   text-transform: uppercase;
@@ -121,11 +121,11 @@
   height: 25%;
   
   border: var(--border-width-2) solid var(--color-bg-primary);
-  border-radius: var(--radius-none);
+  border-radius: var(--border-radius-none);
 }
 
 .status-online {
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
 }
 
 .status-offline {
@@ -142,7 +142,7 @@
 
 @media (prefers-contrast: high) {
   .avatar {
-    border-width: var(--border-width-4);
+    border-width: var(--border-width-3);
   }
   
   .status {
@@ -155,5 +155,5 @@
    ======================================== */
 
 [data-theme="dark"] .status-online {
-  background-color: var(--color-accent);
+  background-color: var(--color-text-inverse);
 }

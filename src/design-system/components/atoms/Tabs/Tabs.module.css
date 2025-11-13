@@ -9,13 +9,13 @@
 
 .tabList {
   display: flex;
-  gap: var(--spacing-4);
-  border-block-end: var(--border-width-thick) solid var(--color-grey-300);
+  gap: var(--space-4);
+  border-block-end: var(--border-width-3) solid var(--color-border-default);
 }
 
 .tab {
   position: relative;
-  padding: var(--spacing-3) var(--spacing-4);
+  padding: var(--space-3) var(--space-4);
   font-family: var(--font-bebas);
   font-size: var(--font-size-h5);
   text-transform: uppercase;
@@ -24,19 +24,19 @@
   border: none;
   color: var(--color-text-secondary);
   cursor: pointer;
-  transition: color var(--transition-fast) var(--easing-standard);
+  transition: color var(--duration-fast) var(--easing-out);
 }
 
 .tab::after {
   content: '';
   position: absolute;
-  inset-block-end: calc(var(--border-width-thick) * -1);
+  inset-block-end: calc(var(--border-width-3) * -1);
   inset-inline-start: 0;
   inline-size: 100%;
-  block-size: var(--border-width-thick);
-  background-color: var(--color-black);
+  block-size: var(--border-width-3);
+  background-color: var(--color-interactive-default);
   transform: scaleX(0);
-  transition: transform var(--transition-standard) var(--easing-standard);
+  transition: transform var(--duration-base) var(--easing-out);
 }
 
 .tab:hover {
@@ -52,12 +52,12 @@
 }
 
 .tab:disabled {
-  opacity: 0.5;
+  opacity: var(--opacity-50);
   cursor: not-allowed;
 }
 
 .panel {
-  padding-block-start: var(--spacing-6);
+  padding-block-start: var(--space-6);
 }
 
 

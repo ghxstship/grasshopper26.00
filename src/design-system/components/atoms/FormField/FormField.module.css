@@ -6,7 +6,7 @@
 .formField {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-2);
+  gap: var(--space-2);
 }
 
 .label {
@@ -19,16 +19,16 @@
 
 .required {
   color: var(--color-text-primary);
-  margin-inline-start: var(--spacing-1);
+  margin-inline-start: var(--space-1);
 }
 
 .error {
   font-family: var(--font-share);
   font-size: var(--font-size-meta);
   color: var(--color-text-primary);
-  background-color: var(--color-grey-900);
-  padding: var(--spacing-2) var(--spacing-3);
-  border-inline-start: var(--border-width-thick) solid var(--color-black);
+  background-color: var(--color-interactive-hover);
+  padding: var(--space-2) var(--space-3);
+  border-inline-start: var(--border-width-3) solid var(--color-interactive-default);
 }
 
 .helper {
@@ -59,6 +59,6 @@
    ======================================== */
 
 [data-theme="dark"] .error {
-  background-color: var(--color-grey-100);
+  background-color: var(--color-bg-tertiary);
 }
 

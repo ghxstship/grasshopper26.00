@@ -11,13 +11,13 @@
   background-color: var(--color-bg-primary);
   border: var(--border-width-3) solid var(--color-border-strong);
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform var(--duration-base) var(--easing-out), box-shadow var(--duration-base) var(--easing-out);
   cursor: pointer;
 }
 
 .card:hover {
-  transform: scale(1.05);
-  box-shadow: var(--shadow-lg);
+  transform: scale(1.02);
+  box-shadow: var(--shadow-card);
 }
 
 .card:active {
@@ -37,12 +37,12 @@
   block-size: 100%;
   object-fit: cover;
   filter: grayscale(100%) contrast(1.2);
-  transition: transform 0.3s ease, filter 0.3s ease;
+  transition: transform var(--duration-base) var(--easing-out), filter var(--duration-base) var(--easing-out);
 }
 
 .card:hover .image {
-  transform: scale(1.1);
-  filter: grayscale(100%) contrast(1.4);
+  transform: scale(1.05);
+  filter: grayscale(100%) contrast(1.2);
 }
 
 .badge {
@@ -53,11 +53,11 @@
   font-size: var(--font-size-h6);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  letter-spacing: var(--letter-spacing-tight);
   padding-block: var(--space-2);
   padding-inline: var(--space-4);
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
   border: var(--border-width-3) solid var(--color-border-strong);
   z-index: 10;
 }
@@ -70,11 +70,11 @@
   font-size: var(--font-size-h6);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  letter-spacing: var(--letter-spacing-tight);
   padding-block: var(--space-2);
   padding-inline: var(--space-4);
   background-color: var(--color-bg-primary);
-  color: var(--color-primary);
+  color: var(--color-interactive-default);
   border: var(--border-width-3) solid var(--color-border-strong);
   z-index: 10;
 }
@@ -92,7 +92,7 @@
   font-size: var(--font-size-h3);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  letter-spacing: var(--letter-spacing-tight);
   line-height: 1.1;
   color: var(--color-text-primary);
   margin: 0;
@@ -117,7 +117,7 @@
 
 .description {
   font-family: var(--font-family-share);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-base);
   line-height: 1.6;
   color: var(--color-text-primary);
   margin: 0;
@@ -153,7 +153,7 @@
   font-size: var(--font-size-h5);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  letter-spacing: var(--letter-spacing-tight);
   color: var(--color-text-primary);
 }
 
@@ -171,14 +171,14 @@
   font-size: var(--font-size-h6);
   font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  letter-spacing: var(--letter-spacing-tight);
   padding-block: var(--space-2);
   padding-inline: var(--space-4);
   border: var(--border-width-3) solid var(--color-border-strong);
   background-color: transparent;
   color: var(--color-text-primary);
   cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+  transition: background-color var(--duration-fast) var(--easing-out), color var(--duration-fast) var(--easing-out), transform var(--duration-fast) var(--easing-out);
   text-decoration: none;
   display: inline-block;
 }
@@ -186,7 +186,7 @@
 .button:hover {
   background-color: var(--color-text-inverse);
   color: var(--color-text-primary);
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
 .button:active {
@@ -254,7 +254,7 @@
    ======================================== */
 
 [data-theme="dark"] .badge {
-  background-color: var(--color-white);
-  color: var(--color-black);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
 }
 

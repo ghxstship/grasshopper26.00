@@ -24,7 +24,7 @@
   padding-block: var(--space-2);
   
   border: var(--border-width-2) solid var(--color-border-strong);
-  border-radius: var(--radius-none);
+  border-radius: var(--border-radius-none);
   background-color: var(--color-bg-primary);
   
   cursor: pointer;
@@ -33,7 +33,7 @@
 }
 
 .button:hover:not(:disabled) {
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
   transform: scale(1.05);
 }
 
@@ -52,7 +52,7 @@
 }
 
 .label {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-wider);
@@ -64,7 +64,7 @@
 }
 
 .button:hover:not(:disabled) .label {
-  color: var(--color-white);
+  color: var(--color-text-inverse);
 }
 
 .arrow {
@@ -76,7 +76,7 @@
 }
 
 .button:hover:not(:disabled) .arrow {
-  color: var(--color-white);
+  color: var(--color-text-inverse);
 }
 
 /* ========================================
@@ -99,10 +99,10 @@
   padding-inline: var(--space-2);
   
   border: var(--border-width-2) solid var(--color-border-default);
-  border-radius: var(--radius-none);
+  border-radius: var(--border-radius-none);
   background-color: var(--color-bg-secondary);
   
-  font-family: var(--font-mono);
+  font-family: var(--font-share-mono);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-bold);
   
@@ -130,12 +130,12 @@
 
 .pageButton.active {
   border-color: var(--color-border-strong);
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
 }
 
 .dots {
-  font-family: var(--font-mono);
+  font-family: var(--font-share-mono);
   font-size: var(--font-size-base);
   color: var(--color-text-tertiary);
   padding-inline: var(--space-2);
@@ -195,26 +195,26 @@
 
 [data-theme="dark"] .label,
 [data-theme="dark"] .arrow {
-  color: var(--color-white);
+  color: var(--color-text-inverse);
 }
 
 [data-theme="dark"] .button:hover:not(:disabled) {
-  background-color: var(--color-white);
+  background-color: var(--color-text-inverse);
 }
 
 [data-theme="dark"] .button:hover:not(:disabled) .label,
 [data-theme="dark"] .button:hover:not(:disabled) .arrow {
-  color: var(--color-black);
+  color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .pageButton {
-  color: var(--color-white);
-  border-color: var(--color-grey-700);
-  background-color: var(--color-grey-900);
+  color: var(--color-text-inverse);
+  border-color: var(--color-text-secondary);
+  background-color: var(--color-interactive-hover);
 }
 
 [data-theme="dark"] .pageButton.active {
-  background-color: var(--color-white);
-  color: var(--color-black);
-  border-color: var(--color-white);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
+  border-color: var(--color-text-inverse);
 }

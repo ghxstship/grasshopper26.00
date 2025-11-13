@@ -11,22 +11,22 @@
 .table {
   inline-size: 100%;
   border-collapse: collapse;
-  border: var(--border-width-thick) solid var(--color-black);
+  border: var(--border-width-3) solid var(--color-interactive-default);
 }
 
 .thead {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
 }
 
 .th {
-  padding: var(--spacing-4);
+  padding: var(--space-4);
   font-family: var(--font-bebas);
   font-size: var(--font-size-h5);
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-wide);
   text-align: start;
-  border-inline-end: var(--border-width-thick) solid var(--color-white);
+  border-inline-end: var(--border-width-3) solid var(--color-text-inverse);
 }
 
 .th:last-child {
@@ -34,11 +34,11 @@
 }
 
 .tbody {
-  background-color: var(--color-white);
+  background-color: var(--color-text-inverse);
 }
 
 .tr {
-  border-block-end: var(--border-width-thin) solid var(--color-grey-300);
+  border-block-end: var(--border-width-1) solid var(--color-border-default);
 }
 
 .tr:last-child {
@@ -46,10 +46,10 @@
 }
 
 .td {
-  padding: var(--spacing-4);
+  padding: var(--space-4);
   font-family: var(--font-share);
-  font-size: var(--font-size-body);
-  border-inline-end: var(--border-width-thin) solid var(--color-grey-300);
+  font-size: var(--font-size-base);
+  border-inline-end: var(--border-width-1) solid var(--color-border-default);
 }
 
 .td:last-child {
@@ -57,11 +57,11 @@
 }
 
 .striped .tr:nth-child(even) {
-  background-color: var(--color-grey-100);
+  background-color: var(--color-bg-tertiary);
 }
 
 .tr:hover {
-  background-color: var(--color-grey-200);
+  background-color: var(--color-border-default);
 }
 
 
@@ -84,11 +84,11 @@
    ======================================== */
 
 [data-theme="dark"] .thead {
-  background-color: var(--color-white);
-  color: var(--color-black);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .tbody {
-  background-color: var(--color-black);
+  background-color: var(--color-interactive-default);
 }
 

@@ -1,13 +1,12 @@
 /**
  * Button Component
- * GHXSTSHIP Entertainment Platform - Primary CTA buttons
- * BEBAS NEUE text, thick borders, color inversion hover, geometric arrows
+ * GHXSTSHIP - Primary interactive element
  */
 
-import * as React from "react"
-import styles from "./Button.module.css"
+import * as React from 'react';
+import styles from './Button.module.css';
 
-export type ButtonVariant = 'filled' | 'outlined' | 'ghost' | 'danger' | 'cta';
+export type ButtonVariant = 'filled' | 'outlined' | 'ghost' | 'cta';
 export type ButtonSize = 'sm' | 'md' | 'lg';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -19,7 +18,6 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   iconAfter?: React.ReactNode;
   iconOnly?: React.ReactNode;
   asChild?: boolean;
-  'aria-label'?: string;
 }
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -45,10 +43,6 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const isIconOnly = Boolean(iconOnly);
     const isDisabled = disabled || loading;
     
-    if (isIconOnly && !ariaLabel && !props['aria-labelledby']) {
-      console.warn('Button: icon-only buttons require an aria-label or aria-labelledby');
-    }
-    
     const classNames = [
       styles.button,
       styles[variant],
@@ -59,7 +53,6 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       className,
     ].filter(Boolean).join(' ');
     
-    // If asChild is true, clone the child element and merge props
     if (asChild && React.isValidElement(children)) {
       return React.cloneElement(children, {
         ...props,
@@ -74,12 +67,13 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         type={type}
         className={classNames}
         disabled={isDisabled}
+        aria-disabled={isDisabled}
         aria-label={ariaLabel}
         aria-busy={loading}
         {...props}
       >
         {loading && (
-          <span className={styles.loadingSpinner} aria-hidden="true">
+          <span className={styles.spinner} aria-hidden="true">
             <span className={styles.spinnerBlock} />
           </span>
         )}
@@ -110,6 +104,6 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       </button>
     );
   }
-)
+);
 
-Button.displayName = "Button"
+Button.displayName = 'Button';

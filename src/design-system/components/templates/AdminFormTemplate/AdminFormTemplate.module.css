@@ -12,7 +12,7 @@
 .sidebar {
   inline-size: 15.625rem;
   background-color: var(--color-bg-secondary);
-  border-inline-end: var(--border-width-default) solid var(--color-border-default);
+  border-inline-end: var(--border-width-2) solid var(--color-border-default);
   position: sticky;
   inset-block-start: 0;
   block-size: 100vh;
@@ -29,10 +29,10 @@
 .stickyHeader {
   position: sticky;
   inset-block-start: 0;
-  z-index: var(--z-sticky);
+  z-index: var(--z-fixed);
   background-color: var(--color-bg-primary);
-  border-block-end: var(--border-width-default) solid var(--color-border-default);
-  box-shadow: var(--shadow-sm);
+  border-block-end: var(--border-width-2) solid var(--color-border-default);
+  box-shadow: var(--shadow-button-hover);
 }
 
 .headerContent {
@@ -54,7 +54,7 @@
 }
 
 .title {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-h2);
   font-weight: var(--font-weight-bold);
   color: var(--color-text-primary);
@@ -63,7 +63,7 @@
 }
 
 .description {
-  font-family: var(--font-body);
+  font-family: var(--font-share);
   font-size: var(--font-size-base);
   color: var(--color-text-secondary);
   margin-block-start: var(--space-2);
@@ -93,25 +93,25 @@
 }
 
 .toggleText {
-  font-family: var(--font-body);
+  font-family: var(--font-share);
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
 }
 
 .primaryButton {
   padding: var(--space-3) var(--space-6);
-  background-color: var(--color-black);
-  color: var(--color-white);
-  border: var(--border-width-default) solid var(--color-border-strong);
-  font-family: var(--font-heading);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
+  border: var(--border-width-2) solid var(--color-border-strong);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-base);
   cursor: pointer;
   transition: all var(--duration-fast) var(--easing-out);
 }
 
 .primaryButton:hover:not(:disabled) {
-  background-color: var(--color-primary-hover);
-  box-shadow: var(--shadow-md);
+  background-color: var(--color-interactive-hover);
+  box-shadow: var(--shadow-card);
 }
 
 .primaryButton:disabled {
@@ -123,8 +123,8 @@
   padding: var(--space-3) var(--space-6);
   background-color: transparent;
   color: var(--color-text-primary);
-  border: var(--border-width-default) solid var(--color-border-default);
-  font-family: var(--font-heading);
+  border: var(--border-width-2) solid var(--color-border-default);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-base);
   cursor: pointer;
   transition: all var(--duration-fast) var(--easing-out);
@@ -140,21 +140,21 @@
 .errorMessage {
   padding: var(--space-4) var(--space-6);
   margin: var(--space-4) var(--space-6);
-  border: var(--border-width-thick) solid;
-  font-family: var(--font-body);
+  border: var(--border-width-3) solid;
+  font-family: var(--font-share);
   font-size: var(--font-size-base);
 }
 
 .successMessage {
   background-color: var(--color-success-bg);
-  border-color: var(--color-success-border);
+  border-color: var(--color-border-strong);
   color: var(--color-success-text);
 }
 
 .errorMessage {
   background-color: var(--color-error-bg);
-  border-color: var(--color-error-border);
-  color: var(--color-error-text);
+  border-color: var(--color-border-strong);
+  color: var(--color-text-primary);
 }
 
 /* Form Content */
@@ -178,9 +178,9 @@
 .spinner {
   inline-size: 2.5rem;
   block-size: 2.5rem;
-  border: var(--border-width-thick) solid var(--color-border-default);
-  border-block-start-color: var(--color-primary);
-  border-radius: var(--radius-none);
+  border: var(--border-width-3) solid var(--color-border-default);
+  border-block-start-color: var(--color-interactive-default);
+  border-radius: var(--border-radius-none);
   animation: spin 1s linear infinite;
 }
 
@@ -195,13 +195,13 @@
   margin: var(--space-6);
   padding: var(--space-4);
   background-color: var(--color-error-bg);
-  border: var(--border-width-thick) solid var(--color-error-border);
+  border: var(--border-width-3) solid var(--color-border-strong);
 }
 
 .errorsSummaryTitle {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-lg);
-  color: var(--color-error-text);
+  color: var(--color-text-primary);
   margin: 0 0 var(--space-3) 0;
 }
 
@@ -212,9 +212,9 @@
 }
 
 .errorItem {
-  font-family: var(--font-body);
+  font-family: var(--font-share);
   font-size: var(--font-size-sm);
-  color: var(--color-error-text);
+  color: var(--color-text-primary);
   padding: var(--space-2) 0;
 }
 
@@ -246,7 +246,7 @@
    ======================================== */
 
 [data-theme="dark"] .primaryButton {
-  background-color: var(--color-white);
-  color: var(--color-black);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
 }
 

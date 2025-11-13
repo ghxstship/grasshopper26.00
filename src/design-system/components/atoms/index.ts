@@ -25,6 +25,7 @@ export * from './CookieConsent';
 export * from './Popover';
 export * from './ProgressBar';
 export * from './Switch';
+export * from './ThemeToggle';
 export * from './Pagination';
 export * from './Dropdown';
 export * from './Table';

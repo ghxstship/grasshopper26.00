@@ -10,7 +10,7 @@
 .iconInline {
   inline-size: var(--icon-size-md);
   block-size: var(--icon-size-md);
-  margin-inline-end: var(--spacing-sm);
+  margin-inline-end: var(--space-sm);
 }
 
 .iconSmall {
@@ -19,29 +19,29 @@
 }
 
 .form {
-  padding: var(--spacing-md);
+  padding: var(--space-md);
   background-color: var(--color-surface);
-  border-radius: var(--radius-none);
-  margin-block-end: var(--spacing-lg);
+  border-radius: var(--border-radius-none);
+  margin-block-end: var(--space-lg);
 }
 
 .formFields {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
-  gap: var(--spacing-md);
-  margin-block-end: var(--spacing-md);
+  gap: var(--space-md);
+  margin-block-end: var(--space-md);
 }
 
 .formField {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-xs);
+  gap: var(--space-xs);
 }
 
 .select {
-  padding: var(--spacing-sm) var(--spacing-md);
-  border: var(--border-width-thin) solid var(--color-border);
-  border-radius: var(--radius-none);
+  padding: var(--space-sm) var(--space-md);
+  border: var(--border-width-1) solid var(--color-border);
+  border-radius: var(--border-radius-none);
   background-color: var(--color-background);
   color: var(--color-text-primary);
   font-size: var(--font-size-md);
@@ -49,26 +49,26 @@
 
 .formActions {
   display: flex;
-  gap: var(--spacing-sm);
+  gap: var(--space-sm);
 }
 
 .stagesList {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15.625rem, 1fr));
-  gap: var(--spacing-md);
+  gap: var(--space-md);
 }
 
 .stageItem {
-  padding: var(--spacing-md);
-  border: var(--border-width-thin) solid var(--color-border);
-  border-radius: var(--radius-none);
+  padding: var(--space-md);
+  border: var(--border-width-1) solid var(--color-border);
+  border-radius: var(--border-radius-none);
   background-color: var(--color-surface);
 }
 
 .stageInfo {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-xs);
+  gap: var(--space-xs);
 }
 
 .stageName {
@@ -81,7 +81,7 @@
 .stageDetail {
   display: flex;
   align-items: center;
-  gap: var(--spacing-xs);
+  gap: var(--space-xs);
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
   margin: 0;
@@ -90,30 +90,30 @@
 .scheduleList {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-md);
+  gap: var(--space-md);
 }
 
 .scheduleItem {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--spacing-md);
-  border: var(--border-width-thin) solid var(--color-border);
-  border-radius: var(--radius-none);
-  gap: var(--spacing-md);
+  padding: var(--space-md);
+  border: var(--border-width-1) solid var(--color-border);
+  border-radius: var(--border-radius-none);
+  gap: var(--space-md);
 }
 
 .scheduleInfo {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-sm);
+  gap: var(--space-sm);
 }
 
 .scheduleHeader {
   display: flex;
   align-items: center;
-  gap: var(--spacing-sm);
+  gap: var(--space-sm);
 }
 
 .artistName {
@@ -126,7 +126,7 @@
 .scheduleTime {
   display: flex;
   align-items: center;
-  gap: var(--spacing-xs);
+  gap: var(--space-xs);
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
   margin: 0;

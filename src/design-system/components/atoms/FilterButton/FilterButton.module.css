@@ -9,7 +9,7 @@
   align-items: center;
   gap: var(--space-2);
   
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-weight: var(--font-weight-normal);
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-wide);
@@ -18,7 +18,7 @@
   color: var(--color-text-primary);
   
   border: var(--border-width-2) solid var(--color-border-default);
-  border-radius: var(--radius-none);
+  border-radius: var(--border-radius-none);
   
   cursor: pointer;
   
@@ -54,12 +54,12 @@
   
   padding-inline: var(--space-1);
   
-  font-family: var(--font-mono);
+  font-family: var(--font-share-mono);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-bold);
   
   border: var(--border-width-2) solid var(--color-border-default);
-  border-radius: var(--radius-none);
+  border-radius: var(--border-radius-none);
   background-color: var(--color-bg-primary);
 }
 
@@ -68,9 +68,9 @@
    ======================================== */
 
 .active {
-  background-color: var(--color-black);
-  color: var(--color-white);
-  border-color: var(--color-primary);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
+  border-color: var(--color-interactive-default);
 }
 
 .active:hover:not(:disabled) {
@@ -140,9 +140,9 @@
 }
 
 [data-theme="dark"] .active {
-  background-color: var(--color-accent);
-  color: var(--color-primary);
-  border-color: var(--color-accent);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
+  border-color: var(--color-text-inverse);
 }
 
 [data-theme="dark"] .active:hover:not(:disabled) {

@@ -4,10 +4,10 @@
   inset-inline-start: 0;
   inset-inline-end: 0;
   background: var(--color-text-primary);
-  border-block-start: var(--border-width-thick) solid var(--color-bg-primary);
+  border-block-start: var(--border-width-3) solid var(--color-bg-primary);
   padding: var(--space-4);
   z-index: var(--z-notification);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-card);
 }
 
 .content {
@@ -22,7 +22,7 @@
 .text {
   color: var(--color-bg-primary) !important;
   font-family: var(--font-family-body);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-base);
   line-height: var(--line-height-body);
   margin: 0;
 }
@@ -31,7 +31,7 @@
   padding: var(--space-3) var(--space-6);
   background: var(--color-bg-primary);
   color: var(--color-text-primary);
-  border: var(--border-width-thick) solid var(--color-bg-primary);
+  border: var(--border-width-3) solid var(--color-bg-primary);
   font-family: var(--font-family-heading);
   font-size: var(--font-size-h6);
   font-weight: var(--font-weight-normal);
@@ -43,9 +43,9 @@
 }
 
 .button:hover {
-  background: var(--color-grey-200);
+  background: var(--color-border-default);
   transform: translate(calc(var(--space-1) * -1), calc(var(--space-1) * -1));
-  box-shadow: var(--shadow-base);
+  box-shadow: var(--shadow-card);
 }
 
 .button:active {
@@ -62,7 +62,7 @@
 .buttonSecondary {
   background: transparent;
   color: var(--color-bg-primary);
-  border: var(--border-width-thick) solid var(--color-bg-primary);
+  border: var(--border-width-3) solid var(--color-bg-primary);
 }
 
 .buttonSecondary:hover {

@@ -16,7 +16,7 @@
    ======================================== */
 
 .title {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-3xl);
   font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-wide);
@@ -42,7 +42,7 @@
 
 .item {
   border: var(--border-width-3) solid var(--color-border-default);
-  border-radius: var(--radius-none)(--radius-none);
+  border-radius: var(--border-radius-none)(--radius-none);
   background-color: var(--color-bg-primary);
   
   transition: border-color var(--duration-fast) var(--easing-out);
@@ -88,7 +88,7 @@
 }
 
 .questionText {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-wide);
@@ -113,10 +113,10 @@
   block-size: 2.5rem;
   
   border: var(--border-width-3) solid var(--color-border-strong);
-  border-radius: var(--radius-none)(--radius-none);
+  border-radius: var(--border-radius-none)(--radius-none);
   background-color: var(--color-bg-primary);
   
-  font-family: var(--font-mono);
+  font-family: var(--font-share-mono);
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-bold);
   line-height: 1;
@@ -129,13 +129,13 @@
 }
 
 .question:hover .icon {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
 }
 
 .item.expanded .icon {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
 }
 
 /* ========================================
@@ -157,7 +157,7 @@
   padding: var(--space-5);
   padding-block-start: 0;
   
-  font-family: var(--font-body);
+  font-family: var(--font-share);
   font-size: var(--font-size-base);
   line-height: var(--line-height-body);
   
@@ -210,11 +210,11 @@
 @media (prefers-contrast: high) {
   .title,
   .item {
-    border-width: var(--border-width-4);
+    border-width: var(--border-width-3);
   }
   
   .icon {
-    border-width: var(--border-width-4);
+    border-width: var(--border-width-3);
   }
 }
 
@@ -224,6 +224,6 @@
 
 [data-theme="dark"] .question:hover .icon,
 [data-theme="dark"] .item.expanded .icon {
-  background-color: var(--color-accent);
-  color: var(--color-primary);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
 }

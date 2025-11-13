@@ -10,7 +10,7 @@
   align-items: center;
   gap: var(--space-1);
   
-  font-family: var(--font-body);
+  font-family: var(--font-share);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
   text-decoration: none;
@@ -44,7 +44,7 @@
 }
 
 .nav {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-weight: var(--font-weight-normal);
   letter-spacing: var(--letter-spacing-wider);
   text-transform: uppercase;
@@ -83,7 +83,7 @@
 }
 
 .button {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-wider);
   text-transform: uppercase;
@@ -93,7 +93,7 @@
   padding-block: var(--space-3);
   
   border: var(--border-width-3) solid var(--color-border-strong);
-  border-radius: var(--radius-none)(--radius-none);
+  border-radius: var(--border-radius-none);
   background-color: transparent;
   
   min-height: var(--font-size-5xl);
@@ -102,8 +102,8 @@
 }
 
 .button:hover {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
   transform: scale(1.05);
 }
 
@@ -172,7 +172,7 @@
   }
   
   .button {
-    border-width: var(--border-width-4);
+    border-width: var(--border-width-3);
   }
 }
 
@@ -193,6 +193,6 @@
 }
 
 [data-theme="dark"] .button:hover {
-  background-color: var(--color-accent);
-  color: var(--color-primary);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
 }

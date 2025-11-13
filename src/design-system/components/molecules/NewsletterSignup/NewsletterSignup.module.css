@@ -28,7 +28,7 @@
 
 .description {
   font-family: var(--font-family-share);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-base);
   color: var(--color-bg-primary);
   margin-block-end: var(--space-6);
 }
@@ -58,14 +58,14 @@
 }
 
 .input:focus {
-  border-color: var(--color-accent) !important;
+  border-color: var(--color-text-inverse) !important;
 }
 
 .button {
   white-space: nowrap;
-  background-color: var(--color-accent) !important;
-  color: var(--color-primary) !important;
-  border-color: var(--color-accent) !important;
+  background-color: var(--color-text-inverse) !important;
+  color: var(--color-interactive-default) !important;
+  border-color: var(--color-text-inverse) !important;
   min-inline-size: 9.375rem;
 }
 

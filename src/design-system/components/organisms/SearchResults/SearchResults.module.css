@@ -62,7 +62,7 @@
 
 .item:hover {
   border-color: var(--color-border-strong);
-  box-shadow: 0.25rem 0.25rem 0 var(--color-primary);
+  box-shadow: 0.25rem 0.25rem 0 var(--color-interactive-default);
 }
 
 .thumbnail {
@@ -114,7 +114,7 @@
 
 .itemDescription {
   font-family: var(--font-family-share);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-base);
   line-height: 1.4;
   color: var(--color-text-primary);
   margin: 0;

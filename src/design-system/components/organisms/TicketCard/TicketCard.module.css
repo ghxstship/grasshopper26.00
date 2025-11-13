@@ -16,7 +16,7 @@
 
 .card:hover {
   transform: scale(1.03);
-  box-shadow: 0.5rem 0.5rem 0 var(--color-primary);
+  box-shadow: 0.5rem 0.5rem 0 var(--color-interactive-default);
 }
 
 .card:active {
@@ -24,7 +24,7 @@
 }
 
 .card.featured {
-  border-color: var(--color-primary);
+  border-color: var(--color-interactive-default);
   border-width: 0.25rem;
 }
 
@@ -45,8 +45,8 @@
 }
 
 .card.featured .header {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
 }
 
 .badge {
@@ -57,16 +57,16 @@
   letter-spacing: 0.02em;
   padding-block: var(--space-1);
   padding-inline: var(--space-2);
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
   border: var(--border-width-2) solid var(--color-border-strong);
   display: inline-block;
   margin-block-end: var(--space-3);
 }
 
 .card.featured .badge {
-  background-color: var(--color-accent);
-  color: var(--color-primary);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
 }
 
 .title {
@@ -90,7 +90,7 @@
 }
 
 .card.featured .subtitle {
-  color: var(--color-white);
+  color: var(--color-text-inverse);
   opacity: 0.8;
 }
 
@@ -120,7 +120,7 @@
 
 .pricePeriod {
   font-family: var(--font-family-share-mono);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-base);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--color-text-secondary);
@@ -144,7 +144,7 @@
 
 .featureItem {
   font-family: var(--font-family-share);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-base);
   line-height: 1.6;
   color: var(--color-text-primary);
   display: flex;
@@ -160,8 +160,8 @@
   align-items: center;
   justify-content: center;
   border: var(--border-width-2) solid var(--color-border-strong);
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
   font-family: var(--font-family-share-mono);
   font-size: var(--font-size-meta);
   font-weight: 700;
@@ -192,8 +192,8 @@
 }
 
 .button:hover {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
   transform: scale(1.02);
 }
 
@@ -202,13 +202,13 @@
 }
 
 .card.featured .button {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
 }
 
 .card.featured .button:hover {
-  background-color: var(--color-accent);
-  color: var(--color-primary);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
 }
 
 .card.soldOut .button {
@@ -257,12 +257,12 @@
    ======================================== */
 
 [data-theme="dark"] .badge {
-  background-color: var(--color-white);
-  color: var(--color-black);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
 }
 
 [data-theme="dark"] .featureIcon {
-  background-color: var(--color-white);
-  color: var(--color-black);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
 }
 

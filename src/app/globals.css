@@ -1,7 +1,5 @@
 /* Import Design System Tokens */
 @import '../design-system/tokens/tokens.css';
-@import '../design-system/tokens/utility-classes.css';
-@import '../design-system/tokens/geometric-patterns.css';
 
 @tailwind base;
 @tailwind components;
@@ -64,17 +62,16 @@
     font-family: var(--font-sans);
   }
   
-  /* Ensure minimum touch targets for accessibility */
-  /* Touch targets for mobile accessibility */
+  /* Touch targets for accessibility */
   button, a, input, select, textarea {
-    min-height: var(--space-11);
-    min-width: var(--space-11);
+    min-block-size: 2.75rem;
+    min-inline-size: 2.75rem;
   }
   
-  /* Focus visible styles for accessibility */
+  /* Focus visible styles */
   *:focus-visible {
     outline: var(--border-width-2) solid var(--color-border-focus);
-    outline-offset: var(--space-0.5);
+    outline-offset: var(--space-1);
   }
 }
 
@@ -94,16 +91,16 @@
     display: none !important;
   }
   
-  /* GHXSTSHIP toast styling - monochromatic, hard edges, 0.1875rem borders */
+  /* Toast styling - GHXSTSHIP */
   .ghxstship-toast {
-    border-radius: 0 !important;
-    border-width: 0.1875rem !important;
+    border-radius: var(--border-radius-none) !important;
+    border-width: var(--border-width-3) !important;
   }
   
-  /* Toast close button styling */
+  /* Toast close button */
   [data-sonner-toast] [data-close-button] {
-    border: var(--border-width-thick) solid var(--color-border-strong) !important;
-    border-radius: 0 !important;
+    border: var(--border-width-2) solid var(--color-border-strong) !important;
+    border-radius: var(--border-radius-none) !important;
     background: transparent !important;
     color: var(--color-text-primary) !important;
     transition: all var(--duration-fast) var(--easing-out) !important;
@@ -112,14 +109,14 @@
   }
   
   [data-sonner-toast] [data-close-button]:hover {
-    background: var(--color-black) !important;
-    color: var(--color-white) !important;
-    transform: translate(calc(var(--space-1) * -1), calc(var(--space-1) * -1)) !important;
-    box-shadow: var(--shadow-base) !important;
+    background: var(--color-interactive-default) !important;
+    color: var(--color-text-inverse) !important;
+    transform: translate(-2px, -2px) !important;
+    box-shadow: var(--shadow-button-hover) !important;
   }
   
   [data-sonner-toast] [data-close-button]:active {
-    transform: translate(0, 0) !important;
-    box-shadow: none !important;
+    transform: translate(-1px, -1px) !important;
+    box-shadow: var(--shadow-button-active) !important;
   }
 }

@@ -18,7 +18,7 @@
 }
 
 .label {
-  font-family: var(--font-mono);
+  font-family: var(--font-share-mono);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-bold);
   text-transform: uppercase;
@@ -27,7 +27,7 @@
 }
 
 .percentage {
-  font-family: var(--font-mono);
+  font-family: var(--font-share-mono);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-bold);
   color: var(--color-text-secondary);
@@ -40,13 +40,13 @@
   
   background-color: var(--color-bg-secondary);
   border: var(--border-width-2) solid var(--color-border-default);
-  border-radius: var(--radius-none);
+  border-radius: var(--border-radius-none);
 }
 
 .fill {
   height: 100%;
-  background-color: var(--color-black);
-  border-radius: var(--radius-none);
+  background-color: var(--color-interactive-default);
+  border-radius: var(--border-radius-none);
   
   transition: width var(--duration-base) var(--easing-out);
 }
@@ -83,5 +83,5 @@
 }
 
 [data-theme="dark"] .fill {
-  background-color: var(--color-accent);
+  background-color: var(--color-text-inverse);
 }

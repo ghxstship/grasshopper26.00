@@ -5,15 +5,15 @@
 
 .kbd {
   display: inline-block;
-  padding: var(--spacing-1) var(--spacing-2);
+  padding: var(--space-1) var(--space-2);
   font-family: var(--font-share-mono);
   font-size: var(--font-size-meta);
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-wide);
-  background-color: var(--color-grey-100);
-  color: var(--color-black);
-  border: var(--border-width-thick) solid var(--color-black);
-  box-shadow: 0.125rem 0.125rem 0 0 var(--color-black);
+  background-color: var(--color-bg-tertiary);
+  color: var(--color-interactive-default);
+  border: var(--border-width-3) solid var(--color-interactive-default);
+  box-shadow: var(--space-px) var(--space-px) 0 0 var(--color-interactive-default);
   min-inline-size: 2em;
   text-align: center;
 }
@@ -38,7 +38,7 @@
    ======================================== */
 
 [data-theme="dark"] .kbd {
-  background-color: var(--color-grey-800);
-  color: var(--color-white);
+  background-color: var(--color-border-default);
+  color: var(--color-text-inverse);
 }
 

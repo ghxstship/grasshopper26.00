@@ -9,13 +9,13 @@
   align-items: center;
   justify-content: center;
   
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas);
   font-weight: var(--font-weight-bold);
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-wide);
   
   border: var(--border-width-3) solid var(--color-border-strong);
-  border-radius: var(--radius-none);
+  border-radius: var(--border-radius-none);
   
   white-space: nowrap;
 }
@@ -27,9 +27,9 @@
 }
 
 .\32 1\+ {
-  background-color: var(--color-black);
-  color: var(--color-white);
-  border-color: var(--color-primary);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
+  border-color: var(--color-interactive-default);
 }
 
 .all-ages {
@@ -57,8 +57,8 @@
 }
 
 [data-theme="dark"] .\32 1\+ {
-  background-color: var(--color-accent);
-  color: var(--color-primary);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
 }
 
 /* ========================================

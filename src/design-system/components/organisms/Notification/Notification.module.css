@@ -13,7 +13,7 @@
   padding: var(--space-5);
   border: var(--border-width-3) solid var(--color-border-strong);
   background-color: var(--color-bg-primary);
-  box-shadow: 0.5rem 0.5rem 0 var(--color-primary);
+  box-shadow: 0.5rem 0.5rem 0 var(--color-interactive-default);
   z-index: 10000;
   animation: slideIn 0.3s ease;
 }
@@ -29,12 +29,12 @@
 
 .notification.success {
   border-color: var(--color-border-strong);
-  box-shadow: 0.5rem 0.5rem 0 var(--color-primary);
+  box-shadow: 0.5rem 0.5rem 0 var(--color-interactive-default);
 }
 
 .notification.error {
   border-color: var(--color-border-strong);
-  box-shadow: 0.5rem 0.5rem 0 var(--color-primary);
+  box-shadow: 0.5rem 0.5rem 0 var(--color-interactive-default);
 }
 
 .notification.warning {
@@ -63,8 +63,8 @@
   align-items: center;
   justify-content: center;
   border: var(--border-width-2) solid var(--color-border-strong);
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
   font-family: var(--font-family-bebas);
   font-size: var(--font-size-h6);
   font-weight: 700;
@@ -87,7 +87,7 @@
 
 .message {
   font-family: var(--font-family-share);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-base);
   line-height: 1.4;
   color: var(--color-text-primary);
   margin: 0;
@@ -106,12 +106,12 @@
   cursor: pointer;
   transition: background-color 0.2s ease, color 0.2s ease;
   font-family: var(--font-family-bebas);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-base);
 }
 
 .closeButton:hover {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
 }
 
 .actions {
@@ -136,18 +136,18 @@
 }
 
 .actionButton:hover {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
 }
 
 .actionButton.primary {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-interactive-default);
+  color: var(--color-text-inverse);
 }
 
 .actionButton.primary:hover {
-  background-color: var(--color-accent);
-  color: var(--color-primary);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
 }
 
 
@@ -170,7 +170,7 @@
    ======================================== */
 
 [data-theme="dark"] .icon {
-  background-color: var(--color-white);
-  color: var(--color-black);
+  background-color: var(--color-text-inverse);
+  color: var(--color-interactive-default);
 }
 

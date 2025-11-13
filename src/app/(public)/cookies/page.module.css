@@ -55,7 +55,7 @@
 
 .paragraph {
   font-family: var(--font-share);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-base);
   line-height: 1.6;
   color: var(--color-text);
 }
@@ -69,7 +69,7 @@
 }
 
 .link {
-  color: var(--color-primary);
+  color: var(--color-interactive-default);
   text-decoration: underline;
 }
 
@@ -172,11 +172,11 @@
 }
 
 .rounded {
-  border-radius: var(--radius-none);
+  border-radius: var(--border-radius-none);
 }
 
 .shadow {
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-card);
 }
 
 /* DARK MODE */

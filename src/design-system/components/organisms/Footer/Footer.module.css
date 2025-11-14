@@ -1,0 +1,48 @@
+/**
+ * Footer - Site footer organism
+ * GHXSTSHIP: Hard geometric, monochromatic
+ */
+
+.footer {
+  background-color: var(--color-bg-inverse);
+  color: var(--color-white);
+  border-block-start: var(--border-width-3) solid var(--color-border-strong);
+}
+
+.container {
+  max-inline-size: 96rem;
+  margin-inline: auto;
+  padding-inline: var(--space-6);
+  padding-block: var(--space-12);
+}
+
+.link {
+  text-decoration: none;
+  color: var(--color-white);
+  transition: transform var(--duration-fast) var(--easing-out);
+  display: inline-block;
+}
+
+.link:hover {
+  transform: translateX(4px);
+}
+
+.bottom {
+  margin-block-start: var(--space-12);
+  padding-block-start: var(--space-8);
+  border-block-start: var(--border-width-3) solid var(--color-grey-800);
+}
+
+.socialLink {
+  text-decoration: none;
+  color: var(--color-white);
+  padding: var(--space-2);
+  border: var(--border-width-3) solid var(--color-white);
+  transition: all var(--duration-fast) var(--easing-out);
+  display: inline-block;
+}
+
+.socialLink:hover {
+  box-shadow: 4px 4px 0 var(--color-white);
+  transform: translate(-2px, -2px);
+}

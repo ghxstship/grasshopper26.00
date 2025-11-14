@@ -1,128 +1,132 @@
+/**
+ * Home Client - Homepage with GHXSTSHIP design system
+ */
+
 'use client';
 
-import { useRouter } from 'next/navigation';
-import { LandingLayout } from '@/design-system/components/templates/LandingLayout/LandingLayout';
-import { SiteHeader } from '@/design-system/components/organisms/layout/site-header';
-import { HeroSection } from '@/design-system/components/organisms/HeroSection/HeroSection';
-import { EventsGrid } from '@/design-system/components/organisms/EventsGrid/EventsGrid';
-import { Carousel } from '@/design-system/components/organisms/Carousel/Carousel';
-import { NewsletterSignup } from '@/design-system/components/molecules/NewsletterSignup';
-import { EventCard } from '@/design-system/components/organisms/EventCard/EventCard';
-import { Typography } from '@/design-system/components/atoms/Typography/Typography';
-import { Button } from '@/design-system/components/atoms/Button/Button';
-import { toast } from 'sonner';
-import styles from './home.module.css';
+import { Stack } from '@/design-system';
+import { Hero, EventsGrid } from '@/design-system';
+import { PageTemplate } from '@/design-system';
 
-export function HomeClient({ featuredEvents, upcomingEvents }: { featuredEvents: any[]; upcomingEvents: any[] }) {
-  const router = useRouter();
+interface Event {
+  id: string;
+  title: string;
+  slug: string;
+  start_date: string;
+  location: string;
+  image_url?: string;
+  ticket_price?: number;
+  sold_out?: boolean;
+}
 
-  const mapEventData = (event: any) => ({
-    id: event.id,
-    name: event.name,
+interface HomeClientProps {
+  featuredEvents: Event[];
+  upcomingEvents: Event[];
+}
+
+export function HomeClient({ featuredEvents, upcomingEvents }: HomeClientProps) {
+  const navItems = [
+    { label: 'Events', href: '/events' },
+    { label: 'Music', href: '/music' },
+    { label: 'Shop', href: '/shop' },
+    { label: 'Membership', href: '/membership' },
+  ];
+
+  const footerColumns = [
+    {
+      title: 'Events',
+      links: [
+        { label: 'Browse Events', href: '/events' },
+        { label: 'Artists', href: '/music' },
+        { label: 'Venues', href: '/venues' },
+      ],
+    },
+    {
+      title: 'Shop',
+      links: [
+        { label: 'Merchandise', href: '/shop' },
+        { label: 'Tickets', href: '/events' },
+      ],
+    },
+    {
+      title: 'Company',
+      links: [
+        { label: 'About', href: '/about' },
+        { label: 'Contact', href: '/contact' },
+        { label: 'Privacy', href: '/privacy' },
+        { label: 'Terms', href: '/legal/terms' },
+      ],
+    },
+    {
+      title: 'Connect',
+      links: [
+        { label: 'Instagram', href: 'https://instagram.com' },
+        { label: 'Twitter', href: 'https://twitter.com' },
+        { label: 'Facebook', href: 'https://facebook.com' },
+      ],
+    },
+  ];
+
+  const formatEventCard = (event: Event) => ({
+    title: event.title,
+    slug: event.slug,
     date: new Date(event.start_date).toLocaleDateString('en-US', {
       month: 'short',
       day: 'numeric',
       year: 'numeric',
-    }).toUpperCase(),
-    venue: event.venue_name || 'TBA',
-    imageUrl: event.hero_image_url || '/placeholder.jpg',
-    status: (event.status || 'on-sale') as 'on-sale' | 'sold-out' | 'coming-soon',
+    }),
+    location: event.location,
+    image: event.image_url,
+    price: event.ticket_price ? `$${event.ticket_price}` : undefined,
+    soldOut: event.sold_out,
   });
 
-  const handleNewsletterSubmit = async (email: string) => {
-    try {
-      const response = await fetch('/api/newsletter/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
-      });
-      
-      if (!response.ok) throw new Error('Failed to subscribe');
-      toast.success('Successfully subscribed to newsletter!');
-    } catch (error) {
-      toast.error('Failed to subscribe. Please try again.');
-      throw error;
-    }
-  };
-
   return (
-    <LandingLayout
-      header={<SiteHeader />}
-      hero={
-        <HeroSection
-          title="EXPERIENCE LIVE"
-          tagline="WORLD-CLASS FESTIVALS, CONCERTS & EVENTS"
-          ctaText="EXPLORE EVENTS"
+    <PageTemplate
+      headerProps={{
+        logoText: 'GVTEWAY',
+        navItems,
+        showAuth: true,
+      }}
+      footerProps={{
+        columns: footerColumns,
+        socialLinks: [
+          { label: 'IG', href: 'https://instagram.com' },
+          { label: 'TW', href: 'https://twitter.com' },
+          { label: 'FB', href: 'https://facebook.com' },
+        ],
+      }}
+      maxWidth="full"
+    >
+      <Stack gap={16}>
+        {/* Hero */}
+        <Hero
+          title="EXCLUSIVE EVENTS & EXPERIENCES"
+          subtitle="Join GVTEWAY for premium access to the best events"
+          ctaText="Browse Events"
           ctaHref="/events"
-          variant="black"
-          showScrollIndicator={true}
+          secondaryCtaText="Become a Member"
+          secondaryCtaHref="/membership"
         />
-      }
-      featuredEvents={
-        featuredEvents.length > 0 ? (
-          <div className={styles.sectionContainer}>
-            <h2 className={styles.sectionTitle}>Featured Events</h2>
-            <Carousel
-              showNavigation
-              showDots
-              autoplayInterval={6000}
-              loop
-            >
-              {featuredEvents.map((event) => (
-                <EventCard
-                  key={event.id}
-                  title={event.name}
-                  description={event.description}
-                  imageUrl={event.hero_image_url || '/placeholder.jpg'}
-                  imageAlt={event.name}
-                  date={new Date(event.start_date).toLocaleDateString()}
-                  location={event.venue_name || 'TBA'}
-                  href={`/events/${event.slug}`}
-                />
-              ))}
-            </Carousel>
-          </div>
-        ) : undefined
-      }
-      featuredArtists={
-        upcomingEvents.length > 0 ? (
-          <div className={styles.sectionContainer}>
-            <h2 className={styles.sectionTitle}>Upcoming Events</h2>
-            <EventsGrid
-              events={upcomingEvents.map(mapEventData)}
-              onEventClick={(id) => router.push(`/events/${id}`)}
-              layout="grid"
-            />
-            <div className={styles.sectionCta}>
-              <Button
-                variant="outlined"
-                size="lg"
-                onClick={() => router.push('/events')}
-              >
-                View All Events
-              </Button>
-            </div>
-          </div>
-        ) : undefined
-      }
-      membershipTiers={
-        <div className={styles.sectionContainer}>
-          <h2 className={styles.sectionTitle}>Become a Member</h2>
-          <p className={styles.sectionDescription}>
-            Unlock exclusive access to presales, VIP experiences, and member-only events
-          </p>
-          <div className={styles.sectionCta}>
-            <Button
-              variant="filled"
-              size="lg"
-              onClick={() => router.push('/membership')}
-            >
-              Explore Membership
-            </Button>
-          </div>
-        </div>
-      }
-      newsletter={<NewsletterSignup />}
-    />
+
+        {/* Featured Events */}
+        {featuredEvents.length > 0 && (
+          <EventsGrid
+            title="Featured Events"
+            events={featuredEvents.map(formatEventCard)}
+            columns={3}
+          />
+        )}
+
+        {/* Upcoming Events */}
+        {upcomingEvents.length > 0 && (
+          <EventsGrid
+            title="Upcoming Events"
+            events={upcomingEvents.map(formatEventCard)}
+            columns={4}
+          />
+        )}
+      </Stack>
+    </PageTemplate>
   );
 }

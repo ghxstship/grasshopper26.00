@@ -6,11 +6,11 @@
 'use client';
 
 import { use, useEffect, useState } from 'react';
-import { ContextualPageTemplate } from '@/design-system/components/templates';
+import { ContextualPageTemplate } from '@/design-system';
 import { createClient } from '@/lib/supabase/client';
-import { Button } from '@/design-system/components/atoms/Button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/Card';
-import { Badge } from '@/design-system/components/atoms/Badge';
+import { Button } from '@/design-system';
+import { Card, CardContent, CardHeader, CardTitle } from '@/design-system';
+import { Badge } from '@/design-system';
 import { Plus, Users, Shield } from 'lucide-react';
 import { toast } from 'sonner';
 import styles from './team-content.module.css';

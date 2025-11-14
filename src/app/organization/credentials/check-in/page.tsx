@@ -1,9 +1,9 @@
 'use client';
 
-import { AdminListTemplate } from '@/design-system/components/templates';
+import { AdminListTemplate } from '@/design-system';
 import { QrCode, Scan } from 'lucide-react';
 import { useCheckIn } from '@/hooks/useCheckIn';
-import { CheckInTable } from '@/design-system/components/organisms/credentials/check-in-table';
+import { CheckInTable } from '@/design-system';
 
 export default function CheckInPage() {
   const { checkIns, stats, loading } = useCheckIn();

@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { getTasksByUser } from '@/lib/actions/tasks';
-import { TaskListItem } from '@/design-system/components/molecules/TaskListItem';
-import { LoadingSpinner } from '@/design-system/components/atoms/LoadingSpinner';
+import { TaskListItem } from '@/design-system';
+import { Spinner } from '@/design-system';
 import { createClient } from '@/lib/supabase/server';
 import styles from './page.module.css';
 
@@ -92,7 +92,7 @@ export default function TasksPage() {
         <h1 className={styles.title}>MY TASKS</h1>
       </div>
 
-      <Suspense fallback={<LoadingSpinner />}>
+      <Suspense fallback={<Spinner />}>
         <TasksList />
       </Suspense>
     </div>

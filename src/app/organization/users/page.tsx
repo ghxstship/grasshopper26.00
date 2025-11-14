@@ -1,8 +1,7 @@
 'use client';
 
-import { AdminListTemplate } from '@/design-system/components/templates/AdminListTemplate/AdminListTemplate';
-import { AdminSidebar } from '@/design-system/components/organisms/AdminSidebar/AdminSidebar';
-import { Typography } from '@/design-system/components/atoms/Typography/Typography';
+import { Heading, Text } from '@/design-system';
+import { AdminListTemplate } from '@/design-system';
 import { Users, Plus } from 'lucide-react';
 import { useAdminUsers } from '@/hooks/useAdminUsers';
 import styles from './users.module.css';
@@ -12,7 +11,6 @@ export default function AdminUsersPage() {
 
   return (
     <AdminListTemplate
-      sidebar={<AdminSidebar />}
       title="Users Management"
       description="Manage user accounts and permissions"
       stats={[
@@ -25,7 +23,7 @@ export default function AdminUsersPage() {
       searchPlaceholder="Search users..."
       primaryAction={{
         label: 'Add User',
-        icon: <Plus style={{ width: 20, height: 20 }} />,
+        icon: <Plus className={styles.icon} />,
         href: '/admin/users/create',
       }}
       loading={loading}
@@ -43,7 +41,7 @@ export default function AdminUsersPage() {
         <div className={styles.usersTable}>
           {users.map((user: any) => (
             <div key={user.id} className={styles.userRow}>
-              <Typography variant="body" as="div">{user.email}</Typography>
+              <Text>{user.email}</Text>
             </div>
           ))}
         </div>

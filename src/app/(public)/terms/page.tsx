@@ -1,4 +1,4 @@
-import { LegalPageTemplate } from '@/design-system/components/templates';
+import { LegalPageTemplate } from '@/design-system';
 
 export default function TermsPage() {
   return (

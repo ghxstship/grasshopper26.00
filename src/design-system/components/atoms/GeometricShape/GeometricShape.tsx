@@ -1,63 +1,41 @@
 /**
- * GeometricShape Component
- * GHXSTSHIP Entertainment Platform - Decorative geometric shapes
- * Circles, squares, triangles for compositions
+ * GeometricShape - Hard geometric shape primitive
+ * GHXSTSHIP Atomic Design System
  */
 
-import * as React from 'react';
 import styles from './GeometricShape.module.css';
 
-export type ShapeType = 'circle' | 'square' | 'triangle' | 'diamond' | 'alert' | 'clipboard' | 'arrow-right' | 'package' | string;
-export type ShapeSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-
 export interface GeometricShapeProps {
-  type?: ShapeType;
-  name?: ShapeType; // Alias for type
-  size?: ShapeSize;
+  /** Shape variant */
+  variant?: 'square' | 'rectangle' | 'triangle' | 'diamond' | 'circle' | 'hexagon' | string;
+  /** Shape name (alias for variant) */
+  name?: 'square' | 'rectangle' | 'triangle' | 'diamond' | 'circle' | 'hexagon' | string;
+  /** Size */
+  size?: 'sm' | 'md' | 'lg' | 'xl';
+  /** Fill color */
   filled?: boolean;
-  rotationDegrees?: number;
+  /** Additional className */
   className?: string;
-  'aria-hidden'?: boolean;
 }
 
-export const GeometricShape = React.forwardRef<HTMLDivElement, GeometricShapeProps>(
-  (
-    {
-      type,
-      name,
-      size = 'md',
-      filled = false,
-      rotationDegrees = 0,
-      className = '',
-      'aria-hidden': ariaHidden = true,
-      ...props
-    },
-    ref
-  ) => {
-    // Use name as alias for type if provided
-    const shapeType = name || type || 'circle';
-    const classNames = [
-      styles.shape,
-      styles[shapeType],
-      styles[size],
-      filled && styles.filled,
-      className,
-    ].filter(Boolean).join(' ');
+export function GeometricShape({
+  variant,
+  name,
+  size = 'md',
+  filled = false,
+  className,
+}: GeometricShapeProps) {
+  // Support both variant and name props
+  const shapeType = variant || name || 'square';
+  const classNames = [
+    styles.shape,
+    styles[shapeType],
+    styles[`size-${size}`],
+    filled && styles.filled,
+    className,
+  ]
+    .filter(Boolean)
+    .join(' ');
 
-    const style: React.CSSProperties = {
-      transform: rotationDegrees !== 0 ? `rotate(${rotationDegrees}deg)` : undefined,
-    };
-
-    return (
-      <div
-        ref={ref}
-        className={classNames}
-        style={style}
-        aria-hidden={ariaHidden}
-        {...props}
-      />
-    );
-  }
-);
-
-GeometricShape.displayName = 'GeometricShape';
+  return <div className={classNames} />;
+}

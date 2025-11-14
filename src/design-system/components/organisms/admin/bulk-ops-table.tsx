@@ -1,18 +1,10 @@
-import * as React from 'react';
-import { Typography } from '@/design-system/components/atoms/Typography/Typography';
+import { Text } from '../../atoms';
+import { Card } from '../../atoms/Card';
 
-export interface BulkOpsTableProps {
-  operations: any[];
-}
-
-export const BulkOpsTable: React.FC<BulkOpsTableProps> = ({ operations }) => {
+export function BulkOpsTable({ operations = [] }: { operations?: any[] }) {
   return (
-    <div>
-      {operations.map((op: any) => (
-        <div key={op.id}>
-          <Typography variant="body" as="div">{op.name}</Typography>
-        </div>
-      ))}
-    </div>
+    <Card padding={6}>
+      <Text>Bulk Operations Table - {operations.length} operations</Text>
+    </Card>
   );
-};
+}

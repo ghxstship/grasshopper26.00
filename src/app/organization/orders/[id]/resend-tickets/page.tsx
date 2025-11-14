@@ -2,10 +2,10 @@
 
 import { use, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { ContextualPageTemplate } from '@/design-system/components/templates';
-import { Button } from '@/design-system/components/atoms/Button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/Card';
-import { Badge } from '@/design-system/components/atoms/Badge';
+import { ContextualPageTemplate } from '@/design-system';
+import { Button } from '@/design-system';
+import { Card, CardContent, CardHeader, CardTitle } from '@/design-system';
+import { Badge } from '@/design-system';
 import { Mail, CheckCircle, Ticket } from 'lucide-react';
 import { toast } from 'sonner';
 import styles from './resend-content.module.css';
@@ -128,7 +128,7 @@ className={`${styles.ticketItem} ${selectedTickets.has(ticket.id) ? styles.selec
                     {ticket.ticket_number}
                   </div>
                 </div>
-                <Badge variant={ticket.status === 'valid' ? 'default' : 'outlined'}>
+                <Badge variant={ticket.status === 'valid' ? 'default' : 'outline'}>
                   {ticket.status}
                 </Badge>
               </div>

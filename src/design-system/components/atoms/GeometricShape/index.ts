@@ -1,2 +1,2 @@
 export { GeometricShape } from './GeometricShape';
-export type { GeometricShapeProps, ShapeType, ShapeSize } from './GeometricShape';
+export type { GeometricShapeProps } from './GeometricShape';

@@ -1,62 +1,70 @@
 /**
  * PortalSidebar Organism
- * GHXSTSHIP Monochromatic Design System
+ * GHXSTSHIP Design System
+ * Navigation sidebar for member portal
  */
+
 'use client';
 
-import * as React from "react";
+import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Typography } from '../../atoms/Typography/Typography';
 import { 
   LayoutDashboard, 
+  ShoppingBag, 
   Ticket, 
+  Heart, 
+  Calendar, 
+  Gift, 
   CreditCard,
-  Gift,
-  Calendar,
   User,
-  Settings
+  TrendingUp,
+  DollarSign
 } from 'lucide-react';
 import styles from './PortalSidebar.module.css';
 
-const navItems = [
-  { href: '/member/portal', label: 'Dashboard', icon: LayoutDashboard },
-  { href: '/member/portal/orders', label: 'Orders', icon: Ticket },
-  { href: '/member/portal/advances', label: 'Advances', icon: CreditCard },
-  { href: '/member/portal/credits', label: 'Credits', icon: Gift },
-  { href: '/member/portal/vouchers', label: 'Vouchers', icon: Gift },
-  { href: '/member/portal/referrals', label: 'Referrals', icon: User },
-  { href: '/member/portal/favorites', label: 'Favorites', icon: User },
-  { href: '/member/portal/schedule', label: 'Schedule', icon: Calendar },
+export interface PortalSidebarProps {
+  className?: string;
+}
+
+interface NavItem {
+  label: string;
+  href: string;
+  icon: React.ReactNode;
+}
+
+const navItems: NavItem[] = [
+  { label: 'Dashboard', href: '/member/dashboard', icon: <LayoutDashboard /> },
+  { label: 'Orders', href: '/member/orders', icon: <ShoppingBag /> },
+  { label: 'Tickets', href: '/member/schedule', icon: <Ticket /> },
+  { label: 'Favorites', href: '/member/favorites', icon: <Heart /> },
+  { label: 'Calendar', href: '/member/schedule', icon: <Calendar /> },
+  { label: 'Credits', href: '/member/credits', icon: <CreditCard /> },
+  { label: 'Vouchers', href: '/member/vouchers', icon: <Gift /> },
+  { label: 'Referrals', href: '/member/referrals', icon: <TrendingUp /> },
+  { label: 'Advances', href: '/member/advances', icon: <DollarSign /> },
+  { label: 'Profile', href: '/member/profile', icon: <User /> },
 ];
 
-export const PortalSidebar: React.FC = () => {
+export function PortalSidebar({ className }: PortalSidebarProps) {
   const pathname = usePathname();
-  
+
   return (
-    <nav className={styles.sidebar}>
+    <nav className={`${styles.sidebar} ${className || ''}`}>
       <div className={styles.header}>
-        <Typography variant="h3" as="div">
-          GVTEWAY
-        </Typography>
-        <Typography variant="meta" as="div" className={styles.subtitle}>
-          Member Portal
-        </Typography>
+        <h2 className={styles.title}>MEMBER PORTAL</h2>
       </div>
-      
       <ul className={styles.nav}>
         {navItems.map((item) => {
-          const Icon = item.icon;
-          const isActive = pathname === item.href;
-          
+          const isActive = pathname === item.href || pathname?.startsWith(`${item.href}/`);
           return (
             <li key={item.href}>
               <Link
                 href={item.href}
-                className={`${styles.navItem} ${isActive ? styles.active : ''}`}
+                className={`${styles.navLink} ${isActive ? styles.navLinkActive : ''}`}
               >
-                <Icon className={styles.navIcon} />
-                <span className={styles.navLabel}>{item.label}</span>
+                <span className={styles.icon}>{item.icon}</span>
+                <span className={styles.label}>{item.label}</span>
               </Link>
             </li>
           );
@@ -64,4 +72,4 @@ export const PortalSidebar: React.FC = () => {
       </ul>
     </nav>
   );
-};
+}

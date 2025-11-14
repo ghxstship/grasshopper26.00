@@ -6,11 +6,11 @@
 'use client';
 
 import { use, useEffect, useState } from 'react';
-import { ContextualPageTemplate } from '@/design-system/components/templates';
+import { ContextualPageTemplate } from '@/design-system';
 import { createClient } from '@/lib/supabase/client';
-import { Button } from '@/design-system/components/atoms/Button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/Card';
-import { Badge } from '@/design-system/components/atoms/Badge';
+import { Button } from '@/design-system';
+import { Card, CardContent, CardHeader, CardTitle } from '@/design-system';
+import { Badge } from '@/design-system';
 import { Plus, CheckCircle, Clock, XCircle, Store } from 'lucide-react';
 import { toast } from 'sonner';
 import styles from './vendors-content.module.css';
@@ -70,9 +70,9 @@ export default function EventVendorsPage({ params }: { params: Promise<{ id: str
 
   const getStatusBadge = (status: string) => {
     const variants = {
-      invited: { variant: 'outlined' as const, icon: <Clock /> },
+      invited: { variant: 'outline' as const, icon: <Clock /> },
       accepted: { variant: 'default' as const, icon: <CheckCircle /> },
-      declined: { variant: 'sold-out' as const, icon: <XCircle /> },
+      declined: { variant: 'solid' as const, icon: <XCircle /> },
       active: { variant: 'default' as const, icon: <CheckCircle /> },
     };
     return variants[status as keyof typeof variants] || variants.invited;

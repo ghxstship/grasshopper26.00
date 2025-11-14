@@ -1,40 +1,56 @@
 /**
- * Checkbox Styles - GHXSTSHIP
+ * Checkbox - Checkbox input atom
+ * GHXSTSHIP: Hard geometric, 3px borders
  */
 
-.container {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-}
-
-.checkboxWrapper {
+.wrapper {
   display: flex;
   align-items: center;
   gap: var(--space-3);
 }
 
-/* Checkbox */
 .checkbox {
-  position: relative;
   appearance: none;
-  
-  inline-size: 1.5rem;
-  block-size: 1.5rem;
-  flex-shrink: 0;
-  
-  border: var(--border-width-2) solid var(--color-border-strong);
+  width: 1.5rem;
+  height: 1.5rem;
+  border: var(--border-width-3) solid var(--color-border-strong);
   border-radius: var(--border-radius-none);
   background-color: var(--color-bg-primary);
-  
   cursor: pointer;
-  
-  transition: border-color var(--duration-fast) var(--easing-out);
+  position: relative;
+  transition: all var(--duration-fast) var(--easing-out);
+  flex-shrink: 0;
 }
 
-.checkbox:hover:not(:disabled) {
-  border-color: var(--color-interactive-hover);
-  background-color: var(--color-bg-secondary);
+.checkbox:hover {
+  box-shadow: var(--shadow-button-hover);
+  transform: translate(-2px, -2px);
+}
+
+.checkbox:checked {
+  background-color: var(--color-black);
+  border-color: var(--color-black);
+}
+
+[data-theme="dark"] .checkbox:checked {
+  background-color: var(--color-white);
+  border-color: var(--color-white);
+}
+
+.checkbox:checked::after {
+  content: '✓';
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--color-white);
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+}
+
+[data-theme="dark"] .checkbox:checked::after {
+  color: var(--color-black);
 }
 
 .checkbox:focus-visible {
@@ -42,118 +58,42 @@
   outline-offset: var(--space-1);
 }
 
-.checkbox:checked {
-  background-color: var(--color-interactive-default);
-  border-color: var(--color-interactive-default);
-}
-
-.checkbox:checked::after {
-  content: '';
-  position: absolute;
-  inset-block-start: 50%;
-  inset-inline-start: 50%;
-  transform: translate(-50%, -50%);
-  
-  inline-size: 0.75rem;
-  block-size: 0.75rem;
-  
-  background-color: var(--color-text-inverse);
-  
-  clip-path: polygon(
-    14% 44%,
-    0 65%,
-    50% 100%,
-    100% 16%,
-    80% 0%,
-    43% 62%
-  );
-}
-
 .checkbox:disabled {
-  opacity: var(--opacity-50);
+  opacity: var(--opacity-40);
   cursor: not-allowed;
 }
 
-.checkbox.error {
-  border-color: var(--color-border-strong);
-}
-
-/* Sizes */
-.sm {
-  inline-size: 1.25rem;
-  block-size: 1.25rem;
-}
-
-.sm:checked::after {
-  inline-size: 0.625rem;
-  block-size: 0.625rem;
-}
-
-.md {
-  inline-size: 1.5rem;
-  block-size: 1.5rem;
-}
-
-.md:checked::after {
-  inline-size: 0.75rem;
-  block-size: 0.75rem;
-}
-
-.lg {
-  inline-size: 1.75rem;
-  block-size: 1.75rem;
-}
-
-.lg:checked::after {
-  inline-size: 0.875rem;
-  block-size: 0.875rem;
-}
-
-/* Label */
 .label {
   font-family: var(--font-share);
-  font-size: var(--font-size-base);
-  line-height: var(--line-height-normal);
-  
   color: var(--color-text-primary);
   cursor: pointer;
-  
   user-select: none;
 }
 
-.checkbox:disabled + .label {
-  opacity: var(--opacity-50);
-  cursor: not-allowed;
+/* Sizes */
+.size-sm .checkbox {
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
-/* Helper Text */
-.helperText {
-  font-family: var(--font-share-mono);
-  font-size: var(--font-size-xs);
-  
-  color: var(--color-text-secondary);
-  
-  margin-inline-start: calc(1.5rem + var(--space-3));
+.size-sm .label {
+  font-size: var(--font-size-sm);
 }
 
-.errorText {
-  font-family: var(--font-share-mono);
-  font-size: var(--font-size-xs);
-  
-  color: var(--color-text-primary);
-  
-  margin-inline-start: calc(1.5rem + var(--space-3));
+.size-md .checkbox {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
-/* Accessibility */
-@media (prefers-reduced-motion: reduce) {
-  .checkbox {
-    transition: none;
-  }
+.size-md .label {
+  font-size: var(--font-size-base);
 }
 
-@media (prefers-contrast: high) {
-  .checkbox {
-    border-width: var(--border-width-3);
-  }
+.size-lg .checkbox {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.size-lg .label {
+  font-size: var(--font-size-lg);
 }

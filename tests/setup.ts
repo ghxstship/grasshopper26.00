@@ -77,3 +77,39 @@ vi.mock('@/lib/cache/redis', () => ({
   setCached: vi.fn(),
   invalidateCache: vi.fn(),
 }));
+
+// Mock global fetch for API tests
+global.fetch = vi.fn((url: string | URL | Request, init?: RequestInit) => {
+  const urlString = typeof url === 'string' ? url : url.toString();
+  
+  // Default mock response
+  return Promise.resolve({
+    ok: true,
+    status: 200,
+    statusText: 'OK',
+    headers: new Headers({ 'content-type': 'application/json' }),
+    json: async () => ({ success: true, data: [] }),
+    text: async () => JSON.stringify({ success: true, data: [] }),
+    blob: async () => new Blob(),
+    arrayBuffer: async () => new ArrayBuffer(0),
+    formData: async () => new FormData(),
+  } as Response);
+}) as any;
+
+// Mock matchMedia for theme tests
+Object.defineProperty(window, 'matchMedia', {
+  writable: true,
+  value: vi.fn().mockImplementation(query => ({
+    matches: false,
+    media: query,
+    onchange: null,
+    addListener: vi.fn(),
+    removeListener: vi.fn(),
+    addEventListener: vi.fn(),
+    removeEventListener: vi.fn(),
+    dispatchEvent: vi.fn(),
+  })),
+});
+
+// Mock scrollIntoView for keyboard navigation tests
+HTMLElement.prototype.scrollIntoView = vi.fn();

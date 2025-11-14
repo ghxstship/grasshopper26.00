@@ -1,11 +1,17 @@
+/**
+ * Reset Password Page
+ * GHXSTSHIP Atomic Design System
+ */
+
 'use client';
 
 import { useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import Link from 'next/link';
 import { createClient } from '@/lib/supabase/client';
-import { AuthCardTemplate } from '@/design-system/components/templates';
-import { Input } from '@/design-system/components/atoms/Input';
-import { Label } from '@/design-system/components/atoms/Label';
+import { Card, Stack, Heading, Text, Button } from '@/design-system';
+import { FormField } from '@/design-system';
+import { PageTemplate } from '@/design-system';
 import { toast } from 'sonner';
 import styles from '../auth.module.css';
 
@@ -60,52 +66,84 @@ export default function ResetPasswordPage() {
 
   if (success) {
     return (
-      <AuthCardTemplate
-        title="Password Reset!"
-        description="Your password has been successfully reset. Redirecting to login..."
-      >
-        <div />
-      </AuthCardTemplate>
+      <PageTemplate showHeader={false} showFooter={false}>
+        <div className={styles.authContainer}>
+          <Card variant="elevated" padding={8} className={styles.authCard}>
+            <Stack gap={6}>
+              <Stack gap={2}>
+                <Heading level={1} font="anton" align="center">
+                  Password Reset!
+                </Heading>
+                <Text align="center" color="secondary">
+                  Your password has been successfully reset. Redirecting to login...
+                </Text>
+              </Stack>
+            </Stack>
+          </Card>
+        </div>
+      </PageTemplate>
     );
   }
 
   return (
-    <AuthCardTemplate
-      title="Reset Password"
-      description="Enter your new password below"
-      onSubmit={handleSubmit}
-      submitLabel={loading ? 'Resetting...' : 'Reset Password'}
-      submitLoading={loading}
-      footerText="Remember your password?"
-      footerLink={{ text: 'Back to Login', href: '/login' }}
-    >
-      <div className={styles.formField}>
-        <Label htmlFor="password">New Password</Label>
-        <Input
-          id="password"
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          placeholder="Enter new password"
-        />
+    <PageTemplate showHeader={false} showFooter={false}>
+      <div className={styles.authContainer}>
+        <Card variant="elevated" padding={8} className={styles.authCard}>
+          <Stack gap={6}>
+            <Stack gap={2}>
+              <Heading level={1} font="anton" align="center">
+                Reset Password
+              </Heading>
+              <Text align="center" color="secondary">
+                Enter your new password below
+              </Text>
+            </Stack>
+
+            <form onSubmit={handleSubmit}>
+              <Stack gap={4}>
+                <FormField
+                  label="New Password"
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  fullWidth
+                  placeholder="Enter new password"
+                />
+
+                <FormField
+                  label="Confirm Password"
+                  type="password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  required
+                  fullWidth
+                  placeholder="Confirm new password"
+                />
+
+                {error && (
+                  <Text size="sm" color="primary">
+                    {error}
+                  </Text>
+                )}
+
+                <Button type="submit" variant="primary" size="lg" fullWidth loading={loading}>
+                  {loading ? 'Resetting...' : 'Reset Password'}
+                </Button>
+              </Stack>
+            </form>
+
+            <Stack gap={3}>
+              <Text align="center" size="sm" color="tertiary">
+                Remember your password?{' '}
+                <Link href="/login" className={styles.link}>
+                  Back to Login
+                </Link>
+              </Text>
+            </Stack>
+          </Stack>
+        </Card>
       </div>
-      <div className={styles.formField}>
-        <Label htmlFor="confirmPassword">Confirm Password</Label>
-        <Input
-          id="confirmPassword"
-          type="password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          required
-          placeholder="Confirm new password"
-        />
-      </div>
-      {error && (
-        <div className={styles.errorBox}>
-          <p className={styles.errorText}>{error}</p>
-        </div>
-      )}
-    </AuthCardTemplate>
+    </PageTemplate>
   );
 }

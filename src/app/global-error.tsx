@@ -7,7 +7,7 @@
 
 import * as Sentry from '@sentry/nextjs';
 import { useEffect } from 'react';
-import { Button } from '@/design-system/components/atoms/Button';
+import { Button } from '@/design-system';
 import styles from './global-error.module.css';
 
 export default function GlobalError({
@@ -36,19 +36,25 @@ export default function GlobalError({
             <div className={styles.actions}>
               <Button
                 onClick={reset}
-                variant="outlined"
+                variant="secondary"
+                size="lg"
+                fullWidth
               >
                 TRY AGAIN
               </Button>
               <Button
                 onClick={() => window.history.back()}
-                variant="outlined"
+                variant="secondary"
+                size="lg"
+                fullWidth
               >
                 GO BACK
               </Button>
               <Button
-                onClick={() => window.location.href = '/'}
-                variant="outlined"
+                onClick={() => { window.location.href = '/'; }}
+                variant="primary"
+                size="lg"
+                fullWidth
               >
                 GO HOME
               </Button>

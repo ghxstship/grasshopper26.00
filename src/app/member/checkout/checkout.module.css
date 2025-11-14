@@ -1,6 +1,6 @@
 /**
  * Checkout Page Styles
- * GHXSTSHIP Monochromatic Design System
+ * GHXSTSHIP Design System
  */
 
 .formContent {
@@ -10,49 +10,31 @@
 }
 
 .stepContent {
-  min-height: 25rem;
-  padding: var(--space-6);
-  border: var(--border-width-3) solid var(--color-border-default);
+  padding-block: var(--space-6);
+  min-block-size: var(--space-75);
 }
 
 .actions {
   display: flex;
-  gap: var(--space-4);
+  gap: var(--space-3);
   justify-content: flex-end;
+  margin-block-start: var(--space-6);
 }
 
 .summary {
   display: flex;
   flex-direction: column;
-  gap: var(--space-6);
+  gap: var(--space-4);
 }
 
 .summaryContent {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: var(--space-3);
 }
 
-/* DARK MODE */
-:global([data-theme="dark"]) .formContent,
-:global([data-theme="dark"]) .summary,
-:global([data-theme="dark"]) .summaryContent {
-  background-color: var(--color-bg-primary);
-}
-
-:global([data-theme="dark"]) .stepContent {
-  border-color: var(--color-border-strong);
-  background-color: var(--color-bg-primary);
-}
-
-/* ========================================
-   RESPONSIVE BREAKPOINTS
-   ======================================== */
-
-@media (min-width: var(--space-96)) {
-  /* Tablet and up - add styles as needed */
-}
-
-@media (min-width: var(--space-96)) {
-  /* Desktop and up - add styles as needed */
+/* Dark mode */
+[data-theme="dark"] .formContent,
+[data-theme="dark"] .summary {
+  /* Inherits from parent */
 }

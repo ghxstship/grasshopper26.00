@@ -1,78 +1,56 @@
 /**
- * Link Component
- * GHXSTSHIP Entertainment Platform - Geometric links
- * Thick underline hover effects, BEBAS NEUE for nav links
+ * Link - Styled link atom
+ * GHXSTSHIP Atomic Design System
  */
 
-import * as React from 'react';
 import NextLink from 'next/link';
+import { ReactNode } from 'react';
 import styles from './Link.module.css';
 
-export type LinkVariant = 'default' | 'nav' | 'underline' | 'button';
-export type LinkSize = 'sm' | 'md' | 'lg';
-
-export interface LinkProps extends Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> {
+export interface LinkProps {
+  /** Link href */
   href: string;
-  variant?: LinkVariant;
-  size?: LinkSize;
+  /** Children content */
+  children: ReactNode;
+  /** Link variant */
+  variant?: 'default' | 'underline' | 'button';
+  /** External link */
   external?: boolean;
-  children: React.ReactNode;
+  /** Additional className */
   className?: string;
 }
 
-export const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
-  (
-    {
-      href,
-      variant = 'default',
-      size = 'md',
-      external = false,
-      children,
-      className = '',
-      ...props
-    },
-    ref
-  ) => {
-    const classNames = [
-      styles.link,
-      styles[variant],
-      styles[size],
-      className,
-    ].filter(Boolean).join(' ');
+export function Link({
+  href,
+  children,
+  variant = 'default',
+  external,
+  className,
+}: LinkProps) {
+  const classNames = [
+    styles.link,
+    styles[`variant-${variant}`],
+    className,
+  ]
+    .filter(Boolean)
+    .join(' ');
 
-    const externalProps = external
-      ? {
-          target: '_blank',
-          rel: 'noopener noreferrer',
-        }
-      : {};
-
-    if (external || href.startsWith('http')) {
-      return (
-        <a
-          ref={ref}
-          href={href}
-          className={classNames}
-          {...externalProps}
-          {...props}
-        >
-          {children}
-          {external && <span className={styles.externalIcon} aria-hidden="true">↗</span>}
-        </a>
-      );
-    }
-
+  if (external) {
     return (
-      <NextLink
-        ref={ref}
+      <a
         href={href}
         className={classNames}
-        {...props}
+        target="_blank"
+        rel="noopener noreferrer"
       >
         {children}
-      </NextLink>
+      </a>
     );
   }
-);
 
-Link.displayName = 'Link';
+  return (
+    <NextLink href={href} className={classNames}>
+      {children}
+    </NextLink>
+  );
+}

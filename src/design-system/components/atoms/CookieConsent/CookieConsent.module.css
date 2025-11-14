@@ -1,100 +1,35 @@
+/* CookieConsent Atom */
+
 .banner {
   position: fixed;
   inset-block-end: 0;
   inset-inline-start: 0;
   inset-inline-end: 0;
-  background: var(--color-text-primary);
-  border-block-start: var(--border-width-3) solid var(--color-bg-primary);
-  padding: var(--space-4);
-  z-index: var(--z-notification);
-  box-shadow: var(--shadow-card);
+  background-color: var(--color-bg-primary);
+  border-block-start: var(--border-width-default) solid var(--color-border-primary);
+  padding-block: var(--spacing-lg);
+  padding-inline: var(--spacing-lg);
+  z-index: var(--z-index-modal);
 }
 
 .content {
-  max-inline-size: var(--container-max-width);
+  max-inline-size: 112.5rem;
   margin-inline: auto;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  gap: var(--space-4);
-}
-
-.text {
-  color: var(--color-bg-primary) !important;
-  font-family: var(--font-family-body);
-  font-size: var(--font-size-base);
-  line-height: var(--line-height-body);
-  margin: 0;
-}
-
-.button {
-  padding: var(--space-3) var(--space-6);
-  background: var(--color-bg-primary);
-  color: var(--color-text-primary);
-  border: var(--border-width-3) solid var(--color-bg-primary);
-  font-family: var(--font-family-heading);
-  font-size: var(--font-size-h6);
-  font-weight: var(--font-weight-normal);
-  line-height: var(--line-height-tight);
-  cursor: pointer;
-  transition: all var(--duration-fast) var(--easing-out);
-  text-transform: uppercase;
-  letter-spacing: var(--letter-spacing-wide);
-}
-
-.button:hover {
-  background: var(--color-border-default);
-  transform: translate(calc(var(--space-1) * -1), calc(var(--space-1) * -1));
-  box-shadow: var(--shadow-card);
-}
-
-.button:active {
-  transform: translate(0, 0);
-  box-shadow: none;
-}
-
-.actions {
-  display: flex;
-  gap: var(--space-3);
   align-items: center;
+  gap: var(--spacing-lg);
 }
 
-.buttonSecondary {
-  background: transparent;
-  color: var(--color-bg-primary);
-  border: var(--border-width-3) solid var(--color-bg-primary);
-}
-
-.buttonSecondary:hover {
-  background: var(--color-bg-secondary);
-  color: var(--color-text-primary);
-}
-
-@media (max-width: 48rem) {
+@media (max-inline-size: var(--space-192)) {
   .content {
     flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .actions {
-    inline-size: 100%;
-    flex-direction: column;
-  }
-  
-  .button {
-    inline-size: 100%;
+    align-items: stretch;
   }
 }
 
-
-
-
-/* ========================================
-   DARK THEME
-   ======================================== */
-
-[data-theme="dark"] .cookieConsent {
-  /* Dark mode overrides inherit from tokens.css */
-  /* Add component-specific overrides here if needed */
+/* Dark Mode */
+[data-theme="dark"] .banner {
+  background-color: var(--color-bg-primary);
+  border-block-start-color: var(--color-border-primary);
 }
-

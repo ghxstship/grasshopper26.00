@@ -1,28 +1,53 @@
+/**
+ * News Detail Client
+ * GHXSTSHIP Atomic Design System
+ */
+
 'use client';
 
-import { DetailViewTemplate } from '@/design-system/components/templates';
-import { Calendar, User } from 'lucide-react';
-import { format } from 'date-fns';
+import { Stack, Heading, Text, Container } from '@/design-system';
+import { PageTemplate } from '@/design-system';
 
-export function NewsDetailClient({ article }: { article: any }) {
+interface NewsDetailClientProps {
+  article: any;
+}
+
+export function NewsDetailClient({ article }: NewsDetailClientProps) {
+  const navItems = [
+    { label: 'Events', href: '/events' },
+    { label: 'Music', href: '/music' },
+    { label: 'Shop', href: '/shop' },
+    { label: 'Membership', href: '/membership' },
+  ];
+
   return (
-    <DetailViewTemplate
-      breadcrumbs={[
-        { label: 'News', href: '/news' },
-        { label: article.title, href: `/news/${article.slug}` },
-      ]}
-      heroImage={article.image_url}
-      title={article.title}
-      subtitle={article.excerpt}
-      sidebar={
-        <div>
-          <h3>Article Info</h3>
-          <div><Calendar /> {format(new Date(article.published_at), 'PPP')}</div>
-          {article.author && <div><User /> {article.author}</div>}
-        </div>
-      }
+    <PageTemplate
+      headerProps={{
+        logoText: 'GVTEWAY',
+        navItems,
+        showAuth: true,
+      }}
     >
-      <div dangerouslySetInnerHTML={{ __html: article.content }} />
-    </DetailViewTemplate>
+      <Container maxWidth="md">
+        <Stack gap={6}>
+          <Stack gap={4}>
+            <Heading level={1} font="anton">
+              {article.title}
+            </Heading>
+            {article.published_at && (
+              <Text size="sm" color="tertiary">
+                {new Date(article.published_at).toLocaleDateString()}
+              </Text>
+            )}
+          </Stack>
+
+          {article.content && (
+            <Text size="lg">
+              {article.content}
+            </Text>
+          )}
+        </Stack>
+      </Container>
+    </PageTemplate>
   );
 }

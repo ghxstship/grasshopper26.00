@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
-import { LoadingSpinner } from '@/design-system/components/atoms/LoadingSpinner';
+import { Spinner } from '@/design-system';
 import styles from './page.module.css';
 
 export const metadata = {
@@ -153,7 +153,7 @@ export default async function VendorPage({ params }: { params: Promise<{ id: str
         <h1 className={styles.title}>{vendor?.vendor_name || 'VENDOR'}</h1>
       </div>
 
-      <Suspense fallback={<LoadingSpinner />}>
+      <Suspense fallback={<Spinner />}>
         <VendorDetails id={id} />
       </Suspense>
     </div>

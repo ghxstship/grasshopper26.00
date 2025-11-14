@@ -74,6 +74,7 @@
     "dotenv": "^17.2.3",
     "framer-motion": "^11.0.0",
     "gsap": "^3.13.0",
+    "html5-qrcode": "^2.3.8",
     "jspdf": "^3.0.3",
     "jsqr": "^1.4.0",
     "lucide-react": "^0.468.0",

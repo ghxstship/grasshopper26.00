@@ -6,15 +6,15 @@
 'use client';
 
 import { use, useState, useEffect } from 'react';
-import { ContextualPageTemplate } from '@/design-system/components/templates';
+import { ContextualPageTemplate } from '@/design-system';
 import { createClient } from '@/lib/supabase/client';
-import { Button } from '@/design-system/components/atoms/Button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/Card';
-import { Input } from '@/design-system/components/atoms/Input';
-import { Badge } from '@/design-system/components/atoms/Badge';
+import { Button } from '@/design-system';
+import { Card, CardContent, CardHeader, CardTitle } from '@/design-system';
+import { Input } from '@/design-system';
+import { Badge } from '@/design-system';
 import { QrCode, Search, Users, CheckCircle, XCircle, Clock } from 'lucide-react';
 import { toast } from 'sonner';
-import { QRScanner } from '@/design-system/components/organisms/event-roles/QRScanner';
+import { QRScanner } from '@/design-system';
 import styles from './check-in-content.module.css';
 
 interface CheckInStats {

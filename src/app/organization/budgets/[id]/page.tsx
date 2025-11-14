@@ -1,8 +1,8 @@
 import { Suspense } from 'react';
 import Link from 'next/link';
 import { getBudgetById } from '@/lib/actions/budgets';
-import { BudgetSummary } from '@/design-system/components/molecules/BudgetSummary';
-import { LoadingSpinner } from '@/design-system/components/atoms/LoadingSpinner';
+import { BudgetSummary } from '@/design-system';
+import { Spinner } from '@/design-system';
 import styles from './page.module.css';
 
 export const metadata = {
@@ -95,7 +95,7 @@ export default async function BudgetPage({ params }: BudgetPageProps) {
         </div>
       </div>
 
-      <Suspense fallback={<LoadingSpinner />}>
+      <Suspense fallback={<Spinner />}>
         <BudgetDetails id={id} />
       </Suspense>
     </div>

@@ -1,35 +1,49 @@
 /**
- * Heading Component
- * GHXSTSHIP Entertainment Platform - Semantic headings
- * ANTON for H1, BEBAS NEUE for H2-H6
+ * Heading - Semantic heading primitive
+ * GHXSTSHIP Atomic Design System
  */
 
-import * as React from 'react'
-import styles from './Heading.module.css'
-
-export type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+import { ReactNode } from 'react';
+import styles from './Heading.module.css';
 
 export interface HeadingProps {
-  level?: HeadingLevel
-  children: React.ReactNode
-  className?: string
-  id?: string
+  /** Heading level */
+  level: 1 | 2 | 3 | 4 | 5 | 6;
+  /** Children content */
+  children: ReactNode;
+  /** Font family - defaults to BEBAS NEUE for headings */
+  font?: 'anton' | 'bebas';
+  /** Text align */
+  align?: 'start' | 'center' | 'end';
+  /** Additional className */
+  className?: string;
+  /** ID for accessibility */
+  id?: string;
 }
 
-export const Heading: React.FC<HeadingProps> = ({
-  level = 'h2',
+export function Heading({
+  level,
   children,
-  className = '',
-  id,
-}) => {
-  const Component = level
-  const classNames = [styles.heading, styles[level], className].filter(Boolean).join(' ')
+  font = 'bebas',
+  align,
+  className,
+  ...props
+}: HeadingProps) {
+  const Component = `h${level}` as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+
+  const classNames = [
+    styles.heading,
+    styles[`h${level}`],
+    styles[`font-${font}`],
+    align && styles[`align-${align}`],
+    className,
+  ]
+    .filter(Boolean)
+    .join(' ');
 
   return (
-    <Component id={id} className={classNames}>
+    <Component className={classNames} {...props}>
       {children}
     </Component>
-  )
+  );
 }
-
-Heading.displayName = 'Heading'

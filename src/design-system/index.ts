@@ -11,7 +11,7 @@
  * import { Button, Input, tokens } from '@/design-system';
  */
 
-// Export all component categories (Atomic Design)
+// Export all components (Atomic Design)
 export * from './components/atoms';
 export * from './components/molecules';
 export * from './components/organisms';

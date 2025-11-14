@@ -1,9 +1,9 @@
 'use client';
 
-import { AdminListTemplate } from '@/design-system/components/templates';
+import { AdminListTemplate } from '@/design-system';
 import { Receipt } from 'lucide-react';
 import { useAdminOrders } from '@/hooks/useAdminOrders';
-import { OrdersTable } from '@/design-system/components/organisms/admin/orders-table';
+import { OrdersTable } from '@/design-system';
 
 export default function AdminOrdersPage() {
   const { orders, stats, loading, searchQuery, setSearchQuery } = useAdminOrders();

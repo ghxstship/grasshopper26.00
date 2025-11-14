@@ -1,10 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import { ContextualPageTemplate } from '@/design-system/components/templates';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/design-system/components/atoms/Card';
-import { Button } from '@/design-system/components/atoms/Button';
-import { Badge } from '@/design-system/components/atoms/Badge';
+import { ContextualPageTemplate } from '@/design-system';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/design-system';
+import { Button } from '@/design-system';
+import { Badge } from '@/design-system';
 import { 
   FileText, 
   Download, 
@@ -200,7 +200,7 @@ export default function ReportsPage() {
                 <report.icon className={styles.iconLarge} />
               </div>
               {generating === report.id && (
-                <Badge variant="outlined">
+                <Badge variant="outline">
                   <Loader2 className={styles.spinner} />
                   Generating...
                 </Badge>

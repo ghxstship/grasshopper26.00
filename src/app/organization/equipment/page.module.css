@@ -1,149 +1,202 @@
+/**
+ * Equipment Page Styles
+ * GHXSTSHIP Design System - Monochromatic, Hard Edges, 3px Borders
+ */
+
 .container {
-  min-block-size: 100vh;
-  padding-block: var(--space-xl);
-  padding-inline: var(--space-xl);
+  inline-size: 100%;
 }
 
 .header {
-  margin-block-end: var(--space-xl);
-  padding-block-end: var(--space-lg);
-  border-block-end: var(--border-width-2) solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-block-end: var(--spacing-6);
+  padding-block-end: var(--spacing-4);
+  border-block-end: var(--border-width-standard) solid var(--color-border-primary);
 }
 
 .title {
-  font-family: var(--font-hero);
-  font-size: var(--font-size-4xl);
+  font-family: var(--font-family-hero);
+  font-size: var(--font-size-3xl);
   font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--color-text-primary);
   margin: 0;
-  text-transform: uppercase;
 }
 
 .content {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2xl);
+  gap: var(--spacing-8);
 }
 
 .section {
   display: flex;
   flex-direction: column;
-  gap: var(--space-lg);
+  gap: var(--spacing-4);
 }
 
 .sectionTitle {
-  font-family: var(--font-bebas);
+  font-family: var(--font-family-heading);
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-text-primary);
   margin: 0;
-  text-transform: uppercase;
 }
 
+/* Table Styles */
 .table {
   display: flex;
   flex-direction: column;
-  border: var(--border-width-2) solid var(--color-border);
+  border: var(--border-width-standard) solid var(--color-border-primary);
+  background-color: var(--color-bg-primary);
 }
 
 .tableHeader {
   display: grid;
-  grid-template-columns: 2fr 1.5fr 1fr 1fr 1fr;
-  gap: var(--space-md);
-  padding-block: var(--space-md);
-  padding-inline: var(--space-md);
-  background: var(--color-text);
-  color: var(--color-background);
-  font-family: var(--font-share-mono);
-  font-size: var(--font-size-xs);
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  gap: var(--spacing-4);
+  padding-block: var(--spacing-3);
+  padding-inline: var(--spacing-4);
+  background-color: var(--color-bg-secondary);
+  border-block-end: var(--border-width-standard) solid var(--color-border-primary);
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-sm);
   font-weight: var(--font-weight-bold);
-  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-text-primary);
 }
 
 .tableRow {
   display: grid;
-  grid-template-columns: 2fr 1.5fr 1fr 1fr 1fr;
-  gap: var(--space-md);
-  padding-block: var(--space-md);
-  padding-inline: var(--space-md);
-  border-block-start: var(--border-width-2) solid var(--color-border);
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  gap: var(--spacing-4);
+  padding-block: var(--spacing-3);
+  padding-inline: var(--spacing-4);
+  border-block-end: var(--border-width-thin) solid var(--color-border-secondary);
+  transition: background-color var(--transition-duration-fast) var(--transition-timing-default);
+}
+
+.tableRow:hover {
+  background-color: var(--color-bg-secondary);
+}
+
+.tableRow:last-child {
+  border-block-end: none;
 }
 
 .tableCell {
-  font-family: var(--font-share-mono);
+  font-family: var(--font-family-body);
   font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+  display: flex;
+  align-items: center;
 }
 
+/* Status Badges */
 .status {
-  font-family: var(--font-share-mono);
+  display: inline-flex;
+  padding-block: var(--spacing-1);
+  padding-inline: var(--spacing-2);
+  border: var(--border-width-standard) solid var(--color-border-primary);
+  font-family: var(--font-family-heading);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-bold);
-  padding-block: var(--space-xs);
-  padding-inline: var(--space-sm);
-  border: var(--border-width-2) solid var(--color-border);
-  display: inline-block;
+  letter-spacing: var(--letter-spacing-wide);
 }
 
-.status.excellent,
+.status.excellent {
+  background-color: var(--color-bg-success);
+  border-color: var(--color-border-success);
+  color: var(--color-text-success);
+}
+
 .status.good {
-  background: var(--color-text);
-  color: var(--color-background);
+  background-color: var(--color-bg-success);
+  border-color: var(--color-border-success);
+  color: var(--color-text-success);
 }
 
-.status.fair,
-.status.poor,
+.status.fair {
+  background-color: var(--color-bg-warning);
+  border-color: var(--color-border-warning);
+  color: var(--color-text-warning);
+}
+
+.status.poor {
+  background-color: var(--color-bg-error);
+  border-color: var(--color-border-error);
+  color: var(--color-text-error);
+}
+
 .status.needs_repair {
-  background: var(--color-background);
-  color: var(--color-text);
+  background-color: var(--color-bg-error);
+  border-color: var(--color-border-error);
+  color: var(--color-text-error);
 }
 
 .empty {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-block-size: 50vh;
+  padding-block: var(--spacing-12);
+  padding-inline: var(--spacing-6);
+  border: var(--border-width-standard) solid var(--color-border-secondary);
+  background-color: var(--color-bg-secondary);
 }
 
 .emptyText {
-  font-family: var(--font-bebas);
-  font-size: var(--font-size-2xl);
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-wide);
   color: var(--color-text-secondary);
-  margin: 0;
 }
 
-@media (max-width: 48rem) {
-  .container {
-    padding-block: var(--space-lg);
-    padding-inline: var(--space-md);
-  }
-
-  .title {
-    font-size: var(--font-size-3xl);
-  }
-
-  .tableHeader,
-  .tableRow {
-    grid-template-columns: 1fr;
-  }
+/* Dark Mode Support */
+[data-theme="dark"] .header {
+  border-block-end-color: var(--color-border-primary);
 }
 
-/* DARK MODE */
-:global([data-theme="dark"]) .container,
-:global([data-theme="dark"]) .card,
-:global([data-theme="dark"]) .content,
-:global([data-theme="dark"]) .section {
-  background-color: var(--color-bg-primary);
-}
-
-:global([data-theme="dark"]) .button,
-:global([data-theme="dark"]) .input,
-:global([data-theme="dark"]) .select,
-:global([data-theme="dark"]) .textarea {
-  background-color: var(--color-bg-primary);
-  border-color: var(--color-border-strong);
+[data-theme="dark"] .title {
   color: var(--color-text-primary);
 }
 
-:global([data-theme="dark"]) .button:hover {
-  background-color: var(--color-text-primary);
-  color: var(--color-text-inverse);
+[data-theme="dark"] .sectionTitle {
+  color: var(--color-text-primary);
+}
+
+[data-theme="dark"] .table {
+  border-color: var(--color-border-primary);
+  background-color: var(--color-bg-primary);
+}
+
+[data-theme="dark"] .tableHeader {
+  background-color: var(--color-bg-secondary);
+  border-block-end-color: var(--color-border-primary);
+  color: var(--color-text-primary);
+}
+
+[data-theme="dark"] .tableRow {
+  border-block-end-color: var(--color-border-secondary);
+}
+
+[data-theme="dark"] .tableRow:hover {
+  background-color: var(--color-bg-secondary);
+}
+
+[data-theme="dark"] .tableCell {
+  color: var(--color-text-primary);
+}
+
+[data-theme="dark"] .empty {
+  border-color: var(--color-border-secondary);
+  background-color: var(--color-bg-secondary);
+}
+
+[data-theme="dark"] .emptyText {
+  color: var(--color-text-secondary);
 }

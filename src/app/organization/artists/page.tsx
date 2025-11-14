@@ -1,9 +1,9 @@
 'use client';
 
-import { AdminListTemplate } from '@/design-system/components/templates';
+import { AdminListTemplate } from '@/design-system';
 import { Users, Plus } from 'lucide-react';
 import { useAdminArtists } from '@/hooks/useAdminArtists';
-import { ArtistsTable } from '@/design-system/components/organisms/admin/artists-table';
+import { ArtistsTable } from '@/design-system';
 
 export default function AdminArtistsPage() {
   const { artists, stats, loading, searchQuery, setSearchQuery } = useAdminArtists();

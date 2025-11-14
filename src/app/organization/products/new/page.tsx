@@ -2,19 +2,14 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { AdminFormTemplate } from '@/design-system/components/templates/AdminFormTemplate/AdminFormTemplate';
-import { AdminSidebar } from '@/design-system/components/organisms/AdminSidebar/AdminSidebar';
-import { Button } from '@/design-system/components/atoms/Button';
-import { Input } from '@/design-system/components/atoms/Input/Input';
-import { Label } from '@/design-system/components/atoms/Label';
-import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/Card';
+import { Button, Input, Label, Card, CardHeader, CardTitle, CardContent, Stack, Heading, Text } from '@/design-system';
+import { AdminTemplate } from '@/design-system';
 import { Plus, X } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
+import { toast } from 'sonner';
 import styles from './page.module.css';
 
 export default function NewProductPage() {
   const router = useRouter();
-  const { toast } = useToast();
   const [loading, setLoading] = useState(false);
   const [images, setImages] = useState<string[]>(['']);
   const [variants, setVariants] = useState<Array<{
@@ -99,38 +94,30 @@ export default function NewProductPage() {
         throw new Error('Failed to create product');
       }
 
-      toast({
-        title: 'Success',
-        description: 'Product created successfully',
-      });
+      toast.success('Product created successfully');
 
       router.push('/admin/products');
     } catch (error) {
-      toast({
-        title: 'Error',
-        description: 'Failed to create product',
-        variant: 'destructive',
-      });
+      toast.error('Failed to create product');
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <AdminFormTemplate
-      sidebar={<AdminSidebar />}
+    <AdminTemplate
       title="Create Product"
       description="Add a new product to your store"
-      primaryAction={{
-        label: 'Create Product',
-        onClick: handleSubmit,
-        loading: loading,
-      }}
-      secondaryAction={{
-        label: 'Cancel',
-        onClick: () => router.push('/admin/products'),
-      }}
-      loading={false}
+      actions={
+        <>
+          <Button variant="secondary" onClick={() => router.push('/admin/products')}>
+            Cancel
+          </Button>
+          <Button variant="primary" onClick={handleSubmit} disabled={loading}>
+            {loading ? 'Creating...' : 'Create Product'}
+          </Button>
+        </>
+      }
     >
         <Card>
           <CardHeader>
@@ -221,7 +208,7 @@ export default function NewProductPage() {
           <CardHeader>
             <div className={styles.header}>
               <CardTitle>Product Images</CardTitle>
-              <Button type="button" onClick={addImage} size="sm" variant="outlined">
+              <Button type="button" onClick={addImage} size="sm" variant="secondary">
                 <Plus className={styles.icon} />
                 Add Image
               </Button>
@@ -240,10 +227,11 @@ export default function NewProductPage() {
                   <Button
                     type="button"
                     onClick={() => removeImage(index)}
-                    variant="outlined"
-                    iconOnly={<X className={styles.icon} />}
+                    variant="secondary"
                     aria-label="Remove image"
-                  />
+                  >
+                    <X className={styles.icon} />
+                  </Button>
                 )}
               </div>
             ))}
@@ -254,7 +242,7 @@ export default function NewProductPage() {
           <CardHeader>
             <div className={styles.header}>
               <CardTitle>Product Variants (Optional)</CardTitle>
-              <Button type="button" onClick={addVariant} size="sm" variant="outlined">
+              <Button type="button" onClick={addVariant} size="sm" variant="secondary">
                 <Plus className={styles.icon} />
                 Add Variant
               </Button>
@@ -321,6 +309,6 @@ export default function NewProductPage() {
           </CardContent>
         </Card>
 
-    </AdminFormTemplate>
+    </AdminTemplate>
   );
 }

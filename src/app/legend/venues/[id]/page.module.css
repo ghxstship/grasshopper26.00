@@ -1,59 +1,58 @@
+/* Legend Venue Detail Page */
+
 .container {
-  min-block-size: 100vh;
-  padding-block: var(--space-8);
-  padding-inline: var(--space-8);
+  max-inline-size: 112.5rem;
+  margin-inline: auto;
 }
 
 .header {
-  margin-block-end: var(--space-8);
-  padding-block-end: var(--space-6);
-  border-block-end: var(--border-width-3) solid var(--color-border-strong);
+  margin-block-end: var(--spacing-2xl);
 }
 
 .title {
-  font-family: var(--font-family-anton);
-  font-size: var(--font-size-h1);
-  letter-spacing: var(--letter-spacing-tight);
-  line-height: var(--line-height-tight);
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
   color: var(--color-text-primary);
-  margin-block: 0;
   text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-tight);
 }
 
 .content {
   display: flex;
   flex-direction: column;
-  gap: var(--space-12);
+  gap: var(--spacing-2xl);
 }
 
 .infoGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
-  gap: var(--space-6);
-  padding-block: var(--space-6);
-  padding-inline: var(--space-6);
-  border: var(--border-width-3) solid var(--color-border-strong);
-  background-color: var(--color-bg-primary);
+  grid-template-columns: repeat(auto-fit, minmax(var(--space-62), 1fr));
+  gap: var(--spacing-lg);
 }
 
 .infoItem {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: var(--spacing-xs);
+  padding-block: var(--spacing-lg);
+  padding-inline: var(--spacing-lg);
+  background-color: var(--color-bg-secondary);
+  border: var(--border-width-default) solid var(--color-border-primary);
 }
 
 .label {
-  font-family: var(--font-family-share-mono);
+  font-family: var(--font-family-mono);
   font-size: var(--font-size-xs);
-  letter-spacing: var(--letter-spacing-meta);
+  font-weight: var(--font-weight-bold);
   color: var(--color-text-secondary);
   text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
 }
 
 .value {
-  font-family: var(--font-family-bebas);
-  font-size: var(--font-size-xl);
-  letter-spacing: var(--letter-spacing-wide);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
   color: var(--color-text-primary);
 }
 
@@ -66,136 +65,147 @@
 }
 
 .section {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
+  padding-block: var(--spacing-xl);
+  padding-inline: var(--spacing-xl);
+  background-color: var(--color-bg-secondary);
+  border: var(--border-width-default) solid var(--color-border-primary);
 }
 
 .sectionTitle {
-  font-family: var(--font-family-bebas);
+  font-family: var(--font-family-heading);
   font-size: var(--font-size-xl);
-  letter-spacing: var(--letter-spacing-wide);
+  font-weight: var(--font-weight-bold);
   color: var(--color-text-primary);
-  margin-block: 0;
+  margin-block-end: var(--spacing-lg);
   text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-tight);
 }
 
-.contactGrid,
-.capacityGrid {
+.contactGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15.625rem, 1fr));
-  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
+  gap: var(--spacing-lg);
 }
 
-.contactItem,
-.capacityItem {
+.contactItem {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: var(--spacing-xs);
 }
 
 .link {
-  font-family: var(--font-family-share-mono);
-  font-size: var(--font-size-sm);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-base);
   color: var(--color-text-primary);
   text-decoration: underline;
-  transition: color var(--duration-fast) var(--easing-out);
+  transition: color var(--transition-duration-fast) var(--transition-easing-standard);
 }
 
 .link:hover {
   color: var(--color-text-secondary);
 }
 
-.amenitiesList {
+.capacityGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
-  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.capacityItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  padding-block: var(--spacing-md);
+  padding-inline: var(--spacing-md);
+  background-color: var(--color-bg-tertiary);
+  border: var(--border-width-default) solid var(--color-border-primary);
+}
+
+.amenitiesList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
 }
 
 .amenity {
-  font-family: var(--font-family-share-mono);
-  font-size: var(--font-size-sm);
-  letter-spacing: var(--letter-spacing-meta);
-  padding-block: var(--space-3);
-  padding-inline: var(--space-4);
-  border: var(--border-width-2) solid var(--color-border-default);
-  background-color: var(--color-bg-secondary);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-base);
+  color: var(--color-text-primary);
+  padding-block: var(--spacing-sm);
+  padding-inline: var(--spacing-md);
+  background-color: var(--color-bg-tertiary);
+  border: var(--border-width-default) solid var(--color-border-primary);
 }
 
-@media (max-width: 48rem) {
-  .container {
-    padding-block: var(--space-6);
-    padding-inline: var(--space-4);
-  }
-
-  .header {
-    margin-block-end: var(--space-6);
-  }
-
+/* Responsive */
+@media (max-inline-size: var(--space-192)) {
   .title {
     font-size: var(--font-size-3xl);
   }
 
-  .content {
-    gap: var(--space-8);
-  }
-
-  .infoGrid,
-  .contactGrid,
-  .capacityGrid,
-  .amenitiesList {
+  .infoGrid {
     grid-template-columns: 1fr;
-    gap: var(--space-4);
+  }
+
+  .contactGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .capacityGrid {
+    grid-template-columns: 1fr;
   }
 }
 
-/* DARK MODE */
-:global([data-theme="dark"]) .container {
-  background-color: var(--color-bg-primary);
-}
-
-:global([data-theme="dark"]) .header {
-  border-block-end-color: var(--color-border-strong);
-}
-
-:global([data-theme="dark"]) .title {
+/* Dark Mode */
+[data-theme="dark"] .title {
   color: var(--color-text-primary);
 }
 
-:global([data-theme="dark"]) .infoGrid {
-  background-color: var(--color-bg-primary);
-  border-color: var(--color-border-strong);
-}
-
-:global([data-theme="dark"]) .label {
-  color: var(--color-text-secondary);
-}
-
-:global([data-theme="dark"]) .value {
-  color: var(--color-text-primary);
-}
-
-:global([data-theme="dark"]) .value.active {
-  color: var(--color-text-primary);
-}
-
-:global([data-theme="dark"]) .value.inactive {
-  color: var(--color-text-secondary);
-}
-
-:global([data-theme="dark"]) .sectionTitle {
-  color: var(--color-text-primary);
-}
-
-:global([data-theme="dark"]) .link {
-  color: var(--color-text-primary);
-}
-
-:global([data-theme="dark"]) .link:hover {
-  color: var(--color-text-secondary);
-}
-
-:global([data-theme="dark"]) .amenity {
+[data-theme="dark"] .infoItem {
   background-color: var(--color-bg-secondary);
-  border-color: var(--color-border-default);
+  border-color: var(--color-border-primary);
+}
+
+[data-theme="dark"] .label {
+  color: var(--color-text-secondary);
+}
+
+[data-theme="dark"] .value {
+  color: var(--color-text-primary);
+}
+
+[data-theme="dark"] .value.active {
+  color: var(--color-text-primary);
+}
+
+[data-theme="dark"] .value.inactive {
+  color: var(--color-text-secondary);
+}
+
+[data-theme="dark"] .section {
+  background-color: var(--color-bg-secondary);
+  border-color: var(--color-border-primary);
+}
+
+[data-theme="dark"] .sectionTitle {
+  color: var(--color-text-primary);
+}
+
+[data-theme="dark"] .link {
+  color: var(--color-text-primary);
+}
+
+[data-theme="dark"] .link:hover {
+  color: var(--color-text-secondary);
+}
+
+[data-theme="dark"] .capacityItem {
+  background-color: var(--color-bg-tertiary);
+  border-color: var(--color-border-primary);
+}
+
+[data-theme="dark"] .amenity {
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-tertiary);
+  border-color: var(--color-border-primary);
 }

@@ -3,6 +3,8 @@
  * Handles ticket scanning when offline and syncs when connection is restored
  */
 
+import { logger } from '@/design-system/utils/logger-helpers';
+
 export interface OfflineCheckIn {
   id: string
   ticketId: string
@@ -48,7 +50,7 @@ export function getOfflineQueue(): OfflineCheckIn[] {
     const stored = localStorage.getItem(STORAGE_KEY)
     return stored ? JSON.parse(stored) : []
   } catch (error) {
-    console.error('Failed to load offline queue:', error)
+    logger.error('Failed to load offline queue', error as Error, { context: 'offline-checkin' })
     return []
   }
 }
@@ -69,7 +71,7 @@ function saveOfflineQueue(queue: OfflineCheckIn[]): void {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(queue))
   } catch (error) {
-    console.error('Failed to save offline queue:', error)
+    logger.error('Failed to save offline queue', error as Error, { context: 'offline-checkin' })
   }
 }
 
@@ -179,9 +181,9 @@ export async function autoSyncIfOnline(): Promise<void> {
   const pendingCount = getPendingCheckInCount()
   if (pendingCount === 0) return
   
-  console.log(`Auto-syncing ${pendingCount} pending check-ins...`)
+  logger.info('Auto-syncing pending check-ins', { pendingCount, context: 'offline-checkin' })
   const result = await syncOfflineCheckIns()
-  console.log(`Sync complete: ${result.success} success, ${result.failed} failed`)
+  logger.info('Sync complete', { success: result.success, failed: result.failed, context: 'offline-checkin' })
 }
 
 /**
@@ -192,7 +194,7 @@ export function initializeOfflineCheckIn(): void {
   
   // Auto-sync when coming back online
   window.addEventListener('online', () => {
-    console.log('Connection restored, syncing offline check-ins...')
+    logger.info('Connection restored, syncing offline check-ins', { context: 'offline-checkin' })
     autoSyncIfOnline()
   })
   

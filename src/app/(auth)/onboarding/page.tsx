@@ -1,6 +1,6 @@
 'use client';
 
-import { CheckoutFlowTemplate } from '@/design-system/components/templates';
+import { CheckoutFlowTemplate } from '@/design-system';
 import { useOnboarding } from '@/hooks/useOnboarding';
 
 export default function OnboardingPage() {
@@ -19,6 +19,8 @@ export default function OnboardingPage() {
       orderSummary={<div>Progress Summary</div>}
       onNext={() => setCurrentStep(currentStep + 1)}
       onBack={() => setCurrentStep(currentStep - 1)}
+      nextLabel={currentStep === 3 ? 'Finish' : 'Continue'}
+      backLabel="Back"
       nextLoading={loading}
     />
   );

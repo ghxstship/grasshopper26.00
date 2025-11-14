@@ -1,1 +1,0 @@
-export { ArtistGrid } from './ArtistGrid';

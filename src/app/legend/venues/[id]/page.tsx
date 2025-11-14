@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
-import { LoadingSpinner } from '@/design-system/components/atoms/LoadingSpinner';
+import { Spinner } from '@/design-system';
 import styles from './page.module.css';
 
 async function VenueDetails({ id }: { id: string }) {
@@ -140,7 +140,7 @@ export default async function VenuePage({ params }: { params: Promise<{ id: stri
         <h1 className={styles.title}>{venue?.venue_name || 'VENUE'}</h1>
       </div>
 
-      <Suspense fallback={<LoadingSpinner />}>
+      <Suspense fallback={<Spinner />}>
         <VenueDetails id={id} />
       </Suspense>
     </div>

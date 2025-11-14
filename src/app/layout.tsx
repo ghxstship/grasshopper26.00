@@ -2,8 +2,8 @@ import type { Metadata } from "next"
 import { Anton, Bebas_Neue, Share_Tech, Share_Tech_Mono } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/lib/theme-provider"
-import { Toaster } from "@/design-system/components/atoms/Toaster/Toaster"
-import { CookieConsent } from "@/design-system/components/atoms/CookieConsent/CookieConsent"
+import { CookieConsent } from "@/design-system/components/atoms"
+import { Toaster } from "sonner"
 
 // GHXSTSHIP Typography System
 const anton = Anton({ 

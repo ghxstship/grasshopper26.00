@@ -2,11 +2,11 @@
 
 import { useEffect, useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
-import { ContextualPageTemplate } from '@/design-system/components/templates';
+import { ContextualPageTemplate } from '@/design-system';
 import { createClient } from '@/lib/supabase/client';
-import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/Card';
-import { Button } from '@/design-system/components/atoms/Button';
-import { Badge } from '@/design-system/components/atoms/Badge';
+import { Card, CardContent, CardHeader, CardTitle } from '@/design-system';
+import { Button } from '@/design-system';
+import { Badge } from '@/design-system';
 import { Mail, RefreshCw, DollarSign, Package } from 'lucide-react';
 import { toast } from 'sonner';
 import styles from './order-detail-content.module.css';
@@ -99,11 +99,11 @@ export default function AdminOrderDetailPage({ params }: { params: Promise<{ id:
   const getStatusBadge = (status: string) => {
     const variants = {
       completed: 'default' as const,
-      pending: 'outlined' as const,
-      cancelled: 'sold-out' as const,
-      refunded: 'outlined' as const,
+      pending: 'outline' as const,
+      cancelled: 'solid' as const,
+      refunded: 'outline' as const,
     };
-    return variants[status as keyof typeof variants] || 'outlined';
+    return variants[status as keyof typeof variants] || 'outline';
   };
 
   if (!order) {
@@ -165,7 +165,7 @@ export default function AdminOrderDetailPage({ params }: { params: Promise<{ id:
                     <span className={styles.ticketType}>
                       {ticket.ticket_types?.name || 'General Admission'}
                     </span>
-                    <Badge variant={ticket.status === 'valid' ? 'default' : 'outlined'}>
+                    <Badge variant={ticket.status === 'valid' ? 'default' : 'outline'}>
                       {ticket.status}
                     </Badge>
                   </div>

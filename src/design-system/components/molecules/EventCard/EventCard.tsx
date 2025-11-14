@@ -1,109 +1,121 @@
 /**
- * EventCard Component
- * GHXSTSHIP Entertainment Platform - Event Display Card
- * Thick borders, hard geometric shadows, B&W imagery with halftone overlay
+ * EventCard - Event display molecule
+ * GHXSTSHIP Atomic Design System
  */
 
-import * as React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+import { Card, Stack, Heading, Text, Button } from '../../atoms';
 import styles from './EventCard.module.css';
 
 export interface EventCardProps {
-  event: {
+  /** Event title */
+  title?: string;
+  /** Event date */
+  date?: string;
+  /** Event location */
+  location?: string;
+  /** Event image */
+  image?: string;
+  /** Event slug/link */
+  slug?: string;
+  /** Price */
+  price?: string;
+  /** Sold out */
+  soldOut?: boolean;
+  /** Event object (alternative interface for tests) */
+  event?: {
     id: string;
     name: string;
     date: string;
     venue: string;
-    imageUrl: string;
-    status: 'on-sale' | 'sold-out' | 'coming-soon';
+    imageUrl?: string;
+    status?: string;
   };
+  /** Click handler */
   onClick?: () => void;
-  className?: string;
 }
 
-export const EventCard = React.forwardRef<HTMLDivElement, EventCardProps>(
-  ({ event, onClick, className = '' }, ref) => {
-    const classNames = [
-      styles.card,
-      className,
-    ].filter(Boolean).join(' ');
-
-    const handleClick = () => {
-      if (onClick) {
-        onClick();
-      }
-    };
-
-    const handleKeyDown = (e: React.KeyboardEvent) => {
-      if (onClick && (e.key === 'Enter' || e.key === ' ')) {
-        e.preventDefault();
-        onClick();
-      }
-    };
-
-    return (
-      <div
-        ref={ref}
-        className={classNames}
-        onClick={handleClick}
-        onKeyDown={handleKeyDown}
-        role={onClick ? 'button' : undefined}
-        tabIndex={onClick ? 0 : undefined}
-        aria-label={onClick ? `View ${event.name} event details` : undefined}
-      >
-        {/* B&W Image with halftone overlay */}
+export function EventCard({
+  title,
+  date,
+  location,
+  image,
+  slug,
+  price,
+  soldOut,
+  event,
+  onClick,
+}: EventCardProps) {
+  // Support both prop patterns
+  const eventTitle = title || event?.name || '';
+  const eventDate = date || event?.date || '';
+  const eventLocation = location || event?.venue || '';
+  const eventImage = image || event?.imageUrl;
+  const eventSlug = slug || event?.id || '';
+  const isSoldOut = soldOut || event?.status === 'sold-out';
+  
+  const cardContent = (
+    <>
+      {/* Image */}
+      {eventImage && (
         <div className={styles.imageContainer}>
           <Image
-            src={event.imageUrl}
-            alt={event.name}
+            src={eventImage}
+            alt={eventTitle}
             fill
             className={styles.image}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
-          <div className={styles.halftoneOverlay} aria-hidden="true" />
-        </div>
-
-        {/* Content */}
-        <div className={styles.content}>
-          <h3 className={styles.title}>
-            {event.name}
-          </h3>
-          
-          <p className={styles.metadata}>
-            {event.date} {event.venue}
-          </p>
-
-          {/* Status badge */}
-          {event.status === 'sold-out' && (
-            <div className={styles.statusBadge}>
-              <span className={styles.statusText}>
-                SOLD OUT
-              </span>
-            </div>
-          )}
-
-          {event.status === 'on-sale' && (
-            <div className={`${styles.statusBadge} ${styles.statusOnSale}`}>
-              <span className={styles.statusText}>
-                ON SALE
-              </span>
-            </div>
-          )}
-
-          {event.status === 'coming-soon' && (
-            <div className={`${styles.statusBadge} ${styles.statusComingSoon}`}>
-              <span className={styles.statusText}>
-                COMING SOON
-              </span>
+          {isSoldOut && (
+            <div className={styles.soldOutBadge}>
+              <Text font="bebas" size="lg" color="inverse" uppercase>
+                Sold Out
+              </Text>
             </div>
           )}
         </div>
+      )}
 
-        {/* Geometric accent */}
-        <div className={styles.geometricAccent} aria-hidden="true" />
-      </div>
-    );
-  }
-);
+      {/* Content */}
+      <Stack gap={3} className={styles.content}>
+        <Heading level={3} font="bebas">
+          {eventTitle}
+        </Heading>
 
-EventCard.displayName = 'EventCard';
+        <Stack gap={2}>
+          <Text font="share-mono" size="sm" color="secondary">
+            {eventDate}
+          </Text>
+          <Text font="share" size="sm" color="secondary">
+            {eventLocation}
+          </Text>
+        </Stack>
+
+        {price && (
+          <Text font="bebas" size="xl" weight="bold">
+            {price}
+          </Text>
+        )}
+
+        <Button variant={isSoldOut ? 'secondary' : 'primary'} fullWidth disabled={isSoldOut}>
+          {isSoldOut ? 'Sold Out' : 'Get Tickets'}
+        </Button>
+      </Stack>
+    </>
+  );
+
+  return (
+    <Card variant="elevated" padding={0} interactive onClick={onClick}>
+      {eventSlug && !onClick ? (
+        <Link href={`/events/${eventSlug}`} className={styles.link}>
+          {cardContent}
+        </Link>
+      ) : (
+        <div className={styles.link}>
+          {cardContent}
+        </div>
+      )}
+    </Card>
+  );
+}

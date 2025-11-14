@@ -1,103 +1,66 @@
 /**
- * SearchBar Component
- * GHXSTSHIP Entertainment Platform - Search Input
- * Bold outlined inputs (2-3px borders) with geometric icons
+ * SearchBar - Search input molecule
+ * GHXSTSHIP Atomic Design System
  */
 
-import * as React from 'react';
-import { Input } from '../../atoms/Input/Input';
+'use client';
+
+import { useState } from 'react';
+import { Input, Button, Stack } from '../../atoms';
 import styles from './SearchBar.module.css';
 
 export interface SearchBarProps {
+  /** Placeholder text */
   placeholder?: string;
+  /** Initial value */
   value?: string;
+  /** Change handler */
   onChange?: (value: string) => void;
+  /** Submit handler */
   onSubmit?: (value: string) => void;
-  className?: string;
+  /** Full width */
   fullWidth?: boolean;
 }
 
-export const SearchBar = React.forwardRef<HTMLInputElement, SearchBarProps>(
-  (
-    {
-      placeholder = 'SEARCH EVENTS, ARTISTS...',
-      value: controlledValue,
-      onChange,
-      onSubmit,
-      className = '',
-      fullWidth = false,
-    },
-    ref
-  ) => {
-    const [internalValue, setInternalValue] = React.useState('');
-    const value = controlledValue !== undefined ? controlledValue : internalValue;
+export function SearchBar({
+  placeholder = 'Search...',
+  value: controlledValue,
+  onChange,
+  onSubmit,
+  fullWidth,
+}: SearchBarProps) {
+  const [internalValue, setInternalValue] = useState('');
+  const value = controlledValue !== undefined ? controlledValue : internalValue;
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      const newValue = e.target.value;
-      if (controlledValue === undefined) {
-        setInternalValue(newValue);
-      }
-      if (onChange) {
-        onChange(newValue);
-      }
-    };
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = e.target.value;
+    if (controlledValue === undefined) {
+      setInternalValue(newValue);
+    }
+    onChange?.(newValue);
+  };
 
-    const handleSubmit = (e: React.FormEvent) => {
-      e.preventDefault();
-      if (onSubmit) {
-        onSubmit(value);
-      }
-    };
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    onSubmit?.(value);
+  };
 
-    const handleClear = () => {
-      const newValue = '';
-      if (controlledValue === undefined) {
-        setInternalValue(newValue);
-      }
-      if (onChange) {
-        onChange(newValue);
-      }
-    };
-
-    const containerClassNames = [
-      styles.container,
-      fullWidth && styles.fullWidth,
-      className,
-    ].filter(Boolean).join(' ');
-
-    return (
-      <form className={containerClassNames} onSubmit={handleSubmit}>
+  return (
+    <form onSubmit={handleSubmit} className={fullWidth ? styles.fullWidth : undefined}>
+      <Stack direction="horizontal" gap={2}>
         <Input
-          ref={ref}
           type="search"
           placeholder={placeholder}
           value={value}
           onChange={handleChange}
           fullWidth={fullWidth}
-          className={styles.input}
-          iconBefore={
-            <span className={styles.searchIcon} aria-hidden="true">
-              ◉
-            </span>
-          }
-          iconAfter={
-            value && (
-              <button
-                type="button"
-                onClick={handleClear}
-                className={styles.clearButton}
-                aria-label="Clear search"
-              >
-                <span className={styles.clearIcon} aria-hidden="true">
-                  ✕
-                </span>
-              </button>
-            )
-          }
         />
-      </form>
-    );
-  }
-);
-
-SearchBar.displayName = 'SearchBar';
+        {onSubmit && (
+          <Button type="submit" variant="primary">
+            Search
+          </Button>
+        )}
+      </Stack>
+    </form>
+  );
+}

@@ -1,50 +1,40 @@
 /**
- * Grid Component
- * GHXSTSHIP Entertainment Platform - Responsive grid layout
- * Asymmetric grids inspired by Acceleration CC
+ * Grid - CSS Grid layout primitive
+ * GHXSTSHIP Atomic Design System
  */
 
-import * as React from 'react'
-import styles from './Grid.module.css'
-
-export type GridColumns = 1 | 2 | 3 | 4 | 6 | 12
-export type GridGap = 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+import { ReactNode } from 'react';
+import styles from './Grid.module.css';
 
 export interface GridProps {
-  children: React.ReactNode
-  columns?: GridColumns | { mobile?: GridColumns; tablet?: GridColumns; desktop?: GridColumns }
-  gap?: GridGap
-  className?: string
-  as?: React.ElementType
+  /** Children content */
+  children: ReactNode;
+  /** Number of columns */
+  columns?: 1 | 2 | 3 | 4 | 6 | 12;
+  /** Gap between items */
+  gap?: 0 | 1 | 2 | 3 | 4 | 6 | 8 | 12 | 16;
+  /** Responsive columns */
+  responsive?: boolean;
+  /** Additional className */
+  className?: string;
 }
 
-export const Grid: React.FC<GridProps> = ({
+export function Grid({
   children,
   columns = 12,
-  gap = 'md',
-  className = '',
-  as: Component = 'div',
-}) => {
-  const getColumnClasses = () => {
-    if (typeof columns === 'number') {
-      return styles[`cols-${columns}`]
-    }
-    
-    const classes = []
-    if (columns.mobile) classes.push(styles[`cols-mobile-${columns.mobile}`])
-    if (columns.tablet) classes.push(styles[`cols-tablet-${columns.tablet}`])
-    if (columns.desktop) classes.push(styles[`cols-desktop-${columns.desktop}`])
-    return classes.join(' ')
-  }
-
+  gap = 4,
+  responsive = true,
+  className,
+}: GridProps) {
   const classNames = [
     styles.grid,
-    getColumnClasses(),
+    styles[`columns-${columns}`],
     styles[`gap-${gap}`],
+    responsive && styles.responsive,
     className,
-  ].filter(Boolean).join(' ')
+  ]
+    .filter(Boolean)
+    .join(' ');
 
-  return <Component className={classNames}>{children}</Component>
+  return <div className={classNames}>{children}</div>;
 }
-
-Grid.displayName = 'Grid'

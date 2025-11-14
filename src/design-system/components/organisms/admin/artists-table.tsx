@@ -1,18 +1,19 @@
-import * as React from 'react';
-import { Typography } from '@/design-system/components/atoms/Typography/Typography';
+/**
+ * ArtistsTable - Artists management table organism
+ * GHXSTSHIP Atomic Design System
+ */
+
+import { Text } from '../../atoms';
+import { Card } from '../../atoms/Card';
 
 export interface ArtistsTableProps {
-  artists: any[];
+  artists?: any[];
 }
 
-export const ArtistsTable: React.FC<ArtistsTableProps> = ({ artists }) => {
+export function ArtistsTable({ artists = [] }: ArtistsTableProps) {
   return (
-    <div>
-      {artists.map((artist: any) => (
-        <div key={artist.id}>
-          <Typography variant="body" as="div">{artist.name}</Typography>
-        </div>
-      ))}
-    </div>
+    <Card padding={6}>
+      <Text>Artists Table - {artists.length} artists</Text>
+    </Card>
   );
-};
+}

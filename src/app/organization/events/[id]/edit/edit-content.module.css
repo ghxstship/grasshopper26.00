@@ -1,56 +1,44 @@
-/* Edit Content Styles */
+/**
+ * Event Edit Content Styles
+ * GHXSTSHIP Design System - Monochromatic, Hard Edges, 3px Borders
+ */
 
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-lg);
+.iconMd {
+  inline-size: var(--space-5);
+  block-size: var(--space-5);
 }
 
 .formGrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-md);
+  grid-template-columns: 1fr;
+  gap: var(--spacing-4);
+}
+
+@media (min-width: 48rem) {
+  .formGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .formField {
   display: flex;
   flex-direction: column;
-  gap: var(--space-xs);
+  gap: var(--spacing-2);
 }
 
-.formActions {
-  display: flex;
-  gap: var(--space-sm);
+.fullWidth {
+  grid-column: 1 / -1;
 }
 
-.iconSmall {
-  inline-size: var(--icon-size-sm);
-  block-size: var(--icon-size-sm);
+.progressWrapper {
+  margin-block-end: var(--spacing-4);
 }
 
-@media (max-width: 48rem) {
-  .formGrid {
-    grid-template-columns: 1fr;
-  }
+.successAlert {
+  margin-block-end: var(--spacing-4);
 }
 
-/* DARK MODE */
-:global([data-theme="dark"]) .container,
-:global([data-theme="dark"]) .card,
-:global([data-theme="dark"]) .content {
-  background-color: var(--color-bg-primary);
-}
-
-:global([data-theme="dark"]) .button,
-:global([data-theme="dark"]) .input,
-:global([data-theme="dark"]) .select,
-:global([data-theme="dark"]) .textarea {
-  background-color: var(--color-bg-primary);
-  border-color: var(--color-border-strong);
+/* Dark Mode Support */
+[data-theme="dark"] .formGrid {
   color: var(--color-text-primary);
-}
-
-:global([data-theme="dark"]) .button:hover {
-  background-color: var(--color-text-primary);
-  color: var(--color-text-inverse);
 }

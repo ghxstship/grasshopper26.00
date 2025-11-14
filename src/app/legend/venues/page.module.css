@@ -1,32 +1,51 @@
+/* Legend Venues Page */
+
 .container {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-8);
-  padding-block: var(--space-8);
-  padding-inline: var(--space-8);
+  max-inline-size: 125rem;
+  margin-inline: auto;
 }
 
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-block-end: var(--space-6);
-  border-block-end: var(--border-width-3) solid var(--color-border-strong);
+  margin-block-end: var(--spacing-2xl);
 }
 
 .title {
-  font-family: var(--font-family-anton);
-  font-size: var(--font-size-h1);
-  letter-spacing: var(--letter-spacing-tight);
-  line-height: var(--line-height-tight);
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
   color: var(--color-text-primary);
-  margin-block: 0;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.link {
+  text-decoration: none;
+}
+
+.venueTitle {
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-xl);
+  margin-block-end: var(--space-2);
+  color: var(--color-text-primary);
+}
+
+.venueInfo {
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.venueCapacity {
+  font-family: var(--font-share-mono);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-block-start: var(--space-1);
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(21.875rem, 1fr));
-  gap: var(--space-6);
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--spacing-lg);
 }
 
 .empty {
@@ -34,52 +53,35 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-block: var(--space-16);
-  padding-inline: var(--space-8);
-  border-width: var(--border-width-3);
-  border-style: solid;
-  border-color: var(--color-border-default);
-  background-color: var(--color-bg-secondary);
+  min-block-size: var(--space-100);
+  gap: var(--spacing-lg);
+  text-align: center;
 }
 
 .emptyText {
-  font-family: var(--font-family-bebas);
-  font-size: var(--font-size-xl);
-  letter-spacing: var(--letter-spacing-wider);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-lg);
   color: var(--color-text-secondary);
-  margin-block: 0;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
 }
 
-/* DARK MODE */
-:global([data-theme="dark"]) .container {
-  background-color: var(--color-bg-primary);
+/* Responsive */
+@media (max-inline-size: var(--space-192)) {
+  .title {
+    font-size: var(--font-size-3xl);
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
 }
 
-:global([data-theme="dark"]) .header {
-  border-block-end-color: var(--color-border-strong);
-}
-
-:global([data-theme="dark"]) .title {
+/* Dark Mode */
+[data-theme="dark"] .title {
   color: var(--color-text-primary);
 }
 
-:global([data-theme="dark"]) .empty {
-  background-color: var(--color-bg-secondary);
-  border-color: var(--color-border-default);
-}
-
-:global([data-theme="dark"]) .emptyText {
+[data-theme="dark"] .emptyText {
   color: var(--color-text-secondary);
-}
-
-/* ========================================
-   RESPONSIVE BREAKPOINTS
-   ======================================== */
-
-@media (min-width: var(--space-96)) {
-  /* Tablet and up - add styles as needed */
-}
-
-@media (min-width: var(--space-96)) {
-  /* Desktop and up - add styles as needed */
 }

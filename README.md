@@ -46,9 +46,9 @@ Visit `http://localhost:3000` to see your application.
 grasshopper26.00/
 ├── src/                        # Application source code
 │   ├── app/                   # Next.js app router pages
-│   ├── design-system/         # ✨ Atomic design system (NEW)
-│   │   ├── components/        # Atoms, molecules, organisms
-│   │   ├── tokens/            # Design tokens (213 tokens)
+│   ├── design-system/         # Atomic design system
+│   │   ├── components/        # Atoms, molecules, organisms, templates
+│   │   ├── tokens/            # Design tokens (CSS variables)
 │   │   └── utils/             # Accessibility & responsive utilities
 │   ├── components/            # Feature components
 │   ├── lib/                   # Utilities and services
@@ -56,26 +56,33 @@ grasshopper26.00/
 │   └── types/                 # TypeScript definitions
 │
 ├── supabase/                   # Database & backend
-│   ├── migrations/            # Database migrations
+│   ├── migrations/            # Database migrations (59 files)
 │   └── functions/             # Edge functions
 │
 ├── tests/                      # Test suites
-│   ├── unit/                  # Unit tests
-│   └── e2e/                   # End-to-end tests
+│   ├── api/                   # API tests
+│   ├── components/            # Component tests
+│   ├── design-system/         # Design system tests
+│   └── accessibility/         # A11y tests
 │
 ├── scripts/                    # Utility scripts
 │   ├── setup.sh               # Initial setup
-│   └── seed.js                # Database seeding
+│   └── seed-*.mjs             # Database seeding
 │
 ├── docs/                       # Documentation
 │   ├── api/                   # API documentation
-│   ├── guides/                # How-to guides
 │   ├── architecture/          # Architecture docs
+│   ├── database/              # Database docs
 │   ├── deployment/            # Deployment guides
-│   ├── audits/                # Audit reports (archive)
-│   └── implementation/        # Implementation reports (archive)
+│   └── archive/               # Historical audits & reports
 │
-└── public/                     # Static assets
+├── public/                     # Static assets
+│   └── api-docs/              # OpenAPI specification
+│
+├── .github/                    # GitHub Actions workflows
+├── infrastructure/             # Terraform IaC
+├── ARCHITECTURE.md             # System architecture
+└── instrumentation.ts          # Next.js instrumentation entry
 ```
 
 ---

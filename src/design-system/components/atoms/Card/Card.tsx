@@ -1,78 +1,120 @@
 /**
- * Card Component
- * GHXSTSHIP Entertainment Platform - Geometric cards
- * Thick borders, hard geometric shadows, color inversion hover
+ * Card - Container primitive
+ * GHXSTSHIP Atomic Design System
  */
 
-import * as React from "react"
-import styles from "./Card.module.css"
+import { ReactNode } from 'react';
+import styles from './Card.module.css';
 
-export type CardVariant = 'default' | 'outlined' | 'elevated' | 'interactive';
-export type CardPadding = 'none' | 'sm' | 'md' | 'lg';
-
-export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: CardVariant;
-  padding?: CardPadding;
-  hoverable?: boolean;
-  clickable?: boolean;
-  children: React.ReactNode;
+export interface CardProps {
+  /** Children content */
+  children: ReactNode;
+  /** Card variant */
+  variant?: 'default' | 'outlined' | 'elevated';
+  /** Padding */
+  padding?: 0 | 2 | 4 | 6 | 8;
+  /** Interactive (hover effects) */
+  interactive?: boolean;
+  /** Additional className */
+  className?: string;
+  /** Click handler */
+  onClick?: () => void;
+  /** Inline styles */
+  style?: React.CSSProperties;
 }
 
-export const Card = React.forwardRef<HTMLDivElement, CardProps>(
-  ({
-    variant = 'default',
-    padding = 'md',
-    hoverable = false,
-    clickable = false,
-    className = '',
-    children,
-    ...props
-  }, ref) => {
-    const classNames = [
-      styles.card,
-      styles[variant],
-      styles[`padding-${padding}`],
-      hoverable && styles.hoverable,
-      clickable && styles.clickable,
-      className,
-    ].filter(Boolean).join(' ');
-    
-    return (
-      <div ref={ref} className={classNames} {...props}>
-        {children}
-      </div>
-    );
-  }
-);
-
-Card.displayName = 'Card';
-
-export const CardHeader: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
-  className = '',
+export function Card({
   children,
+  variant = 'default',
+  padding = 6,
+  interactive,
+  className,
+  onClick,
+  style,
   ...props
-}) => (
-  <div className={`${styles.cardHeader} ${className}`} {...props}>
-    {children}
-  </div>
-);
+}: CardProps) {
+  const classNames = [
+    styles.card,
+    styles[`variant-${variant}`],
+    styles[`padding-${padding}`],
+    interactive && styles.interactive,
+    className,
+  ]
+    .filter(Boolean)
+    .join(' ');
 
-export const CardBody: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
-  className = '',
-  children,
-  ...props
-}) => (
-  <div className={`${styles.cardBody} ${className}`} {...props}>
-    {children}
-  </div>
-);
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (onClick && (e.key === 'Enter' || e.key === ' ')) {
+      e.preventDefault();
+      onClick();
+    }
+  };
 
-export const CardFooter: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
-  className = '',
-  children,
-  ...props
-}) => (
-  <div className={`${styles.cardFooter} ${className}`} {...props}>
-    {children}
-  </div>
-);
+  return (
+    <div 
+      className={classNames} 
+      onClick={onClick}
+      onKeyDown={interactive ? handleKeyDown : undefined}
+      role={interactive ? 'button' : undefined}
+      tabIndex={interactive ? 0 : undefined}
+      style={style}
+      {...props}
+    >
+      {children}
+    </div>
+  );
+}
+
+export interface CardHeaderProps {
+  children: ReactNode;
+  className?: string;
+}
+
+export function CardHeader({ children, className }: CardHeaderProps) {
+  return (
+    <div className={className}>
+      {children}
+    </div>
+  );
+}
+
+export interface CardTitleProps {
+  children: ReactNode;
+  className?: string;
+}
+
+export function CardTitle({ children, className }: CardTitleProps) {
+  const classNames = [styles.title, className].filter(Boolean).join(' ');
+  return (
+    <h3 className={classNames}>
+      {children}
+    </h3>
+  );
+}
+
+export interface CardDescriptionProps {
+  children: ReactNode;
+  className?: string;
+}
+
+export function CardDescription({ children, className }: CardDescriptionProps) {
+  const classNames = [styles.description, className].filter(Boolean).join(' ');
+  return (
+    <p className={classNames}>
+      {children}
+    </p>
+  );
+}
+
+export interface CardContentProps {
+  children: ReactNode;
+  className?: string;
+}
+
+export function CardContent({ children, className }: CardContentProps) {
+  return (
+    <div className={className}>
+      {children}
+    </div>
+  );
+}

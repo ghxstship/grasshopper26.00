@@ -1,0 +1,32 @@
+/**
+ * PricingCard - Pricing tier card molecule
+ * GHXSTSHIP: Hard geometric, featured highlight
+ */
+
+.featured {
+  border-color: var(--color-black);
+  box-shadow: var(--shadow-xl);
+}
+
+[data-theme="dark"] .featured {
+  border-color: var(--color-white);
+}
+
+.price {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+}
+
+.feature {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.checkmark {
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  min-width: 1.5rem;
+}

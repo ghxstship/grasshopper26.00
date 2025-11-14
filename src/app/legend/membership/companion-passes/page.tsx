@@ -1,11 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Typography } from '@/design-system/components/atoms/Typography/Typography';
-import { Button } from '@/design-system/components/atoms/Button/Button';
-import { Input } from '@/design-system/components/atoms/Input/Input';
-import { Select } from '@/design-system/components/atoms/Select/Select';
-import { Plus, UserPlus, Mail, Phone, Users } from 'lucide-react';
+import { Heading, Text, Button, Input, Select, Stack } from '@/design-system';
+import { Users } from 'lucide-react';
 import styles from './companion-passes.module.css';
 
 interface CompanionPass {
@@ -125,7 +122,7 @@ export default function CompanionPassesPage() {
   if (loading) {
     return (
       <div className={styles.container}>
-        <Typography variant="body" as="p">Loading...</Typography>
+        <Text>Loading...</Text>
       </div>
     );
   }
@@ -134,9 +131,9 @@ export default function CompanionPassesPage() {
     return (
       <div className={styles.container}>
         <div className={styles.emptyState}>
-          <Typography variant="h2" as="h2">Error</Typography>
-          <Typography variant="body" as="p">{error}</Typography>
-          <Button variant="filled" onClick={fetchData}>
+          <Heading level={2}>Error</Heading>
+          <Text>{error}</Text>
+          <Button variant="primary" onClick={fetchData}>
             Retry
           </Button>
         </div>
@@ -149,11 +146,11 @@ export default function CompanionPassesPage() {
       <div className={styles.container}>
         <div className={styles.emptyState}>
           <Users className={styles.emptyIcon} />
-          <Typography variant="h2" as="h2">No Companion Pass</Typography>
-          <Typography variant="body" as="p">
+          <Heading level={2}>No Companion Pass</Heading>
+          <Text>
             Add a Companion Pass to your membership to share benefits with a guest
-          </Typography>
-          <Button variant="filled" onClick={() => window.location.href = '/membership'}>
+          </Text>
+          <Button variant="primary" onClick={() => window.location.href = '/membership'}>
             View Membership Options
           </Button>
         </div>
@@ -168,14 +165,14 @@ export default function CompanionPassesPage() {
     <div className={styles.container}>
       <div className={styles.header}>
         <div>
-          <Typography variant="h1" as="h1">Companion Passes</Typography>
-          <Typography variant="body" as="p" className={styles.subtitle}>
+          <Heading level={1}>Companion Passes</Heading>
+          <Text className={styles.subtitle}>
             Manage your companion pass and guest access
-          </Typography>
+          </Text>
         </div>
         {canAddMore && !showAddForm && (
           <Button
-            variant="filled"
+            variant="primary"
             onClick={() => setShowAddForm(true)}
           >
             Add Companion
@@ -185,55 +182,67 @@ export default function CompanionPassesPage() {
 
       <div className={styles.passCard}>
         <div className={styles.passHeader}>
-          <Typography variant="h3" as="h3">
+          <Heading level={3}>
             {activePass.companion_pass.pass_name}
-          </Typography>
+          </Heading>
           <div className={styles.passStatus}>
-            <Typography variant="meta" as="span">
+            <Text size="sm">
               {activePass.companions_registered} / {activePass.max_companions} companions
-            </Typography>
+            </Text>
           </div>
         </div>
       </div>
 
       {showAddForm && (
         <form onSubmit={handleAddCompanion} className={styles.addForm}>
-          <Typography variant="h3" as="h3">Add New Companion</Typography>
+          <Heading level={3}>Add New Companion</Heading>
           
-          <Input
-            label="Full Name"
-            value={formData.companion_name}
-            onChange={(e) => setFormData({ ...formData, companion_name: e.target.value })}
-            required
-          />
+          <Stack gap={2}>
+            <Text size="sm" weight="medium">Full Name</Text>
+            <Input
+              value={formData.companion_name}
+              onChange={(e) => setFormData({ ...formData, companion_name: e.target.value })}
+              required
+              fullWidth
+            />
+          </Stack>
 
-          <Input
-            label="Email Address"
-            type="email"
-            value={formData.companion_email}
-            onChange={(e) => setFormData({ ...formData, companion_email: e.target.value })}
-            required
-          />
+          <Stack gap={2}>
+            <Text size="sm" weight="medium">Email Address</Text>
+            <Input
+              type="email"
+              value={formData.companion_email}
+              onChange={(e) => setFormData({ ...formData, companion_email: e.target.value })}
+              required
+              fullWidth
+            />
+          </Stack>
 
-          <Input
-            label="Phone Number (Optional)"
-            type="tel"
-            value={formData.companion_phone}
-            onChange={(e) => setFormData({ ...formData, companion_phone: e.target.value })}
-          />
+          <Stack gap={2}>
+            <Text size="sm" weight="medium">Phone Number (Optional)</Text>
+            <Input
+              type="tel"
+              value={formData.companion_phone}
+              onChange={(e) => setFormData({ ...formData, companion_phone: e.target.value })}
+              fullWidth
+            />
+          </Stack>
 
-          <Select
-            label="Relationship"
-            options={relationshipOptions}
-            value={formData.relationship}
-            onChange={(e) => setFormData({ ...formData, relationship: e.target.value })}
-          />
+          <Stack gap={2}>
+            <Text size="sm" weight="medium">Relationship</Text>
+            <Select
+              options={relationshipOptions}
+              value={formData.relationship}
+              onChange={(e) => setFormData({ ...formData, relationship: e.target.value })}
+              fullWidth
+            />
+          </Stack>
 
           <div className={styles.formActions}>
-            <Button type="button" variant="outlined" onClick={() => setShowAddForm(false)}>
+            <Button type="button" variant="secondary" onClick={() => setShowAddForm(false)}>
               Cancel
             </Button>
-            <Button type="submit" variant="filled">
+            <Button type="submit" variant="primary">
               Add Companion
             </Button>
           </div>
@@ -241,29 +250,29 @@ export default function CompanionPassesPage() {
       )}
 
       <div className={styles.companionsList}>
-        <Typography variant="h3" as="h3">Your Companions</Typography>
+        <Heading level={3}>Your Companions</Heading>
         
         {companions.length === 0 ? (
           <div className={styles.emptyCompanions}>
-            <Typography variant="body" as="p">
+            <Text>
               No companions added yet
-            </Typography>
+            </Text>
           </div>
         ) : (
           <div className={styles.companionsGrid}>
             {companions.map((companion) => (
               <div key={companion.id} className={styles.companionCard}>
                 <div className={styles.companionInfo}>
-                  <Typography variant="h4" as="h4">
+                  <Heading level={4}>
                     {companion.companion_name}
-                  </Typography>
-                  <Typography variant="meta" as="p">
+                  </Heading>
+                  <Text size="sm">
                     {companion.companion_email}
-                  </Typography>
+                  </Text>
                   {companion.companion_phone && (
-                    <Typography variant="meta" as="p">
+                    <Text size="sm">
                       {companion.companion_phone}
-                    </Typography>
+                    </Text>
                   )}
                   {companion.relationship && (
                     <span className={styles.relationshipBadge}>

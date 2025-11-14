@@ -1,73 +1,48 @@
 /**
- * Admin Products Page Styles
- * GHXSTSHIP Monochromatic Design System
+ * Products Page Styles
+ * GHXSTSHIP Design System - Monochromatic, Hard Edges, 3px Borders
  */
 
-.statsGrid {
-  display: grid;
-  gap: var(--space-6);
-  grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
-  margin-block-end: var(--space-8);
-}
-
-.toolbar {
-  margin-block-end: var(--space-6);
-}
-
-.content {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-6);
+.icon {
+  inline-size: var(--space-5);
+  block-size: var(--space-5);
 }
 
 .productsTable {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  border: var(--border-width-3) solid var(--color-border-strong);
+  background-color: var(--color-bg-primary);
 }
 
 .productRow {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: var(--space-4);
-  border: var(--border-width-3) solid var(--color-border-default);
-  background-color: var(--color-bg-primary);
-}
-
-.empty {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
   gap: var(--space-4);
-  padding: var(--space-12);
-  text-align: center;
+  padding-block: var(--space-4);
+  padding-inline: var(--space-4);
+  border-block-end: var(--border-width-1) solid var(--color-border-subtle);
+  transition: background-color var(--duration-fast) var(--easing-out);
 }
 
-.emptyIcon {
-  width: 4rem;
-  height: 4rem;
-  color: var(--color-text-secondary);
+.productRow:hover {
+  background-color: var(--color-bg-secondary);
 }
 
-/* DARK MODE */
-:global([data-theme="dark"]) .productRow {
+.productRow:last-child {
+  border-block-end: none;
+}
+
+/* Dark Mode Support */
+[data-theme="dark"] .productsTable {
+  border-color: var(--color-border-primary);
   background-color: var(--color-bg-primary);
-  border-color: var(--color-border-default);
 }
 
-:global([data-theme="dark"]) .emptyIcon {
-  color: var(--color-text-secondary);
+[data-theme="dark"] .productRow {
+  border-block-end-color: var(--color-border-secondary);
 }
 
-/* ========================================
-   RESPONSIVE BREAKPOINTS
-   ======================================== */
-
-@media (min-width: var(--space-96)) {
-  /* Tablet and up - add styles as needed */
-}
-
-@media (min-width: var(--space-96)) {
-  /* Desktop and up - add styles as needed */
+[data-theme="dark"] .productRow:hover {
+  background-color: var(--color-bg-secondary);
 }

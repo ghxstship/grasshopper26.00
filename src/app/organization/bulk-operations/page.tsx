@@ -1,9 +1,9 @@
 'use client';
 
-import { AdminListTemplate } from '@/design-system/components/templates';
+import { AdminListTemplate } from '@/design-system';
 import { Zap, Plus } from 'lucide-react';
 import { useAdminBulkOps } from '@/hooks/useAdminBulkOps';
-import { BulkOpsTable } from '@/design-system/components/organisms/admin/bulk-ops-table';
+import { BulkOpsTable } from '@/design-system';
 
 export default function AdminBulkOperationsPage() {
   const { operations, stats, loading } = useAdminBulkOps();

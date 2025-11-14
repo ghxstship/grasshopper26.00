@@ -1,6 +1,6 @@
 'use client';
 
-import { CheckoutFlowTemplate } from '@/design-system/components/templates';
+import { CheckoutFlowTemplate } from '@/design-system';
 import { useAdvanceCheckout } from '@/hooks/useAdvanceCheckout';
 
 export default function AdvanceCheckoutPage() {

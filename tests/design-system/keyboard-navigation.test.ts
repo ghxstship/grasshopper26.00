@@ -4,6 +4,10 @@
  */
 
 import { KeyboardNavigation } from '@/design-system/utils/keyboard-navigation';
+import { vi } from 'vitest';
+
+// Mock scrollIntoView
+HTMLElement.prototype.scrollIntoView = vi.fn();
 
 describe('KeyboardNavigation', () => {
   let items: HTMLElement[];

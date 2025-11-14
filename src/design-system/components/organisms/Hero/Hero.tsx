@@ -1,119 +1,76 @@
 /**
- * Hero Component
- * GHXSTSHIP Entertainment Platform - Full-screen hero section
- * ANTON typography, duotone/B&W backgrounds, geometric overlays
+ * Hero - Hero section organism
+ * GHXSTSHIP Atomic Design System
  */
 
-import * as React from 'react';
-import Image from 'next/image';
+import { Box, Stack, Heading, Text, Button } from '../../atoms';
 import styles from './Hero.module.css';
 
 export interface HeroProps {
+  /** Hero title */
   title: string;
-  tagline?: string;
-  backgroundImage?: string;
-  backgroundVideo?: string;
+  /** Hero subtitle */
+  subtitle?: string;
+  /** CTA button text */
   ctaText?: string;
+  /** CTA button link */
   ctaHref?: string;
-  onCtaClick?: () => void;
-  variant?: 'black' | 'white';
-  className?: string;
+  /** Secondary CTA text */
+  secondaryCtaText?: string;
+  /** Secondary CTA link */
+  secondaryCtaHref?: string;
+  /** Background image */
+  backgroundImage?: string;
 }
 
-export const Hero = React.forwardRef<HTMLElement, HeroProps>(
-  (
-    {
-      title,
-      tagline,
-      backgroundImage,
-      backgroundVideo,
-      ctaText,
-      ctaHref,
-      onCtaClick,
-      variant = 'black',
-      className = '',
-    },
-    ref
-  ) => {
-    const classNames = [
-      styles.hero,
-      styles[variant],
-      className,
-    ].filter(Boolean).join(' ');
-
-    return (
-      <section ref={ref} className={classNames}>
-        {backgroundVideo && (
-          <div className={styles.backgroundVideo}>
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className={styles.video}
-              aria-hidden="true"
-            >
-              <source src={backgroundVideo} type="video/mp4" />
-            </video>
-            <div className={styles.videoOverlay} aria-hidden="true" />
-          </div>
-        )}
-
-        {!backgroundVideo && backgroundImage && (
-          <div className={styles.backgroundImage}>
-            <Image
-              src={backgroundImage}
-              alt=""
-              fill
-              priority
-              className={styles.image}
-              sizes="100vw"
-            />
-            <div className={styles.imageOverlay} aria-hidden="true" />
-          </div>
-        )}
-
-        <div className={styles.geometricShapes} aria-hidden="true">
-          <div className={styles.shape1} />
-          <div className={styles.shape2} />
-          <div className={styles.shape3} />
-        </div>
-
-        <div className={styles.content}>
-          <h1 className={styles.title}>
+export function Hero({
+  title,
+  subtitle,
+  ctaText,
+  ctaHref,
+  secondaryCtaText,
+  secondaryCtaHref,
+  backgroundImage,
+}: HeroProps) {
+  return (
+    <Box
+      as="section"
+      className={styles.hero}
+      style={backgroundImage ? { backgroundImage: `url(${backgroundImage})` } : undefined}
+    >
+      <div className={styles.overlay} />
+      <div className={styles.content}>
+        <Stack gap={6} align="center">
+          <Heading level={1} font="anton" align="center">
             {title}
-          </h1>
+          </Heading>
 
-          {tagline && (
-            <p className={styles.tagline}>
-              {tagline}
-            </p>
+          {subtitle && (
+            <Text font="bebas" size="2xl" align="center" color="secondary">
+              {subtitle}
+            </Text>
           )}
 
-          {ctaText && (
-            <div className={styles.ctaContainer}>
-              {ctaHref ? (
-                <a href={ctaHref} className={styles.cta}>
-                  <span className={styles.ctaText}>{ctaText}</span>
-                  <span className={styles.ctaArrow} aria-hidden="true">→</span>
+          {(ctaText || secondaryCtaText) && (
+            <Stack direction="horizontal" gap={4} className={styles.ctas}>
+              {ctaText && ctaHref && (
+                <a href={ctaHref} className={styles.ctaLink}>
+                  <Button variant="primary" size="xl">
+                    {ctaText}
+                  </Button>
                 </a>
-              ) : (
-                <button onClick={onCtaClick} className={styles.cta}>
-                  <span className={styles.ctaText}>{ctaText}</span>
-                  <span className={styles.ctaArrow} aria-hidden="true">→</span>
-                </button>
               )}
-            </div>
+              {secondaryCtaText && secondaryCtaHref && (
+                <a href={secondaryCtaHref} className={styles.ctaLink}>
+                  <Button variant="secondary" size="xl">
+                    {secondaryCtaText}
+                  </Button>
+                </a>
+              )}
+            </Stack>
           )}
-        </div>
-
-        <div className={styles.scrollIndicator} aria-hidden="true">
-          <div className={styles.scrollLine} />
-          <div className={styles.scrollArrow}>↓</div>
-        </div>
-      </section>
-    );
-  }
-);
-
-Hero.displayName = 'Hero';
+        </Stack>
+      </div>
+    </Box>
+  );
+}

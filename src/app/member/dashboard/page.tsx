@@ -1,14 +1,14 @@
 'use client';
 
-import { PortalLayout } from '@/design-system/components/templates/PortalLayout/PortalLayout';
-import { PortalSidebar } from '@/design-system/components/organisms/PortalSidebar/PortalSidebar';
-import { Typography } from '@/design-system/components/atoms/Typography/Typography';
-import { StatCard } from '@/design-system/components/molecules/StatCard/StatCard';
-import { Ticket, Gift, Calendar, TrendingUp } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { createClient } from '@/lib/supabase/client';
 import Link from 'next/link';
-import styles from './page.module.css';
+import { Ticket, Gift, Calendar, TrendingUp } from 'lucide-react';
+import { createClient } from '@/lib/supabase/client';
+import { Card, Stack, Heading, Button } from '@/design-system';
+import { StatCard } from '@/design-system';
+import { PageTemplate } from '@/design-system';
+import styles from './dashboard.module.css';
+import memberStyles from '../member.module.css';
 
 export default function MemberPortalPage() {
   const [stats, setStats] = useState({
@@ -111,36 +111,48 @@ export default function MemberPortalPage() {
   }
 
   return (
-    <PortalLayout
-      sidebar={<PortalSidebar />}
-      title="Member Portal"
-      description="Welcome back to GVTEWAY"
-    >
+    <PageTemplate showHeader showFooter>
       <div className={styles.container}>
-        <div className={styles.statsGrid}>
-          <StatCard label="Total Orders" value={stats.orders} icon={<Ticket />} />
-          <StatCard label="Available Credits" value={stats.credits} icon={<Gift />} />
-          <StatCard label="Upcoming Events" value={stats.upcomingEvents} icon={<Calendar />} />
-          <StatCard label="Referrals" value={stats.referrals} icon={<TrendingUp />} />
-        </div>
+        <div className={styles.content}>
+          <Stack gap={6}>
+            <Heading level={1} font="anton">
+              Member Portal
+            </Heading>
 
-        <div className={styles.quickActions}>
-          <Typography variant="h3" as="h2" className={styles.quickActionsTitle}>
-            Quick Actions
-          </Typography>
-          <div className={styles.actionsGrid}>
-            <Link href="/events" className={styles.actionLink}>
-              Browse Events
-            </Link>
-            <Link href="/member/portal/orders" className={styles.actionLink}>
-              My Orders
-            </Link>
-            <Link href="/member/portal/schedule" className={styles.actionLink}>
-              My Schedule
-            </Link>
-          </div>
+            <div className={styles.statsGrid}>
+              <StatCard label="Total Orders" value={stats.orders} />
+              <StatCard label="Available Credits" value={stats.credits} />
+              <StatCard label="Upcoming Events" value={stats.upcomingEvents} />
+              <StatCard label="Referrals" value={stats.referrals} />
+            </div>
+
+            <Card variant="outlined" padding={6}>
+              <Stack gap={4}>
+                <Heading level={2} font="bebas">
+                  Quick Actions
+                </Heading>
+                <div className={styles.actionsGrid}>
+                  <Link href="/events" className={styles.linkNoDecoration}>
+                    <Button variant="primary" fullWidth>
+                      Browse Events
+                    </Button>
+                  </Link>
+                  <Link href="/member/orders" className={styles.linkNoDecoration}>
+                    <Button variant="secondary" fullWidth>
+                      My Orders
+                    </Button>
+                  </Link>
+                  <Link href="/member/schedule" className={styles.linkNoDecoration}>
+                    <Button variant="secondary" fullWidth>
+                      My Schedule
+                    </Button>
+                  </Link>
+                </div>
+              </Stack>
+            </Card>
+          </Stack>
         </div>
       </div>
-    </PortalLayout>
+    </PageTemplate>
   );
 }

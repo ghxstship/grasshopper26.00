@@ -6,12 +6,12 @@
 'use client';
 
 import { use, useEffect, useState } from 'react';
-import { ContextualPageTemplate } from '@/design-system/components/templates';
-import { Button } from '@/design-system/components/atoms/Button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/Card';
-import { Input } from '@/design-system/components/atoms/Input';
-import { Label } from '@/design-system/components/atoms/Label';
-import { Badge } from '@/design-system/components/atoms/Badge';
+import { ContextualPageTemplate } from '@/design-system';
+import { Button } from '@/design-system';
+import { Card, CardContent, CardHeader, CardTitle } from '@/design-system';
+import { Input } from '@/design-system';
+import { Label } from '@/design-system';
+import { Badge } from '@/design-system';
 import { Plus, Save, Trash2, Clock, MapPin, Music, Calendar } from 'lucide-react';
 import { toast } from 'sonner';
 import styles from './schedule-content.module.css';
@@ -336,7 +336,7 @@ export default function EventSchedulePage({ params }: { params: Promise<{ id: st
                           <div className={styles.scheduleHeader}>
                             <Music className={styles.iconSmall} />
                             <h4 className={styles.artistName}>{item.artist_name}</h4>
-                            <Badge variant="outlined">{item.stage_name}</Badge>
+                            <Badge variant="outline">{item.stage_name}</Badge>
                           </div>
                           <p className={styles.scheduleTime}>
                             <Clock className={styles.iconSmall} />

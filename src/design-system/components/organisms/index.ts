@@ -1,71 +1,60 @@
-export { Hero as HeroSection } from './Hero';
-export type { HeroProps as HeroSectionProps } from './Hero';
-export * from './Navigation';
-export { ScheduleGrid } from './ScheduleGrid';
-export type { ScheduleGridProps, ScheduleSlot } from './ScheduleGrid';
-export type { Stage as ScheduleStage } from './ScheduleGrid';
-export * from './WeatherWidget';
-export * from './BudgetManager';
-export * from './TaskBoard';
-export * from './KPIDashboard';
-export * from './VendorManagement';
-export * from './TransactionHistory';
-export * from './StaffScheduler';
-export * from './CheckInSystem';
-export * from './IncidentBoard';
-export * from './DataTable';
-export * from './KanbanBoard';
-export * from './CalendarView';
-export * from './FormBuilder';
-export * from './ListView';
-export * from './TimelineView';
-export * from './GalleryView';
-export * from './AdvancedFilter';
-export * from './ActivityFeed';
-export * from './WorkflowBuilder';
-export * from './DashboardBuilder';
-export * from './CommentThread';
-export * from './NotificationCenter';
-export { SiteHeader } from './layout/site-header';
-export type { SiteHeaderProps } from './layout/site-header';
-export { SiteFooter } from './layout/site-footer';
-export type { SiteFooterProps } from './layout/site-footer';
-export { EventCard as EventDetails } from './EventCard';
-export type { EventCardProps as EventDetailsProps } from './EventCard';
-export { ArtistCard as ArtistProfile } from './ArtistCard';
-export type { ArtistCardProps as ArtistProfileProps } from './ArtistCard';
-export { TicketCard as TicketDetails } from './TicketCard';
-export type { TicketCardProps as TicketDetailsProps } from './TicketCard';
-export { NewsCard as NewsArticle } from './NewsCard';
-export type { NewsCardProps as NewsArticleProps } from './NewsCard';
-export * from './FAQAccordion';
-export * from './ContactForm';
-export * from './StatsSection';
-export * from './ArtistGrid/ArtistGrid';
-export * from './EventsGrid/EventsGrid';
-export * from './LineupSection/LineupSection';
-export * from './NewsGrid/NewsGrid';
-export * from './TicketSelector/TicketSelector';
-export * from './HeroSection/HeroSection';
-export { VenueMap } from './VenueMap/VenueMap';
-export type { VenueMapProps } from './VenueMap/VenueMap';
-export type { Stage as VenueStage } from './VenueMap/VenueMap';
-export * from './Carousel/Carousel';
-export * from './SocialFeed/SocialFeed';
-export * from './MusicPlayer/MusicPlayer';
-export * from './FeatureSection/FeatureSection';
-export * from './Breadcrumbs/Breadcrumbs';
-export { Pagination as PaginationComponent } from './Pagination/Pagination';
-export type { PaginationProps as PaginationComponentProps } from './Pagination/Pagination';
-export { Modal as ModalDialog } from './Modal/Modal';
-export type { ModalProps as ModalDialogProps } from './Modal/Modal';
-export { Tabs as TabsContainer } from './Tabs/Tabs';
-export type { TabsProps as TabsContainerProps, Tab as TabItem } from './Tabs/Tabs';
-export * from './VideoPlayer/VideoPlayer';
-export { Countdown as CountdownWidget } from './Countdown/Countdown';
-export type { CountdownProps as CountdownWidgetProps } from './Countdown/Countdown';
-export * from './SearchResults/SearchResults';
-export * from './AdminSidebar/AdminSidebar';
-export * from './PortalSidebar/PortalSidebar';
-export * from './MembershipCard/MembershipCard';
-export * from './MembershipTierCard/MembershipTierCard';
+/**
+ * Organisms - Complex UI sections
+ * GHXSTSHIP Atomic Design System
+ */
+
+export { ArtistsGrid } from './ArtistsGrid';
+export type { ArtistsGridProps } from './ArtistsGrid';
+
+export { ContactForm } from './ContactForm';
+export type { ContactFormProps, ContactFormData } from './ContactForm';
+
+export { EventsGrid } from './EventsGrid';
+export type { EventsGridProps } from './EventsGrid';
+
+export { Footer } from './Footer';
+export type { FooterProps, FooterColumn, FooterLink } from './Footer';
+
+export { Hero } from './Hero';
+export type { HeroProps } from './Hero';
+
+export { ProductsGrid } from './ProductsGrid';
+export type { ProductsGridProps } from './ProductsGrid';
+
+export { Table } from './Table';
+export type { TableProps, TableColumn } from './Table';
+
+export { PortalSidebar } from './PortalSidebar';
+export type { PortalSidebarProps } from './PortalSidebar';
+
+export { FavoritesList } from './FavoritesList';
+export type { FavoritesListProps, Favorite } from './FavoritesList';
+
+export { ReferralsList } from './ReferralsList';
+export type { ReferralsListProps, Referral } from './ReferralsList';
+
+export { ScheduleList } from './ScheduleList';
+export type { ScheduleListProps, ScheduleEvent } from './ScheduleList';
+
+export { AdminSidebar } from './admin/AdminSidebar';
+export type { AdminSidebarProps } from './admin/AdminSidebar';
+
+export { AdminHeader } from './admin/AdminHeader';
+export type { AdminHeaderProps } from './admin/AdminHeader';
+
+export { AdvanceCard } from './advances/advance-card';
+export { ArtistsTable } from './admin/artists-table';
+export { BrandsTable } from './admin/brands-table';
+export { BulkOpsTable } from './admin/bulk-ops-table';
+export { InventoryTable } from './admin/inventory-table';
+export { OrdersTable } from './admin/orders-table';
+export { RolesTable } from './admin/roles-table';
+export { CredentialBadge } from './admin/CredentialBadge';
+export { CampaignsTable } from './admin/campaigns-table';
+export { CheckInTable } from './credentials/check-in-table';
+export { QRScanner } from './event-roles/QRScanner';
+export { MembershipCard } from './MembershipCard/MembershipCard';
+export { TicketSelector } from './TicketSelector/TicketSelector';
+export { BudgetsTable } from './admin/budgets-table';
+export { ContractsTable } from './admin/contracts-table';
+export { EquipmentTable } from './admin/equipment-table';

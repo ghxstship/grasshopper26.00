@@ -1,54 +1,20 @@
-/**
- * Shop Page
- * Browse merchandise and products
- */
-
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
-import { ShopBrowseClient } from './shop-client';
+import { ShopClient } from './shop-client';
 
 export const metadata: Metadata = {
-  title: 'Shops | GVTEWAY',
-  description: 'Discover brands and merchandise',
+  title: 'Shop - GVTEWAY',
+  description: 'Browse merchandise and products',
 };
 
-interface ShopPageProps {
-  searchParams: Promise<{
-    category?: string;
-    event?: string;
-    search?: string;
-  }>;
-}
-
-export default async function ShopPage({ searchParams }: ShopPageProps) {
+export default async function ShopPage() {
   const supabase = await createClient();
-  const { category, event, search } = await searchParams;
-
-  // Build query
-  let query = supabase
+  
+  const { data: products } = await supabase
     .from('products')
-    .select('*, product_variants(*)')
+    .select('*')
     .eq('status', 'active')
     .order('created_at', { ascending: false });
 
-  // Apply filters
-  if (search) {
-    query = query.ilike('name', `%${search}%`);
-  }
-
-  if (category) {
-    query = query.eq('category', category);
-  }
-
-  if (event) {
-    query = query.eq('event_id', event);
-  }
-
-  const { data: products, error } = await query;
-
-  if (error) {
-    console.error('Failed to fetch products:', error);
-  }
-
-  return <ShopBrowseClient initialProducts={products || []} initialSearch={search} />;
+  return <ShopClient products={products || []} />;
 }

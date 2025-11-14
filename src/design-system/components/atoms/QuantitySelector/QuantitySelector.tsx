@@ -1,37 +1,42 @@
-import * as React from 'react';
-import { MinusIcon, PlusIcon } from '../Icon/Icon';
+/**
+ * QuantitySelector - Quantity input with increment/decrement buttons
+ * GHXSTSHIP Atomic Design System
+ */
+
+import { Minus, Plus } from 'lucide-react';
 import styles from './QuantitySelector.module.css';
 
-/**
- * QuantitySelector Component
- * GHXSTSHIP Entertainment Platform - Ticket quantity selector
- * Geometric buttons with thick borders for ticket selection
- */
 export interface QuantitySelectorProps {
+  /** Current quantity value */
   value: number;
+  /** Change handler */
   onChange: (value: number) => void;
+  /** Minimum value */
   min?: number;
+  /** Maximum value */
   max?: number;
-  size?: 'sm' | 'md' | 'lg';
+  /** Disabled state */
+  disabled?: boolean;
+  /** Additional className */
   className?: string;
 }
 
-export const QuantitySelector: React.FC<QuantitySelectorProps> = ({
+export function QuantitySelector({
   value,
   onChange,
-  min = 1,
-  max = 99,
-  size = 'md',
-  className = '',
-}) => {
+  min = 0,
+  max = 999,
+  disabled = false,
+  className,
+}: QuantitySelectorProps) {
   const handleDecrement = () => {
-    if (value > min) {
+    if (value > min && !disabled) {
       onChange(value - 1);
     }
   };
 
   const handleIncrement = () => {
-    if (value < max) {
+    if (value < max && !disabled) {
       onChange(value + 1);
     }
   };
@@ -44,42 +49,43 @@ export const QuantitySelector: React.FC<QuantitySelectorProps> = ({
   };
 
   const classNames = [
-    styles.selector,
-    styles[size],
+    styles.container,
+    disabled && styles.disabled,
     className,
-  ].filter(Boolean).join(' ');
+  ]
+    .filter(Boolean)
+    .join(' ');
 
   return (
     <div className={classNames}>
       <button
         type="button"
-        onClick={handleDecrement}
-        disabled={value <= min}
         className={styles.button}
+        onClick={handleDecrement}
+        disabled={disabled || value <= min}
         aria-label="Decrease quantity"
       >
-        <MinusIcon size="sm" decorative />
+        <Minus size={16} />
       </button>
-
       <input
         type="number"
+        className={styles.input}
         value={value}
         onChange={handleInputChange}
         min={min}
         max={max}
-        className={styles.input}
+        disabled={disabled}
         aria-label="Quantity"
       />
-
       <button
         type="button"
-        onClick={handleIncrement}
-        disabled={value >= max}
         className={styles.button}
+        onClick={handleIncrement}
+        disabled={disabled || value >= max}
         aria-label="Increase quantity"
       >
-        <PlusIcon size="sm" decorative />
+        <Plus size={16} />
       </button>
     </div>
   );
-};
+}

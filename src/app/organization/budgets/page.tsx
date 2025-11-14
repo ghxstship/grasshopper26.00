@@ -1,95 +1,35 @@
-import { Suspense } from 'react';
-import Link from 'next/link';
-import { createClient } from '@/lib/supabase/server';
-import { BudgetCard } from '@/design-system/components/molecules/BudgetCard';
-import { LoadingSpinner } from '@/design-system/components/atoms/LoadingSpinner';
-import styles from './page.module.css';
+'use client';
 
-export const metadata = {
-  title: 'Budgets | GVTEWAY',
-  description: 'Manage event budgets',
-};
-
-async function BudgetsList() {
-  const supabase = await createClient();
-  
-  const { data: budgets, error } = await supabase
-    .from('budgets')
-    .select(`
-      *,
-      event:events(event_name, event_start_date)
-    `)
-    .order('created_at', { ascending: false });
-
-  if (error) throw error;
-
-  if (!budgets || budgets.length === 0) {
-    return (
-      <div className={styles.empty}>
-        <p className={styles.emptyText}>NO BUDGETS FOUND</p>
-        <Link href="/organization/budgets/new" className={styles.createButton}>
-          CREATE BUDGET
-        </Link>
-      </div>
-    );
-  }
-
-  const activeBudgets = budgets.filter(b => 
-    ['draft', 'pending_approval', 'approved'].includes(b.budget_status)
-  );
-  
-  const lockedBudgets = budgets.filter(b => 
-    ['locked', 'closed'].includes(b.budget_status)
-  );
-
-  return (
-    <div className={styles.content}>
-      {activeBudgets.length > 0 && (
-        <div className={styles.section}>
-          <h2 className={styles.sectionTitle}>ACTIVE ({activeBudgets.length})</h2>
-          <div className={styles.grid}>
-            {activeBudgets.map((budget) => (
-              <BudgetCard
-                key={budget.id}
-                budget={budget}
-                href={`/organization/budgets/${budget.id}`}
-              />
-            ))}
-          </div>
-        </div>
-      )}
-
-      {lockedBudgets.length > 0 && (
-        <div className={styles.section}>
-          <h2 className={styles.sectionTitle}>LOCKED/CLOSED ({lockedBudgets.length})</h2>
-          <div className={styles.grid}>
-            {lockedBudgets.map((budget) => (
-              <BudgetCard
-                key={budget.id}
-                budget={budget}
-                href={`/organization/budgets/${budget.id}`}
-              />
-            ))}
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
+import { AdminListTemplate } from '@/design-system';
+import { DollarSign, Plus } from 'lucide-react';
+import { useAdminBudgets } from '@/hooks/useAdminBudgets';
+import { BudgetsTable } from '@/design-system';
 
 export default function BudgetsPage() {
-  return (
-    <div className={styles.container}>
-      <div className={styles.header}>
-        <h1 className={styles.title}>BUDGETS</h1>
-        <Link href="/organization/budgets/new" className={styles.createButton}>
-          CREATE BUDGET
-        </Link>
-      </div>
+  const { budgets, stats, loading, searchQuery, setSearchQuery } = useAdminBudgets();
 
-      <Suspense fallback={<LoadingSpinner />}>
-        <BudgetsList />
-      </Suspense>
-    </div>
+  return (
+    <AdminListTemplate
+      title="Budgets Management"
+      subtitle="Manage event budgets and financial planning"
+      loading={loading}
+      stats={[
+        { label: 'Total Budgets', value: stats.total },
+        { label: 'Active', value: stats.active },
+        { label: 'Total Value', value: `$${stats.total_value.toLocaleString()}` },
+      ]}
+      searchValue={searchQuery}
+      onSearchChange={setSearchQuery}
+      searchPlaceholder="Search budgets..."
+      primaryAction={{ label: 'Create Budget', icon: <Plus />, href: '/organization/budgets/new' }}
+      empty={{
+        icon: <DollarSign />,
+        title: 'No budgets found',
+        description: 'Create your first budget to get started',
+        action: { label: 'Create Budget', href: '/organization/budgets/new' },
+      }}
+    >
+      <BudgetsTable budgets={budgets} />
+    </AdminListTemplate>
   );
 }

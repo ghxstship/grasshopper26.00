@@ -1,0 +1,74 @@
+/**
+ * ScheduleList Styles
+ * GHXSTSHIP Design System
+ */
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.item {
+  display: flex;
+  padding: var(--space-4);
+  background-color: var(--color-bg-secondary);
+  border: var(--border-width-default) solid var(--color-border-primary);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.item:hover {
+  background-color: var(--color-bg-tertiary);
+  box-shadow: var(--shadow-hard-sm);
+}
+
+.content {
+  flex: 1;
+}
+
+.name {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  margin-block-end: var(--space-2);
+}
+
+.meta {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.icon {
+  inline-size: var(--space-4);
+  block-size: var(--space-4);
+}
+
+[data-theme="dark"] .item {
+  background-color: var(--color-bg-secondary);
+  border-color: var(--color-border-primary);
+}
+
+[data-theme="dark"] .item:hover {
+  background-color: var(--color-bg-tertiary);
+}
+
+[data-theme="dark"] .name {
+  color: var(--color-text-primary);
+}
+
+[data-theme="dark"] .metaItem {
+  color: var(--color-text-secondary);
+}

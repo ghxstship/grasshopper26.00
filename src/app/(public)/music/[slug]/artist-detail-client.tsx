@@ -1,28 +1,56 @@
+/**
+ * Artist Detail Client
+ * GHXSTSHIP Atomic Design System
+ */
+
 'use client';
 
-import { DetailViewTemplate } from '@/design-system/components/templates';
-import { Music, Globe } from 'lucide-react';
+import { Stack, Heading, Text, Card } from '@/design-system';
+import { PageTemplate } from '@/design-system';
 
-export function ArtistDetailClient({ artist }: { artist: any }) {
+interface ArtistDetailClientProps {
+  artist: any;
+}
+
+export function ArtistDetailClient({ artist }: ArtistDetailClientProps) {
+  const navItems = [
+    { label: 'Events', href: '/events' },
+    { label: 'Music', href: '/music' },
+    { label: 'Shop', href: '/shop' },
+    { label: 'Membership', href: '/membership' },
+  ];
+
   return (
-    <DetailViewTemplate
-      breadcrumbs={[
-        { label: 'Artists', href: '/artists' },
-        { label: artist.name, href: `/artists/${artist.slug}` },
-      ]}
-      heroImage={artist.image_url}
-      title={artist.name}
-      subtitle={artist.genre_tags?.join(', ')}
-      primaryAction={{ label: 'View Events', href: `/events?artist=${artist.slug}` }}
-      sidebar={
-        <div>
-          <h3>About</h3>
-          {artist.website && <div><Globe /> <a href={artist.website}>Website</a></div>}
-          {artist.genre_tags && <div><Music /> {artist.genre_tags.join(', ')}</div>}
-        </div>
-      }
+    <PageTemplate
+      headerProps={{
+        logoText: 'GVTEWAY',
+        navItems,
+        showAuth: true,
+      }}
     >
-      <div dangerouslySetInnerHTML={{ __html: artist.bio }} />
-    </DetailViewTemplate>
+      <Stack gap={8}>
+        <Stack gap={4}>
+          <Heading level={1} font="anton">
+            {artist.name}
+          </Heading>
+          {artist.bio && (
+            <Text size="lg" color="secondary">
+              {artist.bio}
+            </Text>
+          )}
+        </Stack>
+
+        {artist.genre_tags && artist.genre_tags.length > 0 && (
+          <Card variant="outlined" padding={4}>
+            <Stack gap={2}>
+              <Heading level={3} font="bebas">
+                Genres
+              </Heading>
+              <Text>{artist.genre_tags.join(', ')}</Text>
+            </Stack>
+          </Card>
+        )}
+      </Stack>
+    </PageTemplate>
   );
 }

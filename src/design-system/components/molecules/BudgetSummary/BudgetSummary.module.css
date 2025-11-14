@@ -1,94 +1,35 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-6);
-  padding-block: var(--space-8);
-  padding-inline: var(--space-8);
-  border-width: var(--border-width-3);
-  border-style: solid;
-  border-color: var(--color-border-strong);
-  background-color: var(--color-bg-primary);
-  box-shadow: var(--shadow-card);
-}
+/**
+ * BudgetSummary Styles
+ * GHXSTSHIP Design System
+ */
 
-.header {
+.row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-block-end: var(--space-4);
-  border-block-end: var(--border-width-2) solid var(--color-border-default);
 }
 
-.title {
-  font-family: var(--font-family-bebas);
-  font-size: var(--font-size-2xl);
-  letter-spacing: var(--letter-spacing-wide);
-  line-height: var(--line-height-tight);
-  color: var(--color-text-primary);
-  margin-block: 0;
-}
-
-.status {
-  padding-block: var(--space-1);
-  padding-inline: var(--space-3);
-  font-family: var(--font-family-share-mono);
-  font-size: var(--font-size-xs);
-  letter-spacing: var(--letter-spacing-meta);
-  border-width: var(--border-width-2);
-  border-style: solid;
-  border-color: var(--color-border-strong);
+.progressBar {
+  block-size: var(--space-2);
   background-color: var(--color-bg-secondary);
+  border: var(--border-width-3) solid var(--color-border-strong);
+  margin-block-start: var(--space-2);
+  position: relative;
+  overflow: hidden;
 }
 
-.status.draft {
-  background-color: var(--color-border-default);
+.progressFill {
+  block-size: 100%;
+  background-color: var(--color-text-primary);
+  transition: inline-size var(--duration-base) var(--easing-out);
 }
 
-.status.pending_approval {
-  background-color: var(--color-border-default);
-}
-
-.status.approved {
-  background-color: var(--color-bg-primary);
+/* Dark mode */
+[data-theme="dark"] .progressBar {
+  background-color: var(--color-bg-secondary);
   border-color: var(--color-border-strong);
 }
 
-.status.locked {
-  background-color: var(--color-border-default);
-  color: var(--color-text-inverse);
+[data-theme="dark"] .progressFill {
+  background-color: var(--color-text-primary);
 }
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15.625rem, 1fr));
-  gap: var(--space-6);
-}
-
-
-/* ========================================
-   RESPONSIVE BREAKPOINTS
-   ======================================== */
-
-@media (min-width: var(--space-96)) {
-  /* Tablet and up */
-}
-
-@media (min-width: var(--space-96)) {
-  /* Desktop and up */
-}
-
-
-
-
-
-
-
-/* ========================================
-   DARK THEME
-   ======================================== */
-
-[data-theme="dark"] .container {
-  /* Dark mode overrides inherit from tokens.css */
-  /* Add component-specific overrides here if needed */
-}
-

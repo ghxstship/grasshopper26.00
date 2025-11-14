@@ -1,6 +1,6 @@
 'use client';
 
-import { CheckoutFlowTemplate } from '@/design-system/components/templates';
+import { CheckoutFlowTemplate } from '@/design-system';
 import { useEventCreate } from '@/hooks/useEventCreate';
 
 export default function EventNewPage() {

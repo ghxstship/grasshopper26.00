@@ -1,8 +1,7 @@
 'use client';
 
-import { CheckoutLayout } from '@/design-system/components/templates/CheckoutLayout/CheckoutLayout';
-import { Typography } from '@/design-system/components/atoms/Typography/Typography';
-import { Button } from '@/design-system/components/atoms/Button/Button';
+import { CheckoutLayout } from '@/design-system';
+import { Heading, Text, Button } from '@/design-system';
 import { useCheckout } from '@/hooks/useCheckout';
 import styles from './checkout.module.css';
 
@@ -12,20 +11,20 @@ export default function CheckoutPage() {
   return (
     <CheckoutLayout
       logo={
-        <Typography variant="h3" as="div">
+        <Heading level={3} font="anton">
           GVTEWAY
-        </Typography>
+        </Heading>
       }
       currentStep={currentStep + 1}
       totalSteps={4}
       form={
         <div className={styles.formContent}>
-          <Typography variant="h2" as="h1">
+          <Heading level={1} font="anton">
             Checkout
-          </Typography>
-          <Typography variant="body" as="p">
+          </Heading>
+          <Text color="secondary">
             Step {currentStep + 1} of 4
-          </Typography>
+          </Text>
           
           <div className={styles.stepContent}>
             {currentStep === 0 && <div>Cart Review</div>}
@@ -37,14 +36,14 @@ export default function CheckoutPage() {
           <div className={styles.actions}>
             {currentStep > 0 && (
               <Button
-                variant="outlined"
+                variant="secondary"
                 onClick={() => setCurrentStep(currentStep - 1)}
               >
                 Back
               </Button>
             )}
             <Button
-              variant="filled"
+              variant="primary"
               onClick={() => setCurrentStep(currentStep + 1)}
               disabled={loading || currentStep >= 3}
             >
@@ -55,13 +54,13 @@ export default function CheckoutPage() {
       }
       summary={
         <div className={styles.summary}>
-          <Typography variant="h3" as="h2">
+          <Heading level={2} font="bebas">
             Order Summary
-          </Typography>
+          </Heading>
           <div className={styles.summaryContent}>
-            <Typography variant="body" as="p">
+            <Text>
               {cart?.items?.length || 0} items
-            </Typography>
+            </Text>
           </div>
         </div>
       }

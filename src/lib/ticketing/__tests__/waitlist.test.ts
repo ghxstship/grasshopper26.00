@@ -14,7 +14,7 @@ const createMockQueryBuilder = () => {
   builder.delete = vi.fn().mockReturnValue(builder);
   builder.eq = vi.fn().mockReturnValue(builder);
   builder.gt = vi.fn().mockReturnValue(builder);
-  builder.single = vi.fn().mockResolvedValue({ data: null, error: null });
+  builder.single = vi.fn();
   builder.order = vi.fn().mockReturnValue(builder);
   builder.limit = vi.fn().mockReturnValue(builder);
   // For queries that don't end with .single()
@@ -24,11 +24,8 @@ const createMockQueryBuilder = () => {
 
 let mockQueryBuilder = createMockQueryBuilder();
 
-const mockSupabase = {
-  from: vi.fn(() => {
-    mockQueryBuilder = createMockQueryBuilder();
-    return mockQueryBuilder;
-  }),
+const mockSupabase: any = {
+  from: vi.fn(() => mockQueryBuilder),
 };
 
 vi.mock('@/lib/supabase/server', () => ({
@@ -38,26 +35,44 @@ vi.mock('@/lib/supabase/server', () => ({
 describe('Waitlist System', () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    mockQueryBuilder = createMockQueryBuilder();
   });
 
   describe('joinWaitlist', () => {
     it('should add user to waitlist with correct priority', async () => {
-      // Mock no existing entry (first call - check existing)
-      mockQueryBuilder.single
-        .mockResolvedValueOnce({ data: null, error: { code: 'PGRST116' } })
-        // Mock membership tier (second call)
-        .mockResolvedValueOnce({
-          data: { membership_tiers: { tier_level: 3 } },
-          error: null,
-        })
-        // Mock insert result (third call)
-        .mockResolvedValueOnce({ 
-          data: { id: 'new-entry', priority_score: 42 },
-          error: null 
-        });
-
-      // Mock position query
-      mockQueryBuilder.select.mockResolvedValueOnce({ data: [], error: null });
+      let fromCallCount = 0;
+      
+      mockSupabase.from = vi.fn((table: string) => {
+        fromCallCount++;
+        const builder = createMockQueryBuilder();
+        
+        if (fromCallCount === 1) {
+          // First call: check existing entry
+          builder.select.mockReturnValue(builder);
+          builder.eq.mockReturnValue(builder);
+          builder.single.mockResolvedValue({ data: null, error: { code: 'PGRST116' } });
+        } else if (fromCallCount === 2) {
+          // Second call: get membership tier
+          builder.select.mockReturnValue(builder);
+          builder.eq.mockReturnValue(builder);
+          builder.single.mockResolvedValue({
+            data: { membership_tiers: { tier_level: 3 } },
+            error: null,
+          });
+        } else if (fromCallCount === 3) {
+          // Third call: insert
+          builder.insert.mockReturnValue(builder);
+          builder.then = vi.fn((resolve) => resolve({ data: null, error: null }));
+        } else {
+          // Fourth+ calls: get position (needs multiple eq chains)
+          builder.select.mockReturnValue(builder);
+          builder.eq.mockReturnValue(builder);
+          builder.gt.mockReturnValue(builder);
+          builder.then = vi.fn((resolve) => resolve({ data: [], error: null }));
+        }
+        
+        return builder;
+      });
 
       const result = await joinWaitlist('event-123', 'user-456', 'ticket-type-789');
 
@@ -66,10 +81,15 @@ describe('Waitlist System', () => {
     });
 
     it('should throw error if already on waitlist', async () => {
-      mockQueryBuilder.single.mockResolvedValueOnce({
+      const testBuilder = createMockQueryBuilder();
+      testBuilder.select.mockReturnValue(testBuilder);
+      testBuilder.eq.mockReturnValue(testBuilder);
+      testBuilder.single.mockResolvedValue({
         data: { id: 'existing-123' },
         error: null,
       });
+      
+      mockSupabase.from = vi.fn(() => testBuilder);
 
       await expect(
         joinWaitlist('event-123', 'user-456', 'ticket-type-789')
@@ -79,25 +99,41 @@ describe('Waitlist System', () => {
 
   describe('getWaitlistPosition', () => {
     it('should return correct position', async () => {
-      // Mock user entry (first single call)
-      mockQueryBuilder.single.mockResolvedValueOnce({
-        data: { priority_score: 50 },
-        error: null,
+      let fromCallCount = 0;
+      
+      mockSupabase.from = vi.fn(() => {
+        fromCallCount++;
+        const builder = createMockQueryBuilder();
+        
+        if (fromCallCount === 1) {
+          // First call: get user entry
+          builder.select.mockReturnValue(builder);
+          builder.eq.mockReturnValue(builder);
+          builder.single.mockResolvedValue({
+            data: { priority_score: 50 },
+            error: null,
+          });
+        } else if (fromCallCount === 2) {
+          // Second call: count higher priority
+          builder.select.mockReturnValue(builder);
+          builder.eq.mockReturnValue(builder);
+          builder.gt.mockReturnValue(builder);
+          builder.then = vi.fn((resolve) => resolve({
+            data: [{ id: '1' }, { id: '2' }],
+            error: null,
+          }));
+        } else {
+          // Third call: count total
+          builder.select.mockReturnValue(builder);
+          builder.eq.mockReturnValue(builder);
+          builder.then = vi.fn((resolve) => resolve({
+            data: [{ id: '1' }, { id: '2' }, { id: '3' }],
+            error: null,
+          }));
+        }
+        
+        return builder;
       });
-
-      // Mock higher priority count (first select call - returns promise with count)
-      mockQueryBuilder.select
-        .mockReturnValueOnce(Promise.resolve({
-          data: [{ id: '1' }, { id: '2' }],
-          error: null,
-          count: 2
-        }))
-        // Mock total waiting (second select call)
-        .mockReturnValueOnce(Promise.resolve({
-          data: [{ id: '1' }, { id: '2' }, { id: '3' }],
-          error: null,
-          count: 3
-        }));
 
       const result = await getWaitlistPosition('user-456', 'event-123', 'ticket-type-789');
 

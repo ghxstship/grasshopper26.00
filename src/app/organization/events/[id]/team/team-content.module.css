@@ -1,51 +1,33 @@
-/* Team Content Styles */
+/**
+ * Event Team Content Styles
+ * GHXSTSHIP Design System - Monochromatic, Hard Edges, 3px Borders
+ */
 
 .teamGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(18.75rem, 1fr));
-  gap: var(--space-lg);
+  gap: var(--spacing-4);
 }
 
 .memberDetails {
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
+  gap: var(--spacing-3);
 }
 
 .memberEmail {
-  margin: 0;
+  font-family: var(--font-family-mono);
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
+  margin: 0;
 }
 
 .iconSmall {
-  inline-size: var(--icon-size-sm);
-  block-size: var(--icon-size-sm);
+  inline-size: var(--spacing-4);
+  block-size: var(--spacing-4);
 }
 
-@media (max-width: 48rem) {
-  .teamGrid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* DARK MODE */
-:global([data-theme="dark"]) .container,
-:global([data-theme="dark"]) .card,
-:global([data-theme="dark"]) .content {
-  background-color: var(--color-bg-primary);
-}
-
-:global([data-theme="dark"]) .button,
-:global([data-theme="dark"]) .input,
-:global([data-theme="dark"]) .select,
-:global([data-theme="dark"]) .textarea {
-  background-color: var(--color-bg-primary);
-  border-color: var(--color-border-strong);
-  color: var(--color-text-primary);
-}
-
-:global([data-theme="dark"]) .button:hover {
-  background-color: var(--color-text-primary);
-  color: var(--color-text-inverse);
+/* Dark Mode Support */
+[data-theme="dark"] .memberEmail {
+  color: var(--color-text-secondary);
 }

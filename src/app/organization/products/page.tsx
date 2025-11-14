@@ -1,8 +1,7 @@
 'use client';
 
-import { AdminListTemplate } from '@/design-system/components/templates/AdminListTemplate/AdminListTemplate';
-import { AdminSidebar } from '@/design-system/components/organisms/AdminSidebar/AdminSidebar';
-import { Typography } from '@/design-system/components/atoms/Typography/Typography';
+import { Heading, Text } from '@/design-system';
+import { AdminListTemplate } from '@/design-system';
 import { Package, Plus } from 'lucide-react';
 import { useAdminProducts } from '@/hooks/useAdminProducts';
 import styles from './products.module.css';
@@ -12,7 +11,6 @@ export default function AdminProductsPage() {
 
   return (
     <AdminListTemplate
-      sidebar={<AdminSidebar />}
       title="Products Management"
       description="Manage shop products and merchandise"
       stats={[
@@ -25,7 +23,7 @@ export default function AdminProductsPage() {
       searchPlaceholder="Search products..."
       primaryAction={{
         label: 'Add Product',
-        icon: <Plus style={{ width: 20, height: 20 }} />,
+        icon: <Plus className={styles.icon} />,
         href: '/admin/products/new',
       }}
       loading={loading}
@@ -43,8 +41,8 @@ export default function AdminProductsPage() {
         <div className={styles.productsTable}>
           {products.map((product: any) => (
             <div key={product.id} className={styles.productRow}>
-              <Typography variant="body" as="div">{product.name}</Typography>
-              <Typography variant="body" as="div">${product.price}</Typography>
+              <Text>{product.name}</Text>
+              <Text>${product.price}</Text>
             </div>
           ))}
         </div>

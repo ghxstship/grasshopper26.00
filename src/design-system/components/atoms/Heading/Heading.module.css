@@ -1,77 +1,54 @@
 /**
- * Heading Styles
- * GHXSTSHIP Monochromatic Design System
+ * Heading - Semantic heading primitive
+ * GHXSTSHIP: ANTON for hero, BEBAS NEUE for headings
  */
 
 .heading {
   margin: 0;
+  padding: 0;
   color: var(--color-text-primary);
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-wide);
+  line-height: var(--line-height-tight);
 }
 
-.h1 {
+/* Font Families */
+.font-anton {
   font-family: var(--font-anton);
+  font-weight: 400;
+}
+
+.font-bebas {
+  font-family: var(--font-bebas);
+  font-weight: 400;
+}
+
+/* Heading Levels */
+.h1 {
   font-size: var(--font-size-h1);
-  line-height: var(--line-height-tight);
-  letter-spacing: -0.02em;
 }
 
 .h2 {
-  font-family: var(--font-bebas);
   font-size: var(--font-size-h2);
-  line-height: var(--line-height-tight);
 }
 
 .h3 {
-  font-family: var(--font-bebas);
   font-size: var(--font-size-h3);
-  line-height: var(--line-height-normal);
 }
 
 .h4 {
-  font-family: var(--font-bebas);
   font-size: var(--font-size-h4);
-  line-height: var(--line-height-normal);
 }
 
 .h5 {
-  font-family: var(--font-bebas);
   font-size: var(--font-size-h5);
-  line-height: var(--line-height-normal);
 }
 
 .h6 {
-  font-family: var(--font-bebas);
   font-size: var(--font-size-h6);
-  line-height: var(--line-height-normal);
 }
 
-
-/* ========================================
-   RESPONSIVE BREAKPOINTS
-   ======================================== */
-
-@media (min-width: var(--space-96)) {
-  /* Tablet and up */
-}
-
-@media (min-width: var(--space-96)) {
-  /* Desktop and up */
-}
-
-
-
-
-
-
-
-/* ========================================
-   DARK THEME
-   ======================================== */
-
-[data-theme="dark"] .heading {
-  /* Dark mode overrides inherit from tokens.css */
-  /* Add component-specific overrides here if needed */
-}
-
+/* Alignment */
+.align-start { text-align: start; }
+.align-center { text-align: center; }
+.align-end { text-align: end; }

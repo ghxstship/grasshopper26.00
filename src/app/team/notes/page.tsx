@@ -5,7 +5,19 @@ import { createClient } from '@/lib/supabase/client';
 import { EventStaffGate } from '@/lib/rbac';
 import { useSearchParams } from 'next/navigation';
 import { useAuth } from '@/hooks/use-auth';
-import styles from './page.module.css';
+import { 
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  Button,
+  Textarea,
+  Heading,
+  Text,
+  Stack,
+  Spinner
+} from '@/design-system';
+import styles from './notes.module.css';
 
 interface Note {
   id: string;
@@ -115,9 +127,11 @@ function NotesContent() {
   if (!eventId) {
     return (
       <div className={styles.container}>
-        <div className={styles.emptyState}>
-          <p className={styles.emptyText}>No event selected</p>
-        </div>
+        <Card>
+          <CardContent>
+            <Text>No event selected</Text>
+          </CardContent>
+        </Card>
       </div>
     );
   }
@@ -126,8 +140,8 @@ function NotesContent() {
     return (
       <div className={styles.container}>
         <div className={styles.loadingState}>
-          <div className={styles.spinner}></div>
-          <p className={styles.loadingText}>Loading notes...</p>
+          <Spinner size="lg" />
+          <Text color="secondary">Loading notes...</Text>
         </div>
       </div>
     );
@@ -136,54 +150,68 @@ function NotesContent() {
   return (
     <EventStaffGate eventId={eventId} fallback={
       <div className={styles.container}>
-        <div className={styles.emptyState}>
-          <p className={styles.emptyText}>Access Denied: Event staff access required</p>
-        </div>
+        <Card>
+          <CardContent>
+            <Text>Access Denied: Event staff access required</Text>
+          </CardContent>
+        </Card>
       </div>
     }>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h1 className={styles.title}>Quick Notes</h1>
-          <p className={styles.subtitle}>Share updates with your team in real-time</p>
+          <Stack gap={2}>
+            <Heading level={1}>Quick Notes</Heading>
+            <Text color="secondary">Share updates with your team in real-time</Text>
+          </Stack>
         </div>
 
-        <form onSubmit={handleSubmit} className={styles.form}>
-          <textarea
-            value={newNote}
-            onChange={(e) => setNewNote(e.target.value)}
-            placeholder="Type your note here..."
-            className={styles.textarea}
-            rows={3}
-            disabled={submitting}
-          />
-          <button 
-            type="submit" 
-            className={styles.submitButton}
-            disabled={submitting || !newNote.trim()}
-          >
-            {submitting ? 'Posting...' : 'Post Note'}
-          </button>
-        </form>
+        <Card className={styles.form}>
+          <CardContent>
+            <form onSubmit={handleSubmit}>
+              <Stack gap={3}>
+                <Textarea
+                  value={newNote}
+                  onChange={(e) => setNewNote(e.target.value)}
+                  placeholder="Type your note here..."
+                  rows={3}
+                  disabled={submitting}
+                />
+                <Button 
+                  type="submit" 
+                  variant="primary"
+                  fullWidth
+                  disabled={submitting || !newNote.trim()}
+                >
+                  {submitting ? 'Posting...' : 'Post Note'}
+                </Button>
+              </Stack>
+            </form>
+          </CardContent>
+        </Card>
 
         <div className={styles.notesList}>
           {notes.length === 0 ? (
             <div className={styles.emptyState}>
-              <p className={styles.emptyText}>No notes yet</p>
-              <p className={styles.emptySubtext}>Be the first to share an update</p>
+              <Stack gap={2} align="center">
+                <Text size="lg" weight="bold">No notes yet</Text>
+                <Text color="secondary">Be the first to share an update</Text>
+              </Stack>
             </div>
           ) : (
             notes.map((note) => (
-              <div key={note.id} className={styles.noteCard}>
-                <div className={styles.noteHeader}>
-                  <span className={styles.noteAuthor}>
-                    {note.user_profiles?.display_name || 'Staff Member'}
-                  </span>
-                  <span className={styles.noteTime}>
-                    {new Date(note.created_at).toLocaleString()}
-                  </span>
-                </div>
-                <p className={styles.noteContent}>{note.content}</p>
-              </div>
+              <Card key={note.id} className={styles.noteCard}>
+                <CardContent>
+                  <div className={styles.noteHeader}>
+                    <Text weight="bold">
+                      {note.user_profiles?.display_name || 'Staff Member'}
+                    </Text>
+                    <Text size="sm" color="secondary">
+                      {new Date(note.created_at).toLocaleString()}
+                    </Text>
+                  </div>
+                  <Text>{note.content}</Text>
+                </CardContent>
+              </Card>
             ))
           )}
         </div>
@@ -197,8 +225,8 @@ export default function StaffNotesPage() {
     <Suspense fallback={
       <div className={styles.container}>
         <div className={styles.loadingState}>
-          <div className={styles.spinner}></div>
-          <p className={styles.loadingText}>Loading...</p>
+          <Spinner size="lg" />
+          <Text color="secondary">Loading...</Text>
         </div>
       </div>
     }>

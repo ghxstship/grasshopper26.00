@@ -1,14 +1,42 @@
-import * as React from 'react';
-import { Typography } from '@/design-system/components/atoms/Typography/Typography';
+/**
+ * AdvanceCard - Advance display card organism
+ * GHXSTSHIP Atomic Design System
+ */
+
+import { Card, Heading, Text, Button } from '../../atoms';
+import styles from './advance-card.module.css';
 
 export interface AdvanceCardProps {
-  advance: any;
+  advance: {
+    id: string;
+    name: string;
+    amount?: number;
+    status?: string;
+  };
+  onClick?: () => void;
 }
 
-export const AdvanceCard: React.FC<AdvanceCardProps> = ({ advance }) => {
+export function AdvanceCard({ advance, onClick }: AdvanceCardProps) {
   return (
-    <div>
-      <Typography variant="body" as="div">{advance.name || 'Advance'}</Typography>
-    </div>
+    <Card>
+      <div className={styles.content}>
+        <Heading level={3}>{advance.name}</Heading>
+        {advance.amount && (
+          <Text size="lg" weight="medium">
+            ${(advance.amount / 100).toLocaleString()}
+          </Text>
+        )}
+        {advance.status && (
+          <Text size="sm" color="secondary">
+            Status: {advance.status}
+          </Text>
+        )}
+        {onClick && (
+          <Button variant="primary" size="sm" onClick={onClick}>
+            View Details
+          </Button>
+        )}
+      </div>
+    </Card>
   );
-};
+}

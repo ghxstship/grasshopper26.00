@@ -1,0 +1,102 @@
+/**
+ * AdminSidebar Styles
+ * GHXSTSHIP Design System - Monochromatic, Hard Edges, 3px Borders
+ */
+
+.sidebar {
+  inline-size: 17.5rem;
+  block-size: 100vh;
+  position: sticky;
+  inset-block-start: 0;
+  background-color: var(--color-bg-primary);
+  border-inline-end: var(--border-width-standard) solid var(--color-border-primary);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.header {
+  padding-block: var(--spacing-6);
+  padding-inline: var(--spacing-4);
+  border-block-end: var(--border-width-standard) solid var(--color-border-primary);
+}
+
+.title {
+  font-family: var(--font-family-hero);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding-block: var(--spacing-3);
+  padding-inline: var(--spacing-4);
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: all var(--transition-duration-fast) var(--transition-timing-default);
+  border-inline-start: var(--border-width-standard) solid transparent;
+}
+
+.navItem:hover {
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-secondary);
+}
+
+.navItemActive {
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-secondary);
+  border-inline-start-color: var(--color-border-primary);
+}
+
+.navIcon {
+  font-size: var(--font-size-lg);
+}
+
+.navLabel {
+  flex: 1;
+}
+
+/* Dark Mode Support */
+[data-theme="dark"] .sidebar {
+  background-color: var(--color-bg-primary);
+  border-inline-end-color: var(--color-border-primary);
+}
+
+[data-theme="dark"] .header {
+  border-block-end-color: var(--color-border-primary);
+}
+
+[data-theme="dark"] .title {
+  color: var(--color-text-primary);
+}
+
+[data-theme="dark"] .navItem {
+  color: var(--color-text-secondary);
+}
+
+[data-theme="dark"] .navItem:hover {
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-secondary);
+}
+
+[data-theme="dark"] .navItemActive {
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-secondary);
+  border-inline-start-color: var(--color-border-primary);
+}

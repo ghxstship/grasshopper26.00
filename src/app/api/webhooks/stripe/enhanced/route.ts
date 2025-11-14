@@ -6,6 +6,7 @@ import { OrderService } from '@/lib/services/order.service';
 import { NotificationService } from '@/lib/services/notification.service';
 import { handleAPIError } from '@/lib/api/error-handler';
 import { sendOrderConfirmationEmail, sendTicketDeliveryEmail } from '@/lib/email/send';
+import { logger } from '@/design-system/utils/logger-helpers';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2023-10-16',
@@ -31,7 +32,7 @@ export async function POST(req: NextRequest) {
     try {
       event = stripe.webhooks.constructEvent(body, signature, webhookSecret);
     } catch (err: any) {
-      console.error('Webhook signature verification failed:', err.message);
+      logger.error('Webhook signature verification failed', err, { context: 'stripe-enhanced-webhook' });
       return NextResponse.json(
         { error: 'Webhook signature verification failed' },
         { status: 400 }
@@ -71,12 +72,12 @@ export async function POST(req: NextRequest) {
         break;
 
       default:
-        console.log(`Unhandled event type: ${event.type}`);
+        logger.info('Unhandled event type', { eventType: event.type, context: 'stripe-enhanced-webhook' });
     }
 
     return NextResponse.json({ received: true });
   } catch (error) {
-    console.error('Webhook error:', error);
+    logger.error('Webhook error', error as Error, { context: 'stripe-enhanced-webhook' });
     return handleAPIError(error);
   }
 }
@@ -96,7 +97,7 @@ async function handlePaymentSuccess(
       .single();
 
     if (!order) {
-      console.error('Order not found for payment intent:', paymentIntent.id);
+      logger.error('Order not found for payment intent', new Error('Order not found'), { paymentIntentId: paymentIntent.id, context: 'stripe-enhanced-webhook' });
       return;
     }
 
@@ -107,7 +108,7 @@ async function handlePaymentSuccess(
     const { data: { user } } = await supabase.auth.admin.getUserById(order.user_id);
     
     if (!user?.email) {
-      console.error('User email not found for order:', order.id);
+      logger.error('User email not found for order', new Error('User email not found'), { orderId: order.id, context: 'stripe-enhanced-webhook' });
       return;
     }
 
@@ -136,7 +137,7 @@ async function handlePaymentSuccess(
       .single();
 
     if (!orderDetails) {
-      console.error('Order details not found:', order.id);
+      logger.error('Order details not found', new Error('Order details not found'), { orderId: order.id, context: 'stripe-enhanced-webhook' });
       return;
     }
 
@@ -155,9 +156,9 @@ async function handlePaymentSuccess(
         ticketCount,
         totalAmount,
       });
-      console.log(`Order confirmation email sent to ${user.email}`);
+      logger.info('Order confirmation email sent', { email: user.email, orderId: order.id, context: 'stripe-enhanced-webhook' });
     } catch (emailError) {
-      console.error('Failed to send order confirmation email:', emailError);
+      logger.error('Failed to send order confirmation email', emailError as Error, { email: user.email, orderId: order.id, context: 'stripe-enhanced-webhook' });
       // Don't throw - continue with ticket delivery
     }
 
@@ -174,9 +175,9 @@ async function handlePaymentSuccess(
             attendeeName: ticket.attendee_name || customerName,
           })),
         });
-        console.log(`Ticket delivery email sent to ${user.email}`);
+        logger.info('Ticket delivery email sent', { email: user.email, orderId: order.id, context: 'stripe-enhanced-webhook' });
       } catch (emailError) {
-        console.error('Failed to send ticket delivery email:', emailError);
+        logger.error('Failed to send ticket delivery email', emailError as Error, { email: user.email, orderId: order.id, context: 'stripe-enhanced-webhook' });
         // Don't throw - order is still complete
       }
     }
@@ -184,9 +185,9 @@ async function handlePaymentSuccess(
     // Send in-app notification
     await notificationService.sendOrderConfirmation(order.id);
 
-    console.log(`Payment succeeded for order ${order.id}`);
+    logger.info('Payment succeeded for order', { orderId: order.id, context: 'stripe-enhanced-webhook' });
   } catch (error) {
-    console.error('Error handling payment success:', error);
+    logger.error('Error handling payment success', error as Error, { context: 'stripe-enhanced-webhook' });
     throw error;
   }
 }
@@ -205,7 +206,7 @@ async function handlePaymentFailed(
       .single();
 
     if (!order) {
-      console.error('Order not found for payment intent:', paymentIntent.id);
+      logger.error('Order not found for payment intent in failed handler', new Error('Order not found'), { paymentIntentId: paymentIntent.id, context: 'stripe-enhanced-webhook' });
       return;
     }
 
@@ -221,9 +222,9 @@ async function handlePaymentFailed(
       metadata: { orderId: order.id, paymentIntentId: paymentIntent.id },
     });
 
-    console.log(`Payment failed for order ${order.id}`);
+    logger.warn('Payment failed for order', { orderId: order.id, paymentIntentId: paymentIntent.id, context: 'stripe-enhanced-webhook' });
   } catch (error) {
-    console.error('Error handling payment failure:', error);
+    logger.error('Error handling payment failure', error as Error, { context: 'stripe-enhanced-webhook' });
     throw error;
   }
 }
@@ -242,7 +243,7 @@ async function handleRefund(
       .single();
 
     if (!order) {
-      console.error('Order not found for charge:', charge.id);
+      logger.error('Order not found for charge', new Error('Order not found'), { chargeId: charge.id, context: 'stripe-enhanced-webhook' });
       return;
     }
 
@@ -275,15 +276,15 @@ async function handleRefund(
     // Create notification
     await notificationService.createNotification({
       user_id: order.user_id,
-      type: 'order_refunded',
-      title: 'Order Refunded',
-      message: 'Your order has been refunded.',
+      type: 'refund_processed',
+      title: 'Refund Processed',
+      message: 'Your refund has been processed and will appear in your account within 5-10 business days.',
       metadata: { orderId: order.id },
     });
 
-    console.log(`Refund processed for order ${order.id}`);
+    logger.info('Refund processed for order', { orderId: order.id, chargeId: charge.id, context: 'stripe-enhanced-webhook' });
   } catch (error) {
-    console.error('Error handling refund:', error);
+    logger.error('Error handling refund:', error as Error, { context: 'stripe-enhanced-webhook' });
     throw error;
   }
 }
@@ -303,7 +304,7 @@ async function handleSubscriptionChange(event: Stripe.Event, supabase: any) {
       cancel_at_period_end: subscription.cancel_at_period_end,
     });
 
-  console.log(`Subscription ${event.type} for ${subscription.id}`);
+  logger.info('Subscription event processed', { eventType: event.type, subscriptionId: subscription.id, context: 'stripe-enhanced-webhook' });
 }
 
 async function handleCheckoutComplete(
@@ -335,5 +336,5 @@ async function handleInvoicePayment(invoice: Stripe.Invoice, supabase: any) {
         : null,
     });
 
-  console.log(`Invoice payment succeeded for ${invoice.id}`);
+  logger.info('Invoice payment succeeded', { invoiceId: invoice.id, context: 'stripe-enhanced-webhook' });
 }

@@ -1,53 +1,47 @@
-'use client';
+/**
+ * OrganizationCard - Organization display card molecule
+ * GHXSTSHIP Atomic Design System
+ */
 
-import React from 'react';
-import Link from 'next/link';
-import styles from './OrganizationCard.module.css';
-import { OrganizationBadge } from '../../atoms/OrganizationBadge';
-import type { Organization } from '@/types/super-expansion';
+import { Card, Stack, Heading, Text, Link } from '../../atoms';
+import { Building2 } from 'lucide-react';
 
 export interface OrganizationCardProps {
-  organization: Organization;
-  href?: string;
-  className?: string;
+  /** Organization data */
+  organization: {
+    id: string;
+    organization_name: string;
+    organization_type?: string | null;
+    city?: string | null;
+    state?: string | null;
+  };
+  /** Link href */
+  href: string;
 }
 
-export const OrganizationCard: React.FC<OrganizationCardProps> = ({
-  organization,
-  href,
-  className,
-}) => {
-  const content = (
-    <div className={`${styles.card} ${className || ''}`}>
-      <div className={styles.header}>
-        <h3 className={styles.name}>{organization.organization_name}</h3>
-        {organization.organization_type && (
-          <OrganizationBadge type={organization.organization_type} />
-        )}
-      </div>
-
-      <div className={styles.meta}>
-        {organization.city && organization.state && (
-          <span className={styles.location}>
-            {organization.city}, {organization.state}
-          </span>
-        )}
-        {organization.primary_email && (
-          <span className={styles.email}>{organization.primary_email}</span>
-        )}
-      </div>
-    </div>
+export function OrganizationCard({ organization, href }: OrganizationCardProps) {
+  return (
+    <Link href={href}>
+      <Card>
+        <Stack gap={4}>
+          <Building2 size={32} />
+          <Stack gap={2}>
+            <Heading level={3} font="bebas">
+              {organization.organization_name}
+            </Heading>
+            {organization.organization_type && (
+              <Text size="sm" color="secondary" uppercase>
+                {organization.organization_type.replace('_', ' ')}
+              </Text>
+            )}
+            {organization.city && organization.state && (
+              <Text size="sm" color="tertiary">
+                {organization.city}, {organization.state}
+              </Text>
+            )}
+          </Stack>
+        </Stack>
+      </Card>
+    </Link>
   );
-
-  if (href) {
-    return (
-      <Link href={href} className={styles.link}>
-        {content}
-      </Link>
-    );
-  }
-
-  return content;
-};
-
-OrganizationCard.displayName = 'OrganizationCard';
+}

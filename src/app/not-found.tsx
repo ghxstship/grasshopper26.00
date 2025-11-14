@@ -1,42 +1,36 @@
-'use client';
+/**
+ * 404 Not Found Page
+ * GHXSTSHIP Atomic Design System
+ */
 
-import { ErrorLayout } from '@/design-system/components/templates/ErrorLayout/ErrorLayout';
-import { Button } from '@/design-system/components/atoms/Button/Button';
-import { Typography } from '@/design-system/components/atoms/Typography/Typography';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { Button, PageTemplate } from '@/design-system';
+import styles from './not-found.module.css';
 
 export default function NotFound() {
-  const router = useRouter();
-
   return (
-    <ErrorLayout
-      code="404"
-      title="Page Not Found"
-      message="The page you're looking for doesn't exist or has been moved."
-      logo={
-        <Typography variant="h2" as="div">
-          GVTEWAY
-        </Typography>
-      }
-      actions={
-        <>
-          <Link href="/events">
-            <Button variant="filled">
-              Browse Events
+    <PageTemplate showHeader={false} showFooter={false}>
+      <div className={styles.container}>
+        <div className={styles.content}>
+          <h1 className={styles.errorCode}>
+            404
+          </h1>
+          
+          <h2 className={styles.title}>
+            PAGE NOT FOUND
+          </h2>
+          
+          <p className={styles.description}>
+            The page you&apos;re looking for doesn&apos;t exist or has been moved.
+          </p>
+          
+          <Link href="/" className={styles.link}>
+            <Button variant="primary" size="lg">
+              BACK TO HOME
             </Button>
           </Link>
-          <Button variant="outlined" onClick={() => router.back()}>
-            Go Back
-          </Button>
-          <Link href="/">
-            <Button variant="outlined">
-              Go Home
-            </Button>
-          </Link>
-        </>
-      }
-      showPattern
-    />
+        </div>
+      </div>
+    </PageTemplate>
   );
 }

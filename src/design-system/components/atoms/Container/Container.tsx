@@ -1,37 +1,36 @@
 /**
- * Container Component
- * GHXSTSHIP Entertainment Platform - Responsive content container
- * Max-width container with consistent padding
+ * Container - Max-width container atom
+ * GHXSTSHIP Atomic Design System
  */
 
-import * as React from 'react'
-import styles from './Container.module.css'
-
-export type ContainerSize = 'sm' | 'md' | 'lg' | 'xl' | 'full'
+import { ReactNode } from 'react';
+import styles from './Container.module.css';
 
 export interface ContainerProps {
-  children: React.ReactNode
-  size?: ContainerSize
-  className?: string
-  as?: React.ElementType
-  noPadding?: boolean
+  /** Children content */
+  children: ReactNode;
+  /** Max width */
+  maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full';
+  /** Center content */
+  center?: boolean;
+  /** Additional className */
+  className?: string;
 }
 
-export const Container: React.FC<ContainerProps> = ({
+export function Container({
   children,
-  size = 'lg',
-  className = '',
-  as: Component = 'div',
-  noPadding = false,
-}) => {
+  maxWidth = 'xl',
+  center = true,
+  className,
+}: ContainerProps) {
   const classNames = [
     styles.container,
-    styles[size],
-    noPadding && styles.noPadding,
+    styles[`maxWidth-${maxWidth}`],
+    center && styles.center,
     className,
-  ].filter(Boolean).join(' ')
+  ]
+    .filter(Boolean)
+    .join(' ');
 
-  return <Component className={classNames}>{children}</Component>
+  return <div className={classNames}>{children}</div>;
 }
-
-Container.displayName = 'Container'

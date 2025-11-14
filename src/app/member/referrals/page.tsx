@@ -1,9 +1,9 @@
 'use client';
 
-import { PortalDashboardTemplate } from '@/design-system/components/templates';
+import { PortalDashboardTemplate } from '@/design-system';
 import { Users, Gift, TrendingUp } from 'lucide-react';
 import { useReferrals } from '@/hooks/useReferrals';
-import { ReferralsList } from '@/design-system/components/organisms/referrals/referrals-list';
+import { ReferralsList } from '@/design-system';
 
 export default function ReferralsPage() {
   const { stats, referrals, loading } = useReferrals();

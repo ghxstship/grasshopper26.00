@@ -1,60 +1,59 @@
-/* Vendors Content Styles */
+/**
+ * Event Vendors Content Styles
+ * GHXSTSHIP Design System - Monochromatic, Hard Edges, 3px Borders
+ */
 
 .vendorsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(21.875rem, 1fr));
-  gap: var(--space-lg);
+  grid-template-columns: repeat(auto-fill, minmax(18.75rem, 1fr));
+  gap: var(--spacing-4);
 }
 
 .vendorHeader {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
+  gap: var(--spacing-2);
 }
 
 .vendorDetails {
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
+  gap: var(--spacing-2);
 }
 
 .vendorDetail {
-  margin: 0;
+  font-family: var(--font-family-body);
   font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.vendorDetail strong {
+  font-weight: var(--font-weight-bold);
   color: var(--color-text-secondary);
 }
 
 .vendorRequirements {
-  margin: 0;
+  font-family: var(--font-family-body);
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
-  padding-block-start: var(--space-sm);
-  border-block-start: var(--border-width-1) solid var(--color-border);
+  font-style: italic;
+  margin-block-start: var(--spacing-2);
+  padding-block-start: var(--spacing-2);
+  border-block-start: var(--border-width-thin) solid var(--color-border-secondary);
 }
 
-@media (max-width: 48rem) {
-  .vendorsGrid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* DARK MODE */
-:global([data-theme="dark"]) .container,
-:global([data-theme="dark"]) .card,
-:global([data-theme="dark"]) .content {
-  background-color: var(--color-bg-primary);
-}
-
-:global([data-theme="dark"]) .button,
-:global([data-theme="dark"]) .input,
-:global([data-theme="dark"]) .select,
-:global([data-theme="dark"]) .textarea {
-  background-color: var(--color-bg-primary);
-  border-color: var(--color-border-strong);
+/* Dark Mode Support */
+[data-theme="dark"] .vendorDetail {
   color: var(--color-text-primary);
 }
 
-:global([data-theme="dark"]) .button:hover {
-  background-color: var(--color-text-primary);
-  color: var(--color-text-inverse);
+[data-theme="dark"] .vendorDetail strong {
+  color: var(--color-text-secondary);
+}
+
+[data-theme="dark"] .vendorRequirements {
+  color: var(--color-text-secondary);
+  border-block-start-color: var(--color-border-secondary);
 }

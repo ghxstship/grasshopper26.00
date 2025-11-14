@@ -4,9 +4,22 @@ import { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { EventStaffGate } from '@/lib/rbac';
 import { useAuth } from '@/hooks/use-auth';
-import { DayOfShowLayout } from '@/design-system/components/templates/DayOfShowLayout/DayOfShowLayout';
+import { DayOfShowLayout } from '@/design-system';
+import { 
+  Card, 
+  CardHeader, 
+  CardTitle, 
+  CardContent, 
+  Button, 
+  Select, 
+  Heading, 
+  Text, 
+  Stack, 
+  Grid, 
+  Spinner 
+} from '@/design-system';
 import Link from 'next/link';
-import styles from './page.module.css';
+import styles from './dashboard.module.css';
 
 interface EventAssignment {
   id: string;
@@ -141,23 +154,27 @@ export default function StaffDashboardPage() {
 
   if (loading) {
     return (
-      <div className={styles.row}>
-        <div className={styles.section}>
-          <div className={styles.spinner}></div>
-          <p className={styles.subtitle}>Loading dashboard...</p>
-        </div>
+      <div className={styles.loadingContainer}>
+        <Stack gap={4} align="center">
+          <Spinner size="lg" />
+          <Text color="secondary">Loading dashboard...</Text>
+        </Stack>
       </div>
     );
   }
 
   if (assignments.length === 0) {
     return (
-      <div className={styles.row}>
-        <div className={styles.emptyState}>
-          <div className={styles.emoji}>📋</div>
-          <h2 className={styles.title}>No Event Assignments</h2>
-          <p className={styles.subtitle}>You don&apos;t have any upcoming event assignments. Contact your event manager for access.</p>
-        </div>
+      <div className={styles.emptyContainer}>
+        <Card>
+          <CardContent>
+            <Stack gap={3} align="center">
+              <Text as="div" size="3xl">📋</Text>
+              <Heading level={2}>No Event Assignments</Heading>
+              <Text color="secondary">You don&apos;t have any upcoming event assignments. Contact your event manager for access.</Text>
+            </Stack>
+          </CardContent>
+        </Card>
       </div>
     );
   }
@@ -168,142 +185,173 @@ export default function StaffDashboardPage() {
   return (
     <DayOfShowLayout
       header={
-        <div className={styles.stickyHeader}>
-          <div className={styles.section}>
-            <h1 className={styles.pageTitle}>Event Staff Dashboard</h1>
-            <p className={styles.subtitle}>Welcome, {user?.email}</p>
-          </div>
+        <div className={styles.header}>
+          <Stack gap={2}>
+            <Heading level={1}>Event Staff Dashboard</Heading>
+            <Text color="secondary">Welcome, {user?.email}</Text>
+          </Stack>
 
           {assignments.length > 1 && (
-            <div className={styles.selectorContainer}>
-              <select
+            <div className={styles.eventSelector}>
+              <Select
+                options={assignments.map(assignment => ({
+                  value: assignment.event_id,
+                  label: assignment.event.title
+                }))}
                 value={selectedEvent || ''}
                 onChange={(e) => setSelectedEvent(e.target.value)}
-                className={styles.select}
-              >
-                {assignments.map(assignment => (
-                  <option key={assignment.id} value={assignment.event_id}>
-                    {assignment.event.title}
-                  </option>
-                ))}
-              </select>
+              />
             </div>
           )}
         </div>
       }
       liveMetrics={
         currentEvent && (
-          <div className={styles.card}>
-            <h2 className={styles.cardTitle}>{currentEvent.title}</h2>
-            <div className={styles.section}>
-              <p className={styles.infoText}>📍 {currentEvent.venue_name}</p>
-              <p className={styles.infoText}>📅 {new Date(currentEvent.start_date).toLocaleDateString()}</p>
-              <p className={styles.infoText}>👥 Capacity: {currentEvent.capacity?.toLocaleString()}</p>
-            </div>
-          </div>
+          <Card>
+            <CardHeader>
+              <CardTitle>{currentEvent.title}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <Stack gap={2}>
+                <Text>📍 {currentEvent.venue_name}</Text>
+                <Text>📅 {new Date(currentEvent.start_date).toLocaleDateString()}</Text>
+                <Text>👥 Capacity: {currentEvent.capacity?.toLocaleString()}</Text>
+              </Stack>
+            </CardContent>
+          </Card>
         )
       }
       capacityMonitors={
         stats && (
-          <div className={styles.statsCard}>
-            <div className={styles.header}>
-              <h3 className={styles.cardTitle}>Live Capacity</h3>
-              <button onClick={refreshStats} className={styles.refreshButton}>
-                🔄 Refresh
-              </button>
-            </div>
+          <Card>
+            <CardHeader>
+              <div className={styles.cardHeaderRow}>
+                <CardTitle>Live Capacity</CardTitle>
+                <Button variant="secondary" size="sm" onClick={refreshStats}>
+                  🔄 Refresh
+                </Button>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <Stack gap={4}>
+                <div className={styles.progressContainer}>
+                  <div className={styles.progressInfo}>
+                    <Text weight="bold">Checked In</Text>
+                    <Text weight="bold">
+                      {stats.checkedIn} / {stats.totalCapacity}
+                    </Text>
+                  </div>
+                  <div className={styles.progressBar}>
+                    <div 
+                      className={styles.progressBarFill}
+                      data-percent={Math.min(stats.percentFull, 100)}
+                      style={{ '--progress-width': `${Math.min(stats.percentFull, 100)}%` } as React.CSSProperties}
+                    />
+                  </div>
+                  <Text size="sm" color="secondary">
+                    {stats.percentFull.toFixed(1)}% full
+                  </Text>
+                </div>
 
-            <div className={styles.progressSection}>
-              <div className={styles.progressHeader}>
-                <span className={styles.progressLabel}>Checked In</span>
-                <span className={styles.progressValue}>
-                  {stats.checkedIn} / {stats.totalCapacity}
-                </span>
-              </div>
-              <div className={styles.progressBarBg}>
-                <div
-                  className={styles.progressBarFill}
-                  style={{ width: `${Math.min(stats.percentFull, 100)}%` }}
-                />
-              </div>
-              <p className={styles.progressPercent}>
-                {stats.percentFull.toFixed(1)}% full
-              </p>
-            </div>
+                <Grid columns={2} gap={4}>
+                  <div className={styles.statCard}>
+                    <Text size="3xl" weight="bold">{stats.checkedIn}</Text>
+                    <Text size="sm" color="secondary">Checked In</Text>
+                  </div>
+                  <div className={styles.statCard}>
+                    <Text size="3xl" weight="bold">{stats.remaining}</Text>
+                    <Text size="sm" color="secondary">Remaining</Text>
+                  </div>
+                </Grid>
 
-            <div className={styles.grid}>
-              <div className={styles.statBox}>
-                <p className={styles.statValue}>{stats.checkedIn}</p>
-                <p className={styles.statLabel}>Checked In</p>
-              </div>
-              <div className={styles.statBox}>
-                <p className={styles.statValue}>{stats.remaining}</p>
-                <p className={styles.statLabel}>Remaining</p>
-              </div>
-            </div>
-
-            {stats.percentFull >= 90 && (
-              <div className={styles.warningBox}>
-                <p className={styles.warningTitle}>⚠️ Near Capacity</p>
-                <p className={styles.warningText}>Prepare for capacity management protocols</p>
-              </div>
-            )}
-          </div>
+                {stats.percentFull >= 90 && (
+                  <Card>
+                    <CardContent>
+                      <Stack gap={1}>
+                        <Text weight="bold">⚠️ Near Capacity</Text>
+                        <Text size="sm">Prepare for capacity management protocols</Text>
+                      </Stack>
+                    </CardContent>
+                  </Card>
+                )}
+              </Stack>
+            </CardContent>
+          </Card>
         )
       }
       checkInSystem={
-        <div className={styles.card}>
-          <h3 className={styles.cardTitle}>Quick Actions</h3>
-          <div className={styles.grid}>
-            <Link href={`/team/scanner?eventId=${selectedEvent}`} className={styles.actionButton}>
-              <span className={styles.actionIcon}>📱</span>
-              <span className={styles.actionLabel}>Scan Tickets</span>
-            </Link>
-            <button onClick={refreshStats} className={styles.actionButton}>
-              <span className={styles.actionIcon}>📊</span>
-              <span className={styles.actionLabel}>View Stats</span>
-            </button>
-            <Link href={`/team/issues?eventId=${selectedEvent}`} className={styles.actionButton}>
-              <span className={styles.actionIcon}>⚠️</span>
-              <span className={styles.actionLabel}>Report Issue</span>
-            </Link>
-            <Link href={`/team/notes?eventId=${selectedEvent}`} className={styles.actionButton}>
-              <span className={styles.actionIcon}>📝</span>
-              <span className={styles.actionLabel}>Quick Notes</span>
-            </Link>
-          </div>
-        </div>
+        <Card>
+          <CardHeader>
+            <CardTitle>Quick Actions</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Grid columns={2} gap={3}>
+              <Link href={`/team/scanner?eventId=${selectedEvent}`} className={styles.actionLink}>
+                <Button variant="primary" fullWidth>
+                  📱 Scan Tickets
+                </Button>
+              </Link>
+              <Button variant="secondary" onClick={refreshStats} fullWidth>
+                📊 View Stats
+              </Button>
+              <Link href={`/team/issues?eventId=${selectedEvent}`} className={styles.actionLink}>
+                <Button variant="secondary" fullWidth>
+                  ⚠️ Report Issue
+                </Button>
+              </Link>
+              <Link href={`/team/notes?eventId=${selectedEvent}`} className={styles.actionLink}>
+                <Button variant="secondary" fullWidth>
+                  📝 Quick Notes
+                </Button>
+              </Link>
+            </Grid>
+          </CardContent>
+        </Card>
       }
       staffStatus={
-        <div className={styles.card}>
-          <h3 className={styles.cardTitle}>Recent Activity</h3>
-          <div className={styles.section}>
-            <div className={styles.activityItem}>
-              <span className={styles.activityIcon}>✓</span>
-              <div className={styles.activityContent}>
-                <p className={styles.activityTitle}>Ticket scanned</p>
-                <p className={styles.activityTime}>2 minutes ago</p>
+        <Card>
+          <CardHeader>
+            <CardTitle>Recent Activity</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Stack gap={3}>
+              <div className={styles.activityItem}>
+                <Text as="span">✓</Text>
+                <Stack gap={1}>
+                  <Text weight="bold">Ticket scanned</Text>
+                  <Text size="sm" color="secondary">2 minutes ago</Text>
+                </Stack>
               </div>
-            </div>
-            <div className={styles.activityItem}>
-              <span className={styles.activityIcon}>ℹ️</span>
-              <div className={styles.activityContent}>
-                <p className={styles.activityTitle}>Shift started</p>
-                <p className={styles.activityTime}>1 hour ago</p>
+              <div className={styles.activityItem}>
+                <Text as="span">ℹ️</Text>
+                <Stack gap={1}>
+                  <Text weight="bold">Shift started</Text>
+                  <Text size="sm" color="secondary">1 hour ago</Text>
+                </Stack>
               </div>
-            </div>
-          </div>
-        </div>
+            </Stack>
+          </CardContent>
+        </Card>
       }
       footer={
-        <div className={styles.card}>
-          <h3 className={styles.cardTitle}>Need Help?</h3>
-          <div className={styles.section}>
-            <button className={styles.helpButton}>📞 Contact Event Manager</button>
-            <button className={styles.helpButton}>📖 View Staff Guide</button>
-            <button className={styles.helpButton}>🆘 Emergency Protocols</button>
-          </div>
-        </div>
+        <Card>
+          <CardHeader>
+            <CardTitle>Need Help?</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Stack gap={2}>
+              <Button variant="secondary" fullWidth>
+                📞 Contact Event Manager
+              </Button>
+              <Button variant="secondary" fullWidth>
+                📖 View Staff Guide
+              </Button>
+              <Button variant="secondary" fullWidth>
+                🆘 Emergency Protocols
+              </Button>
+            </Stack>
+          </CardContent>
+        </Card>
       }
     />
   );

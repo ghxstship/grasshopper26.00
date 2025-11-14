@@ -1,79 +1,40 @@
 /**
- * Split Layout Template
- * GHXSTSHIP Monochromatic Design System
- * Two-column layout with image and content
+ * SplitLayout Template
+ * GHXSTSHIP Design System
+ * Two-column layout with sticky sidebar (e.g., cart/checkout)
  */
 
-import * as React from "react";
+import React from 'react';
 import styles from './SplitLayout.module.css';
 
 export interface SplitLayoutProps {
-  /** Header/navigation */
   header?: React.ReactNode;
-  
-  /** Left content */
   left: React.ReactNode;
-  
-  /** Right content */
   right: React.ReactNode;
-  
-  /** Reverse order (image on right) */
-  reverse?: boolean;
-  
-  /** Split ratio */
-  ratio?: '50-50' | '60-40' | '40-60';
-  
-  /** Footer */
   footer?: React.ReactNode;
-  
-  /** Sticky side */
+  ratio?: '50-50' | '60-40' | '70-30';
   stickySide?: 'left' | 'right' | 'none';
 }
 
-export const SplitLayout: React.FC<SplitLayoutProps> = ({
+export function SplitLayout({
   header,
   left,
   right,
-  reverse = false,
-  ratio = '50-50',
   footer,
+  ratio = '60-40',
   stickySide = 'none',
-}) => {
+}: SplitLayoutProps) {
+  const ratioClass = ratio === '50-50' ? styles.ratio5050 : ratio === '70-30' ? styles.ratio7030 : styles.ratio6040;
+  const stickyClass = stickySide === 'left' ? styles.stickyLeft : stickySide === 'right' ? styles.stickyRight : '';
+
   return (
-    <div className={styles.layout}>
-      {/* Header */}
-      {header && (
-        <div className={styles.header}>
-          {header}
-        </div>
-      )}
-      
-      {/* Split Container */}
-      <div 
-        className={`${styles.container} ${reverse ? styles.reverse : ''}`}
-        data-ratio={ratio}
-      >
-        {/* Left Side */}
-        <div 
-          className={`${styles.side} ${styles.left} ${stickySide === 'left' ? styles.sticky : ''}`}
-        >
-          {left}
-        </div>
-        
-        {/* Right Side */}
-        <div 
-          className={`${styles.side} ${styles.right} ${stickySide === 'right' ? styles.sticky : ''}`}
-        >
-          {right}
-        </div>
+    <div className={styles.container}>
+      {header && <header className={styles.header}>{header}</header>}
+      <div className={`${styles.split} ${ratioClass} ${stickyClass}`}>
+        <div className={styles.leftColumn}>{left}</div>
+        <div className={styles.rightColumn}>{right}</div>
       </div>
-      
-      {/* Footer */}
-      {footer && (
-        <footer className={styles.footer} role="contentinfo">
-          {footer}
-        </footer>
-      )}
+      {footer && <footer className={styles.footer}>{footer}</footer>}
     </div>
   );
-};
+}

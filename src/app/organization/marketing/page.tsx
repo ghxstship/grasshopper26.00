@@ -5,9 +5,8 @@
 
 'use client';
 
-import { AdminListTemplate } from '@/design-system/components/templates/AdminListTemplate/AdminListTemplate';
-import { AdminSidebar } from '@/design-system/components/organisms/AdminSidebar/AdminSidebar';
-import { Typography } from '@/design-system/components/atoms/Typography/Typography';
+import { Text } from '@/design-system';
+import { AdminListTemplate } from '@/design-system';
 import { Megaphone, TrendingUp, Users, DollarSign } from 'lucide-react';
 import { useAdminMarketing } from '@/hooks/useAdminMarketing';
 
@@ -16,7 +15,6 @@ export default function MarketingPage() {
 
   return (
     <AdminListTemplate
-      sidebar={<AdminSidebar />}
       title="Marketing & Campaigns"
       description="Manage marketing campaigns and analytics"
       stats={[
@@ -39,7 +37,7 @@ export default function MarketingPage() {
         <div>
           {campaigns.map((campaign) => (
             <div key={campaign.id}>
-              <Typography variant="body">{campaign.name}</Typography>
+              <Text>{campaign.name}</Text>
             </div>
           ))}
         </div>

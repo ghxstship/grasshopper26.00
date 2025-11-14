@@ -2,12 +2,12 @@
 
 import { use, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { ContextualPageTemplate } from '@/design-system/components/templates';
-import { Button } from '@/design-system/components/atoms/Button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/Card';
-import { Input } from '@/design-system/components/atoms/Input';
-import { Label } from '@/design-system/components/atoms/Label';
-import { Textarea } from '@/design-system/components/atoms/Textarea';
+import { ContextualPageTemplate } from '@/design-system';
+import { Button } from '@/design-system';
+import { Card, CardContent, CardHeader, CardTitle } from '@/design-system';
+import { Input } from '@/design-system';
+import { Label } from '@/design-system';
+import { Textarea } from '@/design-system';
 import { DollarSign, AlertTriangle } from 'lucide-react';
 import { toast } from 'sonner';
 import styles from './refund-content.module.css';

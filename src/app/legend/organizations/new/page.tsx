@@ -1,4 +1,4 @@
-import { OrganizationForm } from '@/design-system/components/organisms/forms/OrganizationForm';
+import { redirect } from 'next/navigation';
 import styles from './page.module.css';
 
 export const metadata = {
@@ -7,13 +7,6 @@ export const metadata = {
 };
 
 export default function NewOrganizationPage() {
-  return (
-    <div className={styles.container}>
-      <div className={styles.header}>
-        <h1 className={styles.title}>NEW ORGANIZATION</h1>
-      </div>
-
-      <OrganizationForm mode="create" />
-    </div>
-  );
+  // Redirect to portal organizations new page
+  redirect('/portal/organizations/new');
 }

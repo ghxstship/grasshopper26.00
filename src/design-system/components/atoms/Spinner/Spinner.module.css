@@ -1,5 +1,6 @@
 /**
- * Spinner Styles - GHXSTSHIP
+ * Spinner - Loading indicator atom
+ * GHXSTSHIP: Hard geometric animation
  */
 
 .spinner {
@@ -7,82 +8,52 @@
   position: relative;
 }
 
-.visuallyHidden {
-  position: absolute;
-  inline-size: var(--border-width-1);
-  block-size: var(--border-width-1);
-  padding: 0;
-  margin: calc(-1 * var(--border-width-1));
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
-}
-
-/* Square */
-.square {
-  border: var(--border-width-2) solid var(--color-border-default);
-  border-block-start-color: var(--color-interactive-default);
+.inner {
+  border: var(--border-width-3) solid var(--color-border-default);
+  border-block-start-color: var(--color-border-strong);
+  border-radius: var(--border-radius-none);
   animation: spin 0.8s linear infinite;
-}
-
-/* Triangle */
-.triangle::before {
-  content: '';
-  display: block;
-  inline-size: 0;
-  block-size: 0;
-  border-style: solid;
-  border-inline-start-width: calc(var(--spinner-size) / 2);
-  border-inline-end-width: calc(var(--spinner-size) / 2);
-  border-block-end-width: var(--spinner-size);
-  border-block-start-width: 0;
-  border-color: transparent transparent var(--color-interactive-default) transparent;
-  animation: spin 0.8s linear infinite;
-}
-
-/* Bars */
-.bars {
-  display: flex;
-  gap: calc(var(--spinner-size) / 8);
-}
-
-.bars::before,
-.bars::after {
-  content: '';
-  inline-size: calc(var(--spinner-size) / 4);
-  block-size: var(--spinner-size);
-  background-color: var(--color-interactive-default);
-  animation: pulse 0.8s ease-in-out infinite;
-}
-
-.bars::after {
-  animation-delay: 0.4s;
 }
 
 /* Sizes */
-.sm {
-  --spinner-size: var(--space-4);
+.size-sm {
+  width: 1rem;
+  height: 1rem;
 }
 
-.md {
-  --spinner-size: var(--space-6);
+.size-sm .inner {
+  width: 1rem;
+  height: 1rem;
 }
 
-.lg {
-  --spinner-size: var(--space-8);
+.size-md {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
-.xl {
-  --spinner-size: var(--space-12);
+.size-md .inner {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
-.square.sm,
-.square.md,
-.square.lg,
-.square.xl {
-  inline-size: var(--spinner-size);
-  block-size: var(--spinner-size);
+.size-lg {
+  width: 2rem;
+  height: 2rem;
+}
+
+.size-lg .inner {
+  width: 2rem;
+  height: 2rem;
+}
+
+.size-xl {
+  width: 3rem;
+  height: 3rem;
+}
+
+.size-xl .inner {
+  width: 3rem;
+  height: 3rem;
 }
 
 @keyframes spin {
@@ -90,23 +61,3 @@
     transform: rotate(360deg);
   }
 }
-
-@keyframes pulse {
-  0%, 100% {
-    transform: scaleY(1);
-  }
-  50% {
-    transform: scaleY(0.4);
-  }
-}
-
-/* Accessibility */
-@media (prefers-reduced-motion: reduce) {
-  .square,
-  .triangle::before,
-  .bars::before,
-  .bars::after {
-    animation: none;
-  }
-}
-

@@ -1,0 +1,84 @@
+/**
+ * LegalPageTemplate Styles
+ * GHXSTSHIP Atomic Design System
+ */
+
+.template {
+  padding-block: var(--spacing-16);
+  min-block-size: 100vh;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
+.content h2 {
+  font-family: var(--font-bebas-neue);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
+  margin-block-start: var(--spacing-8);
+  margin-block-end: var(--spacing-4);
+}
+
+.content h3 {
+  font-family: var(--font-bebas-neue);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
+  margin-block-start: var(--spacing-6);
+  margin-block-end: var(--spacing-3);
+}
+
+.content p {
+  font-family: var(--font-share-tech);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
+  margin-block-end: var(--spacing-4);
+}
+
+.content ul,
+.content ol {
+  font-family: var(--font-share-tech);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
+  padding-inline-start: var(--spacing-8);
+  margin-block-end: var(--spacing-4);
+}
+
+.content li {
+  margin-block-end: var(--spacing-2);
+}
+
+.content a {
+  color: var(--color-text-primary);
+  text-decoration: underline;
+  text-decoration-thickness: var(--border-width-default);
+  text-underline-offset: var(--spacing-1);
+}
+
+.content a:hover {
+  text-decoration-thickness: var(--border-width-thick);
+}
+
+/* Dark mode support */
+[data-theme="dark"] .content h2,
+[data-theme="dark"] .content h3 {
+  color: var(--color-text-primary);
+}
+
+[data-theme="dark"] .content p,
+[data-theme="dark"] .content ul,
+[data-theme="dark"] .content ol {
+  color: var(--color-text-secondary);
+}
+
+[data-theme="dark"] .content a {
+  color: var(--color-text-primary);
+}

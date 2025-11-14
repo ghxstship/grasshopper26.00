@@ -1,49 +1,56 @@
 /**
- * Stack Component
- * GHXSTSHIP Entertainment Platform - Vertical/horizontal layout stack
- * Consistent spacing between child elements
+ * Stack - Vertical/Horizontal layout primitive
+ * GHXSTSHIP Atomic Design System
  */
 
-import * as React from 'react'
-import styles from './Stack.module.css'
-
-export type StackDirection = 'vertical' | 'horizontal'
-export type StackSpacing = 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'
-export type StackAlign = 'start' | 'center' | 'end' | 'stretch'
-export type StackJustify = 'start' | 'center' | 'end' | 'between' | 'around'
+import type { ReactNode, CSSProperties } from 'react';
+import styles from './Stack.module.css';
 
 export interface StackProps {
-  children: React.ReactNode
-  direction?: StackDirection
-  spacing?: StackSpacing
-  align?: StackAlign
-  justify?: StackJustify
-  wrap?: boolean
-  className?: string
-  as?: React.ElementType
+  /** Children content */
+  children: ReactNode;
+  /** Direction */
+  direction?: 'vertical' | 'horizontal';
+  /** Gap between items */
+  gap?: 0 | 1 | 2 | 3 | 4 | 6 | 8 | 12 | 16;
+  /** Alignment */
+  align?: 'start' | 'center' | 'end' | 'stretch';
+  /** Justify */
+  justify?: 'start' | 'center' | 'end' | 'between' | 'around';
+  /** Wrap items */
+  wrap?: boolean;
+  /** Additional className */
+  className?: string;
+  /** Inline styles */
+  style?: CSSProperties;
 }
 
-export const Stack: React.FC<StackProps> = ({
+export function Stack({
   children,
   direction = 'vertical',
-  spacing = 'md',
-  align = 'stretch',
-  justify = 'start',
-  wrap = false,
-  className = '',
-  as: Component = 'div',
-}) => {
+  gap = 4,
+  align,
+  justify,
+  wrap,
+  className,
+  style,
+  ...props
+}: StackProps) {
   const classNames = [
     styles.stack,
-    styles[direction],
-    styles[`spacing-${spacing}`],
-    styles[`align-${align}`],
-    styles[`justify-${justify}`],
+    styles[`direction-${direction}`],
+    styles[`gap-${gap}`],
+    align && styles[`align-${align}`],
+    justify && styles[`justify-${justify}`],
     wrap && styles.wrap,
     className,
-  ].filter(Boolean).join(' ')
+  ]
+    .filter(Boolean)
+    .join(' ');
 
-  return <Component className={classNames}>{children}</Component>
+  return (
+    <div className={classNames} style={style} {...props}>
+      {children}
+    </div>
+  );
 }
-
-Stack.displayName = 'Stack'

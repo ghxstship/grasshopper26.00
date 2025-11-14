@@ -1,64 +1,55 @@
 /**
- * Grid Component Styles
- * GHXSTSHIP Monochromatic Design System
+ * Grid - CSS Grid layout primitive
  */
 
 .grid {
   display: grid;
 }
 
-/* Column variants */
-.cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
-.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-.cols-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
-.cols-12 { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+/* Columns */
+.columns-1 { grid-template-columns: repeat(1, 1fr); }
+.columns-2 { grid-template-columns: repeat(2, 1fr); }
+.columns-3 { grid-template-columns: repeat(3, 1fr); }
+.columns-4 { grid-template-columns: repeat(4, 1fr); }
+.columns-6 { grid-template-columns: repeat(6, 1fr); }
+.columns-12 { grid-template-columns: repeat(12, 1fr); }
 
-/* Responsive columns */
-.cols-mobile-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
-.cols-mobile-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.cols-mobile-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.cols-mobile-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+/* Gap */
+.gap-0 { gap: var(--space-0); }
+.gap-1 { gap: var(--space-1); }
+.gap-2 { gap: var(--space-2); }
+.gap-3 { gap: var(--space-3); }
+.gap-4 { gap: var(--space-4); }
+.gap-6 { gap: var(--space-6); }
+.gap-8 { gap: var(--space-8); }
+.gap-12 { gap: var(--space-12); }
+.gap-16 { gap: var(--space-16); }
+
+/* Responsive */
+.responsive.columns-12 {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 40rem) {
+  .responsive.columns-12 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
 @media (min-width: 48rem) {
-  .cols-tablet-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
-  .cols-tablet-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .cols-tablet-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .cols-tablet-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-  .cols-tablet-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .responsive.columns-12 {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media (min-width: 64rem) {
-  .cols-desktop-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
-  .cols-desktop-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .cols-desktop-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .cols-desktop-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-  .cols-desktop-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
-  .cols-desktop-12 { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+  .responsive.columns-12 {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
-/* Gap variants */
-.gap-none { gap: 0; }
-.gap-xs { gap: var(--space-1); }
-.gap-sm { gap: var(--space-2); }
-.gap-md { gap: var(--space-4); }
-.gap-lg { gap: var(--space-6); }
-.gap-xl { gap: var(--space-8); }
-
-
-
-
-
-
-
-
-/* ========================================
-   DARK THEME
-   ======================================== */
-
-[data-theme="dark"] .grid {
-  /* Dark mode overrides inherit from tokens.css */
-  /* Add component-specific overrides here if needed */
+@media (min-width: 117.5rem) {
+  .responsive.columns-12 {
+    grid-template-columns: repeat(12, 1fr);
+  }
 }
-

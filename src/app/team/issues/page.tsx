@@ -5,7 +5,22 @@ import { createClient } from '@/lib/supabase/client';
 import { EventStaffGate } from '@/lib/rbac';
 import { useSearchParams } from 'next/navigation';
 import { useAuth } from '@/hooks/use-auth';
-import styles from './page.module.css';
+import { 
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  Button,
+  Input,
+  Textarea,
+  Select,
+  Heading,
+  Text,
+  Stack,
+  Spinner,
+  Badge
+} from '@/design-system';
+import styles from './issues.module.css';
 
 interface Issue {
   id: string;
@@ -90,9 +105,11 @@ function IssuesContent() {
   if (!eventId) {
     return (
       <div className={styles.container}>
-        <div className={styles.emptyState}>
-          <p className={styles.emptyText}>No event selected</p>
-        </div>
+        <Card>
+          <CardContent>
+            <Text>No event selected</Text>
+          </CardContent>
+        </Card>
       </div>
     );
   }
@@ -101,8 +118,8 @@ function IssuesContent() {
     return (
       <div className={styles.container}>
         <div className={styles.loadingState}>
-          <div className={styles.spinner}></div>
-          <p className={styles.loadingText}>Loading issues...</p>
+          <Spinner size="lg" />
+          <Text color="secondary">Loading issues...</Text>
         </div>
       </div>
     );
@@ -111,94 +128,101 @@ function IssuesContent() {
   return (
     <EventStaffGate eventId={eventId} fallback={
       <div className={styles.container}>
-        <div className={styles.emptyState}>
-          <p className={styles.emptyText}>Access Denied: Event staff access required</p>
-        </div>
+        <Card>
+          <CardContent>
+            <Text>Access Denied: Event staff access required</Text>
+          </CardContent>
+        </Card>
       </div>
     }>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h1 className={styles.title}>Report Issues</h1>
-          <button 
-            onClick={() => setShowForm(!showForm)} 
-            className={styles.primaryButton}
+          <Heading level={1}>Report Issues</Heading>
+          <Button 
+            variant={showForm ? 'secondary' : 'primary'}
+            onClick={() => setShowForm(!showForm)}
           >
             {showForm ? 'Cancel' : '+ New Issue'}
-          </button>
+          </Button>
         </div>
 
         {showForm && (
-          <form onSubmit={handleSubmit} className={styles.form}>
-            <div className={styles.formGroup}>
-              <label htmlFor="title" className={styles.label}>Issue Title</label>
-              <input
-                id="title"
-                type="text"
-                value={formData.title}
-                onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                className={styles.input}
-                required
-              />
-            </div>
+          <Card className={styles.form}>
+            <CardContent>
+              <form onSubmit={handleSubmit}>
+                <Stack gap={4}>
+                  <div>
+                    <Text as="label" weight="bold">Issue Title</Text>
+                    <Input
+                      type="text"
+                      value={formData.title}
+                      onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                      required
+                    />
+                  </div>
 
-            <div className={styles.formGroup}>
-              <label htmlFor="description" className={styles.label}>Description</label>
-              <textarea
-                id="description"
-                value={formData.description}
-                onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                className={styles.textarea}
-                rows={4}
-                required
-              />
-            </div>
+                  <div>
+                    <Text as="label" weight="bold">Description</Text>
+                    <Textarea
+                      value={formData.description}
+                      onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                      rows={4}
+                      required
+                    />
+                  </div>
 
-            <div className={styles.formGroup}>
-              <label htmlFor="priority" className={styles.label}>Priority</label>
-              <select
-                id="priority"
-                value={formData.priority}
-                onChange={(e) => setFormData({ ...formData, priority: e.target.value as any })}
-                className={styles.select}
-              >
-                <option value="low">Low</option>
-                <option value="medium">Medium</option>
-                <option value="high">High</option>
-                <option value="critical">Critical</option>
-              </select>
-            </div>
+                  <div>
+                    <Text as="label" weight="bold">Priority</Text>
+                    <Select
+                      options={[
+                        { value: 'low', label: 'Low' },
+                        { value: 'medium', label: 'Medium' },
+                        { value: 'high', label: 'High' },
+                        { value: 'critical', label: 'Critical' }
+                      ]}
+                      value={formData.priority}
+                      onChange={(e) => setFormData({ ...formData, priority: e.target.value as any })}
+                    />
+                  </div>
 
-            <button type="submit" className={styles.submitButton}>
-              Submit Issue
-            </button>
-          </form>
+                  <Button type="submit" variant="primary" fullWidth>
+                    Submit Issue
+                  </Button>
+                </Stack>
+              </form>
+            </CardContent>
+          </Card>
         )}
 
         <div className={styles.issuesList}>
           {issues.length === 0 ? (
             <div className={styles.emptyState}>
-              <p className={styles.emptyText}>No issues reported</p>
-              <p className={styles.emptySubtext}>Click &quot;New Issue&quot; to report a problem</p>
+              <Stack gap={2} align="center">
+                <Text size="lg" weight="bold">No issues reported</Text>
+                <Text color="secondary">Click &quot;New Issue&quot; to report a problem</Text>
+              </Stack>
             </div>
           ) : (
             issues.map((issue) => (
-              <div key={issue.id} className={styles.issueCard}>
-                <div className={styles.issueHeader}>
-                  <h3 className={styles.issueTitle}>{issue.title}</h3>
-                  <span className={`${styles.badge} ${styles[`priority-${issue.priority}`]}`}>
-                    {issue.priority}
-                  </span>
-                </div>
-                <p className={styles.issueDescription}>{issue.description}</p>
-                <div className={styles.issueFooter}>
-                  <span className={`${styles.statusBadge} ${styles[`status-${issue.status}`]}`}>
-                    {issue.status}
-                  </span>
-                  <span className={styles.issueDate}>
-                    {new Date(issue.created_at).toLocaleString()}
-                  </span>
-                </div>
-              </div>
+              <Card key={issue.id} className={styles.issueCard}>
+                <CardContent>
+                  <div className={styles.issueHeader}>
+                    <Heading level={3}>{issue.title}</Heading>
+                    <Badge variant={issue.priority === 'critical' || issue.priority === 'high' ? 'solid' : 'default'}>
+                      {issue.priority}
+                    </Badge>
+                  </div>
+                  <Text>{issue.description}</Text>
+                  <div className={styles.issueFooter}>
+                    <Badge variant={issue.status === 'resolved' ? 'solid' : 'outline'}>
+                      {issue.status.replace('_', ' ')}
+                    </Badge>
+                    <Text size="sm" color="secondary">
+                      {new Date(issue.created_at).toLocaleString()}
+                    </Text>
+                  </div>
+                </CardContent>
+              </Card>
             ))
           )}
         </div>
@@ -212,8 +236,8 @@ export default function StaffIssuesPage() {
     <Suspense fallback={
       <div className={styles.container}>
         <div className={styles.loadingState}>
-          <div className={styles.spinner}></div>
-          <p className={styles.loadingText}>Loading...</p>
+          <Spinner size="lg" />
+          <Text color="secondary">Loading...</Text>
         </div>
       </div>
     }>

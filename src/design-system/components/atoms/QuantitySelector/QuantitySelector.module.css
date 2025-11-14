@@ -1,46 +1,55 @@
-/**
- * QuantitySelector Styles
- * GHXSTSHIP Entertainment Platform
- * Geometric buttons for ticket quantity selection
- */
-.selector {
+/* QuantitySelector Atom */
+
+.container {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
-  border: var(--border-width-3) solid var(--color-border-strong);
-  border-radius: var(--border-radius-none);
-  background-color: var(--color-bg-primary);
+  gap: 0;
+  border: var(--border-width-default) solid var(--color-border-primary);
 }
 
 .button {
+  inline-size: var(--space-8);
+  block-size: var(--space-8);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: none;
+  background-color: var(--color-bg-secondary);
   border: none;
+  border-inline-end: var(--border-width-default) solid var(--color-border-primary);
   color: var(--color-text-primary);
   cursor: pointer;
-  transition: all var(--duration-fast) var(--easing-out);
+  transition: background-color var(--transition-duration-fast) var(--transition-easing-standard);
+  padding: 0;
+}
+
+.button:last-child {
+  border-inline-end: none;
+  border-inline-start: var(--border-width-default) solid var(--color-border-primary);
 }
 
 .button:hover:not(:disabled) {
-  background-color: var(--color-interactive-default);
-  color: var(--color-text-inverse);
+  background-color: var(--color-bg-tertiary);
 }
 
 .button:disabled {
-  opacity: var(--opacity-30);
+  opacity: 0.5;
   cursor: not-allowed;
 }
 
 .input {
-  width: var(--space-12);
-  background: transparent;
-  border: none;
+  inline-size: var(--space-12);
+  block-size: var(--space-8);
   text-align: center;
-  font-family: var(--font-bebas);
-  font-weight: var(--font-weight-normal);
+  border: none;
+  background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  padding: 0;
+}
+
+.input:focus {
   outline: none;
 }
 
@@ -50,66 +59,31 @@
   margin: 0;
 }
 
-.sm .button {
-  width: var(--space-8);
-  height: var(--space-8);
+.input[type='number'] {
+  -moz-appearance: textfield;
 }
 
-.sm .input {
-  font-size: var(--font-size-lg);
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
 }
 
-.md .button {
-  width: var(--space-12);
-  height: var(--space-12);
+/* Dark Mode */
+[data-theme="dark"] .container {
+  border-color: var(--color-border-primary);
 }
 
-.md .input {
-  font-size: var(--font-size-2xl);
+[data-theme="dark"] .button {
+  background-color: var(--color-bg-secondary);
+  border-color: var(--color-border-primary);
+  color: var(--color-text-primary);
 }
 
-.lg .button {
-  width: var(--space-16);
-  height: var(--space-16);
+[data-theme="dark"] .button:hover:not(:disabled) {
+  background-color: var(--color-bg-tertiary);
 }
 
-.lg .input {
-  font-size: var(--font-size-3xl);
-}
-
-/* ========================================
-   DARK THEME
-   ======================================== */
-
-[data-theme="dark"] .filled {
-  background-color: var(--color-text-inverse);
-  color: var(--color-interactive-default);
-  border-color: var(--color-text-inverse);
-}
-
-[data-theme="dark"] .outlined {
-  color: var(--color-text-inverse);
-  border-color: var(--color-text-inverse);
-}
-
-[data-theme="dark"] .outlined:hover {
-  background-color: var(--color-text-inverse);
-  color: var(--color-interactive-default);
-}
-
-[data-theme="dark"] .active {
-  background-color: var(--color-text-inverse);
-  color: var(--color-interactive-default);
-}
-
-/* ========================================
-   RESPONSIVE BREAKPOINTS
-   ======================================== */
-
-@media (min-width: var(--space-96)) {
-  /* Tablet and up - add styles as needed */
-}
-
-@media (min-width: var(--space-96)) {
-  /* Desktop and up - add styles as needed */
+[data-theme="dark"] .input {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
 }

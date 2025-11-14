@@ -1,9 +1,9 @@
 'use client';
 
-import { AdminListTemplate } from '@/design-system/components/templates';
+import { AdminListTemplate } from '@/design-system';
 import { Building, Plus } from 'lucide-react';
 import { useAdminBrands } from '@/hooks/useAdminBrands';
-import { BrandsTable } from '@/design-system/components/organisms/admin/brands-table';
+import { BrandsTable } from '@/design-system';
 
 export default function AdminBrandsPage() {
   const { brands, stats, loading, searchQuery, setSearchQuery } = useAdminBrands();

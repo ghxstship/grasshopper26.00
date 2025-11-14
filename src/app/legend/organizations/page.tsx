@@ -1,8 +1,8 @@
 import { Suspense } from 'react';
 import { getOrganizations } from '@/lib/actions/organizations';
 import Link from 'next/link';
-import { OrganizationCard } from '@/design-system/components/molecules/OrganizationCard';
-import { LoadingSpinner } from '@/design-system/components/atoms/LoadingSpinner';
+import { OrganizationCard } from '@/design-system';
+import { Spinner } from '@/design-system';
 import styles from './page.module.css';
 
 export const metadata = {
@@ -47,7 +47,7 @@ export default function OrganizationsPage() {
         </Link>
       </div>
 
-      <Suspense fallback={<LoadingSpinner />}>
+      <Suspense fallback={<Spinner />}>
         <OrganizationsList />
       </Suspense>
     </div>

@@ -1,18 +1,10 @@
-import * as React from 'react';
-import { Typography } from '@/design-system/components/atoms/Typography/Typography';
+import { Text } from '../../atoms';
+import { Card } from '../../atoms/Card';
 
-export interface CheckInTableProps {
-  checkIns: any[];
-}
-
-export const CheckInTable: React.FC<CheckInTableProps> = ({ checkIns }) => {
+export function CheckInTable({ checkIns = [] }: { checkIns?: any[] }) {
   return (
-    <div>
-      {checkIns.map((checkIn: any) => (
-        <div key={checkIn.id}>
-          <Typography variant="body" as="div">{checkIn.name}</Typography>
-        </div>
-      ))}
-    </div>
+    <Card padding={6}>
+      <Text>Check-In Table - {checkIns.length} check-ins</Text>
+    </Card>
   );
-};
+}

@@ -3,8 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
-import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/Card';
-import { Button } from '@/design-system/components/atoms/Button';
+import { Card, CardHeader, CardTitle, CardContent, Button, Heading, Text, Stack } from '@/design-system';
 import { Loader2, ArrowLeft, Download, Calendar, MapPin, DollarSign, User, Mail } from 'lucide-react';
 import { format } from 'date-fns';
 import Link from 'next/link';

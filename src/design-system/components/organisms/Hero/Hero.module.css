@@ -1,364 +1,60 @@
 /**
- * Hero Styles
- * GHXSTSHIP Entertainment Platform
- * Full-screen, bold ANTON typography, geometric compositions
+ * Hero - Hero section organism
+ * GHXSTSHIP: Bold, geometric, high contrast
  */
 
 .hero {
   position: relative;
+  min-height: 70vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  
-  min-height: 100vh;
-  min-height: 100dvh;
-  
+  background-color: var(--color-bg-inverse);
+  background-size: cover;
+  background-position: center;
+  border-block-end: var(--border-width-3) solid var(--color-border-strong);
   overflow: hidden;
-  isolation: isolate;
 }
 
-/* ========================================
-   VARIANTS
-   ======================================== */
-
-.black {
-  background-color: var(--color-interactive-default);
-  color: var(--color-text-inverse);
-}
-
-.white {
-  background-color: var(--color-bg-primary);
-  color: var(--color-text-primary);
-}
-
-/* ========================================
-   BACKGROUND MEDIA
-   ======================================== */
-
-.backgroundVideo,
-.backgroundImage {
+.overlay {
   position: absolute;
   inset: 0;
-  z-index: 0;
+  background: linear-gradient(
+    to bottom,
+    var(--color-overlay-medium),
+    var(--color-overlay-light)
+  );
 }
-
-.video,
-.image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  
-  filter: grayscale(100%) contrast(1.2);
-}
-
-.videoOverlay,
-.imageOverlay {
-  position: absolute;
-  inset: 0;
-  
-  /* Pattern backgrounds removed - use solid colors only */
-  background: none;
-  
-  opacity: 0.2;
-  pointer-events: none;
-}
-
-.white .videoOverlay,
-.white .imageOverlay {
-  /* Pattern backgrounds removed - use solid colors only */
-  background: none;
-}
-
-/* ========================================
-   GEOMETRIC SHAPES
-   ======================================== */
-
-.geometricShapes {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.shape1,
-.shape2,
-.shape3 {
-  position: absolute;
-  border: var(--border-width-3) solid currentColor;
-  opacity: 0.1;
-}
-
-.shape1 {
-  width: 18.75rem;
-  height: 18.75rem;
-  inset-block-start: 10%;
-  inset-inline-end: 5%;
-  transform: rotate(45deg);
-}
-
-.shape2 {
-  width: 12.5rem;
-  height: 12.5rem;
-  inset-block-end: 15%;
-  inset-inline-start: 10%;
-  border-radius: var(--border-radius-none);
-}
-
-.shape3 {
-  width: 0;
-  height: 0;
-  inset-block-start: 60%;
-  inset-inline-end: 20%;
-  border-inline-start: 9.375rem solid transparent;
-  border-inline-end: 9.375rem solid transparent;
-  border-block-end: 16.25rem solid currentColor;
-  border-width: 0;
-  border-block-end-width: var(--border-width-3);
-  opacity: 0.05;
-}
-
-/* ========================================
-   CONTENT
-   ======================================== */
 
 .content {
   position: relative;
-  z-index: 2;
-  
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-8);
-  
-  max-width: 87.5rem;
+  z-index: 1;
+  max-inline-size: 75rem;
   padding-inline: var(--space-6);
-  padding-block: var(--space-12);
-  
-  text-align: center;
+  padding-block: var(--space-16);
+  color: var(--color-white);
 }
 
-.title {
-  font-family: var(--font-hero);
-  font-size: clamp(3rem, 10vw, 7.5rem);
-  font-weight: var(--font-weight-normal);
-  line-height: 0.95;
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
-  
-  margin: 0;
-  
-  text-shadow: var(--shadow-card);
+.content h1 {
+  color: var(--color-white);
+  text-shadow: 4px 4px 0 var(--color-black);
 }
 
-.white .title {
-  text-shadow: none;
-}
-
-.tagline {
-  font-family: var(--font-bebas);
-  font-size: clamp(1.5rem, 4vw, 3rem);
-  font-weight: var(--font-weight-normal);
-  line-height: var(--line-height-tight);
-  letter-spacing: var(--letter-spacing-wider);
-  text-transform: uppercase;
-  
-  margin: 0;
-  max-width: 50rem;
-}
-
-/* ========================================
-   CTA BUTTON
-   ======================================== */
-
-.ctaContainer {
-  margin-block-start: var(--space-8);
-}
-
-.cta {
-  display: inline-flex;
-  align-items: center;
+.ctas {
+  flex-wrap: wrap;
   justify-content: center;
-  gap: var(--space-3);
-  
-  font-family: var(--font-bebas);
-  font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-bold);
-  letter-spacing: var(--letter-spacing-wider);
-  text-transform: uppercase;
+}
+
+.ctaLink {
   text-decoration: none;
-  
-  padding-inline: var(--space-10);
-  padding-block: var(--space-5);
-  
-  min-height: 4rem;
-  
-  border: var(--border-width-3) solid currentColor;
-  border-radius: var(--border-radius-none)(--radius-none);
-  background-color: transparent;
-  
-  color: inherit;
-  cursor: pointer;
-  
-  transition: all var(--duration-base) var(--easing-out);
 }
 
-.black .cta {
-  border-color: var(--color-text-inverse);
-  color: var(--color-text-inverse);
-}
-
-.black .cta:hover {
-  background-color: var(--color-text-inverse);
-  color: var(--color-interactive-default);
-  transform: scale(1.05);
-  box-shadow: var(--shadow-button-hover);
-}
-
-.white .cta {
-  border-color: var(--color-interactive-default);
-  color: var(--color-text-primary);
-}
-
-.white .cta:hover {
-  background-color: var(--color-interactive-default);
-  color: var(--color-text-inverse);
-  transform: scale(1.05);
-  box-shadow: var(--shadow-button-hover);
-}
-
-.cta:active {
-  transform: scale(0.98);
-  box-shadow: var(--shadow-button-active);
-}
-
-.cta:focus-visible {
-  outline: var(--border-width-2) solid var(--color-border-focus);
-  outline-offset: 0.25rem;
-}
-
-.ctaText {
-  display: inline-block;
-}
-
-.ctaArrow {
-  display: inline-block;
-  font-size: 1.5em;
-  transition: transform var(--duration-fast) var(--easing-out);
-}
-
-.cta:hover .ctaArrow {
-  transform: translateX(var(--space-2));
-}
-
-/* ========================================
-   SCROLL INDICATOR
-   ======================================== */
-
-.scrollIndicator {
-  position: absolute;
-  inset-block-end: var(--space-8);
-  inset-inline-start: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
-  
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-2);
-  
-  opacity: 0.6;
-  
-  animation: bounce 2s infinite;
-}
-
-.scrollLine {
-  width: var(--border-width-3);
-  height: 3.75rem;
-  background-color: currentColor;
-}
-
-.scrollArrow {
-  font-family: var(--font-share-mono);
-  font-size: var(--font-size-2xl);
-  line-height: 1;
-}
-
-@keyframes bounce {
-  0%, 100% {
-    transform: translate(-50%, 0);
+@media (min-width: 48rem) {
+  .hero {
+    min-height: 80vh;
   }
-  50% {
-    transform: translate(-50%, var(--space-4));
-  }
-}
 
-/* ========================================
-   RESPONSIVE
-   ======================================== */
-
-@media (max-width: 48rem) {
   .content {
-    padding-inline: var(--space-4);
-    gap: var(--space-6);
+    padding-block: var(--space-24);
   }
-  
-  .title {
-    font-size: clamp(2.25rem, 12vw, 5rem);
-  }
-  
-  .tagline {
-    font-size: clamp(1.125rem, 5vw, 2rem);
-  }
-  
-  .cta {
-    font-size: var(--font-size-lg);
-    padding-inline: var(--space-8);
-    padding-block: var(--space-4);
-    min-height: 3.5rem;
-  }
-  
-  .shape1 {
-    width: 12.5rem;
-    height: 12.5rem;
-  }
-  
-  .shape2 {
-    width: 9.375rem;
-    height: 9.375rem;
-  }
-}
-
-/* ========================================
-   ACCESSIBILITY
-   ======================================== */
-
-@media (prefers-reduced-motion: reduce) {
-  .cta,
-  .ctaArrow {
-    transition: none;
-  }
-  
-  .scrollIndicator {
-    animation: none;
-  }
-}
-
-@media (prefers-contrast: high) {
-  .cta {
-    border-width: var(--border-width-3);
-  }
-}
-
-/* ========================================
-   DARK THEME
-   ======================================== */
-
-[data-theme="dark"] .white {
-  background-color: var(--color-bg-primary);
-  color: var(--color-text-primary);
-}
-
-[data-theme="dark"] .black {
-  background-color: var(--color-interactive-default);
-  color: var(--color-text-inverse);
 }

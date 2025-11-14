@@ -1,6 +1,6 @@
 'use client';
 
-import { AdminDetailTemplate } from '@/design-system/components/templates';
+import { AdminDetailTemplate } from '@/design-system';
 import { Building, DollarSign, Calendar, Globe } from 'lucide-react';
 import { useAdminBrandDetail } from '@/hooks/useAdminBrandDetail';
 import { useParams, useRouter } from 'next/navigation';
@@ -18,21 +18,25 @@ export default function AdminBrandDetailPage() {
         { label: brand?.name || 'Brand', href: `/admin/brands/${params.id}` },
       ]}
       title={brand?.name || 'Brand Details'}
-      statusBadge={{ label: brand?.status || 'active', variant: 'success' }}
+      statusBadge={<span>{brand?.status || 'active'}</span>}
       loading={loading}
       tabs={[
         { key: 'overview', label: 'Overview', content: <div>Brand overview</div> },
         { key: 'sponsorships', label: 'Sponsorships', content: <div>Sponsorship details</div> },
         { key: 'analytics', label: 'Analytics', content: <div>Performance metrics</div> },
       ]}
-      metadata={[
-        { label: 'Company', value: brand?.name },
-        { label: 'Total Value', value: `$${brand?.total_value?.toLocaleString()}` },
-        { label: 'Partner Since', value: brand?.created_at },
-        { label: 'Website', value: brand?.website },
-      ]}
-      primaryAction={{ label: 'Edit Brand', onClick: () => router.push(`/admin/brands/${params.id}/edit`) }}
-      secondaryAction={{ label: 'View Contract', onClick: () => {} }}
-    />
+      metadata={
+        <div>
+          <div>Founded: {brand?.founded_year}</div>
+          <div>Website: {brand?.website_url}</div>
+          <div>Contact: {brand?.contact_email}</div>
+          <div>Products: {brand?.product_count || 0}</div>
+        </div>
+      }
+      primaryAction={{ label: 'Edit Brand', onClick: () => {} }}
+      secondaryActions={[{ label: 'View Contract', onClick: () => {} }]}
+    >
+      <div>Brand details content</div>
+    </AdminDetailTemplate>
   );
 }

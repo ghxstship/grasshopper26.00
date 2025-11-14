@@ -1,0 +1,38 @@
+/**
+ * Tabs - Tab navigation molecule
+ * GHXSTSHIP: Hard geometric tabs
+ */
+
+.tabList {
+  display: flex;
+  border-block-end: var(--border-width-3) solid var(--color-border-strong);
+  overflow-x: auto;
+}
+
+.tab {
+  padding: var(--space-4) var(--space-6);
+  background-color: transparent;
+  color: var(--color-text-secondary);
+  border: none;
+  border-block-end: var(--border-width-3) solid transparent;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--easing-out);
+  white-space: nowrap;
+  margin-block-end: calc(var(--border-width-3) * -1);
+}
+
+.tab:hover {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+}
+
+.tab.active {
+  color: var(--color-text-primary);
+  border-block-end-color: var(--color-border-strong);
+  background-color: var(--color-bg-primary);
+}
+
+.tabPanel {
+  padding: var(--space-6);
+  background-color: var(--color-bg-primary);
+}

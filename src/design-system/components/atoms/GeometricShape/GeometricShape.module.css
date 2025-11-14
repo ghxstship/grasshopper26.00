@@ -1,133 +1,77 @@
-/**
- * GeometricShape Styles
- * GHXSTSHIP Entertainment Platform
- * Pure geometric shapes for compositions
- */
+/* GeometricShape Atom */
 
 .shape {
-  display: block;
-  border: var(--border-width-3) solid var(--color-border-strong);
-  border-radius: var(--border-radius-none);
+  display: inline-block;
   background-color: transparent;
-  
-  transition: all var(--duration-base) var(--easing-out);
+  border: var(--border-width-default) solid var(--color-border-primary);
 }
 
 .filled {
-  background-color: var(--color-interactive-default);
+  background-color: var(--color-bg-primary);
 }
 
-/* ========================================
-   SHAPE TYPES
-   ======================================== */
-
-.circle {
-  border-radius: var(--border-radius-none);
-}
-
+/* Variants */
 .square {
-  border-radius: var(--border-radius-none);
+  aspect-ratio: 1;
 }
 
-.diamond {
-  border-radius: var(--border-radius-none);
-  transform: rotate(45deg);
+.rectangle {
+  aspect-ratio: 2 / 1;
 }
 
 .triangle {
-  width: 0;
-  height: 0;
-  border: none;
-  border-inline-start: 3.125rem solid transparent;
-  border-inline-end: 3.125rem solid transparent;
-  border-block-end: 86.0.375rem solid var(--color-border-strong);
+  inline-size: 0;
+  block-size: 0;
+  border-inline-start: var(--space-5) solid transparent;
+  border-inline-end: var(--space-5) solid transparent;
+  border-block-end: 35px solid var(--color-border-primary);
   background-color: transparent;
+  border-block-start: none;
 }
 
 .triangle.filled {
-  border-block-end-color: var(--color-interactive-default);
+  border-block-end-color: var(--color-bg-primary);
 }
 
-/* ========================================
-   SIZES
-   ======================================== */
-
-.sm {
-  width: 2.5rem;
-  height: 2.5rem;
+.diamond {
+  transform: rotate(45deg);
+  aspect-ratio: 1;
 }
 
-.sm.triangle {
-  border-inline-start-width: var(--font-size-xl);
-  border-inline-end-width: var(--font-size-xl);
-  border-block-end-width: 34.4rem;
+/* Sizes */
+.size-sm {
+  inline-size: var(--space-4);
+  block-size: var(--space-4);
 }
 
-.md {
-  width: 5rem;
-  height: 5rem;
+.size-md {
+  inline-size: var(--space-6);
+  block-size: var(--space-6);
 }
 
-.md.triangle {
-  border-inline-start-width: 2.5rem;
-  border-inline-end-width: 2.5rem;
-  border-block-end-width: 69.1.75rem;
+.size-lg {
+  inline-size: var(--space-8);
+  block-size: var(--space-8);
 }
 
-.lg {
-  width: 7.5rem;
-  height: 7.5rem;
+.size-xl {
+  inline-size: var(--space-12);
+  block-size: var(--space-12);
 }
 
-.lg.triangle {
-  border-inline-start-width: 3.75rem;
-  border-inline-end-width: 3.75rem;
-  border-block-end-width: 6.495rem;
-}
-
-.xl {
-  width: 12.5rem;
-  height: 12.5rem;
-}
-
-.xl.triangle {
-  border-inline-start-width: 6.25rem;
-  border-inline-end-width: 6.25rem;
-  border-block-end-width: 173.0.125rem;
-}
-
-/* ========================================
-   ACCESSIBILITY
-   ======================================== */
-
-@media (prefers-reduced-motion: reduce) {
-  .shape {
-    transition: none;
-  }
-}
-
-@media (prefers-contrast: high) {
-  .shape {
-    border-width: var(--border-width-3);
-  }
-}
-
-/* ========================================
-   DARK THEME
-   ======================================== */
-
+/* Dark Mode */
 [data-theme="dark"] .shape {
-  border-color: var(--color-border-strong);
+  border-color: var(--color-border-primary);
 }
 
 [data-theme="dark"] .filled {
-  background-color: var(--color-text-inverse);
+  background-color: var(--color-bg-primary);
 }
 
 [data-theme="dark"] .triangle {
-  border-block-end-color: var(--color-border-strong);
+  border-block-end-color: var(--color-border-primary);
 }
 
 [data-theme="dark"] .triangle.filled {
-  border-block-end-color: var(--color-text-inverse);
+  border-block-end-color: var(--color-bg-primary);
 }

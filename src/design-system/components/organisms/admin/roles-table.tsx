@@ -1,18 +1,10 @@
-import * as React from 'react';
-import { Typography } from '@/design-system/components/atoms/Typography/Typography';
+import { Text } from '../../atoms';
+import { Card } from '../../atoms/Card';
 
-export interface RolesTableProps {
-  roles: any[];
-}
-
-export const RolesTable: React.FC<RolesTableProps> = ({ roles }) => {
+export function RolesTable({ roles = [] }: { roles?: any[] }) {
   return (
-    <div>
-      {roles.map((item: any) => (
-        <div key={item.id}>
-          <Typography variant="body" as="div">{item.name || item.title || item.id}</Typography>
-        </div>
-      ))}
-    </div>
+    <Card padding={6}>
+      <Text>Roles Table - {roles.length} roles</Text>
+    </Card>
   );
-};
+}

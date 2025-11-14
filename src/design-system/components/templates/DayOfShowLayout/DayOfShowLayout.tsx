@@ -1,63 +1,75 @@
 /**
  * DayOfShowLayout Template
- * GHXSTSHIP Entertainment Platform - Day-of-show operations layout
+ * GHXSTSHIP Design System
+ * Specialized layout for event staff day-of-show operations
  */
 
-import * as React from 'react'
-import styles from './DayOfShowLayout.module.css'
+import React from 'react';
+import { PageTemplate } from '../PageTemplate';
+import styles from './DayOfShowLayout.module.css';
 
 export interface DayOfShowLayoutProps {
-  header: React.ReactNode
-  capacityMonitors?: React.ReactNode
-  checkInSystem?: React.ReactNode
-  incidentBoard?: React.ReactNode
-  staffStatus?: React.ReactNode
-  liveMetrics?: React.ReactNode
-  footer?: React.ReactNode
-  className?: string
+  header?: React.ReactNode;
+  liveMetrics?: React.ReactNode;
+  capacityMonitors?: React.ReactNode;
+  checkInSystem?: React.ReactNode;
+  staffStatus?: React.ReactNode;
+  footer?: React.ReactNode;
+  showHeader?: boolean;
+  showFooter?: boolean;
 }
 
-export const DayOfShowLayout: React.FC<DayOfShowLayoutProps> = ({
+export function DayOfShowLayout({
   header,
+  liveMetrics,
   capacityMonitors,
   checkInSystem,
-  incidentBoard,
   staffStatus,
-  liveMetrics,
   footer,
-  className = '',
-}) => {
+  showHeader = false,
+  showFooter = false,
+}: DayOfShowLayoutProps) {
   return (
-    <div className={`${styles.layout} ${className}`}>
-      {header && <header className={styles.header}>{header}</header>}
-
-      <div className={styles.content}>
-        {liveMetrics && (
-          <section className={styles.metrics}>{liveMetrics}</section>
+    <PageTemplate showHeader={showHeader} showFooter={showFooter}>
+      <div className={styles.container}>
+        {header && (
+          <div className={styles.stickyHeader}>
+            {header}
+          </div>
         )}
-
-        {capacityMonitors && (
-          <section className={styles.capacity}>{capacityMonitors}</section>
-        )}
-
-        <div className={styles.grid}>
-          {checkInSystem && (
-            <section className={styles.gridItem}>{checkInSystem}</section>
+        
+        <div className={styles.content}>
+          {liveMetrics && (
+            <section className={styles.section}>
+              {liveMetrics}
+            </section>
           )}
-
+          
+          {capacityMonitors && (
+            <section className={styles.section}>
+              {capacityMonitors}
+            </section>
+          )}
+          
+          {checkInSystem && (
+            <section className={styles.section}>
+              {checkInSystem}
+            </section>
+          )}
+          
           {staffStatus && (
-            <section className={styles.gridItem}>{staffStatus}</section>
+            <section className={styles.section}>
+              {staffStatus}
+            </section>
+          )}
+          
+          {footer && (
+            <section className={styles.section}>
+              {footer}
+            </section>
           )}
         </div>
-
-        {incidentBoard && (
-          <section className={styles.incidents}>{incidentBoard}</section>
-        )}
       </div>
-
-      {footer && <footer className={styles.footer}>{footer}</footer>}
-    </div>
-  )
+    </PageTemplate>
+  );
 }
-
-DayOfShowLayout.displayName = 'DayOfShowLayout'

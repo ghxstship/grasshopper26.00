@@ -1,0 +1,90 @@
+/**
+ * CheckoutFlowTemplate - Multi-step flow layout template
+ * GHXSTSHIP: Hard geometric layout
+ */
+
+.wrapper {
+  padding-block: var(--space-8);
+}
+
+.container {
+  max-inline-size: 80rem;
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+  display: grid;
+  gap: var(--space-8);
+}
+
+.main {
+  grid-column: 1 / -1;
+}
+
+.summary {
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 64rem) {
+  .container {
+    grid-template-columns: 2fr 1fr;
+    align-items: flex-start;
+  }
+
+  .main {
+    grid-column: 1 / 2;
+  }
+
+  .summary {
+    grid-column: 2 / 3;
+  }
+}
+
+.stepper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-block-end: var(--space-4);
+}
+
+.step {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border: var(--border-width-3) solid var(--color-border-strong);
+  background-color: var(--color-bg-secondary);
+}
+
+.stepIndex {
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-lg);
+}
+
+.step-completed {
+  background-color: var(--color-bg-primary);
+}
+
+.step-active {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+[data-theme="dark"] .step-active {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+.step-upcoming {
+  opacity: var(--opacity-60);
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-3);
+}
+
+@media (max-inline-size: var(--space-160)) {
+  .actions {
+    flex-direction: column-reverse;
+  }
+}

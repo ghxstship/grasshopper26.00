@@ -1,9 +1,9 @@
 'use client';
 
-import { AdminListTemplate } from '@/design-system/components/templates';
+import { AdminListTemplate } from '@/design-system';
 import { Shield, Plus } from 'lucide-react';
 import { useAdminRoles } from '@/hooks/useAdminRoles';
-import { RolesTable } from '@/design-system/components/organisms/admin/roles-table';
+import { RolesTable } from '@/design-system';
 
 export default function AdminRolesPage() {
   const { roles, stats, loading } = useAdminRoles();

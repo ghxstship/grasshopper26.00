@@ -1,0 +1,95 @@
+/**
+ * Team Issues Styles
+ * GHXSTSHIP Design System
+ */
+
+.container {
+  max-inline-size: var(--container-max-width);
+  margin-inline: auto;
+  padding-block: var(--space-6);
+  padding-inline: var(--space-4);
+}
+
+.loadingState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  min-block-size: 50vh;
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  min-block-size: 40vh;
+  text-align: center;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-block-end: var(--space-6);
+  gap: var(--space-4);
+}
+
+.form {
+  margin-block-end: var(--space-6);
+}
+
+.issuesList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.issueCard {
+  padding-block: var(--space-4);
+  padding-inline: var(--space-4);
+  background-color: var(--color-bg-secondary);
+  border: var(--border-width-default) solid var(--color-border-primary);
+}
+
+.issueHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-block-end: var(--space-3);
+}
+
+.issueFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-block-start: var(--space-3);
+}
+
+/* Responsive */
+@media (max-inline-size: var(--space-192)) {
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .issueHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .issueFooter {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Dark mode */
+[data-theme="dark"] .issueCard {
+  background-color: var(--color-bg-secondary);
+  border-color: var(--color-border-primary);
+}

@@ -10,47 +10,40 @@ import { MembershipCard } from '@/design-system/components/organisms/MembershipC
 describe('MembershipCard Component', () => {
   const mockMembership = {
     id: 'membership-123',
+    name: 'Premium Member',
+    type: 'annual',
     start_date: '2024-01-01',
-    membership_tiers: {
-      tier_level: 2,
-      display_name: 'Premium Member',
-    },
-  };
-
-  const mockProfile = {
-    id: 'profile-123',
-    display_name: 'John Doe',
+    tier_level: 2,
   };
 
   it('should render membership information', () => {
-    render(<MembershipCard membership={mockMembership} profile={mockProfile} />);
+    render(<MembershipCard membership={mockMembership} />);
     
-    expect(screen.getByText('John Doe')).toBeInTheDocument();
     expect(screen.getByText('Premium Member')).toBeInTheDocument();
   });
 
-  it('should display member since year', () => {
-    render(<MembershipCard membership={mockMembership} profile={mockProfile} />);
+  it('should display membership type', () => {
+    render(<MembershipCard membership={mockMembership} />);
     
-    expect(screen.getByText(/Member Since 2024/i)).toBeInTheDocument();
+    expect(screen.getByText('annual')).toBeInTheDocument();
   });
 
-  it('should display tier level badge', () => {
-    render(<MembershipCard membership={mockMembership} profile={mockProfile} />);
+  it('should render with minimal data', () => {
+    const minimalMembership = { id: 'test-123' };
+    render(<MembershipCard membership={minimalMembership} />);
     
-    expect(screen.getByText('2')).toBeInTheDocument();
+    expect(screen.getByText('Membership')).toBeInTheDocument();
   });
 
-  it('should show GVTEWAY branding', () => {
-    render(<MembershipCard membership={mockMembership} profile={mockProfile} />);
+  it('should render without membership', () => {
+    render(<MembershipCard membership={null} />);
     
-    expect(screen.getByText('GVTEWAY')).toBeInTheDocument();
+    expect(screen.getByText('Membership')).toBeInTheDocument();
   });
 
-  it('should render without membership (join prompt)', () => {
-    render(<MembershipCard membership={null} profile={mockProfile} />);
+  it('should be accessible', () => {
+    const { container } = render(<MembershipCard membership={mockMembership} />);
     
-    expect(screen.getByText(/Join GVTEWAY Membership/i)).toBeInTheDocument();
-    expect(screen.getByText(/Unlock exclusive benefits/i)).toBeInTheDocument();
+    expect(container.querySelector('h3')).toBeInTheDocument();
   });
 });

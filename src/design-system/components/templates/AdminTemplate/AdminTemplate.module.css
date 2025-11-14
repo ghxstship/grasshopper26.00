@@ -1,0 +1,36 @@
+/**
+ * AdminTemplate - Admin page layout template
+ */
+
+.admin {
+  min-block-size: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg-secondary);
+}
+
+.main {
+  flex: 1;
+  padding-block: var(--space-8);
+}
+
+.container {
+  max-inline-size: 96rem;
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-3);
+}
+
+@media (min-width: 48rem) {
+  .main {
+    padding-block: var(--space-12);
+  }
+
+  .container {
+    padding-inline: var(--space-6);
+  }
+}

@@ -4,20 +4,17 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
-import { PortalLayout } from '@/design-system/components/templates/PortalLayout/PortalLayout';
-import { PortalSidebar } from '@/design-system/components/organisms/PortalSidebar/PortalSidebar';
-import { Typography } from '@/design-system/components/atoms/Typography/Typography';
-import { StatCard } from '@/design-system/components/molecules/StatCard/StatCard';
-import { Button } from '@/design-system/components/atoms/Button/Button';
-import { GeometricShape } from '@/design-system/components/atoms/GeometricShape/GeometricShape';
-import { StatusBadge, AdvanceStatus } from '@/design-system/components/atoms/StatusBadge/StatusBadge';
+import { PortalLayout } from '@/design-system';
+import { PortalSidebar } from '@/design-system';
+import { Heading, Text, Button, Badge, GeometricShape, StatusBadge } from '@/design-system';
+import { StatCard } from '@/design-system';
 import { DollarSign, TrendingUp, Clock } from 'lucide-react';
 import { ProductionAdvance } from '@/lib/types/production-advances';
 import { cn } from '@/lib/utils';
 import { Plus } from 'lucide-react';
 import styles from './page.module.css';
 
-type FilterStatus = 'all' | AdvanceStatus;
+type FilterStatus = 'all' | 'draft' | 'submitted' | 'under_review' | 'approved' | 'fulfilled' | 'rejected' | 'cancelled';
 
 export default function MyAdvancesPage() {
   const router = useRouter();

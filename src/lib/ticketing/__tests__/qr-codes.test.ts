@@ -11,7 +11,7 @@ const createMockQueryBuilder = () => {
   builder.select = vi.fn().mockReturnValue(builder);
   builder.update = vi.fn().mockReturnValue(builder);
   builder.eq = vi.fn().mockReturnValue(builder);
-  builder.single = vi.fn().mockResolvedValue({ data: null, error: null });
+  builder.single = vi.fn();
   // For queries that don't end with .single()
   builder.then = vi.fn((resolve) => resolve({ data: null, error: null }));
   return builder;
@@ -20,10 +20,7 @@ const createMockQueryBuilder = () => {
 let mockQueryBuilder = createMockQueryBuilder();
 
 const mockSupabase = {
-  from: vi.fn(() => {
-    mockQueryBuilder = createMockQueryBuilder();
-    return mockQueryBuilder;
-  }),
+  from: vi.fn(() => mockQueryBuilder),
 };
 
 vi.mock('@/lib/supabase/server', () => ({
@@ -33,6 +30,7 @@ vi.mock('@/lib/supabase/server', () => ({
 describe('QR Code System', () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    mockQueryBuilder = createMockQueryBuilder();
   });
 
   describe('generateTicketCode', () => {
@@ -126,7 +124,10 @@ describe('QR Code System', () => {
 
   describe('markTicketAsScanned', () => {
     it('should mark ticket as scanned', async () => {
-      mockQueryBuilder.update.mockResolvedValueOnce({ error: null });
+      const testBuilder = createMockQueryBuilder();
+      testBuilder.update.mockReturnValue(testBuilder);
+      testBuilder.eq.mockResolvedValue({ data: null, error: null });
+      mockSupabase.from = vi.fn(() => testBuilder);
 
       await expect(
         markTicketAsScanned('ticket-123', 'scanner-456')
@@ -136,9 +137,15 @@ describe('QR Code System', () => {
     });
 
     it('should throw error on database failure', async () => {
-      mockQueryBuilder.update.mockResolvedValueOnce({ 
+      // Create a fresh builder that properly chains and returns error
+      const testBuilder = createMockQueryBuilder();
+      testBuilder.update.mockReturnValue(testBuilder);
+      testBuilder.eq.mockResolvedValue({ 
+        data: null,
         error: { message: 'Database error' } 
       });
+      
+      mockSupabase.from = vi.fn(() => testBuilder);
 
       await expect(
         markTicketAsScanned('ticket-123', 'scanner-456')

@@ -2,6 +2,7 @@ import { headers } from 'next/headers'
 import { NextResponse } from 'next/server'
 import Stripe from 'stripe'
 import { createClient } from '@/lib/supabase/server'
+import { logger } from '@/design-system/utils/logger-helpers'
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2023-10-16',
@@ -19,7 +20,7 @@ export async function POST(req: Request) {
   try {
     event = stripe.webhooks.constructEvent(body, signature, webhookSecret)
   } catch (err: any) {
-    console.error(`Webhook signature verification failed: ${err.message}`)
+    logger.error('Webhook signature verification failed', err, { context: 'stripe-membership-webhook' })
     return NextResponse.json(
       { error: `Webhook Error: ${err.message}` },
       { status: 400 }
@@ -66,12 +67,12 @@ export async function POST(req: Request) {
         break
 
       default:
-        console.log(`Unhandled event type: ${event.type}`)
+        logger.info('Unhandled event type', { eventType: event.type, context: 'stripe-membership-webhook' })
     }
 
     return NextResponse.json({ received: true })
   } catch (error: any) {
-    console.error(`Webhook handler error: ${error.message}`)
+    logger.error('Webhook handler error', error as Error, { context: 'stripe-membership-webhook' })
     return NextResponse.json(
       { error: `Webhook handler failed: ${error.message}` },
       { status: 500 }
@@ -137,7 +138,7 @@ async function handleSubscriptionCreated(
     effective_date: new Date().toISOString(),
   })
 
-  console.log(`Membership created for user ${userId}, tier ${tier.tier_name}`)
+  logger.info('Membership created', { userId, tierName: tier.tier_name, context: 'stripe-membership-webhook' })
 }
 
 async function handleSubscriptionUpdated(
@@ -151,7 +152,7 @@ async function handleSubscriptionUpdated(
     .single()
 
   if (!membership) {
-    console.log(`Membership not found for subscription ${subscription.id}`)
+    logger.warn('Membership not found for subscription in update', { subscriptionId: subscription.id, context: 'stripe-membership-webhook' })
     return
   }
 
@@ -177,7 +178,7 @@ async function handleSubscriptionUpdated(
     })
     .eq('id', membership.id)
 
-  console.log(`Membership updated: ${membership.id}, status: ${status}`)
+  logger.info('Membership updated', { membershipId: membership.id, status, context: 'stripe-membership-webhook' })
 }
 
 async function handleSubscriptionDeleted(
@@ -191,7 +192,7 @@ async function handleSubscriptionDeleted(
     .single()
 
   if (!membership) {
-    console.log(`Membership not found for subscription ${subscription.id}`)
+    logger.warn('Membership not found for subscription in delete', { subscriptionId: subscription.id, context: 'stripe-membership-webhook' })
     return
   }
 
@@ -212,7 +213,7 @@ async function handleSubscriptionDeleted(
     effective_date: new Date().toISOString(),
   })
 
-  console.log(`Membership cancelled: ${membership.id}`)
+  logger.info('Membership cancelled', { membershipId: membership.id, context: 'stripe-membership-webhook' })
 }
 
 async function handlePaymentSucceeded(invoice: Stripe.Invoice, supabase: any) {
@@ -241,7 +242,7 @@ async function handlePaymentSucceeded(invoice: Stripe.Invoice, supabase: any) {
     await allocateCredits(membership.id, tier, supabase)
   }
 
-  console.log(`Payment succeeded for membership ${membership.id}: $${amount}`)
+  logger.info('Payment succeeded for membership', { membershipId: membership.id, amount, context: 'stripe-membership-webhook' })
 }
 
 async function handlePaymentFailed(invoice: Stripe.Invoice, supabase: any) {
@@ -263,7 +264,7 @@ async function handlePaymentFailed(invoice: Stripe.Invoice, supabase: any) {
     })
     .eq('id', membership.id)
 
-  console.log(`Payment failed for membership ${membership.id}`)
+  logger.warn('Payment failed for membership', { membershipId: membership.id, context: 'stripe-membership-webhook' })
 }
 
 async function allocateCredits(

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
+import { logger } from '@/design-system/utils/logger-helpers';
 
 /**
  * Resend webhook handler
@@ -26,11 +27,11 @@ export async function POST(req: NextRequest) {
     // Handle specific event types
     switch (type) {
       case 'email.delivered':
-        console.log(`Email delivered to ${data.to}`);
+        logger.info('Email delivered', { recipient: data.to, emailId: data.email_id, context: 'resend-webhook' });
         break;
 
       case 'email.bounced':
-        console.error(`Email bounced for ${data.to}:`, data.bounce);
+        logger.error('Email bounced', new Error('Email bounced'), { recipient: data.to, bounce: data.bounce, context: 'resend-webhook' });
         // Mark user email as invalid
         await supabase
           .from('user_profiles')
@@ -42,7 +43,7 @@ export async function POST(req: NextRequest) {
         break;
 
       case 'email.complained':
-        console.error(`Spam complaint from ${data.to}`);
+        logger.warn('Spam complaint received', { recipient: data.to, context: 'resend-webhook' });
         // Unsubscribe user from marketing emails
         await supabase
           .from('user_profiles')
@@ -55,7 +56,7 @@ export async function POST(req: NextRequest) {
         break;
 
       case 'email.opened':
-        console.log(`Email opened by ${data.to}`);
+        logger.info('Email opened', { recipient: data.to, emailId: data.email_id, context: 'resend-webhook' });
         // Track email engagement
         await supabase
           .from('email_logs')
@@ -67,7 +68,7 @@ export async function POST(req: NextRequest) {
         break;
 
       case 'email.clicked':
-        console.log(`Link clicked in email by ${data.to}`);
+        logger.info('Link clicked in email', { recipient: data.to, link: data.link, emailId: data.email_id, context: 'resend-webhook' });
         // Track link clicks
         await supabase
           .from('email_logs')
@@ -83,12 +84,12 @@ export async function POST(req: NextRequest) {
         break;
 
       default:
-        console.log(`Unhandled webhook event: ${type}`);
+        logger.info('Unhandled webhook event', { eventType: type, context: 'resend-webhook' });
     }
 
     return NextResponse.json({ received: true });
   } catch (error) {
-    console.error('Resend webhook error:', error);
+    logger.error('Resend webhook error', error as Error, { context: 'resend-webhook' });
     return NextResponse.json(
       { error: 'Webhook processing failed' },
       { status: 500 }

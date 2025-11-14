@@ -1,73 +1,41 @@
 /**
- * CookieConsent Component
- * GHXSTSHIP Entertainment Platform - Cookie consent banner
- * Atomic Design: Atom
+ * CookieConsent - Cookie consent banner atom
+ * GHXSTSHIP Atomic Design System
  */
 
 'use client';
 
-import * as React from 'react';
 import { useState, useEffect } from 'react';
+import { Button, Text } from '../';
 import styles from './CookieConsent.module.css';
 
-export interface CookiePreferences {
-  necessary: boolean;
-  analytics: boolean;
-  marketing: boolean;
-}
-
-export const CookieConsent: React.FC = () => {
-  const [showConsent, setShowConsent] = useState(false);
+export function CookieConsent() {
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     const consent = localStorage.getItem('cookie-consent');
     if (!consent) {
-      setShowConsent(true);
+      setShow(true);
     }
   }, []);
 
-  const acceptCookies = () => {
+  const handleAccept = () => {
     localStorage.setItem('cookie-consent', 'accepted');
-    setShowConsent(false);
+    setShow(false);
   };
 
-  const declineCookies = () => {
-    localStorage.setItem('cookie-consent', 'declined');
-    setShowConsent(false);
-  };
-
-  if (!showConsent) return null;
+  if (!show) return null;
 
   return (
-    <div 
-      className={styles.banner}
-      role="dialog"
-      aria-label="Cookie consent"
-      aria-describedby="cookie-consent-description"
-    >
+    <div className={styles.banner}>
       <div className={styles.content}>
-        <p id="cookie-consent-description" className={styles.text}>
+        <Text size="sm">
           We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.
-        </p>
-        <div className={styles.actions}>
-          <button 
-            onClick={acceptCookies} 
-            className={styles.button}
-            aria-label="Accept cookies"
-          >
-            Accept
-          </button>
-          <button 
-            onClick={declineCookies} 
-            className={`${styles.button} ${styles.buttonSecondary}`}
-            aria-label="Decline cookies"
-          >
-            Decline
-          </button>
-        </div>
+        </Text>
+        <Button variant="primary" size="sm" onClick={handleAccept}>
+          Accept
+        </Button>
       </div>
     </div>
   );
-};
-
-CookieConsent.displayName = 'CookieConsent';
+}

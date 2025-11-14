@@ -1,73 +1,46 @@
 /**
- * StatCard Molecule
- * GHXSTSHIP Monochromatic Design System
+ * StatCard - Statistics display card molecule
+ * GHXSTSHIP Atomic Design System
  */
 
-import * as React from "react";
-import { Typography } from '../../atoms/Typography/Typography';
-import styles from './StatCard.module.css';
+import { Card, Stack, Heading, Text } from '../../atoms';
 
 export interface StatCardProps {
   /** Stat label */
   label: string;
-  
   /** Stat value */
   value: string | number;
-  
-  /** Icon */
+  /** Change/trend */
+  change?: string;
+  /** Change is positive */
+  changePositive?: boolean;
+  /** Optional icon */
   icon?: React.ReactNode;
-  
-  /** Trend indicator */
-  trend?: {
-    value: number;
-    direction: 'up' | 'down';
-    label?: string;
-  };
-  
-  /** Click handler */
-  onClick?: () => void;
 }
 
-export const StatCard: React.FC<StatCardProps> = ({
+export function StatCard({
   label,
   value,
+  change,
+  changePositive,
   icon,
-  trend,
-  onClick,
-}) => {
-  const Component = onClick ? 'button' : 'div';
-  
+}: StatCardProps) {
   return (
-    <Component
-      className={`${styles.card} ${onClick ? styles.clickable : ''}`}
-      onClick={onClick}
-      type={onClick ? 'button' : undefined}
-    >
-      <div className={styles.header}>
-        <Typography variant="meta" as="div" className={styles.label}>
+    <Card variant="elevated" padding={6}>
+      <Stack gap={2}>
+        {icon && <div>{icon}</div>}
+        <Text size="sm" color="secondary" uppercase>
           {label}
-        </Typography>
-        {icon && (
-          <div className={styles.icon}>
-            {icon}
-          </div>
+        </Text>
+        <Heading level={2} font="anton">
+          {value}
+        </Heading>
+        {change && (
+          <Text size="sm" color={changePositive ? 'primary' : 'secondary'}>
+            {change}
+          </Text>
         )}
-      </div>
-      
-      <Typography variant="h2" as="div" className={styles.value}>
-        {value}
-      </Typography>
-      
-      {trend && (
-        <div className={`${styles.trend} ${styles[trend.direction]}`}>
-          <span className={styles.trendArrow}>
-            {trend.direction === 'up' ? '↑' : '↓'}
-          </span>
-          <span className={styles.trendLabel}>
-            {trend.label || `${trend.value}%`}
-          </span>
-        </div>
-      )}
-    </Component>
+      </Stack>
+    </Card>
   );
-};
+}

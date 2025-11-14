@@ -1,6 +1,6 @@
 'use client';
 
-import { PortalDashboardTemplate } from '@/design-system/components/templates';
+import { PortalDashboardTemplate } from '@/design-system';
 import { CheckCircle } from 'lucide-react';
 
 export default function CheckoutSuccessPage() {

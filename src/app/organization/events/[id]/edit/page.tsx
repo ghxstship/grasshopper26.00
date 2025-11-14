@@ -6,17 +6,9 @@
 'use client';
 
 import { use, useEffect, useState } from 'react';
-import { ContextualPageTemplate } from '@/design-system/components/templates';
+import { ContextualPageTemplate, Alert } from '@/design-system';
 import { createClient } from '@/lib/supabase/client';
-import { Button } from '@/design-system/components/atoms/Button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/Card';
-import { Input } from '@/design-system/components/atoms/Input';
-import { Label } from '@/design-system/components/atoms/Label';
-import { Textarea } from '@/design-system/components/atoms/Textarea';
-import { Progress } from '@/design-system/components/atoms/Progress/Progress';
-import { Alert } from '@/design-system/components/atoms/Alert/Alert';
-import { Skeleton } from '@/design-system/components/atoms/Skeleton/Skeleton';
-import { Typography } from '@/design-system/components/atoms/Typography/Typography';
+import { Button, Card, CardHeader, CardTitle, CardContent, Input, Label, Textarea, Heading, Text, Stack } from '@/design-system';
 import { Save, AlertCircle, CheckCircle } from 'lucide-react';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
@@ -130,15 +122,15 @@ export default function EventEditPage({ params }: { params: Promise<{ id: string
       loading={loading}
     >
       {showSuccess && (
-        <Alert variant="success" className={styles.alert}>
-          <CheckCircle style={{ width: 20, height: 20 }} />
+        <Alert variant="success">
+          <CheckCircle className={styles.iconMd} />
           Event updated successfully! Redirecting...
         </Alert>
       )}
 
       {!loading && formCompleteness() < 100 && (
-        <Alert variant="warning" className={styles.alert}>
-          <AlertCircle style={{ width: 20, height: 20 }} />
+        <Alert variant="warning">
+          <AlertCircle className={styles.iconMd} />
           Please complete all required fields ({Math.round(formCompleteness())}% complete)
         </Alert>
       )}
@@ -146,29 +138,23 @@ export default function EventEditPage({ params }: { params: Promise<{ id: string
       {loading ? (
         <Card>
           <CardHeader>
-            <Skeleton variant="text" height="2rem" width="12.5rem" />
+            <Text>Loading event details...</Text>
           </CardHeader>
           <CardContent>
-            <div className={styles.skeletonForm}>
-              {Array.from({ length: 6 }).map((_, i) => (
-                <Skeleton key={i} variant="rectangular" height="5rem" />
-              ))}
-            </div>
+            <Text color="secondary">Please wait while we load the event information.</Text>
           </CardContent>
         </Card>
       ) : (
         <Card>
           <CardHeader>
             <CardTitle>Event Details</CardTitle>
-            <Progress value={formCompleteness()} className={styles.progress} />
           </CardHeader>
           <CardContent>
             {saving && saveProgress > 0 && (
               <div className={styles.savingProgress}>
-                <Progress value={saveProgress} />
-                <Typography variant="body" as="p" className={styles.savingText}>
+                <Text className={styles.savingText}>
                   Saving changes... {saveProgress}%
-                </Typography>
+                </Text>
               </div>
             )}
             <form onSubmit={handleSubmit} className={styles.form}>
@@ -235,7 +221,7 @@ export default function EventEditPage({ params }: { params: Promise<{ id: string
                 <Save className={styles.iconSmall} />
                 {saving ? 'Saving...' : 'Save Changes'}
               </Button>
-              <Button type="button" variant="outlined" onClick={() => router.back()}>
+              <Button type="button" variant="secondary" onClick={() => router.back()}>
                 Cancel
               </Button>
             </div>

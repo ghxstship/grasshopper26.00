@@ -1,14 +1,7 @@
 'use client';
 
-import { SplitLayout } from '@/design-system/components/templates/SplitLayout/SplitLayout';
-import { SiteHeader } from '@/design-system/components/organisms/layout/site-header';
-import { SiteFooter } from '@/design-system/components/organisms/layout/site-footer';
-import { Typography } from '@/design-system/components/atoms/Typography/Typography';
-import { Button } from '@/design-system/components/atoms/Button/Button';
-import { Skeleton } from '@/design-system/components/atoms/Skeleton/Skeleton';
-import { PriceDisplay } from '@/design-system/components/atoms/PriceDisplay/PriceDisplay';
-import { Badge } from '@/design-system/components/atoms/Badge/Badge';
-import { Divider } from '@/design-system/components/atoms/Divider/Divider';
+import { SplitLayout } from '@/design-system';
+import { Heading, Text, Button, Badge, Divider, Spinner } from '@/design-system';
 import { ShoppingCart, Trash2, Plus, Minus } from 'lucide-react';
 import { useCart } from '@/hooks/useCart';
 import Link from 'next/link';
@@ -30,15 +23,15 @@ export default function CartPage() {
 
   return (
     <SplitLayout
-      header={<SiteHeader />}
+      header={null}
       left={
         <div className={styles.cartContent}>
           <div className={styles.header}>
-            <Typography variant="h2" as="h1">
+            <Heading level={1} font="anton">
               Shopping Cart
-            </Typography>
+            </Heading>
             {items && items.length > 0 && (
-              <Badge variant="filled">
+              <Badge variant="solid">
                 {items.length} {items.length === 1 ? 'Item' : 'Items'}
               </Badge>
             )}
@@ -46,11 +39,8 @@ export default function CartPage() {
           
           {loading ? (
             <div className={styles.loading}>
-              {Array.from({ length: 3 }).map((_, i) => (
-                <div key={i} className={styles.skeletonItem}>
-                  <Skeleton variant="rectangular" height="7.5rem" />
-                </div>
-              ))}
+              <Spinner size="lg" />
+              <Text>Loading cart...</Text>
             </div>
           ) : items && items.length > 0 ? (
             <div className={styles.itemsList}>
@@ -62,18 +52,18 @@ export default function CartPage() {
                     </div>
                   )}
                   <div className={styles.itemDetails}>
-                    <Typography variant="h4" as="h3">
+                    <Heading level={4} font="bebas">
                       {item.name}
-                    </Typography>
+                    </Heading>
                     {item.description && (
-                      <Typography variant="body" as="p" className={styles.itemDescription}>
+                      <Text className={styles.itemDescription}>
                         {item.description}
-                      </Typography>
+                      </Text>
                     )}
                     {item.variant && (
-                      <Typography variant="body" as="p" className={styles.itemVariant}>
+                      <Text className={styles.itemVariant}>
                         {item.variant}
-                      </Typography>
+                      </Text>
                     )}
                   </div>
                   <div className={styles.itemActions}>
@@ -84,27 +74,27 @@ export default function CartPage() {
                         aria-label="Decrease quantity"
                         disabled={item.quantity <= 1}
                       >
-                        <Minus style={{ width: 16, height: 16 }} />
+                        <Minus className={styles.iconSm} />
                       </button>
-                      <Typography variant="body" as="span" className={styles.quantity}>
+                      <Text className={styles.quantity}>
                         {item.quantity}
-                      </Typography>
+                      </Text>
                       <button
                         onClick={() => handleQuantityChange(item.id, 1)}
                         className={styles.quantityButton}
                         aria-label="Increase quantity"
                       >
-                        <Plus style={{ width: 16, height: 16 }} />
+                        <Plus className={styles.iconSm} />
                       </button>
                     </div>
-                    <PriceDisplay amount={item.price * item.quantity} size="md" />
+                    <Text weight="bold">${(item.price * item.quantity).toFixed(2)}</Text>
                     {removeItem && (
                       <button
                         onClick={() => removeItem(item.id)}
                         className={styles.removeButton}
                         aria-label="Remove item"
                       >
-                        <Trash2 style={{ width: 20, height: 20 }} />
+                        <Trash2 className={styles.iconMd} />
                       </button>
                     )}
                   </div>
@@ -114,12 +104,12 @@ export default function CartPage() {
           ) : (
             <div className={styles.empty}>
               <ShoppingCart className={styles.emptyIcon} />
-              <Typography variant="h3" as="p">Your cart is empty</Typography>
-              <Typography variant="body" as="p">
+              <Heading level={3} font="bebas">Your cart is empty</Heading>
+              <Text color="secondary">
                 Browse events and shop to add items
-              </Typography>
+              </Text>
               <Link href="/events">
-                <Button variant="filled" size="lg">Browse Events</Button>
+                <Button variant="primary" size="lg">Browse Events</Button>
               </Link>
             </div>
           )}
@@ -127,42 +117,40 @@ export default function CartPage() {
       }
       right={
         <div className={styles.summary}>
-          <Typography variant="h3" as="h2">
+          <Heading level={3} font="bebas">
             Order Summary
-          </Typography>
+          </Heading>
           
           <Divider />
           
           {loading ? (
             <div className={styles.summarySkeleton}>
-              <Skeleton variant="text" height="1.5rem" />
-              <Skeleton variant="text" height="1.5rem" />
-              <Skeleton variant="text" height="2rem" />
+              <Spinner size="md" />
             </div>
           ) : (
             <>
               <div className={styles.summaryRow}>
-                <Typography variant="body" as="div">Subtotal</Typography>
-                <PriceDisplay amount={subtotal || 0} size="sm" />
+                <Text>Subtotal</Text>
+                <Text weight="medium">${(subtotal || 0).toFixed(2)}</Text>
               </div>
               
               {tax !== undefined && tax > 0 && (
                 <div className={styles.summaryRow}>
-                  <Typography variant="body" as="div">Tax</Typography>
-                  <PriceDisplay amount={tax} size="sm" />
+                  <Text>Tax</Text>
+                  <Text weight="medium">${tax.toFixed(2)}</Text>
                 </div>
               )}
               
               <Divider />
               
               <div className={styles.summaryTotal}>
-                <Typography variant="h4" as="div">Total</Typography>
-                <PriceDisplay amount={total || 0} size="lg" />
+                <Heading level={4} font="bebas">Total</Heading>
+                <Text size="lg" weight="bold">${(total || 0).toFixed(2)}</Text>
               </div>
               
               <Link href="/checkout">
                 <Button 
-                  variant="filled" 
+                  variant="primary" 
                   fullWidth 
                   size="lg"
                   disabled={!items || items.length === 0}
@@ -172,7 +160,7 @@ export default function CartPage() {
               </Link>
               
               <Link href="/events">
-                <Button variant="outlined" fullWidth>
+                <Button variant="secondary" fullWidth>
                   Continue Shopping
                 </Button>
               </Link>
@@ -180,7 +168,7 @@ export default function CartPage() {
           )}
         </div>
       }
-      footer={<SiteFooter />}
+      footer={null}
       ratio="60-40"
       stickySide="right"
     />

@@ -1,6 +1,6 @@
 'use client';
 
-import { CheckoutFlowTemplate } from '@/design-system/components/templates';
+import { CheckoutFlowTemplate } from '@/design-system';
 import { useArtistCreate } from '@/hooks/useArtistCreate';
 
 export default function ArtistCreatePage() {

@@ -1,108 +1,60 @@
 /**
- * Avatar Styles - GHXSTSHIP
+ * Avatar - User avatar atom
+ * GHXSTSHIP: Hard geometric avatar
  */
 
 .avatar {
   position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  
-  overflow: hidden;
-  
-  border: var(--border-width-2) solid var(--color-border-strong);
-  border-radius: var(--border-radius-none);
-  background-color: var(--color-bg-secondary);
-  
-  flex-shrink: 0;
-}
-
-.image {
-  object-fit: cover;
-  filter: grayscale(100%) contrast(1.2);
-}
-
-.halftoneOverlay {
-  position: absolute;
-  inset: 0;
-  background: none;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.fallback {
   display: flex;
   align-items: center;
   justify-content: center;
-  
-  inline-size: 100%;
-  block-size: 100%;
-  
-  font-family: var(--font-bebas);
-  text-transform: uppercase;
-  
-  color: var(--color-text-secondary);
+  overflow: hidden;
   background-color: var(--color-bg-secondary);
+  border: var(--border-width-3) solid var(--color-border-strong);
+  border-radius: var(--border-radius-none);
+  flex-shrink: 0;
+}
+
+.fallback {
+  font-family: var(--font-bebas);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  text-transform: uppercase;
 }
 
 /* Sizes */
-.xs {
-  inline-size: 1.5rem;
-  block-size: 1.5rem;
+.size-sm {
+  width: 2rem;
+  height: 2rem;
 }
 
-.xs .fallback {
-  font-size: var(--font-size-xs);
-}
-
-.sm {
-  inline-size: 2rem;
-  block-size: 2rem;
-}
-
-.sm .fallback {
+.size-sm .fallback {
   font-size: var(--font-size-sm);
 }
 
-.md {
-  inline-size: 2.5rem;
-  block-size: 2.5rem;
+.size-md {
+  width: 3rem;
+  height: 3rem;
 }
 
-.md .fallback {
-  font-size: var(--font-size-base);
-}
-
-.lg {
-  inline-size: 3.5rem;
-  block-size: 3.5rem;
-}
-
-.lg .fallback {
+.size-md .fallback {
   font-size: var(--font-size-lg);
 }
 
-.xl {
-  inline-size: 5rem;
-  block-size: 5rem;
+.size-lg {
+  width: 4rem;
+  height: 4rem;
 }
 
-.xl .fallback {
-  font-size: var(--font-size-xl);
-}
-
-.\32xl {
-  inline-size: 7.5rem;
-  block-size: 7.5rem;
-}
-
-.\32xl .fallback {
+.size-lg .fallback {
   font-size: var(--font-size-2xl);
 }
 
-/* Accessibility */
-@media (prefers-contrast: high) {
-  .avatar {
-    border-width: var(--border-width-3);
-  }
+.size-xl {
+  width: 6rem;
+  height: 6rem;
+}
+
+.size-xl .fallback {
+  font-size: var(--font-size-4xl);
 }

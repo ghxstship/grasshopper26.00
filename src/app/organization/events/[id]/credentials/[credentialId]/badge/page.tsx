@@ -8,7 +8,7 @@
 import styles from './page.module.css';
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
-import { CredentialBadge } from '@/design-system/components/organisms/admin/CredentialBadge';
+import { CredentialBadge } from '@/design-system';
 
 interface BadgeData {
   credential_number: string;

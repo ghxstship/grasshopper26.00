@@ -1,75 +1,79 @@
 /**
- * Text Styles
- * GHXSTSHIP Monochromatic Design System
+ * Text - Typography primitive
+ * GHXSTSHIP: ANTON, BEBAS NEUE, SHARE TECH, SHARE TECH MONO
  */
 
 .text {
   margin: 0;
+  padding: 0;
+}
+
+/* Font Families */
+.font-anton {
+  font-family: var(--font-anton);
+}
+
+.font-bebas {
+  font-family: var(--font-bebas);
+}
+
+.font-share {
   font-family: var(--font-share);
-  color: var(--color-text-primary);
-  line-height: var(--line-height-relaxed);
 }
 
-/* Size variants */
-.sm {
-  font-size: var(--font-size-meta);
+.font-share-mono {
+  font-family: var(--font-share-mono);
 }
 
-.md {
-  font-size: var(--font-size-base);
-}
+/* Font Sizes */
+.size-xs { font-size: var(--font-size-xs); }
+.size-sm { font-size: var(--font-size-sm); }
+.size-base { font-size: var(--font-size-base); }
+.size-lg { font-size: var(--font-size-lg); }
+.size-xl { font-size: var(--font-size-xl); }
+.size-2xl { font-size: var(--font-size-2xl); }
+.size-3xl { font-size: var(--font-size-3xl); }
+.size-4xl { font-size: var(--font-size-4xl); }
+.size-5xl { font-size: var(--font-size-5xl); }
+.size-6xl { font-size: var(--font-size-6xl); }
+.size-7xl { font-size: var(--font-size-7xl); }
+.size-8xl { font-size: var(--font-size-8xl); }
+.size-9xl { font-size: var(--font-size-9xl); }
 
-.lg {
-  font-size: var(--font-size-h6);
-}
+/* Font Weights */
+.weight-normal { font-weight: 400; }
+.weight-medium { font-weight: 500; }
+.weight-semibold { font-weight: 600; }
+.weight-bold { font-weight: 700; }
 
-/* Weight variants */
-.normal {
-  font-weight: 400;
-}
-
-.bold {
-  font-weight: 700;
-}
+/* Colors */
+.color-primary { color: var(--color-text-primary); }
+.color-secondary { color: var(--color-text-secondary); }
+.color-tertiary { color: var(--color-text-tertiary); }
+.color-inverse { color: var(--color-text-inverse); }
+.color-brand { color: var(--color-text-brand); }
+.color-accent { color: var(--color-text-accent); }
 
 /* Alignment */
-.align-left {
-  text-align: start;
+.align-start { text-align: start; }
+.align-center { text-align: center; }
+.align-end { text-align: end; }
+
+/* Line Height */
+.lh-none { line-height: var(--line-height-none); }
+.lh-tight { line-height: var(--line-height-tight); }
+.lh-snug { line-height: var(--line-height-snug); }
+.lh-normal { line-height: var(--line-height-normal); }
+.lh-relaxed { line-height: var(--line-height-relaxed); }
+
+/* Letter Spacing */
+.ls-tight { letter-spacing: var(--letter-spacing-tight); }
+.ls-normal { letter-spacing: var(--letter-spacing-normal); }
+.ls-wide { letter-spacing: var(--letter-spacing-wide); }
+.ls-wider { letter-spacing: var(--letter-spacing-wider); }
+.ls-widest { letter-spacing: var(--letter-spacing-widest); }
+
+/* Uppercase */
+.uppercase {
+  text-transform: uppercase;
 }
-
-.align-center {
-  text-align: center;
-}
-
-.align-right {
-  text-align: end;
-}
-
-
-/* ========================================
-   RESPONSIVE BREAKPOINTS
-   ======================================== */
-
-@media (min-width: var(--space-96)) {
-  /* Tablet and up */
-}
-
-@media (min-width: var(--space-96)) {
-  /* Desktop and up */
-}
-
-
-
-
-
-
-
-/* ========================================
-   DARK THEME
-   ======================================== */
-
-[data-theme="dark"] .text {
-  /* Dark mode overrides inherit from tokens.css */
-  /* Add component-specific overrides here if needed */
-}
-

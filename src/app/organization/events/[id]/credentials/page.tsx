@@ -6,13 +6,13 @@
 'use client';
 
 import { use, useEffect, useState } from 'react';
-import { ContextualPageTemplate } from '@/design-system/components/templates';
+import { ContextualPageTemplate } from '@/design-system';
 import { createClient } from '@/lib/supabase/client';
-import { Button } from '@/design-system/components/atoms/Button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/Card';
-import { Input } from '@/design-system/components/atoms/Input';
-import { Badge } from '@/design-system/components/atoms/Badge';
-import { Select } from '@/design-system/components/atoms/Select';
+import { Button } from '@/design-system';
+import { Card, CardContent, CardHeader, CardTitle } from '@/design-system';
+import { Input } from '@/design-system';
+import { Badge } from '@/design-system';
+import { Select } from '@/design-system';
 import { Plus, Search, Shield, CheckCircle, XCircle, Printer } from 'lucide-react';
 import { toast } from 'sonner';
 import styles from './credentials-content.module.css';
@@ -210,8 +210,6 @@ export default function EventCredentialsPage({ params }: { params: Promise<{ id:
                   label: `${type.badge} ${type.label}`,
                 })),
               ]}
-              placeholder="All Types"
-              className={styles.filterSelect}
             />
 
             <Select
@@ -223,8 +221,6 @@ export default function EventCredentialsPage({ params }: { params: Promise<{ id:
                 { value: 'checked_in', label: 'Checked In' },
                 { value: 'revoked', label: 'Revoked' },
               ]}
-              placeholder="All Status"
-              className={styles.filterSelect}
             />
           </div>
 
@@ -247,7 +243,7 @@ export default function EventCredentialsPage({ params }: { params: Promise<{ id:
                           </Badge>
                         )}
                         {credential.revoked && (
-                          <Badge variant="outlined">
+                          <Badge variant="outline">
                             <XCircle className={styles.iconSmall} />
                             Revoked
                           </Badge>

@@ -1,77 +1,21 @@
 /**
- * Image Styles
- * GHXSTSHIP Entertainment Platform
- * B&W/duotone treatment with halftone overlays
+ * Image - Optimized image atom
  */
-
-.container {
-  position: relative;
-  display: block;
-  overflow: hidden;
-}
 
 .image {
   display: block;
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.fit-cover {
   object-fit: cover;
 }
 
-/* ========================================
-   TREATMENTS
-   ======================================== */
-
-.bw .image {
-  filter: grayscale(100%) contrast(1.2);
+.fit-contain {
+  object-fit: contain;
 }
 
-.duotone .image {
-  filter: grayscale(100%) contrast(1.3) brightness(0.9);
-  mix-blend-mode: multiply;
-}
-
-.halftone .image {
-  filter: grayscale(100%) contrast(1.2);
-}
-
-.none .image {
-  filter: none;
-}
-
-/* ========================================
-   HALFTONE OVERLAY
-   ======================================== */
-
-.halftoneOverlay {
-  position: absolute;
-  inset: 0;
-  
-  /* Pattern background removed - use solid colors only */
-  background: none;
-  
-  opacity: 0;
-  transition: opacity var(--duration-base) var(--easing-out);
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* ========================================
-   DARK THEME
-   ======================================== */
-
-[data-theme="dark"] .halftoneOverlay {
-  /* Pattern background removed - use solid colors only */
-  background: none;
-}
-
-/* ========================================
-   RESPONSIVE BREAKPOINTS
-   ======================================== */
-
-@media (min-width: var(--space-96)) {
-  /* Tablet and up - add styles as needed */
-}
-
-@media (min-width: var(--space-96)) {
-  /* Desktop and up - add styles as needed */
+.fit-fill {
+  object-fit: fill;
 }

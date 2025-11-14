@@ -1,6 +1,6 @@
 import { createClient } from '@/lib/supabase/server';
-import { Card, CardContent } from '@/design-system/components/atoms/Card';
-import { Button } from '@/design-system/components/atoms/Button';
+import { Card, CardContent } from '@/design-system';
+import { Button } from '@/design-system';
 import { Calendar, MapPin, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -90,7 +90,7 @@ export default async function OrdersPage() {
                                 src={order.events.hero_image_url}
                                 alt={order.events.name}
                                 fill
-                                className="object-cover"
+                                className={styles.orderImage}
                               />
                             </div>
                           )}

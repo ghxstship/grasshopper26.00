@@ -1,105 +1,65 @@
 /**
- * Card Styles - GHXSTSHIP
+ * Card - Container primitive
+ * GHXSTSHIP: Hard geometric shadows, 3px borders
  */
 
 .card {
-  display: flex;
-  flex-direction: column;
   background-color: var(--color-bg-primary);
-  border: var(--border-width-2) solid var(--color-border-default);
   border-radius: var(--border-radius-none);
-  transition: border-color var(--duration-fast) var(--easing-out);
+  transition: all var(--duration-fast) var(--easing-out);
 }
 
 /* Variants */
-.default {
-  background-color: var(--color-bg-primary);
-  border-color: var(--color-border-default);
+.variant-default {
+  border: var(--border-width-3) solid var(--color-border-strong);
 }
 
-.outlined {
-  background-color: transparent;
-  border-color: var(--color-border-strong);
+.variant-outlined {
+  border: var(--border-width-3) solid var(--color-border-strong);
 }
 
-.elevated {
-  background-color: var(--color-bg-primary);
-  border-color: var(--color-border-strong);
+.variant-elevated {
+  border: var(--border-width-3) solid var(--color-border-strong);
+  box-shadow: var(--shadow-card);
 }
 
+/* Padding */
+.padding-0 { padding: var(--space-0); }
+.padding-2 { padding: var(--space-2); }
+.padding-4 { padding: var(--space-4); }
+.padding-6 { padding: var(--space-6); }
+.padding-8 { padding: var(--space-8); }
+
+/* Interactive */
 .interactive {
-  border-color: var(--color-border-strong);
   cursor: pointer;
 }
 
 .interactive:hover {
-  background-color: var(--color-interactive-default);
-  color: var(--color-text-inverse);
   box-shadow: var(--shadow-card);
-  transform: translate(calc(-1 * var(--space-0-5)), calc(-1 * var(--space-0-5)));
+  transform: translate(-3px, -3px);
 }
 
 .interactive:active {
-  transform: translate(calc(-1 * var(--border-width-1)), calc(-1 * var(--border-width-1)));
   box-shadow: var(--shadow-button-active);
+  transform: translate(-1px, -1px);
 }
 
-.hoverable:hover {
-  border-color: var(--color-border-strong);
-  box-shadow: var(--shadow-card);
-  transform: translate(calc(-1 * var(--space-0-5)), calc(-1 * var(--space-0-5)));
+/* Card Title */
+.title {
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-text-primary);
+  margin: 0;
 }
 
-/* Padding */
-.padding-none {
-  padding: 0;
-}
-
-.padding-sm {
-  padding: var(--space-4);
-}
-
-.padding-md {
-  padding: var(--space-6);
-}
-
-.padding-lg {
-  padding: var(--space-8);
-}
-
-/* States */
-.clickable {
-  cursor: pointer;
-}
-
-.clickable:active {
-  transform: translate(0, 0);
-}
-
-/* Sections */
-.cardHeader {
-  padding-block-end: var(--space-4);
-  border-block-end: var(--border-width-2) solid var(--color-border-default);
-}
-
-.cardBody {
-  flex: 1;
-  padding-block: var(--space-4);
-}
-
-.cardFooter {
-  padding-block-start: var(--space-4);
-  border-block-start: var(--border-width-2) solid var(--color-border-default);
-}
-
-/* Accessibility */
-@media (prefers-reduced-motion: reduce) {
-  .card {
-    transition: none;
-  }
-  
-  .hoverable:hover,
-  .interactive:hover {
-    transform: none;
-  }
+/* Card Description */
+.description {
+  font-family: var(--font-share);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin: 0;
+  margin-block-start: var(--space-1);
 }

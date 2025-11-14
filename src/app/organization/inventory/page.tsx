@@ -1,9 +1,9 @@
 'use client';
 
-import { AdminListTemplate } from '@/design-system/components/templates';
+import { AdminListTemplate } from '@/design-system';
 import { Package, Plus } from 'lucide-react';
 import { useAdminInventory } from '@/hooks/useAdminInventory';
-import { InventoryTable } from '@/design-system/components/organisms/admin/inventory-table';
+import { InventoryTable } from '@/design-system';
 
 export default function AdminInventoryPage() {
   const { inventory, stats, loading, searchQuery, setSearchQuery } = useAdminInventory();
@@ -28,7 +28,7 @@ export default function AdminInventoryPage() {
         description: 'Add products to start managing inventory',
       }}
     >
-      <InventoryTable inventory={inventory} />
+      <InventoryTable items={inventory} />
     </AdminListTemplate>
   );
 }

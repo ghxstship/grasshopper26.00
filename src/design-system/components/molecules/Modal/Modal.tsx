@@ -1,108 +1,102 @@
 /**
- * Modal Component
- * GHXSTSHIP Entertainment Platform - Modal Dialog
- * Geometric modal with thick borders and hard shadows
+ * Modal - Modal dialog molecule
+ * GHXSTSHIP Atomic Design System
  */
 
-import * as React from 'react';
+'use client';
+
+import { ReactNode, useEffect } from 'react';
+import { Card, Stack, Heading, Button, Text } from '../../atoms';
 import styles from './Modal.module.css';
 
 export interface ModalProps {
-  isOpen: boolean;
+  /** Modal open state */
+  open: boolean;
+  /** Close handler */
   onClose: () => void;
-  title?: string;
-  children: React.ReactNode;
-  size?: 'sm' | 'md' | 'lg' | 'xl';
-  showCloseButton?: boolean;
-  closeOnOverlayClick?: boolean;
-  className?: string;
+  /** Modal title */
+  title: string;
+  /** Modal description */
+  description?: string;
+  /** Modal content */
+  children: ReactNode;
+  /** Footer actions */
+  actions?: ReactNode;
+  /** Max width */
+  maxWidth?: 'sm' | 'md' | 'lg' | 'xl';
 }
 
-export const Modal = React.forwardRef<HTMLDivElement, ModalProps>(
-  (
-    {
-      isOpen,
-      onClose,
-      title,
-      children,
-      size = 'md',
-      showCloseButton = true,
-      closeOnOverlayClick = true,
-      className = '',
-    },
-    ref
-  ) => {
-    React.useEffect(() => {
-      if (isOpen) {
-        document.body.style.overflow = 'hidden';
-      } else {
-        document.body.style.overflow = '';
-      }
+export function Modal({
+  open,
+  onClose,
+  title,
+  description,
+  children,
+  actions,
+  maxWidth = 'md',
+}: ModalProps) {
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
 
-      return () => {
-        document.body.style.overflow = '';
-      };
-    }, [isOpen]);
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [open]);
 
-    React.useEffect(() => {
-      const handleEscape = (e: KeyboardEvent) => {
-        if (e.key === 'Escape' && isOpen) {
-          onClose();
-        }
-      };
-
-      document.addEventListener('keydown', handleEscape);
-      return () => document.removeEventListener('keydown', handleEscape);
-    }, [isOpen, onClose]);
-
-    if (!isOpen) return null;
-
-    const handleOverlayKeyDown = (e: React.KeyboardEvent) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && open) {
         onClose();
       }
     };
 
-    const modalClassNames = [
-      styles.modal,
-      styles[size],
-      className,
-    ].filter(Boolean).join(' ');
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [open, onClose]);
 
-    return (
-      <div className={styles.overlay} onClick={closeOnOverlayClick ? onClose : undefined} onKeyDown={handleOverlayKeyDown} role="button" tabIndex={0}>
-        <div
-          ref={ref}
-          className={modalClassNames}
-          onClick={(e) => e.stopPropagation()}
-          onKeyDown={(e) => e.stopPropagation()}
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby={title ? 'modal-title' : undefined}
-        >
-          {(title || showCloseButton) && (
-            <div className={styles.header}>
-              {title && (
-                <h2 id="modal-title" className={styles.title}>
-                  {title}
-                </h2>
-              )}
-              {showCloseButton && (
-                <button className={styles.closeButton} onClick={onClose} aria-label="Close modal">
-                  <span className={styles.closeIcon} aria-hidden="true">
-                    ✕
-                  </span>
-                </button>
-              )}
-            </div>
-          )}
+  if (!open) return null;
 
-          <div className={styles.content}>{children}</div>
-        </div>
+  const handleOverlayClick = (e: React.MouseEvent) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+
+  return (
+    <div
+      className={styles.overlay}
+      onClick={handleOverlayClick}
+      role="presentation"
+    >
+      <div
+        className={`${styles.modal} ${styles[`maxWidth-${maxWidth}`]}`}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+      >
+        <Card variant="elevated" padding={8}>
+          <Stack gap={6}>
+            <Stack gap={2}>
+              <Heading level={2} font="bebas" id="modal-title">
+                {title}
+              </Heading>
+              {description && (
+                <Text color="secondary">{description}</Text>
+              )}
+            </Stack>
+
+            <div className={styles.content}>{children}</div>
+
+            {actions && (
+              <div className={styles.actions}>{actions}</div>
+            )}
+          </Stack>
+        </Card>
       </div>
-    );
-  }
-);
-
-Modal.displayName = 'Modal';
+    </div>
+  );
+}

@@ -5,12 +5,13 @@ import styles from './page.module.css';
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { AdminListTemplate } from '@/design-system/components/templates';
-import { GeometricShape } from '@/design-system/components/atoms/GeometricShape';
-import { StatusBadge, AdvanceStatus } from '@/design-system/components/atoms/StatusBadge';
+import { AdminListTemplate } from '@/design-system';
+import { Badge } from '@/design-system';
+import { Clipboard, AlertTriangle, ArrowRight } from 'lucide-react';
 import { ProductionAdvance } from '@/lib/types/production-advances';
 import { cn } from '@/lib/utils';
 
+type AdvanceStatus = 'submitted' | 'under_review' | 'approved' | 'fulfilled' | 'rejected';
 type FilterStatus = 'all' | AdvanceStatus;
 
 export default function AdminAdvancesQueuePage() {
@@ -96,13 +97,13 @@ export default function AdminAdvancesQueuePage() {
       ]}
       tabs={filterTabs}
       activeTab={filter}
-      onTabChange={(key) => setFilter(key as FilterStatus)}
+      onTabChange={(key: string) => setFilter(key as FilterStatus)}
       searchPlaceholder="Search by advance number, event, company..."
       searchValue={searchQuery}
       onSearchChange={setSearchQuery}
       loading={loading}
       empty={advances.length === 0 ? {
-        icon: <GeometricShape name="clipboard" size="xl" />,
+        icon: <Clipboard />,
         title: "No advances found",
         description: filter === 'all' ? 'No advances in the system' : `No ${filter} advances`
       } : undefined}
@@ -153,7 +154,7 @@ export default function AdminAdvancesQueuePage() {
                       </Link>
                       {isUrgent(advance) && (
                         <span className={styles.urgentBadge}>
-                          <GeometricShape name="alert" size="xs" />
+                          <AlertTriangle className={styles.iconSm} />
                           URGENT
                         </span>
                       )}
@@ -179,7 +180,9 @@ export default function AdminAdvancesQueuePage() {
                       <p className={styles.itemCount}>{advance.total_items}</p>
                     </td>
                     <td className={styles.tableCell}>
-                      <StatusBadge status={advance.status} size="sm" />
+                      <Badge variant={advance.status === 'approved' ? 'default' : 'outline'}>
+                        {advance.status.replace('_', ' ').toUpperCase()}
+                      </Badge>
                     </td>
                     <td className={styles.tableCell}>
                       <div className={styles.actionButtons}>
@@ -187,7 +190,7 @@ export default function AdminAdvancesQueuePage() {
                           href={`/admin/advances/${advance.id}`}
                           className={styles.reviewLink}
                         >
-                          <GeometricShape name="arrow-right" size="xs" />
+                          <ArrowRight className={styles.iconSm} />
                           REVIEW
                         </Link>
                       </div>

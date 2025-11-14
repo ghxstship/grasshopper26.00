@@ -1,63 +1,53 @@
 /**
- * Alert Component
- * GHXSTSHIP Entertainment Platform - Alert/Notification
- * Geometric alert boxes with thick borders
+ * Alert - Alert/notification molecule
+ * GHXSTSHIP Atomic Design System
  */
 
-import * as React from 'react';
+import { ReactNode } from 'react';
+import { Stack, Text, Button } from '../../atoms';
 import styles from './Alert.module.css';
 
 export interface AlertProps {
-  title?: string;
-  message: string;
+  /** Alert variant */
   variant?: 'info' | 'success' | 'warning' | 'error';
-  icon?: React.ReactNode;
-  onClose?: () => void;
-  className?: string;
+  /** Alert title */
+  title?: string;
+  /** Alert message */
+  children: ReactNode;
+  /** Dismissible */
+  dismissible?: boolean;
+  /** Dismiss handler */
+  onDismiss?: () => void;
 }
 
-export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
-  ({ title, message, variant = 'info', icon, onClose, className = '' }, ref) => {
-    const defaultIcons = {
-      info: '◉',
-      success: '✓',
-      warning: '▲',
-      error: '✕',
-    };
-
-    const classNames = [
-      styles.alert,
-      styles[variant],
-      className,
-    ].filter(Boolean).join(' ');
-
-    return (
-      <div ref={ref} className={classNames} role="alert">
-        <div className={styles.iconContainer}>
-          <span className={styles.icon} aria-hidden="true">
-            {icon || defaultIcons[variant]}
-          </span>
-        </div>
-
-        <div className={styles.content}>
-          {title && <div className={styles.title}>{title}</div>}
-          <div className={styles.message}>{message}</div>
-        </div>
-
-        {onClose && (
-          <button
-            className={styles.closeButton}
-            onClick={onClose}
-            aria-label="Close alert"
-          >
-            <span className={styles.closeIcon} aria-hidden="true">
-              ✕
-            </span>
-          </button>
+export function Alert({
+  variant = 'info',
+  title,
+  children,
+  dismissible,
+  onDismiss,
+}: AlertProps) {
+  return (
+    <div className={`${styles.alert} ${styles[`variant-${variant}`]}`} role="alert">
+      <Stack gap={2}>
+        {title && (
+          <Text font="bebas" size="lg" uppercase weight="bold">
+            {title}
+          </Text>
         )}
-      </div>
-    );
-  }
-);
-
-Alert.displayName = 'Alert';
+        <div className={styles.content}>
+          {typeof children === 'string' ? <Text>{children}</Text> : children}
+        </div>
+      </Stack>
+      {dismissible && onDismiss && (
+        <button
+          className={styles.dismissButton}
+          onClick={onDismiss}
+          aria-label="Dismiss alert"
+        >
+          ✕
+        </button>
+      )}
+    </div>
+  );
+}

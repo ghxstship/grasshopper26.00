@@ -1,0 +1,49 @@
+/**
+ * PageTemplate - Base page layout template
+ */
+
+.page {
+  min-block-size: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  padding-block: var(--space-8);
+}
+
+.container {
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+.maxWidth-sm {
+  max-inline-size: var(--space-160);
+}
+
+.maxWidth-md {
+  max-inline-size: var(--space-192);
+}
+
+.maxWidth-lg {
+  max-width: 64rem;
+}
+
+.maxWidth-xl {
+  max-inline-size: 80rem;
+}
+
+.maxWidth-full {
+  max-width: 100%;
+}
+
+@media (min-width: 48rem) {
+  .main {
+    padding-block: var(--space-12);
+  }
+
+  .container {
+    padding-inline: var(--space-6);
+  }
+}

@@ -1,171 +1,64 @@
 /**
- * Textarea Styles
- * GHXSTSHIP Entertainment Platform
- * Bold outlined textareas
+ * Textarea - Multi-line text input atom
+ * GHXSTSHIP: 3px borders, no rounded corners
  */
 
-.container {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-}
-
-.fullWidth {
-  width: 100%;
-}
-
-.label {
-  font-family: var(--font-bebas);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-normal);
-  color: var(--color-text-primary);
-  text-transform: uppercase;
-  letter-spacing: var(--letter-spacing-wide);
-}
-
-.required {
-  color: var(--color-text-primary);
-  margin-inline-start: var(--space-1);
-}
-
 .textarea {
-  width: 100%;
   font-family: var(--font-share);
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
-  line-height: var(--line-height-relaxed);
-  color: var(--color-text-primary);
-  
-  padding: var(--space-4);
-  
   background-color: var(--color-bg-primary);
-  border: var(--border-width-3) solid var(--color-border-default);
+  color: var(--color-text-primary);
+  border: var(--border-width-3) solid var(--color-border-strong);
   border-radius: var(--border-radius-none);
-  
   transition: all var(--duration-fast) var(--easing-out);
-  
-  min-height: 7.5rem;
+  line-height: var(--line-height-normal);
 }
 
 .textarea::placeholder {
   color: var(--color-text-tertiary);
 }
 
-.textarea:hover:not(:disabled) {
-  border-color: var(--color-border-strong);
-}
-
 .textarea:focus {
   outline: none;
-  border-color: var(--color-border-focus);
   box-shadow: var(--shadow-button-hover);
+  transform: translate(-2px, -2px);
 }
 
 .textarea:disabled {
-  opacity: var(--opacity-50);
+  opacity: var(--opacity-40);
   cursor: not-allowed;
-  background-color: var(--color-bg-secondary);
 }
 
-.textarea.error {
-  border-color: var(--color-border-strong);
-}
-
-.textarea.error:focus {
-  border-color: var(--color-border-strong);
-}
-
-/* ========================================
-   SIZES
-   ======================================== */
-
-.sm {
-  min-height: 5rem;
-  padding: var(--space-3);
+/* Sizes */
+.size-sm {
+  padding: var(--space-2) var(--space-3);
   font-size: var(--font-size-sm);
+  min-height: 4rem;
 }
 
-.md {
-  min-height: 7.5rem;
-  padding: var(--space-4);
+.size-md {
+  padding: var(--space-3) var(--space-4);
   font-size: var(--font-size-base);
+  min-height: 6rem;
 }
 
-.lg {
-  min-height: 10rem;
-  padding: var(--space-5);
+.size-lg {
+  padding: var(--space-4) var(--space-6);
   font-size: var(--font-size-lg);
+  min-height: 8rem;
 }
 
-/* ========================================
-   RESIZE
-   ======================================== */
+/* Resize */
+.resize-none { resize: none; }
+.resize-vertical { resize: vertical; }
+.resize-horizontal { resize: horizontal; }
+.resize-both { resize: both; }
 
-.resize-none {
-  resize: none;
+/* Error */
+.error {
+  border-color: var(--color-black);
 }
 
-.resize-vertical {
-  resize: vertical;
-}
-
-.resize-horizontal {
-  resize: horizontal;
-}
-
-.resize-both {
-  resize: both;
-}
-
-/* ========================================
-   HELPER TEXT & ERRORS
-   ======================================== */
-
-.helperText,
-.errorText {
-  font-family: var(--font-share-mono);
-  font-size: var(--font-size-xs);
-  letter-spacing: var(--letter-spacing-wide);
-  text-transform: uppercase;
-}
-
-.helperText {
-  color: var(--color-text-secondary);
-}
-
-.errorText {
-  color: var(--color-text-primary);
-}
-
-/* ========================================
-   ACCESSIBILITY
-   ======================================== */
-
-@media (prefers-reduced-motion: reduce) {
-  .textarea {
-    transition: none;
-  }
-}
-
-@media (prefers-contrast: high) {
-  .textarea {
-    border-width: var(--border-width-3);
-  }
-  
-  .textarea:focus {
-    outline: var(--border-width-2) solid var(--color-border-focus);
-    outline-offset: 0.125rem;
-  }
-}
-
-/* ========================================
-   DARK THEME
-   ======================================== */
-
-[data-theme="dark"] .textarea {
-  background-color: var(--color-bg-secondary);
-}
-
-[data-theme="dark"] .textarea:focus {
-  box-shadow: var(--shadow-card);
+/* Full Width */
+.fullWidth {
+  width: 100%;
 }

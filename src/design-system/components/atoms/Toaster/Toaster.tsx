@@ -1,38 +1,70 @@
 /**
- * Toaster Component
- * GHXSTSHIP Entertainment Platform - Toast notification container
- * Atomic Design: Atom (wraps Sonner library)
+ * Toaster - Toast notification container
+ * GHXSTSHIP Design System
  */
 
 'use client';
 
-import { Toaster as SonnerToaster } from 'sonner';
+import { useEffect, useState } from 'react';
+import styles from './Toaster.module.css';
 
-export const Toaster = () => {
+export interface Toast {
+  id: string;
+  title: string;
+  description?: string;
+  variant?: 'default' | 'success' | 'error' | 'warning';
+  duration?: number;
+}
+
+export interface ToasterProps {
+  toasts: Toast[];
+  onRemove: (id: string) => void;
+}
+
+export function Toaster({ toasts, onRemove }: ToasterProps) {
   return (
-    <SonnerToaster
-      position="bottom-right"
-      toastOptions={{
-        style: {
-          background: 'var(--color-bg-primary)',
-          color: 'var(--color-text-primary)',
-          border: 'var(--border-width-3) solid var(--color-border-strong)',
-          borderRadius: '0',
-          fontFamily: 'var(--font-share)',
-          fontSize: 'var(--font-size-base)',
-          boxShadow: 'var(--shadow-card)',
-          padding: 'var(--space-4)',
-        },
-        className: 'ghxstship-toast',
-      }}
-      visibleToasts={5}
-      closeButton
-      richColors
-      expand={false}
-      gap={16}
-      duration={5000}
-    />
+    <div className={styles.container}>
+      {toasts.map((toast) => (
+        <ToastItem key={toast.id} toast={toast} onRemove={onRemove} />
+      ))}
+    </div>
   );
-};
+}
 
-Toaster.displayName = 'Toaster';
+function ToastItem({ toast, onRemove }: { toast: Toast; onRemove: (id: string) => void }) {
+  const [isExiting, setIsExiting] = useState(false);
+
+  useEffect(() => {
+    const duration = toast.duration || 5000;
+    const timer = setTimeout(() => {
+      setIsExiting(true);
+      setTimeout(() => onRemove(toast.id), 300);
+    }, duration);
+
+    return () => clearTimeout(timer);
+  }, [toast.id, toast.duration, onRemove]);
+
+  return (
+    <div
+      className={`${styles.toast} ${styles[toast.variant || 'default']} ${
+        isExiting ? styles.exiting : ''
+      }`}
+      role="alert"
+    >
+      <div className={styles.content}>
+        <div className={styles.title}>{toast.title}</div>
+        {toast.description && <div className={styles.description}>{toast.description}</div>}
+      </div>
+      <button
+        className={styles.close}
+        onClick={() => {
+          setIsExiting(true);
+          setTimeout(() => onRemove(toast.id), 300);
+        }}
+        aria-label="Close"
+      >
+        ×
+      </button>
+    </div>
+  );
+}

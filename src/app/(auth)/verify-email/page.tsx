@@ -1,13 +1,16 @@
+/**
+ * Verify Email Page
+ * GHXSTSHIP Atomic Design System
+ */
+
 'use client';
 
 import { Suspense, useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { CheckCircle, XCircle, Loader2, Mail } from 'lucide-react';
-import { Button } from '@/design-system/components/atoms/Button';
-import { Card, CardContent } from '@/design-system/components/atoms/Card';
-import { Input } from '@/design-system/components/atoms/Input';
-import { Label } from '@/design-system/components/atoms/Label';
 import Link from 'next/link';
+import { Card, Stack, Heading, Text, Button, Input, Label } from '@/design-system';
+import { PageTemplate } from '@/design-system';
 import styles from '../auth.module.css';
 
 function VerifyEmailContent() {
@@ -69,99 +72,131 @@ function VerifyEmailContent() {
   };
 
   return (
-    <div className={styles.container}>
-      <Card className={styles.card}>
-        <CardContent className={styles.section}>
-          {status === 'verifying' && (
-            <div className={styles.textCenter}>
-              <Loader2 className={styles.loadingIcon} />
-              <h1 className={styles.subtitle}>Verifying Email</h1>
-              <p className={styles.description}>{message || 'Please wait...'}</p>
-            </div>
-          )}
+    <PageTemplate showHeader={false} showFooter={false}>
+      <div className={styles.authContainer}>
+        <Card variant="elevated" padding={8} className={styles.authCard}>
+          <Stack gap={6}>
+            {status === 'verifying' && (
+              <Stack gap={3} align="center">
+                <Loader2 size={48} />
+                <Heading level={2} font="bebas" align="center">
+                  Verifying Email
+                </Heading>
+                <Text align="center" color="secondary">
+                  {message || 'Please wait...'}
+                </Text>
+              </Stack>
+            )}
 
-          {status === 'success' && (
-            <div className={styles.textCenter}>
-              <CheckCircle className={styles.successIcon} />
-              <h1 className={styles.subtitle}>Email Verified!</h1>
-              <p className={styles.bodyText}>{message}</p>
-              <Button
-                asChild
-                className={styles.fullWidth}
-              >
-                <Link href="/login">Continue to Login</Link>
-              </Button>
-            </div>
-          )}
+            {status === 'success' && (
+              <Stack gap={4} align="center">
+                <CheckCircle size={48} />
+                <Heading level={2} font="bebas" align="center">
+                  Email Verified!
+                </Heading>
+                <Text align="center" color="secondary">
+                  {message}
+                </Text>
+                <Link href="/login" className={styles.linkFullWidth}>
+                  <Button variant="primary" size="lg" fullWidth>
+                    Continue to Login
+                  </Button>
+                </Link>
+              </Stack>
+            )}
 
-          {status === 'error' && (
-            <div className={styles.textCenter}>
-              <XCircle className={styles.loadingIcon} />
-              <h1 className={styles.subtitle}>Verification Failed</h1>
-              <p className={styles.bodyText}>{message}</p>
-              <Button
-                onClick={() => setStatus('resend')}
-                className={styles.fullWidth}
-              >
-                Resend Verification Email
-              </Button>
-            </div>
-          )}
-
-          {status === 'resend' && (
-            <div>
-              <div className={`${styles.textCenter} ${styles.section}`}>
-                <Mail className={styles.loadingIcon} />
-                <h1 className={styles.subtitle}>Resend Verification</h1>
-                <p className={styles.description}>{message}</p>
-              </div>
-              <div className={styles.section}>
-                <div className={styles.section}>
-                  <Label htmlFor="email">Email Address</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="your@email.com"
-                  />
-                </div>
+            {status === 'error' && (
+              <Stack gap={4} align="center">
+                <XCircle size={48} />
+                <Heading level={2} font="bebas" align="center">
+                  Verification Failed
+                </Heading>
+                <Text align="center" color="secondary">
+                  {message}
+                </Text>
                 <Button
-                  onClick={handleResendVerification}
-                  className={styles.fullWidth}
+                  onClick={() => setStatus('resend')}
+                  variant="primary"
+                  size="lg"
+                  fullWidth
                 >
-                  Send Verification Email
+                  Resend Verification Email
                 </Button>
-                <Button
-                  asChild
-                  variant="outlined"
-                  className={styles.fullWidth}
-                >
-                  <Link href="/login">Back to Login</Link>
-                </Button>
-              </div>
-            </div>
-          )}
-        </CardContent>
-      </Card>
-    </div>
+              </Stack>
+            )}
+
+            {status === 'resend' && (
+              <Stack gap={6}>
+                <Stack gap={3} align="center">
+                  <Mail size={48} />
+                  <Heading level={2} font="bebas" align="center">
+                    Resend Verification
+                  </Heading>
+                  <Text align="center" color="secondary">
+                    {message}
+                  </Text>
+                </Stack>
+
+                <Stack gap={4}>
+                  <Stack gap={2}>
+                    <Label htmlFor="email">Email Address</Label>
+                    <Input
+                      id="email"
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="your@email.com"
+                      required
+                      fullWidth
+                    />
+                  </Stack>
+
+                  <Button
+                    onClick={handleResendVerification}
+                    variant="primary"
+                    size="lg"
+                    fullWidth
+                  >
+                    Send Verification Email
+                  </Button>
+
+                  <Link href="/login" className={styles.linkFullWidth}>
+                    <Button
+                      variant="secondary"
+                      size="lg"
+                      fullWidth
+                    >
+                      Back to Login
+                    </Button>
+                  </Link>
+                </Stack>
+              </Stack>
+            )}
+          </Stack>
+        </Card>
+      </div>
+    </PageTemplate>
   );
 }
 
 export default function VerifyEmailPage() {
   return (
-    <Suspense fallback={
-      <div className={styles.container}>
-        <Card className={styles.card}>
-          <CardContent className={styles.section}>
-            <div className={styles.textCenter}>
-              <Loader2 className={styles.loadingIcon} />
-              <h1 className={styles.subtitle}>Loading...</h1>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-    }>
+    <Suspense
+      fallback={
+        <PageTemplate showHeader={false} showFooter={false}>
+          <div className={styles.authContainer}>
+            <Card variant="elevated" padding={8} className={styles.authCard}>
+              <Stack gap={4} align="center">
+                <Loader2 size={48} />
+                <Heading level={2} font="bebas" align="center">
+                  Loading...
+                </Heading>
+              </Stack>
+            </Card>
+          </div>
+        </PageTemplate>
+      }
+    >
       <VerifyEmailContent />
     </Suspense>
   );

@@ -1,63 +1,43 @@
 /**
- * Template Components
- * GHXSTSHIP Monochromatic Design System
- * Full page layouts and templates
+ * Templates - Page layout templates
+ * GHXSTSHIP Atomic Design System
  */
 
-export { DashboardLayout } from './DashboardLayout/DashboardLayout';
-export type { DashboardLayoutProps } from './DashboardLayout/DashboardLayout';
+export { AdminTemplate } from './AdminTemplate';
+export type { AdminTemplateProps } from './AdminTemplate';
 
-export { AuthLayout } from './AuthLayout/AuthLayout';
-export type { AuthLayoutProps } from './AuthLayout/AuthLayout';
+export { AdminListTemplate } from './AdminListTemplate';
+export type { AdminListTemplateProps } from './AdminListTemplate';
 
-export { EventLayout } from './EventLayout/EventLayout';
-export type { EventLayoutProps } from './EventLayout/EventLayout';
+export { ContextualPageTemplate } from './ContextualPageTemplate';
+export type { ContextualPageTemplateProps } from './ContextualPageTemplate';
 
-export { PortalLayout } from './PortalLayout/PortalLayout';
-export type { PortalLayoutProps } from './PortalLayout/PortalLayout';
+export { CheckoutFlowTemplate } from './CheckoutFlowTemplate';
+export type { CheckoutFlowTemplateProps } from './CheckoutFlowTemplate';
 
-export { CheckoutLayout } from './CheckoutLayout/CheckoutLayout';
-export type { CheckoutLayoutProps } from './CheckoutLayout/CheckoutLayout';
+export { SplitLayout } from './SplitLayout';
+export type { SplitLayoutProps } from './SplitLayout';
 
-export { ContentLayout } from './ContentLayout/ContentLayout';
-export type { ContentLayoutProps } from './ContentLayout/ContentLayout';
+export { PageTemplate } from './PageTemplate';
+export type { PageTemplateProps } from './PageTemplate';
 
-export { AdminLayout } from './AdminLayout/AdminLayout';
-export type { AdminLayoutProps } from './AdminLayout/AdminLayout';
+export { LegalPageTemplate } from './LegalPageTemplate';
+export type { LegalPageTemplateProps } from './LegalPageTemplate';
 
-export { LandingLayout } from './LandingLayout/LandingLayout';
-export type { LandingLayoutProps } from './LandingLayout/LandingLayout';
+export { DayOfShowLayout } from './DayOfShowLayout';
+export type { DayOfShowLayoutProps } from './DayOfShowLayout';
 
-export { ErrorLayout } from './ErrorLayout/ErrorLayout';
-export type { ErrorLayoutProps } from './ErrorLayout/ErrorLayout';
+export { AdminDetailTemplate } from './AdminDetailTemplate';
+export type { AdminDetailTemplateProps } from './AdminDetailTemplate';
 
-export { GridLayout } from './GridLayout/GridLayout';
-export type { GridLayoutProps } from './GridLayout/GridLayout';
+export { PublicBrowseTemplate } from './PublicBrowseTemplate';
+export type { PublicBrowseTemplateProps } from './PublicBrowseTemplate';
 
-export { MembershipLayout } from './MembershipLayout/MembershipLayout';
-export type { MembershipLayoutProps } from './MembershipLayout/MembershipLayout';
+export { PortalDashboardTemplate } from './PortalDashboardTemplate';
+export type { PortalDashboardTemplateProps } from './PortalDashboardTemplate';
 
-export * from './SplitLayout/SplitLayout';
-export * from './EventDashboardLayout';
-export * from './AnalyticsDashboardLayout';
-export * from './DayOfShowLayout';
-export * from './VendorManagementLayout';
-export * from './WorkspaceLayout';
-export * from './AutomationLayout';
+export { PortalLayout } from './PortalLayout';
+export type { PortalLayoutProps } from './PortalLayout';
 
-export { FullscreenLayout } from './FullscreenLayout/FullscreenLayout';
-export type { FullscreenLayoutProps } from './FullscreenLayout/FullscreenLayout';
-
-export * from './AdminFormTemplate';
-export * from './AdminListTemplate';
-export * from './AuthCardTemplate/AuthCardTemplate';
-
-// Template aliases for compatibility
-export { AdminFormTemplate as AdminDetailTemplate } from './AdminFormTemplate/AdminFormTemplate';
-export { AdminListTemplate as PublicBrowseTemplate } from './AdminListTemplate/AdminListTemplate';
-export { CheckoutLayout as CheckoutFlowTemplate } from './CheckoutLayout/CheckoutLayout';
-export { DashboardLayout as AdminDashboardTemplate } from './DashboardLayout/DashboardLayout';
-export { PortalLayout as PortalDashboardTemplate } from './PortalLayout/PortalLayout';
-export { ContentLayout as DetailViewTemplate } from './ContentLayout/ContentLayout';
-export { ContentLayout as ContextualPageTemplate } from './ContentLayout/ContentLayout';
-export { ContentLayout as LegalPageTemplate } from './ContentLayout/ContentLayout';
+export { CheckoutLayout } from './CheckoutLayout';
+export type { CheckoutLayoutProps } from './CheckoutLayout';

@@ -1,165 +1,190 @@
 /**
- * Membership Page Styles
- * GHXSTSHIP Monochromatic Design System
+ * Member Membership Page Styles
+ * GHXSTSHIP Design System
  */
 
-.loading,
-.error {
-  padding: var(--space-6);
+.container {
+  padding-block: var(--space-8);
+  padding-inline: var(--space-4);
+  max-inline-size: var(--container-xl);
+  margin-inline: auto;
+}
+
+.header {
   text-align: center;
-}
-
-.errorText {
-  color: var(--color-text-error);
-}
-
-.currentMembership {
   margin-block-end: var(--space-8);
 }
 
-.membershipHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-block-end: var(--space-6);
+.title {
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-4xl);
+  color: var(--color-text-primary);
+  margin-block-end: var(--space-2);
 }
 
-.tierBadge {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-}
-
-.tierIcon {
-  width: var(--space-8);
-  height: var(--space-8);
-}
-
-.status {
+.subtitle {
+  font-size: var(--font-size-lg);
   color: var(--color-text-secondary);
-}
-
-.statsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-  gap: var(--space-4);
-  margin-block-end: var(--space-6);
-}
-
-.benefits {
-  margin-block-start: var(--space-6);
-}
-
-.benefitsTitle {
-  margin-block-end: var(--space-4);
-}
-
-.benefitsList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.benefitItem {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  padding: var(--space-2) 0;
-}
-
-.checkIcon {
-  width: var(--space-4);
-  height: var(--space-4);
-  flex-shrink: 0;
-}
-
-.tiersSection {
-  margin-block-start: var(--space-8);
-}
-
-.sectionTitle {
-  margin-block-end: var(--space-6);
 }
 
 .tiersGrid {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
   gap: var(--space-6);
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  margin-block-end: var(--space-8);
 }
 
 .tierCard {
+  background-color: var(--color-bg-primary);
+  border: var(--border-width-thick) solid var(--color-border-primary);
+  padding: var(--space-6);
   display: flex;
   flex-direction: column;
+  gap: var(--space-4);
 }
 
-.tierPrice {
+.tierHeader {
   display: flex;
-  align-items: baseline;
+  flex-direction: column;
   gap: var(--space-2);
-  margin-block-end: var(--space-2);
+  padding-block-end: var(--space-4);
+  border-block-end: var(--border-width-thick) solid var(--color-border-primary);
 }
 
-.priceLabel {
-  color: var(--color-text-secondary);
-}
-
-.monthlyPrice {
-  color: var(--color-text-secondary);
-  margin-block-end: var(--space-4);
-}
-
-.tierBenefits {
-  list-style: none;
-  padding: 0;
-  margin: var(--space-4) 0;
-}
-
-.tierBenefit {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  padding: var(--space-2) 0;
-}
-
-.tierButton {
-  margin-block-start: auto;
-  width: 100%;
-}
-
-/* ========================================
-   RESPONSIVE
-   ======================================== */
-
-@media (min-width: 48rem) {
-  .tiersGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 64rem) {
-  .tiersGrid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* DARK MODE */
-:global([data-theme="dark"]) .container,
-:global([data-theme="dark"]) .card,
-:global([data-theme="dark"]) .content,
-:global([data-theme="dark"]) .section {
-  background-color: var(--color-bg-primary);
-}
-
-:global([data-theme="dark"]) .button,
-:global([data-theme="dark"]) .input,
-:global([data-theme="dark"]) .select,
-:global([data-theme="dark"]) .textarea {
-  background-color: var(--color-bg-primary);
-  border-color: var(--color-border-strong);
+.tierName {
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-2xl);
   color: var(--color-text-primary);
 }
 
-:global([data-theme="dark"]) .button:hover {
-  background-color: var(--color-text-primary);
-  color: var(--color-text-inverse);
+.tierPrice {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+}
+
+.tierPeriod {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.tierDescription {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+}
+
+.tierFeatures {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+}
+
+.featureIcon {
+  inline-size: var(--space-5);
+  block-size: var(--space-5);
+  flex-shrink: 0;
+}
+
+.tierActions {
+  margin-block-start: auto;
+  padding-block-start: var(--space-4);
+}
+
+.currentBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding-inline: var(--space-3);
+  padding-block: var(--space-2);
+  background-color: var(--color-bg-secondary);
+  border: var(--border-width-thick) solid var(--color-border-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+}
+
+.benefitsSection {
+  background-color: var(--color-bg-secondary);
+  border: var(--border-width-thick) solid var(--color-border-primary);
+  padding: var(--space-8);
+}
+
+.benefitsTitle {
+  font-family: var(--font-bebas);
+  font-size: var(--font-size-3xl);
+  color: var(--color-text-primary);
+  text-align: center;
+  margin-block-end: var(--space-6);
+}
+
+.benefitsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--space-62), 1fr));
+  gap: var(--space-6);
+}
+
+.benefitCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-3);
+}
+
+.benefitIcon {
+  inline-size: var(--space-12);
+  block-size: var(--space-12);
+}
+
+.benefitTitle {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+}
+
+.benefitDescription {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-block-size: var(--space-100);
+}
+
+.error {
+  padding: var(--space-6);
+  background-color: var(--color-bg-secondary);
+  border: var(--border-width-thick) solid var(--color-border-primary);
+  text-align: center;
+  color: var(--color-text-primary);
+}
+
+/* Dark mode */
+[data-theme="dark"] .tierCard {
+  background-color: var(--color-bg-secondary);
+}
+
+[data-theme="dark"] .benefitsSection {
+  background-color: var(--color-bg-primary);
+}
+
+[data-theme="dark"] .currentBadge {
+  background-color: var(--color-bg-primary);
+}
+
+[data-theme="dark"] .error {
+  background-color: var(--color-bg-primary);
 }

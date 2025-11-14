@@ -1,85 +1,48 @@
 /**
- * Checkbox Component
- * GHXSTSHIP Entertainment Platform - Geometric checkbox
- * Bold outlined inputs, geometric icons for validation
+ * Checkbox - Checkbox input atom
+ * GHXSTSHIP Atomic Design System
  */
 
-import * as React from 'react';
+import { InputHTMLAttributes } from 'react';
 import styles from './Checkbox.module.css';
 
-export interface CheckboxProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type' | 'size'> {
+export interface CheckboxProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'size'> {
+  /** Checkbox label */
   label?: string;
-  error?: string;
-  helperText?: string;
+  /** Checkbox size */
   size?: 'sm' | 'md' | 'lg';
 }
 
-export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
-  (
-    {
-      label,
-      error,
-      helperText,
-      size = 'md',
-      className = '',
-      id,
-      disabled,
-      ...props
-    },
-    ref
-  ) => {
-    const generatedId = React.useId();
-    const checkboxId = id || `checkbox-${generatedId}`;
-    const errorId = error ? `${checkboxId}-error` : undefined;
-    const helperId = helperText ? `${checkboxId}-helper` : undefined;
+export function Checkbox({
+  label,
+  size = 'md',
+  className,
+  id,
+  ...props
+}: CheckboxProps) {
+  const checkboxId = id || `checkbox-${Math.random().toString(36).substr(2, 9)}`;
 
-    const containerClassNames = [
-      styles.container,
-      className,
-    ].filter(Boolean).join(' ');
+  const classNames = [
+    styles.wrapper,
+    styles[`size-${size}`],
+    className,
+  ]
+    .filter(Boolean)
+    .join(' ');
 
-    const checkboxClassNames = [
-      styles.checkbox,
-      styles[size],
-      error && styles.error,
-      disabled && styles.disabled,
-    ].filter(Boolean).join(' ');
-
-    return (
-      <div className={containerClassNames}>
-        <div className={styles.checkboxWrapper}>
-          <input
-            ref={ref}
-            type="checkbox"
-            id={checkboxId}
-            className={checkboxClassNames}
-            disabled={disabled}
-            aria-invalid={error ? 'true' : 'false'}
-            aria-describedby={[errorId, helperId].filter(Boolean).join(' ') || undefined}
-            {...props}
-          />
-          
-          {label && (
-            <label htmlFor={checkboxId} className={styles.label}>
-              {label}
-            </label>
-          )}
-        </div>
-
-        {error && (
-          <span id={errorId} className={styles.errorText} role="alert">
-            {error}
-          </span>
-        )}
-
-        {helperText && !error && (
-          <span id={helperId} className={styles.helperText}>
-            {helperText}
-          </span>
-        )}
-      </div>
-    );
-  }
-);
-
-Checkbox.displayName = 'Checkbox';
+  return (
+    <div className={classNames}>
+      <input
+        type="checkbox"
+        id={checkboxId}
+        className={styles.checkbox}
+        {...props}
+      />
+      {label && (
+        <label htmlFor={checkboxId} className={styles.label}>
+          {label}
+        </label>
+      )}
+    </div>
+  );
+}

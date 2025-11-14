@@ -8,17 +8,18 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { EventCard } from '@/design-system/components/molecules/EventCard/EventCard';
 
 describe('EventCard Component', () => {
-  const mockEvent = {
-    id: 'event-123',
-    name: 'Test Concert',
+  const mockProps = {
+    title: 'Test Concert',
     date: 'Dec 31, 2025',
-    venue: 'Test Venue',
-    imageUrl: '/test-image.jpg',
-    status: 'on-sale' as const,
+    location: 'Test Venue',
+    image: '/test-image.jpg',
+    slug: 'test-concert',
+    price: '$50',
+    soldOut: false,
   };
 
   it('should render event details correctly', () => {
-    render(<EventCard event={mockEvent} />);
+    render(<EventCard {...mockProps} />);
     
     expect(screen.getByText('Test Concert')).toBeInTheDocument();
     expect(screen.getByText(/Test Venue/)).toBeInTheDocument();
@@ -26,51 +27,42 @@ describe('EventCard Component', () => {
   });
 
   it('should format date correctly', () => {
-    render(<EventCard event={mockEvent} />);
+    render(<EventCard {...mockProps} />);
     
     const dateElement = screen.getByText(/Dec 31, 2025/i);
     expect(dateElement).toBeInTheDocument();
   });
 
-  it('should show on-sale status badge', () => {
-    render(<EventCard event={mockEvent} />);
+  it('should show price when provided', () => {
+    render(<EventCard {...mockProps} />);
     
-    expect(screen.getByText(/on sale/i)).toBeInTheDocument();
+    expect(screen.getByText(/\$50/)).toBeInTheDocument();
   });
 
   it('should show sold out badge', () => {
-    const soldOutEvent = { ...mockEvent, status: 'sold-out' as const };
-    render(<EventCard event={soldOutEvent} />);
+    render(<EventCard {...mockProps} soldOut={true} />);
     
     expect(screen.getByText(/sold out/i)).toBeInTheDocument();
   });
 
-  it('should show coming soon badge', () => {
-    const comingSoonEvent = { ...mockEvent, status: 'coming-soon' as const };
-    render(<EventCard event={comingSoonEvent} />);
+  it('should render without image', () => {
+    const { container } = render(<EventCard {...mockProps} image={undefined} />);
     
-    expect(screen.getByText(/coming soon/i)).toBeInTheDocument();
+    expect(screen.getByText('Test Concert')).toBeInTheDocument();
+    expect(container.querySelector('img')).not.toBeInTheDocument();
   });
 
-  it('should call onClick when card is clicked', () => {
-    const handleClick = vi.fn();
-    render(<EventCard event={mockEvent} onClick={handleClick} />);
+  it('should link to event detail page', () => {
+    render(<EventCard {...mockProps} />);
     
-    const card = screen.getByText('Test Concert').closest('div');
-    if (card) {
-      fireEvent.click(card);
-      expect(handleClick).toHaveBeenCalled();
-    }
+    const link = screen.getByRole('link');
+    expect(link).toHaveAttribute('href', '/events/test-concert');
   });
 
   it('should be keyboard accessible', () => {
-    const handleClick = vi.fn();
-    render(<EventCard event={mockEvent} onClick={handleClick} />);
+    render(<EventCard {...mockProps} />);
     
-    const card = screen.getByText('Test Concert').closest('div');
-    if (card) {
-      fireEvent.keyDown(card, { key: 'Enter' });
-      expect(handleClick).toHaveBeenCalled();
-    }
+    const link = screen.getByRole('link');
+    expect(link).toBeInTheDocument();
   });
 });

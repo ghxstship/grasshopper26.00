@@ -5,9 +5,8 @@
 
 'use client';
 
-import { AdminListTemplate } from '@/design-system/components/templates/AdminListTemplate/AdminListTemplate';
-import { AdminSidebar } from '@/design-system/components/organisms/AdminSidebar/AdminSidebar';
-import { Typography } from '@/design-system/components/atoms/Typography/Typography';
+import { Heading, Text } from '@/design-system';
+import { AdminListTemplate } from '@/design-system';
 import { BadgeCheck, CheckCircle, Clock } from 'lucide-react';
 import { useAdminCredentials } from '@/hooks/useAdminCredentials';
 
@@ -16,7 +15,6 @@ export default function CredentialsPage() {
 
   return (
     <AdminListTemplate
-      sidebar={<AdminSidebar />}
       title="Event Credentials"
       description="Manage event credentials and access passes"
       stats={[
@@ -38,7 +36,7 @@ export default function CredentialsPage() {
         <div>
           {credentials.map((credential) => (
             <div key={credential.id}>
-              <Typography variant="body">{credential.credential_type}</Typography>
+              <Text>{credential.credential_type}</Text>
             </div>
           ))}
         </div>

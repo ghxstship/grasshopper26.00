@@ -5,9 +5,8 @@
 
 'use client';
 
-import { AdminListTemplate } from '@/design-system/components/templates/AdminListTemplate/AdminListTemplate';
-import { AdminSidebar } from '@/design-system/components/organisms/AdminSidebar/AdminSidebar';
-import { Typography } from '@/design-system/components/atoms/Typography/Typography';
+import { Heading, Text } from '@/design-system';
+import { AdminListTemplate } from '@/design-system';
 import { Ticket, CheckCircle, QrCode } from 'lucide-react';
 import { useAdminTickets } from '@/hooks/useAdminTickets';
 
@@ -16,7 +15,6 @@ export default function TicketsPage() {
 
   return (
     <AdminListTemplate
-      sidebar={<AdminSidebar />}
       title="Ticket Management"
       description="View and manage event tickets"
       stats={[
@@ -38,7 +36,7 @@ export default function TicketsPage() {
         <div>
           {tickets.map((ticket) => (
             <div key={ticket.id}>
-              <Typography variant="body">{ticket.qr_code}</Typography>
+              <Text>{ticket.qr_code}</Text>
             </div>
           ))}
         </div>

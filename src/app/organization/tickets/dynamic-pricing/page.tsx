@@ -5,9 +5,8 @@ import { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { requireAdmin } from '@/lib/api/middleware';
 import { useSearchParams } from 'next/navigation';
-import { AdminLayout } from '@/design-system/components/templates/AdminLayout/AdminLayout';
-import { AdminSidebar } from '@/design-system/components/organisms/AdminSidebar/AdminSidebar';
-import { Button } from '@/design-system/components/atoms/Button/Button';
+import { Button, Card, Stack, Heading, Text } from '@/design-system';
+import { AdminTemplate } from '@/design-system';
 
 interface PricingTier {
   id: string;
@@ -181,15 +180,14 @@ export default function DynamicPricingPage() {
   }
 
   return (
-    <AdminLayout
-      sidebar={<AdminSidebar />}
+    <AdminTemplate
       title="Dynamic Pricing"
       description="Configure automatic price adjustments based on demand and time"
       actions={
         <Button
           onClick={handleSave}
           disabled={saving}
-          variant="filled"
+          variant="primary"
         >
           {saving ? 'Saving...' : 'Save Configuration'}
         </Button>
@@ -418,6 +416,6 @@ export default function DynamicPricingPage() {
           <li>• Price changes are logged for analytics and reporting</li>
         </ul>
       </div>
-    </AdminLayout>
+    </AdminTemplate>
   );
 }

@@ -1,37 +1,32 @@
 /**
- * Spinner Component
- * GHXSTSHIP Entertainment Platform - Geometric loading spinner
- * NO circular spinners - geometric shapes animation only
+ * Spinner - Loading indicator atom
+ * GHXSTSHIP Atomic Design System
  */
 
-import * as React from 'react'
-import styles from './Spinner.module.css'
-
-export type SpinnerSize = 'sm' | 'md' | 'lg' | 'xl'
-export type SpinnerStyle = 'square' | 'triangle' | 'bars'
+import styles from './Spinner.module.css';
 
 export interface SpinnerProps {
-  size?: SpinnerSize
-  style?: SpinnerStyle
-  className?: string
-  'aria-label'?: string
+  /** Spinner size */
+  size?: 'sm' | 'md' | 'lg' | 'xl';
+  /** Additional className */
+  className?: string;
 }
 
-export const Spinner: React.FC<SpinnerProps> = ({
+export function Spinner({
   size = 'md',
-  style = 'square',
-  className = '',
-  'aria-label': ariaLabel = 'Loading',
-}) => {
-  return (
-    <div
-      className={`${styles.spinner} ${styles[size]} ${styles[style]} ${className}`}
-      role="status"
-      aria-label={ariaLabel}
-    >
-      <span className={styles.visuallyHidden}>{ariaLabel}</span>
-    </div>
-  )
-}
+  className,
+}: SpinnerProps) {
+  const classNames = [
+    styles.spinner,
+    styles[`size-${size}`],
+    className,
+  ]
+    .filter(Boolean)
+    .join(' ');
 
-Spinner.displayName = 'Spinner'
+  return (
+    <div className={classNames} role="status" aria-label="Loading">
+      <div className={styles.inner} />
+    </div>
+  );
+}

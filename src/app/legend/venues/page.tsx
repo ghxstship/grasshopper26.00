@@ -1,8 +1,7 @@
 import { Suspense } from 'react';
-import { VenueCard } from '@/design-system/components/molecules/VenueCard';
-import { Button } from '@/design-system/components/atoms/Button';
-import { LoadingSpinner } from '@/design-system/components/atoms/LoadingSpinner';
+import { Spinner, Card } from '@/design-system';
 import { createClient } from '@/lib/supabase/server';
+import Link from 'next/link';
 import styles from './page.module.css';
 
 export const metadata = {
@@ -40,11 +39,19 @@ async function VenuesList() {
   return (
     <div className={styles.grid}>
       {venues.map((venue) => (
-        <VenueCard
-          key={venue.id}
-          venue={venue}
-          href={`/portal/venues/${venue.id}`}
-        />
+        <Link key={venue.id} href={`/legend/venues/${venue.id}`} className={styles.link}>
+          <Card>
+            <h3 className={styles.venueTitle}>
+              {venue.venue_name}
+            </h3>
+            <p className={styles.venueInfo}>
+              {venue.city}, {venue.state}
+            </p>
+            <p className={styles.venueCapacity}>
+              Capacity: {venue.max_capacity.toLocaleString()}
+            </p>
+          </Card>
+        </Link>
       ))}
     </div>
   );
@@ -57,7 +64,7 @@ export default function VenuesPage() {
         <h1 className={styles.title}>VENUES</h1>
       </div>
 
-      <Suspense fallback={<LoadingSpinner />}>
+      <Suspense fallback={<Spinner />}>
         <VenuesList />
       </Suspense>
     </div>

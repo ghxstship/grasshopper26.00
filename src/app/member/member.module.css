@@ -1,0 +1,69 @@
+/**
+ * Member Portal Pages CSS Module
+ * GHXSTSHIP Design System - Monochromatic, Hard Edges, Geometric
+ * Shared styles for all member portal pages
+ */
+
+/* ============================================================================
+   LAYOUT CONTAINERS
+   ============================================================================ */
+
+.pageContainer {
+  padding-block: var(--space-8);
+}
+
+.pageInner {
+  max-inline-size: 70rem;
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+.narrowPageInner {
+  max-inline-size: 60rem;
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+/* ============================================================================
+   GRID LAYOUTS
+   ============================================================================ */
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13.75rem, 1fr));
+  gap: var(--space-4);
+}
+
+.actionsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
+  gap: var(--space-3);
+}
+
+/* ============================================================================
+   LINKS
+   ============================================================================ */
+
+.linkNoDecoration {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================ */
+
+@media (max-inline-size: var(--space-192)) {
+  .pageInner,
+  .narrowPageInner {
+    padding-inline: var(--space-3);
+  }
+
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .actionsGrid {
+    grid-template-columns: 1fr;
+  }
+}

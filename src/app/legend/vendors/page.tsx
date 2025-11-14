@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import { LoadingSpinner } from '@/design-system/components/atoms/LoadingSpinner';
+import { Spinner } from '@/design-system';
 import { createClient } from '@/lib/supabase/server';
 import styles from './page.module.css';
 
@@ -78,7 +78,7 @@ export default function VendorsPage() {
         <h1 className={styles.title}>VENDORS</h1>
       </div>
 
-      <Suspense fallback={<LoadingSpinner />}>
+      <Suspense fallback={<Spinner />}>
         <VendorsList />
       </Suspense>
     </div>

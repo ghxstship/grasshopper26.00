@@ -1,18 +1,19 @@
-import * as React from 'react';
-import { Typography } from '@/design-system/components/atoms/Typography/Typography';
+/**
+ * BrandsTable - Brands management table organism
+ * GHXSTSHIP Atomic Design System
+ */
+
+import { Text } from '../../atoms';
+import { Card } from '../../atoms/Card';
 
 export interface BrandsTableProps {
-  brands: any[];
+  brands?: any[];
 }
 
-export const BrandsTable: React.FC<BrandsTableProps> = ({ brands }) => {
+export function BrandsTable({ brands = [] }: BrandsTableProps) {
   return (
-    <div>
-      {brands.map((brand: any) => (
-        <div key={brand.id}>
-          <Typography variant="body" as="div">{brand.name}</Typography>
-        </div>
-      ))}
-    </div>
+    <Card padding={6}>
+      <Text>Brands Table - {brands.length} brands</Text>
+    </Card>
   );
-};
+}

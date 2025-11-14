@@ -1,116 +1,117 @@
 /**
- * Pagination Component
- * GHXSTSHIP Entertainment Platform - Page Navigation
- * Geometric buttons with BEBAS NEUE labels
+ * Pagination - Page navigation molecule
+ * GHXSTSHIP Atomic Design System
  */
 
-import * as React from 'react';
+import { Button, Stack, Text } from '../../atoms';
 import styles from './Pagination.module.css';
 
 export interface PaginationProps {
+  /** Current page (1-indexed) */
   currentPage: number;
+  /** Total pages */
   totalPages: number;
+  /** Page change handler */
   onPageChange: (page: number) => void;
-  maxVisible?: number;
-  className?: string;
+  /** Show page numbers */
+  showPageNumbers?: boolean;
 }
 
-export const Pagination = React.forwardRef<HTMLElement, PaginationProps>(
-  ({ currentPage, totalPages, onPageChange, maxVisible = 5, className = '' }, ref) => {
-    const getPageNumbers = () => {
-      const pages: (number | string)[] = [];
-      
-      if (totalPages <= maxVisible) {
-        for (let i = 1; i <= totalPages; i++) {
+export function Pagination({
+  currentPage,
+  totalPages,
+  onPageChange,
+  showPageNumbers = true,
+}: PaginationProps) {
+  const canGoPrevious = currentPage > 1;
+  const canGoNext = currentPage < totalPages;
+
+  const getPageNumbers = () => {
+    const pages: (number | string)[] = [];
+    const maxVisible = 5;
+
+    if (totalPages <= maxVisible) {
+      for (let i = 1; i <= totalPages; i++) {
+        pages.push(i);
+      }
+    } else {
+      if (currentPage <= 3) {
+        for (let i = 1; i <= 4; i++) {
+          pages.push(i);
+        }
+        pages.push('...');
+        pages.push(totalPages);
+      } else if (currentPage >= totalPages - 2) {
+        pages.push(1);
+        pages.push('...');
+        for (let i = totalPages - 3; i <= totalPages; i++) {
           pages.push(i);
         }
       } else {
-        const leftSiblingIndex = Math.max(currentPage - 1, 1);
-        const rightSiblingIndex = Math.min(currentPage + 1, totalPages);
-        
-        const shouldShowLeftDots = leftSiblingIndex > 2;
-        const shouldShowRightDots = rightSiblingIndex < totalPages - 1;
-        
         pages.push(1);
-        
-        if (shouldShowLeftDots) {
-          pages.push('...');
-        }
-        
-        for (let i = leftSiblingIndex; i <= rightSiblingIndex; i++) {
-          if (i !== 1 && i !== totalPages) {
-            pages.push(i);
-          }
-        }
-        
-        if (shouldShowRightDots) {
-          pages.push('...');
-        }
-        
-        if (totalPages > 1) {
-          pages.push(totalPages);
-        }
+        pages.push('...');
+        pages.push(currentPage - 1);
+        pages.push(currentPage);
+        pages.push(currentPage + 1);
+        pages.push('...');
+        pages.push(totalPages);
       }
-      
-      return pages;
-    };
+    }
 
-    const classNames = [
-      styles.pagination,
-      className,
-    ].filter(Boolean).join(' ');
+    return pages;
+  };
 
-    return (
-      <nav ref={ref} className={classNames} aria-label="Pagination">
-        <button
-          className={styles.button}
+  return (
+    <nav className={styles.pagination} aria-label="Pagination">
+      <Stack direction="horizontal" gap={2} align="center">
+        <Button
+          variant="secondary"
+          size="sm"
           onClick={() => onPageChange(currentPage - 1)}
-          disabled={currentPage === 1}
+          disabled={!canGoPrevious}
           aria-label="Previous page"
         >
-          <span className={styles.arrow}>←</span>
-          <span className={styles.label}>PREV</span>
-        </button>
+          Previous
+        </Button>
 
-        <div className={styles.pages}>
-          {getPageNumbers().map((page, index) => {
-            if (page === '...') {
+        {showPageNumbers && (
+          <Stack direction="horizontal" gap={1} className={styles.pageNumbers}>
+            {getPageNumbers().map((page, index) => {
+              if (page === '...') {
+                return (
+                  <span key={`ellipsis-${index}`} className={styles.ellipsis}>
+                    <Text font="bebas">...</Text>
+                  </span>
+                );
+              }
+
               return (
-                <span key={`dots-${index}`} className={styles.dots}>
-                  ...
-                </span>
+                <button
+                  key={page}
+                  onClick={() => onPageChange(page as number)}
+                  className={`${styles.pageButton} ${
+                    page === currentPage ? styles.active : ''
+                  }`}
+                  aria-label={`Page ${page}`}
+                  aria-current={page === currentPage ? 'page' : undefined}
+                >
+                  <Text font="bebas">{page}</Text>
+                </button>
               );
-            }
+            })}
+          </Stack>
+        )}
 
-            const pageNumber = page as number;
-            const isActive = pageNumber === currentPage;
-
-            return (
-              <button
-                key={pageNumber}
-                className={`${styles.pageButton} ${isActive ? styles.active : ''}`}
-                onClick={() => onPageChange(pageNumber)}
-                aria-label={`Page ${pageNumber}`}
-                aria-current={isActive ? 'page' : undefined}
-              >
-                {pageNumber}
-              </button>
-            );
-          })}
-        </div>
-
-        <button
-          className={styles.button}
+        <Button
+          variant="secondary"
+          size="sm"
           onClick={() => onPageChange(currentPage + 1)}
-          disabled={currentPage === totalPages}
+          disabled={!canGoNext}
           aria-label="Next page"
         >
-          <span className={styles.label}>NEXT</span>
-          <span className={styles.arrow}>→</span>
-        </button>
-      </nav>
-    );
-  }
-);
-
-Pagination.displayName = 'Pagination';
+          Next
+        </Button>
+      </Stack>
+    </nav>
+  );
+}

@@ -1,1 +1,0 @@
-export { MembershipTierCard } from './MembershipTierCard';

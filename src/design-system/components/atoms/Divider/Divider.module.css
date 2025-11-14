@@ -1,7 +1,6 @@
 /**
- * Divider Styles
- * GHXSTSHIP Entertainment Platform
- * Thick geometric dividers (0.1875rem standard)
+ * Divider - Visual separator atom
+ * GHXSTSHIP: Hard geometric line
  */
 
 .divider {
@@ -10,65 +9,39 @@
   margin: 0;
 }
 
-/* ========================================
-   ORIENTATION
-   ======================================== */
-
-.horizontal {
+.orientation-horizontal {
   width: 100%;
   height: var(--border-width-3);
 }
 
-.vertical {
+.orientation-vertical {
   width: var(--border-width-3);
   height: 100%;
-  min-height: 2.5rem;
 }
 
-/* ========================================
-   THICKNESS
-   ======================================== */
+.thickness-1 {
+  height: var(--border-width-1);
+}
 
-.thin.horizontal {
+.orientation-vertical.thickness-1 {
+  width: var(--border-width-1);
+  height: 100%;
+}
+
+.thickness-2 {
   height: var(--border-width-2);
 }
 
-.thin.vertical {
+.orientation-vertical.thickness-2 {
   width: var(--border-width-2);
+  height: 100%;
 }
 
-.default.horizontal {
+.thickness-3 {
   height: var(--border-width-3);
 }
 
-.default.vertical {
+.orientation-vertical.thickness-3 {
   width: var(--border-width-3);
-}
-
-.thick.horizontal {
-  height: var(--border-width-3);
-}
-
-.thick.vertical {
-  width: var(--border-width-3);
-}
-
-/* ========================================
-   DARK THEME
-   ======================================== */
-
-[data-theme="dark"] .divider {
-  background-color: var(--color-border-strong);
-}
-
-/* ========================================
-   RESPONSIVE BREAKPOINTS
-   ======================================== */
-
-@media (min-width: var(--space-96)) {
-  /* Tablet and up - add styles as needed */
-}
-
-@media (min-width: var(--space-96)) {
-  /* Desktop and up - add styles as needed */
+  height: 100%;
 }

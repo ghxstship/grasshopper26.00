@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import { createClient } from '@/lib/supabase/server';
-import { LoadingSpinner } from '@/design-system/components/atoms/LoadingSpinner';
+import { Spinner } from '@/design-system';
 import styles from './page.module.css';
 
 export const metadata = {
@@ -79,7 +79,7 @@ export default function StaffPage() {
         <h1 className={styles.title}>STAFF ASSIGNMENTS</h1>
       </div>
 
-      <Suspense fallback={<LoadingSpinner />}>
+      <Suspense fallback={<Spinner />}>
         <StaffList />
       </Suspense>
     </div>

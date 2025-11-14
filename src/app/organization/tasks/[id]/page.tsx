@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
-import { LoadingSpinner } from '@/design-system/components/atoms/LoadingSpinner';
+import { Spinner } from '@/design-system';
 import styles from './page.module.css';
 
 async function TaskDetails({ id }: { id: string }) {
@@ -112,7 +112,7 @@ export default async function TaskPage({ params }: { params: Promise<{ id: strin
         <h1 className={styles.title}>{task?.task_name || 'TASK'}</h1>
       </div>
 
-      <Suspense fallback={<LoadingSpinner />}>
+      <Suspense fallback={<Spinner />}>
         <TaskDetails id={id} />
       </Suspense>
     </div>

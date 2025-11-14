@@ -1,0 +1,52 @@
+/**
+ * AdminHeader Styles
+ * GHXSTSHIP Design System - Monochromatic, Hard Edges, 3px Borders
+ */
+
+.header {
+  inline-size: 100%;
+  background-color: var(--color-bg-primary);
+  border-block-end: var(--border-width-standard) solid var(--color-border-primary);
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 100;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: var(--spacing-4);
+  padding-inline: var(--spacing-6);
+  max-inline-size: 1920px;
+  margin-inline: auto;
+}
+
+.logo {
+  font-family: var(--font-family-hero);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  transition: opacity var(--transition-duration-fast) var(--transition-timing-default);
+}
+
+.logo:hover {
+  opacity: 0.8;
+}
+
+.actions {
+  display: flex;
+  gap: var(--spacing-3);
+}
+
+/* Dark Mode Support */
+[data-theme="dark"] .header {
+  background-color: var(--color-bg-primary);
+  border-block-end-color: var(--color-border-primary);
+}
+
+[data-theme="dark"] .logo {
+  color: var(--color-text-primary);
+}

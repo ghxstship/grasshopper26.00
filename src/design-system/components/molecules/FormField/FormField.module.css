@@ -1,40 +1,21 @@
 /**
- * FormField Styles
- * GHXSTSHIP Monochromatic Design System
+ * FormField - Form field with label and error molecule
  */
 
 .formField {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
   width: 100%;
 }
 
-
-/* ========================================
-   RESPONSIVE BREAKPOINTS
-   ======================================== */
-
-@media (min-width: var(--space-96)) {
-  /* Tablet and up */
+.label {
+  display: block;
+  cursor: pointer;
 }
 
-@media (min-width: var(--space-96)) {
-  /* Desktop and up */
+.required {
+  color: var(--color-text-primary);
+  margin-inline-start: var(--space-1);
 }
 
-
-
-
-
-
-
-/* ========================================
-   DARK THEME
-   ======================================== */
-
-[data-theme="dark"] .formField {
-  /* Dark mode overrides inherit from tokens.css */
-  /* Add component-specific overrides here if needed */
+.error {
+  color: var(--color-text-primary);
 }
-

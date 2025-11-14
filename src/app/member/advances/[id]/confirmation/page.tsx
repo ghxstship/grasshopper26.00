@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import Link from 'next/link';
-import { GeometricShape } from '@/design-system/components/atoms/GeometricShape';
+import { GeometricShape } from '@/design-system';
 import { ProductionAdvance } from '@/lib/types/production-advances';
 import { Check } from 'lucide-react';
 import styles from './page.module.css';

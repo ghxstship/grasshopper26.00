@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
-import { StatCard } from '@/design-system/components/molecules/StatCard/StatCard';
-import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/Card';
+import { StatCard } from '@/design-system';
+import { Card, CardContent, CardHeader, CardTitle } from '@/design-system';
 import Link from 'next/link';
 import { 
   Building2, 

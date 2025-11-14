@@ -1,36 +1,36 @@
 /**
- * Badge Component
- * GHXSTSHIP Entertainment Platform - Geometric status badges
- * Thick borders, BEBAS NEUE text, geometric containers
+ * Badge - Status/label indicator atom
+ * GHXSTSHIP Atomic Design System
  */
 
-import * as React from "react"
-import styles from "./Badge.module.css"
+import { ReactNode } from 'react';
+import styles from './Badge.module.css';
 
-export type BadgeVariant = 'default' | 'outlined' | 'filled' | 'sold-out' | 'on-sale' | 'coming-soon';
-export type BadgeSize = 'sm' | 'md' | 'lg';
-
-export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
-  variant?: BadgeVariant;
-  size?: BadgeSize;
-  children: React.ReactNode;
+export interface BadgeProps {
+  /** Children content */
+  children: ReactNode;
+  /** Badge variant */
+  variant?: 'default' | 'outline' | 'solid';
+  /** Badge size */
+  size?: 'sm' | 'md' | 'lg';
+  /** Additional className */
   className?: string;
 }
 
-export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
-  ({ variant = 'default', size = 'md', children, className = '', ...props }, ref) => {
-    const classNames = [
-      styles.badge,
-      styles[variant],
-      styles[size],
-      className,
-    ].filter(Boolean).join(' ');
-  
-  return (
-    <span ref={ref} className={classNames} {...props}>
-      {children}
-    </span>
-  );
-});
+export function Badge({
+  children,
+  variant = 'default',
+  size = 'md',
+  className,
+}: BadgeProps) {
+  const classNames = [
+    styles.badge,
+    styles[`variant-${variant}`],
+    styles[`size-${size}`],
+    className,
+  ]
+    .filter(Boolean)
+    .join(' ');
 
-Badge.displayName = "Badge";
+  return <span className={classNames}>{children}</span>;
+}

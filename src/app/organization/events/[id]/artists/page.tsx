@@ -6,11 +6,11 @@
 'use client';
 
 import { use, useEffect, useState } from 'react';
-import { SplitLayout } from '@/design-system/components/templates';
-import { Button } from '@/design-system/components/atoms/Button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/Card';
-import { Input } from '@/design-system/components/atoms/Input';
-import { Badge } from '@/design-system/components/atoms/Badge';
+import { SplitLayout } from '@/design-system';
+import { Button } from '@/design-system';
+import { Card, CardContent, CardHeader, CardTitle } from '@/design-system';
+import { Input } from '@/design-system';
+import { Badge } from '@/design-system';
 import { Plus, Trash2, Music, Search, Check } from 'lucide-react';
 import { toast } from 'sonner';
 import Image from 'next/image';
@@ -193,7 +193,7 @@ export default function EventArtistsPage({ params }: { params: Promise<{ id: str
                           <Badge variant="default">Headliner</Badge>
                         )}
                         {artist.verified && (
-                          <Badge variant="outlined">
+                          <Badge variant="outline">
                             <Check className={styles.iconSmall} />
                           </Badge>
                         )}
@@ -339,7 +339,7 @@ export default function EventArtistsPage({ params }: { params: Promise<{ id: str
                     <div className={styles.artistHeader}>
                       <h4 className={styles.artistName}>{artist.name}</h4>
                       {artist.verified && (
-                        <Badge variant="outlined">
+                        <Badge variant="outline">
                           <Check className={styles.iconSmall} />
                         </Badge>
                       )}

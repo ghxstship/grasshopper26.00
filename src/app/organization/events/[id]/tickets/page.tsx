@@ -1,12 +1,12 @@
 'use client';
 
 import { use, useEffect, useState, useCallback } from 'react';
-import { ContextualPageTemplate } from '@/design-system/components/templates';
-import { Button } from '@/design-system/components/atoms/Button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/Card';
-import { Input } from '@/design-system/components/atoms/Input';
-import { Label } from '@/design-system/components/atoms/Label';
-import { Badge } from '@/design-system/components/atoms/Badge';
+import { ContextualPageTemplate } from '@/design-system';
+import { Button } from '@/design-system';
+import { Card, CardContent, CardHeader, CardTitle } from '@/design-system';
+import { Input } from '@/design-system';
+import { Label } from '@/design-system';
+import { Badge } from '@/design-system';
 import { Plus, Edit, Trash2, Ticket } from 'lucide-react';
 import { toast } from 'sonner';
 import styles from './tickets-content.module.css';
@@ -291,7 +291,7 @@ export default function ManageTicketTypesPage({ params }: { params: Promise<{ id
                 </div>
                 <div className={styles.ticketDetail}>
                   <span className={styles.label}>Available:</span>
-                  <Badge variant={ticketType.quantity - (ticketType.sold || 0) > 0 ? 'default' : 'sold-out'}>
+                  <Badge variant={ticketType.quantity - (ticketType.sold || 0) > 0 ? 'default' : 'solid'}>
                     {ticketType.quantity - (ticketType.sold || 0)}
                   </Badge>
                 </div>

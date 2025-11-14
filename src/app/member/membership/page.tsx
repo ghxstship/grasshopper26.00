@@ -5,12 +5,10 @@
 
 'use client';
 
-import { PortalLayout } from '@/design-system/components/templates/PortalLayout/PortalLayout';
-import { PortalSidebar } from '@/design-system/components/organisms/PortalSidebar/PortalSidebar';
-import { Typography } from '@/design-system/components/atoms/Typography/Typography';
-import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/Card';
-import { Button } from '@/design-system/components/atoms/Button/Button';
-import { StatCard } from '@/design-system/components/molecules/StatCard/StatCard';
+import { PortalLayout } from '@/design-system';
+import { PortalSidebar } from '@/design-system';
+import { Heading, Text, Card, CardHeader, CardTitle, CardContent, Button } from '@/design-system';
+import { StatCard } from '@/design-system';
 import { useMembershipTiers } from '@/hooks/useMembershipTiers';
 import { Crown, Ticket, Gift, Calendar, Check } from 'lucide-react';
 import styles from './membership.module.css';
@@ -26,7 +24,7 @@ export default function MemberMembershipPage() {
         description="Manage your GVTEWAY membership"
       >
         <div className={styles.loading}>
-          <Typography variant="body">Loading membership information...</Typography>
+          <Text>Loading membership information...</Text>
         </div>
       </PortalLayout>
     );
@@ -40,7 +38,7 @@ export default function MemberMembershipPage() {
         description="Manage your GVTEWAY membership"
       >
         <div className={styles.error}>
-          <Typography variant="body" className={styles.errorText}>{error}</Typography>
+          <Text className={styles.errorText}>{error}</Text>
         </div>
       </PortalLayout>
     );
@@ -62,11 +60,11 @@ export default function MemberMembershipPage() {
               <div className={styles.membershipHeader}>
                 <div className={styles.tierBadge}>
                   <Crown className={styles.tierIcon} />
-                  <Typography variant="h2">{currentMembership.tier.display_name}</Typography>
+                  <Heading level={2} font="bebas">{currentMembership.tier.display_name}</Heading>
                 </div>
-                <Typography variant="body" className={styles.status}>
+                <Text className={styles.status}>
                   Status: {currentMembership.status}
-                </Typography>
+                </Text>
               </div>
 
               <div className={styles.statsGrid}>
@@ -89,12 +87,12 @@ export default function MemberMembershipPage() {
 
               {currentMembership.tier.benefits && (
                 <div className={styles.benefits}>
-                  <Typography variant="h3" className={styles.benefitsTitle}>Your Benefits</Typography>
+                  <Heading level={3} font="bebas" className={styles.benefitsTitle}>Your Benefits</Heading>
                   <ul className={styles.benefitsList}>
                     {Object.entries(currentMembership.tier.benefits).map(([key, value]) => (
                       <li key={key} className={styles.benefitItem}>
                         <Check className={styles.checkIcon} />
-                        <Typography variant="body">{String(value)}</Typography>
+                        <Text>{String(value)}</Text>
                       </li>
                     ))}
                   </ul>
@@ -106,9 +104,9 @@ export default function MemberMembershipPage() {
       )}
 
       <div className={styles.tiersSection}>
-        <Typography variant="h2" className={styles.sectionTitle}>
+        <Heading level={2} font="bebas" className={styles.sectionTitle}>
           {currentMembership ? 'Upgrade Your Membership' : 'Choose Your Membership'}
-        </Typography>
+        </Heading>
         
         <div className={styles.tiersGrid}>
           {tiers.map((tier) => (
@@ -118,16 +116,16 @@ export default function MemberMembershipPage() {
               </CardHeader>
               <CardContent>
                 <div className={styles.tierPrice}>
-                  <Typography variant="h2">
+                  <Heading level={2} font="bebas">
                     ${(tier.annual_price / 100).toFixed(0)}
-                  </Typography>
-                  <Typography variant="body" className={styles.priceLabel}>/year</Typography>
+                  </Heading>
+                  <Text className={styles.priceLabel}>/year</Text>
                 </div>
 
                 {tier.monthly_price && (
-                  <Typography variant="body" className={styles.monthlyPrice}>
+                  <Text className={styles.monthlyPrice}>
                     or ${(tier.monthly_price / 100).toFixed(0)}/month
-                  </Typography>
+                  </Text>
                 )}
 
                 {tier.benefits && (
@@ -135,7 +133,7 @@ export default function MemberMembershipPage() {
                     {Object.entries(tier.benefits).slice(0, 5).map(([key, value]) => (
                       <li key={key} className={styles.tierBenefit}>
                         <Check className={styles.checkIcon} />
-                        <Typography variant="body">{String(value)}</Typography>
+                        <Text>{String(value)}</Text>
                       </li>
                     ))}
                   </ul>

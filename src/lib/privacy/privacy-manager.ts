@@ -6,7 +6,11 @@
 /* eslint-disable no-magic-numbers */
 // Privacy and hashing constants (IP masking, hash lengths)
 
-import type { CookiePreferences } from '@/design-system/components/atoms/CookieConsent/CookieConsent';
+export interface CookiePreferences {
+  necessary: boolean;
+  analytics: boolean;
+  marketing: boolean;
+}
 
 export class PrivacyManager {
   private static STORAGE_KEY = 'cookie-preferences';

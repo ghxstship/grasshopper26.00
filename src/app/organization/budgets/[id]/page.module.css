@@ -1,93 +1,124 @@
+/**
+ * Budget Detail Page Styles
+ * GHXSTSHIP Design System - Monochromatic, Hard Edges, 3px Borders
+ */
+
 .container {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-8);
-  padding-block: var(--space-8);
-  padding-inline: var(--space-8);
+  inline-size: 100%;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-block-end: var(--space-6);
-  border-block-end: var(--border-width-3) solid var(--color-border-strong);
+  margin-block-end: var(--spacing-6);
+  padding-block-end: var(--spacing-4);
+  border-block-end: var(--border-width-standard) solid var(--color-border-primary);
 }
 
 .title {
-  font-family: var(--font-family-anton);
-  font-size: var(--font-size-h1);
+  font-family: var(--font-family-hero);
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-tight);
-  line-height: var(--line-height-tight);
   color: var(--color-text-primary);
-  margin-block: 0;
+  margin: 0;
 }
 
 .actions {
   display: flex;
-  gap: var(--space-4);
+  gap: var(--spacing-3);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  padding-block: var(--spacing-3);
+  padding-inline: var(--spacing-4);
+  background-color: var(--color-bg-primary);
+  border: var(--border-width-standard) solid var(--color-border-primary);
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  transition: all var(--transition-duration-fast) var(--transition-timing-default);
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: var(--color-bg-secondary);
+  transform: translate(2px, 2px);
+  box-shadow: var(--shadow-hard-sm);
+}
+
+.button:active {
+  transform: translate(0, 0);
+  box-shadow: none;
 }
 
 .content {
   display: flex;
   flex-direction: column;
-  gap: var(--space-8);
+  gap: var(--spacing-6);
 }
 
 .section {
   display: flex;
   flex-direction: column;
-  gap: var(--space-6);
+  gap: var(--spacing-4);
+  padding-block: var(--spacing-6);
+  padding-inline: var(--spacing-6);
+  border: var(--border-width-standard) solid var(--color-border-primary);
+  background-color: var(--color-bg-primary);
 }
 
 .sectionHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-block-end: var(--spacing-4);
 }
 
 .sectionTitle {
-  font-family: var(--font-family-bebas);
-  font-size: var(--font-size-2xl);
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-wide);
-  line-height: var(--line-height-tight);
   color: var(--color-text-primary);
-  margin-block: 0;
+  margin: 0;
 }
 
+/* Table Styles */
 .table {
   display: flex;
   flex-direction: column;
-  border-width: var(--border-width-3);
-  border-style: solid;
-  border-color: var(--color-border-strong);
-  background-color: var(--color-bg-primary);
+  border: var(--border-width-standard) solid var(--color-border-primary);
 }
 
 .tableHeader {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
-  gap: var(--space-4);
-  padding-block: var(--space-4);
-  padding-inline: var(--space-6);
+  gap: var(--spacing-4);
+  padding-block: var(--spacing-3);
+  padding-inline: var(--spacing-4);
   background-color: var(--color-bg-secondary);
-  border-block-end: var(--border-width-2) solid var(--color-border-strong);
-  font-family: var(--font-family-bebas);
-  font-size: var(--font-size-sm);
-  letter-spacing: var(--letter-spacing-wider);
-  color: var(--color-text-secondary);
+  border-block-end: var(--border-width-standard) solid var(--color-border-primary);
 }
 
 .tableRow {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
-  gap: var(--space-4);
-  padding-block: var(--space-4);
-  padding-inline: var(--space-6);
-  border-block-end: var(--border-width-1) solid var(--color-border-default);
-  font-family: var(--font-family-share);
-  font-size: var(--font-size-sm);
-  color: var(--color-text-primary);
+  gap: var(--spacing-4);
+  padding-block: var(--spacing-3);
+  padding-inline: var(--spacing-4);
+  border-block-end: var(--border-width-thin) solid var(--color-border-secondary);
+  transition: background-color var(--transition-duration-fast) var(--transition-timing-default);
+}
+
+.tableRow:hover {
+  background-color: var(--color-bg-secondary);
 }
 
 .tableRow:last-child {
@@ -95,89 +126,147 @@
 }
 
 .tableCell {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
   display: flex;
   align-items: center;
 }
 
+/* Status Badges */
 .status {
-  padding-block: var(--space-1);
-  padding-inline: var(--space-2);
-  font-family: var(--font-family-share-mono);
+  display: inline-flex;
+  padding-block: var(--spacing-1);
+  padding-inline: var(--spacing-2);
+  border: var(--border-width-standard) solid var(--color-border-primary);
+  font-family: var(--font-family-heading);
   font-size: var(--font-size-xs);
-  letter-spacing: var(--letter-spacing-meta);
-  border-width: var(--border-width-1);
-  border-style: solid;
-  border-color: var(--color-border-default);
-  background-color: var(--color-bg-secondary);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-wide);
 }
 
-.status.planned {
-  background-color: var(--color-border-default);
+.status.draft {
+  background-color: var(--color-bg-secondary);
+  border-color: var(--color-border-secondary);
+  color: var(--color-text-secondary);
+}
+
+.status.pending {
+  background-color: var(--color-bg-warning);
+  border-color: var(--color-border-warning);
+  color: var(--color-text-warning);
 }
 
 .status.approved {
-  background-color: var(--color-bg-primary);
-  border-color: var(--color-border-strong);
+  background-color: var(--color-bg-success);
+  border-color: var(--color-border-success);
+  color: var(--color-text-success);
 }
 
-.status.paid {
-  background-color: var(--color-text-primary);
-  color: var(--color-bg-primary);
+.status.completed {
+  background-color: var(--color-bg-success);
+  border-color: var(--color-border-success);
+  color: var(--color-text-success);
 }
 
-.empty,
-.emptySection {
+/* Empty States */
+.empty {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-block: var(--space-16);
-  padding-inline: var(--space-8);
-  border-width: var(--border-width-3);
-  border-style: solid;
-  border-color: var(--color-border-default);
+  padding-block: var(--spacing-12);
+  padding-inline: var(--spacing-6);
+  border: var(--border-width-standard) solid var(--color-border-secondary);
   background-color: var(--color-bg-secondary);
 }
 
-.emptyText,
-.emptySectionText {
-  font-family: var(--font-family-bebas);
-  font-size: var(--font-size-xl);
-  letter-spacing: var(--letter-spacing-wider);
+.emptyText {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-wide);
   color: var(--color-text-secondary);
-  margin-block: 0;
 }
 
-/* DARK MODE */
-:global([data-theme="dark"]) .container,
-:global([data-theme="dark"]) .card,
-:global([data-theme="dark"]) .content,
-:global([data-theme="dark"]) .section {
-  background-color: var(--color-bg-primary);
+.emptySection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: var(--spacing-8);
+  background-color: var(--color-bg-secondary);
 }
 
-:global([data-theme="dark"]) .button,
-:global([data-theme="dark"]) .input,
-:global([data-theme="dark"]) .select,
-:global([data-theme="dark"]) .textarea {
-  background-color: var(--color-bg-primary);
-  border-color: var(--color-border-strong);
+.emptySectionText {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-text-secondary);
+}
+
+/* Dark Mode Support */
+[data-theme="dark"] .header {
+  border-block-end-color: var(--color-border-primary);
+}
+
+[data-theme="dark"] .title {
   color: var(--color-text-primary);
 }
 
-:global([data-theme="dark"]) .button:hover {
-  background-color: var(--color-text-primary);
-  color: var(--color-text-inverse);
+[data-theme="dark"] .button {
+  background-color: var(--color-bg-primary);
+  border-color: var(--color-border-primary);
+  color: var(--color-text-primary);
 }
 
-/* ========================================
-   RESPONSIVE BREAKPOINTS
-   ======================================== */
-
-@media (min-width: var(--space-96)) {
-  /* Tablet and up - add styles as needed */
+[data-theme="dark"] .button:hover {
+  background-color: var(--color-bg-secondary);
 }
 
-@media (min-width: var(--space-96)) {
-  /* Desktop and up - add styles as needed */
+[data-theme="dark"] .section {
+  border-color: var(--color-border-primary);
+  background-color: var(--color-bg-primary);
+}
+
+[data-theme="dark"] .sectionTitle {
+  color: var(--color-text-primary);
+}
+
+[data-theme="dark"] .table {
+  border-color: var(--color-border-primary);
+}
+
+[data-theme="dark"] .tableHeader {
+  background-color: var(--color-bg-secondary);
+  border-block-end-color: var(--color-border-primary);
+}
+
+[data-theme="dark"] .tableRow {
+  border-block-end-color: var(--color-border-secondary);
+}
+
+[data-theme="dark"] .tableRow:hover {
+  background-color: var(--color-bg-secondary);
+}
+
+[data-theme="dark"] .tableCell {
+  color: var(--color-text-primary);
+}
+
+[data-theme="dark"] .empty {
+  border-color: var(--color-border-secondary);
+  background-color: var(--color-bg-secondary);
+}
+
+[data-theme="dark"] .emptyText {
+  color: var(--color-text-secondary);
+}
+
+[data-theme="dark"] .emptySection {
+  background-color: var(--color-bg-secondary);
+}
+
+[data-theme="dark"] .emptySectionText {
+  color: var(--color-text-secondary);
 }

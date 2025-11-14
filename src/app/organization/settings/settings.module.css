@@ -1,0 +1,12 @@
+/**
+ * Settings Page CSS Module
+ * GHXSTSHIP Design System - Monochromatic, Hard Edges, Geometric
+ */
+
+.content {
+  padding: var(--spacing-6);
+}
+
+.description {
+  margin-block-start: var(--spacing-4);
+}

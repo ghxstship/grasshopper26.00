@@ -1,9 +1,9 @@
 'use client';
 
-import { PublicBrowseTemplate } from '@/design-system/components/templates';
+import { PublicBrowseTemplate } from '@/design-system';
 import { DollarSign } from 'lucide-react';
 import { useAdvancesCatalog } from '@/hooks/useAdvancesCatalog';
-import { AdvanceCard } from '@/design-system/components/organisms/advances/advance-card';
+import { AdvanceCard } from '@/design-system';
 
 export default function AdvancesCatalogPage() {
   const { advances, loading, searchQuery, setSearchQuery, sortBy, setSortBy } = useAdvancesCatalog();

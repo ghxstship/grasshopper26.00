@@ -1,25 +1,25 @@
 /**
- * Portal Credits Page Styles
- * GHXSTSHIP Monochromatic Design System
+ * Credits Page Styles
+ * GHXSTSHIP Design System
  */
 
 .statsGrid {
   display: grid;
-  gap: var(--space-6);
-  grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
-  margin-block-end: var(--space-8);
+  grid-template-columns: repeat(auto-fit, minmax(var(--space-60), 1fr));
+  gap: var(--space-4);
+  margin-block-end: var(--space-6);
 }
 
 .content {
   display: flex;
   flex-direction: column;
-  gap: var(--space-6);
+  gap: var(--space-4);
 }
 
 .creditsList {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: var(--space-3);
 }
 
 .creditItem {
@@ -27,54 +27,32 @@
   justify-content: space-between;
   align-items: center;
   padding: var(--space-4);
-  border: var(--border-width-3) solid var(--color-border-default);
-  background-color: var(--color-bg-primary);
+  background-color: var(--color-bg-secondary);
+  border: var(--border-width-default) solid var(--color-border-primary);
 }
 
 .empty {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: var(--space-4);
-  padding: var(--space-12);
+  padding-block: var(--space-12);
   text-align: center;
 }
 
 .emptyIcon {
-  width: 4rem;
-  height: 4rem;
-  color: var(--color-text-secondary);
+  inline-size: var(--space-16);
+  block-size: var(--space-16);
+  color: var(--color-text-tertiary);
 }
 
-/* Responsive Breakpoints */
-@media (max-width: 48rem) {
-  .statsGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 30rem) {
-  .statsGrid {
-    grid-template-columns: 1fr;
-  }
-  
-  .creditItem {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-2);
-  }
-}
-
-/* DARK MODE */
-:global([data-theme="dark"]) .content {
-  background-color: var(--color-bg-primary);
-}
-
-:global([data-theme="dark"]) .creditItem {
-  background-color: var(--color-bg-primary);
-  border-color: var(--color-border-strong);
-}
-
-:global([data-theme="dark"]) .creditItem:hover {
+/* Dark mode */
+[data-theme="dark"] .creditItem {
   background-color: var(--color-bg-secondary);
+  border-color: var(--color-border-primary);
+}
+
+[data-theme="dark"] .emptyIcon {
+  color: var(--color-text-tertiary);
 }

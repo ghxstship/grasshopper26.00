@@ -1,146 +1,66 @@
 /**
- * ArtistCard Component
- * GHXSTSHIP Entertainment Platform - Artist Display Card
- * High-contrast B&W photos with halftone overlay, circular or square geometric frames
+ * ArtistCard - Artist display card molecule
+ * GHXSTSHIP Atomic Design System
  */
 
-import * as React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+import { Card, Stack, Heading, Text } from '../../atoms';
 import styles from './ArtistCard.module.css';
 
 export interface ArtistCardProps {
-  artist: {
-    id: string;
-    name: string;
-    genre: string[];
-    imageUrl: string;
-    socialLinks?: {
-      spotify?: string;
-      instagram?: string;
-      twitter?: string;
-      soundcloud?: string;
-    };
-  };
-  onClick?: () => void;
-  variant?: 'circle' | 'square';
-  className?: string;
+  /** Artist name */
+  name: string;
+  /** Artist genre */
+  genre?: string;
+  /** Artist image */
+  image?: string;
+  /** Artist slug/link */
+  slug: string;
+  /** Upcoming events count */
+  upcomingEvents?: number;
 }
 
-export const ArtistCard = React.forwardRef<HTMLDivElement, ArtistCardProps>(
-  ({ artist, onClick, variant = 'square', className = '' }, ref) => {
-    const classNames = [
-      styles.card,
-      styles[variant],
-      className,
-    ].filter(Boolean).join(' ');
-
-    const handleClick = () => {
-      if (onClick) {
-        onClick();
-      }
-    };
-
-    const handleKeyDown = (e: React.KeyboardEvent) => {
-      if (onClick && (e.key === 'Enter' || e.key === ' ')) {
-        e.preventDefault();
-        onClick();
-      }
-    };
-
-    return (
-      <div
-        ref={ref}
-        className={classNames}
-        onClick={handleClick}
-        onKeyDown={handleKeyDown}
-        role={onClick ? 'button' : undefined}
-        tabIndex={onClick ? 0 : undefined}
-        aria-label={onClick ? `View ${artist.name} profile` : undefined}
-      >
-        <div className={styles.imageFrame}>
+export function ArtistCard({
+  name,
+  genre,
+  image,
+  slug,
+  upcomingEvents,
+}: ArtistCardProps) {
+  return (
+    <Card variant="elevated" padding={0} interactive>
+      <Link href={`/music/${slug}`} className={styles.link}>
+        {image && (
           <div className={styles.imageContainer}>
             <Image
-              src={artist.imageUrl}
-              alt={artist.name}
+              src={image}
+              alt={name}
               fill
               className={styles.image}
-              sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
-            <div className={styles.halftoneOverlay} aria-hidden="true" />
           </div>
-        </div>
+        )}
 
-        <div className={styles.content}>
-          <h3 className={styles.name}>
-            {artist.name}
-          </h3>
-          
-          {artist.genre && artist.genre.length > 0 && (
-            <div className={styles.genreTags}>
-              {artist.genre.map((genre, index) => (
-                <span key={index} className={styles.genreTag}>
-                  {genre}
-                </span>
-              ))}
-            </div>
+        <Stack gap={2} className={styles.content}>
+          <Heading level={4} font="bebas">
+            {name}
+          </Heading>
+
+          {genre && (
+            <Text size="sm" color="secondary" uppercase>
+              {genre}
+            </Text>
           )}
 
-          {artist.socialLinks && (
-            <div className={styles.socialLinks}>
-              {artist.socialLinks.spotify && (
-                <a
-                  href={artist.socialLinks.spotify}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.socialLink}
-                  aria-label={`${artist.name} on Spotify`}
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <span className={styles.socialIcon}>♫</span>
-                </a>
-              )}
-              {artist.socialLinks.instagram && (
-                <a
-                  href={artist.socialLinks.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.socialLink}
-                  aria-label={`${artist.name} on Instagram`}
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <span className={styles.socialIcon}>◉</span>
-                </a>
-              )}
-              {artist.socialLinks.twitter && (
-                <a
-                  href={artist.socialLinks.twitter}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.socialLink}
-                  aria-label={`${artist.name} on Twitter`}
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <span className={styles.socialIcon}>◆</span>
-                </a>
-              )}
-              {artist.socialLinks.soundcloud && (
-                <a
-                  href={artist.socialLinks.soundcloud}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.socialLink}
-                  aria-label={`${artist.name} on SoundCloud`}
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <span className={styles.socialIcon}>◈</span>
-                </a>
-              )}
-            </div>
+          {upcomingEvents !== undefined && upcomingEvents > 0 && (
+            <Text size="sm" font="bebas">
+              {upcomingEvents} Upcoming {upcomingEvents === 1 ? 'Event' : 'Events'}
+            </Text>
           )}
-        </div>
-      </div>
-    );
-  }
-);
-
-ArtistCard.displayName = 'ArtistCard';
+        </Stack>
+      </Link>
+    </Card>
+  );
+}

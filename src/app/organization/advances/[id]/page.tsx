@@ -1,6 +1,6 @@
 'use client';
 
-import { AdminDetailTemplate } from '@/design-system/components/templates';
+import { AdminDetailTemplate } from '@/design-system';
 import { DollarSign, User, Calendar, CheckCircle } from 'lucide-react';
 import { useAdminAdvanceDetail } from '@/hooks/useAdminAdvanceDetail';
 import { useParams } from 'next/navigation';
@@ -16,21 +16,21 @@ export default function AdminAdvanceDetailPage() {
         { label: 'Advances', href: '/admin/advances' },
         { label: `Advance #${params.id}`, href: `/admin/advances/${params.id}` },
       ]}
-      title={`Advance #${advance?.id.slice(0, 8).toUpperCase()}`}
-      statusBadge={{ label: advance?.status || 'pending', variant: advance?.status === 'approved' ? 'success' : 'warning' }}
+      title={`Advance #${advance?.id?.slice(0, 8).toUpperCase() || 'Loading...'}`}
+      statusBadge={<span>{advance?.status || 'pending'}</span>}
       loading={loading}
-      tabs={[
-        { key: 'details', label: 'Details', content: <div>Advance details</div> },
-        { key: 'history', label: 'History', content: <div>Status history</div> },
-      ]}
-      metadata={[
-        { label: 'User', value: advance?.user_email },
-        { label: 'Amount', value: `$${advance?.amount}` },
-        { label: 'Requested', value: advance?.created_at },
-        { label: 'Status', value: advance?.status },
-      ]}
+      metadata={
+        <div>
+          <div>User: {advance?.user_email}</div>
+          <div>Amount: ${advance?.amount}</div>
+          <div>Requested: {advance?.created_at}</div>
+          <div>Status: {advance?.status}</div>
+        </div>
+      }
       primaryAction={{ label: 'Approve', onClick: () => {} }}
-      secondaryAction={{ label: 'Reject', onClick: () => {} }}
-    />
+      secondaryActions={[{ label: 'Reject', onClick: () => {} }]}
+    >
+      <div>Advance details content</div>
+    </AdminDetailTemplate>
   );
 }

@@ -9,9 +9,9 @@ import styles from './page.module.css';
 import { use, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
-import { Button } from '@/design-system/components/atoms/Button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/Card';
-import { Badge } from '@/design-system/components/atoms/Badge';
+import { Button } from '@/design-system';
+import { Card, CardContent, CardHeader, CardTitle } from '@/design-system';
+import { Badge } from '@/design-system';
 import {
   ArrowLeft,
   Printer,
@@ -308,18 +308,18 @@ export default function CredentialDetailPage({
                     Checked In
                   </Badge>
                 ) : credential.is_active ? (
-                  <Badge variant="outlined" className={styles.badgeActive}>
+                  <Badge variant="outline" className={styles.badgeActive}>
                     <Shield className={styles.icon} />
                     Active
                   </Badge>
                 ) : (
-                  <Badge variant="outlined">
+                  <Badge variant="outline">
                     Inactive
                   </Badge>
                 )}
 
                 {credential.printed && (
-                  <Badge variant="outlined" className={styles.badgePrinted}>
+                  <Badge variant="outline" className={styles.badgePrinted}>
                     <Printer className={styles.icon} />
                     Printed
                   </Badge>

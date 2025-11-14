@@ -1,9 +1,15 @@
+/**
+ * Forgot Password Page
+ * GHXSTSHIP Atomic Design System
+ */
+
 'use client';
 
 import { useState } from 'react';
-import { AuthCardTemplate } from '@/design-system/components/templates';
-import { Input } from '@/design-system/components/atoms/Input';
-import { Label } from '@/design-system/components/atoms/Label';
+import Link from 'next/link';
+import { Card, Stack, Heading, Text, Button } from '@/design-system';
+import { FormField } from '@/design-system';
+import { PageTemplate } from '@/design-system';
 import styles from '../auth.module.css';
 
 export default function ForgotPasswordPage() {
@@ -40,43 +46,84 @@ export default function ForgotPasswordPage() {
 
   if (sent) {
     return (
-      <AuthCardTemplate
-        title="Check Your Email"
-        description={`We've sent a password reset link to ${email}`}
-        footerText="Click the link in the email to reset your password. The link will expire in 1 hour."
-        footerLink={{ text: 'Back to Login', href: '/login' }}
-      >
-        <div />
-      </AuthCardTemplate>
+      <PageTemplate showHeader={false} showFooter={false}>
+        <div className={styles.authContainer}>
+          <Card variant="elevated" padding={8} className={styles.authCard}>
+            <Stack gap={6}>
+              <Stack gap={2}>
+                <Heading level={1} font="anton" align="center">
+                  Check Your Email
+                </Heading>
+                <Text align="center" color="secondary">
+                  We&apos;ve sent a password reset link to {email}
+                </Text>
+              </Stack>
+
+              <Text align="center" size="sm" color="tertiary">
+                Click the link in the email to reset your password. The link will expire in 1 hour.
+              </Text>
+
+              <Link href="/login" className={styles.linkNoDecoration}>
+                <Button variant="secondary" size="lg" fullWidth>
+                  Back to Login
+                </Button>
+              </Link>
+            </Stack>
+          </Card>
+        </div>
+      </PageTemplate>
     );
   }
 
   return (
-    <AuthCardTemplate
-      title="Forgot Password?"
-      description="Enter your email and we'll send you a reset link"
-      onSubmit={handleSubmit}
-      submitLabel={loading ? 'Sending...' : 'Send Reset Link'}
-      submitLoading={loading}
-      footerText="Remember your password?"
-      footerLink={{ text: 'Back to Login', href: '/login' }}
-    >
-      <div className={styles.formField}>
-        <Label htmlFor="email">Email Address</Label>
-        <Input
-          id="email"
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-          placeholder="your@email.com"
-        />
+    <PageTemplate showHeader={false} showFooter={false}>
+      <div className={styles.authContainer}>
+        <Card variant="elevated" padding={8} className={styles.authCard}>
+          <Stack gap={6}>
+            <Stack gap={2}>
+              <Heading level={1} font="anton" align="center">
+                Forgot Password?
+              </Heading>
+              <Text align="center" color="secondary">
+                Enter your email and we&apos;ll send you a reset link
+              </Text>
+            </Stack>
+
+            <form onSubmit={handleSubmit}>
+              <Stack gap={4}>
+                <FormField
+                  label="Email Address"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  fullWidth
+                  placeholder="your@email.com"
+                />
+
+                {error && (
+                  <Text size="sm" color="primary">
+                    {error}
+                  </Text>
+                )}
+
+                <Button type="submit" variant="primary" size="lg" fullWidth loading={loading}>
+                  {loading ? 'Sending...' : 'Send Reset Link'}
+                </Button>
+              </Stack>
+            </form>
+
+            <Stack gap={3}>
+              <Text align="center" size="sm" color="tertiary">
+                Remember your password?{' '}
+                <Link href="/login" className={styles.link}>
+                  Back to Login
+                </Link>
+              </Text>
+            </Stack>
+          </Stack>
+        </Card>
       </div>
-      {error && (
-        <div className={styles.errorBox}>
-          <p className={styles.errorText}>{error}</p>
-        </div>
-      )}
-    </AuthCardTemplate>
+    </PageTemplate>
   );
 }

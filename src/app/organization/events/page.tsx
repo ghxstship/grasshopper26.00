@@ -1,11 +1,8 @@
 'use client';
 
-import { AdminLayout } from '@/design-system/components/templates/AdminLayout/AdminLayout';
-import { AdminSidebar } from '@/design-system/components/organisms/AdminSidebar/AdminSidebar';
-import { Typography } from '@/design-system/components/atoms/Typography/Typography';
-import { Button } from '@/design-system/components/atoms/Button/Button';
-import { StatCard } from '@/design-system/components/molecules/StatCard/StatCard';
-import { Input } from '@/design-system/components/atoms/Input/Input';
+import { Button, Input, Heading, Text } from '@/design-system';
+import { StatCard } from '@/design-system';
+import { AdminTemplate } from '@/design-system';
 import { Calendar, Plus } from 'lucide-react';
 import { useAdminEvents } from '@/hooks/useAdminEvents';
 import Link from 'next/link';
@@ -15,14 +12,13 @@ export default function AdminEventsPage() {
   const { events, stats, loading, searchQuery, setSearchQuery } = useAdminEvents();
 
   return (
-    <AdminLayout
-      sidebar={<AdminSidebar />}
+    <AdminTemplate
       title="Events Management"
       description="Manage all events and ticket inventory"
       actions={
         <Link href="/admin/events/create">
-          <Button variant="filled">
-            <Plus style={{ width: 20, height: 20 }} />
+          <Button variant="primary">
+            <Plus className={styles.icon} />
             Create Event
           </Button>
         </Link>
@@ -48,16 +44,16 @@ export default function AdminEventsPage() {
           <div className={styles.eventsTable}>
             {events.map((event: any) => (
               <div key={event.id} className={styles.eventRow}>
-                <Typography variant="body" as="div">{event.name}</Typography>
+                <Text>{event.name}</Text>
               </div>
             ))}
           </div>
         ) : (
           <div className={styles.empty}>
-            <Typography variant="h3" as="p">No events found</Typography>
+            <Heading level={3} font="bebas">No events found</Heading>
           </div>
         )}
       </div>
-    </AdminLayout>
+    </AdminTemplate>
   );
 }

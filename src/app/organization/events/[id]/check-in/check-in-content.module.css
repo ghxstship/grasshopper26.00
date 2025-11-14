@@ -1,152 +1,146 @@
-/* Check-In Content Styles */
+/* Event Check-In Page Styles */
 
-.searchWrapper {
-  display: flex;
-  gap: var(--space-sm);
-  align-items: center;
-  margin-block-end: var(--space-lg);
-  position: relative;
+.container {
+  min-block-size: 100vh;
+  background: var(--color-bg-primary);
 }
 
-.searchIcon {
-  position: absolute;
-  inset-inline-start: var(--space-md);
-  inline-size: var(--icon-size-sm);
-  block-size: var(--icon-size-sm);
+.header {
+  padding: var(--spacing-6) var(--spacing-4);
+  background: var(--color-bg-secondary);
+  border-block-end: var(--border-width-md) solid var(--color-border-primary);
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-3xl);
+  color: var(--color-text-primary);
+  margin-block-end: var(--spacing-2);
+}
+
+.subtitle {
   color: var(--color-text-secondary);
-  pointer-events: none;
 }
 
-.searchInput {
-  flex: 1;
-  padding-inline-start: var(--space-2xl);
+.statsGrid {
+  display: grid;
+  gap: var(--spacing-4);
+  grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
+  padding: var(--spacing-6) var(--spacing-4);
+  max-inline-size: var(--container-max-width);
+  margin-inline: auto;
 }
 
-.resultsList {
+.statCard {
+  padding: var(--spacing-4);
+  background: var(--color-bg-primary);
+  border: var(--border-width-md) solid var(--color-border-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.statLabel {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-block-end: var(--spacing-2);
+}
+
+.statValue {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-3xl);
+  color: var(--color-text-primary);
+}
+
+.content {
+  max-inline-size: var(--container-max-width);
+  margin-inline: auto;
+  padding: var(--spacing-6) var(--spacing-4);
+}
+
+.scannerSection {
+  margin-block-end: var(--spacing-8);
+}
+
+.sectionTitle {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-2xl);
+  color: var(--color-text-primary);
+  margin-block-end: var(--spacing-4);
+}
+
+.scannerContainer {
+  max-inline-size: var(--space-125);
+  margin-inline: auto;
+  padding: var(--spacing-6);
+  background: var(--color-bg-primary);
+  border: var(--border-width-md) solid var(--color-border-primary);
+  box-shadow: var(--shadow-md);
+}
+
+.recentCheckins {
+  margin-block-start: var(--spacing-8);
+}
+
+.checkinsList {
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
+  gap: var(--spacing-3);
 }
 
-.ticketItem {
+.checkinItem {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--space-md);
-  border: var(--border-width-1) solid var(--color-border);
-  border-radius: var(--border-radius-none);
-  gap: var(--space-md);
+  padding: var(--spacing-4);
+  background: var(--color-bg-secondary);
+  border: var(--border-width-sm) solid var(--color-border-secondary);
 }
 
-.ticketInfo {
-  flex: 1;
-  min-inline-size: 0;
-}
-
-.ticketName {
-  font-size: var(--font-size-md);
-  font-weight: var(--font-weight-semibold);
-  color: var(--color-text-primary);
-  margin: 0 0 var(--space-xs) 0;
-}
-
-.ticketDetails {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-secondary);
-  margin: 0 0 var(--space-xs) 0;
-}
-
-.ticketEmail {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-secondary);
-  margin: 0;
-}
-
-.ticketActions {
-  display: flex;
-  gap: var(--space-sm);
-  align-items: center;
-  flex-shrink: 0;
-}
-
-.iconSmall {
-  inline-size: var(--icon-size-sm);
-  block-size: var(--icon-size-sm);
-}
-
-.iconSuccess {
-  inline-size: var(--icon-size-md);
-  block-size: var(--icon-size-md);
-  color: var(--color-text-primary);
-}
-
-.emptyText {
-  text-align: center;
-  color: var(--color-text-secondary);
-  padding-block: var(--space-xl);
-}
-
-.recentList {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
-}
-
-.recentItem {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: var(--space-sm) var(--space-md);
-  border-radius: var(--border-radius-none)(--radius-sm);
-  background-color: var(--color-surface);
-}
-
-.recentInfo {
+.checkinInfo {
   flex: 1;
 }
 
-.recentName {
+.checkinName {
+  font-size: var(--font-size-base);
+  color: var(--color-text-primary);
+  margin-block-end: var(--spacing-1);
+}
+
+.checkinTime {
   font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
-  color: var(--color-text-primary);
-  margin: 0 0 var(--space-xs) 0;
-}
-
-.recentDetails {
-  font-size: var(--font-size-xs);
   color: var(--color-text-secondary);
-  margin: 0;
 }
 
-@media (max-width: 48rem) {
-  .ticketItem {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .ticketActions {
-    inline-size: 100%;
-    justify-content: flex-end;
-  }
-}
-
-/* DARK MODE */
-:global([data-theme="dark"]) .container,
-:global([data-theme="dark"]) .card,
-:global([data-theme="dark"]) .content {
-  background-color: var(--color-bg-primary);
-}
-
-:global([data-theme="dark"]) .button,
-:global([data-theme="dark"]) .input,
-:global([data-theme="dark"]) .select,
-:global([data-theme="dark"]) .textarea {
-  background-color: var(--color-bg-primary);
-  border-color: var(--color-border-strong);
-  color: var(--color-text-primary);
-}
-
-:global([data-theme="dark"]) .button:hover {
-  background-color: var(--color-text-primary);
+.checkinStatus {
+  padding: var(--spacing-2) var(--spacing-3);
+  background: var(--color-bg-inverse);
   color: var(--color-text-inverse);
+  border: var(--border-width-sm) solid var(--color-border-primary);
+  font-size: var(--font-size-xs);
+  font-family: var(--font-heading);
+}
+
+.empty {
+  text-align: center;
+  padding: var(--spacing-12);
+  color: var(--color-text-secondary);
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-12);
+}
+
+.spinner {
+  inline-size: var(--spacing-8);
+  block-size: var(--spacing-8);
+  border: var(--border-width-3) solid var(--color-border-default);
+  border-block-start-color: var(--color-border-strong);
+  border-radius: var(--border-radius-none);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }

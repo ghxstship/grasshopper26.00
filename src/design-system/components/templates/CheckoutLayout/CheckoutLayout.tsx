@@ -1,116 +1,51 @@
 /**
- * Checkout Layout Template
- * GHXSTSHIP Monochromatic Design System
- * Two-column checkout with form and order summary
+ * CheckoutLayout Template
+ * GHXSTSHIP Design System
+ * Layout for checkout flow with form and summary
  */
 
-import * as React from "react";
+import React from 'react';
 import styles from './CheckoutLayout.module.css';
 
 export interface CheckoutLayoutProps {
-  /** Logo/branding */
   logo?: React.ReactNode;
-  
-  /** Progress indicator */
-  progress?: React.ReactNode;
-  
-  /** Steps configuration */
-  steps?: Array<{
-    key: string;
-    label: string;
-    completed?: boolean;
-  }>;
-  
-  /** Step content */
-  stepContent?: React.ReactNode;
-  
-  /** Checkout form content */
-  form?: React.ReactNode;
-  
-  /** Order summary sidebar */
-  summary?: React.ReactNode;
-  
-  /** Order summary component */
-  orderSummary?: React.ReactNode;
-  
-  /** Next button handler */
-  onNext?: () => void;
-  
-  /** Back button handler */
-  onBack?: () => void;
-  
-  /** Next button loading state */
-  nextLoading?: boolean;
-  
-  /** Footer */
-  footer?: React.ReactNode;
-  
-  /** Current step */
   currentStep?: number;
-  
-  /** Total steps */
   totalSteps?: number;
+  form: React.ReactNode;
+  summary: React.ReactNode;
 }
 
-export const CheckoutLayout: React.FC<CheckoutLayoutProps> = ({
+export function CheckoutLayout({
   logo,
-  progress,
-  form,
-  summary,
-  footer,
   currentStep,
   totalSteps,
-}) => {
+  form,
+  summary,
+}: CheckoutLayoutProps) {
   return (
-    <div className={styles.layout}>
-      {/* Header */}
-      <header className={styles.header} role="banner">
+    <div className={styles.container}>
+      <header className={styles.header}>
         <div className={styles.headerContent}>
-          {logo && (
-            <div className={styles.logo}>
-              {logo}
-            </div>
-          )}
-          
-          {progress && (
+          {logo && <div className={styles.logo}>{logo}</div>}
+          {currentStep !== undefined && totalSteps !== undefined && (
             <div className={styles.progress}>
-              {progress}
-            </div>
-          )}
-          
-          {currentStep && totalSteps && (
-            <div className={styles.stepIndicator} aria-label={`Step ${currentStep} of ${totalSteps}`}>
-              <span className={styles.stepCurrent}>{currentStep}</span>
-              <span className={styles.stepSeparator}>/</span>
-              <span className={styles.stepTotal}>{totalSteps}</span>
+              <span className={styles.progressText}>
+                Step {currentStep} of {totalSteps}
+              </span>
+              <div className={styles.progressBar}>
+                <div 
+                  className={styles.progressFill} 
+                  style={{ width: `${(currentStep / totalSteps) * 100}%` }}
+                />
+              </div>
             </div>
           )}
         </div>
       </header>
-      
-      {/* Main Container */}
-      <div className={styles.container}>
-        {/* Form Section */}
-        <div className={styles.formSection}>
-          <div className={styles.formContent}>
-            {form}
-          </div>
-        </div>
-        
-        {/* Summary Section */}
-        <aside className={styles.summarySection} aria-label="Order summary">
-          <div className={styles.summaryContent}>
-            {summary}
-          </div>
-        </aside>
+      <div className={styles.main}>
+        <div className={styles.formColumn}>{form}</div>
+        <aside className={styles.summaryColumn}>{summary}</aside>
       </div>
-      
-      {/* Footer */}
-      {footer && (
-        <footer className={styles.footer} role="contentinfo">
-          {footer}
-        </footer>
-      )}
     </div>
   );
-};
+}

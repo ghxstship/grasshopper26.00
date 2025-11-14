@@ -1,1 +1,0 @@
-export { VenueMap } from './VenueMap';

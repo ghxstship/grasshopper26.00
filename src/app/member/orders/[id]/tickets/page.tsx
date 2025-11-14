@@ -3,8 +3,8 @@
 import { useEffect, useState } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
-import { Card, CardContent, CardHeader, CardTitle } from '@/design-system/components/atoms/Card';
-import { Button } from '@/design-system/components/atoms/Button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/design-system';
+import { Button } from '@/design-system';
 import { Loader2, ArrowLeft, Download, QrCode as QrCodeIcon } from 'lucide-react';
 import { generateMultipleTicketsPDF, downloadPDF } from '@/lib/tickets/pdf-generator';
 import Link from 'next/link';

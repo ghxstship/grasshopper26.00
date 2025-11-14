@@ -1,9 +1,9 @@
 'use client';
 
-import { PortalLayout } from '@/design-system/components/templates/PortalLayout/PortalLayout';
-import { PortalSidebar } from '@/design-system/components/organisms/PortalSidebar/PortalSidebar';
-import { Typography } from '@/design-system/components/atoms/Typography/Typography';
-import { StatCard } from '@/design-system/components/molecules/StatCard/StatCard';
+import { PortalLayout } from '@/design-system';
+import { PortalSidebar } from '@/design-system';
+import { Text, Heading } from '@/design-system';
+import { StatCard } from '@/design-system';
 import { Ticket, Clock, CheckCircle } from 'lucide-react';
 import { useVouchers } from '@/hooks/useVouchers';
 import styles from './vouchers.module.css';
@@ -24,26 +24,26 @@ export default function VouchersPage() {
       </div>
 
       <div className={styles.content}>
-        <Typography variant="h3" as="h2">
+        <Heading level={2} font="bebas">
           Your Vouchers
-        </Typography>
+        </Heading>
         
         {vouchers && vouchers.length > 0 ? (
           <div className={styles.vouchersList}>
             {vouchers.map((voucher: any) => (
               <div key={voucher.id} className={styles.voucherCard}>
-                <Typography variant="h4" as="div">{voucher.code}</Typography>
-                <Typography variant="body" as="div">{voucher.description}</Typography>
+                <Heading level={4} font="bebas">{voucher.code}</Heading>
+                <Text color="secondary">{voucher.description}</Text>
               </div>
             ))}
           </div>
         ) : (
           <div className={styles.empty}>
             <Ticket className={styles.emptyIcon} />
-            <Typography variant="h3" as="p">No vouchers</Typography>
-            <Typography variant="body" as="p">
+            <Heading level={3} font="bebas">No vouchers</Heading>
+            <Text color="secondary">
               Vouchers will appear here when you receive them
-            </Typography>
+            </Text>
           </div>
         )}
       </div>

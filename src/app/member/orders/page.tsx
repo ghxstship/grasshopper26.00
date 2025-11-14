@@ -1,8 +1,8 @@
 'use client';
 
-import { PortalLayout } from '@/design-system/components/templates/PortalLayout/PortalLayout';
-import { PortalSidebar } from '@/design-system/components/organisms/PortalSidebar/PortalSidebar';
-import { Typography } from '@/design-system/components/atoms/Typography/Typography';
+import { PortalLayout } from '@/design-system';
+import { PortalSidebar } from '@/design-system';
+import { Heading, Text } from '@/design-system';
 import { ShoppingBag } from 'lucide-react';
 import { useOrders } from '@/hooks/useOrders';
 import styles from './orders.module.css';
@@ -19,24 +19,24 @@ export default function OrderHistoryPage() {
       <div className={styles.content}>
         {loading ? (
           <div className={styles.loading}>
-            <Typography variant="body" as="p">Loading orders...</Typography>
+            <Text>Loading orders...</Text>
           </div>
         ) : orders && orders.length > 0 ? (
           <div className={styles.ordersGrid}>
             {orders.map((order: any) => (
               <div key={order.id} className={styles.orderCard}>
-                <Typography variant="h4" as="div">Order #{order.id}</Typography>
-                <Typography variant="body" as="div">{order.status}</Typography>
+                <Heading level={4} font="bebas">Order #{order.id}</Heading>
+                <Text color="secondary">{order.status}</Text>
               </div>
             ))}
           </div>
         ) : (
           <div className={styles.empty}>
             <ShoppingBag className={styles.emptyIcon} />
-            <Typography variant="h3" as="p">No Orders Yet</Typography>
-            <Typography variant="body" as="p">
+            <Heading level={3} font="bebas">No Orders Yet</Heading>
+            <Text color="secondary">
               You haven&apos;t placed any orders yet. Start exploring!
-            </Typography>
+            </Text>
           </div>
         )}
       </div>

@@ -1,9 +1,9 @@
 'use client';
 
-import { PortalLayout } from '@/design-system/components/templates/PortalLayout/PortalLayout';
-import { PortalSidebar } from '@/design-system/components/organisms/PortalSidebar/PortalSidebar';
-import { Typography } from '@/design-system/components/atoms/Typography/Typography';
-import { StatCard } from '@/design-system/components/molecules/StatCard/StatCard';
+import { PortalLayout } from '@/design-system';
+import { PortalSidebar } from '@/design-system';
+import { Text, Heading } from '@/design-system';
+import { StatCard } from '@/design-system';
 import { Coins, TrendingUp, AlertCircle, Clock } from 'lucide-react';
 import { useCredits } from '@/hooks/useCredits';
 import styles from './credits.module.css';
@@ -25,26 +25,26 @@ export default function CreditsPage() {
       </div>
 
       <div className={styles.content}>
-        <Typography variant="h3" as="h2">
+        <Heading level={2} font="bebas">
           Credit History
-        </Typography>
+        </Heading>
         
         {credits && credits.length > 0 ? (
           <div className={styles.creditsList}>
             {credits.map((credit: any) => (
               <div key={credit.id} className={styles.creditItem}>
-                <Typography variant="body" as="div">{credit.description}</Typography>
-                <Typography variant="body" as="div">{credit.amount} credits</Typography>
+                <Text>{credit.description}</Text>
+                <Text weight="medium">{credit.amount} credits</Text>
               </div>
             ))}
           </div>
         ) : (
           <div className={styles.empty}>
             <Coins className={styles.emptyIcon} />
-            <Typography variant="h3" as="p">No credits yet</Typography>
-            <Typography variant="body" as="p">
+            <Heading level={3} font="bebas">No credits yet</Heading>
+            <Text color="secondary">
               Credits will appear here when you earn them through your membership
-            </Typography>
+            </Text>
           </div>
         )}
       </div>

@@ -1,36 +1,38 @@
 /**
- * Container Component Styles
- * GHXSTSHIP Monochromatic Design System
+ * Container - Max-width container atom
  */
 
 .container {
-  inline-size: 100%;
-  margin-inline: auto;
+  width: 100%;
   padding-inline: var(--space-4);
 }
 
-.sm {
-  max-inline-size: 40rem;
+.center {
+  margin-inline: auto;
 }
 
-.md {
-  max-inline-size: 48rem;
+.maxWidth-sm {
+  max-inline-size: var(--space-160);
 }
 
-.lg {
-  max-inline-size: 64rem;
+.maxWidth-md {
+  max-inline-size: var(--space-192);
 }
 
-.xl {
+.maxWidth-lg {
+  max-width: 64rem;
+}
+
+.maxWidth-xl {
   max-inline-size: 80rem;
 }
 
-.full {
-  max-inline-size: 100%;
+.maxWidth-2xl {
+  max-inline-size: 96rem;
 }
 
-.noPadding {
-  padding-inline: 0;
+.maxWidth-full {
+  max-width: 100%;
 }
 
 @media (min-width: 48rem) {
@@ -38,26 +40,3 @@
     padding-inline: var(--space-6);
   }
 }
-
-@media (min-width: 64rem) {
-  .container {
-    padding-inline: var(--space-8);
-  }
-}
-
-
-
-
-
-
-
-
-/* ========================================
-   DARK THEME
-   ======================================== */
-
-[data-theme="dark"] .container {
-  /* Dark mode overrides inherit from tokens.css */
-  /* Add component-specific overrides here if needed */
-}
-

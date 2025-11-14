@@ -57,17 +57,23 @@ export function Header({
           {showAuth && (
             <Stack direction="horizontal" gap={3} className={styles.auth}>
               {user ? (
-                <Text font="bebas" size="lg">
-                  {user.name}
-                </Text>
+                <Link href="/member">
+                  <Text font="bebas" size="lg">
+                    {user.name}
+                  </Text>
+                </Link>
               ) : (
                 <>
-                  <Button variant="ghost" size="sm">
-                    Login
-                  </Button>
-                  <Button variant="primary" size="sm">
-                    Sign Up
-                  </Button>
+                  <Link href="/login">
+                    <Button variant="ghost" size="sm">
+                      Login
+                    </Button>
+                  </Link>
+                  <Link href="/signup">
+                    <Button variant="primary" size="sm">
+                      Sign Up
+                    </Button>
+                  </Link>
                 </>
               )}
             </Stack>

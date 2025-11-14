@@ -98,7 +98,18 @@ export function EventCard({
           </Text>
         )}
 
-        <Button variant={isSoldOut ? 'secondary' : 'primary'} fullWidth disabled={isSoldOut}>
+        <Button 
+          variant={isSoldOut ? 'secondary' : 'primary'} 
+          fullWidth 
+          disabled={isSoldOut}
+          onClick={(e) => {
+            if (onClick) {
+              e.preventDefault();
+              e.stopPropagation();
+              onClick();
+            }
+          }}
+        >
           {isSoldOut ? 'Sold Out' : 'Get Tickets'}
         </Button>
       </Stack>

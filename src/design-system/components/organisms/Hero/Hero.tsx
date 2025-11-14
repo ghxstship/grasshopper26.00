@@ -3,6 +3,7 @@
  * GHXSTSHIP Atomic Design System
  */
 
+import Link from 'next/link';
 import { Box, Stack, Heading, Text, Button } from '../../atoms';
 import styles from './Hero.module.css';
 
@@ -54,18 +55,18 @@ export function Hero({
           {(ctaText || secondaryCtaText) && (
             <Stack direction="horizontal" gap={4} className={styles.ctas}>
               {ctaText && ctaHref && (
-                <a href={ctaHref} className={styles.ctaLink}>
+                <Link href={ctaHref} className={styles.ctaLink}>
                   <Button variant="primary" size="xl">
                     {ctaText}
                   </Button>
-                </a>
+                </Link>
               )}
               {secondaryCtaText && secondaryCtaHref && (
-                <a href={secondaryCtaHref} className={styles.ctaLink}>
+                <Link href={secondaryCtaHref} className={styles.ctaLink}>
                   <Button variant="secondary" size="xl">
                     {secondaryCtaText}
                   </Button>
-                </a>
+                </Link>
               )}
             </Stack>
           )}

@@ -19,6 +19,8 @@ export interface ProductCardProps {
   slug: string;
   /** In stock */
   inStock?: boolean;
+  /** Add to cart handler */
+  onAddToCart?: () => void;
 }
 
 export function ProductCard({
@@ -27,6 +29,7 @@ export function ProductCard({
   image,
   slug,
   inStock = true,
+  onAddToCart,
 }: ProductCardProps) {
   return (
     <Card variant="elevated" padding={0} interactive>
@@ -61,7 +64,18 @@ export function ProductCard({
             {price}
           </Text>
 
-          <Button variant={inStock ? 'primary' : 'secondary'} fullWidth disabled={!inStock}>
+          <Button 
+            variant={inStock ? 'primary' : 'secondary'} 
+            fullWidth 
+            disabled={!inStock}
+            onClick={(e) => {
+              if (onAddToCart && inStock) {
+                e.preventDefault();
+                e.stopPropagation();
+                onAddToCart();
+              }
+            }}
+          >
             {inStock ? 'Add to Cart' : 'Out of Stock'}
           </Button>
         </Stack>
